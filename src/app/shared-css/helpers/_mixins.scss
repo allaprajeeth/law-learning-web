@@ -1,0 +1,55 @@
+@use '../variables' as *;
+
+@mixin center-content() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin border-radius-50-percent() {
+    border-radius: 50%;
+}
+
+@mixin device($screen) {
+    @if $screen==tablet {
+        @media (min-width: 481px) and (max-width: 768px) {
+            @content;
+        }
+    }
+
+    @if $screen==smallscreen {
+        @media (min-width: 769px) and (max-width: 1024px) {
+            @content;
+        }
+    }
+
+    @if $screen==largescreen {
+        @media (min-width: 1025px) and (max-width: 1200px) {
+            @content;
+        }
+    }
+
+    @else if $screen==extralargescreen {
+        @media (min-width:1201px) {
+            @content;
+        }
+    }
+}
+
+@mixin scrollbar{
+    &::-webkit-scrollbar {
+        width: 6px;
+      }
+      
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+      }
+       
+      ::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.4);
+      }
+      
+      ::-webkit-scrollbar-thumb:hover{
+        background: rgba(0, 0, 0, 0.3);
+      }
+}
