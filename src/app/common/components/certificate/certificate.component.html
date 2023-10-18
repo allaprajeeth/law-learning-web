@@ -1,0 +1,40 @@
+<div class="certificate-header-button"  *ngIf="totalProgress >=71" >
+    <div >
+        <button mat-raised-button  color="primary" (click)="toggleCertificate()"
+            >
+            View Your  Certificate
+        </button>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center">
+        <button mat-raised-button  color="warn"
+            (click)="downloadCertificate()">
+            Download Your Certificate
+        </button>
+    </div>
+</div>
+<mat-card-content class="certificate-container" id="certificate" #certificate [ngClass]="{'hidden': !showCertificate}">
+    <div class="certificate">
+        <span [ngClass]="'certificate-title'">Certificate of Completion</span>
+        <br /><br />
+        <span [ngClass]="'certificate-text'"><i>This is to certify that</i></span>
+        <br /><br />
+        <span [ngClass]="'certificate-bold'"><b>A.Vani Priya</b></span>
+        <br /><br />
+        <span [ngClass]="'certificate-text'"><i>has completed the course</i></span>
+        <br /><br />
+        <span [ngClass]="'certificate-bold'">Java</span>
+        <br /><br />
+        <span [ngClass]="'certificate-text'">with score of <b>90%</b></span>
+        <br /><br /><br /><br />
+        <span [ngClass]="'certificate-text'"><i>dated</i></span>
+        <br />
+        <span [ngClass]="'certificate-date'">September 16, 2023</span>
+        <br /><br />
+        <span [ngClass]="'certificate-bold'">LawLang</span>
+    </div>
+</mat-card-content>
+<div *ngIf="totalProgress <70" style="text-align: center; font-size: 16px; ">
+  <i >
+    You have to complete 70% of course to get certificate!
+    </i>
+</div>

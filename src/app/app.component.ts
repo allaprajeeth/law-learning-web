@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoadingService } from './common/services/loading/loading.service';
+import { PermissionService } from './common/services/permission/permission.service';
+
 
 @Component({
   selector: 'app-root',
@@ -8,7 +10,29 @@ import { LoadingService } from './common/services/loading/loading.service';
 })
 export class AppComponent {
   title = 'law-learning';
-  constructor(public loadingService: LoadingService){
+  hasPermission = false;
+  isLoggedIn!: boolean;
 
+  // constructor(public loadingService: LoadingService,
+    // private permissionService: PermissionService
+    // ){
+
+  
+
+  // ngOnInit(){
+  //   this.hasPermission = this.permissionService.hasPermission();
+  // }
+  // isLoggedIn: boolean = false;
+
+  // Implement your login logic here
+  login() {
+    // Set isLoggedIn to true when the user successfully logs in
+    this.isLoggedIn = true;
   }
+
+  constructor() {}
+
+  // get loginIsSuccessful() {
+  //   return this.authService.isLoggedIn();
+  // }
 }

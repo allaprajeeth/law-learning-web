@@ -1,0 +1,78 @@
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Set height to viewport height for full-screen appearance */
+  background-color: #e0d9d9; /* Background color for the whole page */
+}
+.container {
+  display: flex;
+  width: 80%; /* Set your desired width for the centered box */
+  background-color: #ffffff; /* Background color for the centered box */
+  padding: 20px;
+  border-radius: 10px; /* Optional: Adds rounded corners to the box */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
+// height: 400px;
+}
+.left {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid rgb(136, 134, 134);
+  border-radius: 30px;
+  height: 400px;
+  background-color: rgb(203, 245, 245);
+}
+.vertical-line {
+  width: 1px;
+  background-color: rgb(76, 74, 74);
+  height: 100%;
+  margin: 0 0 0 50px;
+  transition: height 0.3s;
+}
+.right {
+  width: 30%;
+  padding: 2px;
+  text-align: center;
+}
+.user-info {
+  text-align: left;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.user-info h1 {
+  margin-left: 40px;
+}
+.user-text {
+  border: 1px solid rgb(64, 62, 62);
+  width: 30px;
+  height: 30px;
+  background-color: rgb(79, 77, 77);
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 30px;
+  float: left;
+}
+.gmailHeading {
+  font-weight: bold;
+  font-size: 14px;
+  margin-left: 40px;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.example-full-width {
+  width: 100%;
+}
+.btn {
+  margin-left: 40%;
+  margin-top: 30px; 
+}
+.dummy-text {
+  margin: 20px 0 0 40px;
+}

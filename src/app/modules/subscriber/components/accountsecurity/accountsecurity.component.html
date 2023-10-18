@@ -1,0 +1,79 @@
+<app-subscribernav></app-subscribernav>
+<mat-sidenav-container>
+   
+    <mat-sidenav #sideNav mode="side" opened>
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <!-- <app-mainnav></app-mainnav> -->
+        
+        <div class="container-wrapper">
+        <div class="container">
+            <!-- <router-outlet></router-outlet> -->
+            <div class="main-container">
+            
+                <form [formGroup]="accountForm">
+                    
+                    <div class="box" id="head">
+                        <h1>Account</h1>
+                        <p>Edit your account settings here...  </p>
+                        <hr/>
+                    </div>
+                    
+                    <div class="box">
+                        <h2></h2>
+                      <p>
+                        <label for="currentEmail">Current Email : </label>
+                        <input type="email" id="currentEmail" formControlName="currentEmail" placeholder="nuncsystems@gmail.com">
+                      </p>
+                      <p>
+                        <label for="currentPhone">Current Phone : </label>
+                        <input type="text" id="currentPhone" formControlName="currentPhone" placeholder="0987654321">
+                      </p>
+                    </div>
+                  
+                    <div class="box">
+                      <p>
+                        <label for="newEmail">New Email : </label>
+                        <input type="email" id="newEmail" formControlName="newEmail" placeholder="Enter new mail-Id">
+                      </p>
+                      <p>
+                        <label for="newPhone">New Phone :  </label>
+                        <input type="text" id="newPhone" formControlName="newPhone" placeholder="Enter new Mobile No.">
+                      </p>
+                      <button type="button" *ngIf="!showOtpFields" (click)="sendOtps()">Send OTPs</button>
+                    </div>
+                    <div class="box" *ngIf="showOtpFields">
+                        <p>
+                          <label for="Emailotp">Email Otp : </label>
+                          <input type="email" id="newEmail" formControlName="newEmail" placeholder="Enter email otp">
+                        </p>
+                        <p>
+                          <label for="Phoneotp">Phone Otp:  </label>
+                          <input type="text" id="newPhone" formControlName="newPhone" placeholder="Enter mobile Otp">
+                        </p>
+                        <button type="button" (click)="savechanges()">Save Changes </button>
+                      </div>
+                  </form>
+                  
+            
+        
+            
+            <hr/>
+            <div class="box">
+                
+            </div>
+        
+          </div>
+        </div>
+    </div>
+
+        
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
+
+
+

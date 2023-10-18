@@ -1,0 +1,190 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .container {
+    margin: 0 auto;
+    max-width: 80vw;
+  }
+  
+  .heading {
+    padding: 30px 0 5px 0;
+  }
+  h1{
+    font-weight: 500;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  
+    .image-item {
+      overflow: hidden;
+      cursor: pointer;
+  
+      &:hover {
+        .overlay {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          background-color: rgba(115, 113, 113, 0.7);
+        }
+      }
+  
+      .img {
+        width: 100%;
+        height: 100%;
+        display: flex;
+      }
+  
+      .imagesContainer {
+        position: relative;
+      }
+  
+      .overlay {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+  
+      h5 {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+  
+      p {
+        font-size: 1rem;
+        color: #666;
+      }
+  
+      .play-icon {
+        color: white;
+        font-size: 80px;
+      }
+  
+      .headingsContainer {
+        padding: 6px 6px 0 6px;
+      }
+  
+      .status-bar + span {
+        padding: 6px;
+      }
+    }
+  
+    .status-bar {
+      width: 100%;
+      height: 3px;
+      background-color: #ccc;
+      margin: 0 6px 5px 6px;
+      .status-fill {
+        height: 100%;
+        background-color: #7803d8;
+      }
+    }
+  
+    .ratingsContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: baseline;
+      .subscribers {
+        font-weight: 410;
+        margin: 7px 6px 5px 6px;
+      }
+  
+      .ratingConatiner2 {
+        display: flex;
+        justify-content: flex-end;
+        padding-left: 6px;
+      }
+  
+      .star {
+        color: gold;
+        font-size: x-large;
+      }
+    }
+  
+    .ratingConatiner1 {
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+      top: -20px;
+      padding-left: 6px;
+    }
+  
+    .star {
+      color: gold;
+      font-size: x-large;
+    }
+  }
+  
+  .my-flex {
+    display: flex;
+    height: 45px;
+    margin-bottom: 30px;
+    align-items: center;
+  }
+  
+  #filters {
+    padding: 30px 0 0;
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(60, 60, 60);
+  }
+  
+  .searchbox {
+    display: flex;
+    margin: 30px 0 20px 590px;
+    color: rgb(60, 60, 60);
+    font-size: 15px;
+    padding: 18px;
+  }
+  
+  // .filter {
+  //   margin: 20px 0 20px 20px;
+  // }
+  
+  .searchButton {
+    padding: 12px;
+    color: white;
+    font-size: 25px;
+    background-color: rgb(47, 47, 47);
+    margin-top: 9px;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  
+    @media screen and (max-width: 1040px) {
+      .rating {
+        justify-content: flex-start;
+        position: relative;
+        top: 0px;
+      }
+    }
+  
+    @media screen and (max-width: 768px) {
+      margin-top: 20px;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    @media screen and (max-width: 480px) {
+      margin-top: 20px;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  
+  

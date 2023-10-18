@@ -8,31 +8,31 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
-mat-form-field{
-    font-size: 12px !important;
-}
+// mat-form-field{
+//     font-size: 12px !important;
+// }
 
-.mat-mdc-form-field-infix{
-    line-height: 30px !important;
-    padding: 0 !important;
-    min-height: 30px !important;
+// .mat-mdc-form-field-infix{
+//     line-height: 30px !important;
+//     padding: 0 !important;
+//     min-height: 30px !important;
     
-}
+// }
 
-.mat-mdc-text-field-wrapper{
-    border-radius: 4px !important;
-    overflow: hidden !important;
-    border: none !important;
-}
+// .mat-mdc-text-field-wrapper{
+//     border-radius: 4px !important;
+//     overflow: hidden !important;
+//     border: none !important;
+// }
 
 
-app-admin-login .base-page {
-    display: grid;
-    width: 100%;
-    place-items: center;
-    height: 100vh;
-    max-height: 100vh;
-}
+// app-admin-login .base-page {
+//     display: grid;
+//     width: 100%;
+//     place-items: center;
+//     height: 100vh;
+//     max-height: 100vh;
+// }
 
 // .mat-mdc-form-field-flex{
 //     height: 30px !important;
@@ -44,3 +44,11 @@ app-admin-login .base-page {
 // .mat-mdc-text-field-wrapper{
 //     height: 30px !important;
 // }
+// .mat-sidenav-container {
+//     width: 80%;
+//     height: 500px;
+//     border: 1px solid #c4bdbd;
+//     margin-top: 30px;
+//     margin-left: 130px;
+//   }
+  

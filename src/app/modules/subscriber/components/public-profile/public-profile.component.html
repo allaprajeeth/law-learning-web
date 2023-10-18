@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .name {
+            color: white;
+            font-size: 25px;
+            padding: 30px 300px;
+        }
+
+        .header {
+            background-color: black;
+            height: 15%;
+            width: 100%;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .circle {
+            padding: auto;
+            width: 90px;
+            height: 90px;
+            background-color: black;
+            border-radius: 50%;
+        }
+
+        .para {
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .courses {
+            background-color: rgb(237, 231, 231);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            width: 100%;
+
+            
+        }
+
+        .course-box {
+            height: 220px;
+            width: 100%;
+            background-color: rgb(238, 233, 233);
+        }
+
+        .linkedin-box {
+            width: 300px;
+            margin: 10px auto;
+            border-radius: 5px;
+            flex-direction: column;
+            align-items: left;
+        }
+
+        .linkedin-input {
+            width: 170px;
+            margin-bottom: 10px;
+            padding: 5px 10px ;
+        }
+
+        .linkedin-button {
+            background-color: white;
+            color: #0077B5;
+            border: none;
+            padding: 10px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .courses {
+    background-color: rgb(237, 231, 231);
+    display: flex;
+    justify-content: center; /* Center the flex container horizontally */
+    align-items: center; /* Center the flex items vertically */
+    padding: 10px 0;
+    width: 100%;
+}
+
+.course-box {
+    display: flex; /* Use flexbox layout for videos */
+    justify-content: center; /* Center the videos horizontally within the .course-box */
+    align-items: center; /* Center the videos vertically within the .course-box */
+    height: 220px;
+    width: 100%;
+    background-color: rgb(238, 233, 233);
+}
+
+.course-box video {
+    margin: 0 10px; /* Add some space between the videos */
+}
+
+        /* video {
+    max-width: 100%;
+    height: auto;
+} */
+    </style>
+</head>
+
+<body>
+    <app-subscribernav></app-subscribernav>
+    <div class="header">
+        <h1 class="name">Name</h1>
+    </div>
+    <div class="content">
+        <div style="position:relative; right:300px; top:50px;">
+            <div class="circle">NS</div>
+        </div>
+    </div>
+    <div class="linkedin-box">
+        <div style="position:relative; left:400px; bottom:25px;">
+        <label for="LinkedIn "></label>
+        <input type="text" class="linkedin-input" placeholder="LinkedIn profile">
+    </div>
+    </div>
+    <p class="para">Courses you're enrolled in</p>
+    <div class="courses">
+        <div class="course-box">
+            <video controls width="300" height="200">
+                <source src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <br/>
+            <video controls width="300" height="200">
+                <source src="video2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
