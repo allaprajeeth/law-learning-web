@@ -1,0 +1,89 @@
+<div class="notes-container">
+    <button mat-raised-button (click)="createNewDiv()" class="createnote">
+      <span #durationSpan> Create a new note at {{ videoDuration }} </span>
+  
+      <span class="plus_icon">
+        <mat-icon >add_circle_outline</mat-icon>
+      </span>
+    </button>
+    <div *ngIf="isButtonClicked" class="note-editor">
+      <angular-editor
+        [placeholder]="'Enter text here...'"
+        [(ngModel)]="editorContent"
+      ></angular-editor>
+      <div class="buttons">
+        <button mat-raised-button color="warn" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" (click)="saveContent()" class="saveButton">
+          Save
+        </button>
+      </div>
+    </div>
+    <div *ngIf="isContent" class="note">
+      <mat-card>
+        <mat-card-content> <b>Your Notes</b><br /> </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- Display existing notes -->
+    <!-- Display existing notes -->
+    <div *ngFor="let note of notes; let i = index" class="note">
+      <mat-card>
+        <mat-card-content>
+          {{ note }}
+          <div class="editbtn">
+  
+            <button mat-button color="primary" (click)="edit(i)">Edit</button>
+            <button mat-button color="warn" (click)="delete(i)">Delete</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  
+    <!-- <div class="custom-dialog-overlay" [hidden]="!showDialog">
+    <div class="custom-dialog">
+      <h2>Delete Confirmation</h2>
+      <p>Are you sure you want to delete this note?</p>
+      <button (click)="confirmDelete(i)">Yes</button>
+      <button (click)="cancelDelete()">No</button>
+    </div>
+  </div> -->
+  
+    <div class="all-lectures-container">
+      <div class="button-container">
+        <button class="notes-container-button" mat-button (click)="toggleDiv()">
+          All lectures
+          <mat-icon>{{
+            isDivVisible ? "keyboard_arrow_up" : "keyboard_arrow_down"
+          }}</mat-icon>
+        </button>
+        <div *ngIf="isDivVisible" class="content-container">
+          <mat-card class="mat-card-all-lectures notes-section">
+            <mat-card-content>All lectures</mat-card-content>
+            <mat-card-content>current lecture</mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <div>
+        <!-- Button 2 -->
+        <button
+          class="notes-container-button"
+          mat-button
+          (click)="togglesortBy()"
+        >
+          Sort by most recent
+          <mat-icon>{{
+            issortBy ? "keyboard_arrow_up" : "keyboard_arrow_down"
+          }}</mat-icon>
+        </button>
+  
+        <!-- Content for Button 2 -->
+        <div *ngIf="issortBy" class="content-container">
+          <mat-card class="notes-section">
+            <mat-card-content>Sort by most recent</mat-card-content>
+            <mat-card-content>Sort by oldest</mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  

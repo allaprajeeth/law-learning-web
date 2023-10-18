@@ -1,0 +1,30 @@
+<!-- 
+<app-base-page>
+    <ng-container body>
+        <div class="admin-login-form">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="text" id="username" formControlName="username" placeholder="username" required
+                            autocomplete="off">
+    
+                        <mat-error *ngIf="loginForm.hasError('username') && !loginForm.hasError('required')">
+                            Please enter a valid username
+                        </mat-error>
+                        <mat-error *ngIf="loginForm.hasError('required')">
+                            username is <strong>required</strong>
+                        </mat-error>
+    
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field appearance="fill">
+                        <input matInput type="password" id="password" formControlName="password" placeholder="password"
+                            required autocomplete="off">
+                    </mat-form-field>
+                </div>
+                <button mat-raised-button color="primary" type="submit">Login</button>
+            </form>
+        </div>
+    </ng-container>
+</app-base-page> -->

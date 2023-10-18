@@ -1,0 +1,71 @@
+// / Reset default margins and padding /
+body,table {
+    margin: 0;
+    padding: 0;
+  }
+  
+//   / Center the h1 element vertically and horizontally /
+
+  h1 {
+    margin: 10px;
+    margin-top: 20px; 
+    font-size: 25px; 
+    margin-bottom: 30px;
+    font-weight: 500;
+  }
+  
+//   / Style the table /
+  table {
+    width:70%;
+    border-collapse: collapse;
+    
+    border: none;
+    
+    
+    
+  }
+  
+//   / Style table header /
+  thead {
+    background-color: #f2f2f2;
+
+  }
+  
+ 
+  th {
+    padding: 15px;
+    text-align: left;    
+  }
+  
+  
+  td {
+    padding: 15px;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid rgb(222, 207, 207);
+
+  }
+
+  td:first-child {
+    color: rgb(207, 86, 86); 
+    
+  }
+  
+ 
+  
+ 
+  mat-icon[aria-hidden="true"] {
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding: 10px;
+    font-size: 30px;
+   
+  }
+ td a mat-icon{
+    color: rgb(117, 115, 115);
+  }
+  
+  mat-icon[aria-hidden="true"]:hover {
+    transform: scale(1.2); 
+  }
+  

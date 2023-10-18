@@ -1,0 +1,38 @@
+<app-nav></app-nav>
+<div class="container-wrapper">
+<div class="container">
+  <div class="left">
+    <div class="form">
+      <form class="example-form" [formGroup]="articleForm" (ngSubmit)="onFormSubmit()">
+        <h1>Upload your Article</h1>
+        <mat-form-field class="example-full-width">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Enter your name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>E-Mail</mat-label>
+          <input matInput placeholder="Enter your Email id" formControlName="email">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-label>Article description</mat-label>
+          <textarea matInput placeholder="Ex. It makes me feel..." formControlName="description"></textarea>
+        </mat-form-field>
+        
+        <div class="btn">
+          <button type="submit" class="save" mat-raised-button color="primary" [disabled]="!articleForm.valid">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="vertical-line" *ngIf="showUserInfo" [ngStyle]="{'height.vh': containerHeight}"></div>
+      <div class="right" *ngIf="showUserInfo">
+        <div class="user-info" *ngFor="let entry of userEntries">
+      <div class="user-text">DR</div>
+      <h1>{{ entry.name }}</h1>
+      <h5 class="gmailHeading">{{ entry.email }}</h5>
+      <div class="dummy-text">
+        <p>{{ entry.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

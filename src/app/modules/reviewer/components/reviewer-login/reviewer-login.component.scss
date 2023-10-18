@@ -1,0 +1,243 @@
+// .container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     // height: 100%;
+//     margin: 0;
+//     margin-top: 30px;
+//   }
+  
+//   .login-box {
+//     background-color: #fff;
+//     border: 1px solid #ccc;
+//     // padding: 0px 130px;
+//     padding-right: 130px;
+//     padding-left: 70px;
+//     text-align: center;
+//     box-shadow: 0px 0px 10px rgba(21, 113, 167, 0.1);
+    
+  
+//     h2 {
+//       margin-bottom: 10px;
+//     }
+  
+//     .form-group {
+//       margin-bottom: 10px;
+//       text-align: left;
+//     }
+  
+//     label {
+//       display: block;
+//       font-weight: bold;
+//     }
+  
+//     input[type="email"],
+//     input[type="tel"],
+//     input[type="password"] {
+//       width: 100%;
+//       padding: 10px 25px;
+//       border:2ppx solid #ccc;
+//       margin-bottom: 20px;
+//     }
+//   a{
+//     margin-top: 20px;
+//     padding-top: 20px;
+//   }
+//     .otp {
+//       text-decoration: none;
+//       background-color: #007bff;
+//       color: #fff;
+//       border: none;
+//       padding: 10px 30px;
+//       border-radius: 5px;
+//       cursor: pointer;
+//       margin-left: 40px;
+//       margin-top: 10px;
+  
+//       &:hover {
+//         background-color: #0056b3;
+//       }
+//     }
+  
+//     p {
+//       margin-top: 15px;
+//       text-align: center;
+//       margin-left: 40px;
+  
+//       a {
+//         color: #007bff;
+//         text-decoration: none;
+  
+//         &:hover {
+//           text-decoration: underline;
+//         }
+//       }
+//     }
+//   }
+  
+
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+  
+    .navbar-container {
+      max-width: 1200px;
+      margin: 0 10px;
+      margin-left: 110px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+      }
+  
+      .login-buttons {
+        button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 8px 16px;
+          border-radius: 4px;
+          margin-left: 10px;
+          border: 2px solid black;
+  
+          &.signup-button {
+            background-color: black;
+            color: white;
+          }
+        }
+      }
+  
+    }
+  }
+  
+  .nav-icons {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-right: 30px;
+  
+    li {
+      margin-right: 50px;
+  
+      .mycourses {
+        color: #007791;
+        font-size: 15px;
+        border-radius: 10px;
+        padding: 5px 5px;
+        margin-right: 20px;
+        /* Optional: Add padding for better visual appearance */
+        transition: color 0.3s ease;
+        position: relative; 
+        /* Optional: Add smooth transition effect */
+        &:hover {
+          color: #007791;
+          text-decoration: none;
+          
+  
+        }
+        &:hover::after {
+          content: "";
+          position: absolute;
+          left: 13px;
+          bottom: -1px; /* Adjust the distance of the underline from the text */
+          width: 80%;
+          height: 1px; /* Adjust the thickness of the underline */
+          background-color: #007791; /* Color of the underline */
+        }
+      }
+  
+      a {
+        color: #007791;
+        text-decoration: none;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+    }
+  
+    /* Show the dropdown when hovering over the user icon */
+    .user-dropdown:hover {
+      .user-menu {
+        display: block;
+      }
+    }
+  
+    .user-dropdown {
+      .user-circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 33px;
+        height: 33px;
+        border-radius: 50%;
+        background-color: #007791
+      }
+  
+      .user-circle-text {
+        color: white;
+        text-decoration: none;
+      }
+  
+  
+      .user-menu {
+        display: none;
+        position: absolute;
+        // display: flex;
+        top: 50px;
+        right: 35px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        list-style-type: none;
+        padding: 20px;
+        margin: 0;
+        z-index: 4;
+  
+        .profile-item,
+        .username-item {
+          padding: 8px 12px;
+          display: inline-block;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 8px 12px;
+          width: 100%;
+        }
+  
+        .info {
+          margin-left: 10px;
+          /* Adjust margin as needed */
+          font-weight: bold;
+          /* Add font styles as needed */
+        }
+  
+        .email-item {
+          display: block;
+          /* Display EmailId below Profile and Username */
+          padding: 8px 12px;
+        }
+  
+        li {
+          padding: 8px 12px;
+  
+          a {
+            text-decoration: none;
+            color: #000;
+          }
+  
+          &:hover {
+            background-color: #f1f1f1;
+          }
+        }
+      }
+    }
+  }
+  

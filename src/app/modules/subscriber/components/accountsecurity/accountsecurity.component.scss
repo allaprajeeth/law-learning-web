@@ -1,0 +1,73 @@
+
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    background-color: #e0d9d9; /* Background color for the whole page */
+  }
+  
+  .container {
+    width: 80%; /* Set your desired width for the centered box */
+    background-color: #ffffff; /* Background color for the centered box */
+    padding: 10px;
+    border-radius: 10px; /* Optional: Adds rounded corners to the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    // height: 500px;/* Optional: Adds a subtle shadow to the box */
+    margin-bottom: 60px;
+  
+  
+  
+    
+    .sub {
+      width: 30%;
+      height: 600px;
+    }
+  
+  
+    .box {
+      /* border: 1px solid grey; */
+      background-color: white;
+      padding: 4px;
+      // margin: 4px 3px;
+      margin-left: 50px;
+    }
+    #head {
+      text-align: center;
+    }
+  
+    button {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+    }
+  
+    /* Header Styles */
+    h1 {
+      font-size: 24px;
+    }
+  
+    h2, h3 {
+      font-size: 18px;
+    }
+  
+    h2 {
+      margin-top: 10px;
+    }
+  
+    /* Form Input Styles */
+    input[type="text"] {
+      width: 75%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  
+    input[type="email"] {
+      width: 75%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  

@@ -1,0 +1,25 @@
+
+<nav class="navbar">
+  
+    <div class="navbar-container">
+      <a routerLink="/" class="logo">Law Logo</a>
+       <div class="login-buttons">
+        <button class="login-button" routerLink="/login">Login</button>
+        <button class="login-button" routerLink="/register">Register</button>
+        <!-- <button class="signup-button" routerLink="/signup">Sign Up</button> -->
+      </div> 
+    </div> 
+
+    
+</nav>
+
+<div *ngIf="showLogoutAlert" class="logout-container">
+  <div class="alert" id="successAlert">
+    You’ve successfully logged out of Law Learning. Come back soon!
+  </div>
+</div>
+  
+
+
+ 
+

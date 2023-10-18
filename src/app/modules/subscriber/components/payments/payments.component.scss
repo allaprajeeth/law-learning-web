@@ -1,0 +1,49 @@
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set height to viewport height for full-screen appearance */
+    background-color: #e0d9d9; /* Background color for the whole page */
+  }
+  
+  .container {
+    width: 80%; /* Set your desired width for the centered box */
+    background-color: #ffffff; /* Background color for the centered box */
+    padding: 20px;
+    border-radius: 10px; /* Optional: Adds rounded corners to the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
+ margin-bottom: 50px;
+}
+.main-box {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    /* width: 90vw; */
+    margin: 0 auto;
+    text-align: left;
+    /* font-family: 'Roboto', sans-serif; */
+}
+h1{
+    font-weight: bolder;
+}
+
+.saved-payments-box {
+    background-color: rgb(250, 249, 249);
+    padding: 20px;
+    width: 70%;
+}
+
+.box {
+    background-color: black;
+}
+
+.para {
+    font-weight: bold;
+}
+
+p.dashed {
+    border-style: dashed;
+    height:20px;
+    padding: 60px 300px;
+    color: #6c6e70;
+}

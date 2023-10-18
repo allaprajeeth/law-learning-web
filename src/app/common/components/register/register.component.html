@@ -1,0 +1,162 @@
+<app-firstnav></app-firstnav> 
+ <div class="page-container">
+  <div class="carousel-container">
+      <img [src]="images[currentIndex]" alt="Image">
+  </div>
+<div class="container">
+    <div class="signup-box">
+      <h2>Registration</h2>
+      <form class="signup-form" [formGroup]="signUpForm" >
+        <label for="fullName">Name</label>
+        <div class="form-input" appearance="outline">
+          <input type="text" matInput placeholder="Enter Your Name "  formControlName="fullName" required>
+        </div>
+        <div class="error-message" *ngIf="signUpForm.get('fullName')?.touched && signUpForm.get('fullName')?.hasError('required')">Full Name required</div>
+        <div class="error-message" *ngIf="signUpForm.get('fullName')?.touched && signUpForm.get('fullName')?.hasError('minlength')">Minimum 3 characters required</div>
+        <label>Email</label>
+        <div class="form-input" appearance="outline">
+          <input type="email" matInput placeholder="Enter Your Email"   formControlName="email" required>
+        </div>
+        <div  class="error-message" *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.hasError('required')">Email required</div>
+        <div  class="error-message"*ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.hasError('pattern')">Enter a valid email</div>
+        <label>Phone Number</label>
+        <div class="form-input" appearance="outline">
+          <input type="tel" matInput placeholder="Enter Your Phone Number " formControlName="phone" required>
+        </div>
+        <div  class="error-message"*ngIf="signUpForm.get('phone')?.touched && signUpForm.get('phone')?.hasError('required')">Phone Number required</div>
+        <div class="error-message"*ngIf="signUpForm.get('phone')?.touched && signUpForm.get('phone')?.hasError('pattern')">Invalid phone number format</div>
+        
+        
+        <div class="form-group">
+          <label for="category">category</label>
+          <select (change)="onCategoryChange($event)" [disabled]="signUpForm.invalid">
+            <option>--Select--</option>
+            <option value="Subscriber">Subscriber</option>
+            <option value="Reviewer">Reviewer</option>
+            <option value="Instructor">Instructor</option>
+          </select>
+  
+        </div>
+        <div class="form-group" *ngIf="selectedCategory === 'Reviewer' || selectedCategory === 'Instructor' || selectedCategory === 'Subscriber'">
+          <label for="emailOtp">Email OTP:</label>
+          <input type="tel" id="emailOtp" name="emailOtp" required>
+          
+        </div>
+        <div class="form-group"*ngIf="selectedCategory === 'Reviewer' || selectedCategory === 'Instructor' || selectedCategory === 'Subscriber'">
+          <label for="phoneOtp">Phone Number OTP:</label>
+          <input type="tel" id="phoneOtp" name="phoneOtp" required>
+        </div>
+        <div class="form-group" *ngIf="selectedCategory === 'Reviewer' || selectedCategory === 'Instructor'">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+        <button><a href="#">register</a></button>
+      </div>
+        <div>
+            <p>Already have account? <a href="#">Login</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+  </div> 
+
+  <!-- <app-firstnav></app-firstnav>
+<div class="page-container"> -->
+  
+  <!-- <div class="carousel-container">
+
+      <img [src]="images[currentIndex]" alt="Image">
+  </div>
+
+
+  <div class="container">
+    <div class="container">
+    <div class="login-box">
+      <h2>Login</h2>
+      <form>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" [(ngModel)]="username" required (input)="checkEnableCategorySelect()">
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number:</label>
+          <input type="tel" id="phone" name="phone" [(ngModel)]="password" required (input)="checkEnableCategorySelect()">
+        </div>
+       
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select  (change)="onCategoryChange($event)" [disabled]="!isCategoryEnabled">
+            <option *ngIf="isCategoryEnabled" [(ngModel)]="selectedCategory"  value="Subscriber">Subscriber</option>
+            <option *ngIf="isCategoryEnabled" value="Reviewer">Reviewer</option>
+            <option *ngIf="isCategoryEnabled"  value="Instructor">Instructor</option>
+          </select>
+        </div>
+
+        <div class="form-group"  *ngIf="selectedCategory === 'Reviewer' || selectedCategory === 'Instructor'">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div>
+          <button (click)="showNextForm()" [disabled]="!isCategoryEnabled">SendOtps</button>
+        </div>
+        <div *ngIf="selectedCategory === 'Subscriber' && !showNextButton">
+          <div class="form-group" >
+            <label for="emailOtp">Email OTP:</label>
+            <input type="tel" id="emailOtp" name="emailOtp" required [(ngModel)]="emailOtp">
+          </div>
+          <div class="form-group">
+            <label for="phoneOtp">Phone Number OTP:</label>
+            <input type="tel" id="phoneOtp" name="phoneOtp" required [(ngModel)]="phoneOtp">
+          </div>
+        </div>
+      <div *ngIf="(selectedCategory === 'Subscriber' && !showNextButton) || selectedCategory === 'Reviewer' || selectedCategory === 'Instructor'">
+        <button (click)="fnLogin($event)">Login</button>
+      </div>
+        <br/>
+        <div  ><a routerLink="/password">Forgot Password</a></div>
+      </form>
+      <div><p>Don't have account? <a routerLink="/register">signup</a></p></div>
+    </div>  
+  </div>
+</div>
+
+
+
+
+
+
+
+ <!-- <div class="container">
+  <label for="email">Email:</label>
+  <input type="text" id="email" [(ngModel)]="email" (input)="checkInput()">
+
+  <label for="phone">Phone:</label>
+  <input type="tel" id="phone" [(ngModel)]="phone" (input)="checkInput()">
+  
+  <label for="category">Category:</label>
+  <select id="category" [(ngModel)]="selectedCategory" [disabled]="!isInputFilled">
+    <option value="subscriber">subscriber</option>
+    <option value="Option1">Option 1</option>
+    <option value="Option2">Option 2</option>
+  </select>
+
+
+  <button *ngIf="!isOtpVisible" (click)="showOtpFields()" [disabled]="!isInputFilled">Submit</button>
+
+  <div *ngIf="isOtpVisible">
+    <label for="emailOtp">Email OTP:</label>
+    <input type="tel" id="emailOtp" [(ngModel)]="emailOtp" required>
+    <div class="error-message" *ngIf="!emailOtp && emailOtpError"> {{ emailOtpError }} </div>
+
+
+
+    <label for="phoneOtp">Phone OTP:</label>
+    <input type="tel" id="phoneOtp" [(ngModel)]="phoneOtp" required>
+    <div class="error-message" *ngIf="!phoneOtp && phoneOtpError"> {{ phoneOtpError }} </div>
+  </div>
+
+  <button *ngIf="isLoginVisible" (click)="fnLogin()">Login</button>
+  </div>
+</div> -->

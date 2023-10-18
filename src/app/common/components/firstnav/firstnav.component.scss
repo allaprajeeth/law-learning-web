@@ -1,0 +1,102 @@
+.navbar {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+  }
+  
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+  }
+  .login-buttons button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-left: 10px;
+    margin-right: 25px;
+    border: 2px solid black;
+  }
+  
+  .login-buttons .signup-button {
+    background-color: black;
+    color: white;
+  
+  }
+  
+  .signup{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 200px; 
+  }
+  .subscriber,.reviewer,.instructor{
+    width:300px;
+    height: 200px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .subscriber a,.reviewer a,.instructor a{
+    text-decoration: none;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%;
+    margin-top: 0; 
+    color: #000;
+  }
+  .subscriber:hover,.reviewer:hover,.instructor:hover{
+    background-color: black;
+    width:315px;
+    height: 215px;
+    cursor: pointer;
+    color:#fff;
+    border-radius: 10px;
+  }
+  .logout-container {
+    text-align: center;
+}
+.alert {
+  // display: none;
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #acd2cc;
+  color: black;
+  text-align: left;
+  font-weight: bold;
+
+  &::before {
+      content: "\2714";
+      font-size: 24px;
+      text-align: left;
+      color: black;
+      margin-right: 10px;
+  }
+
+  &.show {
+      display: block;
+  }
+}
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

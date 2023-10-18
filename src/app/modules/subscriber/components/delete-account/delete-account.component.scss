@@ -1,0 +1,75 @@
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Set height to viewport height for full-screen appearance */
+    background-color: #e0d9d9; /* Background color for the whole page */
+  }
+  
+  .container {
+    width: 80%; /* Set your desired width for the centered box */
+    background-color: #ffffff; /* Background color for the centered box */
+    padding: 20px;
+    border-radius: 10px; /* Optional: Adds rounded corners to the box */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
+ margin-bottom: 50px;
+}
+.main-box {
+    text-align: center;
+    border: 1px solid #ccc;
+    padding: 20px;
+    /* width: 90vw;
+    height: 90vh; */
+    height: 350px;
+    margin: 0 auto;
+    
+    .smallbox {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    .para {
+        text-align: center;
+    }
+
+    .para-2 {
+        text-align: center;
+    }
+
+    .button-box {
+        margin-top: 10px;
+        text-align: center;
+
+        button {
+            background-color: black;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            min-width: 8px;
+            height: 35px;
+            padding: 0 1.2rem;
+            justify-content: center;
+        }
+    }
+
+    .warning {
+        color: red;
+    }
+
+    .confirmation-box {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        margin-top: 10px;
+        background-color: #f8f8f8;
+    }
+
+    .line-2 {
+        border-top: 1px solid black;
+    }
+}
