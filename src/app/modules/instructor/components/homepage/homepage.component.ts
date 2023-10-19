@@ -20,40 +20,53 @@ export class HomepageComponent implements OnInit{
     { viewValue: 'Student' },
   ];
 
+  constructor(private route: ActivatedRoute) { }
 
-  rejectedimages:string[]=[];
+  uploadedimages: string[] = [];
+  rejectedimages: string[] = [];
   mycoursesimages: string[] = [];
   availablecoursesimages: string[] = [];
-  
-  j: number = 0; 
 
-  isHovered: boolean[] = new Array(this.availablecoursesimages.length).fill(false);
+  uploadedCoursesDurations: string[] = [];
+  rejectedCoursesDurations: string[] = [];
+  myCoursesDurations: string[] = [];
+  availableCoursesDurations: string[] = [];
 
-  headings: string[] = [
-    "Introduction to Criminal Law:",
-    "Contract Law Demystified: ",
-    "Environmental Law Explained: ",
-    "Intellectual Property Law: Protecting Your Creative Works",
-    "Civil Rights and Liberties: A Legal Perspective",
-    "Family Law Fundamentals: Divorce, Child Custody, and Alimony",
-    "Real Estate Law Made Simple: Buying, Selling, and Leasing Properties",
-    "Business Law Essentials for Entrepreneurs and Small Businesses",
-    "Human Rights Law: Protecting Dignity and Equality",
-    "Labor and Employment Law: Rights and Responsibilities in the Workplace",
-    "International Law and Diplomacy: A Global Perspective",
-    "Torts and Personal Injury Law: Compensation for Harm",
-    "Bankruptcy Law: Understanding the Financial Fresh Start",
-    "Healthcare Law: Navigating Regulations in the Medical Field",
-    "Immigration Law 101: Visas, Citizenship, and Asylum",
-    "Estate Planning and Probate Law: Securing Your Legacy",
-    "Cybersecurity and Privacy Law: Safeguarding Digital Assets",
-    "Tax Law Essentials: Managing Taxation for Individuals and Businesses",
-    "Criminal Procedure: Protecting Constitutional Rights in Court",
-    "Administrative Law: Governing Government Agencies",
-    "Business Law Essentials for Entrepreneurs and Small Businesses",
-    "Torts and Personal Injury Law: Compensation for Harm",
+  availableCoursesHeadings: string[] = [
+    "Introduction to Criminal Law",
+    "Contract Law Demystified",
+    "Environmental Law Explained",
+    "Intellectual Property Law",
+    "Civil Rights and Liberties",
+    "Family Law Fundamentals",
+    "Real Estate Law Made Simple",
+    "Business Law Essentials for Entrepreneurs",
+    "Human Rights Law",
+    "Labor and Employment Law",
+    "International Law and Diplomacy",
+    "Torts and Personal Injury Law",
   ];
-  authors: string[] = [
+
+  myCoursesHeadings: string[] = [
+    "Bankruptcy Law",
+    "Healthcare Law",
+    "Immigration Law 101",
+    "Estate Planning and Probate Law",
+  ];
+
+  uploadedCoursesHeadings: string[] = [
+    "Cybersecurity and Privacy Law",
+    "Tax Law Essentials",
+    "Criminal Procedure",
+    "Administrative Law",
+  ];
+
+  rejectedCoursesHeadings: string[] = [
+    "Business Law Essentials for Entrepreneurs",
+    "Torts and Personal Injury Law",
+  ];
+
+  availableCoursesAuthors: string[] = [
     'John Smith',
     'Mary Johnson',
     'David Wilson',
@@ -62,63 +75,148 @@ export class HomepageComponent implements OnInit{
     'Jennifer White',
     'Robert Lee',
     'Susan Anderson',
-    'William Jackson',
-    'Laura Roberts',
-    'Richard Martin',
-    'Lisa Miller',
-    'James Young',
-    'Elizabeth Wilson',
-    'Thomas Baker',
-    'Patricia Moore',
-    'Daniel Clark',
-    'Linda Taylor',
     'Charles Harris',
     'Amanda Lewis',
     'Laura Roberts',
     'Robert Lee',
   ];
-  randomMyCourseValues: number[] = [];
-  randomAvailableCourses: number[] = [];
-  randomSubscribersValues: number[] = [];
-  randomRejectedValues:number[]=[];
-  ngOnInit(): void {
 
-    for (let i = 0; i < 2; i++) {
-      const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
-      this.rejectedimages.push(randomImageURL);
-      const randomValue = Math.floor(Math.random() * 100) + 1;
-      this.randomRejectedValues.push(randomValue);
-    }
+  myCoursesAuthors: string[] = [
+    'William Jackson',
+    'Laura Roberts',
+    'Richard Martin',
+    'Lisa Miller',
+  ];
+
+  uploadedCoursesAuthors: string[] = [
+    'James Young',
+    'Elizabeth Wilson',
+    'Thomas Baker',
+    'Patricia Moore',
+  ];
+
+  rejectedCoursesAuthors: string[] = [
+    'Daniel Clark',
+    'Linda Taylor',
+  ];
+
+  uploadedCoursesText: string[] = [
+    'Expert | Detailed Course', 
+    'Beginner | Crash Course', 
+    'Intermediate | Detailed Course', 
+    'Student | Crash Course',
+  ];
+
+  rejectedCoursesText: string[] = [
+    'Intermediate | Detailed Course', 
+    'Student | Crash Course',
+  ];
+
+  myCoursesText: string[] = [
+    'Expert | Detailed Course', 
+    'Student | Crash Course', 
+    'Beginner | Crash Course', 
+    'Intermediate | Detailed Course',
+  ];
+
+  availableCoursesText: string[] = [
+    'Expert | Detailed Course', 
+    'Beginner | Crash Course', 
+    'Intermediate | Detailed Course', 
+    'Student | Crash Course', 
+    'Beginner | Detailed Course', 
+    'Intermediate | Crash Course', 
+    'Student | Detailed Course',
+    'Expert | Crash Course',
+    'Student | Crash Course', 
+    'Beginner | Crash Course',
+    'Intermediate | Detailed Course',
+    'Expert | Detailed Course', 
+  ];
+
+  randomUploadValues: number[] = [];
+  randomRejectedValues:number[]=[];
+  randomMyCourseValues: number[] = [];
+  
+  subscribersValues = ["10", "50", "100", "200", "500", "1000"];
+
+  uploadSubscribers: string[] = [];
+  myCourseSubscribers: string[] = [];
+  availableCourseSubscribers: string[] = [];
+
+  ngOnInit(): void {
 
     for (let i = 0; i < 4; i++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
+      this.uploadedimages.push(randomImageURL);
+      const randomValue = Math.floor(Math.random() * 100) + 1;
+      this.randomUploadValues.push(randomValue);
+      const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
+      this.uploadSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+
+      const minHours = 1.5;
+      const maxHours = 6;
+      const hours = minHours + Math.random() * (maxHours - minHours);     
+      const formattedHours = Math.floor(hours);
+      const minutes = Math.floor((hours % 1) * 60);
+      const formattedMinutes = this.formatWithLeadingZero(minutes);    
+      const duration = `${formattedHours}h ${formattedMinutes}m`;
+      this.uploadedCoursesDurations.push(duration);
+    }
+
+    for (let j = 4; j < 6; j++) {
+      const randomImageURL = `https://picsum.photos/300/200?random=${j}`;
+      this.rejectedimages.push(randomImageURL);
+      const randomValue = Math.floor(Math.random() * 100) + 1;
+      this.randomRejectedValues.push(randomValue);
+
+      const minHours = 1.5;
+      const maxHours = 6;
+      const hours = minHours + Math.random() * (maxHours - minHours);     
+      const formattedHours = Math.floor(hours);
+      const minutes = Math.floor((hours % 1) * 60);
+      const formattedMinutes = this.formatWithLeadingZero(minutes);     
+      const duration = `${formattedHours}h ${formattedMinutes}m`;
+      this.rejectedCoursesDurations.push(duration);
+    }
+
+    for (let k = 6; k < 10; k++) {
+      const randomImageURL = `https://picsum.photos/300/200?random=${k}`;
       this.mycoursesimages.push(randomImageURL);
       const randomValue = Math.floor(Math.random() * 100) + 1;
       this.randomMyCourseValues.push(randomValue);
+      const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
+      this.myCourseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+
+      const minHours = 1.5;
+      const maxHours = 6;
+      const hours = minHours + Math.random() * (maxHours - minHours);     
+      const formattedHours = Math.floor(hours);
+      const minutes = Math.floor((hours % 1) * 60);
+      const formattedMinutes = this.formatWithLeadingZero(minutes);
+      const duration = `${formattedHours}h ${formattedMinutes}m`;
+      this.myCoursesDurations.push(duration);
     }
 
-    for (let j = 0; j < 12; j++) {
-      const randomImageURL = `https://picsum.photos/300/200?random=${j}`;
+    for (let l = 10; l < 22; l++) {
+      const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
       this.availablecoursesimages.push(randomImageURL);
-      const randomValue = Math.floor(Math.random() * 100) + 1;
-      this.randomAvailableCourses.push(randomValue);
-      const randomSubscribers = Math.floor(Math.random() * 100) + 10;
-      this.randomSubscribersValues.push(randomSubscribers);
+      const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
+      this.availableCourseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+      
+      const minHours = 1.5;
+      const maxHours = 6;
+      const hours = minHours + Math.random() * (maxHours - minHours);     
+      const formattedHours = Math.floor(hours);
+      const minutes = Math.floor((hours % 1) * 60);
+      const formattedMinutes = this.formatWithLeadingZero(minutes);    
+      const duration = `${formattedHours}h ${formattedMinutes}m`;
+      this.availableCoursesDurations.push(duration);
     }
   }
 
-
-  // category!: string;
-
-  constructor(private route: ActivatedRoute) { }
-
-  // ngOnInit(): void {
-  //   // Get the category parameter from the route
-  //   this.route.paramMap.subscribe(params => {
-  //     this.category = params.get('category');
-  //   });
-  // }
+  formatWithLeadingZero(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
 
 }
-
-

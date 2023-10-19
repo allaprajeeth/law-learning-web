@@ -4,6 +4,7 @@ import { ReviewerLoginComponent } from './components/reviewer-login/reviewer-log
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,12 @@ const routes: Routes = [
   {
     path:"reviewervideo",
     component: ReviewervideoComponent
+  },
+  {
+    path:"notification",
+    component: NotificationComponent
   }
+  
 ];
 
 @NgModule({

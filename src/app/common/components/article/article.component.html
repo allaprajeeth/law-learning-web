@@ -1,5 +1,135 @@
 <app-nav></app-nav>
-<div class="container-wrapper">
+<!-- <app-nav></app-nav> -->
+
+<div id="blog">
+  <div class="blog-heading">
+    <h3>Publishing corner</h3>
+  </div>
+
+  <!-- blog container-->
+  <div class="blog-container">
+    <div *ngFor="let box of boxes; let i = index" class="blog-box">
+      <div class="blog-text">
+        <a class="blog-title">{{ box.title }}</a>
+        <p class="blog-content" [ngClass]="{'expanded': isExpanded(i)}">
+          {{ box.content }}
+        </p>
+        <a class="read-more" (click)="toggleReadMore(i)">
+          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div id="blog" *ngFor="let box of boxes; let i = index">
+  <div class="blog-heading">
+
+    <h3>Publishing corner</h3>
+  </div>
+
+  
+  <div class="blog-container">
+    
+    <div class="blog-box">
+      <div class="blog-text">
+         <span>27th january/blog creating</span> 
+        <a class="blog-title">"The Importance of Legal Internships: Gaining Practical Experience in Law"</a>
+        <p class="blog-content" [ngClass]="{'expanded': isExpanded}">
+          Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to
+          make the most out of internship experiences, and how internships can shape a legal career.
+        </p>
+        <a class="read-more" (click)="toggleReadMore(i)">
+          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
+        </a>
+      </div>
+    </div>
+
+
+
+    <div class="blog-box">
+      <div class="blog-text">
+         <span>27th january/blog creating</span> 
+        <a class="blog-title">"Mastering Legal Research: A Guide for Law Students and Professionals"</a>
+        <p class="blog-content" [ngClass]="{'expanded': isExpanded}">
+          Explain the importance of legal research skills. Provide an overview of various research methods, online legal
+          databases, and how to critically analyze legal sources. Include practical examples to enhance understanding.
+        </p>
+        <a class="read-more" (click)="toggleReadMore(i)">
+          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
+        </a>
+      </div>
+    </div>
+
+    <div class="blog-box">
+      <div class="blog-text">
+         <span>27th january/blog creating</span> 
+        <a href="#" class="blog-title">"Preparing for Law School Applications: Dos and Don'ts"</a>
+        <p class="blog-content" [ngClass]="{'expanded': isExpanded}">
+          Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal
+          statements, obtaining strong recommendation letters, and preparing for law school interviews.
+        </p>
+        <a class="read-more" (click)="toggleReadMore(i)">
+          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
+        </a>
+      </div>
+    </div>
+
+
+    <div class="blog-box">
+      <div class="blog-text">
+         <span>27th january/blog creating</span> 
+        <a class="blog-title">"Legal Ethics: A Cornerstone of the Legal Profession"</a>
+        <p class="blog-content" [ngClass]="{'expanded': isExpanded}">
+          Discuss the importance of ethics in the legal field. Cover topics such as client confidentiality, conflicts of
+          interest, and maintaining professional integrity. Highlight real-life examples of ethical dilemmas faced by
+          lawyers.
+        </p>
+        <a class="read-more" (click)="toggleReadMore(i)">
+          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
+        </a>
+      </div>
+    </div>
+
+
+    <div class="blog-box">
+      <div class="blog-text">
+         <span>27th january/blog creating</span> 
+        <a class="blog-title">"The Role of Technology in the Legal Industry: Adapting to the Digital Age"</a>
+        <p class="blog-content" [ngClass]="{'expanded': isExpanded}">
+          Explore how technology is transforming the legal profession. Discuss legal tech tools, online legal research
+          platforms, and the impact of artificial intelligence on legal practices. Address the importance of tech
+          literacy for future lawyers.
+        </p>
+        <a class="read-more" (click)="toggleReadMore(i)">
+          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
+        </a>
+      </div>
+    </div>
+
+    <div class="blog-box">
+      <div class="blog-text">
+         <span>27th january/blog creating</span> 
+        <a class="blog-title">"Legal Podcasts and Blogs: Learning Outside the Classroom"</a>
+        <p class="blog-content" [ngClass]="{'expanded': isExpanded}">
+          Curate a list of insightful legal podcasts and blogs that can aid law students in their learning journey.
+          Provide a brief overview of each recommendation and explain how these resources can supplement traditional
+          legal education.
+        </p>
+        <a class="read-more" (click)="toggleReadMore(i)">
+          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+ -->
+
+
+<!-- <div class="container-wrapper">
 <div class="container">
   <div class="left">
     <div class="form">
@@ -35,4 +165,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

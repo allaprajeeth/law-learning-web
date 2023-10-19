@@ -19,7 +19,7 @@ import {FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 // import {NgFor} from '@angular/common';
-
+import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { PhotoComponent } from './components/photo/photo.component';
@@ -31,6 +31,7 @@ import { SubscribernavComponent } from './components/subscribernav/subscribernav
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
+import { NotificationComponent } from './notification/notification.component';
 
 
 
@@ -51,7 +52,8 @@ import { MyDirectiveDirective } from './components/my-directive.directive';
     SubscribernavComponent,
     HomepageComponent,
     EditEmailComponent,
-    MyDirectiveDirective
+    MyDirectiveDirective,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +70,8 @@ import { MyDirectiveDirective } from './components/my-directive.directive';
     MatInputModule,
     // NgFor,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatBadgeModule
   ]
 })
 export class SubscriberModule { }

@@ -1,0 +1,26 @@
+<app-subscribernav></app-subscribernav>
+<div class="notification-container">
+    <mat-toolbar>
+      <span class="heading">Notifications</span>
+    </mat-toolbar>
+  
+    <div class="notification-list">
+      <ng-container *ngFor="let notification of notifications; let i = index">
+        <div class="notification-item" (click)="openNotification()">
+          <!-- <a routerLink="/instructor/notification/notification-item-clicked"></a> -->
+          <div class="circle" [style.backgroundColor]="getRandomColor()">
+            {{ notification.icon }}
+          </div>
+          <div class="notification-content">
+            <div class="notification-heading" [class.no-font-weight]="notificationOpened">
+              {{ notification.heading }}
+            </div>
+            <div class="notification-message">{{ notification.message }}</div>
+          </div>
+          <span class="date">{{ today | date: 'MMM d' }}</span>
+        </div>
+      </ng-container>
+      <!-- <button routerLink="/notification-item-clicked">ddd</button> -->
+    </div>
+  </div>
+  
