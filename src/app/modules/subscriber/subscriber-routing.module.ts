@@ -12,6 +12,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { NotificationComponent } from './notification/notification.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path:"cart",
     component: CartComponent
+  },
+  {
+    path:"notification",
+    component: NotificationComponent
   },
   // {
   //   path:'', 

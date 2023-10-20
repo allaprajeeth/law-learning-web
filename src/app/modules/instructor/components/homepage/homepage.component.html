@@ -3,156 +3,124 @@
 
 <div class="container">
 
-    <div class="heading">
-      <h1>Uploaded Courses</h1>
+  <div class="heading">
+    <h1>Uploaded Courses</h1>
+  </div>
+  <div class="image-grid">
+    <div *ngFor="let image of uploadedimages; let i = index" class="image-item">
+      <div class="imagesContainer">
+        <img [src]="image" class="img" alt="Random Image">
+        <div class="overlay">
+          <i class="fa fa-play-circle play-icon"></i>
+        </div>
+        <span class="duration">{{ uploadedCoursesDurations[i] }}</span>
+      </div>
+      <div class="headingsContainer">
+        <h5>{{ uploadedCoursesHeadings[i] }}</h5>
+        <p>{{ uploadedCoursesAuthors[i] }}</p>
+        <h5>{{ uploadedCoursesText[i] }}</h5>
+      </div>
+      <div class="status-bar">
+        <div class="status-fill" [style.width.%]="randomUploadValues[i]"></div>
+      </div>
+      <span>{{ randomUploadValues[i] }}%complete</span>
+
+      <div class="ratingscontainer1">
+        <div class="ratingConatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
+        </div>
+        <div class="ratingConatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
+        </div>
+      </div>
+
+      <div class="ratingscontainer1">
+        <div class="ratingConatiner2">
+          <span>Reviewer Ratings</span>
+        </div>
+        <div class="ratingConatiner2">
+          <span>Subscribers Ratings</span>
+        </div>
+      </div>
+      <div class="subscribers" style="font-weight: 410;">
+        <span>Number of Subscribers:{{uploadSubscribers[i]}}+</span>
+      </div>
     </div>
-    <div class="image-grid">
-      <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
-  
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <i class="fa fa-play-circle play-icon"></i>
-          </div>
-        </div>
-        <div class="headingsContainer">
-          <!-- <h1>Uploaded Courses</h1> -->
-<h5>{{ headings[i+18] }}</h5>
-<p>{{ authors[i+18] }}</p>
-        </div>
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
-        </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span>
+  </div>
 
 
-<!-- 
-        <div class="container1">
-          <div class="Conatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
 
-        
-          <div class="Conatiner2">
-            <span>Reviewer Ratings</span>
-            
-          </div>
-          
-        </div>
-         -->
+  <div class="heading">
+    <h1>Rejected Courses</h1>
+  </div>
+  <div class="image-grid">
+    <div *ngFor="let image of rejectedimages; let j = index" class="image-item">
 
-         
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
+      <div class="imagesContainer">
+        <img [src]="image" class="img" alt="Random Image">
+        <div class="overlay">
+          <i class="fa fa-play-circle play-icon"></i>
         </div>
+        <span class="duration">{{ rejectedCoursesDurations[j] }}</span>
+      </div>
+      <div class="headingsContainer">
+        <h5>{{ rejectedCoursesHeadings[j] }}</h5>
+        <p>{{ rejectedCoursesAuthors[j] }}</p>
+        <h5>{{ rejectedCoursesText[j] }}</h5>
+      </div>
+      <div class="status-bar">
+        <div class="status-fill" [style.width.%]="randomRejectedValues[j]"></div>
+      </div>
+      <span>{{ randomRejectedValues[j] }}%complete</span>
 
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span>Reviewer Ratings</span>
-            
-          </div>
-          <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
-            <span>Subscribers Ratings</span> 
-          </div>
+      <div class="container1">
+        <div class="Conatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
         </div>
-        <div class="subscribers" style="font-weight: 410;">
-          <span>Number of Subscribers:{{randomSubscribersValues[j]}}</span>
+        <div class="Conatiner2">
+          <span>Reviewer Ratings</span>
         </div>
       </div>
     </div>
+  </div>
 
 
 
-    <div class="heading">
-      <h1>Rejected Courses</h1>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
-  
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <i class="fa fa-play-circle play-icon"></i>
-          </div>
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ headings[i+16] }}</h5>
-          <p>{{ authors[i+16] }}</p>
-        </div>
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
-        </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span>
-
-
-
-        <div class="container1">
-          <div class="Conatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-
-        
-          <div class="Conatiner2">
-            <span>Reviewer Ratings</span>
-            
-          </div>
-          
-        </div>
-        
-  
-      </div>
-    </div>
-
-
-
-
-
-<div class="container">
-
-  
+  <div class="container">
     <div class="heading">
       <h1>My Courses</h1>
     </div>
     <div class="image-grid">
-      <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
-  
+      <div *ngFor="let image of mycoursesimages; let k = index" class="image-item">
         <div class="imagesContainer">
           <img [src]="image" class="img" alt="Random Image">
           <div class="overlay">
             <i class="fa fa-play-circle play-icon"></i>
           </div>
+          <span class="duration">{{ myCoursesDurations[k] }}</span>
         </div>
+
         <div class="headingsContainer">
-          <h5>{{ headings[i+12] }}</h5>
-<p>{{ authors[i+12] }}</p>
+          <h5>{{ myCoursesHeadings[k] }}</h5>
+          <p>{{ myCoursesAuthors[k] }}</p>
+          <h5>{{ myCoursesText[k] }}</h5>
+        </div>
         <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
+          <div class="status-fill" [style.width.%]="randomMyCourseValues[k]"></div>
         </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span>
-
-
-
+        <span>{{ randomMyCourseValues[k] }}%complete</span>
         <div class="ratingscontainer1">
           <div class="ratingConatiner2">
             <span class="star">&#9733;</span>
@@ -169,128 +137,100 @@
             <span class="star">&#9734;</span>
           </div>
         </div>
-
         <div class="ratingscontainer1">
           <div class="ratingConatiner2">
             <span>Reviewer Ratings</span>
-            
-          </div>
-          <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
-            <span>Subscribers Ratings</span> 
-          </div>
-        </div>
-
-        <div class="subscribers" style="font-weight: 410;">
-          <span>Number of Subscribers:{{randomSubscribersValues[j]}}</span>
-        </div>
-        <!-- <div class="student">
-          <div class="name">John Doe</div>
-          <div class="roll-number">12345</div>
-        </div> -->
-        
-  
-      </div>
-    </div>
-
-</div>
-
-
-    <div class="heading">
-      <h1>Available Courses</h1>
-    </div>
-    
-    <div class="my-flex">
-      <mat-form-field appearance="outline" id="filters">
-        <mat-label>Filters</mat-label>
-        <mat-select [matMenuTriggerFor]="filters">
-          <mat-menu #filters="matMenu" yPosition="below">
-            <button mat-menu-item [matMenuTriggerFor]="beginner">Beginner</button>
-            <button mat-menu-item [matMenuTriggerFor]="intermediate">Intermediate</button>
-            <button mat-menu-item [matMenuTriggerFor]="expert">Expert</button>
-            <button mat-menu-item [matMenuTriggerFor]="student">Student</button>
-          </mat-menu>
-        </mat-select>
-      </mat-form-field>
-  
-      <mat-menu #beginner="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-  
-      <mat-menu #intermediate="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-  
-      <mat-menu #expert="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-  
-      <mat-menu #student="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-  
-      <input type="text" placeholder="Search my courses" name="search" class="searchbox">
-      <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
-    </div>
-  
-    <div class="image-grid">
-      <div *ngFor="let image of availablecoursesimages; let j = index" class="image-item">
-  
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <i class="fa fa-play-circle play-icon"></i>
-          </div>
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ headings[j] }}</h5>
-          <p>{{ authors[j] }}</p>
-        </div>
-        <!-- <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomAvailableCourses[j]"></div>
-        </div> -->
-        <!-- <span>{{ randomAvailableCourses[j] }}%complete</span> -->
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
           </div>
           <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-        </div>
-
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span>Reviewer Ratings</span>
-            
-          </div>
-          <div class="ratingConatiner2" >
             <span>Subscribers Ratings</span>
           </div>
-
-         
         </div>
-          
         <div class="subscribers" style="font-weight: 410;">
-          <span>Number of Subscribers:{{randomSubscribersValues[j]}}</span>
+          <span>Number of Subscribers:{{myCourseSubscribers[k]}}+</span>
         </div>
-        
       </div>
     </div>
   </div>
-  <br/>
-  <br/>
-  <div>
-    <app-footer></app-footer>
+
+
+  <div class="heading">
+    <h1>Available Courses</h1>
   </div>
+  <div class="my-flex">
+    <mat-form-field appearance="outline" id="filters">
+      <mat-label>Filters</mat-label>
+      <mat-select [matMenuTriggerFor]="filters">
+        <mat-menu #filters="matMenu" yPosition="below">
+          <button mat-menu-item [matMenuTriggerFor]="beginner">Beginner</button>
+          <button mat-menu-item [matMenuTriggerFor]="intermediate">Intermediate</button>
+          <button mat-menu-item [matMenuTriggerFor]="expert">Expert</button>
+          <button mat-menu-item [matMenuTriggerFor]="student">Student</button>
+        </mat-menu>
+      </mat-select>
+    </mat-form-field>
+    <mat-menu #beginner="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+    <mat-menu #intermediate="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+    <mat-menu #expert="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+    <mat-menu #student="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+  </div>
+  <div class="image-grid">
+    <div *ngFor="let image of availablecoursesimages; let l = index" class="image-item">
+      <div class="imagesContainer">
+        <img [src]="image" class="img" alt="Random Image">
+        <div class="overlay">
+          <i class="fa fa-play-circle play-icon"></i>
+        </div>
+        <span class="duration">{{ availableCoursesDurations[l] }}</span>
+      </div>
+      <div class="headingsContainer">
+        <h5>{{ availableCoursesHeadings[l] }}</h5>
+        <p>{{ availableCoursesAuthors[l] }}</p>
+        <h5>{{ availableCoursesText[l] }}</h5>
+      </div>
+      <div class="ratingscontainer1">
+        <div class="ratingConatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
+        </div>
+        <div class="ratingConatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
+        </div>
+      </div>
+      <div class="ratingscontainer1">
+        <div class="ratingConatiner2">
+          <span>Reviewer Ratings</span>
+        </div>
+        <div class="ratingConatiner2">
+          <span>Subscribers Ratings</span>
+        </div>
+      </div>
+      <div class="subscribers" style="font-weight: 410;">
+        <span>Number of Subscribers: {{availableCourseSubscribers[l]}}+</span>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<div>
+  <app-footer></app-footer>
+</div>

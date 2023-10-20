@@ -1,16 +1,16 @@
 // / Reset default margins and padding /
-body,table {
-    margin: 0;
-    padding: 0;
-  }
+// body,table {
+//     margin: 0;
+//     padding: 0;
+//   }
   
 //   / Center the h1 element vertically and horizontally /
 
   h1 {
     margin: 10px;
-    margin-top: 20px; 
+    // margin-top: 20px; 
     font-size: 25px; 
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
     font-weight: 500;
   }
   
@@ -33,13 +33,13 @@ body,table {
   
  
   th {
-    padding: 15px;
+    padding: 5px;
     text-align: left;    
   }
   
   
   td {
-    padding: 15px;
+    padding: 5px;
     vertical-align: middle;
     border: none;
     border-bottom: 1px solid rgb(222, 207, 207);

@@ -1,78 +1,240 @@
-.container-wrapper {
+// $font-family: 'poppins';
+
+
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+
+
+#blog {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%; /* Set height to viewport height for full-screen appearance */
-  background-color: #e0d9d9; /* Background color for the whole page */
+  flex-direction: column;
+  padding: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: rgb(232, 230, 230);
+
+  
+  .blog-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    h3 {
+      font-size: 25px;
+      color: #2b2b2b;
+      font-weight: 600;
+    }
+  }
+  
+  .blog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .blog-box {
+    
+    width: 350px;
+    background-color: #ffffff;
+    // background-color: #ffffff;
+    // border: 10px solid #343232; /* Add a 10px border to each box */
+    box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+    margin: 20px;
+    
+    .blog-text {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      
+      span {
+        color: #1a1818;
+        font-size: 0.9rem;
+      }
+      
+      .blog-title {
+        font-size: 1.3rem;
+        font-weight: 500;
+        color: #272727;
+        
+        &:hover {
+          color: #f33c3c;
+          transition: all ease 0.3s;
+        }
+      }
+      
+      p.blog-content {
+        color: #9b9b9b;
+        font-size: 0.9rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 10; // Show only 10 lines initially
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 20px 0;
+      }
+      
+      a.read-more {
+        color: #0f0f0f;
+        
+        &:hover {
+          color: #f33c3c;
+          transition: all ease 0.3s;
+        }
+      }
+    }
+  }
+
+  
+  @media (max-width: 1250px) {
+    .blog-box {
+      width: 300px;
+    }
+  }
+  
+  @media (max-width: 1110px) {
+    .blog-box {
+      width: 70%;
+    }
+  }
+  
+  @media (max-width: 550px) {
+    .blog-box {
+      width: 100%;
+    }
+    
+    #blog {
+      padding: 20px;
+    }
+  }
 }
-.container {
-  display: flex;
-  width: 80%; /* Set your desired width for the centered box */
-  background-color: #ffffff; /* Background color for the centered box */
-  padding: 20px;
-  border-radius: 10px; /* Optional: Adds rounded corners to the box */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
-// height: 400px;
+.blog-container {
+  .blog-box {
+    width: 350px;
+    background-color: #ffffff;
+    border: 1px solid #ececec;
+    margin: 20px;
+    
+    .blog-text {
+      .blog-content {
+        max-height: 5em; // Set a maximum height (adjust as needed)
+        overflow: hidden;
+        position: relative;
+
+        &.expanded {
+          max-height: none; // Allow the content to expand
+        }
+      }
+    }
+
+    .read-more {
+      color: #0f0f0f;
+    }
+  }
 }
-.left {
-  display: flex;
-  align-items: center;
-  padding: 12px;
-  border: 1px solid rgb(136, 134, 134);
-  border-radius: 30px;
-  height: 400px;
-  background-color: rgb(203, 245, 245);
-}
-.vertical-line {
-  width: 1px;
-  background-color: rgb(76, 74, 74);
-  height: 100%;
-  margin: 0 0 0 50px;
-  transition: height 0.3s;
-}
-.right {
-  width: 30%;
-  padding: 2px;
-  text-align: center;
-}
-.user-info {
-  text-align: left;
-  background-color: white;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-.user-info h1 {
-  margin-left: 40px;
-}
-.user-text {
-  border: 1px solid rgb(64, 62, 62);
-  width: 30px;
-  height: 30px;
-  background-color: rgb(79, 77, 77);
-  color: white;
-  text-align: center;
-  line-height: 30px;
-  border-radius: 30px;
-  float: left;
-}
-.gmailHeading {
-  font-weight: bold;
-  font-size: 14px;
-  margin-left: 40px;
-}
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-}
-.example-full-width {
-  width: 100%;
-}
-.btn {
-  margin-left: 40%;
-  margin-top: 30px; 
-}
-.dummy-text {
-  margin: 20px 0 0 40px;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .container-wrapper {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100%; /* Set height to viewport height for full-screen appearance */
+//   background-color: #e0d9d9; /* Background color for the whole page */
+// }
+// .container {
+//   display: flex;
+//   width: 80%; /* Set your desired width for the centered box */
+//   background-color: #ffffff; /* Background color for the centered box */
+//   padding: 20px;
+//   border-radius: 10px; /* Optional: Adds rounded corners to the box */
+//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
+// // height: 400px;
+// }
+// .left {
+//   display: flex;
+//   align-items: center;
+//   padding: 12px;
+//   border: 1px solid rgb(136, 134, 134);
+//   border-radius: 30px;
+//   height: 400px;
+//   background-color: rgb(203, 245, 245);
+// }
+// .vertical-line {
+//   width: 1px;
+//   background-color: rgb(76, 74, 74);
+//   height: 100%;
+//   margin: 0 0 0 50px;
+//   transition: height 0.3s;
+// }
+// .right {
+//   width: 30%;
+//   padding: 2px;
+//   text-align: center;
+// }
+// .user-info {
+//   text-align: left;
+//   background-color: white;
+//   padding: 10px;
+//   border-radius: 5px;
+//   margin-bottom: 20px;
+// }
+// .user-info h1 {
+//   margin-left: 40px;
+// }
+// .user-text {
+//   border: 1px solid rgb(64, 62, 62);
+//   width: 30px;
+//   height: 30px;
+//   background-color: rgb(79, 77, 77);
+//   color: white;
+//   text-align: center;
+//   line-height: 30px;
+//   border-radius: 30px;
+//   float: left;
+// }
+// .gmailHeading {
+//   font-weight: bold;
+//   font-size: 14px;
+//   margin-left: 40px;
+// }
+// .example-form {
+//   min-width: 150px;
+//   max-width: 500px;
+//   width: 100%;
+// }
+// .example-full-width {
+//   width: 100%;
+// }
+// .btn {
+//   margin-left: 40%;
+//   margin-top: 30px; 
+// }
+// .dummy-text {
+//   margin: 20px 0 0 40px;
+// }

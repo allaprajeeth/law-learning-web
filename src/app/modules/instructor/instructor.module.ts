@@ -16,13 +16,16 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 import { CoursesComponent } from './components/courses/courses.component';
+import { NotificationComponent } from './components/notification/notification.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
     InstructorLoginComponent,
     InstructornavComponent,
     HomepageComponent,
-    CoursesComponent
+    CoursesComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,8 @@ import { CoursesComponent } from './components/courses/courses.component';
     MatSlideToggleModule,
     MatMenuModule,
     MatTooltipModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatToolbarModule 
   ]
 })
 export class InstructorModule { }

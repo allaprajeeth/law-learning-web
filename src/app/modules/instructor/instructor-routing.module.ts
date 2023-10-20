@@ -5,6 +5,7 @@ import { HeaderComponent } from 'src/app/common/components/header/header.compone
 import { HomepageComponent } from './components/homepage/homepage.component';
 
 import { CoursesComponent } from './components/courses/courses.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -21,8 +22,13 @@ const routes: Routes = [
     component: HomepageComponent
   },
   
-  {path:"courses",
+  {
+    path:"courses",
 component:CoursesComponent
+},
+{
+  path:"notification",
+component:NotificationComponent
 }
 ];
 
