@@ -1,0 +1,29 @@
+<app-videoplayer-navbar></app-videoplayer-navbar>
+<mat-divider></mat-divider>
+<div>
+  <div class="course-info-container">
+    <mat-tab-group>
+      
+    <mat-tab label="Overview">
+      <div class="tabs">
+        <app-overview></app-overview>
+      </div>
+    </mat-tab>
+    <mat-tab label="Watch Content">
+      <app-videoplayer></app-videoplayer>
+      
+</mat-tab>
+
+    <mat-tab label="Certificate">
+      <div class="tabs">
+        <app-certificate [totalProgress]="60"></app-certificate>
+      </div>
+    </mat-tab>
+    <mat-tab label="Rating">
+      <div class="tabs">
+        <app-ratings></app-ratings>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

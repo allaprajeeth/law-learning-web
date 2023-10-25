@@ -1,82 +1,76 @@
 <mat-toolbar class="nav" style="background-color: black">
-    <div class="logo">
-      <div style="margin-left: 0px;">Lawlang</div>
-      <div>Introduction to cloud computing on AWS for Beginners[2023]</div>
+  <div class="logo">
+    <div style="margin-left: 20px;">Lawlang</div>
+    <div class="heading1">Introduction to cloud computing on AWS for Beginners[2023]</div>
+  </div>
+  <div class="content">
+    <div class="grade">
+      <span>
+        <mat-icon>grade</mat-icon>
+      </span>
+      <div (click)="leaveRatingOpen()">Leave a rating</div>
     </div>
-    <div class="content">
-      <div class="grade">
-        <span>
-          <mat-icon>grade</mat-icon>
-        </span>
-        <div (click)="openpopup()">Leave a rating</div>
+    <div class="overlay" *ngIf="showRating">
+      <div class="contentt">
+        <div class="close" (click)="leaveRatingClose()">&times;</div>
+        <h1 style="text-align: center">How would you rate this course?</h1>
+        <ng-container *ngFor="let i of stars">
+          <mat-icon
+          (click)="updaterating(i)"
+            [ngClass]="{ active: i <= selected }"
+            class="staricon"
+          >
+            star
+          </mat-icon>
+        </ng-container>
       </div>
-      <div class="overlay" *ngIf="show">
-        <div class="contentt">
-          <div class="close" (click)="closepopup()">&times;</div>
-          <h1 style="text-align: center">How would you rate this course?</h1>
-          <ng-container *ngFor="let i of stars">
-            <mat-icon
-              (mouseenter)="updaterating(i)"
-              [ngClass]="{ active: i <= selected }"
-              class="staricon"
-            >
-              star
-            </mat-icon>
-          </ng-container>
+    </div>
+
+  <div (click)="yourProgressOpen()" class="p">
+<mat-icon>emoji_events</mat-icon>
+Your Progress
+<span><mat-icon>{{ yourProgress ? "keyboard_arrow_up" : "keyboard_arrow_down" }}</mat-icon></span>
+</div>
+
+<div class="pop" *ngIf="yourProgress">
+<div class="close1" (click)="yourProgressClose()">&times;</div>
+<b>4 of 15</b>
+<p>Finish course to get your certificate</p>
+</div>
+    <div class="share">
+      Share<span>
+        <mat-icon>{{
+          isShareable ? "keyboard_arrow_up" : "keyboard_arrow_down"
+        }}</mat-icon></span
+      >
+    </div>
+    <div  (click)="togglemoreOpen()">
+      <div >
+        <mat-icon class="morevert"> more_vert </mat-icon>
+      </div>
+    </div>
+
+    <div class="popup-overlay" *ngIf="isMore">
+      <div class="popup-content">
+        <div class="popup-close" (click)="togglemoreClose()"> <!-- Close button with a click event -->
+          <span class="material-icons">close</span> <!-- Use the close icon or any other X icon you prefer -->
         </div>
-      </div>
-  
-      <div (click)="popup()" class="p">
-        <mat-icon>emoji_events</mat-icon>
-        Your Progress
-        <span>
-          <mat-icon>{{
-            isProgress ? "keyboard_arrow_up" : "keyboard_arrow_down"
-          }}</mat-icon></span
-        >
-      </div>
-  
-      <div class="pop" *ngIf="pop">
-        <b>4 of 15</b>
-        <p>Finish course to get your certificate</p>
-      </div>
-      <div class="share">
-        Share<span>
-          <mat-icon>{{
-            isShareable ? "keyboard_arrow_up" : "keyboard_arrow_down"
-          }}</mat-icon></span
-        >
-      </div>
-      <div class="nav" (click)="togglemore()">
-        <div >
-          <mat-icon class="morevert"> more_vert </mat-icon>
+        <div class="popup-links">
+          <a href="#">★ unfavourite this course</a>
+          <a href="#"><span class="material-icons">folder_open</span> archive this course</a>
+          <a href="#"><span class="material-icons">card_giftcard</span> gift this course</a>
         </div>
-      </div>
-  
-      <div class="popup-overlay" *ngIf="isMore">
-        <div class="popup-content">
-          <div class="popup-links">
-            <a href="#">★ unfavourite this course</a>
-            <a href="#"
-              ><span class="material-icons">folder_open</span> archive this
-              course</a
-            >
-            <a href="#">
-              <span class="material-icons">card_giftcard</span> gift this
-              course</a
-            >
-          </div>
-          <div class="popup-checkboxes " style="color: black;">
-            <label> <input type="checkbox" /> new announcement emails </label>
-            <label> <input type="checkbox" /> promotional emails </label>
-          </div>
-          <div class="popup-sentence" style="color: black;">
-            This course was purchased <br />
-            outside the 30-day refund <br />
-            policy it can"t be refunded
-          </div>
+        <div class="popup-checkboxes" style="color: black;">
+          <label><input type="checkbox" /> new announcement emails</label>
+          <label><input type="checkbox" /> promotional emails</label>
+        </div>
+        <div class="popup-sentence" style="color: black;">
+          This course was purchased <br />
+          outside the 30-day refund <br />
+          policy it can't be refunded
         </div>
       </div>
     </div>
-  </mat-toolbar>
-  
+    
+  </div>
+</mat-toolbar>
