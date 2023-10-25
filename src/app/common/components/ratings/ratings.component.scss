@@ -1,117 +1,119 @@
 .tab-content {
-    margin-top: 50px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+  margin-top: 50px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+
+}
+#container{
+  margin:2% 8%;
+}
+.star-rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  text-align: center;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.star-rating > span {
   
-  }
-  .star-rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    text-align: center;
-    font-size: 24px;
-    margin: 10px 0;
-  }
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
   
-  .star-rating > span {
-    
-    display: inline-block;
-    position: relative;
-    width: 1.1em;
-    
-    color: gold;
+  color: gold;
+
   
-    
-  }
-   
-  h2 {
-    color: #333;
-    text-align: left;
-  }
+}
+ 
+h2 {
+  color: #333;
+  text-align: left;
+}
+
+h3 {
+  color: #555;
+}
+
+.review {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.reviewer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reviewer-name {
+  font-weight: bold;
+}
+
+.interaction-buttons {
+  margin-top: 10px;
+}
+
+.like-button,
+.dislike-button,
+.report-button {
+  margin: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.like-button {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.dislike-button {
+  background-color: #F44336;
+  color: white;
+}
+
+.report-button {
+  background-color: #2196F3;
+  color: white;
+}
+.course-rating {
+  display: flex;
+  align-items: center;
   
-  h3 {
-    color: #555;
-  }
+  margin: 20px 0;
+}
+
+.stars {
+  display: flex;
+}
+
+.star {
   
-  .review {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-  }
+  width: 30px;
+  height: 30px;
+  /* // background-color: #006400; */
+  /* // border: 1px solid #ccc; */
+  margin-right: 5px;
+  position: relative;
+  font-size: 37px;
+}
+.star:before {
+  content: '\2605';
+  color: gold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
   
-  .reviewer-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .reviewer-name {
-    font-weight: bold;
-  }
-  
-  .interaction-buttons {
-    margin-top: 10px;
-  }
-  
-  .like-button,
-  .dislike-button,
-  .report-button {
-    margin: 5px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .like-button {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .dislike-button {
-    background-color: #F44336;
-    color: white;
-  }
-  
-  .report-button {
-    background-color: #2196F3;
-    color: white;
-  }
-  .course-rating {
-    display: flex;
-    align-items: center;
-    
-    margin: 20px 0;
-  }
-  
-  .stars {
-    display: flex;
-  }
-  
-  .star {
-    
-    width: 30px;
-    height: 30px;
-    /* // background-color: #006400; */
-    /* // border: 1px solid #ccc; */
-    margin-right: 5px;
-    position: relative;
-    font-size: 37px;
-  }
-  .star:before {
-    content: '\2605';
-    color: gold;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    
-  }
-  .rating-number {
-    font-size: 24px;
-    margin-left: 10px;
-    color: gold;
-    font-weight: bold;
-  }
-  
+}
+.rating-number {
+  font-size: 24px;
+  margin-left: 10px;
+  color: gold;
+  font-weight: bold;
+}

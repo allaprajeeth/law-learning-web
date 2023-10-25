@@ -1,25 +1,193 @@
-<div class="main overview">
-    <div class="body-head">
-        <h1>About this course</h1>
-        <p>
-            10 Hours of React just added. Become a Developer With ONE course -
-            HTML, CSS,JavaScript, React, Node, MongoDB and More!
-        </p>
-        <hr />
+<div class="heading">
+    <h1>Introduction to Law: A Comprehensive Overview</h1>
+    <p class="first-paragraph">
+      Law learning encompasses a diverse range of fascinating subjects and fields
+      of study and ethics, and the legal systems that shape our societies.
+    </p>
+    <div class="ratingConatiner">
+      <span class="star starNumber">4.5</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <i style="font-size: 15px" class="fa star">&#xf123;</i>
     </div>
-    <div class="overview-container">
-        <div>
-            <p>By the numbers</p>
-        </div>
-        <div>
-            <p>Skill level: All Levels</p>
-            <p>Students: 880,395</p>
-            <p>Languages: English</p>
-            <p>Captions: Yes</p>
-        </div>
-        <div>
-            <p>Lectures: 722</p>
-            <p>Video: 74 total hours</p>
-        </div>
+    <p>Created by Edward Viaene</p>
+    <p class="icon">
+      <span class="material-icons updated"> report_gmailerrorred </span>Last
+      updated: 10/2023
+    </p>
+    <p class="icon">
+      <span class="material-icons language"> language </span>English
+    </p>
+  </div>
+  
+  <div class="courseDescription">
+    <h2>What you'll learn</h2>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; From constitutional
+      law, criminal law, and international law to environmental law, intellectual
+      property law, and human rights law, there's a captivating world of legal
+      knowledge to explore.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; Delve into the
+      intricacies of contract law and tort law, or immerse yourself in the
+      evolving realms of cybersecurity law and technology law.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; Whether you're
+      interested in corporate law, family law, or pursuing a career in legal
+      advocacy.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; The realm of law
+      learning is an exciting journey filled with boundless opportunities to gain
+      a deeper understanding of justice.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; Ethics, and the
+      legal systems that shape our societies.
+    </p>
+  </div>
+  
+  <div class="courseFeatures">
+    <h2>This course includes:</h2>
+    <div class="grid-container">
+      <div class="grid-item">
+        <span><mat-icon>videocam</mat-icon> 4.5 hours on-demand video</span>
+      </div>
+      <div class="grid-item">
+        <span><mat-icon>article</mat-icon> 1 article</span>
+      </div>
+      <div class="grid-item">
+        <span><mat-icon>download</mat-icon> 1 downloadable resource</span>
+      </div>
+      <div class="grid-item">
+        <span
+          ><span class="material-icons">smartphone</span> Access on mobile and
+          TV</span
+        >
+      </div>
+      <div class="grid-item">
+        <span
+          ><span class="material-icons">closed_caption_off</span> Closed
+          captions</span
+        >
+      </div>
+      <div class="grid-item">
+        <span
+          ><span class="material-icons">emoji_events</span> Certificate of
+          completion</span
+        >
+      </div>
     </div>
-</div>
+    <mat-card class="side-bar">
+      <div class="container">
+        <mat-card-title class="title">
+          <div class="title-text">Course Content</div>
+        </mat-card-title>
+      </div>
+  
+      <div class="sectionsInfo">
+        15 Sections &nbsp;• 45 lectures &nbsp;•3h 9m Total Length
+      </div>
+      <mat-divider></mat-divider>
+      <mat-accordion class="sidebar-content">
+        <mat-expansion-panel
+          *ngFor="let videoGroup of videoGroups; let i = index"
+          #myExpansionPanel
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="panelTitle">{{ videoGroup?.panelTitle }}</div>
+              <div class="section-info">3 lectures &nbsp;&nbsp; 5min</div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="video-group">
+            <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
+              <div class="video-item">
+                <div class="titleDesc">
+                  <div class="titlehead">
+                    <div>
+                      <mat-icon class="custom-icon mat-icon-small"
+                        >ondemand_video</mat-icon
+                      >
+                    </div>
+                    <div class="videos-title" (click)="openSectionInfo()">
+                      {{ video?.title }}
+                    </div>
+                  </div>
+                  <div class="c">
+                    <div style="color: rgb(122, 119, 119)">
+                      {{ video?.time }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="sectionInfo" class="sectionInfo">
+                Sections Info will appear here
+              </div>
+            </ng-container>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+    <mat-card class="instructor-profile">
+      <mat-card-header>
+        <mat-card-title>Instructor </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="instructor-photo">
+          <img mat-card-image src="assets/iamge2.png" alt="Instructor photo"  height="65"/>
+        </div>
+        <div class="instructor-info">
+          <h1 class="instructor-name">{{ instructor.name }}</h1>
+          <div>
+            <span class="star1">&#9733; </span>
+            <span>4.5 Instructor Rating</span>
+          </div>
+          <div>
+            <span class="star1">&#9733; </span>
+            <span>65,342 Reviews</span>
+          </div>
+          <div>
+            <span ><mat-icon>supervised_user_circle</mat-icon></span>
+            <span>15,043 students</span>
+          </div>
+          <div>
+            <span ><mat-icon>play_circle_filled</mat-icon> 9 courses</span>
+            
+          </div>
+          <h2 class="instructor-title">{{ instructor.title }}</h2>
+          <p class="instructor-bio">
+            I'm Angela, I'm a developer with a passion for teaching. I'm the <b>lead
+            instructor</b> at the London App Brewery, London's leading <b>Programming
+            Bootcamp.</b> I've helped hundreds of thousands of students learn to code
+            and change their lives by becoming a developer. I've been invited by
+            companies such as Twitter, Facebook and Google to teach their
+            employees.
+          </p>
+          <p>
+            My first foray into programming was when I was just 12 years old,
+            wanting to build my own Space Invader game. Since then, I've made
+            <b>hundred of websites, apps and games</b>. But most importantly, I realised
+            that my greatest passion is teaching.
+          </p>
+          <p>I spend most of my time researching how to make learning to code fun and make hard concepts easy to understand. I apply everything I discover into my bootcamp courses. In my courses, you'll find lots of geeky humour but also lots of explanations and animations to make sure everything is easy to understand.</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div *ngIf="availableCourse" class="availableCourse">
+    <div class="course-container">
+        <h2 class="not-subscribed">You are not subscribed <br> To view the Course </h2>
+        <div class="buy-course">
+            <button  class="buy-button">Buy  Course</button>
+          </div>
+          <b>Or </b>
+        <div class="add-to-cart">
+          <button class="add-button">Add to Cart</button>
+        </div>
+      </div>
+  </div>

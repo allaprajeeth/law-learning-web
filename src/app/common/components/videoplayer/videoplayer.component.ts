@@ -1,4 +1,5 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { MatExpansionPanel } from '@angular/material/expansion';
 import * as Plyr from 'plyr';
 
 
@@ -8,21 +9,27 @@ import * as Plyr from 'plyr';
   styleUrls: ['./videoplayer.component.scss']
 })
 export class VideoplayerComponent {
+  @ViewChildren(MatExpansionPanel) expansionPanels!: QueryList<MatExpansionPanel>;
   @ViewChild('videocontainer') videoContainer!: ElementRef;
-  @ViewChild('videotextContainer')videoTextContainer!:ElementRef;
-  showNextVideoMessage = false;
-  messageTimeout: any;
-  currentVideoSource = '';
-  inputVideo: string = '';
-  hasClicked: boolean = false;
-  autoplayVideo: boolean = true;
-  public player: Plyr | undefined;
-  currentVideoIndex = 0;
-  currentSectionIndex = 0;
-  cuurentVideo: string = '';
+  @ViewChild('videotextContainer') videoTextContainer!: ElementRef;
   sidebarVisible = true;
-  totalProgress: number = 80;
-
+  currentVideoIndex: number = 0;
+  currentSectionIndex: number = 0;
+  currentVideoTime: number = 0;
+  autoplayVideo: boolean = false;
+  showNextVideoMessage: boolean = false;
+  player: Plyr | undefined;
+  completedVideoCount = 0;
+  totalCourseDuration: number = 0;
+  totalWatchedTime: number = 0;
+  courseProgress: number = 0;
+  currentPlayingVideoIndex: number = -1;
+  documents:boolean=false;
+  duration: number | undefined;
+  showDocs(){
+    this.documents=!this.documents;
+  }
+  
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
     panelTitle: `Section ${i + 1}`,
     videos: [
@@ -33,10 +40,10 @@ export class VideoplayerComponent {
         time: '1min',
       },
       {
-        url: 'assets/sample.mp4',
+        url: 'assets/video3.mp4',
         selected: false,
         title: '2. Hands-On Practice',
-        time: '2min',
+        time: '9min',
       },
       {
         url: 'assets/video1.mp4',
@@ -44,64 +51,77 @@ export class VideoplayerComponent {
         title: "3. Let's get started",
         time: '2min',
       },
-      {
-        url: 'assets/video1.mp4',
-        selected: false,
-        title: '4. AWS account overview',
-        time: '4min',
-      },
-      // Add more video objects as needed
     ],
   }));
-  ngOnInit() {
-    // Open the first video when the component is initially loaded
-    this.openVideo(0, 0);
-  }
-
-
+  currentVideoSource: string = this.videoGroups[this.currentVideoIndex].videos[0].url;
   constructor(private renderer: Renderer2, private el: ElementRef) {}
-  
-  saveVideo(inputVideo: string) {
-    this.cuurentVideo = inputVideo;
+
+  isVideoPlaying(sectionIndex: number, videoIndex: number): boolean {
+    return sectionIndex === this.currentSectionIndex && videoIndex === this.currentVideoIndex;
   }
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
     const videoContainerElement = this.videoContainer?.nativeElement;
-    const videoTextContainerElement=this.videoTextContainer?.nativeElement;
+    const videoTextContainerElement = this.videoTextContainer?.nativeElement;
     if (!this.sidebarVisible) {
-      this.renderer.setStyle(videoContainerElement, 'margin-left', '210px');
+      this.renderer.setStyle(videoContainerElement, 'margin-left', '230px');
       this.renderer.setStyle(videoContainerElement, 'margin-right', '180px');
-      this.renderer.setStyle(videoTextContainerElement, 'width', '1000px');
-      this.renderer.setStyle(videoTextContainerElement, 'margin', '0 auto');
-
     }
-
   }
+
   openSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
     const videoContainerElement = this.videoContainer?.nativeElement;
-    const videoTextContainerElement=this.videoTextContainer?.nativeElement;
+    const videoTextContainerElement = this.videoTextContainer?.nativeElement;
     if (this.sidebarVisible) {
       this.renderer.setStyle(videoContainerElement, 'margin-left', '60px');
       this.renderer.setStyle(videoContainerElement, 'margin-right', '60px');
-      this.renderer.setStyle(videoTextContainerElement, 'width', '66%');
-      this.renderer.setStyle(videoTextContainerElement, 'margin-left', '25%');
     }
   }
-  openVideo(sectionIndex: number, videoIndex: number) {
-    clearTimeout(this.messageTimeout);
-    this.showNextVideoMessage = false;
-    this.currentVideoSource = '/' + this.videoGroups[sectionIndex].videos[videoIndex].url;
-  }
+  resourceData: { title: string; resourceUrl: string }[] = [
+    {
+      title: '1. Introduction',
+      resourceUrl: '',
+    },
+  ];
+ 
   
-
-  ngAfterViewInit() {
+  ngOnInit() {
     this.initializePlayer();
-    this.calculateTotalProgress();
+    this.setupPlayerEventListeners();
+
+    const savedVideo = localStorage.getItem('currentVideo');
+    console.log(savedVideo)
+    const completedStatus = localStorage.getItem('completedStatus');
+
+    if (completedStatus) {
+      this.videoGroups = JSON.parse(completedStatus);
+      this.calculateCompletedVideoCount(); 
+    }
+    const savedProgress = localStorage.getItem('courseProgress');
+    if (savedProgress) {
+      this.courseProgress = parseFloat(savedProgress);
+    }
+    this.calculateTotalCourseDuration();
+
+    if (savedVideo) {
+      const { sectionIndex, videoIndex, duration } = JSON.parse(savedVideo);
+      this.playVideo(sectionIndex, videoIndex, duration);
+    } else {
+      this.playVideo(this.currentSectionIndex, this.currentVideoIndex);
+    }
   }
-  initializePlayer() {
+
+  private calculateCompletedVideoCount() {
+    this.completedVideoCount = this.videoGroups.reduce((count, section) => {
+      return count + section.videos.filter((v: any) => v.selected).length;
+    }, 0);
+  }
+
+  private initializePlayer() {
     this.player = new Plyr(this.el.nativeElement.querySelector('#player'), {
       invertTime: false,
+      autoplay: false,
       i18n: {
         rewind: 'Rewind 5s',
         fastForward: 'Forward 5s',
@@ -115,79 +135,129 @@ export class VideoplayerComponent {
         'current-time',
         'mute',
         'volume',
-        'captions',
         'speed',
         'settings',
         'pip',
         'fullscreen',
-        'notes',
-        'transcript'
       ],
       settings: ['captions', 'quality', 'speed'],
-      captions: {
-        active: true,
-        language: 'auto',
-      },
       speed: {
         selected: 1,
         options: [0.5, 1, 1.25, 1.5, 2, 2.5, 3, 3.5],
       },
     });
+  }
 
-    this.player.on('ended', () => {
-      this.onVideoEnded();
-    });
-  }
-  onVideoEnded() {
-    this.showNextVideoMessage = true;
-    this.messageTimeout = setTimeout(() => {
-      this.showNextVideoMessage = false;
-      this.loadNextVideo(); 
-    }, 2000);
-  }
-  loadNextVideo() {
-    
-    const nextVideo = this.getNextVideo();
-    if (nextVideo) {
-      this.currentVideoSource = '/' + nextVideo.url;
-      this.currentVideoIndex++; 
-      this.calculateTotalProgress();
+  private setupPlayerEventListeners() {
+    if (this.player) {
+      this.player.on('ended', () => this.handleVideoEnded());
+      this.player.on('timeupdate', () => this.handleTimeUpdate());
     }
   }
-  calculateTotalProgress() {
-    // Calculate the total progress
-    const totalVideos = this.videoGroups.reduce(
-      (acc, section) => acc + section.videos.length,
-      0
-    );
-    this.totalProgress = (this.currentVideoIndex / totalVideos) * 100;
-  
-    // Display a message when 70% of videos have been watched
-    if (this.totalProgress >= 70) {
-      // You can display your message here
-      console.log('Congratulations! You have watched 70% of the videos.');
-    }
-  }
-  getNextVideoTitle(): string {
-    const nextVideo = this.getNextVideo();
-    if (nextVideo) {
-      return nextVideo.title;
-    }
-    return '';
-  }
-  getNextVideo(): any {
-    let currentSection = this.videoGroups[this.currentSectionIndex];
-    let nextVideoIndex = this.currentVideoIndex + 1;
 
-    if (currentSection && nextVideoIndex < currentSection.videos.length) {
-      return currentSection.videos[nextVideoIndex];
-    } else {
-      const nextSectionIndex = this.currentSectionIndex + 1;
-      if (nextSectionIndex < this.videoGroups.length) {
-        return this.videoGroups[nextSectionIndex].videos[0];
+  private handleTimeUpdate() {
+    if (this.player) {
+      const sectionIndex = this.currentSectionIndex;
+      const videoIndex = this.currentVideoIndex;
+      const currentTime = this.player.currentTime;
+      const duration = this.player.duration;
+      localStorage.setItem('currentVideo', JSON.stringify({ sectionIndex, videoIndex, currentTime, duration }));
+    }
+  }
+
+  private calculateTotalCourseDuration() {
+    this.totalCourseDuration = this.videoGroups.reduce((total, section) => {
+      return total + section.videos.reduce((sectionTotal: any, video: any) => {
+        return sectionTotal + this.getVideoDurationInSeconds(video);
+      }, 0);
+    }, 0);
+  }
+
+  private updateCourseProgress() {
+    this.totalWatchedTime = this.videoGroups.reduce((total, section, sectionIndex) => {
+      return total + section.videos.reduce((sectionTotal: number, video: any, videoIndex: any) => {
+        if (video.selected) {
+          return sectionTotal + this.getVideoDurationInSeconds(video);
+        }
+        return sectionTotal;
+      }, 0);
+    }, 0);
+    this.courseProgress = Math.floor((this.totalWatchedTime / this.totalCourseDuration) * 100);
+    localStorage.setItem('courseProgress', this.courseProgress.toString());
+  }
+
+  private getVideoDurationInSeconds(video: any): number {
+    const timeString = video.time;
+    const matches = timeString.match(/(\d+)\s*(min|sec)?/);
+    if (matches) {
+      const duration1 = parseInt(matches[1], 10);
+      const unit = matches[2];
+      if (unit === 'min') {
+        return duration1 * 60;
+      } else {
+        return duration1;
       }
+    } else {
+      return 0; 
     }
-
-    return null;
   }
+
+  private handleVideoEnded() {
+    this.markVideoAsCompleted();
+    this.playNextVideo();
+    localStorage.setItem('completedStatus', JSON.stringify(this.videoGroups));
+  }
+
+  private markVideoAsCompleted() {
+    const video = this.videoGroups[this.currentSectionIndex].videos[this.currentVideoIndex];
+    if (!video.selected) {
+      video.selected = true;
+      this.completedVideoCount = this.videoGroups.reduce((count, section) => {
+        return count + section.videos.filter((v: any) => v.selected).length;
+      }, 0);
+      this.updateCourseProgress();
+    }
+  }
+  
+  private playNextVideo() {
+    this.currentVideoIndex++;
+    if (this.currentVideoIndex >= this.videoGroups[this.currentSectionIndex].videos.length) {
+      this.currentSectionIndex++;
+      this.currentVideoIndex = 0;
+    }
+    
+    this.playVideo(this.currentSectionIndex, this.currentVideoIndex,this.player?.duration);
+  }
+
+  playVideo(sectionIndex: number, videoIndex: number, duration: number = 0) {
+    const video = this.videoGroups[sectionIndex].videos[videoIndex];
+    const videoUrl = video.url;
+    this.currentSectionIndex = sectionIndex;
+    this.currentVideoIndex = videoIndex;
+    this.duration=duration
+    if (this.player) {
+      if (this.player) {
+        this.player.source = {
+          type: 'video',
+          sources: [{
+            src: videoUrl,
+            type: 'video/mp4',
+          }],
+        };
+        this.player.play();
+       
+      } else {
+        console.error('Plyr source is not properly initialized.');
+      }
+    } else {
+      console.error('Plyr player is not properly initialized.');
+    }
+    this.openExpansionPanel(sectionIndex);
+  }
+
+  openExpansionPanel(sectionIndex: number) {
+    this.expansionPanels.forEach((panel) => panel.close());
+    this.expansionPanels.toArray()[sectionIndex].open();
+  }
+  
 }

@@ -1,119 +1,25 @@
-// import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef } from '@angular/core';
-// import { Router } from '@angular/router';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.scss']
-// })
-// export class LoginComponent {
-//   // constructor(private router: Router) {}
-  
-//   images: string[] = [
-//     'assets/law.img1.png',
-//   ];
-
-//   currentIndex: number = 0;
-//   interval: any;
-//   email: string = '';
-//   phone: string = '';
-//   loginIsSuccessful: boolean = false;
-
-
-//   showNextButton: boolean = true;
-//   phoneOtp: string = '';
-//   emailOtp: string = ''; 
-//   showValidationError: boolean = false;
-
-//   // Define an EventEmitter to emit the closeSignup event
-//   @Output() closeSignup = new EventEmitter<void>();
-
-//   selectedCategory: string = ''; // Initialize with an empty string
-//   showLoginForm: boolean = true; 
-
-//   showSignupForm() {
-//     this.showLoginForm = false; // Set to false to show the signup form
-//   }
-//   onCloseSignup() {
-//     this.closeSignup.emit();
-//   }
-//   constructor(private router: Router) {} // Inject the Router module
-  
-//   showNextForm() {
-//     this.showNextButton = false;
-//   }
-
-//   onCategoryChange(event: any): void {
-    
-//       this.selectedCategory = event.target.value;
-    
-//   }
-
-//   fnLogin(event: Event): void {
-//     let route: string = ''; // Initialize route with an empty string or default route
-
-//     if (this.selectedCategory === 'Subscriber') {
-//       route = 'subscriber/homepage';
-//     } else if (this.selectedCategory === 'Instructor') {
-//       route = 'instructor/homepage';
-//     } else if (this.selectedCategory === 'Reviewer') {
-//       route = 'reviewer/homepage';
-//     }
-
-//     // Navigate to the corresponding homepage route
-//     this.router.navigate([route]);
-//   }
-
-//   }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
+interface ApiResponse {
+  message: string;
+}
+interface ApiResponseError {
+  message: string;
+}
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+
+
+export class LoginComponent  {
+  
+  constructor(private router: Router,private http: HttpClient,private snackBar: MatSnackBar){} 
   
   images: string[] = ['assets/law.img1.png'];
   currentIndex: number = 0;
@@ -121,44 +27,125 @@ export class LoginComponent implements OnInit {
   phone: string = '';
   selectedCategory: string = '';
   // password: string = '';
-  emailOtp: string = '';
-  phoneOtp: string = '';
+  emailotp: string = '';
+  phoneotp: string = '';
   emailOtpError: string = '';
   phoneOtpError: string = '';
   // passwordError: string = '';
-
+  
   isInputFilled: boolean = false;
   // isPasswordVisible: boolean = false;
   isOtpVisible: boolean = false;
   isLoginVisible: boolean = false;
 
   disableCategorySelect: boolean = false;
+  
 
   checkInput(): void {
     this.isInputFilled = !!this.email && !!this.phone;
   }
+  sendOtps(){
+    this.showOtpFields();
+    this.sendOtp();
+    console.log(this.email);
+    console.log(this.phone)
+    console.log(typeof this.email)
+  }
+  async sendOtp() {
+  const baseUrl = '  https://c2f7-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
+  const url = `${baseUrl}?email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=sendotplogin`;
+    const requestData = {
+      email: this.email,
+      phone: this.phone,
+      role: this.selectedCategory,
+      action: 'sendotplogin'
+    };
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    try{
+      const response = await firstValueFrom(
+        this.http.post(url, JSON.stringify(requestData), {
+          headers: headers
+        })
+      ) as ApiResponse;
+      
+    if (response && response.message) {
+      console.log('API Response:', response);
+      this.showSuccessMessage(response.message);
+    }
 
-  // togglePasswordVisibility(): void {
-  //   // this.isPasswordVisible = this.selectedCategory === 'Option1' || this.selectedCategory === 'Option2';
-  //   // this.isOtpVisible = !this.isPasswordVisible; // Hide OTP fields when password is visible
-  //   // this.isLoginVisible = true;
-  // }
+  console.log('OTP sent successfully', response);
+  }
+  catch (error: any) {
+    console.error('Error sending OTP:', error);
   
-  showOtpFields(): void {
+    if (error instanceof HttpErrorResponse && error.error && error.error.message) {
+      // Display the error message from the API response
+      this.showErrorMessage(error.error.message);
+    } else {
+      this.showErrorMessage('An error occurred while sending OTP.');
+    }
+  }
+  
+  }
+showOtpFields(): void {
     this.isOtpVisible = true;
     this.isLoginVisible = true;
     this.disableCategorySelect = true; 
   }
+  login(){
+    
+    this.loginpage();
+    this.loginValidation()
+  }
+  async loginpage(){
+    const baseUrl = '  https://c2f7-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
+    const url = `${baseUrl}?email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=verifylogin&emailotp=${encodeURIComponent(this.emailotp)}&phoneotp=${encodeURIComponent(this.phoneotp)}`;
+    const requestData = {
+      email: this.email,
+      phone: this.phone,
+      role: this.selectedCategory,
+      emailotp:this.emailotp,
+      phoneotp:this.phoneotp,
+      action: 'verifylogin'
+    };
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+  try{
+    const response = await firstValueFrom(
+      this.http.post(url, JSON.stringify(requestData), {
+        headers: headers
+      })
+    )as ApiResponse;
+    if (response && response.message) {
+      console.log('API Response:', response);
+      this.showSuccessMessage(response.message);
+    }
 
-
+    // setTimeout(() => {
+    //   this.loginValidation();
+    // }, 2000); 
+    console.log('Login successful', response);
+  }
+  catch (error: any) {
+    console.error(' Invalid OTP:', error);
   
+    if (error instanceof HttpErrorResponse && error.error && error.error.message) {
+      // Display the error message from the API response
+      this.showErrorMessage(error.error.message);
+    } else {
+      this.showErrorMessage('Invalid OTPs.');
+    }
+  }
 
-  
-  fnLogin(): void {
-    if (this.isOtpVisible && this.emailOtp && this.phoneOtp) {
+  }
+  loginValidation(): void {
+    if (this.isOtpVisible && this.emailotp && this.phoneotp) {
       // Both OTP fields are filled, navigate to the appropriate route
       let route: string = '';
-      if (this.selectedCategory === '') {
+      if (this.selectedCategory === 'Subscriber') {
         route = 'subscriber/homepage';
       } else if (this.selectedCategory === 'Instructor') {
         route = 'instructor/homepage';
@@ -177,25 +164,32 @@ export class LoginComponent implements OnInit {
       document.getElementById('phoneOtp')?.classList.remove('error-input');
     } else {
       // OTP fields are not filled, display error messages and error border
-      this.emailOtpError = this.emailOtp ? '' : 'Email OTP is required.';
-      this.phoneOtpError = this.phoneOtp ? '' : 'Phone OTP is required.';
-      if (!this.emailOtp) {
+      this.emailOtpError = this.emailotp ? '' : 'Email OTP is required.';
+      this.phoneOtpError = this.phoneotp ? '' : 'Phone OTP is required.';
+      if (!this.emailotp) {
         document.getElementById('emailOtp')?.classList.add('error-input');
       } else {
         document.getElementById('emailOtp')?.classList.remove('error-input');
       }
-      if (!this.phoneOtp) {
+      if (!this.phoneotp) {
         document.getElementById('phoneOtp')?.classList.add('error-input');
       } else {
         document.getElementById('phoneOtp')?.classList.remove('error-input');
       }
     }
   }
-  
-  
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  constructor(private router: Router){} 
+  showSuccessMessage(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000, 
+      panelClass: ['success-snackbar'] 
+    });
+}
+showErrorMessage(message: string) {
+  this.snackBar.open(message, 'Close', {
+    duration: 3000, 
+    panelClass: ['error-snackbar'] 
+  });
 }
 
+
+}

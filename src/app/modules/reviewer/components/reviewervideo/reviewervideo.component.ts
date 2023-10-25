@@ -21,6 +21,7 @@ export class ReviewervideoComponent {
   sidebarVisible = true;
   totalProgress: number = 0;
   reviewrating=false ;
+  
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
     panelTitle: `Section ${i + 1}`,
     videos: [
@@ -51,6 +52,8 @@ export class ReviewervideoComponent {
       // Add more video objects as needed
     ],
   }));
+  enableComments: boolean[][] = new Array(this.videoGroups.length).fill([]).map(() => []);
+
   constructor(private renderer: Renderer2, private el: ElementRef) {}
   
   saveVideo(inputVideo: string) {
@@ -65,9 +68,6 @@ export class ReviewervideoComponent {
     }
   }
   ngOnInit() {
-
-    // Open the first video when the component is initially loaded
-
     this.openVideo(0, 0);
 
   }
@@ -131,6 +131,7 @@ export class ReviewervideoComponent {
   }
   onVideoEnded() {
     this.showNextVideoMessage = true;
+    this.enableComments[this.currentSectionIndex][this.currentVideoIndex] = true;
     this.messageTimeout = setTimeout(() => {
       this.showNextVideoMessage = false;
       this.loadNextVideo(); 
@@ -181,7 +182,11 @@ export class ReviewervideoComponent {
   }
     reviewercomments=false
     openCommentPopup(){
-      this.reviewercomments= !this.reviewercomments
+      this.reviewercomments= !this.reviewercomments;
+      this.pauseVideo();
+    }
+    pauseVideo() {
+      this.player?.pause();
     }
     approve(){
       this.reviewercomments=false
@@ -211,13 +216,9 @@ export class ReviewervideoComponent {
         this.textAreaValue = '';
         this.isReviewed=!this.isReviewed;
       }
+      this.player?.play()
     }
- 
-    
     updaterating(r: any) {
-
       this.selected = r;
-    
-  
     }
 }

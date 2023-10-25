@@ -23,7 +23,6 @@
                     <div class="video-group">
                         <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
                             <button mat-button class="video-panel-button" (click)="openVideo(i, j)">
-
                                 <div class="video-item">
                                     <div class="box">
                                         <input type="checkbox" [(ngModel)]="video.selected" class="checkbox" />
@@ -33,11 +32,10 @@
                                         <div class="c">
                                             <mat-icon class="custom-icon">ondemand_video</mat-icon>
                                             <div style="color:rgb(122, 119, 119)">{{ video?.time }}</div>
-                                            <div class="sideComments" (click)="openCommentPopup()">Comments</div>
+                                            <div class="sideComments"  *ngIf="enableComments[i][j]"(click)="openCommentPopup()">Comments</div>
                                         </div>
                                     </div>
                                 </div>
-
                             </button>
                         </ng-container>
                     </div>

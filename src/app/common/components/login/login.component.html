@@ -1,47 +1,41 @@
 
- <app-firstnav></app-firstnav>
+<app-firstnav></app-firstnav>
 <div class="page-container">
   
   <div class="carousel-container">
-
       <img [src]="images[currentIndex]" alt="Image">
   </div>
-
-  
   <div class="container">
     <div class="login-box">
       <h2>Login</h2>
  
   <label for="email">Email:</label>
-  <input type="text" id="email" [(ngModel)]="email" (input)="checkInput()">
+  <input type="email" id="email" [(ngModel)]="email" (input)="checkInput()">
 
   <label for="phone">Phone:</label>
   <input type="tel" id="phone" [(ngModel)]="phone" (input)="checkInput()">
   
   <label for="category">Category:</label>
-  <select id="category" [(ngModel)]="selectedCategory" [disabled]="!isInputFilled  || disableCategorySelect">
-    <option value="">subscriber</option>
+  <select id="role" [(ngModel)]="selectedCategory" [disabled]="!isInputFilled  || disableCategorySelect">
+    <option value="Subscriber">Subscriber</option>
     <option value="Reviewer">Reviewer</option>
     <option value="Instructor">Instructor</option>
     <option value="ContentManager">ContentManager</option>
   </select>
 
 
-  <button *ngIf="!isOtpVisible" (click)="showOtpFields()" [disabled]="!isInputFilled">Send OTPs</button>
+  <button *ngIf="!isOtpVisible" (click)="sendOtps()"  [disabled]="!isInputFilled">Send OTPs</button>
 
   <div *ngIf="isOtpVisible">
     <label for="emailOtp">Email OTP:</label>
-    <input type="tel" id="emailOtp" [(ngModel)]="emailOtp" required>
-    <div class="error-message" *ngIf="!emailOtp && emailOtpError"> {{ emailOtpError }} </div>
-
-
-
+    <input type="text" id="emailOtp" [(ngModel)]="emailotp" required>
+    <div class="error-message" *ngIf="!emailotp && emailOtpError"> {{ emailOtpError }} </div>
     <label for="phoneOtp">Phone OTP:</label>
-    <input type="tel" id="phoneOtp" [(ngModel)]="phoneOtp" required>
-    <div class="error-message" *ngIf="!phoneOtp && phoneOtpError"> {{ phoneOtpError }} </div>
+    <input type="text" id="phoneOtp" [(ngModel)]="phoneotp" required>
+    <div class="error-message" *ngIf="!phoneotp && phoneOtpError"> {{ phoneOtpError }} </div>
   </div>
 
-  <button *ngIf="isLoginVisible" (click)="fnLogin()">Login</button>
+  <button *ngIf="isLoginVisible" (click)="login()">Login</button>
   </div>
 </div>
 </div>
