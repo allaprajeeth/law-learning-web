@@ -5,7 +5,7 @@ interface SubSection {
   file?: File;
   description: string;
   submitted: boolean;
-  status: string; 
+  status: string;
 }
 
 interface MainSection {
@@ -13,6 +13,8 @@ interface MainSection {
   file?: File;
   description: string;
   subSections: SubSection[];
+  submitted: boolean;
+  status: string;
 }
 
 @Component({
@@ -20,7 +22,7 @@ interface MainSection {
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.scss']
 })
-export class UploadComponent implements OnInit{
+export class UploadComponent implements OnInit {
   mainSections: MainSection[] = [];
 
   ngOnInit() {
@@ -32,7 +34,9 @@ export class UploadComponent implements OnInit{
     const newMainSection: MainSection = {
       name: `Section ${this.mainSections.length + 1}`,
       description: '',
-      subSections: []
+      subSections: [],
+      submitted: false,
+      status: ''
     };
     this.mainSections.push(newMainSection);
   }
@@ -55,7 +59,6 @@ export class UploadComponent implements OnInit{
     this.mainSections[mainIndex].subSections.splice(subIndex, 1);
   }
 
-  
   onMainFileSelected(event: any, mainIndex: number) {
     const file = event.target.files[0];
     if (file) {
@@ -69,25 +72,31 @@ export class UploadComponent implements OnInit{
       this.mainSections[mainIndex].subSections[subIndex].file = file;
     }
   }
-  saveSubSection(mainIndex: number, subIndex: number) {
-    // Implement logic to save sub-section data
-    console.log('Sub-section saved:', this.mainSections[mainIndex].subSections[subIndex]);
+
+  saveMainSection(mainIndex: number) {
+    // Implement logic to save main section data
+    console.log('Main section saved:', this.mainSections[mainIndex]);
   }
 
-  // submitSubSection(mainIndex: number, subIndex: number) {
-  //   // Implement logic to submit sub-section data
-  //   this.mainSections[mainIndex].subSections[subIndex].submitted = true;
-  //   console.log('Sub-section submitted:', this.mainSections[mainIndex].subSections[subIndex]);
-  // }
+  submitMainSection(mainIndex: number) {
+    this.mainSections[mainIndex].submitted = true;
+    this.mainSections[mainIndex].status = 'Under Review';
+    console.log('Main section submitted:', this.mainSections[mainIndex]);
+  }
+
   submitSubSection(mainIndex: number, subIndex: number) {
     this.mainSections[mainIndex].subSections[subIndex].submitted = true;
     this.mainSections[mainIndex].subSections[subIndex].status = 'Under Review';
     console.log('Sub-section submitted:', this.mainSections[mainIndex].subSections[subIndex]);
-  
   }
+
   submitSections() {
     // Implement logic to submit all sections data to your backend or storage system
     console.log('Submitted Data:', this.mainSections);
   }
+  saveSubSection(mainIndex: number, subIndex: number) {
+    // Implement logic to save sub-section data
+    
+    console.log('Sub-section saved:', this.mainSections[mainIndex].subSections[subIndex]);
+  }
 }
-

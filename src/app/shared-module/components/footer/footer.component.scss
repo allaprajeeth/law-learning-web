@@ -9,13 +9,13 @@ footer {
     padding: 20px; /* Add some padding for space */
     text-align: center; /* Center align text */
 }
-
-/* Styling for the first div inside the footer */
-footer div:first-child {
-    border: 2px solid #fff; /* Add a white border around the first div */
-    padding: 20px; /* Add padding to the first div */
-    margin-bottom: 20px; /* Add margin to separate it from the other divs */
+.container1{
+    border:2px solid white;  
+    padding: 20px;
+    margin-bottom: 20px;
 }
+
+
 
 /* Styling for the links */
 footer ul {
@@ -41,11 +41,21 @@ footer button {
     cursor: pointer;
     font-size: 16px;
 }
-
+.container2{
+    border: 2px solid #fff;
+    padding: 20px;
+    margin-top: 20px;
+}
 /* Styling for the copyright text */
 .copyright-container {
-    margin-top: 20px;
+
+    display: flex;
+    justify-content: space-evenly;
+list-style: none;
+    // text-align: center;
+    margin: 20px;
     font-size: 14px;
+    cursor: pointer;
 }
 h1,p,div{
     color: white;

@@ -20,6 +20,10 @@
             <textarea id="description" [(ngModel)]="mainSection.description" name="description" rows="4" required></textarea>
           </div>
 
+
+
+
+
           <div *ngFor="let subSection of mainSection.subSections; let subIndex = index">
             <div class="sub-section">
               <div class="form-group">
@@ -37,6 +41,14 @@
               </div>
 
               <div class="form-group">
+                <label>Video Duration:</label>
+                <div class="duration-input">
+                  <input type="number"  id="hours" name="hours" placeholder="Hours" required>
+                  <input type="number" id="minutes" name="minutes"  placeholder="Minutes" required>
+                </div>
+              </div>
+
+              <div class="form-group">
                 <label for="mainFile{{mainIndex}}">Upload Video: </label>
                 <input type="file" id="mainFile{{mainIndex}}" (change)="onMainFileSelected($event, mainIndex)"
                   accept="video/*">
@@ -49,7 +61,7 @@
               </div>
 
               <div *ngIf="!subSection.submitted">
-                <button type="button" class="save-button" (click)="saveSubSection(mainIndex, subIndex)">Save</button>
+                <button type="button" class="save-button sec-save-button " (click)="saveSubSection(mainIndex, subIndex)">Save</button>
                 <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)">Submit</button>
               </div>
               <div *ngIf="subSection.submitted && subSection.status === 'Under Review'">
@@ -57,6 +69,17 @@
               </div>
             </div>
           </div>
+
+
+          <div *ngIf="!mainSection.submitted">
+            <button type="button" class="save-button custom-save-button" (click)="saveMainSection(mainIndex)">Save</button>
+            <button type="button" class="sec-submit-button" (click)="submitMainSection(mainIndex)">Submit</button>
+          </div>
+          <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'">
+            <span>Status: {{mainSection.status}}</span>
+          </div>
+
+
           <br />
           <button type="button" class="add-subsection-button" (click)="addSubSection(mainIndex)">+</button>
         </div>

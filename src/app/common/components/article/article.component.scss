@@ -1,146 +1,197 @@
-// $font-family: 'poppins';
-
-
-
-a {
-  text-decoration: none;
-}
-
-ul {
-  list-style: none;
-}
-
-
-
-#blog {
+/* Add styles for the post box */
+.post-box {
+  // border: 1px solid black;
+  background-color: #dcd9d9; /* Background color of the box */
+  padding: 20px; /* Padding inside the box */
+  border-radius: 8px; /* Border radius for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the box shadow */
+  cursor: pointer;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 40px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: rgb(232, 230, 230);
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
 
-  
-  .blog-heading {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    
-    h3 {
-      font-size: 25px;
-      color: #2b2b2b;
-      font-weight: 600;
-    }
-  }
-  
-  .blog-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    flex-wrap: wrap;
-  }
   .blog-box {
-    
-    width: 350px;
+    width: 300px; /* Adjust the width of each box as needed */
+    height: 180px;
     background-color: #ffffff;
-    // background-color: #ffffff;
-    // border: 10px solid #343232; /* Add a 10px border to each box */
-    box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+    box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, 0.1);
     margin: 20px;
-    
-    .blog-text {
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      
-      span {
-        color: #1a1818;
-        font-size: 0.9rem;
-      }
-      
-      .blog-title {
-        font-size: 1.3rem;
-        font-weight: 500;
-        color: #272727;
-        
-        &:hover {
-          color: #f33c3c;
-          transition: all ease 0.3s;
-        }
-      }
-      
-      p.blog-content {
-        color: #9b9b9b;
-        font-size: 0.9rem;
-        display: -webkit-box;
-        -webkit-line-clamp: 10; // Show only 10 lines initially
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        margin: 20px 0;
-      }
-      
-      a.read-more {
-        color: #0f0f0f;
-        
-        &:hover {
-          color: #f33c3c;
-          transition: all ease 0.3s;
-        }
-      }
-    }
+    border-radius: 7px;
+    padding: 20px;
+
+    transition: box-shadow 0.3s ease, transform 0.3s ease; 
+  &:hover {
+    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3); /* Apply box shadow on hover */
+    transform: scale(1.05); /* Scale the box slightly on hover for a subtle zoom effect */
+    backface-visibility: hidden;
+  }
+  }
+  /* Styling for heading */
+  h1 {
+    font-size: 18px;
+    color: #000;
+    margin-bottom: 10px;
   }
 
-  
-  @media (max-width: 1250px) {
-    .blog-box {
-      width: 300px;
-    }
+  /* Styling for paragraph */
+  p {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 20px;
   }
-  
-  @media (max-width: 1110px) {
-    .blog-box {
-      width: 70%;
-    }
+
+  /* Styling for "Read more" button */
+  button {
+    background-color: #007791; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    padding: 7px 9px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for button background color */
+  border-radius: 3px;
   }
-  
-  @media (max-width: 550px) {
-    .blog-box {
-      width: 100%;
-    }
-    
-    #blog {
-      padding: 20px;
-    }
+
+  /* Hover effect for button */
+  button:hover {
+    background-color: #0056b3;
   }
 }
-.blog-container {
-  .blog-box {
-    width: 350px;
-    background-color: #ffffff;
-    border: 1px solid #ececec;
-    margin: 20px;
+
+
+
+
+
+// #blog {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   flex-direction: column;
+//   padding: 40px;
+//   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+//   background-color: rgb(232, 230, 230);
+
+  
+//   .blog-heading {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     flex-direction: column;
     
-    .blog-text {
-      .blog-content {
-        max-height: 5em; // Set a maximum height (adjust as needed)
-        overflow: hidden;
-        position: relative;
+//     h3 {
+//       font-size: 25px;
+//       color: #2b2b2b;
+//       font-weight: 600;
+//     }
+//   }
+  
+//   .blog-container {
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     margin: 20px 0;
+//     flex-wrap: wrap;
+//   }
+//   .blog-box {
+    
+//     width: 350px;
+//     background-color: #ffffff;
+//     // background-color: #ffffff;
+//     // border: 10px solid #343232; /* Add a 10px border to each box */
+//     box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Add a box shadow */
+//     margin: 20px;
+    
+//     .blog-text {
+//       padding: 30px;
+//       display: flex;
+//       flex-direction: column;
+      
+//       span {
+//         color: #1a1818;
+//         font-size: 0.9rem;
+//       }
+      
+//       .blog-title {
+//         font-size: 1.3rem;
+//         font-weight: 500;
+//         color: #272727;
+        
+//         &:hover {
+//           color: #f33c3c;
+//           transition: all ease 0.3s;
+//         }
+//       }
+      
+//       p.blog-content {
+//         color: #9b9b9b;
+//         font-size: 0.9rem;
+//         display: -webkit-box;
+//         -webkit-line-clamp: 10; // Show only 10 lines initially
+//         -webkit-box-orient: vertical;
+//         overflow: hidden;
+//         text-overflow: ellipsis;
+//         margin: 20px 0;
+//       }
+      
+//       a.read-more {
+//         color: #0f0f0f;
+        
+//         &:hover {
+//           color: #f33c3c;
+//           transition: all ease 0.3s;
+//         }
+//       }
+//     }
+//   }
 
-        &.expanded {
-          max-height: none; // Allow the content to expand
-        }
-      }
-    }
+  
+//   @media (max-width: 1250px) {
+//     .blog-box {
+//       width: 300px;
+//     }
+//   }
+  
+//   @media (max-width: 1110px) {
+//     .blog-box {
+//       width: 70%;
+//     }
+//   }
+  
+//   @media (max-width: 550px) {
+//     .blog-box {
+//       width: 100%;
+//     }
+    
+//     #blog {
+//       padding: 20px;
+//     }
+//   }
+// }
+// .blog-container {
+//   .blog-box {
+//     width: 350px;
+//     background-color: #ffffff;
+//     border: 1px solid #ececec;
+//     margin: 20px;
+    
+//     .blog-text {
+//       .blog-content {
+//         max-height: 5em; // Set a maximum height (adjust as needed)
+//         overflow: hidden;
+//         position: relative;
 
-    .read-more {
-      color: #0f0f0f;
-    }
-  }
-}
+//         &.expanded {
+//           max-height: none; // Allow the content to expand
+//         }
+//       }
+//     }
+
+//     .read-more {
+//       color: #0f0f0f;
+//     }
+//   }
+// }
 
 
 
@@ -167,6 +218,10 @@ ul {
 //   height: 100%; /* Set height to viewport height for full-screen appearance */
 //   background-color: #e0d9d9; /* Background color for the whole page */
 // }
+//Click on your profile picture (or your name) in the top left corner to open the menu.
+//Select "Settings" from the dropdown menu.
+//In the Settings window, click on "General" on the left sidebar.
+//Toggle on "Automatically start Skype" under the "Startup and Close" section
 // .container {
 //   display: flex;
 //   width: 80%; /* Set your desired width for the centered box */

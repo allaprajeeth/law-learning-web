@@ -1,55 +1,70 @@
-<!-- <app-subscribernav></app-subscribernav> -->
-<app-nav></app-nav>
-  <!-- <script src="script.js"></script> -->
-  <div class="container">
+<div class="pdf-list">
+    <ul>
+      <li *ngFor="let pdfName of pdfNames" (click)="loadPdf(pdfName)">
+        {{ pdfName }}
+      </li>
+    </ul>
+  </div>
+  
+  <div *ngIf="pdfUrl" class="pdf-container">
+    <iframe [src]="pdfUrl" width="100%" height="500px"></iframe>
+  </div>
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <!-- <div class="container">
     <h1>Knowledge Centre</h1>
     
     <table border="1">
         <tbody>
-            <!-- Row 1 -->
+            
             <tr>
-                <!-- Column 1 - PDF Icon -->
+               
                 <td>    <mat-icon>picture_as_pdf</mat-icon></td>
-                <!-- Column 2 - Random Name -->
+                
                 <td>ATOMIC ENERGY DEFENSE PROVISIONS</td>
-                <!-- Column 3 - Download Icon -->
-                <td><a href="#" onclick="downloadFile(this);"><mat-icon id="download-icon">get_app</mat-icon></a></td>
-            </tr>
-            <!-- Row 2 -->
+                 </tr>
+            
             <tr>
-                <!-- Column 1 - PDF Icon -->
+               
                 <td>    <mat-icon>picture_as_pdf</mat-icon></td>
-                <!-- Column 2 - Random Name -->
+                
                 <td>DISPOSAL OF RECORDS</td>
-                <!-- Column 3 - Download Icon -->
-                <td><a href="#" onclick="downloadFile(this);"><mat-icon id="download-icon">get_app</mat-icon></a></td>
-            </tr>
-            <!-- Row 3 -->
+                </tr>
+           
             <tr>
-                <!-- Column 1 - PDF Icon -->
+             
                 <td>    <mat-icon>picture_as_pdf</mat-icon></td>
-                <!-- Column 2 - Random Name -->
+                
                 <td>ADVISORY COMMITTEE ON THE RECORDS OF CONGRESS</td>
-                <!-- Column 3 - Download Icon -->
-                <td><a href="#" onclick="downloadFile(this);"><mat-icon id="download-icon">get_app</mat-icon></a></td>
-            </tr>
-            <!-- Row 4 -->
+                 </tr>
+           
             <tr>
-                <!-- Column 1 - PDF Icon -->
+               
                 <td>    <mat-icon>picture_as_pdf</mat-icon></td>
-                <!-- Column 2 - Random Name -->
+               
                 <td>RECORDS MANAGEMENT BY FEDERAL AGENCIES</td>
-                <!-- Column 3 - Download Icon -->
-                <td><a href="#" onclick="downloadFile(this);"><mat-icon id="download-icon">get_app</mat-icon></a></td>
-            </tr>
-            <!-- Row 5 -->
+                  </tr>
+           
             <tr>
-                <!-- Column 1 - PDF Icon -->
+               
                 <td>    <mat-icon>picture_as_pdf</mat-icon></td>
-                <!-- Column 2 - Random Name -->
+                
                 <td>Economy in Government Act</td>
-                <!-- Column 3 - Download Icon -->
-                <td><a href="#" onclick="downloadFile(this);"><mat-icon id="download-icon">get_app</mat-icon></a></td>
-            </tr>
-        
-
+                     </tr>
+        </tbody>
+    </table></div>
+ -->

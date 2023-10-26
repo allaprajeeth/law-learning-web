@@ -149,6 +149,42 @@ h2 {
   margin-bottom: 20px;
 }
 
+.duration-input {
+  display: flex;
+  gap: 10px;
+  
+  input[type="number"] {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+}
+.custom-save-button {
+  background-color: #007791; /* Green background color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  margin-top: 10px;
+  cursor: pointer; /* Cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+
+  &:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+}
+.sec-save-button{
+  background-color: #28a745; /* Green background color */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding */
+  margin-top: 10px;
+  cursor: pointer; /* Cursor on hover */
+  transition: background-color 0.3s; /* Smooth background color transition */
+
+}
 
 .main-section {
   position: relative;
@@ -231,6 +267,17 @@ h2 {
 
 .submit-button:hover {
   background-color: #45a049;
+}
+.sec-submit-button{
+  background-color: #007791;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 0 auto; /* Center the button horizontally */
+  display: block; 
 }
 /* Increase font weight for main section name */
 .main-section .form-group label {

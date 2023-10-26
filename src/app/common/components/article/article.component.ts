@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog'; 
+import { ModalComponent } from '../modal/modal.component';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { Renderer2, ElementRef } from '@angular/core';
 interface BlogPost {
@@ -28,6 +30,10 @@ export class ArticleComponent {
       content: 'Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to make the most out of internship experiences, and how internships can shape a legal career' },
   ];
 
+
+  
+
+
   expandedIndex: number = -1;
 
   toggleReadMore(index: number) {
@@ -42,8 +48,21 @@ export class ArticleComponent {
     return this.expandedIndex === index;
   }
 
-  
-}
+  constructor(public dialog: MatDialog) { }
+
+  openModal(blogPost: BlogPost): void {
+    this.dialog.open(ModalComponent, {
+      width: '400px', // Set the width of the modal as per your design
+      data: blogPost // Pass the entire blog post data to the modal
+    });
+  }
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    //   // Handle actions after the dialog is closed if needed
+    // });
+  }
+// }
 
 
 
