@@ -7,27 +7,39 @@ import { Component } from '@angular/core';
 })
 export class VideoplayerNavbarComponent {
   showPopup: boolean = false;
-  isMore = false;
   isProgress = false;
   isShareable = false;
-  show = false;
-  pop = false;
+  showRating = false;
+  yourProgress=false;
   stars = [1, 2, 3, 4, 5];
   selected = 0;
-  
-  togglemore() {
+  isMore: boolean = false; // Set this to true to show the popup initially
+
+  ngOnInit() {
+    const storedRating = localStorage.getItem('userRating');
+    this.selected = storedRating ? parseInt(storedRating, 10) : 0; // Retrieve and set the rating
+  }
+  togglemoreClose() {
     this.isMore = !this.isMore;
   }
-  openpopup() {
-    this.show = true;
+  
+  togglemoreOpen() {
+    this.isMore = !this.isMore;
   }
-  closepopup() {
-    this.show = false;
+  leaveRatingOpen() {
+    this.showRating = true;
   }
-  popup() {
-    this.pop = !this.pop;
+  leaveRatingClose() {
+    this.showRating = false;  
+  }
+  yourProgressOpen() {
+    this.yourProgress = !this.yourProgress;
+  }
+  yourProgressClose(){
+    this.yourProgress=!this.yourProgress
   }
   updaterating(r: any) {
     this.selected = r;
+    localStorage.setItem('userRating', r.toString());
   }
 }

@@ -16,6 +16,8 @@ import { PasswordComponent } from './common/components/password/password.compone
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
 import { LoginComponent } from './common/components/login/login.component';
 import { FooterComponent } from './shared-module/components/footer/footer.component';
+import { CourseInfoComponent } from './common/components/course-info/course-info.component';
+import { OverviewComponent } from './common/components/overview/overview.component';
 
 
 const routes: Routes = [
@@ -69,6 +71,10 @@ const routes: Routes = [
     component:ArticleComponent
   },
   {
+    path: 'overview',
+    component:OverviewComponent
+  },
+  {
     path: 'documents',
     component:DocumentsComponent
   },
@@ -87,6 +93,10 @@ const routes: Routes = [
   {
     path: 'videoplayer',
     component:VideoplayerComponent
+  },
+  {
+    path: 'courseInfo',
+    component:CourseInfoComponent
   },
   {
     path: 'footer',
