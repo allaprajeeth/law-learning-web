@@ -5,12 +5,16 @@
 //   }
   
 //   / Center the h1 element vertically and horizontally /
-
+.container{
+  // text-align: center;
+  // margin-left: 80px;
+}
   h1 {
+    text-align: center;
     margin: 10px;
-    // margin-top: 20px; 
+    margin-top: 40px; 
     font-size: 25px; 
-    // margin-bottom: 30px;
+    margin-bottom: 50px;
     font-weight: 500;
   }
   
@@ -20,7 +24,7 @@
     border-collapse: collapse;
     
     border: none;
-    
+    margin-left: 100px;
     
     
   }
@@ -43,6 +47,7 @@
     vertical-align: middle;
     border: none;
     border-bottom: 1px solid rgb(222, 207, 207);
+    cursor: pointer;
 
   }
 

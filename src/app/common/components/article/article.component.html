@@ -1,26 +1,17 @@
+
+
+
+
 <app-nav></app-nav>
-<!-- <app-nav></app-nav> -->
-
-<div id="blog">
-  <div class="blog-heading">
-    <h3>Publishing corner</h3>
-  </div>
-
-  <!-- blog container-->
-  <div class="blog-container">
-    <div *ngFor="let box of boxes; let i = index" class="blog-box">
-      <div class="blog-text">
-        <a class="blog-title">{{ box.title }}</a>
-        <p class="blog-content" [ngClass]="{'expanded': isExpanded(i)}">
-          {{ box.content }}
-        </p>
-        <a class="read-more" (click)="toggleReadMore(i)">
-          {{ isExpanded(i) ? 'Read less' : 'Read more' }}
-        </a>
-      </div>
-    </div>
-  </div>
+<div class="post-box">
+<div *ngFor="let box of boxes; let i = index" class="blog-box">
+  <h1>{{ box.title }}</h1>
+  <p>{{ box.content | slice:0:80 }}{{ box.content.length > 80 ? '...' : '' }}</p>
+  <!-- <button *ngIf="!isExpanded(i)" (click)="toggleReadMore(i)">Read more</button> -->
+  <button (click)="openModal(box)">Read more</button>
 </div>
+</div>
+
 
 <!-- <div id="blog" *ngFor="let box of boxes; let i = index">
   <div class="blog-heading">

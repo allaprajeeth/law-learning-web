@@ -20,7 +20,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatInputModule} from '@angular/material/input';
+
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 import {MatTabsModule} from '@angular/material/tabs';
 
@@ -93,7 +98,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { CertificateComponent } from './common/components/certificate/certificate.component';
 import { LoginComponent } from './common/components/login/login.component';
+
+import { ModalComponent } from './common/components/modal/modal.component';
+
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
+
 
 // import { VideoplayerNavabarComponent } from './common/components/videoplayer-navabar/videoplayer-navabar.component';
 
@@ -132,7 +141,9 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
     OverviewComponent,
     CertificateComponent,
     LoginComponent,
+    ModalComponent,
     CourseInfoComponent
+
     
   ],
   imports: [
@@ -159,6 +170,7 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
     MatCardModule,
     MatDividerModule,
     MatExpansionModule,
+    MatDialogModule,
     // MaterialCarouselModule,
     // NgFor,
    
