@@ -52,7 +52,7 @@ export class LoginComponent  {
     console.log(typeof this.email)
   }
   async sendOtp() {
-  const baseUrl = '  https://c2f7-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
+  const baseUrl = '  https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
   const url = `${baseUrl}?email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=sendotplogin`;
     const requestData = {
       email: this.email,
@@ -97,10 +97,10 @@ showOtpFields(): void {
   login(){
     
     this.loginpage();
-    this.loginValidation()
+    //this.loginValidation()
   }
   async loginpage(){
-    const baseUrl = '  https://c2f7-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
+    const baseUrl = '  https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
     const url = `${baseUrl}?email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=verifylogin&emailotp=${encodeURIComponent(this.emailotp)}&phoneotp=${encodeURIComponent(this.phoneotp)}`;
     const requestData = {
       email: this.email,
@@ -124,9 +124,9 @@ showOtpFields(): void {
       this.showSuccessMessage(response.message);
     }
 
-    // setTimeout(() => {
-    //   this.loginValidation();
-    // }, 2000); 
+    setTimeout(() => {
+      this.loginValidation();
+    }, 3000); 
     console.log('Login successful', response);
   }
   catch (error: any) {
@@ -143,7 +143,6 @@ showOtpFields(): void {
   }
   loginValidation(): void {
     if (this.isOtpVisible && this.emailotp && this.phoneotp) {
-      // Both OTP fields are filled, navigate to the appropriate route
       let route: string = '';
       if (this.selectedCategory === 'Subscriber') {
         route = 'subscriber/homepage';
@@ -181,12 +180,14 @@ showOtpFields(): void {
   showSuccessMessage(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 3000, 
+      verticalPosition: 'top',
       panelClass: ['success-snackbar'] 
     });
 }
 showErrorMessage(message: string) {
   this.snackBar.open(message, 'Close', {
     duration: 3000, 
+    verticalPosition: 'top',
     panelClass: ['error-snackbar'] 
   });
 }

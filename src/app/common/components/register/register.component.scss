@@ -36,7 +36,7 @@ background-color: #fff;
       // width: 100%;
       background-color: #fff;
       // border: 1px solid #ccc;
-      // padding: 10px;
+      padding-left: 12px;
       // text-align: center;
       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       flex: 1; 
@@ -60,12 +60,15 @@ width: 90%;
 padding: 8px;
 // text-align: left;
 }
+#role{
+  width: 97%;
+ padding: 8px;
+}
 button{
-// background-color: rgb(38, 112, 186);
 width: 40%;
 margin-left: 80px;
-background-color: #007791;
-            // color: #000;
+background-color: #1331d7;
+color:rgb(255, 255, 255);
             border: none;
             border-radius: 5px;
             padding: 8px 16px;
@@ -86,7 +89,37 @@ color: red;
 .error-input {
 border-color: black;
 }
+.redirect{
+  cursor:pointer;
+  text-align: center;
+ // text-decoration: underline;
+  color: blue;
+  //padding-bottom: 15px;
 
+}
+.redirectlogin{
+  padding-bottom: 15px;
+}
+.snackbar-top {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  z-index: 10;
+  padding: 10px;
+  text-align: center;
+}
 
+.snackbar-top button {
+  margin-top: 10px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
 
 

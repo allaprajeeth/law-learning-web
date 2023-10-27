@@ -32,10 +32,13 @@ export class OverviewComponent {
     ],
   }));
   availableCourse:boolean=false;
-  sectionInfo:boolean=false;
-  openSectionInfo() {
-    this.sectionInfo=!this.sectionInfo
-  }
+  sectionInfo: boolean[][] = new Array(this.videoGroups.length)
+  .fill([])
+  .map(() => []);
+
+toggleSectionInfo(i: number, j: number) {
+  this.sectionInfo[i][j] = !this.sectionInfo[i][j];
+}
   instructor: {
     name: string;
     title: string;

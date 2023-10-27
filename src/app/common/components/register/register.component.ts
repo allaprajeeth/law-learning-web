@@ -42,7 +42,7 @@ export class RegisterComponent {
     console.log(typeof this.email)
   }
   async sendOtpSignup() {
-  const baseUrl = 'https://c2f7-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
+  const baseUrl = 'https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
   const url = `${baseUrl}?name=${encodeURIComponent(this.name)}&email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=sendotpsignup`;
     const requestData = {
       name:this.email,
@@ -89,7 +89,7 @@ showOtpFields(): void {
     this.loginpage();
   }
   async loginpage(){
-    const baseUrl = '  https://c2f7-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
+    const baseUrl = '  https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
     const url = `${baseUrl}?name=${encodeURIComponent(this.name)}email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=verifysignup&emailotp=${encodeURIComponent(this.emailotp)}&phoneotp=${encodeURIComponent(this.phoneotp)}`;
     const requestData = {
       name:this.name,
@@ -114,7 +114,7 @@ showOtpFields(): void {
       this.showSuccessMessage(response.message);
 
       setTimeout(() => {
-        this.loginValidation();
+        this.signUpValidation();
       }, 2000); 
     }
     console.log('Sign up Successful', response);
@@ -128,7 +128,7 @@ showOtpFields(): void {
 
   }
 
-  loginValidation(): void {
+  signUpValidation(): void {
     if (this.isOtpVisible && this.emailotp && this.phoneotp) {
       // Both OTP fields are filled, navigate to the appropriate route
       let route: string = '';

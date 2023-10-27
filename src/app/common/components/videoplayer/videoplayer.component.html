@@ -1,7 +1,4 @@
 <ng-container>
-  <!-- <div class="tabs">
-    <button  mat-raised-button color="primary" class="watch-videos" >Watch Video's</button> 
-  </div> -->
     <div   id="showVideo" class="video-info-total">
       <!-- side bar video expansion panel  -->
       <mat-card
@@ -49,9 +46,9 @@
                         </div>
                         <ng-container *ngFor="let resource of resourceData">
                           <div class="resources" *ngIf="resource.title === video.title" (click)="showDocs()">
-                            <span >Resources <mat-icon class="arrow-icon">{{
+                            <span >Resources </span><mat-icon class="arrow-icon">{{
                               documents ? "keyboard_arrow_up" : "keyboard_arrow_down"
-                            }}</mat-icon></span>
+                            }}</mat-icon>
                             <div *ngIf="documents" class="documents">
                                <div class="doc">LawLanguage.pdf</div>
                                <div class="doc">Fundamentals.pdf</div>
@@ -66,7 +63,7 @@
             </div>
           </mat-expansion-panel>
         </mat-accordion>
-      </mat-card>
+  </mat-card>
       <!-- video player container -->
       <div>
         <div #videocontainer class="video-container video-container-sidebar">
@@ -93,15 +90,7 @@
         </div>
       </div>
     
-    <div class="next-video-container" *ngIf="showNextVideoMessage">
-      <div class="next-video-info">
-        <mat-icon class="play-icon"
-          >play_circle
-          <div class="play-style"></div
-        ></mat-icon>
-        <div class="next-video-title"></div>
-      </div>
-    </div>
+    
    
 </div>
 </ng-container>
@@ -110,5 +99,4 @@
  </div>
  <div class="total-progress">
    Total Progress:{{courseProgress}}%
- 
 </div>
