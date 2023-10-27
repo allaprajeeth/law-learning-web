@@ -103,7 +103,12 @@
               <div class="panelTitle">{{ videoGroup?.panelTitle }}</div>
               <div class="section-info">3 lectures &nbsp;&nbsp; 5min</div>
             </mat-panel-title>
+            
           </mat-expansion-panel-header>
+          <div style="border: 1px solid rgb(237 228 228); padding: 10px; margin-bottom: 15px;">
+            <h3 style="color: blue;" class="sectionDesc">Description</h3>
+            <div>A course description provides an overview of what a course covers, while a syllabus provides specific details about the course, such as the schedule, grading criteria, assignments, textbook requirements, and policies</div>
+            </div>
           <div class="video-group">
             <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
               <div class="video-item">
@@ -114,7 +119,7 @@
                         >ondemand_video</mat-icon
                       >
                     </div>
-                    <div class="videos-title" (click)="openSectionInfo()">
+                    <div class="videos-title" (click)="toggleSectionInfo(i, j)">
                       {{ video?.title }}
                     </div>
                   </div>
@@ -125,69 +130,138 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="sectionInfo" class="sectionInfo">
-                Sections Info will appear here
+              <div *ngIf="sectionInfo[i][j]" class="sectionInfo">
+                Introduction to Law provides an overview of the law and the legal system.  This course covers the Constitution, court system attorney-client relationship, administrative law, crimes, torts, contract law, family law, owning and operating motor vehicles, renters and landlords, home ownership, employee and employer rights and duties, wills, trusts and probate laws and the Declaration of Independence.  The student will develop the knowledge and skills indicated by the Learning Outcomes for the course.
               </div>
             </ng-container>
-          </div>
+            
+        </div>
+        
         </mat-expansion-panel>
       </mat-accordion>
     </mat-card>
-    <mat-card class="instructor-profile">
-      <mat-card-header>
-        <mat-card-title>Instructor </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <div class="instructor-photo">
-          <img mat-card-image src="assets/iamge2.png" alt="Instructor photo"  height="65"/>
+    <div class="container1">
+        <div class="container2">
+        <h2 class="heading1">Instructor</h2>
+        <h2 class="author">John Smith</h2>
+        <p class="text">Juris Doctor and Leading Law Learning Instructor</p>
+        <div class="iconsContainer">
+          <img class="avatar" src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+            alt="Instructor Image">
+          <div class="icons">
+            <div class="icon ">
+              <mat-icon>star</mat-icon>
+              <p>4.7 Instructor Rating</p>
+            </div>
+            <div class="icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge" class="reviews-badge">
+              <p>715,505 Reviews</p>
+            </div>
+            <div class="icon">
+              <mat-icon>people</mat-icon>
+              <p>2,342,416 Students</p>
+            </div>
+            <div class="icon">
+              <mat-icon>play_circle_outline</mat-icon>
+              <p>7 Courses</p>
+            </div>
+          </div>
+        </div><br>
+        <p>A Law Learning Instructor is responsible for delivering high-quality instruction and guidance to individuals or
+          groups seeking to expand their knowledge of legal principles and concepts. They play a crucial role in facilitating
+          the learning process, helping students understand the complexities of the legal field, and preparing them for
+          success in their legal studies or careers.</p>
+        <p>Develop and deliver instructional materials, including lectures, workshops, and presentations, on various aspects
+          of the law.
+          Adapt teaching methods and content to accommodate various learning styles and levels of expertise.</p>
+        <p>Create and update curriculum content, including lesson plans, reading materials, and assessment tools.
+          Ensure that curriculum aligns with the latest legal developments and standards.</p>
+        <p>Foster a positive learning environment by encouraging active participation and critical thinking.
+          Provide constructive feedback and support to students, addressing their questions and concerns.</p>
+        <p> A degree in law (Juris Doctor or equivalent) is required.
+          Relevant teaching or instructional experience is preferred.
+          Strong knowledge of legal principles, ethics, and case studies.
+          Excellent communication and presentation skills.
+          Patience, adaptability, and the ability to motivate and engage learners.
+          A commitment to ongoing professional development in the legal field.</p>
         </div>
-        <div class="instructor-info">
-          <h1 class="instructor-name">{{ instructor.name }}</h1>
-          <div>
-            <span class="star1">&#9733; </span>
-            <span>4.5 Instructor Rating</span>
+        <h2 class="courseRatingsHeading">Course Ratings</h2>
+        <div class="courseRatingContainer">
+          <div class="courseRating">
+            <span class="circle">DW</span>
+            <div class="alignment">
+              <h2>David Wilson</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">The Law Learning course provided a comprehensive overview of legal principles and their practical
+                applications. The content was well-structured, and the instructors were highly knowledgeable.</p>
           </div>
-          <div>
-            <span class="star1">&#9733; </span>
-            <span>65,342 Reviews</span>
+          <div class="courseRating">
+            <span class="circle">SD</span>
+            <div class="alignment">
+              <h2>Sarah Davis</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">I appreciated the flexibility of the Law Learning course, which allowed me to study at my own pace. The
+                online resources and materials were helpful, and the quizzes and assignments provided opportunities for
+                self-assessment.</p>
           </div>
-          <div>
-            <span ><mat-icon>supervised_user_circle</mat-icon></span>
-            <span>15,043 students</span>
+       
+          <div class="courseRating">
+            <span class="circle">MB</span>
+            <div class="alignment">
+              <h2>Michael Brown</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">I would highly recommend the Law Learning course to anyone interested in a career in law or those who simply
+                want to expand their legal knowledge. It's a valuable resource for personal and professional growth.</p>
           </div>
-          <div>
-            <span ><mat-icon>play_circle_filled</mat-icon> 9 courses</span>
-            
+          <div class="courseRating">
+            <span class="circle">SA</span>
+            <div class="alignment">
+              <h2>Susan Anderson</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">The course was well-organized, and the materials provided were up-to-date. It was clear that the course
+                creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.</p>
           </div>
-          <h2 class="instructor-title">{{ instructor.title }}</h2>
-          <p class="instructor-bio">
-            I'm Angela, I'm a developer with a passion for teaching. I'm the <b>lead
-            instructor</b> at the London App Brewery, London's leading <b>Programming
-            Bootcamp.</b> I've helped hundreds of thousands of students learn to code
-            and change their lives by becoming a developer. I've been invited by
-            companies such as Twitter, Facebook and Google to teach their
-            employees.
-          </p>
-          <p>
-            My first foray into programming was when I was just 12 years old,
-            wanting to build my own Space Invader game. Since then, I've made
-            <b>hundred of websites, apps and games</b>. But most importantly, I realised
-            that my greatest passion is teaching.
-          </p>
-          <p>I spend most of my time researching how to make learning to code fun and make hard concepts easy to understand. I apply everything I discover into my bootcamp courses. In my courses, you'll find lots of geeky humour but also lots of explanations and animations to make sure everything is easy to understand.</p>
         </div>
-      </mat-card-content>
-    </mat-card>
+      </div>
   </div>
   <div *ngIf="availableCourse" class="availableCourse">
     <div class="course-container">
-        <h2 class="not-subscribed">You are not subscribed <br> To view the Course </h2>
-        <div class="buy-course">
-            <button  class="buy-button">Buy  Course</button>
-          </div>
-          <b>Or </b>
+        <div class="not-subscribed">You are not subscribed to this course. To view the course please buy it. </div>
         <div class="add-to-cart">
           <button class="add-button">Add to Cart</button>
+        </div>
+          <b>Or </b>
+        
+        <div class="buy-course">
+          <button  class="buy-button">Buy  Course</button>
         </div>
       </div>
   </div>

@@ -101,26 +101,30 @@ mat-panel-title{
   display: flex;
   justify-content:space-around;
 }
+.container,.sectionsInfo{
+  padding-left: 18px;
+}
 .title-text{
   font-size: 24px;
   padding-top: 10px;
+  
 }
 .sectionsInfo{
   margin-top: 26px;
   margin-bottom: 15px;
 }
 .sectionInfo{
-
-
-
 border-radius: 2px;
-background-color: #485899;
+//box-shadow: 0px 0px 5px rgb(182, 176, 176);
 width:100%;
-
-color: #e9e7e7;
-font-size: 20px;
+padding: 5px;
 z-index: 22;
-//margin-top: 20px;
+margin-bottom: 5px;
+letter-spacing: unset;
+background-color: #eae5e5;
+}
+.sectionDesc{
+  margin: 0px 0px 0px 0px;
 }
 mat-card{
   border: 1px solid rgb(173, 172, 172);
@@ -130,20 +134,22 @@ mat-card{
   font-size: 20px;
 }
 .course-container {
-    width: 300px;
+    width: 240px;
+    //height: 350px;
     background-color: #FDFEFE  ;
-    border: 1px solid #e2dadef3;
+    border: 1px solid #b3b1b2f3;
     padding: 10px;
-
+    padding-top: 25px;
+    box-shadow: 0px 0px 10px rgb(163, 161, 161);
     text-align: center;
     position: fixed;
-    top :270px;
+   bottom: 50px;
     z-index: 50;
     right:5px;
     .add-to-cart {
       padding: 10px;
       button.add-button {
-        width: 200px;
+        width: 120px;
         border: 1px solid #b4b2b2;
         background-color: purple;
         color: white;
@@ -154,20 +160,131 @@ mat-card{
       }
     }
   
-    h2.not-subscribed {
+    .not-subscribed {
       color: #333;
-      margin: 20px 0;
+      margin: 3px 0;
+     
     }
   
     .buy-course {
       padding: 10px;
       .buy-button {
+        width: 120px;
         border: 1px solid #ccc;
         background-color: rgb(23, 12, 216);
         padding: 10px;
         cursor: pointer;
         color: #FDFEFE;
        
+      }
+    }
+  }
+  .container1{
+    .container2{
+        border: 1px solid rgb(173, 172, 172);
+        padding: 2%;
+    }
+    .heading1{
+      font-weight: 700;
+      font-size: x-large;
+    }
+  
+    .author {
+      font-weight: 500;
+      font-size: x-large;
+      color: rgb(71, 71, 254);
+      text-decoration: underline;
+    }
+  
+    .text {
+      font-size: large;
+      color: grey;
+    }
+  
+    .avatar {
+      width: 170px;
+      height: 170px;
+      float: left;
+    }
+  
+    .iconsContainer {
+      clear: both;
+    }
+    .icon {
+      display: inline-flex;
+    }
+    .icon p {
+      padding: 3px 0 0 20px;
+    }
+  
+    .icons {
+      display: grid;
+      padding: 20px 0 0 10px;
+    }
+  
+    .reviews-badge {
+      width: 19px;
+      height: 19px;
+    }
+  
+    .courseRatingsHeading {
+      margin-top: 50px;
+      font-weight: 600;
+      font-size: x-large;
+    }
+  
+    .courseRatingContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 20px;
+    
+      .courseRating {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+    
+        &::before {
+          content: "";
+          width: 100%;
+          border-top: 1px solid #ccc;
+          grid-column: span 2;
+          margin-bottom: 20px;
+        }
+    
+        .circle {
+          width: 40px;
+          height: 40px;
+          border-radius: 40px;
+          background-color: black;
+          color: white;
+          text-align: center;
+          line-height: 40px;
+          font-weight: 500;
+          font-size: large;
+        }
+    
+        .alignment {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: 10px;
+          left: 52px;
+    
+          .starsRating {
+            display: flex;
+            align-items: center;
+    
+            .star {
+              color: gold;
+              font-size: 20px;
+            }
+          }
+        }
+  
+        .courseRatingText {
+           margin-top: 30px;
+        }
       }
     }
   }

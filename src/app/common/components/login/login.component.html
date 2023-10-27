@@ -16,7 +16,7 @@
   <input type="tel" id="phone" [(ngModel)]="phone" (input)="checkInput()">
   
   <label for="category">Category:</label>
-  <select id="role" [(ngModel)]="selectedCategory" [disabled]="!isInputFilled  || disableCategorySelect">
+  <select id="role" [(ngModel)]="selectedCategory" >
     <option value="Subscriber">Subscriber</option>
     <option value="Reviewer">Reviewer</option>
     <option value="Instructor">Instructor</option>
@@ -35,7 +35,14 @@
     <div class="error-message" *ngIf="!phoneotp && phoneOtpError"> {{ phoneOtpError }} </div>
   </div>
 
-  <button *ngIf="isLoginVisible" (click)="login()">Login</button>
+  <button *ngIf="isLoginVisible" (click)="login()" mat-raised-button>Login</button>
+  <div class="no-account redirect"routerLink="/register">Don't have Account register here</div>
+  <div class="forgot redirect">Forgot Email ? </div>
+  <div class="forgot redirect phoneno">Forgot Phone No? </div>
+
   </div>
+ 
+ 
 </div>
+
 </div>

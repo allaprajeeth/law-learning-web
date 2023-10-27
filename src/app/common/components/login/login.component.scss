@@ -33,17 +33,13 @@
   background-color: #fff;
 }
 .login-box {
-        // width: 100%;
+        //width: 100%;
         background-color: #fff;
-        // border: 1px solid #ccc;
-        // padding: 10px;
-        // text-align: center;
+        padding-left: 13px;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         flex: 1; 
         justify-content: center;
-        // align-items: center;
-        // margin-left: 50px;
-      // margin-top: 10px;
+        
 
      
       h2 {
@@ -56,16 +52,16 @@
 
 input, select, button {
   margin-bottom: 10px;
-  width: 100%;
+  width: 90%;
   padding: 8px;
   // text-align: left;
 }
 button{
-  // background-color: rgb(38, 112, 186);
+  
   width: 40%;
   margin-left: 80px;
-  background-color: #007791;
-              // color: #000;
+  background-color: #1331d7;
+              color:rgb(255, 255, 255);
               border: none;
               border-radius: 5px;
               padding: 8px 16px;
@@ -86,6 +82,29 @@ button:disabled {
 .error-input {
   border-color: black;
 }
+.redirect{
+  cursor:pointer;
+  text-align: center;
+  // text-decoration: underline;
+  color: rgb(0, 0, 0);
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+.forgot{
+  color:rgb(8, 67, 216);
+  font-weight: 400;
+}
+#role{
+  width: 96%;
+ padding: 8px;
+}
+.phoneno{
+  padding-bottom: 15px;
+}
+.success-snackbar {
+  margin-top: 120px !important; 
+// display: none;
+}
 
 
 
@@ -96,128 +115,3 @@ button:disabled {
 
 
 
-
-
-// // @use '../../../shared-css/variables';
-
-
-
-// .page-container {
-//     display: flex;
-//     justify-content: center; /* Center the content horizontally */
-//     align-items: center; /* Center the content vertically */
-//     height: auto; /* Set the height of the container to 100% of the viewport height */
-//     background-color: #e0d9d9; /* Add your desired background color */
-//     margin-bottom: 100px;
-//     padding: 60px 10px;
-//   }
-  
-//   .carousel-container {
-//     width: 50%; /* Set the width to 50% of the parent container */
-//     background-color: #fff; /* Add a background color to the carousel container */
-//     padding: 20px; 
-//     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-//     border: 1px solid #ccc;
-//     // margin-bottom: 100px;
-//     // margin-top: 40px;
-//   }
-  
-//   .carousel-container img {
-//     width: 100%; /* Set all images to the same width */
-//     height: auto; /* Maintain the aspect ratio */
-//     display: block; /* Remove extra spacing below images */
-//     margin: 0 auto; /* Center the images horizontally within the container */
-//   }
-  
-//   .login-box {
-//     width: 50%; /* Set the width to 50% of the parent container */
-//     background-color: #fff; /* Add a background color to the login box */
-//     padding: 20px; 
-//     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-//     border: 1px solid #ccc;
-//     // margin-bottom: 100px;
-//   }
-    
-   
-    
-//     .login-box {
-//       // width: 50%;
-//       background-color: #fff;
-//       border: 1px solid #ccc;
-//       padding: 20px 100px;
-//       text-align: center;
-//       box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-//       flex: 1; 
-//       justify-content: center;
-//       align-items: center;
-//       margin-left: 50px;
-//       margin-top: 10px;
-      
-    
-//       h2 {
-//         margin-bottom: 20px;
-//       }
-//     .error{
-//       color: red;
-//     }
-//       .form-group {
-//         margin-bottom: 15px;
-//         text-align: left;
-//       }
-    
-//       label {
-//         display: block;
-//         font-weight: bold;
-//       }
-    
-//       input[type="email"],
-//       input[type="tel"],
-//       input[type="password"] {
-//         width: 100%;
-//         padding: 10px;
-//         border:2ppx solid #ccc;
-//       }
-//       select { 
-//           border: 1px solid #ccc;
-//           padding: 10px;
-//           width: 108%;
-//           margin-top: 5px; 
-//           border-radius: 4px;
-//         }
-      
-//         #category-label {
-//           font-weight: bold;
-//           margin-top: 10px;
-          
-//         }
-    
-//       button {
-//         background-color: #007791;
-//             color: #000;
-//             border: none;
-//             border-radius: 5px;
-//             padding: 8px 16px;
-//             cursor: pointer;
-  
-//         &:hover {
-//           background-color: #007791;
-//         }
-//         // a{
-//         //   color: #ccc;
-//         // }
-//       }
-    
-//       p {
-//         margin-top: 15px;
-    
-//         a {
-//           // color: #007bff;
-//           text-decoration: none;
-    
-//           &:hover {
-//             text-decoration: underline;
-//           }
-//         }
-//       }
-//     }
-  
