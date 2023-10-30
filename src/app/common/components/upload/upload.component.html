@@ -43,8 +43,8 @@
               <div class="form-group">
                 <label>Video Duration:</label>
                 <div class="duration-input">
-                  <input type="number"  id="hours" name="hours" placeholder="Hours" required>
-                  <input type="number" id="minutes" name="minutes"  placeholder="Minutes" required>
+                  <input type="number" min="0" max="60"  id="minutes" name="minutes" placeholder="Minutes" required>
+                  <input type="number" min="1" max="60"  id="sec" name="seconds"  placeholder="Seconds" required>
                 </div>
               </div>
 

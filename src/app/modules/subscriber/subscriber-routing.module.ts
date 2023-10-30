@@ -13,6 +13,7 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './notification/notification.component';
+import { SubscribernavComponent } from './components/subscribernav/subscribernav.component';
 
 const routes: Routes = [
   {
@@ -24,10 +25,6 @@ const routes: Routes = [
     path:"login/:category",
     component: HeaderComponent
   },
-  // {
-  //   path:'', 
-  //   component: NavComponent
-  // },
   {
     path:'homepage',
     component:HomepageComponent
@@ -76,10 +73,10 @@ const routes: Routes = [
     path:"notification",
     component: NotificationComponent
   },
-  // {
-  //   path:'', 
-  //   component: SidenavComponent
-  // }
+  {
+    path:"navbar",
+    component:SubscribernavComponent
+  }
 
 ];
 

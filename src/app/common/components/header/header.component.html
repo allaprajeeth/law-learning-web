@@ -1,62 +1,51 @@
 <app-firstnav></app-firstnav>
 <div class="container">
-  <div class="heading">
-    <h1>Available Courses</h1>
+  <div >
+    <div class="heading" >
+      <h1>Available Courses</h1>
+    </div>
+    <div class="my-flex">
+      <mat-form-field appearance="outline" id="filters">
+        <mat-label>Filters</mat-label>
+        <mat-select [matMenuTriggerFor]="filters">
+          <mat-menu #filters="matMenu" yPosition="below">
+            <button mat-menu-item [matMenuTriggerFor]="beginner">Beginner</button>
+            <button mat-menu-item [matMenuTriggerFor]="intermediate">Intermediate</button>
+            <button mat-menu-item [matMenuTriggerFor]="expert">Expert</button>
+            <button mat-menu-item [matMenuTriggerFor]="student">Student</button>
+          </mat-menu>
+        </mat-select>
+      </mat-form-field>
+      <mat-menu #beginner="matMenu">
+        <button mat-menu-item>Crash Course</button>
+        <button mat-menu-item>Detailed Course</button>
+      </mat-menu>
+      <mat-menu #intermediate="matMenu">
+        <button mat-menu-item>Crash Course</button>
+        <button mat-menu-item>Detailed Course</button>
+      </mat-menu>
+      <mat-menu #expert="matMenu">
+        <button mat-menu-item>Crash Course</button>
+        <button mat-menu-item>Detailed Course</button>
+      </mat-menu>
+      <mat-menu #student="matMenu">
+        <button mat-menu-item>Crash Course</button>
+        <button mat-menu-item>Detailed Course</button>
+      </mat-menu>
+    </div>
+    
   </div>
-  <div class="my-flex">
-
-    <mat-form-field appearance="outline" id="filters">
-      <mat-label>Filters</mat-label>
-      <mat-select [matMenuTriggerFor]="filters">
-        <mat-menu #filters="matMenu" yPosition="below">
-          <button mat-menu-item [matMenuTriggerFor]="beginner">Beginner</button>
-          <button mat-menu-item [matMenuTriggerFor]="intermediate">Intermediate</button>
-          <button mat-menu-item [matMenuTriggerFor]="expert">Expert</button>
-          <button mat-menu-item [matMenuTriggerFor]="student">Student</button>
-        </mat-menu>
-      </mat-select>
-    </mat-form-field>
-
-    <mat-menu #beginner="matMenu">
-      <button mat-menu-item>Crash Course</button>
-      <button mat-menu-item>Detailed Course</button>
-    </mat-menu>
-
-    <mat-menu #intermediate="matMenu">
-      <button mat-menu-item>Crash Course</button>
-      <button mat-menu-item>Detailed Course</button>
-    </mat-menu>
-
-    <mat-menu #expert="matMenu">
-      <button mat-menu-item>Crash Course</button>
-      <button mat-menu-item>Detailed Course</button>
-    </mat-menu>
-
-    <mat-menu #student="matMenu">
-      <button mat-menu-item>Crash Course</button>
-      <button mat-menu-item>Detailed Course</button>
-    </mat-menu>
-
-  </div>
-
-  <div class="image-grid">
-
-    <div *ngFor="let image of availablecoursesimages; let j = index" class="image-item">
-
-
+  <div class="image-grid" >
+    <div *ngFor="let image of availablecoursesimages; let j = index" class="image-item" >
       <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <i class="fa fa-play-circle play-icon"></i>
-        </div>
+        <img [src]="image" width="300" height="200" class="img" alt="Random Image">
+        <span class="duration">{{ availableCoursesDurations[j] }}</span>
       </div>
-
       <div class="headingsContainer">
-        <h5>{{ headings[j] }}</h5>
-        <p>{{ paragraphs[j] }}</p>
-       
+        <h5>{{ availableCoursesHeadings[j] }}</h5>
+        <p>{{ availableCoursesAuthors[j] }}</p>
+        <h5>{{ availableCoursesText[j] }}</h5>
       </div>
-
       <div class="ratingscontainer1">
         <div class="ratingConatiner2">
           <span class="star">&#9733;</span>
@@ -65,12 +54,28 @@
           <span class="star">&#9733;</span>
           <span class="star">&#9734;</span>
         </div>
-        <div><span class="ratingConatiner1">Reviewer Rating</span></div>
+        <div class="ratingConatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
+        </div>
+      </div>
+      <div class="ratingscontainer1">
+        <div class="ratingConatiner2">
+          <span>Reviewer Ratings</span>
+        </div>
+        <div class="ratingConatiner2">
+          <span>Subscribers Ratings</span>
+        </div>
+      </div>
+      <div class="subscribers" style="font-weight: 410;">
+        <span>Number of Subscribers:{{ availableCourseSubscribers[j] }}+</span>
       </div>
     </div>
   </div>
-  </div>
-  <br/>
-  <br/>
-  
-  <div><app-footer></app-footer></div>
+</div>
+<br>
+<br>
+<br>

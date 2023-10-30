@@ -20,13 +20,12 @@ interface ApiResponseError {
 export class LoginComponent  {
   
   constructor(private router: Router,private http: HttpClient,private snackBar: MatSnackBar){} 
-  
+  isSendOtpsClicked: boolean = true;
   images: string[] = ['assets/law.img1.png'];
   currentIndex: number = 0;
   email: string = '';
   phone: string = '';
-  selectedCategory: string = '';
-  // password: string = '';
+  selectedCategory: string = 'Subscriber';
   emailotp: string = '';
   phoneotp: string = '';
   emailOtpError: string = '';
@@ -46,13 +45,11 @@ export class LoginComponent  {
   }
   sendOtps(){
     this.showOtpFields();
-    this.sendOtp();
-    console.log(this.email);
-    console.log(this.phone)
-    console.log(typeof this.email)
+    //this.sendOtp();
+    this.isSendOtpsClicked=!this.isSendOtpsClicked;
   }
   async sendOtp() {
-  const baseUrl = '  https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
+  const baseUrl = ' https://ea06-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
   const url = `${baseUrl}?email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=sendotplogin`;
     const requestData = {
       email: this.email,
@@ -96,11 +93,11 @@ showOtpFields(): void {
   }
   login(){
     
-    this.loginpage();
-    //this.loginValidation()
+   // this.loginpage();
+    this.loginValidation()
   }
   async loginpage(){
-    const baseUrl = '  https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
+    const baseUrl = '  https://ea06-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
     const url = `${baseUrl}?email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=verifylogin&emailotp=${encodeURIComponent(this.emailotp)}&phoneotp=${encodeURIComponent(this.phoneotp)}`;
     const requestData = {
       email: this.email,
@@ -126,7 +123,7 @@ showOtpFields(): void {
 
     setTimeout(() => {
       this.loginValidation();
-    }, 3000); 
+    }, 1500); 
     console.log('Login successful', response);
   }
   catch (error: any) {
@@ -191,6 +188,7 @@ showErrorMessage(message: string) {
     panelClass: ['error-snackbar'] 
   });
 }
+
 
 
 }
