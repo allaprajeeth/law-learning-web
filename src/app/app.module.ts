@@ -51,6 +51,7 @@ import { CertificateComponent } from './common/components/certificate/certificat
 import { LoginComponent } from './common/components/login/login.component';
 import { ModalComponent } from './common/components/modal/modal.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
+import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
+    PhonepasswordComponent,
  
 
     

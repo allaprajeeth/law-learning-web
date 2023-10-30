@@ -18,6 +18,7 @@ import { LoginComponent } from './common/components/login/login.component';
 import { FooterComponent } from './shared-module/components/footer/footer.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
 import { OverviewComponent } from './common/components/overview/overview.component';
+import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 
 
 const routes: Routes = [
@@ -89,6 +90,10 @@ const routes: Routes = [
   {
     path: 'password',
     component:PasswordComponent
+  },
+  {
+    path: 'phonepassword',
+    component:PhonepasswordComponent
   },
   {
     path: 'videoplayer',
