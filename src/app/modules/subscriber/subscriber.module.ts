@@ -37,6 +37,7 @@ import { NotificationComponent } from './notification/notification.component';
 
 
 
+
 @NgModule({
   declarations: [
     SidenavComponent,
@@ -53,7 +54,8 @@ import { NotificationComponent } from './notification/notification.component';
     HomepageComponent,
     EditEmailComponent,
     MyDirectiveDirective,
-    NotificationComponent
+    NotificationComponent,
+   
   ],
   imports: [
     CommonModule,

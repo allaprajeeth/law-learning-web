@@ -11,7 +11,9 @@ interface Categories {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
+  availablecoursesimages: string[] = [];
 
+  title = 'my-first-app';
   categories: Categories[] = [
     { viewValue: 'Beginner' },
     { viewValue: 'Intermediate' },
@@ -19,71 +21,107 @@ export class HeaderComponent implements OnInit{
     { viewValue: 'Student' },
   ];
 
-  mycoursesimages: string[] = [];
-  availablecoursesimages: string[] = [];
+  constructor(
+    private route: ActivatedRoute,
+    // private searchService: SearchServiceService
+  ) {}
 
-  j: number = 0; 
+  availableCoursesHeadings: string[] = [
+    "Introduction to Criminal Law",
+    "Contract Law Demystified",
+    "Environmental Law Explained",
+    "Intellectual Property Law",
+    "Civil Rights and Liberties",
+    "Family Law Fundamentals",
+    "Real Estate Law Made Simple",
+    "Business Law Essentials for Entrepreneurs",
+    "Human Rights Law",
+    "Labor and Employment Law",
+    "International Law and Diplomacy",
+    "Torts and Personal Injury Law",
+  ];
 
-  headings: string[] = [
-    'Constitutional Law',
-    'Criminal Law',
-    'Civil Procedure',
-    'Contract Law',
-    'Tort Law',
-    'Property Law',
-    'Administrative Law',
-    'International Law',
-    'Family Law',
-    'Environmental Law',
-    'Intellectual Property Law',
-    'Human Rights Law',
-    
+  myCoursesHeadings: string[] = [
+    "Bankruptcy Law",
+    "Healthcare Law",
+    "Immigration Law 101",
+    "Estate Planning and Probate Law",
   ];
-  paragraphs: string[] = [
-    'Government Structure Rules.',
-    'Offenses and Punishments.',
-    'Legal Court Processes.',
-    'Agreement Enforcement Rules.',
-    'Civil Wrong Remedies.',
-    'Ownership Rights Regulation.',
-    'Global Relations Laws.',
-    'Domestic Relationship Regulations.',
-    "Nature Protection Rules.",
-    'Creative Rights Protection.',
-    'Fundamental Freedom Safeguards.',
-    'Business Entity Regulations.',
+
+  availableCoursesAuthors: string[] = [
+    'John Smith',
+    'Mary Johnson',
+    'David Wilson',
+    'Sarah Davis',
+    'Michael Brown',
+    'Jennifer White',
+    'Robert Lee',
+    'Susan Anderson',
+    'Charles Harris',
+    'Amanda Lewis',
+    'Laura Roberts',
+    'Robert Lee',
   ];
-  
+
+  myCoursesAuthors: string[] = [
+    'William Jackson',
+    'Laura Roberts',
+    'Richard Martin',
+    'Lisa Miller',
+  ];
+
+uploadedCoursesText: string[] = [
+  'Expert | Detailed Course', 
+  'Beginner | Crash Course', 
+  'Intermediate | Detailed Course', 
+  'Student | Crash Course',
+];
+
+availableCoursesText: string[] = [
+  'Expert | Detailed Course', 
+  'Beginner | Crash Course', 
+  'Intermediate | Detailed Course', 
+  'Student | Crash Course', 
+  'Beginner | Detailed Course', 
+  'Intermediate | Crash Course', 
+  'Student | Detailed Course',
+  'Expert | Crash Course',
+  'Student | Crash Course', 
+  'Beginner | Crash Course',
+  'Intermediate | Detailed Course',
+  'Expert | Detailed Course', 
+];
+
+  uploadedCoursesDurations: string[] = [];
+  availableCoursesDurations: string[] = [];
+
   randomMyCourseValues: number[] = [];
-  randomAvailableCourses: number[] = [];
-  randomSubscribersValues: number[] = [];
+  
+  subscribersValues = ["10", "50", "100", "200", "500", "1000"];
 
+  myCourseSubscribers: string[] = [];
+  availableCourseSubscribers: string[] = [];
   ngOnInit(): void {
-    for (let i = 0; i < 4; i++) {
-      const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
-      this.mycoursesimages.push(randomImageURL);
-      const randomValue = Math.floor(Math.random() * 100) + 1;
-      this.randomMyCourseValues.push(randomValue);
-    }
-
-    for (let j = 0; j < 12; j++) {
-      const randomImageURL = `https://picsum.photos/300/200?random=${j}`;
+    for (let l = 0; l < 12; l++) {
+      const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
       this.availablecoursesimages.push(randomImageURL);
-      const randomValue = Math.floor(Math.random() * 100) + 1;
-      this.randomAvailableCourses.push(randomValue);
-      const randomSubscribers = Math.floor(Math.random() * 100) + 10;
-      this.randomSubscribersValues.push(randomSubscribers);
+      const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
+      this.availableCourseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+
+      const minHours = 1.5;
+      const maxHours = 6;
+      const hours = minHours + Math.random() * (maxHours - minHours);     
+      const formattedHours = Math.floor(hours);
+      const minutes = Math.floor((hours % 1) * 60);
+      const formattedMinutes = this.formatWithLeadingZero(minutes);    
+      const duration = `${formattedHours}h ${formattedMinutes}m`;
+      this.availableCoursesDurations.push(duration);
     }
   }
 
-
-
-  constructor(private route: ActivatedRoute) { }
-
-
-
-
-
+  formatWithLeadingZero(value: number): string {
+    return value < 10 ? `0${value}` : `${value}`;
+  }
   
   }
   

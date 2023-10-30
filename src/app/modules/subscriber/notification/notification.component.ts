@@ -47,6 +47,7 @@ export class NotificationComponent implements OnInit{
     return color;
   }
 
-  today: Date = new Date();
+  currentDate: Date = new Date();
+
 }
 

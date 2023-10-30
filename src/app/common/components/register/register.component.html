@@ -14,8 +14,7 @@
   
     <label for="name">Name:</label>
     <input type="text" id="name" [(ngModel)]="name" (input)="checkInput()">
-    
- 
+  
   <label for="email">Email:</label>
   <input type="email" id="email" [(ngModel)]="email" (input)="checkInput()">
 
@@ -23,22 +22,20 @@
   <input type="tel" id="phone" [(ngModel)]="phone" (input)="checkInput()">
   
   <label for="category">Category:</label>
-  <select id="role" [(ngModel)]="selectedCategory" >
+  <select id="role" [(ngModel)]="selectedCategory" [disabled]="!isSendOtpsClicked">
     <option value="Subscriber">Subscriber</option>
     <option value="Reviewer">Reviewer</option>
     <option value="Instructor">Instructor</option>
-    <option value="ContentManager">ContentManager</option>
+    <option value="Content_Manager">Content Manager</option>
+    <option value="Admin">Admin</option>
   </select>
-
-
   <button *ngIf="!isOtpVisible" (click)="sendOtps()"  [disabled]="!isInputFilled">Send OTPs</button>
-
   <div *ngIf="isOtpVisible">
     <label for="emailOtp">Email OTP:</label>
-    <input type="text" id="emailOtp" [(ngModel)]="emailotp" required>
+    <input type="text" id="emailOtp" [(ngModel)]="emailotp" required  [attr.autocomplete]="'off'" >
     <div class="error-message" *ngIf="!emailotp && emailOtpError"> {{ emailOtpError }} </div>
     <label for="phoneOtp">Phone OTP:</label>
-    <input type="text" id="phoneOtp" [(ngModel)]="phoneotp" required>
+    <input type="text" id="phoneOtp" [(ngModel)]="phoneotp" required   [attr.autocomplete]="'off'" >
     <div class="error-message" *ngIf="!phoneotp && phoneOtpError"> {{ phoneOtpError }} </div>
   </div>
 

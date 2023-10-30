@@ -6,7 +6,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 interface ApiResponse {
   message: string;
 }
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,13 +13,13 @@ interface ApiResponse {
 })
 export class RegisterComponent {
   constructor(private router: Router,private http: HttpClient,private snackBar: MatSnackBar){} 
-
+  isSendOtpsClicked: boolean = true;
   images: string[] = ['assets/law.img1.png'];
   currentIndex: number = 0;
   name:string ='';
   email: string = '';
   phone: string = '';
-  selectedCategory: string = '';
+  selectedCategory: string = 'Subscriber';
   emailotp: string = '';
   phoneotp: string = '';
   emailOtpError: string = '';
@@ -36,13 +35,12 @@ export class RegisterComponent {
   }
   sendOtps(){
     this.showOtpFields();
-    this.sendOtpSignup();
-    console.log(this.email);
-    console.log(this.phone)
-    console.log(typeof this.email)
+    //this.sendOtpSignup();
+    this.isSendOtpsClicked=!this.isSendOtpsClicked;
+
   }
   async sendOtpSignup() {
-  const baseUrl = 'https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
+  const baseUrl = 'https://ea06-202-53-86-13.ngrok-free.app/api/signuplogin/sendotp';
   const url = `${baseUrl}?name=${encodeURIComponent(this.name)}&email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=sendotpsignup`;
     const requestData = {
       name:this.email,
@@ -86,10 +84,11 @@ showOtpFields(): void {
     this.disableCategorySelect = true; 
   }
   signupVerify(){
-    this.loginpage();
+    //this.loginpage();
+    this.signUpValidation()
   }
   async loginpage(){
-    const baseUrl = '  https://a3d1-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
+    const baseUrl = ' https://ea06-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
     const url = `${baseUrl}?name=${encodeURIComponent(this.name)}email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=verifysignup&emailotp=${encodeURIComponent(this.emailotp)}&phoneotp=${encodeURIComponent(this.phoneotp)}`;
     const requestData = {
       name:this.name,
@@ -115,7 +114,7 @@ showOtpFields(): void {
 
       setTimeout(() => {
         this.signUpValidation();
-      }, 2000); 
+      }, 1500); 
     }
     console.log('Sign up Successful', response);
   }
@@ -130,19 +129,11 @@ showOtpFields(): void {
 
   signUpValidation(): void {
     if (this.isOtpVisible && this.emailotp && this.phoneotp) {
-      // Both OTP fields are filled, navigate to the appropriate route
+
       let route: string = '';
-      // if (this.selectedCategory === '') {
-      //   route = 'subscriber/homepage';
-      // } else if (this.selectedCategory === 'Instructor') {
-      //   route = 'instructor/homepage';
-      // } else if (this.selectedCategory === 'Reviewer') {
-      //   route = 'reviewer/homepage';
-      // }else if (this.selectedCategory === 'ContentManager') {
-      //   route = 'authentication/homepage';
-      // }
       
-      this.router.navigate(['/register']);
+      
+      this.router.navigate(['/login']);
   
       // Clear error messages and remove error border
       this.emailOtpError = '';
@@ -168,200 +159,17 @@ showOtpFields(): void {
   showSuccessMessage(message: string) {
     this.snackBar.open(message, 'Close', {
       duration: 3000, 
+      verticalPosition: 'top',
       panelClass: ['success-snackbar'] 
     });
 }
 showErrorMessage(message: string) {
   this.snackBar.open(message, 'Close', {
     duration: 3000, 
+    verticalPosition: 'top',
     panelClass: ['error-snackbar'] 
   });
 }
-  
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef } from '@angular/core';
-// import { Router } from '@angular/router';
-
-// @Component({
-//     selector: 'app-register',
-//     templateUrl: './register.component.html',
-//     styleUrls: ['./register.component.scss']
-//   })
-//   export class RegisterComponent implements OnInit {
-//     email: string = '';
-//   phone: string = '';
-//   selectedCategory: string = '';
-//   // password: string = '';
-//   emailOtp: string = '';
-//   phoneOtp: string = '';
-//   emailOtpError: string = '';
-//   phoneOtpError: string = '';
-//   // passwordError: string = '';
-
-//   isInputFilled: boolean = false;
-//   // isPasswordVisible: boolean = false;
-//   isOtpVisible: boolean = false;
-//   isLoginVisible: boolean = false;
-//   // router: any;
-
-//   checkInput(): void {
-//     this.isInputFilled = !!this.email && !!this.phone;
-//   }
-
-//   togglePasswordVisibility(): void {
-//     // this.isPasswordVisible = this.selectedCategory === 'Option1' || this.selectedCategory === 'Option2';
-//     // this.isOtpVisible = !this.isPasswordVisible; // Hide OTP fields when password is visible
-//     // this.isLoginVisible = true;
-//   }
-  
-//   showOtpFields(): void {
-//     this.isOtpVisible = true;
-//     this.isLoginVisible = true;
-//   }
-
-
-  
-
-  
-//   fnLogin(): void {
-//     if (this.isOtpVisible && (!this.emailOtp || !this.phoneOtp)) {
-//       this.emailOtpError = this.emailOtp ? '' : 'Email OTP is required.';
-//       this.phoneOtpError = this.phoneOtp ? '' : 'Phone OTP is required.';
-
-//       // Add error-input class to highlight the input fields with errors
-//       if (!this.emailOtp) {
-//         document.getElementById('emailOtp')?.classList.add('error-input');
-//       } else {
-//         document.getElementById('emailOtp')?.classList.remove('error-input');
-//       }
-
-//       if (!this.phoneOtp) {
-//         document.getElementById('phoneOtp')?.classList.add('error-input');
-//       } else {
-//         document.getElementById('phoneOtp')?.classList.remove('error-input');
-//       }
-
-//       // return;
-
-//       let route: string = '';
-  
-//           if (this.selectedCategory === 'Subscriber') {
-//             route = 'subscriber/homepage';
-//           } else if (this.selectedCategory === 'Instructor') {
-//             route = 'instructor/homepage';
-//           } else if (this.selectedCategory === 'Reviewer') {
-//             route = 'reviewer/homepage';
-//           }
-      
-//           this.router.navigate([route]);
-//     }
-
-    
-//     // Your login logic here
-//   }
-
-//     // Your login logic here
-  
-//   // showPasswordField(): void {
-//   //   this.isPasswordVisible = true;
-//   // }
-
-//   // images: string[] = ['assets/law.img1.png'];
-//   // currentIndex: number = 0;
-//   // interval: any;
-//   // username: string = '';
-//   // password: string = '';
-//   // loginIsSuccessful: boolean = false;
-//   // isCategoryEnabled: boolean = false;
-//   // showNextButton: boolean = true;
-//   // phoneOtp: string = '';
-//   // emailOtp: string = '';
-//   // selectedCategory: string = '';
-//   // showLoginForm: boolean = true;
-
-//   // constructor(private router: Router, private cdr: ChangeDetectorRef) {}
-
-//   ngOnInit() {
-//     // this.isCategoryEnabled = false;
-   
-      
-   
-//   }
-
-//   constructor(private router: Router){}
-
-  // showNextForm() {
-  //   this.showNextButton = false;
-  // }
-
-  // onCategoryChange(event: any): void {
-  //   this.selectedCategory = event.target.value;
-  //   this.checkEnableCategorySelect();
-  // }
-
-  // checkEnableCategorySelect() {
-  //   // Check if email and phone number are filled
-  //   if (this.username && this.password) {
-  //     // Enable category selection dropdown
-  //     this.isCategoryEnabled = true;
-  //     this.selectedCategory = 'Subscriber'; // Set default category to "Subscriber"
-  //     this.showNextButton = true; // Enable "SendOtps" button
-  //   } else {
-  //     // Disable category selection dropdown and "SendOtps" button
-  //     this.isCategoryEnabled = false;
-  //     this.selectedCategory = ''; // Reset the selected category
-  //     this.showNextButton = false; // Disable "SendOtps" button
-  //   }
-  //   this.cdr.detectChanges();
-  // }
-  
-
-  // fnLogin(event: Event): void {
-  //   if (this.selectedCategory === 'Subscriber' && this.showNextButton) {
-  //     // Handle sending OTP logic here
-  //     // This block is empty for handling OTP logic for Subscribers
-  //   } else if (this.selectedCategory === 'Subscriber' && !this.showNextButton) {
-  //     // Handle verifying OTP logic here
-  //     // You need to handle OTP verification logic for Subscribers here
-  //   } else {
-  //     let route: string = '';
-  
-  //     if (this.selectedCategory === 'Subscriber') {
-  //       route = 'subscriber/homepage';
-  //     } else if (this.selectedCategory === 'Instructor') {
-  //       route = 'instructor/homepage';
-  //     } else if (this.selectedCategory === 'Reviewer') {
-  //       route = 'reviewer/homepage';
-  //     }
-  
-  //     this.router.navigate([route]);
-  //   }
-  // }
-  
-// }
 
