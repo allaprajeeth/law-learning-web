@@ -1,69 +1,33 @@
- <app-subscribernav></app-subscribernav>
- <!-- <div class="container">
-    <div class="course">
-        <h1>Shopping Cart</h1>
-        <h4>1 Course in Cart</h4>
-        <hr>
-        <table>
-            
-        </table>
-        <hr>
-    </div>
-
-    
-    <div class="ratings">
-        <div class="reviewer-ratings">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-            <p>Reviewer Ratings</p>
-        </div>
-        <div class="subscribers-ratings">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-            <p>Subscribers Ratings</p>
-        </div>
-    </div>
-
-    
-    <div class="total">
-        <h5>Total:</h5>
-        <p>₹449</p>
-        <button class="btn">Checkout</button>
-    </div>
-</div> -->
-
-<div class="container">
-    <div class="course">
+<app-subscribernav></app-subscribernav>
+<div class="cartContainer">
     <h1>Shopping Cart</h1>
-    <h4>1 Course in Cart</h4>
-    <hr>
-    <table>
-        <tr>
-            <td> <img
-                    src="data:image/png;base64,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"
-                    alt="course-img"></td>
-            <td>
-                <h4>Javascript for Beginners</h4>
-                <p>4.4 ⭐⭐⭐⭐ (2,345 ratings)</p>
-                <p>8 total hours • 72 lectures • All levels</p>
-            </td>
-            <td> 
-                ₹499
-            </td>
-        </tr>
-    </table>
-    <hr>
-</div>
+    <h5>1 Course in Cart</h5>
+    <hr class="horizontalLine">
+    <div class="course">
+        <img src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/05/25125222/Law-Courses.jpg"
+            alt="course-img" class="lawLearningImage">
+        <div class="courseHeading">
+            <h4>Introduction to Criminal Law</h4>
+            <p>4.4 ⭐⭐⭐⭐ (2,345 Subscriber ratings)</p>
+            <p>4.2 ⭐⭐⭐⭐ (Reviewer ratings)</p>
+            <p>8 total hours &nbsp; • 72 lectures &nbsp; • All levels</p>
+        </div>
+        <div class="price">
+            ₹499
+        </div>
+    </div>
 
-   <div class="total">
-    <h5>Total:</h5>
-    <p>₹449</p>
-    <button class="btn"> Checkout</button>
-   </div>
+    <div class="total">
+        <h5>Price: ₹449</h5>
+        <p *ngIf="discountedPrice">Discount Applied: {{ roundPercentage(100 - (discountedPrice / originalPrice) * 100)
+            }}%</p>&nbsp;
+        <h5>Total Price: ₹{{ discountedPrice }} </h5>
+        <button class="btn"> Checkout</button>
+    </div>
+
+    <div class="coupon">
+        <input [(ngModel)]="couponCode" placeholder="Enter your Coupon Code">
+        <button (click)="applyCoupon()" class="btn">Apply Coupon</button>
+    </div>
+    <hr class="horizontalLine">
 </div>

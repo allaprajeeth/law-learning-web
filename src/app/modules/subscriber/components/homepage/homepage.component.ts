@@ -30,6 +30,8 @@ mycoursesimages: string[] = [];
     // private searchService: SearchServiceService
   ) {}
 
+  // headings: string[] = [];
+
   availableCoursesHeadings: string[] = [
     "Introduction to Criminal Law",
     "Contract Law Demystified",
@@ -96,6 +98,45 @@ availableCoursesText: string[] = [
   'Expert | Detailed Course', 
 ];
 
+price: string[] = [
+  '₹3199',
+  '₹3029',
+  '₹3229',
+  '₹3009',
+  '₹3599',
+  '₹3055',
+  '₹3199',
+  '₹3327',
+  '₹3087',
+  '₹3299',
+  '₹3172',
+  '₹3449',
+];
+
+courseContent: string[] = [
+  'Understanding the legal system and The role of law in society',
+  'Types of crimes and Criminal procedure and evidence',
+  'Tort law and Contract law and Legal dispute resolution',
+  'Structure of government and Individual rights and liberties',
+  'Finding and citing legal sources and Drafting legal documents',
+  'Marriage and divorce and Child custody and support',
+  'Property ownership and Real estate transactions',
+  'Copyrights, trademarks, and patents and Protecting intellectual property',
+  'Environmental regulations and Conservation and sustainability',
+  'Employee rights and labor unions and Workplace discrimination and harassment',
+  'Treaties and international organizations and Human rights and humanitarian law',
+  'Regulations in the financial industry and Banking contracts and transactions',
+];
+
+showCard: boolean[] = Array(12).fill(false);
+
+tooltipPosition: {
+  left: string;
+  right: string;
+  top: string;
+  display: string;
+} = { left: '0', right: 'unset', top: '0', display: 'none' };
+
   uploadedCoursesDurations: string[] = [];
   availableCoursesDurations: string[] = [];
 
@@ -105,6 +146,42 @@ availableCoursesText: string[] = [
 
   myCourseSubscribers: string[] = [];
   availableCourseSubscribers: string[] = [];
+
+  openMyMenu(index: number, event: MouseEvent): void {
+    this.showCard = this.showCard.map((_, j) => j === index);
+  
+    if (this.showCard[index]) {
+      const element = event.currentTarget as HTMLElement;
+      const rect = element.getBoundingClientRect();
+  
+      if (rect.left + rect.width / 2 > window.innerWidth / 2) {
+        this.tooltipPosition = {
+          left: 'unset',
+          right: `${window.innerWidth - rect.left}px`,
+          top: `${rect.top}px`,
+          display: 'block',
+        };
+  
+        const courseCardPosition = { top: '-40px', right: '277px' };
+        Object.assign(this.tooltipPosition, courseCardPosition);
+      } else {
+        this.tooltipPosition = {
+          left: `${rect.left}px`,
+          right: 'unset',
+          top: `${rect.top}px`,
+          display: 'block',
+        };
+  
+        const courseCardPosition = { top: '-40px', left: '277px' };
+        Object.assign(this.tooltipPosition, courseCardPosition);
+      }
+    }
+  }
+  
+  closeMyMenu(index: number): void {
+    this.showCard[index] = false;
+  }
+  
   ngOnInit(): void {
     // this.searchService.searchQuery$.subscribe((query) => {
     //   // this.searchQuery = query;
