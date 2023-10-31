@@ -1,0 +1,49 @@
+
+    <!-- <app-subscribernav></app-subscribernav> -->
+    <app-instructornav></app-instructornav>
+    <div class="header">
+        <h1 class="name">User Name</h1>
+    </div>
+    
+    <p class="para">Enter your Profile Details Here</p>
+    <!-- <p class="para">Courses you're enrolled in</p> -->
+    <div class="courses">
+        <div class="course-box">
+            <form [formGroup]="profileForm" class="example-form">
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Category" formControlName="category">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Full Name" formControlName="firstName">
+                </mat-form-field>
+                
+              <br/>
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+              <br/>
+                <!-- <mat-form-field class="example-full-width">
+                   
+                  <input matInput placeholder="Total Students">
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width">
+                   
+                    <input matInput placeholder="Reviews">
+                  </mat-form-field>
+                  <br/> -->
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="About me" formControlName="aboutMe"></textarea>
+                </mat-form-field>
+                
+              <br/>
+              <button mat-raised-button color="primary" [disabled]="!profileForm.valid">Submit</button>
+
+              </form>
+              
+        </div>
+    </div>
+
+

@@ -1,14 +1,11 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-password',
-  templateUrl: './password.component.html',
-  styleUrls: ['./password.component.scss']
+  selector: 'app-phonepassword',
+  templateUrl: './phonepassword.component.html',
+  styleUrls: ['./phonepassword.component.scss']
 })
-export class PasswordComponent {
-
-  title = 'AngularCodeTestingProject';
-
+export class PhonepasswordComponent {
   detailsEntered = false;
   email: string = '';
   phone: string = '';
@@ -21,7 +18,6 @@ export class PasswordComponent {
 
   // updatePhoneNumber: string = '';
   confirmPhone: string = '';
-  updatePhoneMode = false;
 
   // newPasswordVisible = false;
   // confirmPasswordVisible = false;
@@ -37,7 +33,7 @@ export class PasswordComponent {
   // }
 
   sendOTP() {
-    if (this.email  ) {
+    if (this.phone) {
       this.detailsEntered = true;
     } else {
       alert('Please enter a valid Email.');
@@ -48,7 +44,6 @@ export class PasswordComponent {
     // Implement OTP verification logic here
     if (this.emailOTPInput ) {
       this.otpVerified = true;
-      // this.updatePhoneMode = true; 
     } else {
       alert('Please enter valid emailOTP and phoneOTP');
     }
@@ -65,9 +60,8 @@ export class PasswordComponent {
   //   }
   // }
 
-  updatePhoneNumber() {
-    // ... Update this method for your logic ...
-    this.updatePhoneMode = true; // Set the updatePhoneMode to true to switch to the "OTP Verification" form
+  updatePhoneNumber(){
+
   }
 
   loginAgain() {
@@ -89,3 +83,5 @@ export class PasswordComponent {
     }
   }
 }
+
+
