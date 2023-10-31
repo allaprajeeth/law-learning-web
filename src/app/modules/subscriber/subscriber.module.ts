@@ -32,6 +32,8 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
+import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -55,6 +57,7 @@ import { NotificationComponent } from './notification/notification.component';
     EditEmailComponent,
     MyDirectiveDirective,
     NotificationComponent,
+    NumberchangepopupComponent,
    
   ],
   imports: [
@@ -73,7 +76,8 @@ import { NotificationComponent } from './notification/notification.component';
     // NgFor,
     MatMenuModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
   ]
 })
 export class SubscriberModule { }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { NumberchangepopupComponent } from '../numberchangepopup/numberchangepopup.component';
 @Component({
   selector: 'app-accountsecurity',
   templateUrl: './accountsecurity.component.html',
@@ -10,19 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 export class AccountsecurityComponent {
 
   accountForm: FormGroup;
-  showOtpFields = false; // Flag to control visibility of OTP fields and Save Changes button
+  isCurrentEmailEditable = false;
+  isCurrentPhoneEditable = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {
-
-
-    
-
-
+  constructor(private fb: FormBuilder, private dialog: MatDialog) {
     this.accountForm = this.fb.group({
-      currentEmail: ['', Validators.required],
-      currentPhone: ['', Validators.required],
-      // newEmail: ['', Validators.email],
-      // newPhone: ['', Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")] 
+      currentEmail: [{ value: '', disabled: true }, Validators.required],
+      currentPhone: [{ value: '', disabled: true }, Validators.required],
       newEmail: [''],
       newPhone: [''],
       emailOtp: [''],
@@ -30,21 +24,23 @@ export class AccountsecurityComponent {
     });
   }
 
-navigateToAccountSecurity() {
-  this.router.navigate(['/account-security']);
-}
+  // constructor(private dialog: MatDialog) {}
 
-navigateToSideNav() {
-  this.router.navigate(['/side-nav']);
-}
+  openPhoneVerificationModal() {
+    const dialogRef = this.dialog.open(NumberchangepopupComponent, {
+      width: '700px', // Set the width of the modal
+    });
 
-sendOtps() {
-  // Logic to send OTPs goes here
-  this.showOtpFields = true; // Set the flag to show OTP fields and Save Changes button
-}
+    dialogRef.afterClosed().subscribe(newPhoneNumber => {
+      if (newPhoneNumber) {
+        // Handle the new phone number, e.g., update your form control or send it to the server.
+        console.log('New Phone Number:', newPhoneNumber);
+      }
+    });
+  }
 
-savechanges(){
-  this.showOtpFields = false; 
+  editCurrentPhone() {
+    console.log('Edit button clicked');
+    this.openPhoneVerificationModal();
+  }
 }
-}
-
