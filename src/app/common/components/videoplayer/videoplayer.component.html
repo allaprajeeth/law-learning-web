@@ -44,24 +44,24 @@
                         <div style="color: rgb(122, 119, 119)">
                           {{ video?.time }}
                         </div>
-                        <ng-container *ngFor="let resource of resourceData">
-                          <div class="resources" *ngIf="resource.title === video.title" (click)="showDocs()">
-                            <span >Resources </span><mat-icon class="arrow-icon">{{
-                              documents ? "keyboard_arrow_up" : "keyboard_arrow_down"
-                            }}</mat-icon>
-                            <div *ngIf="documents" class="documents">
-                               <div class="doc">LawLanguage.pdf</div>
-                               <div class="doc">Fundamentals.pdf</div>
-                               <div class="doc">Rights.pdf</div>
-                            </div>
-                          </div>
-                        </ng-container>
                       </div>
                     </div> 
+                    
             </div>
+            <ng-container *ngFor="let resource of resourceData">
+              <div class="resources" *ngIf="resource.title === video.title" >
+                <!-- <span ><b>Resources </b></span> -->
+                <div class="documents">
+                  <span class="documentspdf"><mat-icon style="height:16px;margin-top: 2px;font-size: medium;">download</mat-icon><b> LawLang.pdf</b></span>
+                </div>
+              </div>
+            </ng-container>
             </ng-container>
             </div>
           </mat-expansion-panel>
+          
+              <div class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">End of Course</div>
+            
         </mat-accordion>
   </mat-card>
       <!-- video player container -->
@@ -89,10 +89,7 @@
           </div>
         </div>
       </div>
-    
-    
-   
-</div>
+  </div>
 </ng-container>
 <div class="completed-videos">
   {{completedVideoCount}} Videos Completed

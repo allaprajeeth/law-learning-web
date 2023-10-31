@@ -1,9 +1,9 @@
 <app-subscribernav></app-subscribernav>
 <div class="container">
-  <div class="heading" >
+  <div class="heading">
     <h1>My Courses</h1>
   </div>
-  <div class="image-grid" >
+  <div class="image-grid">
     <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
@@ -53,8 +53,8 @@
     </div>
   </div>
 
-  <div >
-    <div class="heading" >
+  <!-- <div> -->
+    <div class="heading">
       <h1>Available Courses</h1>
     </div>
     <div class="my-flex">
@@ -86,22 +86,27 @@
         <button mat-menu-item>Detailed Course</button>
       </mat-menu>
     </div>
-    <div class="image-grid" >
+    <!-- <div class="image-grid"> -->
       <!-- <div *ngFor="let image of filteredImages; let j = index" class="image-item">
         
       </div> -->
-    </div>
-  </div>
-  <div class="image-grid" >
-    <div *ngFor="let image of availablecoursesimages; let j = index" class="image-item" >
+    <!-- </div> -->
+  <!-- </div> -->
+  <div class="image-grid">
+    <div *ngFor="let image of availablecoursesimages; let j = index" class="image-item"
+    (mouseover)="openMyMenu(j, $event)" (mouseleave)="closeMyMenu(j)">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
-          
-          <a routerLink="/overview" [queryParams]="{ showDiv: 'true' }">
+           <a routerLink="/overview" [queryParams]="{ showDiv: 'true' }">
             <i class="fa fa-play-circle play-icon"></i>
-            
           </a>
+        </div>
+        <app-course-card *ngIf="showCard[j]" [heading]="availableCoursesHeadings[j]" [content]="courseContent[j]"
+          [style]="tooltipPosition" class="course-card-component">
+        </app-course-card>
+        <div [ngClass]="{'notch-left': showCard[j] && tooltipPosition.left === '277px',
+                         'notch-right': showCard[j] && tooltipPosition.right === '277px'}">
         </div>
         <span class="duration">{{ availableCoursesDurations[j] }}</span>
       </div>
@@ -139,9 +144,8 @@
       </div>
     </div>
   </div>
-  </div>
-  <br/>
-  <br/>
-  <br/>
-  <br/>
-  
+</div>
+<br />
+<br />
+<br />
+<br />

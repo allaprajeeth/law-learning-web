@@ -22,6 +22,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { PhotoComponent } from './components/photo/photo.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -34,11 +35,7 @@ import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
-
-
-
-
+import { CourseCardComponent } from './components/course-card/course-card.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +55,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MyDirectiveDirective,
     NotificationComponent,
     NumberchangepopupComponent,
-   
+    CourseCardComponent, 
   ],
   imports: [
     CommonModule,
@@ -73,11 +70,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSlideToggleModule,
     FormsModule,
     MatInputModule,
-    // NgFor,
+  
     MatMenuModule,
     MatButtonModule,
     MatBadgeModule,
     MatDialogModule
+    MatCardModule,
+    MatBadgeModule
   ]
 })
 export class SubscriberModule { }
