@@ -33,12 +33,9 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
+import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CourseCardComponent } from './components/course-card/course-card.component';
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -57,8 +54,8 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     EditEmailComponent,
     MyDirectiveDirective,
     NotificationComponent,
-    CourseCardComponent,
-   
+    NumberchangepopupComponent,
+    CourseCardComponent, 
   ],
   imports: [
     CommonModule,
@@ -73,9 +70,11 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     MatSlideToggleModule,
     FormsModule,
     MatInputModule,
-    // NgFor,
+  
     MatMenuModule,
     MatButtonModule,
+    MatBadgeModule,
+    MatDialogModule
     MatCardModule,
     MatBadgeModule
   ]

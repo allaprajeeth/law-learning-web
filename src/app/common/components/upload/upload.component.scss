@@ -1,110 +1,7 @@
-// .container-wrapper {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   // height: 100vh; /* Set height to viewport height for full-screen appearance */
-//   background-color: #e0d9d9; /* Background color for the whole page */
-// }
-
-// .form-container {
-//   width: 60%; /* Set your desired width for the centered box */
-//   background-color: #ffffff; /* Background color for the centered box */
-//   padding: 20px;
-//   border-radius: 10px; /* Adds rounded corners to the box */
-//   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-//   margin-top: 30px;
-//   margin-bottom: 30px;
-
-//   .video-section {
-//     position: relative; /* Set position to relative for positioning children elements */
-//     // border: 1px solid #ccc;
-//     // border-radius: 10px;
-//     padding: 15px;
-//     margin-bottom: 10px;
-//     // box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-
-//     .remove-button {
-//       position: absolute;
-//       top: 5px; /* Adjust the distance from the top as needed */
-//       right: 5px; /* Adjust the distance from the right as needed */
-//       background-color: #005e6b; /* Red background color */
-//       color: white;
-//       border: none;
-//       border-radius: 50%;
-//       padding: 8px 10px;
-//       cursor: pointer;
-//       font-size: 14px;
-//     }
-
-    // .form-group {
-    //   margin-left: 30px;
-    //   margin-bottom: 15px;
-
-    //   label {
-    //     display: block;
-    //     font-weight: bold;
-    //   }
-
-      // input[type="text"],
-      // input[type="number"],
-      // textarea,
-      // select,
-      // input[type="file"] {
-      //   width: 90%;
-      //   padding: 10px;
-      //   border: 1px solid #ccc;
-      //   border-radius: 5px;
-      // }
-
-      // textarea {
-      //   resize: vertical;
-      // }
-
-      // input[type="file"] {
-      //   border: none;
-      //   background-color: #ffffff;
-      // }
-    // }
-  // }
-
-  // h2 {
-  //   margin-bottom: 20px;
-  // }
-
-  // .subsection{
-  //   border:1px solid rgb(62, 61, 61);
-  //   border-radius:10px;
-  //   margin: 10px;
-  //   padding: 10px;
-  // }
-
-  // button {
-  //   background-color: #007791;
-  //   color: #fff;
-  //   border: none;
-  //   border-radius: 5px;
-  //   padding: 10px 20px;
-  //   cursor: pointer;
-  //   transition: background-color 0.3s;
-  //   margin: 0 auto;
-
-  //   &:hover {
-  //     background-color: #005e6b;
-  //   }
-  // }
-
-  // .center-button {
-  //   margin: 0 auto; /* Center the button horizontally */
-  //   display: block; /* Ensure it takes up the full width available */
-  // }
-// }
-
-
-
 /* upload.component.scss */
 .main-container {
   background-color: #e0d9d9;
-  height: 100vh;
+  height: auto;
   
 .container-wrapper {
   display: flex;
@@ -173,6 +70,11 @@ h2 {
   &:hover {
     background-color: #218838; /* Darker green on hover */
   }
+}
+.button-description {
+  margin-top: 5px;
+  margin-left: 15px;
+  font-size: smaller; /* You can adjust the font size as needed */
 }
 .sec-save-button{
   background-color: #28a745; /* Green background color */

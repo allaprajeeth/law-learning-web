@@ -24,35 +24,41 @@ export class HomepageComponent implements OnInit{
 
   uploadedimages: string[] = [];
   rejectedimages: string[] = [];
-  mycoursesimages: string[] = [];
-  availablecoursesimages: string[] = [];
+  approvedcoursesimages: string[] = [];
+  underreviewimages: string[] = [];
 
   uploadedCoursesDurations: string[] = [];
   rejectedCoursesDurations: string[] = [];
-  myCoursesDurations: string[] = [];
-  availableCoursesDurations: string[] = [];
+  approvedCoursesDurations: string[] = [];
+  underreviewDurations: string[] = [];
 
-  availableCoursesHeadings: string[] = [
-    "Introduction to Criminal Law",
-    "Contract Law Demystified",
-    "Environmental Law Explained",
-    "Intellectual Property Law",
-    "Civil Rights and Liberties",
-    "Family Law Fundamentals",
+  approvedCoursesHeadings: string[] = [
     "Real Estate Law Made Simple",
-    "Business Law Essentials for Entrepreneurs",
-    "Human Rights Law",
-    "Labor and Employment Law",
+    "Intellectual Property Law",
+    "Family Law Fundamentals",
+    "Environmental Law Explained",
     "International Law and Diplomacy",
+    "Civil Rights and Liberties",
+    "Contract Law Demystified",
+    "Human Rights Law",
+    "Introduction to Criminal Law",
+    "Business Law Essentials",
     "Torts and Personal Injury Law",
+    "Labor and Employment Law",
+    
+    
   ];
 
-  myCoursesHeadings: string[] = [
+  underreviewHeadings: string[] = [
     "Bankruptcy Law",
     "Healthcare Law",
     "Immigration Law 101",
     "Estate Planning and Probate Law",
   ];
+
+  
+
+  
 
   uploadedCoursesHeadings: string[] = [
     "Cybersecurity and Privacy Law",
@@ -66,7 +72,7 @@ export class HomepageComponent implements OnInit{
     "Torts and Personal Injury Law",
   ];
 
-  availableCoursesAuthors: string[] = [
+  approvedCoursesAuthors: string[] = [
     'John Smith',
     'Mary Johnson',
     'David Wilson',
@@ -81,12 +87,14 @@ export class HomepageComponent implements OnInit{
     'Robert Lee',
   ];
 
-  myCoursesAuthors: string[] = [
+  underreviewAuthors: string[] = [
     'William Jackson',
     'Laura Roberts',
     'Richard Martin',
     'Lisa Miller',
   ];
+
+  
 
   uploadedCoursesAuthors: string[] = [
     'James Young',
@@ -112,14 +120,18 @@ export class HomepageComponent implements OnInit{
     'Student | Crash Course',
   ];
 
-  myCoursesText: string[] = [
+  underreviewText: string[] = [
     'Expert | Detailed Course', 
     'Student | Crash Course', 
     'Beginner | Crash Course', 
     'Intermediate | Detailed Course',
   ];
 
-  availableCoursesText: string[] = [
+
+
+  
+
+approvedCoursesText: string[] = [
     'Expert | Detailed Course', 
     'Beginner | Crash Course', 
     'Intermediate | Detailed Course', 
@@ -136,13 +148,13 @@ export class HomepageComponent implements OnInit{
 
   randomUploadValues: number[] = [];
   randomRejectedValues:number[]=[];
-  randomMyCourseValues: number[] = [];
-  
+  randomunderreviewValues: number[] = [];
+
   subscribersValues = ["10", "50", "100", "200", "500", "1000"];
 
   uploadSubscribers: string[] = [];
-  myCourseSubscribers: string[] = [];
-  availableCourseSubscribers: string[] = [];
+  approvedCourseSubscribers: string[] = [];
+  underreviewSubscribers: string[] = [];
 
   ngOnInit(): void {
 
@@ -180,13 +192,15 @@ export class HomepageComponent implements OnInit{
       this.rejectedCoursesDurations.push(duration);
     }
 
+
+    
     for (let k = 6; k < 10; k++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${k}`;
-      this.mycoursesimages.push(randomImageURL);
+      this.underreviewimages.push(randomImageURL);
       const randomValue = Math.floor(Math.random() * 100) + 1;
-      this.randomMyCourseValues.push(randomValue);
+      this.randomunderreviewValues.push(randomValue);
       const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
-      this.myCourseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+      this.underreviewSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
 
       const minHours = 1.5;
       const maxHours = 6;
@@ -195,14 +209,17 @@ export class HomepageComponent implements OnInit{
       const minutes = Math.floor((hours % 1) * 60);
       const formattedMinutes = this.formatWithLeadingZero(minutes);
       const duration = `${formattedHours}h ${formattedMinutes}m`;
-      this.myCoursesDurations.push(duration);
+      this.underreviewDurations.push(duration);
     }
+
+
+
 
     for (let l = 10; l < 22; l++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
-      this.availablecoursesimages.push(randomImageURL);
+      this.approvedcoursesimages.push(randomImageURL);
       const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
-      this.availableCourseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+      this.approvedCourseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
       
       const minHours = 1.5;
       const maxHours = 6;
@@ -211,7 +228,7 @@ export class HomepageComponent implements OnInit{
       const minutes = Math.floor((hours % 1) * 60);
       const formattedMinutes = this.formatWithLeadingZero(minutes);    
       const duration = `${formattedHours}h ${formattedMinutes}m`;
-      this.availableCoursesDurations.push(duration);
+      this.approvedCoursesDurations.push(duration);
     }
   }
 

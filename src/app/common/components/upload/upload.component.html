@@ -40,29 +40,46 @@
                 <textarea id="subDescription{{mainIndex}}_{{subIndex}}" [(ngModel)]="subSection.description" name="description" rows="4" required></textarea>
               </div>
 
+             
+
+              <div class="form-group">
+                <label for="mainFile{{subIndex}}">Upload Video: </label>
+                <input type="file" id="mainFile{{subIndex}}" (change)="onMainFileSelected($event, subIndex)"
+                  accept="video/*">
+
+                  
+              </div>
+
+              <video #videoElement style="display: none;"></video>
+
               <div class="form-group">
                 <label>Video Duration:</label>
                 <div class="duration-input">
-                  <input type="number" min="0" max="60"  id="minutes" name="minutes" placeholder="Minutes" required>
-                  <input type="number" min="1" max="60"  id="sec" name="seconds"  placeholder="Seconds" required>
+                  <!-- <input type="number" min="0" max="60"  id="minutes" name="minutes" placeholder="Minutes" required> -->
+                  <!-- <input type="number" min="1" max="60"  id="sec" name="seconds"  placeholder="Seconds" required> -->
+                
+                  <!-- <input type="number" min="0" max="60" [(ngModel)]="mainSections[mainIndex].duration.minutes" id="minutes" name="minutes" placeholder="Minutes" required> -->
+                 <!-- <input type="number" min="1" max="60" [(ngModel)]="mainSections[mainIndex].duration.seconds" id="sec" name="seconds"  placeholder="Seconds" required> -->
+                 <input type="number" min="0" max="60" [(ngModel)]="mainSections[mainIndex].duration.minutes"
+                 id="minutes" name="minutes" placeholder="Minutes" required [disabled]="isDurationFetched">
+               <input type="number" min="1" max="60" [(ngModel)]="mainSections[mainIndex].duration.seconds"
+                 id="sec" name="seconds" placeholder="Seconds" required [disabled]="isDurationFetched">
+               
+                
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="mainFile{{mainIndex}}">Upload Video: </label>
-                <input type="file" id="mainFile{{mainIndex}}" (change)="onMainFileSelected($event, mainIndex)"
-                  accept="video/*">
-              </div>
-
-              <div class="form-group">
-                <label for="subFile{{mainIndex}}_{{subIndex}}">Upload File: </label>
+                <label for="subFile{{mainIndex}}_{{subIndex}}">Upload Documents: </label>
                 <input type="file" id="subFile{{mainIndex}}_{{subIndex}}"
                   (change)="onSubFileSelected($event, mainIndex, subIndex)" accept="video/*">
               </div>
 
               <div *ngIf="!subSection.submitted">
                 <button type="button" class="save-button sec-save-button " (click)="saveSubSection(mainIndex, subIndex)">Save</button>
+                <p class="button-description">By clicking save all your files related to this subsection will be saved.</p>
                 <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)">Submit</button>
+              <p class="button-description">By clicking submit all your files related to this subsection will be submitted to the website for review.</p>
               </div>
               <div *ngIf="subSection.submitted && subSection.status === 'Under Review'">
                 <span>Status: {{subSection.status}}</span>
@@ -73,7 +90,9 @@
 
           <div *ngIf="!mainSection.submitted">
             <button type="button" class="save-button custom-save-button" (click)="saveMainSection(mainIndex)">Save</button>
+            <p class="button-description">By clicking save all your files related to this section will be saved.</p>
             <button type="button" class="sec-submit-button" (click)="submitMainSection(mainIndex)">Submit</button>
+            <p class="button-description">By clicking submit all your files related to this section will be submitted to the website for review.</p>
           </div>
           <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'">
             <span>Status: {{mainSection.status}}</span>
@@ -92,4 +111,8 @@
       </div>
     </div>
   </div>
+  <br/>
+<br/>
+<br/>
 </div>
+
