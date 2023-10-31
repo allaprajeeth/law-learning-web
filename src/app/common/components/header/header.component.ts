@@ -12,7 +12,7 @@ interface Categories {
 })
 export class HeaderComponent implements OnInit{
   availablecoursesimages: string[] = [];
-
+  freecoursesimages:string[]=[]
   title = 'my-first-app';
   categories: Categories[] = [
     { viewValue: 'Beginner' },
@@ -63,12 +63,6 @@ export class HeaderComponent implements OnInit{
     'Robert Lee',
   ];
 
-  myCoursesAuthors: string[] = [
-    'William Jackson',
-    'Laura Roberts',
-    'Richard Martin',
-    'Lisa Miller',
-  ];
 
 uploadedCoursesText: string[] = [
   'Expert | Detailed Course', 
@@ -94,7 +88,7 @@ availableCoursesText: string[] = [
 
   uploadedCoursesDurations: string[] = [];
   availableCoursesDurations: string[] = [];
-
+   freeCoursesDurations:string[]=[]
   randomMyCourseValues: number[] = [];
   
   subscribersValues = ["10", "50", "100", "200", "500", "1000"];
@@ -117,12 +111,37 @@ availableCoursesText: string[] = [
       const duration = `${formattedHours}h ${formattedMinutes}m`;
       this.availableCoursesDurations.push(duration);
     }
+    for (let l = 13; l < 17; l++) {
+      const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
+      this.freecoursesimages.push(randomImageURL);
+      const minHours = 0.3;
+      const maxHours = 0.5;
+      const hours = minHours + Math.random() * (maxHours - minHours);     
+      const formattedHours = Math.floor(hours);
+      const minutes = Math.floor((hours % 1) * 60);
+      const formattedMinutes = this.formatWithLeadingZero(minutes);    
+      const duration = `${formattedHours}h ${formattedMinutes}m`;
+      this.freeCoursesDurations.push(duration);
+    }
   }
 
   formatWithLeadingZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
   
+  freeCoursesHeadings: string[] = [
+    "Bankruptcy Law Intro",
+    "Healthcare Law Benifits",
+    "Immigration Law 101",
+    "Estate Planning and Probate Law",
+  ];
+  
+  freeCoursesAuthors: string[] = [
+    'William Jackson',
+    'Laura Roberts',
+    'Richard Martin',
+    'Lisa Miller',
+  ];
   }
   
 

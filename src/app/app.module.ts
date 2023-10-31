@@ -51,6 +51,8 @@ import { CertificateComponent } from './common/components/certificate/certificat
 import { LoginComponent } from './common/components/login/login.component';
 import { ModalComponent } from './common/components/modal/modal.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
+import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
+import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 
 
 @NgModule({
@@ -78,6 +80,8 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
+    FreecourseComponent,
+    AboutusComponent,
  
 
     
