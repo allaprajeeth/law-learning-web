@@ -4,9 +4,9 @@
   padding: 0;
 }
 
-// html {
-//   scroll-behavior: smooth;
-// }
+html {
+  scroll-behavior: smooth;
+}
 
 .container {
   margin: 0 auto;
@@ -47,6 +47,7 @@ h1 {
 
     .imagesContainer {
       position: relative;
+      
       .duration {
         position: absolute;
         bottom: 5px;
@@ -66,17 +67,30 @@ h1 {
           z-index: 1;
         }
 
-      .notch-left, .notch-right {
+      .notch-left {
         display: none;
         width: 30px;
         height: 30px;
         background-color: white;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         position: absolute;
-        // z-index: 2;
+        // z-index: 1;
         transform: rotate(45deg);
         left: 267px;
         top: 140px;
+      }
+
+      .notch-right {
+        display: none;
+        width: 30px;
+        height: 30px;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        position: absolute;
+        // z-index: 1;
+        transform: rotate(45deg);
+        right: 267px;
+        top: 130px;
       }
 
       &:hover {
