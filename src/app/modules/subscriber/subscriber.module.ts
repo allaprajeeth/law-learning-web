@@ -22,6 +22,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { PhotoComponent } from './components/photo/photo.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -32,6 +33,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
+import { CourseCardComponent } from './components/course-card/course-card.component';
 
 
 
@@ -55,6 +57,7 @@ import { NotificationComponent } from './notification/notification.component';
     EditEmailComponent,
     MyDirectiveDirective,
     NotificationComponent,
+    CourseCardComponent,
    
   ],
   imports: [
@@ -73,6 +76,7 @@ import { NotificationComponent } from './notification/notification.component';
     // NgFor,
     MatMenuModule,
     MatButtonModule,
+    MatCardModule,
     MatBadgeModule
   ]
 })

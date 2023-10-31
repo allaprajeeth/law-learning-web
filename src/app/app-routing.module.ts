@@ -20,6 +20,7 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
 import { OverviewComponent } from './common/components/overview/overview.component';
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
+import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 
 
 const routes: Routes = [
@@ -91,6 +92,10 @@ const routes: Routes = [
   {
     path: 'password',
     component:PasswordComponent
+  },
+  {
+    path: 'phonepassword',
+    component:PhonepasswordComponent
   },
   {
     path: 'videoplayer',

@@ -1,0 +1,42 @@
+.name {
+    color: white;
+    font-size: 25px;
+    padding: 30px 300px;
+}
+
+.header {
+    background-color: black;
+    height: 12%;
+    width: 100%;
+}
+
+.para {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 10px;
+}
+
+.courses {
+    background-color: rgb(237, 231, 231);
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.course-box {
+    height: auto;
+    width: 100%;
+    background-color: rgb(238, 233, 233);
+    padding: 10px;
+
+    .example-form {
+        text-align: center;
+        .example-full-width {
+            width: 60%;
+        }
+    }
+}
