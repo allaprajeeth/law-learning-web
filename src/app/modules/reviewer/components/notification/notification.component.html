@@ -18,6 +18,7 @@
             <div class="notification-message">{{ notification.message }}</div>
           </div>
           <span class="date">{{ today | date: 'MMM d' }}</span>
+          <mat-icon class="delete-icon" (click)="deleteNotification(i)">delete</mat-icon>
         </div>
       </ng-container>
       <!-- <button routerLink="/notification-item-clicked">ddd</button> -->

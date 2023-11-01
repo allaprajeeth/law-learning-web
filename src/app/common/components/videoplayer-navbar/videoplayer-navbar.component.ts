@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PdfService } from 'src/app/pdf.service';
 
 @Component({
   selector: 'app-videoplayer-navbar',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./videoplayer-navbar.component.scss']
 })
 export class VideoplayerNavbarComponent {
+  constructor(private testService: PdfService) {}
   showPopup: boolean = false;
   isProgress = false;
   isShareable = false;
@@ -13,7 +15,9 @@ export class VideoplayerNavbarComponent {
   yourProgress=false;
   stars = [1, 2, 3, 4, 5];
   selected = 0;
-  isMore: boolean = false; // Set this to true to show the popup initially
+  isMore: boolean = false; 
+  userReview: string = '';
+  
 
   ngOnInit() {
     const storedRating = localStorage.getItem('userRating');
@@ -41,5 +45,15 @@ export class VideoplayerNavbarComponent {
   updaterating(r: any) {
     this.selected = r;
     localStorage.setItem('userRating', r.toString());
+  }
+  submitRating() {
+    
+    console.log('Selected Rating:', this.selected);
+    console.log('User Review:', this.userReview);
+
+  
+   // this.selected = 0;
+    this.userReview = '';
+    this.showRating = false;
   }
 }

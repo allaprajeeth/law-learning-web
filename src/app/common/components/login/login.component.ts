@@ -3,6 +3,7 @@ import { Component, EventEmitter, Output, OnInit, ChangeDetectorRef } from '@ang
 import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 
 interface ApiResponse {
   message: string;
@@ -18,10 +19,18 @@ interface ApiResponseError {
 
 
 export class LoginComponent  {
-  
-  constructor(private router: Router,private http: HttpClient,private snackBar: MatSnackBar){} 
+  loginForm: FormGroup;
+  constructor(private router: Router,private http: HttpClient,private snackBar: MatSnackBar ,private formBuilder: FormBuilder){
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+       selectedCategory: ['Subscriber', [Validators.required]],
+       emailOtp: [ '',[Validators.required,Validators.pattern('^[0-9]*$'),],],
+       phoneOtp: ['', [Validators.required,Validators.pattern('^[0-9]*$'),]],
+    });
+  }
   isSendOtpsClicked: boolean = true;
-  images: string[] = ['assets/law.img1.png'];
+  images: string[] = ['assets/Law Learning.png'];
   currentIndex: number = 0;
   email: string = '';
   phone: string = '';
@@ -30,18 +39,12 @@ export class LoginComponent  {
   phoneotp: string = '';
   emailOtpError: string = '';
   phoneOtpError: string = '';
-  // passwordError: string = '';
-  
   isInputFilled: boolean = false;
-  // isPasswordVisible: boolean = false;
   isOtpVisible: boolean = false;
   isLoginVisible: boolean = false;
-
   disableCategorySelect: boolean = false;
-  
-
   checkInput(): void {
-    this.isInputFilled = !!this.email && !!this.phone;
+    this.isInputFilled = (!!this.loginForm.get('email')?.value ?? false) && (!!this.loginForm.get('phone')?.value ?? false);
   }
   sendOtps(){
     this.showOtpFields();
@@ -138,8 +141,9 @@ showOtpFields(): void {
   }
 
   }
+
   loginValidation(): void {
-    if (this.isOtpVisible && this.emailotp && this.phoneotp) {
+   
       let route: string = '';
       if (this.selectedCategory === 'Subscriber') {
         route = 'subscriber/homepage';
@@ -154,25 +158,8 @@ showOtpFields(): void {
       this.router.navigate([route]);
   
       // Clear error messages and remove error border
-      this.emailOtpError = '';
-      this.phoneOtpError = '';
-      document.getElementById('emailOtp')?.classList.remove('error-input');
-      document.getElementById('phoneOtp')?.classList.remove('error-input');
-    } else {
-      // OTP fields are not filled, display error messages and error border
-      this.emailOtpError = this.emailotp ? '' : 'Email OTP is required.';
-      this.phoneOtpError = this.phoneotp ? '' : 'Phone OTP is required.';
-      if (!this.emailotp) {
-        document.getElementById('emailOtp')?.classList.add('error-input');
-      } else {
-        document.getElementById('emailOtp')?.classList.remove('error-input');
-      }
-      if (!this.phoneotp) {
-        document.getElementById('phoneOtp')?.classList.add('error-input');
-      } else {
-        document.getElementById('phoneOtp')?.classList.remove('error-input');
-      }
-    }
+      
+    
   }
   showSuccessMessage(message: string) {
     this.snackBar.open(message, 'Close', {
@@ -188,7 +175,18 @@ showErrorMessage(message: string) {
     panelClass: ['error-snackbar'] 
   });
 }
-
+onEmailOtpInput(event: any) {
+  const input = event.target.value;
+  const digitsOnly = input.replace(/\D/g, '');
+  const truncatedValue = digitsOnly.slice(0, 6);
+  this.loginForm.get('emailOtp')!.setValue(truncatedValue, { emitEvent: false });
+}
+onPhoneOtpInput(event: any) {
+  const input = event.target.value;
+  const digitsOnly = input.replace(/\D/g, '');
+  const truncatedValue = digitsOnly.slice(0, 6);
+  this.loginForm.get('phoneOtp')!.setValue(truncatedValue, { emitEvent: false });
+}
 
 
 }
