@@ -35,7 +35,10 @@ export class NotificationComponent implements OnInit{
   ngOnInit() {
     this.cdr.detectChanges();
   }
-  
+  deleteNotification(index: number) {
+    this.notifications.splice(index, 1);
+    this.cdr.detectChanges();
+  }
   
   
   getRandomColor(): string {

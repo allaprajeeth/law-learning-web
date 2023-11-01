@@ -13,4 +13,15 @@ export class PdfService {
     const pdfUrl = `assets/pdfs/${pdfName}.pdf`;
     return this.http.get(pdfUrl, { responseType: 'blob' });
   }
+
+  private isTestAvailable: boolean =false;
+  setIsTestAvailable(value: boolean): void {
+    this.isTestAvailable = value;
+  }
+
+  getIsTestAvailable(): boolean {
+    return this.isTestAvailable;
+  }
+ 
+  
 }
