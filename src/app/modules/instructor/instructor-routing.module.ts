@@ -6,6 +6,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 
 import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:"homepage",
     component: HomepageComponent
+  },
+  {
+    path:"public-profile",
+    component: PublicProfileComponent
   },
   
   {

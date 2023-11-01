@@ -18,6 +18,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     InstructornavComponent,
     HomepageComponent,
     CoursesComponent,
-    NotificationComponent
+    NotificationComponent,
+    PublicProfileComponent
   ],
   imports: [
     CommonModule,
