@@ -74,7 +74,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     MatMenuModule,
     MatButtonModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
     MatCardModule,
     MatBadgeModule
   ]
