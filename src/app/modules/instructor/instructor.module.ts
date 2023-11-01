@@ -19,6 +19,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
+import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PublicProfileComponent } from './components/public-profile/public-profi
     HomepageComponent,
     CoursesComponent,
     NotificationComponent,
-    PublicProfileComponent
+    PublicProfileComponent,
+    InstructorinfoComponent
   ],
   imports: [
     CommonModule,

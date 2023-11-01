@@ -1,0 +1,107 @@
+<!-- <app-instructornav></app-instructornav> -->
+<!-- <app-subscribernav></app-subscribernav> -->
+<div class="container1">
+    <div class="heading1">
+        <div>
+            <h3>INSTRUCTOR</h3>
+            <h1>John Smith</h1>
+            <h3>Business Planning Expert</h3>
+        </div>
+        <div class="studentsflex">
+            <div class="students1">
+                <h4>Total students</h4>
+                <p class="reviews1"><b>3,878</b></p>
+            </div>
+
+            <div class="students2">
+                <h4>Reviews</h4>
+                <p class="reviews2"><b>410</b></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile">
+        <img class="avatar"
+            src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+            alt="Instructor Image">
+
+
+    </div>
+
+
+
+</div>
+
+<div class="description">
+    <h1>About me</h1>
+    <ng-container *ngFor="let para of description; let i = index">
+        <p *ngIf="isDescriptionExpanded || i < 2">{{ para }}</p>
+        <span *ngIf="i === 1 && !isDescriptionExpanded">...</span>
+    </ng-container>
+    <a (click)="toggleDescription()">
+        {{ isDescriptionExpanded ? 'Show Less' : 'Show More' }}
+    </a>
+</div>
+
+
+<div>
+    <div class="container">
+        <div class="heading">
+            <h1>My Courses</h1>
+        </div>
+        <div class="image-grid">
+            <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
+                <div class="imagesContainer">
+                    <img [src]="image" width="300" height="200" class="img" alt="Random Image">
+                    <div class="overlay" routerLink="/courseInfo">
+                        <a>
+                            <i class="fa fa-play-circle play-icon"></i>
+                        </a>
+                    </div>
+                    <span class="duration">{{ uploadedCoursesDurations[i] }}</span>
+                </div>
+                <div class="headingsContainer">
+                    <h5>{{ myCoursesHeadings[i] }}</h5>
+                    <p>{{ myCoursesAuthors[i] }}</p>
+                    <h5>{{ uploadedCoursesText[i] }}</h5>
+                </div>
+                <div class="status-bar">
+                    <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
+                </div>
+                <span>{{ randomMyCourseValues[i] }}% complete</span>
+                <div class="ratingscontainer1">
+                    <div class="ratingConatiner2">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span>
+                    </div>
+                    <div class="ratingConatiner2">
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9733;</span>
+                        <span class="star">&#9734;</span>
+                    </div>
+                </div>
+                <div class="ratingscontainer1">
+                    <div class="ratingConatiner2">
+                        <span>Reviewer Ratings</span>
+                    </div>
+                    <div class="ratingConatiner2">
+                        <span>Subscribers Ratings</span>
+                    </div>
+                </div>
+                <div class="subscribers" style="font-weight: 410;">
+                    <span>Number of Subscribers:{{ myCourseSubscribers[i] }}</span>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />

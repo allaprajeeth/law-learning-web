@@ -54,6 +54,23 @@
   li {
     margin-right: 50px;
 
+    .mycourses.active {
+      position: relative;
+      color: #007791;
+      margin-right: 90px;
+    }
+    
+    .mycourses.active::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -1px;
+      width: 100%; /* Full width of the link */
+      height: 2px; /* Height of the underline */
+      background-color: #007791; /* Color of the underline */
+    }
+    
+
     .mycourses {
       color: #007791;
       font-size: 15px;
@@ -67,19 +84,21 @@
       &:hover {
         color: #007791;
         text-decoration: none;
-        
-
-      }
-      &:hover::after {
-        content: "";
-        position: absolute;
-        left: 13px;
-        bottom: -1px; /* Adjust the distance of the underline from the text */
-        width: 80%;
-        height: 1px; /* Adjust the thickness of the underline */
-        background-color: #007791; /* Color of the underline */
       }
     }
+        
+
+      // }
+      // &:hover::after {
+      //   content: "";
+      //   position: absolute;
+      //   left: 13px;
+      //   bottom: -1px; /* Adjust the distance of the underline from the text */
+      //   width: 80%;
+      //   height: 1px; /* Adjust the thickness of the underline */
+      //   background-color: #007791; /* Color of the underline */
+      // }
+    // }
 
     a {
       color: #007791;

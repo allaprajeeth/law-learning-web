@@ -34,6 +34,7 @@ import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 
 
@@ -58,6 +59,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MyDirectiveDirective,
     NotificationComponent,
     NumberchangepopupComponent,
+    ArticleformComponent,
    
   ],
   imports: [

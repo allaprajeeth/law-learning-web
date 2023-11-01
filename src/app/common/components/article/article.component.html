@@ -1,16 +1,32 @@
 <app-nav></app-nav>
-<div>
-  <div>
-    <input>
-  </div>
+
+
+<!-- Add search bar and submit article button -->
+<div class="search-bar">
+  <input type="text" placeholder="search by author name or title..." [(ngModel)]="searchTerm" (input)="filterBoxes()" />
 </div>
+
+<div class="submit-button">
+  <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button>
+</div>
+
 <div class="post-box">
-<div *ngFor="let box of boxes; let i = index" class="blog-box">
+
+  <div *ngIf="noResults; else showBoxes" class="no-results-message">
+    No results found.
+  </div>
+
+
+
+  <ng-template #showBoxes>
+  <div *ngFor="let box of filteredBoxes; let i = index" class="blog-box">
   <h1>{{ box.title }}</h1>
+  <h3>{{ box.author }}</h3>
   <p>{{ box.content | slice:0:80 }}{{ box.content.length > 80 ? '...' : '' }}</p>
   <!-- <button *ngIf="!isExpanded(i)" (click)="toggleReadMore(i)">Read more</button> -->
   <button (click)="openModal(box)">Read more</button>
 </div>
+</ng-template>
 </div>
 
 

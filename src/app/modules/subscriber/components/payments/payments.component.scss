@@ -2,8 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Set height to viewport height for full-screen appearance */
+    // height: 100vh; /* Set height to viewport height for full-screen appearance */
     background-color: #e0d9d9; /* Background color for the whole page */
+    height: auto;
+    
   }
   
   .container {
@@ -13,6 +15,7 @@
     border-radius: 10px; /* Optional: Adds rounded corners to the box */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
  margin-bottom: 50px;
+ margin-top: 50px;
 }
 .main-box {
     text-align: center;
@@ -47,3 +50,47 @@ p.dashed {
     padding: 60px 300px;
     color: #6c6e70;
 }
+.purchase-details {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .purchase-info {
+    text-align: center;
+  }
+  .purchase-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  
+    th, td {
+    //   border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+  
+    th {
+      background-color: #f2f2f2;
+    }
+  
+    tr:nth-child(even) {
+      background-color: #f5f5f5;
+    }
+  
+    tr:hover {
+      background-color: #e0e0e0;
+    }
+  
+    button {
+      background-color: #007791;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #005f6b;
+      }
+    }
+  } 
