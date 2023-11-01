@@ -1,33 +1,24 @@
-
-.container{
- // overflow-y: hidden;
-}
 .pdftable{
   overflow-y: hidden;
 }
   h1 {
     text-align: center;
     margin: 10px;
-    margin-top: 40px; 
+    margin-top: 30px; 
     font-size: 25px; 
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     font-weight: 500;
-    position: sticky;
-    top:20px;
+  
    
   }
-  
-//   / Style the table /
   table {
     width:70%;
     border-collapse: collapse;
     border: none;
-    margin-left: 100px;
+    margin-left: 110px;
     
     
   }
-  
-//   / Style table header /
   thead {
     background-color: #f2f2f2;
 
