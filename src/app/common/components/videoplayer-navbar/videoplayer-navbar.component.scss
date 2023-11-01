@@ -45,7 +45,8 @@
 .staricon{
   font-size:45px;
   padding: 14px;
-   margin: 30px;
+   margin: 15px;
+   margin-top: 5px;
 }
 .progress{
   display: flex;
@@ -55,6 +56,13 @@
 .progress span ,.leave-rating span{
   margin-top: 12px;
 }
+.contentt h1{
+  text-align: center;
+  margin-bottom: 0px;
+}
+.active{
+  color:orange;
+  }
 .close1{
   color: #050505;
   position: relative; 
@@ -63,4 +71,28 @@
   font-size:30px;
   margin-top: 0px;
  
+}
+.custom-textarea {
+  margin-top:10px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px whitesmoke;
+  border-radius: 5px;
+  background-color: #fff;
+  padding: 8px;
+  font-size: 16px;
+  margin-left: 31px;
+}
+
+.custom-button {
+  background-color: #007bff;
+  margin-top:10px;
+  width:80px;
+  margin-left: 160px;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.review{
+  // text-align: center;
 }

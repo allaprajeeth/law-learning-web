@@ -56,6 +56,36 @@ toggleSectionInfo(i: number, j: number) {
       this.availableCourse = params['showDiv'] === 'true';
     });
   }
+  showPopup: boolean = false;
+ 
+  
+  showRating = false;
+ 
+  stars = [1, 2, 3, 4, 5];
+  selected = 0;
+  isMore: boolean = false; // Set this to true to show the popup initially
+  userReview: string = '';
+  leaveRatingOpen() {
+    this.showRating = true;
+  }
+  leaveRatingClose() {
+    this.showRating = false;  
+  }
+
+  updaterating(r: any) {
+    this.selected = r;
+    localStorage.setItem('userRating', r.toString());
+  }
+  submitRating() {
+    
+    console.log('Selected Rating:', this.selected);
+    console.log('User Review:', this.userReview);
+
+  
+   // this.selected = 0;
+    this.userReview = '';
+    this.showRating = false;
+  }
   
 }
 

@@ -13,18 +13,31 @@ Leave  rating
 <div class="overlay" *ngIf="showRating">
   <div class="contentt">
     <div class="close" (click)="leaveRatingClose()">&times;</div>
-    <h1 >How would you rate this course?</h1>
+    <h1>How would you rate this course?</h1>
     <ng-container *ngFor="let i of stars">
       <mat-icon
-      (click)="updaterating(i)"
+        (click)="updaterating(i)"
         [ngClass]="{ active: i <= selected }"
         class="staricon"
       >
         star
       </mat-icon>
     </ng-container>
+    <div class="review">
+      <textarea
+        id="review"
+        [(ngModel)]="userReview"
+        name="userReview"
+        rows="3"
+        cols="36"
+        placeholder="Give Additional comments"
+        class="mat-input custom-textarea"
+      ></textarea>
+    </div>
+    <button class="custom-button"(click)="submitRating()">Submit </button>
   </div>
 </div>
+
 <div (click)="yourProgressOpen()" class="progress">
   <mat-icon>emoji_events</mat-icon>
   Your Progress
@@ -33,8 +46,6 @@ Leave  rating
   <div class="pop" *ngIf="yourProgress">
   <div class="close1" (click)="yourProgressClose()">&times;</div>
   <br>
-  <div>4 of 15 Videos completed</div>
-  <br>
-  <div>Finish course to get your certificate</div>
+  
   </div> 
 </nav>
