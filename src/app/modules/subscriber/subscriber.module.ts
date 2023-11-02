@@ -35,7 +35,13 @@ import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ArticleformComponent } from './components/articleform/articleform.component';
+
+
+
+
 import { CourseCardComponent } from './components/course-card/course-card.component';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +61,12 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     MyDirectiveDirective,
     NotificationComponent,
     NumberchangepopupComponent,
+
+    ArticleformComponent,
+   
+
     CourseCardComponent, 
+
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'; 
 import { ModalComponent } from '../modal/modal.component';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -6,7 +6,9 @@ import { ModalComponent } from '../modal/modal.component';
 interface BlogPost {
   // Define the properties of a blog post here
   title: string;
+  author: string;
   content: string;
+  date: string; // Add the date property
 }
 
 @Component({
@@ -14,24 +16,66 @@ interface BlogPost {
   templateUrl: './article.component.html',
   styleUrls: ['./article.component.scss']
 })
-export class ArticleComponent {
+export class ArticleComponent implements OnInit {
+
+  noResults: boolean = false;
+
   boxes: BlogPost[] = [
-    { title: '"The Importance of Legal Internships: Gaining Practical Experience in Law"',
-     content: 'Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to make the most out of internship experiences, and how internships can shape a legal career' },
-    { title: '"Mastering Legal Research: A Guide for Law Students and Professionals"',
-     content: "Explain the importance of legal research skills. Provide an overview of various research methods, online legal databases, and how to critically analyze legal sources. Include practical examples to enhance understanding." },
-     { title: '"Preparing for Law School Applications: Dos and Donts "', 
-     content: "Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews." },
-     { title: '"Legal Ethics: A Cornerstone of the Legal Profession"',
-      content: "Discuss the importance of ethics in the legal field. Cover topics such as client confidentiality, conflicts of interest, and maintaining professional integrity. Highlight real-life examples of ethical dilemmas faced by lawyers." },
-     { title: '"The Role of Technology in the Legal Industry: Adapting to the Digital Age"',
-      content: "Explore how technology is transforming the legal profession. Discuss legal tech tools, online legal research platforms, and the impact of artificial intelligence on legal practices. Address the importance of tech literacy for future lawyers." },
-      { title: '"The Importance of Legal Internships: Gaining Practical Experience in Law"',
-      content: 'Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to make the most out of internship experiences, and how internships can shape a legal career' },
-  ];
+    { title: '"The Legal Internships:"',
+    author:'williams',
+     content: 'Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to make the most out of internship experiences, and how internships can shape a legal career',
+     date: '02 nov 2023' // Add the date property for the first blog post
+     },
+    { title: '"Mastering Legal Research:"',
+    author:'John Smith',
+    content: "Explain the importance of legal research skills. Provide an overview of various research methods, online legal databases, and how to critically analyze legal sources. Include practical examples to enhance understanding.",
+    date: '01 nov 2023'
+  },
+     
+    { title: '"Law School Applications:"', 
+     author:'John Smith',
+     content: "Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.",
+     date: '30 oct 2023'
+    },
+    
+     { title: '"Legal Ethics:Legal Profession"',
+     author:'David Wilson',
+     content: "Discuss the importance of ethics in the legal field. Cover topics such as client confidentiality, conflicts of interest, and maintaining professional integrity. Highlight real-life examples of ethical dilemmas faced by lawyers.",
+     date: '14 oct 2023'
+    },
+    
+     { title: '"Legal Industry:Digital Age"',
+     author:'John Smith', 
+     content: "Explore how technology is transforming the legal profession. Discuss legal tech tools, online legal research platforms, and the impact of artificial intelligence on legal practices. Address the importance of tech literacy for future lawyers.",
+     date: '25 apr 2023'
+    },
+     
+     { title: '" Legal Internships:Experience"',
+      author:'williams',
+      content: 'Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to make the most out of internship experiences, and how internships can shape a legal career' ,
+      date: '04 apr 2023'
+    },
+ 
+    ];
 
+  filteredBoxes: BlogPost[] = [];
+  searchTerm: string = '';
 
-  
+  ngOnInit() {
+    // Initialize filteredBoxes with all the boxes by default
+    this.filteredBoxes = this.boxes;
+  }
+
+  filterBoxes() {
+    this.filteredBoxes = this.boxes.filter(box => {
+      const authorMatch = box.author.toLowerCase().includes(this.searchTerm.toLowerCase());
+      const titleMatch = box.title.toLowerCase().includes(this.searchTerm.toLowerCase());
+      return authorMatch || titleMatch;
+    });
+    
+    // Update the noResults flag based on the filteredBoxes array
+    this.noResults = this.filteredBoxes.length === 0;
+  }
 
 
   expandedIndex: number = -1;
@@ -50,19 +94,21 @@ export class ArticleComponent {
 
   constructor(public dialog: MatDialog) { }
 
+
   openModal(blogPost: BlogPost): void {
     this.dialog.open(ModalComponent, {
-      width: '400px', // Set the width of the modal as per your design
+      width: '800px',
+      height: 'auto', // Set the width of the modal as per your design
       data: blogPost // Pass the entire blog post data to the modal
     });
   }
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   console.log('The dialog was closed');
-    //   // Handle actions after the dialog is closed if needed
-    // });
+
+  openSubmitArticleModal() {
+  // Implement the logic to open the modal or perform any other action here
+}
+
   }
-// }
 
 
 
@@ -83,40 +129,5 @@ export class ArticleComponent {
 
 
 
-  // showUserInfo = false;
-  // articleForm: FormGroup;
-  // userEntries: any[] = [];
-  // formSubmitted = false;
-  // containerStyles: { [key: string]: string } = {};
 
-  // constructor(
-  //   private fb: FormBuilder,
-  //   private renderer: Renderer2,
-  //   private el: ElementRef
-  // ) {
-  //   this.articleForm = this.fb.group({
-  //     name: ['', Validators.required],
-  //     email: ['', [Validators.required, Validators.email]],
-  //     description: ['', Validators.required],
-  //   });
-  // }
-
-  // containerHeight: number = 0;
-
-  // onFormSubmit() {
-  //   if (this.articleForm.valid) {
-  //     this.showUserInfo = true;
-
-  //     const newUserEntry = {
-  //       name: this.articleForm.get('name')?.value,
-  //       // email: this.articleForm.get('email')?.value,
-  //       description: this.articleForm.get('description')?.value,
-  //     };
-  //     this.userEntries.push(newUserEntry);
-
-  //     this.containerHeight = this.userEntries.length * 27;
-  //     this.articleForm.reset();
-  //     this.formSubmitted = false;
-  //   }
-  // }
-
+  
