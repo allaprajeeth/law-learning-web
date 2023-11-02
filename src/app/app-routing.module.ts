@@ -19,7 +19,8 @@ import { FooterComponent } from './shared-module/components/footer/footer.compon
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
 import { OverviewComponent } from './common/components/overview/overview.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
-
+import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
+// import { CourseCardComponent } from './modules/subscriber/components/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path: 'footer',
     component: FooterComponent
+  },
+  { 
+    path: 'cart', 
+    component: CartComponent 
   },
   // {
   //   path: 'logout',

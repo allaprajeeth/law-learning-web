@@ -60,46 +60,39 @@ h1 {
 
         .course-card-component {
           position: absolute;
-          width: 320px;
+          width: 300px;
           background-color: white;
           border: 1px solid #ccc;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           z-index: 1;
         }
 
-      .notch-left {
-        display: none;
-        width: 30px;
-        height: 30px;
-        background-color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        position: absolute;
-        // z-index: 1;
-        transform: rotate(45deg);
-        left: 267px;
-        top: 140px;
-      }
+      // .notch-left {
+      //   width: 30px;
+      //   height: 30px;
+      //   background-color: white;
+      //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      //   position: absolute;
+      //   // z-index: 1;
+      //   transform: rotate(45deg);
+      //   left: 267px;
+      //   top: 140px;
+      // }
 
-      .notch-right {
-        display: none;
-        width: 30px;
-        height: 30px;
-        background-color: white;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        position: absolute;
-        // z-index: 1;
-        transform: rotate(45deg);
-        right: 267px;
-        top: 130px;
-      }
+      // .notch-right {
+      //   width: 30px;
+      //   height: 30px;
+      //   background-color: white;
+      //   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      //   position: absolute;
+      //   // z-index: 1;
+      //   transform: rotate(45deg);
+      //   right: 267px;
+      //   top: 130px;
+      // }
 
       &:hover {
         .course-card-component {
-          display: block;
-        }
-  
-        .notch-left,
-        .notch-right {
           display: block;
         }
       }
@@ -164,10 +157,6 @@ h1 {
 
   .ratingText {
     font-size: 14px;
-  }
-
-  .notch-left, .notch-right {
-    display: block;
   }
 }
 

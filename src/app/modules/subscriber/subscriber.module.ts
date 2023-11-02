@@ -34,6 +34,7 @@ import { EditEmailComponent } from './components/edit-email/edit-email.component
 import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
+import { CoursesPageComponent } from 'src/app/common/components/courses-page/courses-page.component';
 
 
 
@@ -58,6 +59,7 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     MyDirectiveDirective,
     NotificationComponent,
     CourseCardComponent,
+    CoursesPageComponent
    
   ],
   imports: [

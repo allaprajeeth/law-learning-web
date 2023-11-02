@@ -79,7 +79,7 @@ import { PhonepasswordComponent } from './common/components/phonepassword/phonep
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
-    PhonepasswordComponent,
+    PhonepasswordComponent
  
 
     
