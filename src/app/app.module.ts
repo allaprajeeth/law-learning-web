@@ -81,10 +81,10 @@ import { CarouselModule } from 'primeng/carousel';
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
+    PhonepasswordComponent
     FreecourseComponent,
     AboutusComponent,
     PhonepasswordComponent,
-
  
 
     
@@ -100,7 +100,6 @@ import { CarouselModule } from 'primeng/carousel';
     BrowserAnimationsModule,
     SharedModule,
     SubscriberRoutingModule,
-
     AngularEditorModule,
    
     MatIconModule,

@@ -1,4 +1,5 @@
 <app-subscribernav></app-subscribernav>
+<!-- <app-courses-page></app-courses-page> -->
 <div class="container">
   <div class="heading">
     <h1>My Courses</h1>
@@ -53,61 +54,62 @@
     </div>
   </div>
 
-  <!-- <div> -->
-    <div class="heading">
-      <h1>Available Courses</h1>
-    </div>
-    <div class="my-flex">
-      <mat-form-field appearance="outline" id="filters">
-        <mat-label>Filters</mat-label>
-        <mat-select [matMenuTriggerFor]="filters">
-          <mat-menu #filters="matMenu" yPosition="below">
-            <button mat-menu-item [matMenuTriggerFor]="beginner">Beginner</button>
-            <button mat-menu-item [matMenuTriggerFor]="intermediate">Intermediate</button>
-            <button mat-menu-item [matMenuTriggerFor]="expert">Expert</button>
-            <button mat-menu-item [matMenuTriggerFor]="student">Student</button>
-          </mat-menu>
-        </mat-select>
-      </mat-form-field>
-      <mat-menu #beginner="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-      <mat-menu #intermediate="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-      <mat-menu #expert="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-      <mat-menu #student="matMenu">
-        <button mat-menu-item>Crash Course</button>
-        <button mat-menu-item>Detailed Course</button>
-      </mat-menu>
-    </div>
-    <!-- <div class="image-grid"> -->
-      <!-- <div *ngFor="let image of filteredImages; let j = index" class="image-item">
+  <div class="heading">
+    <h1>Available Courses</h1>
+  </div>
+  <div class="my-flex">
+    <mat-form-field appearance="outline" id="filters">
+      <mat-label>Filters</mat-label>
+      <mat-select [matMenuTriggerFor]="filters">
+        <mat-menu #filters="matMenu" yPosition="below">
+          <button mat-menu-item [matMenuTriggerFor]="beginner">Beginner</button>
+          <button mat-menu-item [matMenuTriggerFor]="intermediate">Intermediate</button>
+          <button mat-menu-item [matMenuTriggerFor]="expert">Expert</button>
+          <button mat-menu-item [matMenuTriggerFor]="student">Student</button>
+        </mat-menu>
+      </mat-select>
+    </mat-form-field>
+    <mat-menu #beginner="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+    <mat-menu #intermediate="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+    <mat-menu #expert="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+    <mat-menu #student="matMenu">
+      <button mat-menu-item>Crash Course</button>
+      <button mat-menu-item>Detailed Course</button>
+    </mat-menu>
+  </div>
+  <!-- <div class="image-grid"> -->
+  <!-- <div *ngFor="let image of filteredImages; let j = index" class="image-item">
         
       </div> -->
-    <!-- </div> -->
   <!-- </div> -->
+
   <div class="image-grid">
-    <div *ngFor="let image of availablecoursesimages; let j = index" class="image-item"
-    (mouseover)="openMyMenu(j, $event)" (mouseleave)="closeMyMenu(j)">
+    <div *ngFor="let image of availablecoursesimages; index as j;" class="image-item"
+      (mouseover)="openMyMenu($event, j)" (mouseleave)="closeMyMenu(j)">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
-           <a routerLink="/overview" [queryParams]="{ showDiv: 'true' }">
+          <a routerLink="/overview" [queryParams]="{ showDiv: 'true' }">
             <i class="fa fa-play-circle play-icon"></i>
           </a>
         </div>
-        <app-course-card *ngIf="showCard[j]" [heading]="availableCoursesHeadings[j]" [content]="courseContent[j]"
-          [style]="tooltipPosition" class="course-card-component">
-        </app-course-card>
-        <div [ngClass]="{'notch-left': showCard[j] && tooltipPosition.left === '277px',
+        <app-course-card *ngIf="showCard[j]" #tooltipRef
+        [product]="{ id: j, image: image, heading: availableCoursesHeadings[j], coursesText: availableCoursesText[j], duration: availableCoursesDurations[j], price: coursePrice[j]}"
+        [heading]="availableCoursesHeadings[j]" [content]="courseContent[j]" [style]="tooltipPosition"
+        class="course-card-component">
+      </app-course-card>
+        <!-- <div [ngClass]="{'notch-left': showCard[j] && tooltipPosition.left === '277px',
                          'notch-right': showCard[j] && tooltipPosition.right === '277px'}">
-        </div>
+        </div> -->
         <span class="duration">{{ availableCoursesDurations[j] }}</span>
       </div>
       <div class="headingsContainer">

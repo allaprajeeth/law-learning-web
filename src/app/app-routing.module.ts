@@ -21,7 +21,8 @@ import { OverviewComponent } from './common/components/overview/overview.compone
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
-
+import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
+// import { CourseCardComponent } from './modules/subscriber/components/cart/cart.component';
 
 const routes: Routes = [
   {
@@ -116,6 +117,10 @@ const routes: Routes = [
   {
     path: 'footer',
     component: FooterComponent
+  },
+  { 
+    path: 'cart', 
+    component: CartComponent 
   },
   // {
   //   path: 'logout',
