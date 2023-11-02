@@ -1,13 +1,12 @@
-/* Add styles for the search bar and submit button */
 .search-bar {
   position: absolute;
   top: 20px;
   left: 20px;
-  z-index: 1; /* Ensure the search bar is above other content */
+  z-index: 1;
   margin-top: 80px;
   margin-left: 50px;
   margin-bottom: 40px;
-  
+
   input {
     width: 300px;
     padding: 8px;
@@ -22,9 +21,9 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  z-index: 1; /* Ensure the button is above other content */
+  z-index: 1;
   margin-top: 80px;
-  
+
   button {
     padding: 10px 20px;
     background-color: #007791;
@@ -41,71 +40,110 @@
   }
 }
 
-
-
 .post-box {
-  // border: 1px solid black;
-  background-color: #dcd9d9; /* Background color of the box */
-  padding: 20px; /* Padding inside the box */
-  border-radius: 8px; /* Border radius for rounded corners */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle depth effect */
-  transition: box-shadow 0.3s ease; /* Smooth transition for the box shadow */
+  background-color: #dcd9d9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
+  transition: box-shadow 0.3s ease; /* Smooth transition for the box shadow */
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  // margin-top: 60px;
-  
-.no-results-message{
-  padding: 50px;
-  color: red;
-}
+
+  .no-results-message {
+    padding: 50px;
+    color: red;
+  }
+
   .blog-box {
-    width: 300px; /* Adjust the width of each box as needed */
+    width: 300px;
     height: 180px;
     background-color: #ffffff;
     box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, 0.1);
     margin: 20px;
     border-radius: 7px;
     padding: 20px;
-  margin-top: 60px;
-    transition: box-shadow 0.3s ease, transform 0.3s ease; 
-  &:hover {
-    box-shadow: 0 0 16px rgba(0, 0, 0, 0.3); /* Apply box shadow on hover */
-    transform: scale(1.05); /* Scale the box slightly on hover for a subtle zoom effect */
-    backface-visibility: hidden;
-  }
-  }
-  /* Styling for heading */
-  h1 {
-    font-size: 18px;
-    color: #000;
-    margin-bottom: 10px;
-  }
+    margin-top: 60px;
+    position: relative; /* Make sure the position is relative for child elements */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
 
-  /* Styling for paragraph */
-  p {
-    font-size: 15px;
-    color: #666;
-    margin-bottom: 20px;
-  }
+    &:hover {
+      box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+      transform: scale(1.05);
+      backface-visibility: hidden;
+    }
 
-  /* Styling for "Read more" button */
-  button {
-    background-color: #007791; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none;
-    padding: 7px 9px;
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition for button background color */
-  border-radius: 3px;
-  }
+    .date {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      font-size: 12px;
+      color: #666;
+    }
 
-  /* Hover effect for button */
-  button:hover {
-    background-color: #0056b3;
+    h1 {
+      font-size: 18px;
+      color: #000;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #007791;
+      color: #fff;
+      border: none;
+      padding: 7px 9px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-radius: 3px;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+    }
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
