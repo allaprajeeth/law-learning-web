@@ -58,13 +58,14 @@ toggleSectionInfo(i: number, j: number) {
   }
   showPopup: boolean = false;
  
-  
+  submittedReview:boolean=false;
   showRating = false;
  
   stars = [1, 2, 3, 4, 5];
   selected = 0;
   isMore: boolean = false; // Set this to true to show the popup initially
   userReview: string = '';
+  isratingEditable:boolean=true;
   leaveRatingOpen() {
     this.showRating = true;
   }
@@ -73,18 +74,18 @@ toggleSectionInfo(i: number, j: number) {
   }
 
   updaterating(r: any) {
+    if(this.isratingEditable){
     this.selected = r;
-    localStorage.setItem('userRating', r.toString());
+    }
   }
   submitRating() {
-    
     console.log('Selected Rating:', this.selected);
     console.log('User Review:', this.userReview);
-
-  
-   // this.selected = 0;
-    this.userReview = '';
+    this.isratingEditable=false;
+    localStorage.setItem('userRating', this.selected.toString());
+    
     this.showRating = false;
+    this.submittedReview=true
   }
   
 }
