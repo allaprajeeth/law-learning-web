@@ -24,6 +24,8 @@
   <h3>{{ box.author }}</h3>
   <p>{{ box.content | slice:0:80 }}{{ box.content.length > 80 ? '...' : '' }}</p>
   <!-- <button *ngIf="!isExpanded(i)" (click)="toggleReadMore(i)">Read more</button> -->
+
+  <p class="date">{{ box.date }}</p>
   <button (click)="openModal(box)">Read more</button>
 </div>
 </ng-template>
