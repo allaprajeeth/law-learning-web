@@ -247,10 +247,30 @@
               <p class="courseRatingText">The course was well-organized, and the materials provided were up-to-date. It was clear that the course
                  creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.</p>
               </div>
+
+              <div class="courseRating" *ngIf="submittedReview">
+                <span class="circle">SA</span>
+                <div class="alignment">
+                  <h2>UserName</h2>
+                  <div class="starsRating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9734;</span>
+                  </div>
+                </div>
+                  <p class="courseRatingText">{{userReview}}</p>
+                  </div>
         </div>
-        <div class="leave-rating">
-         
-          <button (click)="leaveRatingOpen()" class="giverating" >
+        <div class="leave-rating"  *ngIf="!submittedReview" >
+          <h1 style="color:blue">Leave Your Rating Here</h1> 
+          <hr>
+          <br>
+          <i style="font-size: 16px;">You have to complete 70% to give rating</i>
+          <br>
+          <br>
+          <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview" >
             Give Rating
           </button>
           </div>
@@ -261,8 +281,8 @@
               <h1>How would you rate this course?</h1>
               <ng-container *ngFor="let i of stars">
                 <mat-icon
-                  (click)="updaterating(i)"
-                  [ngClass]="{ active: i <= selected }"
+                  (mouseenter)="updaterating(i)"
+                  [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
                   class="staricon"
                 >
                   star
@@ -275,7 +295,7 @@
                   name="userReview"
                   rows="3"
                   cols="36"
-                  placeholder="Give Additional comments"
+                  placeholder="Give comments"
                   class="mat-input custom-textarea"
                 ></textarea>
               </div>

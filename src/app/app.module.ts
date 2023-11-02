@@ -54,7 +54,7 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
-
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -90,6 +90,7 @@ import { PhonepasswordComponent } from './common/components/phonepassword/phonep
     
   ],
   imports: [
+    CarouselModule,
     MatSnackBarModule,
     BrowserModule,
     HttpClientModule,
