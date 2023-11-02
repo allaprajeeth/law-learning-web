@@ -56,19 +56,13 @@
 .arrow-icon{
     margin-top: -9px;
 }
-.documents {
-  background-color: rgb(255, 251, 251);
-  position: absolute;
-  width: 200px;
-  height: 150px;
-  left: 20px;
-  padding: 25px;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-}
 
+.documentspdf{
+  display: flex;
+}
 .doc{
   padding: 5px;
-  font-size: 16px;
+  //font-size: 16px;
 }
 .next-video-container {
   align-items: center;
@@ -123,7 +117,16 @@
   color: white;
   top: 30px;
 }
-
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left:-80px;
+  width: 74vw;
+  height: 100%;
+  background-color: rgb(12, 12, 12); 
+  z-index: 1; 
+}
 .video-info-container {
   font-family: Arial, sans-serif;
 }
@@ -135,9 +138,22 @@
   margin-left: 90px;
   margin-right: 60px;
 }
-
+.next-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color:rgb(176, 174, 174);
+ font-size: 20px;
+  transform: translate(-50%, -50%);
+  z-index: 27; 
+}
+.large-icon {
+  font-size: 70px; 
+  width:70px;
+  height:70px;
+}
 .resources {
-  margin-left: 12px;
+  margin-left: 40px;
 }
 .resources a {
   color: black;
@@ -183,3 +199,9 @@ video::-webkit-media-controls-enclosure {
   height: 100px;
   width: 100px;
 }
+.custom-icon1{
+  margin-top: 10px;
+}
+// .progress{
+//   text-align: center;
+// }

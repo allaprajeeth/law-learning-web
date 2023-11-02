@@ -1,47 +1,172 @@
-
 <app-firstnav></app-firstnav>
-<!-- Your component's template (e.g., register.component.html) -->
-
-
 <div class="page-container">
-  
   <div class="carousel-container">
-      <img [src]="images[currentIndex]" alt="Image">
+    <img [src]="images[currentIndex]" alt="Image" width="600" height="380" />
   </div>
   <div class="container">
     <div class="login-box">
-      <h2>Register </h2>
-  
-    <label for="name">Name:</label>
-    <input type="text" id="name" [(ngModel)]="name" (input)="checkInput()">
-  
-  <label for="email">Email:</label>
-  <input type="email" id="email" [(ngModel)]="email" (input)="checkInput()">
+      <h2>Register</h2>
+      <form [formGroup]="loginForm">
+        <label for="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          (input)="checkInput()"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('name')?.hasError('required') &&
+            loginForm.get('name')?.touched
+          "
+        >
+          Name is required.
+        </div>
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          (input)="checkInput()"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('email')?.hasError('required') &&
+            loginForm.get('email')?.touched
+          "
+        >
+          Email is required.
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('email')?.hasError('email') &&
+            loginForm.get('email')?.touched
+          "
+        >
+          Invalid email format.
+        </div>
 
-  <label for="phone">Phone:</label>
-  <input type="tel" id="phone" [(ngModel)]="phone" (input)="checkInput()">
-  
-  <label for="category">Category:</label>
-  <select id="role" [(ngModel)]="selectedCategory" [disabled]="!isSendOtpsClicked">
-    <option value="Subscriber">Subscriber</option>
-    <option value="Reviewer">Reviewer</option>
-    <option value="Instructor">Instructor</option>
-    <option value="Content_Manager">Content Manager</option>
-    <option value="Admin">Admin</option>
-  </select>
-  <button *ngIf="!isOtpVisible" (click)="sendOtps()"  [disabled]="!isInputFilled">Send OTPs</button>
-  <div *ngIf="isOtpVisible">
-    <label for="emailOtp">Email OTP:</label>
-    <input type="text" id="emailOtp" [(ngModel)]="emailotp" required  [attr.autocomplete]="'off'" >
-    <div class="error-message" *ngIf="!emailotp && emailOtpError"> {{ emailOtpError }} </div>
-    <label for="phoneOtp">Phone OTP:</label>
-    <input type="text" id="phoneOtp" [(ngModel)]="phoneotp" required   [attr.autocomplete]="'off'" >
-    <div class="error-message" *ngIf="!phoneotp && phoneOtpError"> {{ phoneOtpError }} </div>
-  </div>
+        <label for="phone">Phone:</label>
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          (input)="checkInput()"
+        />
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('phone')?.hasError('required') &&
+            loginForm.get('phone')?.touched
+          "
+        >
+          Phone is required.
+        </div>
+        <div
+          class="error-message"
+          *ngIf="
+            loginForm.get('phone')?.hasError('pattern') &&
+            loginForm.get('phone')?.touched
+          "
+        >
+          Invalid phone format. (10 digits required)
+        </div>
+        <label for="category">Category:</label>
+        <select
+          id="role"
+          formControlName="selectedCategory"
+          [disabled]="!isSendOtpsClicked"
+        >
+          <option value="Subscriber">Subscriber</option>
+          <option value="Reviewer">Reviewer</option>
+          <option value="Instructor">Instructor</option>
+          <option value="Content_Manager">Content Manager</option>
+          <option value="Admin">Admin</option>
+        </select>
+        <button
+          *ngIf="!isOtpVisible"
+          (click)="sendOtps()"
+          [disabled]="!isInputFilled"
+        >
+          Send OTPs
+        </button>
+        <div *ngIf="isOtpVisible">
+          <label for="emailOtp">Email OTP:</label>
+          <input
+            type="text"
+            id="emailOtp"
+            formControlName="emailOtp"
+            required
+            [attr.autocomplete]="'off'"
+            (input)="onEmailOtpInput($event)"
 
-  <button *ngIf="isLoginVisible" (click)="signupVerify()" routerLink="/login">Register</button>
-  <div class="no-account redirect" routerLink="/login">Already have account ?</div>
-  <div  class="no-account redirect redirectlogin"  routerLink="/login"> Login here </div>
+          />
+          <div
+            class="error-message"
+            *ngIf="
+              loginForm.get('emailOtp')?.hasError('required') &&
+              loginForm.get('emailOtp')?.touched
+            "
+          >
+            Email OTP is required.
+          </div>
+          <div class="error-message" *ngIf="loginForm.get('emailOtp')?.hasError('pattern') && loginForm.get('emailOtp')?.touched">
+            Email OTP must consist of digits only.
+          </div>
+  
+          <label for="phoneOtp">Phone OTP:</label>
+          <input
+            type="text"
+            id="phoneOtp"
+            formControlName="phoneOtp"
+            required
+            [attr.autocomplete]="'off'"
+            (input)="onPhoneOtpInput($event)"
+
+          />
+          <div
+            class="error-message"
+            *ngIf="
+              loginForm.get('phoneOtp')?.hasError('required') &&
+              loginForm.get('phoneOtp')?.touched
+            "
+          >
+            Phone OTP is required.
+          </div>
+          <div
+            class="error-message"
+            *ngIf="
+              loginForm.get('phoneOtp')?.hasError('pattern') &&
+              loginForm.get('phoneOtp')?.touched
+            "
+          >
+         Phone OTP must consist of digits only.
+          </div>
+        </div>
+
+        <button
+          *ngIf="isLoginVisible"
+          [disabled]="loginForm.get('emailOtp')?.value.length !== 6 || loginForm.get('phoneOtp')?.value.length !== 6 || !loginForm.valid"
+          [ngStyle]="{
+            'background-color': loginForm.get('emailOtp')?.value.length == 6 && loginForm.get('phoneOtp')?.value.length == 6 && loginForm.valid ? 'blue' : 'gray',
+            color: loginForm.get('emailOtp')?.value.length == 6 && loginForm.get('phoneOtp')?.value.length == 6 && loginForm.valid ? 'white' : 'black'
+          }"
+          (click)="signupVerify()"
+          routerLink="/login"
+        >
+          Register
+        </button>
+       
+        <div class="no-account redirect" routerLink="/login">
+          Already have account ?
+        </div>
+        <div class="no-account redirect redirectlogin" routerLink="/login">
+          Login here
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 </div>

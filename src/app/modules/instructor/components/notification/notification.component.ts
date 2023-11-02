@@ -35,7 +35,11 @@ export class NotificationComponent implements OnInit{
     this.cdr.detectChanges();
   }
   
-  
+  deleteNotification(index: number) {
+    this.notifications.splice(index, 1);
+    this.cdr.detectChanges();
+  }
+
   
   getRandomColor(): string {
     const letters = '0123456789ABCDEF';

@@ -14,6 +14,7 @@ import { DeleteAccountComponent } from './components/delete-account/delete-accou
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SubscribernavComponent } from './components/subscribernav/subscribernav.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 const routes: Routes = [
   {
@@ -76,6 +77,10 @@ const routes: Routes = [
   {
     path:"navbar",
     component:SubscribernavComponent
+  },
+  {
+    path:"articleform",
+    component:ArticleformComponent
   }
 
 ];

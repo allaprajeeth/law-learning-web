@@ -24,11 +24,7 @@ export class NotificationComponent implements OnInit{
     { heading: 'Courses Reminder', message: 'Upcoming New Courses', icon: 'E' },
   ];
 
-  openNotification() {
-    this.notificationOpened = true;
-    
-    this.router.navigate(['instructor/notification/notification-item-clicked']);
-  }
+ 
 
   constructor(private cdr: ChangeDetectorRef, private router: Router) {}
 
@@ -36,8 +32,11 @@ export class NotificationComponent implements OnInit{
     this.cdr.detectChanges();
   }
   
-  
-  
+  deleteNotification(index: number) {
+    this.notifications.splice(index, 1);
+    this.cdr.detectChanges();
+  }
+
   getRandomColor(): string {
     const letters = '0123456789ABCDEF';
     let color = '#';

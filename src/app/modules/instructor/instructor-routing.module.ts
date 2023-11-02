@@ -7,6 +7,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
+import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,11 @@ component:CoursesComponent
 {
   path:"notification",
 component:NotificationComponent
-}
+},
+{
+  path:"instructorinfo",
+component:InstructorinfoComponent
+},
 ];
 
 @NgModule({

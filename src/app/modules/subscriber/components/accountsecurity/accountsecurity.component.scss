@@ -36,12 +36,15 @@
       text-align: center;
     }
   
-    button {
+    .editbtn {
       background-color: black;
       color: white;
-      padding: 10px 20px;
+      // padding: 10px 20px;
+      padding-bottom: 11px;
+      // margin-right: 30px;
       border: none;
       cursor: pointer;
+      border-radius: 2px;
     }
   
     /* Header Styles */
@@ -59,7 +62,7 @@
   
     /* Form Input Styles */
     input[type="text"] {
-      width: 75%;
+      width: 60%;
       padding: 10px;
       margin-bottom: 10px;
     }

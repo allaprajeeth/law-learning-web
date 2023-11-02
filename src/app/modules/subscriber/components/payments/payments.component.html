@@ -1,16 +1,26 @@
 <app-subscribernav></app-subscribernav>
 <div class="container-wrapper">
-<div class="container">
+  <div class="container">
     <div class="main-container">
-        <div class="main-box">
-            <h1>Payment Methods</h1>
-            <label>
-                <div class="saved-payments-box">
-                    <div class="saved-payments-box">
-                        <input type="checkbox" id="paymentCheckbox">
-                        Show my saved payments on the checkout step
-        </div>
-        </div>
-        <p class="para">Your saved payment methods</p>
-        <p class="dashed">You don’t have any saved payment method</p>
-        
+      <div class="main-box">
+        <h1>Purchase History</h1>
+        <table class="purchase-table">
+          <tr>
+            <th>Heading</th>
+            <th>Date</th>
+            <th>Price</th>
+            <th>Invoice</th>
+          </tr>
+          <ng-container *ngFor="let purchase of purchaseHistory; let i = index">
+            <tr>
+              <td>{{ purchase.heading }}</td>
+              <td>{{ purchase.date }}</td>
+              <td>{{ purchase.price }}</td>
+              <td><button (click)="downloadInvoice(i)">Download</button></td>
+            </tr>
+          </ng-container>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

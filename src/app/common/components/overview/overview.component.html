@@ -5,14 +5,24 @@
       of study and ethics, and the legal systems that shape our societies.
     </p>
     <div class="ratingConatiner">
+      <span>Subscriber Ratings : &nbsp;</span>
       <span class="star starNumber">4.5</span>
       <span class="star">&#9733;</span>
       <span class="star">&#9733;</span>
       <span class="star">&#9733;</span>
       <span class="star">&#9733;</span>
-      <i style="font-size: 15px" class="fa star">&#xf123;</i>
+      <i style="font-size: 16px" class="fa star">&#xf123; (1,232)</i>
     </div>
-    <p>Created by Edward Viaene</p>
+    <div class="ratingConatiner">
+      <span>Reviewer Ratings : &nbsp;</span>
+      <span class="star starNumber">4</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733; (22)</span>
+    </div>
+    <p>Instructor : Edward Viaene</p>
+    <p>Course Duration : 2hr 3m</p>
     <p class="icon">
       <span class="material-icons updated"> report_gmailerrorred </span>Last
       updated: 10/2023
@@ -23,7 +33,7 @@
   </div>
   
   <div class="courseDescription">
-    <h2>What you'll learn</h2>
+    <h2>What you'll Learn</h2>
     <p>
       <span class="material-icons"> check </span> &nbsp;&nbsp; From constitutional
       law, criminal law, and international law to environmental law, intellectual
@@ -62,18 +72,6 @@
       </div>
       <div class="grid-item">
         <span><mat-icon>download</mat-icon> 1 downloadable resource</span>
-      </div>
-      <div class="grid-item">
-        <span
-          ><span class="material-icons">smartphone</span> Access on mobile and
-          TV</span
-        >
-      </div>
-      <div class="grid-item">
-        <span
-          ><span class="material-icons">closed_caption_off</span> Closed
-          captions</span
-        >
       </div>
       <div class="grid-item">
         <span
@@ -143,7 +141,7 @@
     <div class="container1">
         <div class="container2">
         <h2 class="heading1">Instructor</h2>
-        <h2 class="author">John Smith</h2>
+        <h2 class="author" routerLink="/instructor/instructorinfo">John Smith</h2>
         <p class="text">Juris Doctor and Leading Law Learning Instructor</p>
         <div class="iconsContainer">
           <img class="avatar" src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
@@ -185,7 +183,7 @@
           Patience, adaptability, and the ability to motivate and engage learners.
           A commitment to ongoing professional development in the legal field.</p>
         </div>
-        <h2 class="courseRatingsHeading">Course Ratings</h2>
+        <h2 class="courseRatingsHeading">Course Reviews</h2>
         <div class="courseRatingContainer">
           <div class="courseRating">
             <span class="circle">DW</span>
@@ -247,9 +245,63 @@
               </div>
             </div>
               <p class="courseRatingText">The course was well-organized, and the materials provided were up-to-date. It was clear that the course
-                creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.</p>
-          </div>
+                 creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.</p>
+              </div>
+
+              <div class="courseRating" *ngIf="submittedReview">
+                <span class="circle">SA</span>
+                <div class="alignment">
+                  <h2>UserName</h2>
+                  <div class="starsRating">
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9733;</span>
+                    <span class="star">&#9734;</span>
+                  </div>
+                </div>
+                  <p class="courseRatingText">{{userReview}}</p>
+                  </div>
         </div>
+        <div class="leave-rating"  *ngIf="!submittedReview" >
+          <h1 style="color:blue">Leave Your Rating Here</h1> 
+          <hr>
+          <br>
+          <i style="font-size: 16px;">You have to complete 70% to give rating</i>
+          <br>
+          <br>
+          <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview" >
+            Give Rating
+          </button>
+          </div>
+          
+          <div class="overlay" *ngIf="showRating">
+            <div class="contentt">
+              <div class="close" (click)="leaveRatingClose()">&times;</div>
+              <h1>How would you rate this course?</h1>
+              <ng-container *ngFor="let i of stars">
+                <mat-icon
+                  (mouseenter)="updaterating(i)"
+                  [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
+                  class="staricon"
+                >
+                  star
+                </mat-icon>
+              </ng-container>
+              <div class="review">
+                <textarea
+                  id="review"
+                  [(ngModel)]="userReview"
+                  name="userReview"
+                  rows="3"
+                  cols="36"
+                  placeholder="Give comments"
+                  class="mat-input custom-textarea"
+                ></textarea>
+              </div>
+              <button class="custom-button"(click)="submitRating()">Submit </button>
+            </div>
+          </div>
       </div>
   </div>
   <div *ngIf="availableCourse" class="availableCourse">

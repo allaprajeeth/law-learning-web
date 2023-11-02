@@ -35,10 +35,14 @@ import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './notification/notification.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CoursesPageComponent } from 'src/app/common/components/courses-page/courses-page.component';
+import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 
 
 
+import { CourseCardComponent } from './components/course-card/course-card.component';
 
 
 @NgModule({
@@ -60,7 +64,10 @@ import { CoursesPageComponent } from 'src/app/common/components/courses-page/cou
     NotificationComponent,
     CourseCardComponent,
     CoursesPageComponent
-   
+    NumberchangepopupComponent,
+    ArticleformComponent,
+    CourseCardComponent, 
+
   ],
   imports: [
     CommonModule,
@@ -75,9 +82,11 @@ import { CoursesPageComponent } from 'src/app/common/components/courses-page/cou
     MatSlideToggleModule,
     FormsModule,
     MatInputModule,
-    // NgFor,
+  
     MatMenuModule,
     MatButtonModule,
+    MatBadgeModule,
+    MatDialogModule,
     MatCardModule,
     MatBadgeModule
   ]

@@ -18,6 +18,8 @@ import { LoginComponent } from './common/components/login/login.component';
 import { FooterComponent } from './shared-module/components/footer/footer.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
 import { OverviewComponent } from './common/components/overview/overview.component';
+import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
+import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
 // import { CourseCardComponent } from './modules/subscriber/components/cart/cart.component';
@@ -103,6 +105,14 @@ const routes: Routes = [
   {
     path: 'courseInfo',
     component:CourseInfoComponent
+  },
+  {
+    path: 'freecourse',
+    component:FreecourseComponent
+  },
+  {
+    path:'aboutus',
+    component:AboutusComponent
   },
   {
     path: 'footer',

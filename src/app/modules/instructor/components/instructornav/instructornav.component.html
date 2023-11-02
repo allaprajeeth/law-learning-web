@@ -92,16 +92,17 @@
         <a routerLink="/" class="logo">Law Logo</a>
         <div>
           <ul class="nav-icons">
-            <li><a routerLink="/documents" class="mycourses">Knowledge Centre</a></li>
-            <li><a routerLink="/article" class="mycourses">Publishing Corner</a></li>
-            <li><a routerLink="/subscriber/homepage" class="mycourses">
-                My Home page</a></li>
+            <li><a routerLink="/instructor/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
+            <li><a routerLink="/documents" routerLinkActive="active" class="mycourses">Library</a></li>
+            <li><a routerLink="/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
+            
+            
     
-                <li><a routerLink="/courses" class="mycourses"> Upload Course</a></li>
+                <!-- <li><a routerLink="/courses" class="mycourses">Create a Course</a></li> -->
 
-            <li><a routerLink="/subscriber/cart">
+            <!-- <li><a routerLink="/subscriber/cart">
                 <mat-icon>shopping_cart_checkout</mat-icon>
-              </a></li>
+              </a></li> -->
               
               <li><a routerLink="/instructor/notification">
                 <mat-icon matBadge="2">notifications</mat-icon>
@@ -129,27 +130,19 @@
                 </li>
                 <hr />
     
-                <li><a routerLink="/homepage">My Courses</a></li>
-                <li><a routerLink="/documents">Knowledge Centre</a></li>
-    
-                <li><a routerLink="/article">Publishing corner</a></li>
-                <li><a routerLink="/subscriber/cart">My cart</a></li>
+                <li>
+                  <a routerLink="/instructor/public-profile">Public profile</a>
+                </li>
                 
-    
-                <hr>
-                <li><a routerLink="/subscriber/notifications">Notifications</a></li>
-                <hr>
-    
                 <li><a routerLink="/subscriber/acSecurity">Account settings</a></li>
-                <li><a routerLink="/subscriber/payments">Payments</a></li>
-                <!-- <li><a routerLink="/subscriber/subscriptions">Subscriptions</a></li> -->
-                <hr>
-    
-    
-                <li><a routerLink="/instructor/public-profile">Public profile</a></li>
-                <hr>
-                <li><a>Help</a></li>
-                <li><a routerLink="/header" (click)="onLogoutClick()">Logout</a></li>
+                <li><a routerLink="/subscriber/payments">Purchase History</a></li>
+                <hr/>
+                <li><a>Terms & Conditions</a></li>
+                <li><a>Contact Us</a></li>
+                <li>
+                  <a routerLink="/header" (click)="onLogoutClick()">Logout</a>
+                </li>
+                
               </ul>
             </li>
           </ul>

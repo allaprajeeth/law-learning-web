@@ -6,9 +6,15 @@ interface SubSection {
   description: string;
   submitted: boolean;
   status: string;
+  duration: {
+    minutes: number;
+    seconds: number;
+  };
+  
 }
 
 interface MainSection {
+  duration: { minutes: number; seconds: number; };
   name: string;
   file?: File;
   description: string;
@@ -24,6 +30,9 @@ interface MainSection {
 })
 export class UploadComponent implements OnInit {
   mainSections: MainSection[] = [];
+  videoElement: any;
+
+  isDurationFetched: boolean = false;
 
   ngOnInit() {
     // Add the initial main section when the component initializes
@@ -36,7 +45,11 @@ export class UploadComponent implements OnInit {
       description: '',
       subSections: [],
       submitted: false,
-      status: ''
+      status: '',
+      duration: {
+        minutes: 0,
+        seconds: 0
+      }
     };
     this.mainSections.push(newMainSection);
   }
@@ -47,24 +60,57 @@ export class UploadComponent implements OnInit {
 
   addSubSection(mainIndex: number) {
     const newSubSection: SubSection = {
-      title: `Sub-Section ${this.mainSections[mainIndex].subSections.length + 1}`,
+      title: `Sub-Section ${mainIndex + 1}.${this.mainSections[mainIndex].subSections.length + 1}`,
       description: '',
       submitted: false,
-      status: ''
+      status: '',
+      duration: {
+        minutes: 0,
+        seconds: 0
+      }
     };
     this.mainSections[mainIndex].subSections.push(newSubSection);
-  }
+}
+
 
   removeSubSection(mainIndex: number, subIndex: number) {
     this.mainSections[mainIndex].subSections.splice(subIndex, 1);
   }
 
-  onMainFileSelected(event: any, mainIndex: number) {
+  onMainFileSelected(event: any, subIndex: number) {
     const file = event.target.files[0];
     if (file) {
-      this.mainSections[mainIndex].file = file;
+      const video = document.createElement('video');
+      video.src = URL.createObjectURL(file);
+  
+      // Listen for the loadedmetadata event using an arrow function
+      video.addEventListener('loadedmetadata', () => {
+        const duration = video.duration;
+        const minutes = Math.floor(duration / 60);
+        const seconds = Math.floor(duration % 60);
+  
+        // Update the correct mainSection object with the duration
+        this.mainSections[subIndex].duration = {
+          minutes: minutes,
+          seconds: seconds
+        };
+  
+        // Set the flag to indicate duration has been fetched
+        this.isDurationFetched = true;
+  
+        // Clean up the dynamically created video element
+        URL.revokeObjectURL(video.src);
+      });
+  
+      // Append the video element to the body to trigger the loadedmetadata event
+      document.body.appendChild(video);
     }
   }
+  
+
+// }
+
+
 
   onSubFileSelected(event: any, mainIndex: number, subIndex: number) {
     const file = event.target.files[0];

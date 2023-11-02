@@ -1,14 +1,15 @@
 import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import * as Plyr from 'plyr';
-
-
+import { PdfService } from 'src/app/pdf.service';
 @Component({
   selector: 'app-videoplayer',
   templateUrl: './videoplayer.component.html',
   styleUrls: ['./videoplayer.component.scss']
 })
 export class VideoplayerComponent {
+  isTestAvailable:boolean=true;
+  nextVideoInfo: { sectionIndex: number; videoIndex: number } | undefined;
   @ViewChildren(MatExpansionPanel) expansionPanels!: QueryList<MatExpansionPanel>;
   @ViewChild('videocontainer') videoContainer!: ElementRef;
   @ViewChild('videotextContainer') videoTextContainer!: ElementRef;
@@ -17,7 +18,7 @@ export class VideoplayerComponent {
   currentSectionIndex: number = 0;
   currentVideoTime: number = 0;
   autoplayVideo: boolean = false;
-  showNextVideoMessage: boolean = false;
+  showNextButton: boolean = false;
   player: Plyr | undefined;
   completedVideoCount = 0;
   totalCourseDuration: number = 0;
@@ -29,32 +30,34 @@ export class VideoplayerComponent {
   showDocs(){
     this.documents=!this.documents;
   }
-  
+  pdfUrl='assets/Java.pdf'
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
     panelTitle: `Section ${i + 1}`,
     videos: [
       {
         url: 'assets/video2.mp4',
         selected: false,
-        title: '1. Introduction',
+        title: `${i + 1}.1 Introduction`,
         time: '1min',
       },
       {
         url: 'assets/video3.mp4',
         selected: false,
-        title: '2. Hands-On Practice',
+        title: `${i + 1}.2 Hands-On Practice`,
         time: '9min',
       },
       {
         url: 'assets/video1.mp4',
         selected: false,
-        title: "3. Let's get started",
+        title: `${i + 1}.3. Let's get started`,
         time: '2min',
       },
     ],
   }));
   currentVideoSource: string = this.videoGroups[this.currentVideoIndex].videos[0].url;
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef ,private testService:PdfService) {
+    this.testService.setIsTestAvailable(false); 
+  }
 
   isVideoPlaying(sectionIndex: number, videoIndex: number): boolean {
     return sectionIndex === this.currentSectionIndex && videoIndex === this.currentVideoIndex;
@@ -80,7 +83,11 @@ export class VideoplayerComponent {
   }
   resourceData: { title: string; resourceUrl: string }[] = [
     {
-      title: '1. Introduction',
+      title: '1.1 Introduction',
+      resourceUrl: '',
+    },
+    {
+      title: '2.2 Hands-On Practice',
       resourceUrl: '',
     },
   ];
@@ -137,7 +144,6 @@ export class VideoplayerComponent {
         'volume',
         'speed',
         'settings',
-        'pip',
         'fullscreen',
       ],
       settings: ['captions', 'quality', 'speed'],
@@ -201,14 +207,15 @@ export class VideoplayerComponent {
       return 0; 
     }
   }
-
-  private handleVideoEnded() {
+  
+   handleVideoEnded() {
+    this.showNextButton = true; 
     this.markVideoAsCompleted();
-    this.playNextVideo();
+    //this.playNextVideo();
     localStorage.setItem('completedStatus', JSON.stringify(this.videoGroups));
   }
 
-  private markVideoAsCompleted() {
+   markVideoAsCompleted() {
     const video = this.videoGroups[this.currentSectionIndex].videos[this.currentVideoIndex];
     if (!video.selected) {
       video.selected = true;
@@ -216,17 +223,19 @@ export class VideoplayerComponent {
         return count + section.videos.filter((v: any) => v.selected).length;
       }, 0);
       this.updateCourseProgress();
+       
     }
   }
   
-  private playNextVideo() {
+   playNextVideo() {
+    this.showNextButton = false;
     this.currentVideoIndex++;
     if (this.currentVideoIndex >= this.videoGroups[this.currentSectionIndex].videos.length) {
       this.currentSectionIndex++;
       this.currentVideoIndex = 0;
     }
     
-    this.playVideo(this.currentSectionIndex, this.currentVideoIndex,this.player?.duration);
+   this.playVideo(this.currentSectionIndex, this.currentVideoIndex,this.player?.duration);
   }
 
   playVideo(sectionIndex: number, videoIndex: number, duration: number = 0) {
@@ -234,7 +243,11 @@ export class VideoplayerComponent {
     const videoUrl = video.url;
     this.currentSectionIndex = sectionIndex;
     this.currentVideoIndex = videoIndex;
-    this.duration=duration
+    this.duration=duration;
+    this.nextVideoInfo = {
+      sectionIndex: sectionIndex,
+      videoIndex: (videoIndex + 1 < this.videoGroups[sectionIndex].videos.length) ? (videoIndex + 1) : 0
+    };
     if (this.player) {
       if (this.player) {
         this.player.source = {
@@ -259,5 +272,6 @@ export class VideoplayerComponent {
     this.expansionPanels.forEach((panel) => panel.close());
     this.expansionPanels.toArray()[sectionIndex].open();
   }
+ 
   
 }
