@@ -43,6 +43,7 @@
 </mat-sidenav-container>
 <div class="overlay" *ngIf="isDeleteAccountClicked  && isOtpVisible"></div>
 <div *ngIf="isDeleteAccountClicked && isOtpVisible" class="login-box">
+  <div class="close-button" (click)="closeButton()">X</div>
    <form [formGroup]="loginForm" >
     <!-- <label for="email">Your Email:</label>
     <input type="text" id="currentEmail" formControlName="currentEmail" [disabled]=true placeholder="nuncsystems@gmail.com">

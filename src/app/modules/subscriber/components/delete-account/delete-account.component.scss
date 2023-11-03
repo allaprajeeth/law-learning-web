@@ -122,10 +122,14 @@ button {
 .phoneno {
   padding-bottom: 15px;
 }
-
+.close-button{
+  position: relative;
+  left: 150px;
+  font-size: 16px;
+}
 .overlay {
     position: fixed;
-    top: 0;
+    top: 110px;
     left: 0;
     width: 100%;
     height: 100%;
@@ -142,7 +146,7 @@ button {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    z-index: 10000; /* Ensure it's above the overlay */
+    z-index: 10000; 
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -21,7 +21,7 @@ export class DeleteAccountComponent {
   ngOnInit() {
     const storedCountdown = this.deleteTimeService.getCountdownValue();
 
-    if (storedCountdown !== null) {
+    if (storedCountdown !== null &&  this.isDeleteAccountClicked == false) {
       this.countdown = storedCountdown;
       this.isDeleteCountdownVisible = true;
       this.startCountdown();
@@ -37,6 +37,10 @@ export class DeleteAccountComponent {
   sendOtps(){
     this.showOtpFields();
     //this.isSendOtpsClicked=false;
+  }
+  closeButton(){
+    this.isDeleteAccountClicked =false;
+    this.isOtpVisible=false
   }
   closeAccount(){
     this.isDeleteAccountClicked=true;
@@ -102,10 +106,7 @@ onPhoneOtpInput(event: any) {
   this.loginForm.get('phoneOtp')!.setValue(truncatedValue, { emitEvent: false });
 }
 revertDelete() {
-  
   clearInterval(this.countdownInterval);
-
-  
   this.isOtpVisible = true;
   this.isDeleteAccountClicked = false;
   this.isDeleteCountdownVisible = false;
