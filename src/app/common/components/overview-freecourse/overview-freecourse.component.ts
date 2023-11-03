@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  selector: 'app-overview-freecourse',
+  templateUrl: './overview-freecourse.component.html',
+  styleUrls: ['./overview-freecourse.component.scss']
 })
-export class OverviewComponent {
-
+export class OverviewFreecourseComponent {
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
     panelTitle: `Section ${i + 1}`,
     videos: [
@@ -52,12 +50,7 @@ toggleSectionInfo(i: number, j: number) {
     bio: 'John Doe is a web development instructor with over 10 years of experience. He has a passion for teaching and helping others learn new skills. John is also a certified web developer and has a strong understanding of HTML, CSS, and JavaScript.'
   };
   
-  constructor(private route: ActivatedRoute) {
-    this.route.queryParams.subscribe((params) => {
-      this.availableCourse = params['showDiv'] === 'true';
-     
-    });
-  }
+  
   showPopup: boolean = false;
  
   submittedReview:boolean=false;
@@ -65,7 +58,7 @@ toggleSectionInfo(i: number, j: number) {
  
   stars = [1, 2, 3, 4, 5];
   selected = 0;
-  isMore: boolean = false; 
+  isMore: boolean = false; // Set this to true to show the popup initially
   userReview: string = '';
   isratingEditable:boolean=true;
   leaveRatingOpen() {
@@ -84,12 +77,9 @@ toggleSectionInfo(i: number, j: number) {
     console.log('Selected Rating:', this.selected);
     console.log('User Review:', this.userReview);
     this.isratingEditable=false;
+    localStorage.setItem('userRating', this.selected.toString());
+    
     this.showRating = false;
     this.submittedReview=true
   }
-  getStarArray(): number[] {
-    return Array.from({ length: 5 }, (_, i) => i);
-  }
-  
 }
-

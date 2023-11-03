@@ -54,24 +54,19 @@
   .teacher-profile {
    
     width: 290px;
-    height:290px;
-    margin: 5px;
+    height:315px;
+    margin: 3px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     padding: 20px;
+    padding-top: 10px;
     border: 1px solid grey;
     border-radius: 8px;
-  }
-  .teacher-profile img {
-  
-    border-radius: 50%;
-    margin: 0 auto 15px;
   }
   .teacher-profile h2 {
     font-size: 1.2rem;
     font-weight: bold;
-    margin: 5px 0;
   }
   .teacher-profile h3 {
     font-size: 1rem;
@@ -87,4 +82,9 @@
   }
   h1{
     margin-left: 6%;
+  }
+  .avatar {
+    width: 130px;
+    height: 130px;
+    // float: left;
   }

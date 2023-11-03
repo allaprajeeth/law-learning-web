@@ -12,11 +12,7 @@
     .carousel-container {
     width: 50%; 
     padding: 10px; 
-   
-   //box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    //border: 1px solid #ccc;
-    // margin-bottom: 100px;
-    // margin-top: 40px;
+
   }
 
   .carousel-container img {
@@ -77,15 +73,12 @@ button:disabled {
   color: red;
 
 }
-
-/* Change input border color to red when there's an error */
 .error-input {
   border-color: black;
 }
 .redirect{
   cursor:pointer;
   text-align: center;
-  // text-decoration: underline;
   color: rgb(0, 0, 0);
   font-weight: 300;
   margin-bottom: 10px;
@@ -103,7 +96,7 @@ button:disabled {
 }
 .success-snackbar {
   margin-top: 120px !important; 
-// display: none;
+
 }
 
 
