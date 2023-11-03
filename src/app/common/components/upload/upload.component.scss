@@ -44,6 +44,8 @@ textarea {
 h2 {
   // text-align: center;
   margin-bottom: 20px;
+  
+
 }
 
 .duration-input {
@@ -75,6 +77,10 @@ h2 {
   margin-top: 5px;
   margin-left: 15px;
   font-size: smaller; /* You can adjust the font size as needed */
+}
+.status-under-review {
+  font-size: 18px;
+  color:#007791
 }
 .sec-save-button{
   background-color: #28a745; /* Green background color */

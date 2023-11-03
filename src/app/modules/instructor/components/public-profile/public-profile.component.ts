@@ -14,7 +14,7 @@ export class PublicProfileComponent {
       // firstName: ['', Validators.required],
       // lastName: ['', Validators.required],
       // email: ['', [Validators.required, Validators.email]],
-      category: ['', Validators.required],
+      // category: ['', Validators.required],
       title: ['', Validators.required],
       // totalStudents: ['', Validators.required],
       // reviews: ['', Validators.required],

@@ -21,6 +21,7 @@ import { OverviewComponent } from './common/components/overview/overview.compone
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
+import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 
 
 const routes: Routes = [
@@ -116,6 +117,10 @@ const routes: Routes = [
   {
     path: 'footer',
     component: FooterComponent
+  },
+  {
+    path: 'termsandcon',
+    component: TermsandconComponent
   },
   // {
   //   path: 'logout',

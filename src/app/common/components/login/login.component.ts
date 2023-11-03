@@ -151,9 +151,9 @@ showOtpFields(): void {
         route = 'instructor/homepage';
       } else if (this.selectedCategory === 'Reviewer') {
         route = 'reviewer/homepage';
-      }else if (this.selectedCategory === 'ContentManager') {
+      } else if (this.selectedCategory === 'Content_Manager') {
         route = 'authentication/homepage';
-      }
+      } 
       
       this.router.navigate([route]);
   

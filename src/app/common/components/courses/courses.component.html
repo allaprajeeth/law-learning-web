@@ -1,92 +1,66 @@
-
 <div class="container-wrapper">
-<div class="form-container">
+  <div class="form-container">
     <h2>Create a New Course</h2>
     <form>
       <div class="form-group">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" required>
       </div>
-  
+
       <div class="form-group">
         <label for="description">Course Description:</label>
         <textarea id="description" name="description" rows="4" required></textarea>
       </div>
-  
+
       <div class="form-group">
         <label>Skill Level:</label>
         <div class="radio-group">
-            <input type="radio" id="beginner" name="skillLevel" value="beginner" required>
-            <label for="beginner" class="skill">Beginner</label>
+          <input type="radio" id="beginner" name="skillLevel" value="beginner" required>
+          <label for="beginner" class="skill">Beginner</label>
 
-            <input type="radio" id="intermediate" name="skillLevel" value="intermediate" required>
-            <label for="intermediate" class="skill">Intermediate</label>
+          <input type="radio" id="intermediate" name="skillLevel" value="intermediate" required>
+          <label for="intermediate" class="skill">Intermediate</label>
 
-            <input type="radio" id="expert" name="skillLevel" value="expert" required>
-            <label for="expert" class="skill">Expert</label>
+          <input type="radio" id="expert" name="skillLevel" value="expert" required>
+          <label for="expert" class="skill">Expert</label>
 
-            <input type="radio" id="student" name="skillLevel" value="student" required>
-            <label for="student" class="skill">Student</label>
+          <input type="radio" id="student" name="skillLevel" value="student" required>
+          <label for="student" class="skill">Student</label>
         </div>
-    </div>
-    <div class="form-group">
-      <label>Course Type:</label>
-      <div class="radio-group">
+      </div>
+      <div class="form-group">
+        <label>Course Type:</label>
+        <div class="radio-group">
           <input type="radio" id="crash" name="courseType" value="Crash" required>
           <label for="crash" class="skill">Crash Course</label>
 
           <input type="radio" id="detailed" name="courseType" value="Detailed" required>
           <label for="detailed" class="skill">Detailed Course</label>
+        </div>
       </div>
-  </div>
-  <div class="form-group">
-    <label>Language:</label>
-    <input type="text" id="language" name="language" value="English" disabled>
-</div>
-
-<!-- <div class="form-group">
-  <label>Video Duration:</label>
-  <div class="duration-input">
-      <input type="number" id="minutes" name="minutes" placeholder="Minutes" required>
-      <input type="number" id="seconds" name="seconds" placeholder="Seconds" required>
-  </div>
-</div> -->
-  
-      <!-- <div class="form-group">
-        <label for="courseType">Course Type:</label>
-        <select id="courseType" name="courseType" required>
-          <option>--Select--</option>
-          <option value="Crash">Crash Course</option>
-          <option value="Detailed">Detailed Course</option>
-        </select>
-      </div>
-   -->
-      <!-- <div class="form-group">
-        <label for="language">Language:</label>
-        <input type="text" id="language" name="language" required>
-      </div> -->
-  
-      <!-- <div class="form-group">
-        <label for="videoDuration">Video Duration:</label>
-        <input type="text" id="videoDuration" name="videoDuration" required>
-      </div>
-  
-      <div class="form-group">
-        <label for="lectures">Number of Lectures:</label>
-        <input type="number" id="lectures" name="lectures" required>
-      </div> -->
-  
-      <!-- <div class="form-group">
-        <label for="documents">Upload Documents:</label>
-        <input type="file" id="documents" name="documents" accept=".pdf,.doc,.docx" required>
-      </div>
-   -->
 
       
+
+        <div class="form-group">
+          <label>Language:</label>
+          <input type="text" id="language" name="language" value="English" disabled>
+        </div>
+
+        <div class="form-group">
+          <label>Does this course have any test?</label>
+          <div class="radio-group">
+             
+              <input type="radio" id="hasTestYes" name="hasTest" value="yes">
+              <label for="hasTestYes">Yes</label>
       
-    
-  
-      <button type="submit" class="center-button" routerLink="/upload">Next</button>
-    </form>
-  </div>
-</div>
+             
+              <input type="radio" id="hasTestNo" name="hasTest" value="no">
+              <label for="hasTestNo">No</label>
+          </div>
+      </div>
+      
+
+        <button type="submit" class="center-button" routerLink="/upload">Next</button>
+        <!-- </form> -->
+      <!-- </div> -->
+      <!-- </div> -->

@@ -1,7 +1,7 @@
 <app-firstnav></app-firstnav>
 <div class="page-container">
   <div class="carousel-container">
-    <img [src]="images[currentIndex]" alt="Image" width="600" height="380" />
+    <img src="https://api.asm.skype.com/v1/objects/0-sa-d5-473337d454c04e8f8ca7194753806d48/views/imgpsh_fullsize_anim" alt="Image" width="600" height="380" />
   </div>
   <div class="container">
     <div class="login-box">
@@ -86,6 +86,8 @@
           <option value="Content_Manager">Content Manager</option>
           <option value="Admin">Admin</option>
         </select>
+        <br/>
+        <br>
         <button
           *ngIf="!isOtpVisible"
           (click)="sendOtps()"
@@ -159,12 +161,17 @@
         >
           Register
         </button>
-       
+       <br/>
+       <br/>
         <div class="no-account redirect" routerLink="/login">
           Already have account ?
         </div>
-        <div class="no-account redirect redirectlogin" routerLink="/login">
-          Login here
+        <!-- <div class="no-account redirect redirectlogin" routerLink="/login">
+        
+        </div> -->
+        <br/>
+        <div class="termsandcon">
+          <a routerLink="/termsandcon">Terms & Conditions</a>
         </div>
       </form>
     </div>

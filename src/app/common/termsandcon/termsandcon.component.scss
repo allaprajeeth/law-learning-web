@@ -1,0 +1,108 @@
+.body{
+    margin: 0;
+    padding: 10px;
+    background-color:#e0d9d9;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // border: 2px solid black;
+   
+}
+
+.terms-box{
+    max-width: 460px;
+    background-color:black ;
+    color:white ;
+    font-family:"montserrat";
+    padding: 60px 30px;
+   
+
+    
+}
+.terms-text{
+    padding:  0 20px;
+    height: 400px;
+    overflow: auto;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+.terms-text::-webkit-scrollbar{
+    width: 2px;
+    background-color:black;
+}
+.terms-text::-webkit-scrollbar-thumb{
+    background-color: red;
+}
+.terms-text h2{
+    text-transform: uppercase;
+}
+.terms-box h4{
+    font-size: 13px;
+    text-align: center;
+    padding: 0 40px;
+}
+.terms-box h4 span{
+    color: red;
+}
+.buttons{
+    display: flex;
+    padding: 0 20px;
+   
+    justify-content: center;
+  align-items: center;
+}
+.btn{
+    height:50px ;
+    width: calc(50% - 6px);
+    border:0 ;
+    border-radius: 6px;
+    font-size: 19px;
+    font-weight: 500;
+    color: white;
+    transition: .3s linear;
+    cursor: pointer;
+}
+.red-btn{
+    background-color: red;
+    width: 100px;
+    margin: 10px;
+
+}
+.gray-btn{
+    background-color: black;
+    width: 100px;
+    margin: 10px;
+
+}
+.btn:hover{
+    opacity: .6;
+}
+.box-shadow{
+    width: 80%;
+    height: 100%;
+    padding: 15px;
+    background-color: white;
+    box-shadow: 10px ;
+}
+.enabled-button {
+    width: 100px;
+    margin: 10px;
+    background-color: rgb(0, 124, 128);
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Disabled Button */
+  .disabled-button {
+    width: 100px;
+    margin: 10px;
+    background-color: rgb(161, 206, 206);
+    // background-color: gray;
+    color: white;
+    cursor: not-allowed;
+  }
+h4{
+   font-weight: bolder;
+} 

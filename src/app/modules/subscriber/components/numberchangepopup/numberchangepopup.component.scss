@@ -11,6 +11,18 @@
     box-sizing: border-box; /* Ensure padding and border are included in the width */
     overflow-y: hidden;
     overflow-x: hidden;
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: #333; /* Change the color as needed */
+    }
+    
   
     h2 {
       font-size: 24px;
@@ -51,6 +63,25 @@
     // .error-input {
     //     border: 1px solid red;
     //   }
+
+    button {
+  padding: 6px;
+  margin: 5px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:enabled {
+  background-color: rgb(0, 109, 128);
+  color: white;
+}
+
+button:disabled {
+  background-color: lightgray;
+  color: darkgray;
+  cursor: not-allowed;
+}
 
     
       

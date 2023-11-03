@@ -4,10 +4,10 @@
   <h2>Article Form</h2>
     <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
       
-      <label for="name">Name:</label>
+      <label for="name">Title of the Article:</label>
       <input type="text" id="name" formControlName="name" />
   
-      <label for="articleName">Title of the Article:</label>
+      <label for="articleName">Name of the Author:</label>
       <input type="text" id="articleName" formControlName="articleName" />
   
       <label for="description">Description:</label>

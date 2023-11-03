@@ -20,8 +20,11 @@ export class NumberchangepopupComponent {
 
   constructor(public dialogRef: MatDialogRef<NumberchangepopupComponent>, private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.accountForm = this.fb.group({
-      newPhone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]]
+      newPhone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
+      otp: ['', [Validators.required, Validators.pattern('[0-9]{6}')]] // OTP field and validation
     });
+
+    
   }
 
   
@@ -44,6 +47,10 @@ export class NumberchangepopupComponent {
     });
     
     // Close the dialog after showing the message
+    this.dialogRef.close();
+  }
+
+  closeDialog() {
     this.dialogRef.close();
   }
 }
