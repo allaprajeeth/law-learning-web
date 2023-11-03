@@ -34,7 +34,7 @@ export class LoginComponent  {
   currentIndex: number = 0;
   email: string = '';
   phone: string = '';
-  selectedCategory: string = 'Subscriber';
+  selectedCategory: string = '';
   emailotp: string = '';
   phoneotp: string = '';
   emailOtpError: string = '';
@@ -143,16 +143,20 @@ showOtpFields(): void {
   }
 
   loginValidation(): void {
-   
+    const selectedCategoryValue = this.loginForm.get('selectedCategory')?.value;
+    console.log('Selected Category:', selectedCategoryValue);
       let route: string = '';
-      if (this.selectedCategory === 'Subscriber') {
+      if (selectedCategoryValue === 'Subscriber') {
         route = 'subscriber/homepage';
-      } else if (this.selectedCategory === 'Instructor') {
+      } else if (selectedCategoryValue === 'Instructor') {
         route = 'instructor/homepage';
-      } else if (this.selectedCategory === 'Reviewer') {
+      } else if (selectedCategoryValue === 'Reviewer') {
         route = 'reviewer/homepage';
-      }else if (this.selectedCategory === 'ContentManager') {
+      }else if (selectedCategoryValue === 'Content_Manager') {
         route = 'authentication/homepage';
+      }
+      else if (selectedCategoryValue === 'Admin') {
+        route = 'admin/homepage';
       }
       
       this.router.navigate([route]);
