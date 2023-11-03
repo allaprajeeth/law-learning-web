@@ -8,9 +8,9 @@ import { CartService } from '../cart.service';
 })
 export class CartComponent implements OnInit {
   couponCode: string = '';
+  totalActualPrice: number = 0;
   cartItems: any[] = [];
-  originalPrice: number = 0;
-  discountedPrice: number = this.originalPrice;
+  discountedPrice: number = 0; // Initialize discountedPrice to 0
   cartIsEmpty: boolean = false;
 
   // Property to keep track of the number of items in the cart
@@ -21,95 +21,90 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.cartService.getCartItems().subscribe((items) => {
       this.cartItems = items;
-      console.log('Cart Items:', this.cartItems); // Add this line
+      console.log('Cart Items:', this.cartItems);
 
       // Calculate the original price based on the prices of items in the cart
-      this.originalPrice = this.calculateOriginalPrice();
+      this.totalActualPrice = this.getTotalActualPrice();
+      this.calculateDiscountedPrice();
 
-   // Update the cartItemCount based on the number of items in the cart
-   const cartItemCount = this.cartItems.length;
-   this.cartService.updateCartItemCount(cartItemCount);
+      // Update the cartItemCount based on the number of items in the cart
+      const cartItemCount = this.cartItems.length;
+      this.cartService.updateCartItemCount(cartItemCount);
     });
   }
 
-   // Calculate the original price based on the prices of items in the cart
-   calculateOriginalPrice(): number {
+  getTotalActualPrice(): number {
     let total = 0;
     for (const item of this.cartItems) {
       total += item.price;
     }
     return total;
   }
+  
+  calculateDiscountedPrice(): void {
+    // Initialize discountedPrice based on totalActualPrice
+    this.discountedPrice = this.totalActualPrice;
+  // this.totalActualPrice = this.getTotalActualPrice();
+  this.applyCoupon(); // Reapply the coupon code to update the discountedPrice
+}
 
-  // Update the total price for a cart item
-  updateItemTotalPrice(item: any) {
-    // Calculate the total price for the item and update the discountedPrice
-    const totalItemPrice = this.originalPrice * item.quantity;
-    item.totalPrice = totalItemPrice;
-  }
-
-  couponCodes: { code: string; discountPercentage: number }[] = [
-    { code: 'CODE10', discountPercentage: 10 },
-    { code: 'CODE20', discountPercentage: 20 },
-    { code: 'CODE30', discountPercentage: 30 },
-    { code: 'CODE40', discountPercentage: 40 },
-    { code: 'CODE50', discountPercentage: 50 },
-    { code: 'CODE60', discountPercentage: 60 },
-    { code: 'CODE70', discountPercentage: 70 },
-    { code: 'CODE80', discountPercentage: 80 },
-  ];
-
-  roundPercentage(percentage: number): number {
-    return Math.round(percentage);
-  }
-
-  // Function to apply the coupon code and calculate the discounted price
   applyCoupon() {
     const enteredCode = this.couponCode;
+    const couponCodes = [
+      { code: 'CODE10', discountPercentage: 10 },
+      { code: 'CODE20', discountPercentage: 20 },
+      { code: 'CODE30', discountPercentage: 30 },
+      { code: 'CODE40', discountPercentage: 40 },
+      { code: 'CODE50', discountPercentage: 50 },
+      { code: 'CODE60', discountPercentage: 60 },
+      { code: 'CODE70', discountPercentage: 70 },
+      { code: 'CODE80', discountPercentage: 80 },
+    ];   
 
-    // Check if the entered code matches any predefined coupon
-    const coupon = this.couponCodes.find((c) => c.code === enteredCode);
+    const coupon = couponCodes.find((c) => c.code === enteredCode);
 
-    // if (coupon) {
-    //   const discountPercentage = coupon.discountPercentage;
+    if (coupon) {
+      const discountPercentage = coupon.discountPercentage;
 
-    //   // Calculate the discounted price
-    //   this.discountedPrice = Math.round(
-    //     this.originalPrice - (this.originalPrice * discountPercentage) / 100
-    //   );
-    // }
-
-
-
-  if (coupon) {
-    const discountPercentage = coupon.discountPercentage;
-
-    // Calculate the discounted price based on the original price and discount percentage
-    this.discountedPrice = this.originalPrice - (this.originalPrice * discountPercentage) / 100;
-    this.discountedPrice = Math.round(this.discountedPrice); // Round the discounted price
-  }
+      // Calculate the discounted price based on the totalActualPrice and discount percentage
+      this.discountedPrice = this.totalActualPrice - (this.totalActualPrice * discountPercentage) / 100;
+      this.discountedPrice = Math.round(this.discountedPrice);
+    }
   }
 
   onRemoveClick(uniqueId: string) {
-    // Find the index of the item to remove based on the uniqueId
-    const itemIndex = this.cartItems.findIndex((item) => item.uniqueId === uniqueId);
+    console.log('Removing item with uniqueId:', uniqueId);
   
-    // Remove the item if found
+    const itemIndex = this.cartItems.findIndex((item) => item.uniqueId === uniqueId);
+    console.log('Item index to remove:', itemIndex);
+  
     if (itemIndex !== -1) {
-      this.cartItems.splice(itemIndex, 1);
-      // Update the item count after removal
+      // Remove the item from the cart
+      const removedItem = this.cartItems.splice(itemIndex, 1)[0]; // Splice returns an array, so we select the first element (the removed item)
+  
+      // Update the totalActualPrice by subtracting the price of the removed item
+      this.totalActualPrice -= removedItem.price;
+  
+      // Update the discountedPrice by applying the coupon code to the updated totalActualPrice
+      this.calculateDiscountedPrice();
+  
+      // Update the cartItemCount
       this.updateCartItemCount();
     }
   
-    // Check if the cart is empty and display a message
     if (this.cartItems.length === 0) {
-      // You can set a flag or variable here to show a message in your template
       this.cartIsEmpty = true;
     }
   }
   
+
   updateCartItemCount() {
     this.cartItemCount = this.cartItems.length;
     this.cartService.updateCartItemCount(this.cartItemCount);
   }
+
+  roundDiscountPercentage(discount: number): number {
+    return Math.round(discount);
+  }
 }
+
