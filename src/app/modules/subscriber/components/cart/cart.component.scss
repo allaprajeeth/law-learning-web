@@ -1,84 +1,147 @@
 body {
-    background-color: #f8f8f8;
+  background-color: #f8f8f8;
+}
+
+.cartContainer {
+  position: relative;
 }
 
 .cartContainer h1 {
-    font-size: x-large;
-    font-weight: bold;
-    margin-bottom: 10px;
-    padding: 10px 0 0 20px;
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 10px 0 0 20px;
 }
 
 .cartContainer h5 {
-    padding-left: 20px;
-    font-size: large;
-}
-
-.horizontalLine {
-    width: 60%;
-    margin: 0 0 0 20px;
+  padding-left: 20px;
+  font-size: large;
 }
 
 .course {
+  display: flex;
+  background-color: #fff;
+  padding: 20px 20px 0 20px;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% - 150px);
+
+  .lawLearningImage {
+    width: 150px;
+    height: 100px;
+    margin-top: 20px;
+  }
+
+  .courseDetails {
     display: flex;
-    background-color: #fff;
-    padding: 20px;
+    width: calc(100% - 170px);
+    justify-content: space-between;
+    margin-top: 20px;
+  }
 
-    .lawLearningImage {
-        width: 150px;
-        height: 100px;
-    }
-
-    .courseHeading {
-       padding: 0 30px;
-    }
-    
-    .courseHeading h4 {
-        padding-top: 5px;
-        font-size: large;
-        margin-bottom: 8px;
-    }
-
-    .courseHeading p {
-        color: #666;
-    }
-
-    .price {
-        display: flex;
-        align-items: center;
-        padding: 0 30px;
-    }
-
-}
-
-.coupon input{
+  .horizontalLine {
     display: flex;
-    padding: 10px 20px;
-    margin-top: 10px;
-}
+    border-top: 1px solid grey;
+  }
 
-.total {
+  .courseHeading {
+    margin-left: 20px;
+  }
+
+  .courseHeading h4 {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .courseHeading p {
+    color: #666;
+  }
+
+  .ratingConatiner {
+    display: flex;
+    align-items: center;
+    .starNumber {
+      padding: 0 10px 0 0;
+    }
+    .star {
+      color: gold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .totalPriceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 80px;
+    left: 900px;
+    margin-bottom: 20px;
+  }
+
+  .totalPrice {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .price {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 580px);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .total {
     background-color: #fff;
-    padding: 40px;
-}
+    margin-bottom: 20px;
 
-.total h5 {
-    font-size: 24px;
+    .actualPrice {
+      font-size: medium;
+    }
+  }
+
+  .total h5 {
+    font-size: x-large;
     font-weight: bold;
     color: #555;
     margin-bottom: 10px;
-    // margin-top: 10px;
-}
+    padding: 0;
+  }
 
-.total p {
+  .total p {
     margin: 0;
     color: #666;
+    font-size: medium;
     font-weight: bold;
-    // margin-top: 10px;
-}
+  }
 
-.btn {
-    background-color: #6f42c1;
+  .removeButtonContainer {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+  }
+
+  .removeButton {
+    height: 40px;
+    background-color: #a435f0;
+    color: #fff;
+    border: none;
+    padding: 5px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .removeButton:hover {
+    background-color: #2f2e32;
+  }
+
+  .btn {
+    width: 280px;
+    background-color: #a435f0;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -86,8 +149,45 @@ body {
     cursor: pointer;
     margin-top: 20px;
     transition: background-color 0.3s ease;
-}
+  }
 
-.btn:hover {
+  .btn:hover {
     background-color: #2f2e32;
+  }
+
+  .couponHorizontalLine {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+
+  .promotions h5 {
+    padding: 0;
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .promotions input {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+  }
+
+  .promotionsInputField {
+    display: flex;
+    align-items: center;
+  }
+
+  .promotionsButton {
+    background-color: #a435f0;
+    color: #fff;
+    border: none;
+    padding: 5px 20px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .promotionsButton:hover {
+    background-color: #2f2e32;
+  }
 }

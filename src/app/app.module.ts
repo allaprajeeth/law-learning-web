@@ -55,6 +55,8 @@ import { FreecourseComponent } from './common/components/freecourse/freecourse.c
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
+import { CarouselModule } from 'primeng/carousel';
+import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 
 
 @NgModule({
@@ -82,16 +84,15 @@ import { TermsandconComponent } from './common/termsandcon/termsandcon.component
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
+    PhonepasswordComponent,
     FreecourseComponent,
     AboutusComponent,
     PhonepasswordComponent,
     TermsandconComponent,
-
- 
-
-    
+    OverviewFreecourseComponent,  
   ],
   imports: [
+    CarouselModule,
     MatSnackBarModule,
     BrowserModule,
     HttpClientModule,
@@ -101,7 +102,6 @@ import { TermsandconComponent } from './common/termsandcon/termsandcon.component
     BrowserAnimationsModule,
     SharedModule,
     SubscriberRoutingModule,
-
     AngularEditorModule,
    
     MatIconModule,

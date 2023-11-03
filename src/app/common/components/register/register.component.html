@@ -157,13 +157,15 @@
             color: loginForm.get('emailOtp')?.value.length == 6 && loginForm.get('phoneOtp')?.value.length == 6 && loginForm.valid ? 'white' : 'black'
           }"
           (click)="signupVerify()"
-          routerLink="/login"
+          
         >
           Register
         </button>
        <br/>
        <br/>
         <div class="no-account redirect" routerLink="/login">
+       
+        <div class="no-account redirect" >
           Already have account ?
         </div>
         <!-- <div class="no-account redirect redirectlogin" routerLink="/login">

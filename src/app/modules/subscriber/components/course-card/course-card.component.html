@@ -21,8 +21,10 @@
         </ul>
     </mat-card-content>
     <div class="courseCardButtons">
-        <button class="addToCartButton">Add to cart</button>
-        <!-- <button class="SubscribeButton">Subscribe</button> -->
+        <button class="addToCartButton" (click)="addToCartClicked()">
+            {{ product.isAddedToCart ? 'Go to Cart' : 'Add to Cart' }}
+        </button>
+        
     </div>
 </div>
 
