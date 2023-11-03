@@ -7,10 +7,7 @@ import { PdfService } from 'src/app/pdf.service';
   styleUrls: ['./course-info.component.scss']
 })
 export class CourseInfoComponent {
-
-
   isTestAvailable: boolean;
-
   constructor(private testService: PdfService) {
     this.isTestAvailable = this.testService.getIsTestAvailable();
   }

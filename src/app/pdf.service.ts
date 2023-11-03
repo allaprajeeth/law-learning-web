@@ -14,8 +14,8 @@ export class PdfService {
     return this.http.get(pdfUrl, { responseType: 'blob' });
   }
 
-  private isTestAvailable: boolean =false;
-  setIsTestAvailable(value: boolean): void {
+   isTestAvailable: boolean =true;
+  setIsTestAvailable(value: boolean) {
     this.isTestAvailable = value;
   }
 
@@ -23,5 +23,18 @@ export class PdfService {
     return this.isTestAvailable;
   }
  
-  
+  private countdownKey = 'countdownValue';
+
+  setCountdownValue(value: number): void {
+    localStorage.setItem(this.countdownKey, value.toString());
+  }
+
+  getCountdownValue(): number | null {
+    const value = localStorage.getItem(this.countdownKey);
+    return value ? parseInt(value, 10) : null;
+  }
+
+  clearCountdownValue(): void {
+    localStorage.removeItem(this.countdownKey);
+  }
 }

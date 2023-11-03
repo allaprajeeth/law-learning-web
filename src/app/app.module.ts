@@ -55,6 +55,7 @@ import { FreecourseComponent } from './common/components/freecourse/freecourse.c
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 import { CarouselModule } from 'primeng/carousel';
+import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { CarouselModule } from 'primeng/carousel';
     FreecourseComponent,
     AboutusComponent,
     PhonepasswordComponent,
+    OverviewFreecourseComponent,
  
 
     

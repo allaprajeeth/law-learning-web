@@ -8,7 +8,7 @@ import { PdfService } from 'src/app/pdf.service';
   styleUrls: ['./videoplayer.component.scss']
 })
 export class VideoplayerComponent {
-  isTestAvailable:boolean=true;
+  isTestAvailable:boolean;
   nextVideoInfo: { sectionIndex: number; videoIndex: number } | undefined;
   @ViewChildren(MatExpansionPanel) expansionPanels!: QueryList<MatExpansionPanel>;
   @ViewChild('videocontainer') videoContainer!: ElementRef;
@@ -56,7 +56,8 @@ export class VideoplayerComponent {
   }));
   currentVideoSource: string = this.videoGroups[this.currentVideoIndex].videos[0].url;
   constructor(private renderer: Renderer2, private el: ElementRef ,private testService:PdfService) {
-    this.testService.setIsTestAvailable(false); 
+    this.testService.setIsTestAvailable(true);
+    this.isTestAvailable = this.testService.isTestAvailable; 
   }
 
   isVideoPlaying(sectionIndex: number, videoIndex: number): boolean {
@@ -96,7 +97,7 @@ export class VideoplayerComponent {
   ngOnInit() {
     this.initializePlayer();
     this.setupPlayerEventListeners();
-
+    this.retrieveTotalWatchedTimeFromLocalStorage();
     const savedVideo = localStorage.getItem('currentVideo');
     console.log(savedVideo)
     const completedStatus = localStorage.getItem('completedStatus');
@@ -178,7 +179,22 @@ export class VideoplayerComponent {
       }, 0);
     }, 0);
   }
+  getTotalWatchedTimeInHours(): string {
+    const totalWatchedHours = Math.floor(this.totalWatchedTime / 3600);
+    const totalWatchedMinutes = Math.floor((this.totalWatchedTime % 3600) / 60);
+    const watchedTimeFormatted = `${totalWatchedHours}h ${totalWatchedMinutes}m`;
 
+    localStorage.setItem('totalWatchedTime', JSON.stringify(this.totalWatchedTime));
+  
+    return watchedTimeFormatted;
+  }
+  retrieveTotalWatchedTimeFromLocalStorage() {
+    const totalWatchedTimeJson = localStorage.getItem('totalWatchedTime');
+    if (totalWatchedTimeJson) {
+      this.totalWatchedTime = JSON.parse(totalWatchedTimeJson);
+    }
+  }
+  
   private updateCourseProgress() {
     this.totalWatchedTime = this.videoGroups.reduce((total, section, sectionIndex) => {
       return total + section.videos.reduce((sectionTotal: number, video: any, videoIndex: any) => {

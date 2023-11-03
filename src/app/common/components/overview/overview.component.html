@@ -247,17 +247,12 @@
               <p class="courseRatingText">The course was well-organized, and the materials provided were up-to-date. It was clear that the course
                  creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.</p>
               </div>
-
               <div class="courseRating" *ngIf="submittedReview">
                 <span class="circle">SA</span>
                 <div class="alignment">
                   <h2>UserName</h2>
                   <div class="starsRating">
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9733;</span>
-                    <span class="star">&#9734;</span>
+                    <span class="star" *ngFor="let i of getStarArray(); let j = index" [ngClass]="{'active': j < selected}">&#9733;</span>
                   </div>
                 </div>
                   <p class="courseRatingText">{{userReview}}</p>
