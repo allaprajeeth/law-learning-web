@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 interface SubSection {
   title: string;
@@ -10,7 +10,6 @@ interface SubSection {
     minutes: number;
     seconds: number;
   };
-  
 }
 
 interface MainSection {
@@ -30,9 +29,9 @@ interface MainSection {
 })
 export class UploadComponent implements OnInit {
   mainSections: MainSection[] = [];
-  videoElement: any;
-
   isDurationFetched: boolean = false;
+
+  constructor() {}
 
   ngOnInit() {
     // Add the initial main section when the component initializes
@@ -54,10 +53,6 @@ export class UploadComponent implements OnInit {
     this.mainSections.push(newMainSection);
   }
 
-  removeMainSection(index: number) {
-    this.mainSections.splice(index, 1);
-  }
-
   addSubSection(mainIndex: number) {
     const newSubSection: SubSection = {
       title: `Sub-Section ${mainIndex + 1}.${this.mainSections[mainIndex].subSections.length + 1}`,
@@ -70,53 +65,44 @@ export class UploadComponent implements OnInit {
       }
     };
     this.mainSections[mainIndex].subSections.push(newSubSection);
-}
+  }
 
+  removeMainSection(index: number) {
+    this.mainSections.splice(index, 1);
+  }
 
   removeSubSection(mainIndex: number, subIndex: number) {
     this.mainSections[mainIndex].subSections.splice(subIndex, 1);
   }
 
-  onMainFileSelected(event: any, subIndex: number) {
+  onMainFileSelected(event: any, mainIndex: number, subIndex: number) {
     const file = event.target.files[0];
     if (file) {
       const video = document.createElement('video');
       video.src = URL.createObjectURL(file);
-  
-      // Listen for the loadedmetadata event using an arrow function
       video.addEventListener('loadedmetadata', () => {
         const duration = video.duration;
         const minutes = Math.floor(duration / 60);
         const seconds = Math.floor(duration % 60);
-  
-        // Update the correct mainSection object with the duration
-        this.mainSections[subIndex].duration = {
+        this.mainSections[mainIndex].subSections[subIndex].duration = {
           minutes: minutes,
           seconds: seconds
         };
-  
-        // Set the flag to indicate duration has been fetched
         this.isDurationFetched = true;
-  
-        // Clean up the dynamically created video element
         URL.revokeObjectURL(video.src);
       });
-  
-      // Append the video element to the body to trigger the loadedmetadata event
       document.body.appendChild(video);
     }
   }
   
 
-// }
-
-
-
   onSubFileSelected(event: any, mainIndex: number, subIndex: number) {
     const file = event.target.files[0];
-    if (file) {
-      this.mainSections[mainIndex].subSections[subIndex].file = file;
+    if (!file || !file.type.startsWith('video/')) {
+      window.alert('Error: Please select a valid video file.');
+      return;
     }
+    this.mainSections[mainIndex].subSections[subIndex].file = file;
   }
 
   saveMainSection(mainIndex: number) {
@@ -140,9 +126,16 @@ export class UploadComponent implements OnInit {
     // Implement logic to submit all sections data to your backend or storage system
     console.log('Submitted Data:', this.mainSections);
   }
+
   saveSubSection(mainIndex: number, subIndex: number) {
+    const subSection = this.mainSections[mainIndex].subSections[subIndex];
+  
+    // if (!subSection.file) {
+    //   window.alert('Error: Please select a video file for this subsection.');
+    //   return;
+    // }
+  
     // Implement logic to save sub-section data
-    
-    console.log('Sub-section saved:', this.mainSections[mainIndex].subSections[subIndex]);
+    console.log('Sub-section saved:', subSection);
   }
 }

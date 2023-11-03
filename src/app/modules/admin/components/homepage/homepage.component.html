@@ -1,8 +1,23 @@
-<app-reviewernav></app-reviewernav>
+<app-adminnav></app-adminnav>
 
+<br/>
+<br>
+<div class="my-flex" style="width: 300px;">
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Filters</mat-label>
+    <mat-select [(ngModel)]="selectedFilter" style="width: 100%" appearance="outline" start>
+      <mat-option value="contentManager">Content Manager section</mat-option>
+      <mat-option value="reviewer">Reviewer section</mat-option>
+      <mat-option value="uploading">Uploading section</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+
+<!-- Your courses display section goes here -->
 
 <div class="container">
-
     <div class="heading">
       <h1>Courses to Review</h1>
     </div>
@@ -21,44 +36,13 @@
           <h5>{{ headings[i] }}</h5>
           <p>{{ paragraphs[i] }}</p>
         </div>
-        <!-- <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
-        </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span> -->
-
-
-
-      
-         
-        <!-- <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-        </div> -->
-
         <div class="ratingscontainer1">
-          <!-- <div class="ratingConatiner2">
-            <span>Reviewer Ratings</span>
-            
-          </div> -->
+          
           <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
-            <!-- <span>Subscribers Ratings</span>  -->
+
           </div>
         </div>
-        <!-- <div class="subscribers" style="font-weight: 410;">
-          <span>Number of Subscribers:{{randomSubscribersValues[j]}}</span>
-        </div> -->
+       
       </div>
     </div>
 
@@ -77,14 +61,13 @@
           </div>
         </div>
         <div class="headingsContainer">
-          <h5>{{ myCoursesHeadings[i] }}</h5>
-          <p>{{ myCoursesAuthors[i] }}</p>
-          <h5>{{ uploadedCoursesText[i] }}</h5>
+          <h5>{{ headings[i] }}</h5>
+          <p>{{ paragraphs[i] }}</p>
         </div>
-        <!-- <div class="status-bar">
+        <div class="status-bar">
           <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
         </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span> -->
+        <span>{{ randomMyCourseValues[i] }}%complete</span>
 
 
 

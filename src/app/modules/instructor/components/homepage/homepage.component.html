@@ -34,39 +34,6 @@
         <p>{{ uploadedCoursesAuthors[i] }}</p>
         <h5>{{ uploadedCoursesText[i] }}</h5>
       </div>
-      <div class="status-bar">
-        <div class="status-fill" [style.width.%]="randomUploadValues[i]"></div>
-      </div>
-      <span>{{ randomUploadValues[i] }}%complete</span>
-
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-      </div>
-
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span>Reviewer Ratings</span>
-        </div>
-        <div class="ratingConatiner2">
-          <span>Subscribers Ratings</span>
-        </div>
-      </div>
-      <div class="subscribers" style="font-weight: 410;">
-        <span>Number of Subscribers:{{uploadSubscribers[i]}}+</span>
-      </div>
     </div>
   </div>
 
@@ -94,11 +61,7 @@
           <h5>{{ underreviewText[k] }}</h5>
         </div>
 
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomunderreviewValues[k]"></div>
-        </div>
-        <span>{{ randomunderreviewValues[k] }}%complete</span>
-
+        
         <div class="container1">
           <div class="Conatiner2">
             <span class="star">&#9733;</span>
@@ -114,9 +77,11 @@
       </div>
     </div>
   </div>
-
-
-
+<br/>
+<br/>
+<hr/>
+<br/>
+<br/>
   <div class="heading">
     <h1>Approved Courses </h1>
     <p>Congratulations, your course has been approved and it is now available to the subscribers.</p>
@@ -191,6 +156,8 @@
       <div class="subscribers" style="font-weight: 410;">
         <span>Number of Subscribers: {{approvedCourseSubscribers[l]}}</span>
       </div>
+      <br/>
+      <br/>
     </div>
   </div>
 
@@ -215,11 +182,6 @@
       <p>{{ rejectedCoursesAuthors[j] }}</p>
       <h5>{{ rejectedCoursesText[j] }}</h5>
     </div>
-    <div class="status-bar">
-      <div class="status-fill" [style.width.%]="randomRejectedValues[j]"></div>
-    </div>
-    <span>{{ randomRejectedValues[j] }}%complete</span>
-
     <div class="container1">
       <div class="Conatiner2">
         <span class="star">&#9733;</span>

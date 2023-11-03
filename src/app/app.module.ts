@@ -54,8 +54,10 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
+import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
+
 
 @NgModule({
   declarations: [
@@ -86,10 +88,8 @@ import { OverviewFreecourseComponent } from './common/components/overview-freeco
     FreecourseComponent,
     AboutusComponent,
     PhonepasswordComponent,
-    OverviewFreecourseComponent,
- 
-
-    
+    TermsandconComponent,
+    OverviewFreecourseComponent,  
   ],
   imports: [
     CarouselModule,

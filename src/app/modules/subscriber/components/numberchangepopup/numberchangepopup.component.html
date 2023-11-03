@@ -1,35 +1,11 @@
-<!-- 
-    <div class="modal-content" style="width: 700px;">
+<form [formGroup]="accountForm">
+  <div class="modal-content" style="width: 700px;">
+    <button class="close-button" (click)="closeDialog()">&times;</button> <!-- Close button -->
     <h2>Enter New Phone Number</h2>
-
     <label for="newPhone">New Phone Number: </label>
-<input type="text" id="newPhone" formControlName="newPhone" placeholder="Enter new phone number">
-
-    
-    <button [disabled]="!accountForm.valid || showOtpInput" type="button" (click)="sendOtp()">Send OTP</button>
-     <button *ngIf="!showOtpInput" type="button" (click)="sendOtp()">Send OTP</button>
-    <input *ngIf="showOtpInput" type="text" id="otp" placeholder="Enter OTP">
-    <button *ngIf="showOtpInput" type="button">Verify and Update</button>
-
-  </div>
-
-  <div>
-
-  </div> -->
-
-  <form [formGroup]="accountForm">
-    <div class="modal-content" style="width: 700px;">
-      <h2>Enter New Phone Number</h2>
-      <label for="newPhone">New Phone Number: </label>
-      <input type="text" id="newPhone" formControlName="newPhone" placeholder="Enter new phone number">
-      
-      <button *ngIf="!showOtpInput" [disabled]="!(accountForm.get('newPhone')?.valid)" type="button" (click)="sendOtp()">Send OTP</button>
-
-
-  
-      <input *ngIf="showOtpInput" type="text" id="otp" placeholder="Enter OTP">
-      <button *ngIf="showOtpInput" type="button" (click)="verifyAndUpdate()">Verify and Update Number</button>
-
-    </div>
-  </form>
-  
+    <input type="text" id="newPhone" formControlName="newPhone" placeholder="Enter new phone number" maxlength="10">
+    <button *ngIf="!showOtpInput" [disabled]="!(accountForm.get('newPhone')?.valid)" type="button" (click)="sendOtp()">Send OTP</button>
+    <input *ngIf="showOtpInput" type="text" id="otp" formControlName="otp" placeholder="Enter OTP" maxlength="6">
+  <button *ngIf="showOtpInput" type="button" [disabled]="!accountForm.controls['otp'].valid" (click)="verifyAndUpdate()">Verify and Update Number</button>
+</div>
+</form>

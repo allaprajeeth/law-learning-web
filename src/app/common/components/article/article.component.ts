@@ -22,38 +22,38 @@ export class ArticleComponent implements OnInit {
 
   boxes: BlogPost[] = [
     { title: '"The Legal Internships:"',
-    author:'williams',
+    author:'Williams',
      content: 'Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to make the most out of internship experiences, and how internships can shape a legal career',
-     date: '02 nov 2023' // Add the date property for the first blog post
+     date: '02 Nov 2023' // Add the date property for the first blog post
      },
     { title: '"Mastering Legal Research:"',
     author:'John Smith',
     content: "Explain the importance of legal research skills. Provide an overview of various research methods, online legal databases, and how to critically analyze legal sources. Include practical examples to enhance understanding.",
-    date: '01 nov 2023'
+    date: '01 Nov 2023'
   },
      
     { title: '"Law School Applications:"', 
      author:'John Smith',
-     content: "Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.",
-     date: '30 oct 2023'
+     content: "Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.Offer a step-by-step guide on preparing law school applications. Include tips on writing compelling personal statements, obtaining strong recommendation letters, and preparing for law school interviews.",
+     date: '30 Oct 2023'
     },
     
      { title: '"Legal Ethics:Legal Profession"',
      author:'David Wilson',
      content: "Discuss the importance of ethics in the legal field. Cover topics such as client confidentiality, conflicts of interest, and maintaining professional integrity. Highlight real-life examples of ethical dilemmas faced by lawyers.",
-     date: '14 oct 2023'
+     date: '14 Oct 2023'
     },
     
      { title: '"Legal Industry:Digital Age"',
      author:'John Smith', 
      content: "Explore how technology is transforming the legal profession. Discuss legal tech tools, online legal research platforms, and the impact of artificial intelligence on legal practices. Address the importance of tech literacy for future lawyers.",
-     date: '25 apr 2023'
+     date: '25 Apr 2023'
     },
      
      { title: '" Legal Internships:Experience"',
-      author:'williams',
+      author:'Williams',
       content: 'Detail the significance of internships in the legal field. Provide tips on how to secure internships, how to make the most out of internship experiences, and how internships can shape a legal career' ,
-      date: '04 apr 2023'
+      date: '04 Apr 2023'
     },
  
     ];

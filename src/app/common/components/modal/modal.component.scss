@@ -1,13 +1,34 @@
 .post-box{
-    padding: 50px;
+    padding: 20px;
 }
-.modal-content {
+
+
+  .modal-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px; 
+  }
+  .modal-content {
+    // padding-left: 10px;
     position: relative;
+    width: 100%; /* Set the desired width for your modal content */
+    max-height: 70vh; /* Set the maximum height for your modal content */
+    overflow-y: auto;
   }
   
-  button {
-    position: absolute;
-    top: 10px; 
-    right: 10px; 
+  .modal-content.maximized {
+    padding-left: 1px;
+    // padding: 20px;
+    width: 100%; /* Set the desired width for maximized state */
+    height: 100vh; /* Set the desired height for maximized state */
+    overflow-y: auto; 
+    overflow-x: none; 
   }
+  
+  
+  .button-container {
+    display: flex;
+    gap: 10px; /* Adjust the gap between buttons as needed */
+  }
+  
   
