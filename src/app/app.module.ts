@@ -82,11 +82,11 @@ import { OverviewFreecourseComponent } from './common/components/overview-freeco
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
+    PhonepasswordComponent
     FreecourseComponent,
     AboutusComponent,
     PhonepasswordComponent,
     OverviewFreecourseComponent,
-
  
 
     
@@ -102,7 +102,6 @@ import { OverviewFreecourseComponent } from './common/components/overview-freeco
     BrowserAnimationsModule,
     SharedModule,
     SubscriberRoutingModule,
-
     AngularEditorModule,
    
     MatIconModule,

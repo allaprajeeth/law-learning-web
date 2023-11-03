@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { UniqueIdService } from '../unique-id.service';
+import { CartService } from '../cart.service';
 // import { SearchServiceService } from 'src/app/search.service.service';
 
 interface Categories {
@@ -13,6 +16,20 @@ interface Categories {
 })
 
 export class HomepageComponent implements OnInit {
+  // @ViewChild('tooltipRef', { read: ElementRef })
+  // tooltipEl!: ElementRef;
+
+  uniqueIds: string[] = [];
+  coursePrice: string[]; 
+
+  // private uniqueIdCounter = 1;
+
+  // generateUniqueId(): string {
+  //   const uniqueId = `product_${this.uniqueIdCounter}`;
+  //   this.uniqueIdCounter++;
+  //   console.log(uniqueId);
+  //   return uniqueId;
+  // }
 
 mycoursesimages: string[] = [];
   availablecoursesimages: string[] = [];
@@ -27,10 +44,47 @@ mycoursesimages: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
+    private cartService: CartService,
+    public uniqueIdService: UniqueIdService
     // private searchService: SearchServiceService
-  ) {}
+  ) {
+   // Initialize uniqueIds only if it hasn't been initialized
+   if (uniqueIdService.uniqueIds.length === 0) {
+    uniqueIdService.generateUniqueIds(this.availablecoursesimages.length);
+  }
+    this.coursePrice = ['₹3199',
+    '₹3029',
+    '₹3229',
+    '₹3009',
+    '₹3599',
+    '₹3055',
+    '₹3199',
+    '₹3327',
+    '₹3087',
+    '₹3299',
+    '₹3172',
+    '₹3449'];
+  }
 
-  // headings: string[] = [];
+  addToCartClicked(j: number) {
+    // Generate a unique ID for the product
+    const uniqueId = this.uniqueIdService.generateUniqueIds(this.availablecoursesimages.length);
+    
+    // Create the product with a unique ID
+    const product = {
+      id: uniqueId,
+      image: this.availablecoursesimages[j],
+      heading: this.availableCoursesHeadings[j],
+      coursesText: this.availableCoursesText[j],
+      duration: this.availableCoursesDurations[j],
+      price: this.coursePrice[j],
+    };
+
+  // Call the service to add the product to the cart
+  this.cartService.addItem(product);
+  this.router.navigate(['/cart']);
+}
 
   availableCoursesHeadings: string[] = [
     "Introduction to Criminal Law",
@@ -98,21 +152,6 @@ availableCoursesText: string[] = [
   'Expert | Detailed Course', 
 ];
 
-price: string[] = [
-  '₹3199',
-  '₹3029',
-  '₹3229',
-  '₹3009',
-  '₹3599',
-  '₹3055',
-  '₹3199',
-  '₹3327',
-  '₹3087',
-  '₹3299',
-  '₹3172',
-  '₹3449',
-];
-
 courseContent: string[] = [
   'Understanding the legal system and The role of law in society',
   'Types of crimes and Criminal procedure and evidence',
@@ -142,14 +181,16 @@ tooltipPosition: {
 
   randomMyCourseValues: number[] = [];
   
-  subscribersValues = ["10", "50", "100", "200", "500", "1000"];
+  subscribersValues = ["10","10", "50", "100", "200", "500", "1000"];
 
   myCourseSubscribers: string[] = [];
   availableCourseSubscribers: string[] = [];
 
-  openMyMenu(index: number, event: MouseEvent): void {
+  openMyMenu(event: MouseEvent, index: number): void {
     this.showCard = this.showCard.map((_, j) => j === index);
   
+    // console.log("this.tooltipEl", this.tooltipEl);
+    
     if (this.showCard[index]) {
       const element = event.currentTarget as HTMLElement;
       const rect = element.getBoundingClientRect();
@@ -162,7 +203,7 @@ tooltipPosition: {
           display: 'block',
         };
   
-        const courseCardPosition = { top: '-40px', right: '277px' };
+        const courseCardPosition = { top: '-40px', right: '262px' };
         Object.assign(this.tooltipPosition, courseCardPosition);
       } else {
         this.tooltipPosition = {
@@ -172,7 +213,7 @@ tooltipPosition: {
           display: 'block',
         };
   
-        const courseCardPosition = { top: '-40px', left: '277px' };
+        const courseCardPosition = { top: '-40px', left: '261px' };
         Object.assign(this.tooltipPosition, courseCardPosition);
       }
     }
@@ -187,6 +228,10 @@ tooltipPosition: {
     //   // this.searchQuery = query;
     //   this.filterImages();
     // });
+
+    if (this.uniqueIdService.uniqueIds.length === 0) {
+      this.uniqueIdService.generateUniqueIds(this.availablecoursesimages.length);
+    }
 
     for (let i = 0; i < 4; i++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
@@ -227,3 +272,4 @@ tooltipPosition: {
     return value < 10 ? `0${value}` : `${value}`;
   }
 }
+
