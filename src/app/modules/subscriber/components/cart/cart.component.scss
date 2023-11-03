@@ -23,9 +23,13 @@ body {
   background-color: #fff;
   padding: 20px 20px 0 20px;
   align-items: flex-start;
-  flex-direction: column;
   justify-content: space-between;
   width: calc(100% - 150px);
+
+  .courseContainer {
+    overflow-y: scroll;
+    max-height: 500px;
+  }
 
   .lawLearningImage {
     width: 150px;

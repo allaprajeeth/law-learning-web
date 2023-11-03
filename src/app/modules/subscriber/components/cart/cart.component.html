@@ -2,49 +2,68 @@
 <div class="cartContainer">
     <h1>Shopping Cart</h1>
     <h5>{{ cartItems.length }} Courses in Cart</h5>
-    <div *ngIf="cartItems.length===0">
+    <div *ngIf="cartItems.length === 0">
         <h2>No Items in the cart</h2>
     </div>
     <div class="course">
-        <div class="courseItems" *ngFor="let item of cartItems">
-            <div class="horizontalLine">
-                <!-- {{item | json}} -->
-                <img [src]="item.image" alt="course-img" class="lawLearningImage">
-                <div class="courseDetails">
-                    <div class="courseHeading">
-                        <h4>{{ item.heading }}</h4>
-                        <div class="ratingConatiner">
-                            <p>4.4
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <i style="font-size: 15px" class="fa star">&#xf123;</i>
-                                (2,345 Subscriber ratings)
-                            </p>
+        <div class="courseContainer">
+            <div class="courseItems" *ngFor="let item of cartItems">
+                <div class="horizontalLine">
+                    <!-- {{item | json}} -->
+                    <img [src]="item.image" alt="course-img" class="lawLearningImage">
+                    <div class="courseDetails">
+                        <div class="courseHeading">
+                            <h4>{{ item.heading }}</h4>
+                            <div class="ratingConatiner">
+                                <p>4.4
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <i style="font-size: 15px" class="fa star">&#xf123;</i>
+                                    (2,345 Subscriber ratings)
+                                </p>
+                            </div>
+                            <div class="ratingConatiner">
+                                <p>4.2
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <span class="star">&#9733;</span>
+                                    <i style="font-size: 15px" class="fa star">&#xf123;</i>
+                                    (Reviewer ratings)
+                                </p>
+                            </div>
+                            <p>{{ item.duration }} total hours &nbsp; • 72 lectures &nbsp; • {{ item.coursesText }}</p>
                         </div>
-                        <div class="ratingConatiner">
-                            <p>4.2
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <span class="star">&#9733;</span>
-                                <i style="font-size: 15px" class="fa star">&#xf123;</i>
-                                (Reviewer ratings)
-                            </p>
+                        <div class="removeButtonContainer">
+                            <button class="removeButton" (click)="onRemoveClick(item.uniqueId)">Remove</button>
                         </div>
-                        <p>{{ item.duration }} total hours &nbsp; • 72 lectures &nbsp; • {{ item.coursesText }}</p>
                     </div>
-                    <div class="removeButtonContainer">
-                        <button class="removeButton" (click)="onRemoveClick(item.uniqueId)">Remove</button>
-                    </div>
+                    <div class="price"> ₹{{ item.price }}</div>
                 </div>
-                <div class="price">{{ item.price }}</div>
             </div>
         </div>
         <div class="totalPriceContainer" *ngIf="cartItems.length > 0">
-            <div class="total" *ngFor="let item of cartItems">
-                <h5 class="actualPrice">Actual Price: {{ item.price }}</h5>
+            <div class="total">
+              <h5 class="actualPrice">Actual Price: ₹{{ totalActualPrice }}</h5>
+              <p *ngIf="discountedPrice">Discount {{ roundDiscountPercentage(100 - (discountedPrice / totalActualPrice) * 100) }}% off</p>
+              <h5>Total: ₹{{ discountedPrice }}</h5>
+              <button class="btn">Checkout</button>
+            </div>
+            <hr class="couponHorizontalLine">
+            <div class="promotions">
+              <h5>Promotions</h5>
+              <div class="promotionsInputField">
+                <input [(ngModel)]="couponCode" placeholder="Enter Coupon">
+                <button (click)="applyCoupon()" class="promotionsButton">Apply</button>
+              </div>
+            </div>
+          </div>
+          
+        <!-- <div class="totalPriceContainer" *ngIf="cartItems.length > 0">
+            <div class="total">
+              <h5 class="actualPrice">Actual Price: ₹{{ totalActualPrice }}</h5>          
                 <p *ngIf="discountedPrice">Discount {{ roundPercentage(100 - (discountedPrice / originalPrice) * 100)
                     }}% off</p>
                 <h5>Total: ₹{{ discountedPrice }}</h5>
@@ -58,8 +77,9 @@
                     <button (click)="applyCoupon()" class="promotionsButton">Apply</button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
+</div>
 
 
     <!-- <hr class="horizontalLine">

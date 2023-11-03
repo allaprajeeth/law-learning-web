@@ -17,9 +17,9 @@ export class CourseCardComponent {
     
   }
 
-  addToCartClicked() {
+  addToCartClicked(productToAdd: any) {
     // Call the service to add the product to the cart
-    this.cartService.addItem(this.product);
+    this.cartService.addToCart(productToAdd);
     this.router.navigate(['/cart']);
   }
   
