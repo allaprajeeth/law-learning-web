@@ -152,10 +152,8 @@ showOtpFields(): void {
         route = 'instructor/homepage';
       } else if (selectedCategoryValue === 'Reviewer') {
         route = 'reviewer/homepage';
-      } else if (this.selectedCategory === 'Content_Manager') {
-        route = 'authentication/homepage';
       } 
-      }else if (selectedCategoryValue === 'Content_Manager') {
+      else if (selectedCategoryValue === 'Content_Manager') {
         route = 'authentication/homepage';
       }
       else if (selectedCategoryValue === 'Admin') {

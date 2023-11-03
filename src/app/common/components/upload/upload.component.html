@@ -219,7 +219,20 @@
         <br />
         <button type="button" class="add-section-button" (click)="addMainSection()">+</button>
       </div>
+<br/>
+<div class="form-group">
+  <label>Does this course have any test?</label>
+  <div class="radio-group">
+     
+      <input type="radio" id="hasTestYes" name="hasTest" value="yes">
+      <label for="hasTestYes">Yes</label>
 
+     
+      <input type="radio" id="hasTestNo" name="hasTest" value="no">
+      <label for="hasTestNo">No</label>
+  </div>
+</div>
+<br/>
       <div>
         <button type="button" class="submit-button" (click)="submitSections()">Submit All</button>
       </div>

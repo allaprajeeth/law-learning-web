@@ -24,7 +24,7 @@ export class RegisterComponent {
        phoneOtp: ['', [Validators.required,Validators.pattern('^[0-9]*$'),]],
     });
   } 
- 
+   lawimage="/assets/law.png"
   
   isSendOtpsClicked: boolean = true;
   images: string[] = ['assets/Law Learning.png'];

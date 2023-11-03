@@ -122,6 +122,8 @@ const routes: Routes = [
   {
     path: 'termsandcon',
     component: TermsandconComponent
+
+  },
   { 
     path: 'cart', 
     component: CartComponent 

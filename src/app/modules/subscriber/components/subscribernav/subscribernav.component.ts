@@ -30,7 +30,7 @@ export class SubscribernavComponent implements OnInit {
   onUserCircleClick(event: Event) {
     event.preventDefault();
     // Navigate to the subscriber profile component
-    this.router.navigate(['/subscriber/acSecurity']);
+    this.router.navigate(['/subscriber/photo']);
   }
   get showLogoutAlert(): boolean {
     return this.sharedService.showLogoutAlert;
