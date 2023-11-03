@@ -82,7 +82,7 @@ import { OverviewFreecourseComponent } from './common/components/overview-freeco
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
-    PhonepasswordComponent
+    PhonepasswordComponent,
     FreecourseComponent,
     AboutusComponent,
     PhonepasswordComponent,

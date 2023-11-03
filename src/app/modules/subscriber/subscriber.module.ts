@@ -38,13 +38,6 @@ import { CoursesPageComponent } from 'src/app/common/components/courses-page/cou
 import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ArticleformComponent } from './components/articleform/articleform.component';
-
-
-
-
-import { CourseCardComponent } from './components/course-card/course-card.component';
-
-
 @NgModule({
   declarations: [
     SidenavComponent,
@@ -63,10 +56,10 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
     MyDirectiveDirective,
     NotificationComponent,
     CourseCardComponent,
-    CoursesPageComponent
+    CoursesPageComponent,
     NumberchangepopupComponent,
     ArticleformComponent,
-    CourseCardComponent, 
+   
 
   ],
   imports: [
