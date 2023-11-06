@@ -23,6 +23,7 @@ import { AboutusComponent } from './common/components/aboutus/aboutus.component'
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
+import { ContactusComponent } from './common/components/contactus/contactus.component';
 // import { CourseCardComponent } from './modules/subscriber/components/cart/cart.component';
 
 const routes: Routes = [
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path: 'courseInfo',
     component:CourseInfoComponent
+  },
+  {
+ path:'contactus',
+ component:ContactusComponent
   },
   {
     path: 'freecourse',
