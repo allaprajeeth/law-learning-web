@@ -4,6 +4,17 @@ import { Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog'; 
+// import { ModalComponent } from '../modal/modal.component';
+import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
+
+interface BlogPost {
+  // Define the properties of a blog post here
+  title: string;
+  author: string;
+  content: string;
+  date: string; // Add the date property
+}
 interface ApiResponse {
   message: string;
 }
@@ -14,7 +25,7 @@ interface ApiResponse {
 })
 export class RegisterComponent {
   loginForm: FormGroup;
-  constructor(private router: Router,private http: HttpClient,private snackBar: MatSnackBar,private formBuilder: FormBuilder){
+  constructor(public dialog: MatDialog,private router: Router,private http: HttpClient,private snackBar: MatSnackBar,private formBuilder: FormBuilder){
     this.loginForm = this.formBuilder.group({
       name: ['', [Validators.required]], 
       email: ['', [Validators.required, Validators.email]],
@@ -170,6 +181,14 @@ onPhoneOtpInput(event: any) {
   const truncatedValue = digitsOnly.slice(0, 6);
   this.loginForm.get('phoneOtp')!.setValue(truncatedValue, { emitEvent: false });
  
+}
+
+openModal(blogPost?: BlogPost): void {
+  this.dialog.open(TermsandconComponent, {
+    width: '700px',
+    height: '600px',
+    data: blogPost
+  });
 }
 
 }

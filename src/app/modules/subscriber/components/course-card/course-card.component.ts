@@ -13,14 +13,18 @@ export class CourseCardComponent {
   @Input() product: any;
 
   constructor(private cartService: CartService, private router: Router) {
-    console.log("product", this.product);
-    
-  }
-
-  addToCartClicked(productToAdd: any) {
-    // Call the service to add the product to the cart
-    this.cartService.addToCart(productToAdd);
-    this.router.navigate(['/cart']);
+    // Check if the product is already in the cart and set the button text
+    // this.product.isAddedToCart = this.cartService.isAddedToCart(this.product.id);
   }
   
+  addToCartClicked(productToAdd: any) {
+    if (this.product.isAddedToCart) {
+      // If already added to the cart, navigate to the cart
+      this.router.navigate(['/cart']);
+    } else {
+      // Add the item to the cart
+      this.cartService.addToCart(productToAdd);
+      this.product.isAddedToCart = true;
+    }
+  }
 }

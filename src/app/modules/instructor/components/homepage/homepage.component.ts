@@ -32,6 +32,10 @@ export class HomepageComponent implements OnInit{
   approvedCoursesDurations: string[] = [];
   underreviewDurations: string[] = [];
 
+  coursePrice = [
+    3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
+  ];
+  
   approvedCoursesHeadings: string[] = [
     "Real Estate Law Made Simple",
     "Intellectual Property Law",

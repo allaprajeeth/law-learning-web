@@ -52,6 +52,7 @@ export class HomepageComponent implements OnInit {
     if (uniqueIdService.uniqueIds.length === 0) {
       uniqueIdService.generateUniqueIds(this.availablecoursesimages.length);
     }
+
     this.coursePrice = [
       3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
     ];

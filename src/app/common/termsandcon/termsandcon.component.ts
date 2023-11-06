@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-termsandcon',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 export class TermsandconComponent {
   isCheckboxChecked: boolean = false;
 
+  constructor(private dialogRef: MatDialogRef<TermsandconComponent>) {}
+
+  onCloseClick(): void {
+    this.dialogRef.close();
+  }
 }
+
