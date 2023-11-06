@@ -102,7 +102,7 @@
             <i class="fa fa-play-circle play-icon"></i>
           </a>
         </div>
-        <app-course-card *ngIf="showCard[j]" #tooltipRef
+        <app-course-card *ngIf="showCard[j]"
         [product]="{ id: j, image: image, heading: availableCoursesHeadings[j], coursesText: availableCoursesText[j], duration: availableCoursesDurations[j], price: coursePrice[j]}"
         [heading]="availableCoursesHeadings[j]" [content]="courseContent[j]" [style]="tooltipPosition"
         class="course-card-component">
@@ -143,6 +143,7 @@
       </div>
       <div class="subscribers" style="font-weight: 410;">
         <span>Number of Subscribers:{{ availableCourseSubscribers[j] }}</span>
+        <h5 class="price">Price : ₹{{ coursePrice[j] }}</h5>
       </div>
     </div>
   </div>

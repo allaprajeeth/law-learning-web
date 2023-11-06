@@ -2,7 +2,7 @@
 <div class="cartContainer">
     <h1>Shopping Cart</h1>
     <h5>{{ cartItems.length }} Courses in Cart</h5>
-    <div *ngIf="cartItems.length === 0">
+    <div *ngIf="cartItems.length === 0" class="emptyCartText">
         <h2>No Items in the cart</h2>
     </div>
     <div class="course">
@@ -81,33 +81,3 @@
     </div>
 </div>
 
-
-    <!-- <hr class="horizontalLine">
-    <div class="course">
-        <img src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/05/25125222/Law-Courses.jpg"
-            alt="course-img" class="lawLearningImage">
-        <div class="courseDetails">
-            <div class="courseHeading">
-                <h4>Introduction to Criminal Law</h4>
-                <p>4.4 ⭐⭐⭐⭐ (2,345 Subscriber ratings)</p>
-                <p>4.2 ⭐⭐⭐⭐ (Reviewer ratings)</p>
-                <p>8 total hours &nbsp; • 72 lectures &nbsp; • All levels</p>
-            </div>
-            <div class="price">₹499</div>
-        </div>
-    </div>
-
-    <hr class="horizontalLine">
-    <div class="course">
-        <img src="https://blogassets.leverageedu.com/blog/wp-content/uploads/2020/05/25125222/Law-Courses.jpg"
-            alt="course-img" class="lawLearningImage">
-        <div class="courseDetails">
-            <div class="courseHeading">
-                <h4>Introduction to Criminal Law</h4>
-                <p>4.4 ⭐⭐⭐⭐ (2,345 Subscriber ratings)</p>
-                <p>4.2 ⭐⭐⭐⭐ (Reviewer ratings)</p>
-                <p>8 total hours &nbsp; • 72 lectures &nbsp; • All levels</p>
-            </div>
-            <div class="price">₹499</div>
-        </div>
-    </div> -->

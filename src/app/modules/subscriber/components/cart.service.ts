@@ -45,7 +45,7 @@ export class CartService {
 
 addToCart(product: any) {
   // Check if the item is already in the cart by ID
-  const existingItem = this.cartItems.find(item => item.id === product.id);
+  const existingItem = this.cartItems.find((cartItem) => cartItem.uniqueId === product.uniqueId);
 
   if (existingItem) {
     // Item already exists in the cart, you can update the quantity or take other actions here
