@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="questions">
+    <h2>HAVE SOME QUESTIONS?</h2>
+    <h2> WRITE US</h2>
+    <img [src]="contactus">
+    </div>
+    <div>
+        <form class="contact-form" [formGroup]="contactForm">
+            <label for="name" clas="labelName">Name</label>
+            <input type="text" id="name" formControlName="name" required />
+            <div class="error-message" *ngIf="contactForm.get('name')?.hasError('required') && contactForm.get('name')?.touched">
+              Name required.
+              </div>
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email" required />
+            <div class="error-message" *ngIf="contactForm.get('email')?.hasError('required') && contactForm.get('email')?.touched">
+                Email required.
+                </div>
+                <div class="error-message" *ngIf="contactForm.get('email')?.hasError('email') && contactForm.get('email')?.touched">
+                  Invalid email format.
+                </div>
+            <label for="contact">Contact</label>
+            <input type="text" id="contact" formControlName="contact" required />
+            <div class="error-message" *ngIf="contactForm.get('contact')?.hasError('required') && contactForm.get('contact')?.touched">
+               Phone No required
+                </div>
+                <div class="error-message" *ngIf="contactForm.get('contact')?.hasError('pattern') && contactForm.get('contact')?.touched">
+                 It should contain exactly 10 digits
+                </div>
+                <div class="error-message" *ngIf="contactForm.get('contact')?.hasError('startsWithInvalidDigit')  && contactForm.get('contact')?.touched">
+                  Phone No should start with 6 to 9.
+                </div>
+            <label for="message">Message</label>
+            <textarea id="message" formControlName="message" rows="4"></textarea>
+             <br>
+             <br>
+            <button type="submit">Submit</button>
+          </form>
+    </div>
+</div>
