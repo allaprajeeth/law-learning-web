@@ -24,7 +24,7 @@ import { PhonepasswordComponent } from './common/components/phonepassword/phonep
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
 import { ContactusComponent } from './common/components/contactus/contactus.component';
-// import { CourseCardComponent } from './modules/subscriber/components/cart/cart.component';
+import { EditcoursesComponent } from './modules/instructor/components/editcourses/editcourses.component';
 
 const routes: Routes = [
   {
@@ -87,6 +87,10 @@ const routes: Routes = [
   {
     path: 'courses',
     component:CoursesComponent
+  },
+  {
+    path:"editcourses",
+    component:EditcoursesComponent
   },
   {
     path: 'upload',

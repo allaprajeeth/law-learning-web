@@ -30,6 +30,8 @@ export class HomepageComponent implements OnInit {
   //   return uniqueId;
   // }
 
+  randomFutureDates: Date[] = [];
+
   mycoursesimages: string[] = [];
   availablecoursesimages: string[] = [];
 
@@ -56,6 +58,8 @@ export class HomepageComponent implements OnInit {
     this.coursePrice = [
       3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
     ];
+
+    this.randomFutureDates = this.generateRandomFutureDates(5);
   }
 
   addToCartClicked(j: number) {
@@ -267,6 +271,20 @@ export class HomepageComponent implements OnInit {
       const duration = `${formattedHours}h ${formattedMinutes}m`;
       this.availableCoursesDurations.push(duration);
     }
+  }
+
+  private generateRandomFutureDates(numDates: number): Date[] {
+    const dates: Date[] = [];
+    for (let i = 0; i < numDates; i++) {
+      const randomMonthOffset = Math.floor(Math.random() * 4) + 1;
+      const currentDate = new Date();
+      const currentMonth = currentDate.getMonth();
+      const randomDay = Math.floor(Math.random() * 28);
+      currentDate.setMonth(currentMonth + randomMonthOffset);
+      currentDate.setDate(randomDay);
+      dates.push(currentDate);
+    }
+    return dates;
   }
 
   formatWithLeadingZero(value: number): string {

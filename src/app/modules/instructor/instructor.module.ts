@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared-module/shared.module';
-
+import { FormsModule } from '@angular/forms';
 import { InstructorRoutingModule } from './instructor-routing.module';
 import { InstructorLoginComponent } from './components/instructor-login/instructor-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,6 +20,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
+import { EditcoursesComponent } from './components/editcourses/editcourses.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +30,14 @@ import { InstructorinfoComponent } from './components/instructorinfo/instructori
     CoursesComponent,
     NotificationComponent,
     PublicProfileComponent,
-    InstructorinfoComponent
+    InstructorinfoComponent,
+    EditcoursesComponent,
+    
   ],
   imports: [
     CommonModule,
     SharedModule,
-
+    FormsModule,
     InstructorRoutingModule,
     ReactiveFormsModule,
     
