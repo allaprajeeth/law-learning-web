@@ -5,7 +5,7 @@ import { HeaderComponent } from 'src/app/common/components/header/header.compone
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
-
+import { CourseInfoComponent } from './components/course-info/course-info.component';
 const routes: Routes = [
   {
     path:"",
@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path:"notification",
     component: NotificationComponent
+  },
+  {
+    path:"courseInfo",
+    component:CourseInfoComponent
   }
   
 ];

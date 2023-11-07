@@ -3,12 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { InstructorLoginComponent } from './components/instructor-login/instructor-login.component';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-
 import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
-
+import { CourseInfoComponent } from './components/course-info/course-info.component';
 const routes: Routes = [
   {
     path:"",
@@ -40,6 +39,10 @@ component:NotificationComponent
   path:"instructorinfo",
 component:InstructorinfoComponent
 },
+{
+  path:"courseInfo",
+  component:CourseInfoComponent
+}
 ];
 
 @NgModule({

@@ -5,16 +5,27 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
-// import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
 
+// import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
+import {  MatDividerModule } from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
 
 @NgModule({
-  declarations: [BasePageComponent, FooterComponent],
+  declarations: [BasePageComponent, FooterComponent, SharedoverviewComponent, ],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatCardModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -22,7 +33,9 @@ import { FooterComponent } from './components/footer/footer.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FooterComponent
+    FooterComponent,
+    FormsModule,
+    SharedoverviewComponent,
     // InstructorLoginComponent
   ]
 

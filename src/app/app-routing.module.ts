@@ -109,8 +109,8 @@ const routes: Routes = [
     component:CourseInfoComponent
   },
   {
- path:'contactus',
- component:ContactusComponent
+    path:'contactus',
+    component:ContactusComponent
   },
   {
     path: 'freecourse',
