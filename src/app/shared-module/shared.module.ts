@@ -5,16 +5,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { PublishingcornerComponent } from './components/publishingcorner/publishingcorner.component';
 // import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [BasePageComponent, FooterComponent],
+  declarations: [BasePageComponent, FooterComponent, DocumentsComponent, PublishingcornerComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -22,7 +25,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FooterComponent
+    FooterComponent,
+    PublishingcornerComponent
     // InstructorLoginComponent
   ]
 

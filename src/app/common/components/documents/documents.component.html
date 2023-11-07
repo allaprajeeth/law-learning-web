@@ -1,89 +1,88 @@
-<!-- <div class="pdf-list">
-    <ul>
-      <li *ngFor="let pdfName of pdfNames" (click)="loadPdf(pdfName)">
-        {{ pdfName }}
-      </li>
-    </ul>
-  </div>
-  
-  <div *ngIf="pdfUrl" class="pdf-container">
-    <iframe [src]="pdfUrl" width="100%" height="500px"></iframe>
-  </div> -->
-<app-nav></app-nav>
-<div class="container">
-  <h1 class="knowledgeCentre">Library</h1>
 
+<app-firstnav></app-firstnav>
+<div class="container">
+  <h1 class="knowledgeCentre fixed-header">Library</h1>
+
+
+  <div class="fixed-header">
+    <app-firstnav></app-firstnav>
+    <h1 class="knowledgeCentre">Library</h1>
+  </div>
+
+  
   <table border="1" class="pdftable">
     <tbody>
       <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
+        <td><a href="https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf">https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf</a></td>
+        <br/>
+        <br/>
+        <br/>
+      </tr>
+      
+      <tr>
+        <td><a href="https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf">https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf</a></td>
+        <br/>
+        <br/>
+        <br/>
       </tr>
       <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">DISPOSAL OF RECORDS</td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">ADVISORY COMMITTEE ON THE RECORDS OF CONGRESS</td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">RECORDS MANAGEMENT BY FEDERAL AGENCIES</td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">Economy in Government Act</td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr>
-      <tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr><tr>
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" (click)="openFile()">
-          ATOMIC ENERGY DEFENSE PROVISIONS
-        </td>
-      </tr>
+        <tr>
+          <td><a href="https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf">https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf</a></td>
+          <br/>
+          <br/>
+          <br/>
+        </tr>
+        
+        <tr>
+          <td><a href="https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf">https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf</a></td>
+          <br/>
+          <br/>
+          <br/>
+        </tr>
+        <tr>
+          <tr>
+            <td><a href="https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf">https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf</a></td>
+            <br/>
+            <br/>
+            <br/>
+          </tr>
+          
+          <tr>
+            <td><a href="https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf">https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf</a></td>
+            <br/>
+            <br/>
+            <br/>
+          </tr>
+          <tr>
+            <tr>
+              <td><a href="https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf">https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf</a></td>
+              <br/>
+              <br/>
+              <br/>
+            </tr>
+            
+            <tr>
+              <td><a href="https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf">https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf</a></td>
+              <br/>
+              <br/>
+              <br/>
+            </tr>
+            <tr>
+              <tr>
+                <td><a href="https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf">https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf</a></td>
+                <br/>
+                <br/>
+                <br/>
+              </tr>
+              
+              <tr>
+                <td><a href="https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf">https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf</a></td>
+                <br/>
+                <br/>
+                <br/>
+              </tr>
+            
+     
     </tbody>
   </table>
 </div>

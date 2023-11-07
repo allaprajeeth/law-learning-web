@@ -1,0 +1,72 @@
+.pdftable{
+    overflow-y: hidden;
+  }
+    h1 {
+      text-align: center;
+      margin: 10px;
+      margin-top: 30px; 
+      font-size: 25px; 
+      margin-bottom: 25px;
+      font-weight: 500;
+    
+     
+    }
+    table {
+      width:70%;
+      border-collapse: collapse;
+      border: none;
+      margin-left: 110px;
+      
+      
+    }
+    thead {
+      background-color: #f2f2f2;
+  
+    }
+    
+   
+    th {
+      padding: 5px;
+      text-align: left;    
+    }
+    
+    
+    td {
+      padding: 5px;
+      vertical-align: middle;
+      border: none;
+      border-bottom: 1px solid rgb(222, 207, 207);
+      cursor: pointer;
+
+      &:hover{
+        color: rgb(0, 81, 139);
+        text-decoration: underline;
+        cursor: pointer;
+      }
+  
+    }
+  
+    td:first-child {
+      color: rgb(207, 86, 86); 
+      
+    }
+     td a mat-icon{
+      color: rgb(117, 115, 115);
+    }
+   
+    
+   
+    mat-icon[aria-hidden="true"] {
+      cursor: pointer;
+      //transition: transform 0.2s;
+      padding: 10px;
+      font-size: 30px;
+     
+    }
+  
+    
+  //   mat-icon[aria-hidden="true"]:hover {
+  //     transform: scale(1.2); 
+  //   }
+    
+  

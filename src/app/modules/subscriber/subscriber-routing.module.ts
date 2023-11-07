@@ -15,6 +15,9 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SubscribernavComponent } from './components/subscribernav/subscribernav.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
+import { SubarticleComponent } from './subarticle/subarticle.component';
+import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 const routes: Routes = [
   {
@@ -81,7 +84,20 @@ const routes: Routes = [
   {
     path:"articleform",
     component:ArticleformComponent
+  },
+  {
+    path:"article",
+    component:SubarticleComponent
+  },
+  {
+    path:"documents",
+    component:SubdocumentsComponent
+  },
+  {
+    path:"aboutus",
+    component:AboutusComponent
   }
+
 
 ];
 

@@ -90,6 +90,8 @@ availableCoursesText: string[] = [
   availableCoursesDurations: string[] = [];
    freeCoursesDurations:string[]=[]
   randomMyCourseValues: number[] = [];
+
+  numberofviews = ["11", "43", "64", "10", "55", "66"]
   
   subscribersValues = ["10", "50", "100", "200", "500", "1000"];
 

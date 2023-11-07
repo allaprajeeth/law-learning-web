@@ -20,6 +20,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { InstructorinfoComponent } from './components/instructorinfo/instructori
     CoursesComponent,
     NotificationComponent,
     PublicProfileComponent,
-    InstructorinfoComponent
+    InstructorinfoComponent,
+    ArticleComponent
   ],
   imports: [
     CommonModule,

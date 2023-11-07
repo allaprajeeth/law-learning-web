@@ -30,6 +30,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { ArticleComponent } from './components/article/article.component';
+import { DocumentsComponent } from './components/documents/documents.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { NotificationComponent } from './components/notification/notification.co
     HomepageComponent,
     ReviewervideoComponent,
     NotificationComponent,
+    ArticleComponent,
+    DocumentsComponent,
     // InstructorLoginComponent
   ],
   imports: [

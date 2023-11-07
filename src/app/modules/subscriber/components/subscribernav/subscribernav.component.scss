@@ -47,14 +47,14 @@
   align-items: center;
   margin: 0;
   padding: 0;
-  margin-right: 40px;
+  // margin-right: 40px; 
 
   li {
     margin-right: 50px;
     .mycourses.active {
       position: relative;
       color: #007791;
-      margin-right: 90px;
+      // margin-right: 90px;
     }
     
     .mycourses.active::after {

@@ -39,6 +39,10 @@ import { CoursesPageComponent } from 'src/app/common/components/courses-page/cou
 import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ArticleformComponent } from './components/articleform/articleform.component';
+import { SubarticleComponent } from './subarticle/subarticle.component';
+import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { CarouselModule } from 'primeng/carousel';
 @NgModule({
   declarations: [
     SidenavComponent,
@@ -60,6 +64,9 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
     CoursesPageComponent,
     NumberchangepopupComponent,
     ArticleformComponent,
+    SubarticleComponent,
+    SubdocumentsComponent,
+    AboutusComponent,
    
 
   ],
@@ -76,6 +83,7 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
     MatSlideToggleModule,
     FormsModule,
     MatInputModule,
+    CarouselModule,
   
     MatMenuModule,
     MatButtonModule,

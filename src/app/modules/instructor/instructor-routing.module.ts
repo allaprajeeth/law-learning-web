@@ -8,6 +8,7 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
+import { ArticleComponent } from './components/article/article.component';
 
 const routes: Routes = [
   {
@@ -39,6 +40,10 @@ component:NotificationComponent
 {
   path:"instructorinfo",
 component:InstructorinfoComponent
+},
+{
+  path:"article",
+component:ArticleComponent
 },
 ];
 

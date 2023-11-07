@@ -1,0 +1,55 @@
+/* postdetail.component.scss */
+
+/* Styles for the blog post details */
+.blog-post-details {
+    // max-width: 600px;
+    margin:30px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-post-details h1 {
+    font-weight: bold;
+    // font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .blog-post-details h3 {
+    font-weight: 500;
+    // font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .blog-post-details p {
+    // font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .blog-post-details h4,
+  .blog-post-details h2 {
+    // font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for explanation and description paragraphs */
+  .blog-post-details .explanation p,
+  .blog-post-details .description p {
+    // font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Styles for date */
+  .blog-post-details .date {
+    font-size: 16px;
+    color: #888;
+  }
+  .reviewer-name {
+    color: #ff5733; /* Set the desired color for the reviewer's name */
+  }
+  
+  
+  /* Add any additional styles as needed */
+  

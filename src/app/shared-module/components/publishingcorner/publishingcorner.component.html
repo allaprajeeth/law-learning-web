@@ -1,0 +1,41 @@
+<!-- <app-nav></app-nav> -->
+<!-- <app-firstnav></app-firstnav> -->
+
+<!-- Add search bar and submit article button -->
+<div class="search-bar">
+  <input type="text" placeholder="search by author name or title..." [(ngModel)]="searchTerm" (input)="filterBoxes()" />
+</div>
+
+<div class="submit-button">
+  <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button>
+</div>
+
+<div class="post-box">
+
+  <div *ngIf="noResults; else showBoxes" class="no-results-message">
+    No results found.
+  </div>
+
+
+
+  <ng-template #showBoxes>
+  <div *ngFor="let box of filteredBoxes; let i = index" class="blog-box">
+  <h1>{{ box.title }}</h1>
+  <h3>{{ box.author }}</h3>
+  <h3 *ngIf="isExpanded(i) && box.reviewer">Reviewer: {{ box.reviewer }}</h3>
+  <h3 *ngIf="isExpanded(i) && box.editor">Editor: {{ box.editor }}</h3>
+
+  <p>{{ box.content | slice:0:80 }}{{ box.content.length > 80 ? '...' : '' }}</p>
+  <!-- <button *ngIf="!isExpanded(i)" (click)="toggleReadMore(i)">Read more</button> -->
+<h4  *ngIf="isExpanded(i) && box.heading">heading: {{box.heading}}</h4>
+<p  *ngIf="isExpanded(i) && box.explanation">explanation: {{box.explanation}}</p>
+
+<h2 *ngIf="isExpanded(i) && box.subheading">subheading: {{box.subheading}}</h2>
+<p  *ngIf="isExpanded(i) && box.description">description: {{box.description}}</p>
+<p class="date">{{ box.date }}</p>
+<button (click)="openArticleInNewTab(box)">Read more</button>
+</div>
+</ng-template>
+</div>
+
+

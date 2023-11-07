@@ -57,6 +57,7 @@ import { PhonepasswordComponent } from './common/components/phonepassword/phonep
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
+import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { OverviewFreecourseComponent } from './common/components/overview-freeco
     AboutusComponent,
     PhonepasswordComponent,
     TermsandconComponent,
-    OverviewFreecourseComponent,  
+    OverviewFreecourseComponent,
+    PostdetailComponent,  
   ],
   imports: [
     CarouselModule,
