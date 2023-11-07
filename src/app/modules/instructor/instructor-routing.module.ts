@@ -7,8 +7,10 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
+import { EditcoursesComponent } from './components/editcourses/editcourses.component';
 import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+
 const routes: Routes = [
   {
     path:"",
@@ -31,6 +33,10 @@ const routes: Routes = [
   {
     path:"courses",
 component:CoursesComponent
+},
+{
+  path:"editcourses",
+component:EditcoursesComponent
 },
 {
   path:"notification",

@@ -26,7 +26,7 @@ import { CartComponent } from './modules/subscriber/components/cart/cart.compone
 import { ModalComponent } from './common/components/modal/modal.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
-// import { CourseCardComponent } from './modules/subscriber/components/cart/cart.component';
+import { EditcoursesComponent } from './modules/instructor/components/editcourses/editcourses.component';
 
 const routes: Routes = [
   {
@@ -89,6 +89,10 @@ const routes: Routes = [
   {
     path: 'courses',
     component:CoursesComponent
+  },
+  {
+    path:"editcourses",
+    component:EditcoursesComponent
   },
   {
     path: 'upload',
