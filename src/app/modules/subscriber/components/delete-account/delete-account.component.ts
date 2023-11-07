@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { PdfService } from 'src/app/pdf.service';
+import { PdfService } from 'src/app/sharedService.service';
 @Component({
   selector: 'app-delete-account',
   templateUrl: './delete-account.component.html',

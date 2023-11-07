@@ -2,7 +2,7 @@ import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } 
 import { MatExpansionPanel } from '@angular/material/expansion';
 import { ActivatedRoute } from '@angular/router';
 import * as Plyr from 'plyr';
-import { PdfService } from 'src/app/pdf.service';
+import { PdfService } from 'src/app/sharedService.service';
 @Component({
   selector: 'app-videoplayer',
   templateUrl: './videoplayer.component.html',

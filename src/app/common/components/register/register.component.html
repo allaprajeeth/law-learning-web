@@ -86,12 +86,12 @@
           <option value="Content_Manager">Content Manager</option>
           <option value="Admin">Admin</option>
         </select>
-        <br/>
-        <br>
+        <div class="termsandcon" *ngIf="!isAcceptButtonClicked">
+          <a (click)="openModal()">Terms & Conditions</a>
+        </div>
         <button
-          *ngIf="!isOtpVisible"
           (click)="sendOtps()"
-          [disabled]="!isInputFilled"
+          [disabled]="!isInputFilled ||  !isAcceptButtonClicked"
         >
           Send OTPs
         </button>
@@ -168,14 +168,7 @@
         <div class="no-account redirect" >
           Already have account ?
         </div>
-        <!-- <div class="no-account redirect redirectlogin" routerLink="/login">
-        
-        </div> -->
         <br/>
-        <div class="termsandcon">
-          <a (click)="openModal()">Terms & Conditions</a>
-          <!-- routerLink="/termsandcon" -->
-        </div>
       </div>
     </form>
   </div>

@@ -1,5 +1,43 @@
 <div class="container">
     <div style="margin-top: 20px;font-size: 24px;">Subscribers Ratings</div>
+    <div class  *ngIf="!submittedReview" >
+        <h3  class="leaveRating" >Leave Your Rating Here</h3> 
+        <hr>
+        <br>
+        <i style="font-size: 16px;">You have to complete 70% to give rating</i>
+        <br>
+        <br>
+        <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview" >
+          Give Rating
+        </button>
+        </div>
+        <div class="overlay" *ngIf="showRating">
+          <div class="contentt">
+            <div class="close" (click)="leaveRatingClose()">&times;</div>
+            <h1>How would you rate this course?</h1>
+            <ng-container *ngFor="let i of stars">
+              <mat-icon
+                (mouseenter)="updaterating(i)"
+                [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
+                class="staricon"
+              >
+                star
+              </mat-icon>
+            </ng-container>
+            <div class="review">
+              <textarea
+                id="review"
+                [(ngModel)]="userReview"
+                name="userReview"
+                rows="3"
+                cols="36"
+                placeholder="Comments"
+                class="mat-input custom-textarea"
+              ></textarea>
+            </div>
+            <button class="custom-button"(click)="submitRating()">Submit </button>
+          </div>
+        </div>
         <div class="tab-content">
             <div class="course-rating">
                 <div class="stars">
