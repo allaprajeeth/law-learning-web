@@ -59,7 +59,6 @@ toggleSectionInfo(i: number, j: number) {
     });
   }
   showPopup: boolean = false;
- 
   submittedReview:boolean=false;
   showRating = false;
  

@@ -44,7 +44,7 @@
             <label for="termsCheckbox">I agree to the <span>terms of service</span> and I have read the privacy notice.</label>
           </div>
           <div class="buttons">
-            <button class="btn" [class.enabled-button]="isCheckboxChecked" [class.disabled-button]="!isCheckboxChecked" (click)="onCloseClick()">
+            <button class="btn acceptButton" [disabled]="!isCheckboxChecked" [ngClass]="{'disabled-button': !isCheckboxChecked}"   (click)="onAcceptClick()">
               Accept
             </button>
             <button class="btn gray-btn" (click)="onCloseClick()">Decline</button>

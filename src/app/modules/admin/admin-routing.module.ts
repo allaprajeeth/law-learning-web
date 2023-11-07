@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { CourseInfoComponent } from './components/course-info/course-info.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,11 @@ const routes: Routes = [
   {
     path:"homepage",
     component: HomepageComponent
-  }
+  },
+  {
+    path: 'courseInfo',
+    component:CourseInfoComponent
+  },
   
 ];
 

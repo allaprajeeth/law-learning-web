@@ -1,0 +1,314 @@
+<div class="heading">
+    <h1>Introduction to Law: A Comprehensive Overview</h1>
+    <p class="first-paragraph">
+      Law learning encompasses a diverse range of fascinating subjects and fields
+      of study and ethics, and the legal systems that shape our societies.
+    </p>
+    <div class="ratingConatiner">
+      <span>Subscriber Ratings : &nbsp;</span>
+      <span class="star starNumber">4.5</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <i style="font-size: 16px" class="fa star">&#xf123; (1,232)</i>
+    </div>
+    <div class="ratingConatiner">
+      <span>Reviewer Ratings : &nbsp;</span>
+      <span class="star starNumber">4</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733;</span>
+      <span class="star">&#9733; (22)</span>
+    </div>
+    <p>Instructor : Edward Viaene</p>
+    <p>Course Duration : 2hr 3m</p>
+    <p class="icon">
+      <span class="material-icons updated"> report_gmailerrorred </span>Last
+      updated: 10/2023
+    </p>
+    <p class="icon">
+      <span class="material-icons language"> language </span>English
+    </p>
+  </div>
+  
+  <div class="courseDescription">
+    <h2>What you'll Learn</h2>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; From constitutional
+      law, criminal law, and international law to environmental law, intellectual
+      property law, and human rights law, there's a captivating world of legal
+      knowledge to explore.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; Delve into the
+      intricacies of contract law and tort law, or immerse yourself in the
+      evolving realms of cybersecurity law and technology law.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; Whether you're
+      interested in corporate law, family law, or pursuing a career in legal
+      advocacy.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; The realm of law
+      learning is an exciting journey filled with boundless opportunities to gain
+      a deeper understanding of justice.
+    </p>
+    <p>
+      <span class="material-icons"> check </span> &nbsp;&nbsp; Ethics, and the
+      legal systems that shape our societies.
+    </p>
+  </div>
+  
+  <div class="courseFeatures">
+    <h2>This course includes:</h2>
+    <div class="grid-container">
+      <div class="grid-item">
+        <span><mat-icon>videocam</mat-icon> 4.5 hours on-demand video</span>
+      </div>
+      <div class="grid-item">
+        <span><mat-icon>article</mat-icon> 1 article</span>
+      </div>
+      <div class="grid-item">
+        <span><mat-icon>download</mat-icon> 1 downloadable resource</span>
+      </div>
+      <div class="grid-item">
+        <span
+          ><span class="material-icons">emoji_events</span> Certificate of
+          completion</span
+        >
+      </div>
+    </div>
+    <mat-card class="side-bar">
+      <div class="container">
+        <mat-card-title class="title">
+          <div class="title-text">Course Content</div>
+        </mat-card-title>
+      </div>
+  
+      <div class="sectionsInfo">
+        15 Sections &nbsp;• 45 lectures &nbsp;•3h 9m Total Length
+      </div>
+      <mat-divider></mat-divider>
+      <mat-accordion class="sidebar-content">
+        <mat-expansion-panel
+          *ngFor="let videoGroup of videoGroups; let i = index"
+          #myExpansionPanel
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div class="panelTitle">{{ videoGroup?.panelTitle }}</div>
+              <div class="section-info">3 lectures &nbsp;&nbsp; 5min</div>
+            </mat-panel-title>
+            
+          </mat-expansion-panel-header>
+          <div style="border: 1px solid rgb(237 228 228); padding: 10px; margin-bottom: 15px;">
+            <h3 style="color: blue;" class="sectionDesc">Description</h3>
+            <div>A course description provides an overview of what a course covers, while a syllabus provides specific details about the course, such as the schedule, grading criteria, assignments, textbook requirements, and policies</div>
+            </div>
+          <div class="video-group">
+            <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
+              <div class="video-item">
+                <div class="titleDesc">
+                  <div class="titlehead">
+                    <div>
+                      <mat-icon class="custom-icon mat-icon-small"
+                        >ondemand_video</mat-icon
+                      >
+                    </div>
+                    <div class="videos-title" (click)="toggleSectionInfo(i, j)">
+                      {{ video?.title }}
+                    </div>
+                  </div>
+                  <div class="c">
+                    <div style="color: rgb(122, 119, 119)">
+                      {{ video?.time }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="sectionInfo[i][j]" class="sectionInfo">
+                Introduction to Law provides an overview of the law and the legal system.  This course covers the Constitution, court system attorney-client relationship, administrative law, crimes, torts, contract law, family law, owning and operating motor vehicles, renters and landlords, home ownership, employee and employer rights and duties, wills, trusts and probate laws and the Declaration of Independence.  The student will develop the knowledge and skills indicated by the Learning Outcomes for the course.
+              </div>
+            </ng-container>
+            
+        </div>
+        
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card>
+    <div class="container1">
+        <div class="container2">
+        <h2 class="heading1">Instructor</h2>
+        <h2 class="author" routerLink="/instructor/instructorinfo">John Smith</h2>
+        <p class="text">Juris Doctor and Leading Law Learning Instructor</p>
+        <div class="iconsContainer">
+          <img class="avatar" src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+            alt="Instructor Image">
+          <div class="icons">
+            <div class="icon ">
+              <mat-icon>star</mat-icon>
+              <p>4.7 Instructor Rating</p>
+            </div>
+            <div class="icon">
+              <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge" class="reviews-badge">
+              <p>715,505 Reviews</p>
+            </div>
+            <div class="icon">
+              <mat-icon>people</mat-icon>
+              <p>2,342,416 Students</p>
+            </div>
+            <div class="icon">
+              <mat-icon>play_circle_outline</mat-icon>
+              <p>7 Courses</p>
+            </div>
+          </div>
+        </div><br>
+        <p>A Law Learning Instructor is responsible for delivering high-quality instruction and guidance to individuals or
+          groups seeking to expand their knowledge of legal principles and concepts. They play a crucial role in facilitating
+          the learning process, helping students understand the complexities of the legal field, and preparing them for
+          success in their legal studies or careers.</p>
+        <p>Develop and deliver instructional materials, including lectures, workshops, and presentations, on various aspects
+          of the law.
+          Adapt teaching methods and content to accommodate various learning styles and levels of expertise.</p>
+        <p>Create and update curriculum content, including lesson plans, reading materials, and assessment tools.
+          Ensure that curriculum aligns with the latest legal developments and standards.</p>
+        <p>Foster a positive learning environment by encouraging active participation and critical thinking.
+          Provide constructive feedback and support to students, addressing their questions and concerns.</p>
+        <p> A degree in law (Juris Doctor or equivalent) is required.
+          Relevant teaching or instructional experience is preferred.
+          Strong knowledge of legal principles, ethics, and case studies.
+          Excellent communication and presentation skills.
+          Patience, adaptability, and the ability to motivate and engage learners.
+          A commitment to ongoing professional development in the legal field.</p>
+        </div>
+        <h2 class="courseRatingsHeading">Course Reviews</h2>
+        <div class="courseRatingContainer">
+          <div class="courseRating">
+            <span class="circle">DW</span>
+            <div class="alignment">
+              <h2>David Wilson</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">The Law Learning course provided a comprehensive overview of legal principles and their practical
+                applications. The content was well-structured, and the instructors were highly knowledgeable.</p>
+          </div>
+          <div class="courseRating">
+            <span class="circle">SD</span>
+            <div class="alignment">
+              <h2>Sarah Davis</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">I appreciated the flexibility of the Law Learning course, which allowed me to study at my own pace. The
+                online resources and materials were helpful, and the quizzes and assignments provided opportunities for
+                self-assessment.</p>
+          </div>
+       
+          <div class="courseRating">
+            <span class="circle">MB</span>
+            <div class="alignment">
+              <h2>Michael Brown</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">I would highly recommend the Law Learning course to anyone interested in a career in law or those who simply
+                want to expand their legal knowledge. It's a valuable resource for personal and professional growth.</p>
+          </div>
+          <div class="courseRating">
+            <span class="circle">SA</span>
+            <div class="alignment">
+              <h2>Susan Anderson</h2>
+              <div class="starsRating">
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9733;</span>
+                <span class="star">&#9734;</span>
+              </div>
+            </div>
+              <p class="courseRatingText">The course was well-organized, and the materials provided were up-to-date. It was clear that the course
+                 creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.</p>
+              </div>
+              <div class="courseRating" *ngIf="submittedReview">
+                <span class="circle">SA</span>
+                <div class="alignment">
+                  <h2>UserName</h2>
+                  <div class="starsRating">
+                    <span class="star" *ngFor="let i of getStarArray(); let j = index" [ngClass]="{'active': j < selected}">&#9733;</span>
+                  </div>
+                </div>
+                  <p class="courseRatingText">{{userReview}}</p>
+                  </div>
+        </div>
+        <div class="leave-rating"  *ngIf="!submittedReview" >
+          <h1 style="color:blue">Leave Your Rating Here</h1> 
+          <hr>
+          <br>
+          <i style="font-size: 16px;">You have to complete 70% to give rating</i>
+          <br>
+          <br>
+          <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview" >
+            Give Rating
+          </button>
+          </div>
+          
+          <div class="overlay" *ngIf="showRating">
+            <div class="contentt">
+              <div class="close" (click)="leaveRatingClose()">&times;</div>
+              <h1>How would you rate this course?</h1>
+              <ng-container *ngFor="let i of stars">
+                <mat-icon
+                  (mouseenter)="updaterating(i)"
+                  [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
+                  class="staricon"
+                >
+                  star
+                </mat-icon>
+              </ng-container>
+              <div class="review">
+                <textarea
+                  id="review"
+                  [(ngModel)]="userReview"
+                  name="userReview"
+                  rows="3"
+                  cols="36"
+                  placeholder="Comments"
+                  class="mat-input custom-textarea"
+                ></textarea>
+              </div>
+              <button class="custom-button"(click)="submitRating()">Submit </button>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div *ngIf="availableCourse" class="availableCourse">
+    <div class="course-container">
+        <div class="not-subscribed">You are not subscribed to this course. To view the course please buy it. </div>
+        <div class="add-to-cart">
+          <button class="add-button">Add to Cart</button>
+        </div>
+          <b>Or </b>
+        
+        <div class="buy-course">
+          <button  class="buy-button">Buy  Course</button>
+        </div>
+      </div>
+  </div>

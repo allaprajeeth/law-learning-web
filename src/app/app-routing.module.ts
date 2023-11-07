@@ -23,6 +23,8 @@ import { AboutusComponent } from './common/components/aboutus/aboutus.component'
 import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
+import { ModalComponent } from './common/components/modal/modal.component';
+import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { EditcoursesComponent } from './modules/instructor/components/editcourses/editcourses.component';
 
@@ -113,8 +115,8 @@ const routes: Routes = [
     component:CourseInfoComponent
   },
   {
- path:'contactus',
- component:ContactusComponent
+    path:'contactus',
+    component:ContactusComponent
   },
   {
     path: 'freecourse',
@@ -136,6 +138,10 @@ const routes: Routes = [
   { 
     path: 'cart', 
     component: CartComponent 
+  },
+  { 
+    path: 'post/:id', 
+    component: PostdetailComponent
   },
   // {
   //   path: 'logout',

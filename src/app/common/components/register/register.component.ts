@@ -7,14 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog'; 
 // import { ModalComponent } from '../modal/modal.component';
 import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
+import { PdfService } from 'src/app/sharedService.service';
 
-interface BlogPost {
-  // Define the properties of a blog post here
-  title: string;
-  author: string;
-  content: string;
-  date: string; // Add the date property
-}
 interface ApiResponse {
   message: string;
 }
@@ -24,8 +18,20 @@ interface ApiResponse {
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
+  ngOnInit() {
+    this.AcceptService.isAcceptButtonClicked$.subscribe((value) => {
+      this.isAcceptButtonClicked = value;
+    });
+  }
+
   loginForm: FormGroup;
-  constructor(public dialog: MatDialog,private router: Router,private http: HttpClient,private snackBar: MatSnackBar,private formBuilder: FormBuilder){
+  constructor(public dialog: MatDialog,
+    private router: Router,
+    private http: HttpClient,
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
+    private AcceptService:PdfService
+    ){
     this.loginForm = this.formBuilder.group({
       name: ['', [Validators.required]], 
       email: ['', [Validators.required, Validators.email]],
@@ -36,7 +42,7 @@ export class RegisterComponent {
     });
   } 
    lawimage="/assets/law.png"
-  
+   isAcceptButtonClicked = false;
   isSendOtpsClicked: boolean = true;
   images: string[] = ['assets/Law Learning.png'];
   currentIndex: number = 0;
@@ -108,10 +114,10 @@ showOtpFields(): void {
     this.disableCategorySelect = true; 
   }
   signupVerify(){
-    //this.loginpage();
+    //this.signUppage();
     this.signUpValidation()
   }
-  async loginpage(){
+  async signUppage(){
     const baseUrl = ' https://ea06-202-53-86-13.ngrok-free.app/api/signuplogin/verifyotp';
     const url = `${baseUrl}?name=${encodeURIComponent(this.name)}email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}&role=${this.selectedCategory}&action=verifysignup&emailotp=${encodeURIComponent(this.emailotp)}&phoneotp=${encodeURIComponent(this.phoneotp)}`;
     const requestData = {
@@ -183,11 +189,10 @@ onPhoneOtpInput(event: any) {
  
 }
 
-openModal(blogPost?: BlogPost): void {
+openModal() {
   this.dialog.open(TermsandconComponent, {
     width: '700px',
     height: '600px',
-    data: blogPost
   });
 }
 

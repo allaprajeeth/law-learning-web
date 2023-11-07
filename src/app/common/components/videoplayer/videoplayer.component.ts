@@ -1,7 +1,8 @@
 import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { MatExpansionPanel } from '@angular/material/expansion';
+import { ActivatedRoute } from '@angular/router';
 import * as Plyr from 'plyr';
-import { PdfService } from 'src/app/pdf.service';
+import { PdfService } from 'src/app/sharedService.service';
 @Component({
   selector: 'app-videoplayer',
   templateUrl: './videoplayer.component.html',
@@ -54,10 +55,14 @@ export class VideoplayerComponent {
       },
     ],
   }));
+  isFreeCourseRoute: boolean | undefined;
   currentVideoSource: string = this.videoGroups[this.currentVideoIndex].videos[0].url;
-  constructor(private renderer: Renderer2, private el: ElementRef ,private testService:PdfService) {
+  constructor(private renderer: Renderer2, private el: ElementRef ,private testService:PdfService,private route: ActivatedRoute) {
     this.testService.setIsTestAvailable(true);
     this.isTestAvailable = this.testService.isTestAvailable; 
+    this.route.url.subscribe(segments => {
+      this.isFreeCourseRoute = segments.some(segment => segment.path === 'freecourse');
+    });
   }
 
   isVideoPlaying(sectionIndex: number, videoIndex: number): boolean {
@@ -289,5 +294,9 @@ export class VideoplayerComponent {
     this.expansionPanels.toArray()[sectionIndex].open();
   }
  
+  
+
+ 
+   
   
 }

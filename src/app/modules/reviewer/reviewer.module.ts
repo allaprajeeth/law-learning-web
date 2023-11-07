@@ -1,13 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared-module/shared.module';
-
 import { ReviewerRoutingModule } from './reviewer-routing.module';
 import { ReviewerLoginComponent } from './components/reviewer-login/reviewer-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReviewernavComponent } from './components/reviewernav/reviewernav.component';
-
-
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -30,6 +27,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { ArticleComponent } from './components/article/article.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { CourseInfoComponent } from './components/course-info/course-info.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +38,9 @@ import { NotificationComponent } from './components/notification/notification.co
     HomepageComponent,
     ReviewervideoComponent,
     NotificationComponent,
+    ArticleComponent,
+    DocumentsComponent,
+    CourseInfoComponent,
     // InstructorLoginComponent
   ],
   imports: [

@@ -22,6 +22,7 @@ export class NavComponent {
     // Navigate to the subscriber profile component
     this.router.navigate(['/subscriber/acSecurity']);
   }
+  
   onLogoutClick() {
     this.sharedService.showLogoutAlert = true;
   

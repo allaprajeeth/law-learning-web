@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PdfService } from 'src/app/pdf.service';
+import { PdfService } from 'src/app/sharedService.service';
 
 @Component({
   selector: 'app-documents',

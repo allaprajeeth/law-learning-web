@@ -20,20 +20,27 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-
+import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { VideoplayerComponent } from './components/videoplayer/videoplayer.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
     // ComponentsComponent,
     ManagerloginComponent,
     HomepageComponent,
-    ManagernavComponent
+    ManagernavComponent,
+    CourseInfoComponent,
+    VideoplayerComponent,
+  
   ],
   imports: [
     CommonModule,
     SharedModule,
     AuthenticationRoutingModule,
-
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -44,7 +51,12 @@ import {MatButtonModule} from '@angular/material/button';
     ReactiveFormsModule,
     MatInputModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatTabsModule,
+    
 
   ]
 })
