@@ -35,7 +35,7 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
     NotificationComponent,
     PublicProfileComponent,
     InstructorinfoComponent,
-    ArticleComponent
+    ArticleComponent,
     VideoplayerComponent,
     CourseInfoComponent,
 

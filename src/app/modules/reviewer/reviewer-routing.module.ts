@@ -37,6 +37,8 @@ const routes: Routes = [
   {
     path:"documents",
     component: DocumentsComponent
+  },
+  {
     path:"courseInfo",
     component:CourseInfoComponent
   }

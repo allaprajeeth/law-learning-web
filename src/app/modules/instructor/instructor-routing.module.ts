@@ -44,6 +44,7 @@ component:InstructorinfoComponent
   path:"article",
 component:ArticleComponent
 },
+{
   path:"courseInfo",
   component:CourseInfoComponent
 }

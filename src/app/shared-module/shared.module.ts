@@ -9,20 +9,14 @@ import { DocumentsComponent } from './components/documents/documents.component';
 import { PublishingcornerComponent } from './components/publishingcorner/publishingcorner.component';
 // import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
 import { FormsModule } from '@angular/forms';
-
-@NgModule({
-  declarations: [BasePageComponent, FooterComponent, DocumentsComponent, PublishingcornerComponent],
-
-// import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
+import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
 import {  MatDividerModule } from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
-import { FormsModule } from '@angular/forms';
-import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
 
 @NgModule({
-  declarations: [BasePageComponent, FooterComponent, SharedoverviewComponent, ],
+  declarations: [BasePageComponent, FooterComponent, SharedoverviewComponent, DocumentsComponent, PublishingcornerComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
