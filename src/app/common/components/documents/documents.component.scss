@@ -1,36 +1,52 @@
+.fixed-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #fff; /* You can set the background color as per your design */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: Add a box shadow for a subtle effect */
+  z-index: 1000; /* Set a higher z-index to ensure it appears above other elements */
+}
+
+.knowledgeCentre {
+  margin-top: 10px; /* Adjust the margin-top to create space between <app-firstnav> and <h1> */
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+.content {
+  margin-top: 120px; /* Adjust the margin-top to make space for the fixed header */
+  /* Other styles for your content */
+}
+
+
+
 .pdftable{
   overflow-y: hidden;
+    text-align: center;
 }
   h1 {
     text-align: center;
-    margin: 10px;
+    // margin: 10px;
     margin-top: 30px; 
     font-size: 25px; 
     margin-bottom: 25px;
     font-weight: 500;
-  
-   
   }
   table {
     width:70%;
     border-collapse: collapse;
     border: none;
-    margin-left: 110px;
-    
-    
+    margin-left: 150px;
   }
   thead {
     background-color: #f2f2f2;
 
   }
-  
- 
   th {
     padding: 5px;
     text-align: left;    
   }
-  
-  
   td {
     padding: 5px;
     vertical-align: middle;
@@ -38,28 +54,18 @@
     border-bottom: 1px solid rgb(222, 207, 207);
     cursor: pointer;
 
-  }
+    a{
+      text-decoration: none;
 
-  td:first-child {
-    color: rgb(207, 86, 86); 
-    
+      &:hover {
+        text-decoration:underline
+      }
+
+    }
   }
-   td a mat-icon{
-    color: rgb(117, 115, 115);
-  }
- 
-  
- 
-  mat-icon[aria-hidden="true"] {
-    cursor: pointer;
-    //transition: transform 0.2s;
-    padding: 10px;
-    font-size: 30px;
    
-  }
+ 
+ 
 
-  
-//   mat-icon[aria-hidden="true"]:hover {
-//     transform: scale(1.2); 
-//   }
+
   

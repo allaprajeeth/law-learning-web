@@ -27,6 +27,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { ArticleComponent } from './components/article/article.component';
+import { DocumentsComponent } from './components/documents/documents.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 
 @NgModule({
@@ -36,6 +38,8 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
     HomepageComponent,
     ReviewervideoComponent,
     NotificationComponent,
+    ArticleComponent,
+    DocumentsComponent,
     CourseInfoComponent,
     // InstructorLoginComponent
   ],

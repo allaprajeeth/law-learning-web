@@ -5,6 +5,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { PublishingcornerComponent } from './components/publishingcorner/publishingcorner.component';
+// import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
+import { FormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [BasePageComponent, FooterComponent, DocumentsComponent, PublishingcornerComponent],
 
 // import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
 import {  MatDividerModule } from '@angular/material/divider';
@@ -34,6 +41,7 @@ import { SharedoverviewComponent } from './components/sharedoverview/sharedoverv
     MatInputModule,
     MatButtonModule,
     FooterComponent,
+    PublishingcornerComponent,
     FormsModule,
     SharedoverviewComponent,
     // InstructorLoginComponent

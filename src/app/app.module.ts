@@ -56,6 +56,7 @@ import { PhonepasswordComponent } from './common/components/phonepassword/phonep
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
+import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 
 
@@ -89,6 +90,8 @@ import { ContactusComponent } from './common/components/contactus/contactus.comp
     AboutusComponent,
     PhonepasswordComponent,
     TermsandconComponent,
+    OverviewFreecourseComponent,
+    PostdetailComponent,  
     OverviewFreecourseComponent,  
     OverviewFreecourseComponent,
     ContactusComponent,
