@@ -1,3 +1,14 @@
+<div class="progress-info" *ngIf="!isFreeCourseRoute">
+  <div style="color:blue;font-size: 24px;"> Course Progress </div>
+  <br>
+  <div class="completed-videos">
+   Numbers of Videos Completed : {{completedVideoCount}} 
+  </div>
+   <div class="total-progress">
+     Total Progress:{{courseProgress}}%
+  </div>
+  <div>Total Watched Time: {{ getTotalWatchedTimeInHours() }}</div>
+</div>
 <ng-container>
     <div   id="showVideo" class="video-info-total">
       <!-- side bar video expansion panel  -->
@@ -61,7 +72,7 @@
           </mat-expansion-panel>
           
               <div class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">End of Course</div>
-              <div *ngIf="isTestAvailable" class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">Attend  the test</div>
+              <div *ngIf="isTestAvailable &&  !isFreeCourseRoute" class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">Attend  the test</div>
             
         </mat-accordion>
   </mat-card>
@@ -98,20 +109,3 @@
       </div>
   </div>
 </ng-container>
-<div class="progress" style="margin-left: 5%;">
-<br>
-<br>
-<div style="color:blue;font-size: 24px;"> Progress Of Course</div>
-<br>
-<div class="completed-videos">
- Numbers of Videos Completed : {{completedVideoCount}} 
- </div>
- <br>
- <div class="total-progress">
-   Total Progress:{{courseProgress}}%
-</div>
-<br>
-<div>Total Watched Time: {{ getTotalWatchedTimeInHours() }}</div>
-<br>
-<br>
-</div>

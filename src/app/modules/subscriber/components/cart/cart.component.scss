@@ -6,6 +6,11 @@ body {
   position: relative;
 }
 
+.emptyCartText {
+  padding-top: 20px;
+  text-align: center;
+}
+
 .cartContainer h1 {
   font-size: x-large;
   font-weight: bold;
@@ -21,11 +26,16 @@ body {
 .course {
   display: flex;
   background-color: #fff;
-  padding: 20px 20px 0 20px;
+  margin: 20px 20px 40px 20px;
   align-items: flex-start;
-  flex-direction: column;
   justify-content: space-between;
-  width: calc(100% - 150px);
+  width: calc(100% - 100px);
+
+  .courseContainer {
+    overflow-y: scroll;
+    max-height: 500px;
+    padding-right: 10px;
+  }
 
   .lawLearningImage {
     width: 150px;
@@ -35,7 +45,7 @@ body {
 
   .courseDetails {
     display: flex;
-    width: calc(100% - 170px);
+    // width: calc(100% - -655px);
     justify-content: space-between;
     margin-top: 20px;
   }
@@ -76,8 +86,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    top: 80px;
-    left: 900px;
     margin-bottom: 20px;
   }
 
@@ -89,9 +97,10 @@ body {
   .price {
     display: flex;
     flex-direction: column;
-    width: calc(100% - 580px);
+    margin: 0 40px;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
   }
 
   .total {
@@ -107,7 +116,7 @@ body {
     font-size: x-large;
     font-weight: bold;
     color: #555;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     padding: 0;
   }
 
@@ -116,12 +125,13 @@ body {
     color: #666;
     font-size: medium;
     font-weight: bold;
+    margin-bottom: 10px;
   }
 
   .removeButtonContainer {
     display: flex;
     align-items: flex-end;
-    margin-bottom: 20px;
+    margin: 0 10px 20px 50px;
   }
 
   .removeButton {

@@ -7,7 +7,7 @@ import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo
 import { NotificationComponent } from './components/notification/notification.component';
 import { ArticleComponent } from './components/article/article.component';
 import { DocumentsComponent } from './components/documents/documents.component';
-
+import { CourseInfoComponent } from './components/course-info/course-info.component';
 const routes: Routes = [
   {
     path:"",
@@ -37,6 +37,8 @@ const routes: Routes = [
   {
     path:"documents",
     component: DocumentsComponent
+    path:"courseInfo",
+    component:CourseInfoComponent
   }
   
 ];

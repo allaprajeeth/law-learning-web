@@ -13,6 +13,17 @@
         <img [src]="image" class="img" alt="Random Image">
         <div class="overlay">
           <a routerLink="/reviewer/reviewervideo">
+    <div class="heading">
+      <h1>Courses to Review</h1>
+    </div>
+    <div class="image-grid">
+      <div *ngFor="let image of mycoursesimages; let i = index" class="image-item" >
+  
+        <div class="imagesContainer">
+          <img [src]="image" class="img" alt="Random Image">
+          <div class="overlay">
+            <a routerLink="/reviewer/courseInfo">
+
             <i class="fa fa-play-circle play-icon"></i>
           </a>
         </div>

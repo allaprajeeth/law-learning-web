@@ -12,7 +12,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpInterceptorService } from './common/services/http-interceptor/http-interceptor.service';
 import { ErrorHandlerService } from './common/services/error-handler/error-handler.service';
 import { LoadingComponent } from './common/components/loading/loading.component';
-
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -58,6 +57,7 @@ import { TermsandconComponent } from './common/termsandcon/termsandcon.component
 import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
+import { ContactusComponent } from './common/components/contactus/contactus.component';
 
 
 @NgModule({
@@ -92,6 +92,9 @@ import { PostdetailComponent } from './common/components/postdetail/postdetail.c
     TermsandconComponent,
     OverviewFreecourseComponent,
     PostdetailComponent,  
+    OverviewFreecourseComponent,  
+    OverviewFreecourseComponent,
+    ContactusComponent,
   ],
   imports: [
     CarouselModule,

@@ -95,6 +95,10 @@ availableCoursesText: string[] = [
   
   subscribersValues = ["10", "50", "100", "200", "500", "1000"];
 
+  coursePrice = [
+    3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
+  ];
+
   myCourseSubscribers: string[] = [];
   availableCourseSubscribers: string[] = [];
   ngOnInit(): void {

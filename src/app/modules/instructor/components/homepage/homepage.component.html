@@ -31,7 +31,7 @@
       <p>You have successfully submitted your course; it is under review. If there are any comments kindly correct them.</p>
     </div>
     <div class="image-grid">
-      <div *ngFor="let image of underreviewimages; let k = index" class="image-item">
+      <div *ngFor="let image of underreviewimages; let k = index" class="image-item" routerLink="/instructor/courseInfo">
         <div class="imagesContainer">
           <img [src]="image" class="img" alt="Random Image">
           <div class="overlay">
@@ -137,6 +137,7 @@
       </div>
       <div class="subscribers" style="font-weight: 410;">
         <span>Number of Subscribers: {{approvedCourseSubscribers[l]}}</span>
+        <h5 class="price">Price : ₹{{ coursePrice[l] }}</h5>
       </div>
       <br/>
       <br/>

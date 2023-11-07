@@ -12,11 +12,26 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [BasePageComponent, FooterComponent, DocumentsComponent, PublishingcornerComponent],
+
+// import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
+import {  MatDividerModule } from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatIconModule} from '@angular/material/icon';
+import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
+
+@NgModule({
+  declarations: [BasePageComponent, FooterComponent, SharedoverviewComponent, ],
   imports: [
     CommonModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatCardModule,
     FormsModule
   ],
   exports: [
@@ -26,7 +41,9 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatButtonModule,
     FooterComponent,
-    PublishingcornerComponent
+    PublishingcornerComponent,
+    FormsModule,
+    SharedoverviewComponent,
     // InstructorLoginComponent
   ]
 

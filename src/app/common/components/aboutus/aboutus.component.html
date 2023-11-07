@@ -20,7 +20,19 @@
       </div>
     </div>
   </section>
-  
+  <h1>Advisor Profiles</h1>
+  <div class="carosol">
+     <p-carousel [value]="advisorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
+         <ng-template let-profile pTemplate="item">
+             <div class="teacher-profile">
+               <img  class="avatar" [src]="profile.photo" alt="Teacher Photo">
+               <h2>{{ profile.name }}</h2>
+               <h3>{{ profile.title }}</h3>
+               <p>{{ profile.description }}</p>
+             </div>
+           </ng-template>  
+     </p-carousel> 
+  </div>
 
 <h1>Instructor Profiles</h1>
 <div class="carosol">
@@ -35,22 +47,4 @@
     </ng-template>
   </p-carousel>
  </div>
- <h1>Advisor Profiles</h1>
- <div class="carosol">
-    <p-carousel [value]="advisorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
-        <ng-template let-profile pTemplate="item">
-            <div class="teacher-profile">
-              <img  class="avatar" [src]="profile.photo" alt="Teacher Photo">
-              <h2>{{ profile.name }}</h2>
-              <h3>{{ profile.title }}</h3>
-              <p>{{ profile.description }}</p>
-            </div>
-          </ng-template>  
-    </p-carousel>
-     
-      
-      
-      
-      
-      
- </div>
+ 
