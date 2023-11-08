@@ -10,8 +10,13 @@ import { Router } from '@angular/router';
 export class FooterComponent {
 
   constructor(private router: Router) { }
+  navigateToAboutUs() {
+    this.router.navigate(['/aboutus']); 
+  }
+  navigateToContactUs() {
+    this.router.navigate(['/contactus']); 
+  }
   navigateToTermsAndConditions() {
-   
     this.router.navigate(['/termsandcon']);
   }
 }

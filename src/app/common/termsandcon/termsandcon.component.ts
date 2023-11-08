@@ -21,7 +21,7 @@ export class TermsandconComponent {
   
   onAcceptClick() {
     this.AcceptServie.setAcceptButtonClicked(true);
-    this.onCloseClick();
+    this.dialogRef.close();
   }
 }
 
