@@ -1,11 +1,11 @@
 <div class="progress-info" *ngIf="!isFreeCourseRoute">
   <div style="color:blue;font-size: 24px;"> Course Progress </div>
   <br>
+  <div class="total-progress">
+    Total Progress:{{courseProgress}}%
+ </div>
   <div class="completed-videos">
    Numbers of Videos Completed : {{completedVideoCount}} 
-  </div>
-   <div class="total-progress">
-     Total Progress:{{courseProgress}}%
   </div>
   <div>Total Watched Time: {{ getTotalWatchedTimeInHours() }}</div>
 </div>

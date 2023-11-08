@@ -117,13 +117,22 @@ border-color: black;
   cursor: pointer;
 }
 .termsandcon{
-  text-align: center;
   cursor: pointer;
+  font-size: 16px;
+  color: rgb(10, 10, 10);
+  
 }
-
+.acceptTerms{
+  margin: 6px 0px;
+}
 .termsandcon a {
   // text-align: center;
-  color: blue;
+ 
   text-decoration: none;
 }
+.asterick {
+  color: red;
+  font-size: 20px;
+}
+
 

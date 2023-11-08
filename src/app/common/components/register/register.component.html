@@ -86,9 +86,14 @@
           <option value="Content_Manager">Content Manager</option>
           <option value="Admin">Admin</option>
         </select>
-        <div class="termsandcon" *ngIf="!isAcceptButtonClicked">
-          <a (click)="openModal()">Terms & Conditions</a>
+        <div class="acceptTerms" *ngIf="!isAcceptButtonClicked">
+          <a (click)="openModal()" class="termsandcon">Terms & Conditions</a>
+          <span class="asterick">*</span>
+          <span></span>
+          <span style="color:red">(Accept terms)</span>
         </div>
+      
+       
         <button
           (click)="sendOtps()"
           [disabled]="!isInputFilled ||  !isAcceptButtonClicked"

@@ -3,18 +3,28 @@
     padding: 15px 100px;
     border: 20px;
     margin: 10px 90px;
-    // margin-left: 200px;
-    justify-content: space-between; /* Align heading and profile divs at the ends */
+    justify-content: space-between; 
 
 h1{
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-weight:bold
 }
-
-// h4{
-//     margin: 5px;
-// }
-
+.icons {
+  display: grid;
+  padding: 20px 0 0 10px;
+}
+.icon {
+  display: inline-flex;
+  align-items: center;
+}
+.icon p {
+  padding: 12px 0 0 20px;
+ 
+}
+.reviews-badge {
+  width: 19px;
+  height: 19px;
+}
 .studentsflex{
     display: flex;
     
