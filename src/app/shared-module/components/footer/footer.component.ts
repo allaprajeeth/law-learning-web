@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { TermsandconComponent } from 'src/app/common/termsandcon/termsandcon.component';
+
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +8,7 @@ import { TermsandconComponent } from 'src/app/common/termsandcon/termsandcon.com
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
- 
+
   constructor(private router: Router) { }
   navigateToAboutUs() {
     this.router.navigate(['/aboutus']); 

@@ -10,10 +10,6 @@
         <li><a routerLink="/homepage" class="mycourses">
             My Home page</a></li>
 
-        <!-- <li><a routerLink="/subscriber/cart">
-            <mat-icon>shopping_cart_checkout</mat-icon>
-          </a></li> -->
-
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
             <span class="user-circle-text">NS</span>
@@ -33,29 +29,19 @@
               <span>Nuncsystems</span>
               <span class="info">040-2980 3199</span>
             </li>
-            <hr />
-
-            <li><a routerLink="/homepage">My Courses</a></li>
-            <li><a routerLink="/documents">Knowledge Centre</a></li>
-
-            <li><a routerLink="/article">Publishing corner</a></li>
-            <li><a routerLink="/subscriber/cart">My cart</a></li>
+            <hr/>
             
-
-            <hr>
-            <li><a routerLink="/subscriber/notifications">Notifications</a></li>
-            <hr>
-
+            <li><a routerLink="/subscriber/public-profile">Profile</a></li>
             <li><a routerLink="/subscriber/acSecurity">Account settings</a></li>
-            <li><a routerLink="/subscriber/payments">Payments</a></li>
-            <!-- <li><a routerLink="/subscriber/subscriptions">Subscriptions</a></li> -->
+            <li><a routerLink="/subscriber/payments">Purchase history</a></li>
+            <li><a routerLink="/subscriber/notifications" >Notification Settings</a></li>
+           
             <hr>
-
-
-            <li><a routerLink="/subscriber/public-profile">Public profile</a></li>
-            <hr>
-            <li><a>Help</a></li>
-            <li><a routerLink="/header" (click)="onLogoutClick()">Logout</a></li>
+            <li><a routerLink="/termsandcon">Terms & Conditions</a></li>
+            <li><a>Contact Us</a></li>
+            <li>
+              <a routerLink="/header" (click)="onLogoutClick()">Logout</a>
+            </li>
           </ul>
         </li>
       </ul>
