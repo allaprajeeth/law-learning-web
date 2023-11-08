@@ -24,7 +24,6 @@ import { VideoplayerComponent } from './components/videoplayer/videoplayer.compo
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { FormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 
@@ -38,7 +37,6 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
     NotificationComponent,
     PublicProfileComponent,
     InstructorinfoComponent,
-
     EditcoursesComponent,
     ArticleComponent,
     VideoplayerComponent,
