@@ -224,6 +224,7 @@ export class PublishingcornerComponent {
 
 
   openSubmitArticleModal() {
+    this.router.navigate(['/subscriber/articleform']);  
   // Implement the logic to open the modal or perform any other action here
 }
 
