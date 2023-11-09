@@ -4,23 +4,6 @@
       Law learning encompasses a diverse range of fascinating subjects and fields
       of study and ethics, and the legal systems that shape our societies.
     </p>
-    <div class="ratingConatiner">
-      <span>Subscriber Ratings : &nbsp;</span>
-      <span class="star starNumber">4.5</span>
-      <span class="star">&#9733;</span>
-      <span class="star">&#9733;</span>
-      <span class="star">&#9733;</span>
-      <span class="star">&#9733;</span>
-      <i style="font-size: 16px" class="fa star">&#xf123; (1,232)</i>
-    </div>
-    <div class="ratingConatiner">
-      <span>Reviewer Ratings : &nbsp;</span>
-      <span class="star starNumber">4</span>
-      <span class="star">&#9733;</span>
-      <span class="star">&#9733;</span>
-      <span class="star">&#9733;</span>
-      <span class="star">&#9733; (22)</span>
-    </div>
     <p>Instructor : Edward Viaene</p>
     <p>Course Duration : 2hr 3m</p>
     <p class="icon">
@@ -183,87 +166,10 @@
           Patience, adaptability, and the ability to motivate and engage learners.
           A commitment to ongoing professional development in the legal field.</p>
         </div>
-        <h2 class="courseRatingsHeading">Course Reviews</h2>
-        <div class="courseRatingContainer">
-          <div class="courseRating">
-            <span class="circle">DW</span>
-            <div class="alignment">
-              <h2>David Wilson</h2>
-              <div class="starsRating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-              </div>
-            </div>
-              <p class="courseRatingText">The Law Learning course provided a comprehensive overview of legal principles and their practical
-                applications. The content was well-structured, and the instructors were highly knowledgeable.</p>
-          </div>
-          <div class="courseRating">
-            <span class="circle">SD</span>
-            <div class="alignment">
-              <h2>Sarah Davis</h2>
-              <div class="starsRating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-              </div>
-            </div>
-              <p class="courseRatingText">I appreciated the flexibility of the Law Learning course, which allowed me to study at my own pace. The
-                online resources and materials were helpful, and the quizzes and assignments provided opportunities for
-                self-assessment.</p>
-          </div>
-       
-          <div class="courseRating">
-            <span class="circle">MB</span>
-            <div class="alignment">
-              <h2>Michael Brown</h2>
-              <div class="starsRating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-              </div>
-            </div>
-              <p class="courseRatingText">I would highly recommend the Law Learning course to anyone interested in a career in law or those who simply
-                want to expand their legal knowledge. It's a valuable resource for personal and professional growth.</p>
-          </div>
-          <div class="courseRating">
-            <span class="circle">SA</span>
-            <div class="alignment">
-              <h2>Susan Anderson</h2>
-              <div class="starsRating">
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9733;</span>
-                <span class="star">&#9734;</span>
-              </div>
-            </div>
-              <p class="courseRatingText">The course was well-organized, and the materials provided were up-to-date. It was clear that the course
-                 creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.</p>
-              </div>
-              <div class="courseRating" *ngIf="submittedReview">
-                <span class="circle">SA</span>
-                <div class="alignment">
-                  <h2>UserName</h2>
-                  <div class="starsRating">
-                    <span class="star" *ngFor="let i of getStarArray(); let j = index" [ngClass]="{'active': j < selected}">&#9733;</span>
-                  </div>
-                </div>
-                  <p class="courseRatingText">{{userReview}}</p>
-                  </div>
-        </div>
+        
         <div class="leave-rating"  *ngIf="!submittedReview" >
           <h1 style="color:blue">Leave Your Rating Here</h1> 
           <hr>
-          <br>
-          <i style="font-size: 16px;">You have to complete 70% to give rating</i>
-          <br>
           <br>
           <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview" >
             Give Rating
@@ -299,16 +205,4 @@
           </div>
       </div>
   </div>
-  <div *ngIf="availableCourse" class="availableCourse">
-    <div class="course-container">
-        <div class="not-subscribed">You are not subscribed to this course. To view the course please buy it. </div>
-        <div class="add-to-cart">
-          <button class="add-button">Add to Cart</button>
-        </div>
-          <b>Or </b>
-        
-        <div class="buy-course">
-          <button  class="buy-button">Buy  Course</button>
-        </div>
-      </div>
-  </div>
+  
