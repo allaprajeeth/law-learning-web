@@ -10,6 +10,7 @@ import { InstructorinfoComponent } from './components/instructorinfo/instructori
 import { EditcoursesComponent } from './components/editcourses/editcourses.component';
 import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { QuiztestComponent } from './components/quiztest/quiztest.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,10 @@ component:ArticleComponent
 {
   path:"courseInfo",
   component:CourseInfoComponent
+},
+{
+  path:"quiztest",
+  component:QuiztestComponent
 }
 ];
 

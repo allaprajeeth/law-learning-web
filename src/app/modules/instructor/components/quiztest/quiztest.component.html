@@ -1,0 +1,68 @@
+<!-- quiz.component.html -->
+<app-instructornav></app-instructornav>
+<div>
+    <h2>Create a Test</h2>
+</div>
+<div class="quiz-container">
+    <div class="quiz-header">
+        <div class="input-group">
+            <label for="quizName">Enter Test Name:</label>
+            <input id="quizName" [(ngModel)]="quizName" placeholder="Quiz Name" />
+        </div>
+        <div class="input-group">
+            <label for="questionType">Select Question Type:</label>
+            <select id="questionType" [(ngModel)]="questionType">
+                <option value="multiple-choice">Multiple Choice</option>
+                <option value="true-false">True/False</option>
+                <option value="true-false">Short Answer</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="timePeriod">Time Period:</label>
+            <input id="timePeriod" type="number" [(ngModel)]="timePeriod" placeholder="0" />
+        </div>
+        <span class="span">minutes</span>
+
+        <!-- <button class="close-button" (click)="closeQuiz()">&#10006;</button> -->
+    </div>
+</div>
+<div class="additional-form-container" *ngFor="let form of additionalForms; let i = index">
+    <div class="additional-form">
+        <div class="input-group">
+            <label for="enterQuestion{{i}}">Enter Question:</label>
+            <textarea id="enterQuestion{{i}}" [(ngModel)]="form.enteredQuestion" placeholder="Enter your question"></textarea>
+        </div>
+
+        <div class="input-group">
+            <button class="add-choice-button" (click)="addChoice(i)">+ Add Choice</button>
+        </div>
+
+        
+
+        <div class="input-group" *ngFor="let choice of form.selectchoice; let i = index">
+            <label for="choice{{ i }}">Choice {{ i + 1 }}:</label>
+            <div class="input-container">
+                <input id="choice{{ i }}" placeholder="Enter your choice" />
+                <button class="delete-button" (click)="deleteChoice(form, i)">&#10006;</button>
+            </div>
+        </div>
+        <div class="input-group">
+
+
+            <div class="input-group-item">
+                <label for="correctAnswer{{i}}">Correct Answer:</label>
+                <input id="correctAnswer{{i}}" type="text" [(ngModel)]="form.correctAnswer" placeholder="Enter correct answer" />
+            </div>
+            <div class="input-group-item">
+                <label for="questionScore{{i}}">Question Score:</label>
+                <input id="questionScore{{i}}" type="number" [(ngModel)]="form.questionScore" placeholder="Enter question score" />
+            </div>
+        </div>
+        <button class="delete-form-button" (click)="deleteForm(i)">X</button>
+    </div>
+</div>
+
+<div class="question-button">
+    <button class="add-question-button" (click)="addAdditionalForm()">+ Add Question</button>
+
+</div>

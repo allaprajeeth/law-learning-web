@@ -89,16 +89,17 @@
 <div class="form-group">
   <label>Does this course have any test?</label>
   <div class="radio-group">
-     
-      <input type="radio" id="hasTestYes" name="hasTest" value="yes">
-      <label for="hasTestYes">Yes</label>
+    <input type="radio" id="yes" name="hasTest" value="yes" >
+    <label for="yes" class="test">Yes</label>
 
-     
-      <input type="radio" id="hasTestNo" name="hasTest" value="no">
-      <label for="hasTestNo">No</label>
+    <input type="radio" id="no" name="hasTest" value="no" >
+    <label for="no" class="test">No</label>
   </div>
 </div>
 <br/>
+<div>
+  <a routerLink="/instructor/quiztest">create a quiz test</a>
+</div>
       <div>
         <button type="button" class="submit-button" (click)="submitSections()">Submit All</button>
       </div>
