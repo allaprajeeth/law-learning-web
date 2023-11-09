@@ -86,17 +86,9 @@
           <option value="Content_Manager">Content Manager</option>
           <option value="Admin">Admin</option>
         </select>
-        <div class="acceptTerms" *ngIf="!isAcceptButtonClicked">
-          <a (click)="openModal()" class="termsandcon">Terms & Conditions</a>
-          <span class="asterick">*</span>
-          <span></span>
-          <span style="color:red">(Accept terms)</span>
-        </div>
-      
-       
-        <button
+        <button *ngIf="!isOtpVisible"
           (click)="sendOtps()"
-          [disabled]="!isInputFilled ||  !isAcceptButtonClicked"
+          [disabled]="!isInputFilled "
         >
           Send OTPs
         </button>
@@ -168,13 +160,18 @@
         </button>
        <br/>
        <br/>
-        <div class="no-account redirect" routerLink="/login">
-       
-        <div class="no-account redirect" >
-          Already have account ?
+       <div class="acceptTerms" >
+        <a  >By registering,you agree to our </a>
+        <span (click)="openModal()" class="termsandcon">Terms of Use</span>
+        <!-- <span class="asterick">*</span>
+        <span style="color:red">(Accept terms)</span> -->
+      </div>
+        <div class="have-account">
+          Already have account ? 
+          <span class="redirect"  routerLink="/login">Log In</span>
         </div>
         <br/>
-      </div>
     </form>
   </div>
 </div>
+
