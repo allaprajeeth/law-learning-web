@@ -26,6 +26,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     ManagernavComponent,
     CourseInfoComponent,
     VideoplayerComponent,
+    AboutusComponent,
   
   ],
   imports: [
