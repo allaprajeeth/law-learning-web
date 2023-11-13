@@ -29,7 +29,7 @@
 <div class="additional-form-container" *ngFor="let form of additionalForms; let i = index">
     <div class="additional-form">
         <div class="input-group">
-            <label for="enterQuestion{{i}}">Enter Question:</label>
+            <label for="enterQuestion{{i}}">Enter Question  {{form.questionNumber}}:</label>
             <textarea id="enterQuestion{{i}}" [(ngModel)]="form.enteredQuestion" placeholder="Enter your question"></textarea>
         </div>
 
