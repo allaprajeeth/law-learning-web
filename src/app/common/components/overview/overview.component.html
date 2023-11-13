@@ -277,6 +277,7 @@
               <ng-container *ngFor="let i of stars">
                 <mat-icon
                   (mouseenter)="updaterating(i)"
+                  (click)="ratingClicked(i)"
                   [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
                   class="staricon"
                 >

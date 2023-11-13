@@ -1,82 +1,67 @@
 <app-reviewernav></app-reviewernav>
-
-
-<div class="container">
-
-  <div class="heading">
-    <h1>Courses to Review</h1>
-  </div>
-  <div class="image-grid">
-    <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
-
-      <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <a routerLink="/reviewer/reviewervideo">
+  <div class="container">
     <div class="heading">
       <h1>Courses to Review</h1>
     </div>
     <div class="image-grid">
-      <div *ngFor="let image of mycoursesimages; let i = index" class="image-item" >
-  
+      <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
         <div class="imagesContainer">
           <img [src]="image" class="img" alt="Random Image">
           <div class="overlay">
             <a routerLink="/reviewer/courseInfo">
-
             <i class="fa fa-play-circle play-icon"></i>
           </a>
+          </div>
         </div>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ headings[i] }}</h5>
-        <p>{{ paragraphs[i] }}</p>
-        <h4>{{ myCoursesText[i] }}</h4>
-      </div>
-     
-
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
+        <div class="headingsContainer">
+          <h5>{{ reviewheadings[i] }}</h5>
+          <p>{{reviewAuthors[i]}}</p>
+          <h4>{{reviewText[i]}}</h4>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="heading">
-    <h1>Reviewed Courses</h1>
-  </div>
-  <div class="image-grid">
-    <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
-
-      <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <i class="fa fa-play-circle play-icon"></i>
-        </div>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ myCoursesHeadings[i] }}</h5>
-        <p>{{ myCoursesAuthors[i] }}</p>
-        <h4>{{ uploadedCoursesText[i] }}</h4>
-      </div>
-
-      <div class="container1">
-        <div class="Conatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-        <div class="Conatiner2">
-          <span>Reviewer Ratings</span>
+        <div class="ratingscontainer1">
+          <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <br />
-  <br />
-  <div>
-  </div>
-  <br />
-  <br />
+    <div class="heading">
+      <h1>Reviewed Courses</h1>
+    </div>
+    <div class="image-grid">
+      <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
+        <div class="imagesContainer">
+          <img [src]="image" class="img" alt="Random Image">
+          <div class="overlay">
+            <i class="fa fa-play-circle play-icon"></i>
+          </div>
+        </div>
+        <div class="headingsContainer">
+          <h5>{{ reviewedheadings[i] }}</h5>
+          <p>{{reviewedAuthors[i]}}</p>
+          <h4>{{reviewedText[i]}}</h4>
+        </div>
+        <div class="status-bar">
+          <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
+        </div>
+        <span>{{ randomMyCourseValues[i] }}%complete</span>
+        <div class="container1">
+          <div class="Conatiner2">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+          </div>
+          <div class="Conatiner2">
+            <span>Reviewer Ratings</span>    
+      </div>  
+        </div>
+      </div>
+    </div>
+    <br/>
+    <br/>
+    <div> 
+    </div>
+  <br/>
+  <br/>
+  

@@ -1,0 +1,50 @@
+
+<section class="about-us">
+    <div class="container">
+      <div class="section-header">
+        <h2>About LawLang</h2>
+      </div>
+      <div class="section-content">
+        <div class="app-info">
+          <h3>Our Platform</h3>
+          <p>
+            e-Law Learning is an online platform dedicated to providing high-quality legal education and resources. We offer a wide range of courses, resources, and tools for aspiring lawyers, law students, and legal professionals.
+          </p>
+        </div>
+        <div class="app-description">
+          <h3>Our Mission</h3>
+          <p>
+            Our mission is to make legal education accessible to everyone, regardless of their location or background. We aim to empower individuals with the knowledge and skills needed to excel in the legal field.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <h1>Advisor Profiles</h1>
+  <div class="carosol">
+     <p-carousel [value]="advisorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
+         <ng-template let-profile pTemplate="item">
+             <div class="teacher-profile">
+               <img  class="avatar" [src]="profile.photo" alt="Teacher Photo">
+               <h2>{{ profile.name }}</h2>
+               <h3>{{ profile.title }}</h3>
+               <p>{{ profile.description }}</p>
+             </div>
+           </ng-template>  
+     </p-carousel> 
+  </div>
+
+<h1>Instructor Profiles</h1>
+<div class="carosol">
+<p-carousel [value]="teacherProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
+    <ng-template let-profile pTemplate="item">
+      <div class="teacher-profile">
+        <img class="avatar" [src]="profile.photo" alt="Teacher Photo">
+        <h2>{{ profile.name }}</h2>
+        <h3>{{ profile.title }}</h3>
+        <p>{{ profile.description }}</p>
+      </div>
+    </ng-template>
+  </p-carousel>
+ </div>
+ 

@@ -4,6 +4,7 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'courseInfo',
     component:CourseInfoComponent
   },
+  {
+    path:'aboutus',
+    component:AboutusComponent
+  }
   
 ];
 

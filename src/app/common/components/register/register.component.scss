@@ -64,10 +64,11 @@ width: 40%;
 margin-left: 80px;
 background-color: #1331d7;
 color:rgb(255, 255, 255);
-            border: none;
-            border-radius: 5px;
-            padding: 8px 16px;
-            cursor: pointer;
+border: none;
+border-radius: 5px;
+padding: 8px 16px;
+cursor: pointer;
+margin-bottom: 0px;
 }
 button:disabled {
 background-color: rgb(125, 137, 149);
@@ -86,11 +87,11 @@ border-color: black;
 }
 .redirect{
   cursor:pointer;
-  text-align: center;
- // text-decoration: underline;
   color: blue;
-  //padding-bottom: 15px;
 
+}
+.have-account{
+  margin-left: 34px;
 }
 .redirectlogin{
   padding-bottom: 15px;
@@ -117,13 +118,21 @@ border-color: black;
   cursor: pointer;
 }
 .termsandcon{
-  text-align: center;
   cursor: pointer;
+  text-decoration: underline;
+  color: rgb(10, 10, 10);
+  
 }
-
+.acceptTerms{
+  margin: 6px 0px;
+  margin-bottom: 14px;
+}
 .termsandcon a {
-  // text-align: center;
-  color: blue;
   text-decoration: none;
 }
+.asterick {
+  color: red;
+  font-size: 20px;
+}
+
 

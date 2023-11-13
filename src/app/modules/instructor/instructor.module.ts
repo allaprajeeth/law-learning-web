@@ -30,7 +30,9 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { InstructorSidenavComponent } from './components/instructor-sidenav/instructor-sidenav.component';
-// import { MatSidenavContentModule } from '@angular/material/sidenav-content';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { QuiztestComponent } from './components/quiztest/quiztest.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +49,8 @@ import { InstructorSidenavComponent } from './components/instructor-sidenav/inst
     CourseInfoComponent,
     SuccessDialogComponent,
     InstructorSidenavComponent,
-   
+    AboutusComponent,
+    QuiztestComponent,
   ],
   imports: [
     FormsModule,

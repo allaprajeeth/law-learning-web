@@ -1,15 +1,15 @@
-<div class="container-wrapper">
+<!-- <div class="container-wrapper">
   <div class="form-container">
     <h2>Create a New Course</h2>
-    <form>
+    <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required>
+        <input type="text" id="title" name="title" formControlName="title" required>
       </div>
 
       <div class="form-group">
         <label for="description">Course Description:</label>
-        <textarea id="description" name="description" rows="4" required></textarea>
+        <textarea id="description" name="description" rows="4" formControlName="description" required></textarea>
       </div>
 
       <div class="form-group">
@@ -38,18 +38,98 @@
           <label for="detailed" class="skill">Detailed Course</label>
         </div>
       </div>
-
-      
-
         <div class="form-group">
           <label>Language:</label>
           <input type="text" id="language" name="language" value="English" disabled>
         </div>
+        <div class="form-group">
+          <label for="thumbnail">Thumbnail (Optional):</label>
+          <input type="file" id="thumbnail" name="thumbnail" accept="image/*">
+          <br/>
+          <small>If you don't upload a thumbnail for this course, a default thumbnail will be displayed.</small>
+        </div>
 
-       
+        <div class="form-group">
+          <label>Does this course have any test?</label>
+          <div class="radio-group">
+            <input type="radio" id="yes" name="hasTest" value="yes" [(ngModel)]="courseForm.value.hasTest">
+            <label for="yes" class="test">Yes</label>
+        
+            <input type="radio" id="no" name="hasTest" value="no" [(ngModel)]="courseForm.value.hasTest">
+            <label for="no" class="test">No</label>
+          </div>
+        </div>
+        
+        <button type="submit" class="center-button" [disabled]="!isFormValid">Next</button>
+
+     
+    
+   -->
+
+   <div class="container-wrapper">
+  <div class="form-container">
+    <h2>Create a New Course</h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="courseForm">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" formControlName="title" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Course Description:</label>
+        <textarea id="description" name="description" formControlName="description" rows="4" required></textarea>
+        <small>Enter 4 to 5 learning points (separated by new lines)</small>
+      </div>
+      <div class="form-group">
+        <label>Skill Level:</label>
+        <div class="radio-group">
+          <input type="radio" id="beginner" name="skillLevel" value="beginner" formControlName="skillLevel">
+          <label for="beginner" class="skill">Beginner</label>
       
+          <input type="radio" id="intermediate" name="skillLevel" value="intermediate" formControlName="skillLevel">
+          <label for="intermediate" class="skill">Intermediate</label>
+      
+          <input type="radio" id="expert" name="skillLevel" value="expert" formControlName="skillLevel">
+          <label for="expert" class="skill">Expert</label>
+      
+          <input type="radio" id="student" name="skillLevel" value="student" formControlName="skillLevel">
+          <label for="student" class="skill">Student</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Course Type:</label>
+        <div class="radio-group">
+          <input type="radio" id="crash" name="courseType" value="Crash" formControlName="courseType" required>
+          <label for="crash" class="skill">Crash Course</label>
 
-        <button type="submit" class="center-button" routerLink="/upload">Next</button>
-        <!-- </form> -->
-      <!-- </div> -->
-      <!-- </div> -->
+          <input type="radio" id="detailed" name="courseType" value="Detailed" formControlName="courseType" required>
+          <label for="detailed" class="skill">Detailed Course</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Language:</label>
+        <input type="text" id="language" name="language" value="English" disabled>
+      </div>
+      <div class="form-group">
+        <label for="thumbnail">Thumbnail (Optional):</label>
+        <input type="file" id="thumbnail" name="thumbnail" accept="image/*">
+        <br/>
+        <small>If you don't upload a thumbnail for this course, a default thumbnail will be displayed.</small>
+      </div>
+
+      <div class="form-group">
+        <label>Does this course have any test?</label>
+        <div class="radio-group">
+          <input type="radio" id="yes" name="hasTest" value="yes" formControlName="hasTest">
+          <label for="yes" class="test">Yes</label>
+      
+          <input type="radio" id="no" name="hasTest" value="no" formControlName="hasTest">
+          <label for="no" class="test">No</label>
+        </div>
+      </div>
+
+      
+      <button type="submit" class="center-button" [disabled]="!isFormValid">Next</button>
+    </form>
+  </div>
+</div>

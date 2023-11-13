@@ -13,7 +13,8 @@ import {  MatDividerModule } from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
-
+import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
+import { CarouselModule } from 'primeng/carousel';
 @NgModule({
   declarations: [
     BasePageComponent, 
@@ -23,6 +24,8 @@ import {MatCardModule} from '@angular/material/card';
     PublishingcornerComponent,
 
   ],
+  declarations: [BasePageComponent, FooterComponent, SharedoverviewComponent, DocumentsComponent, PublishingcornerComponent, SharedaboutusComponent],
+
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -32,7 +35,8 @@ import {MatCardModule} from '@angular/material/card';
     MatExpansionModule,
     MatIconModule,
     MatCardModule,
-    FormsModule
+    FormsModule,
+    CarouselModule
   ],
   exports: [
     CommonModule,
@@ -44,6 +48,7 @@ import {MatCardModule} from '@angular/material/card';
     PublishingcornerComponent,
     FormsModule,
     SharedoverviewComponent,
+    SharedaboutusComponent
 
     // InstructorLoginComponent
   ]

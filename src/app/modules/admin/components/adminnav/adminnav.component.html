@@ -21,7 +21,11 @@
             >Publishing Corner</a
           >
         </li>
-
+        <li>
+        <a routerLink="/admin/aboutus" routerLinkActive="active" class="mycourses"
+        >About Us</a
+      >
+      </li>
         <li>
           <a routerLink="/reviewer/notification">
             <mat-icon matBadge="4">notifications</mat-icon>
@@ -57,8 +61,7 @@
             <li><a routerLink="/subscriber/payments">Purchase History</a></li>
             <hr />
             <li><a routerLink="/termsandcon">Terms & Conditions</a></li>
-            <li><a>Stats</a></li>
-            <li><a>Contact Us</a></li>
+            <li><a routerLink="/contactus">Contact Us</a></li>
             <li>
               <a routerLink="/header" (click)="onLogoutClick()">Logout</a>
             </li>

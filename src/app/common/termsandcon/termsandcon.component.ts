@@ -12,16 +12,16 @@ export class TermsandconComponent {
   constructor(private dialogRef: MatDialogRef<TermsandconComponent>,private AcceptServie: PdfService,private snackBar: MatSnackBar ) {}
   
   onCloseClick(): void {
-    this.snackBar.open("You cannot register without accepting the Terms & Conditions", 'Close', {
-      duration: 3000, 
-      verticalPosition: 'top',
-    });
+    // this.snackBar.open("You cannot register without accepting the Terms & Conditions", 'Close', {
+    //   duration: 3000, 
+    //   verticalPosition: 'top',
+    // });
     this.dialogRef.close();
   }
   
-  onAcceptClick() {
-    this.AcceptServie.setAcceptButtonClicked(true);
-    this.onCloseClick();
-  }
+  // onAcceptClick() {
+  //   this.AcceptServie.setAcceptButtonClicked(true);
+  //   this.dialogRef.close();
+  // }
 }
 

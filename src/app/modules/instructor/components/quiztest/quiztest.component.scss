@@ -1,0 +1,214 @@
+// quiz.component.scss
+h2 {
+    text-align: center; 
+    margin: 20px; 
+    padding: 15px;
+    font-weight: bold;
+  }
+.quiz-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  position:relative;
+
+    .quiz-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+  
+      .input-group {
+        margin-bottom: 10px;
+        width: calc(50% - 10px);
+        position: relative;
+        
+  
+        label {
+          margin-right: 10px;
+        }
+  
+        input,
+        select {
+          padding: 10px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          width: calc(100% - 30px); /* Adjust width based on your design */
+        }
+
+        span {
+            position: absolute;
+            top: 100%; /* Aligning vertically to the middle */
+            transform: translateY(-50%); /* Adjusting for vertical centering */
+            left: 160px; /* Positioning "minutes" text to the right */
+            color: #ccc; /* Setting light color for "minutes" text */
+          }
+      }
+      .span {
+        color: #a1a1a1; /* Setting light color for "minutes" text */
+     padding: 10px auto;
+    }
+     }
+  }
+
+.additional-form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .additional-form {
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+    .input-group {
+      margin-bottom: 10px;
+      width: 100%;
+      position: relative;
+  
+      label {
+        margin-bottom: 5px;
+        display: block;
+      }
+  
+      textarea,
+      input[type="text"],
+      input[type="number"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: calc(100% - 16px);
+      }
+  
+      .add-choice-button {
+        // background-color: rgb(230, 18, 121);
+        background-color: #be2b74;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 16px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+  
+        &:hover {
+          background-color: rgb(148, 12, 78)
+        }
+      }
+  
+      .input-group-item {
+        width: calc(50% - 10px);
+        display: inline-block;
+        margin-right: 10px;
+  
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+
+    }
+    .input-group {
+        position: relative;
+        margin-bottom: 10px;
+      
+        label {
+          margin-bottom: 5px;
+          display: block;
+        }
+      
+        .input-container {
+          position: relative;
+          width: 100%;
+          display: flex;
+          align-items: center;
+        }
+      
+        input {
+          flex: 1;
+          padding: 8px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          margin-right: 10px; /* Add some spacing between input and delete button */
+          margin-right: 300px;
+    width: 450px
+        }
+      
+        .delete-button {
+          background-color: #be2b74;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 24px;
+          height: 24px;
+          right: 10px;
+          cursor: pointer;
+          font-weight: bold;
+          transition: background-color 0.3s ease;
+      
+          &:hover {
+            background-color: #a9105c;
+          }
+        }
+      }
+      
+    .delete-form-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px;
+    background-color: #848784;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    &:hover {
+        background-color: #282a28;
+      }
+    }  
+      
+  }
+  .question-button{
+    margin: 20px;
+    margin-left: 230px;
+    
+
+  .add-question-button {
+    background-color: #848784;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+    margin: 20px;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  
+    &:hover {
+      background-color: #282a28;
+    }
+  
+    &:active {
+      transform: scale(0.98); /* Add a slight scale-down effect on button press */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow on button press */
+    }
+  }
+
+  
+}

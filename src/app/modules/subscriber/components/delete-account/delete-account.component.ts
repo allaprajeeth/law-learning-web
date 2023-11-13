@@ -111,7 +111,7 @@ revertDelete() {
   this.isDeleteAccountClicked = false;
   this.isDeleteCountdownVisible = false;
   this.countdown = 72 * 60 * 60; 
-
+  this.deleteTimeService.clearCountdownValue()
   
 }
 
