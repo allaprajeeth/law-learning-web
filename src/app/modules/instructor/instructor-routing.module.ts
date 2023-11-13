@@ -58,7 +58,9 @@ component:ArticleComponent
 },
 {
   path:"aboutus",
-  component:AboutusComponent
+  component:AboutusComponent,
+},
+{
   path:"quiztest",
   component:QuiztestComponent
 }
