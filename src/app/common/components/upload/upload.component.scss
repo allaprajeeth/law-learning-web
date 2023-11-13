@@ -197,4 +197,36 @@ h2 {
 .sub-section .form-group label {
   font-weight: bold;
 }
+.form-group label {
+  font-weight: bold;
+  
+}
+// .radio-group input[type="radio"] {
+//   margin-right: 30px; /* Adjust the value as needed */
+// }
+.radio-group {
+  display: flex;
+  gap: 20px;
+}
+// .radio-group label {
+//   margin-right: 2px; /* Adjust the value as needed */
+// }
+.testbutton{
+  background-color: #848784;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-left: 15px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #282a28;
+  }
+}
+
+
+
 }
