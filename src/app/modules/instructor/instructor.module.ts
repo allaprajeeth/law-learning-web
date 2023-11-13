@@ -26,6 +26,10 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { InstructorSidenavComponent } from './components/instructor-sidenav/instructor-sidenav.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 
@@ -43,9 +47,10 @@ import { QuiztestComponent } from './components/quiztest/quiztest.component';
     ArticleComponent,
     VideoplayerComponent,
     CourseInfoComponent,
+    SuccessDialogComponent,
+    InstructorSidenavComponent,
     AboutusComponent,
     QuiztestComponent,
-
   ],
   imports: [
     FormsModule,
@@ -63,7 +68,9 @@ import { QuiztestComponent } from './components/quiztest/quiztest.component';
     MatCardModule,
     MatDividerModule,
    MatExpansionModule,
-   MatTabsModule
+   MatTabsModule,
+   MatDialogModule,
+   MatSidenavModule,
 
   ]
 })

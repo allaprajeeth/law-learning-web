@@ -35,7 +35,7 @@ import { CoursesComponent } from './common/components/courses/courses.component'
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
 import { LogoutComponent } from './common/components/logout/logout.component';
 import { UploadComponent } from './common/components/upload/upload.component';
-
+import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
 import { PasswordComponent } from './common/components/password/password.component';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
@@ -124,6 +124,7 @@ import { ContactusComponent } from './common/components/contactus/contactus.comp
     MatSlideToggleModule,
     MatMenuModule,
     MatButtonModule,
+    FileUploadModule,
   ],
   providers: [PopupService,
     {
