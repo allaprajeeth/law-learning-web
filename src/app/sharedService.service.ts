@@ -14,10 +14,6 @@ export class PdfService {
    setAcceptButtonClicked(value: boolean) {
     this.isAcceptButtonClickedSubject.next(value);
   }
-  getPdfUrl(pdfName: string): Observable<Blob> {
-    const pdfUrl = `assets/pdfs/${pdfName}.pdf`;
-    return this.http.get(pdfUrl, { responseType: 'blob' });
-  }
 
    isTestAvailable: boolean =true;
   setIsTestAvailable(value: boolean) {

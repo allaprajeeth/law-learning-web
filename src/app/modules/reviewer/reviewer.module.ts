@@ -30,6 +30,7 @@ import { NotificationComponent } from './components/notification/notification.co
 import { ArticleComponent } from './components/article/article.component';
 import { DocumentsComponent } from './components/documents/documents.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
     ArticleComponent,
     DocumentsComponent,
     CourseInfoComponent,
+    AboutusComponent,
     // InstructorLoginComponent
   ],
   imports: [

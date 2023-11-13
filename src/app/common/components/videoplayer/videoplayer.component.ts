@@ -73,8 +73,8 @@ export class VideoplayerComponent {
     const videoContainerElement = this.videoContainer?.nativeElement;
     const videoTextContainerElement = this.videoTextContainer?.nativeElement;
     if (!this.sidebarVisible) {
-      this.renderer.setStyle(videoContainerElement, 'margin-left', '230px');
-      this.renderer.setStyle(videoContainerElement, 'margin-right', '180px');
+      this.renderer.setStyle(videoContainerElement, 'margin-left', '195px');
+      this.renderer.setStyle(videoContainerElement, 'margin-right', '120px');
     }
   }
 
@@ -83,8 +83,8 @@ export class VideoplayerComponent {
     const videoContainerElement = this.videoContainer?.nativeElement;
     const videoTextContainerElement = this.videoTextContainer?.nativeElement;
     if (this.sidebarVisible) {
-      this.renderer.setStyle(videoContainerElement, 'margin-left', '60px');
-      this.renderer.setStyle(videoContainerElement, 'margin-right', '60px');
+      this.renderer.setStyle(videoContainerElement, 'margin-left', '0px');
+      this.renderer.setStyle(videoContainerElement, 'margin-right', '0px');
     }
   }
   resourceData: { title: string; resourceUrl: string }[] = [

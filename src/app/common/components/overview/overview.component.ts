@@ -58,13 +58,10 @@ toggleSectionInfo(i: number, j: number) {
      
     });
   }
-  showPopup: boolean = false;
   submittedReview:boolean=false;
   showRating = false;
- 
   stars = [1, 2, 3, 4, 5];
   selected = 0;
-  isMore: boolean = false; 
   userReview: string = '';
   isratingEditable:boolean=true;
   leaveRatingOpen() {
@@ -82,12 +79,14 @@ toggleSectionInfo(i: number, j: number) {
   submitRating() {
     console.log('Selected Rating:', this.selected);
     console.log('User Review:', this.userReview);
-    this.isratingEditable=false;
     this.showRating = false;
     this.submittedReview=true
   }
   getStarArray(): number[] {
     return Array.from({ length: 5 }, (_, i) => i);
+  }
+  ratingClicked(i:any){
+   this.isratingEditable=false;
   }
   
 }

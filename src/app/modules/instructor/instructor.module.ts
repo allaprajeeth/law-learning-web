@@ -26,6 +26,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 
 
@@ -42,6 +43,7 @@ import { QuiztestComponent } from './components/quiztest/quiztest.component';
     ArticleComponent,
     VideoplayerComponent,
     CourseInfoComponent,
+    AboutusComponent,
     QuiztestComponent,
 
   ],
