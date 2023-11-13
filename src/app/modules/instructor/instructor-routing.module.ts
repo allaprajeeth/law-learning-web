@@ -11,6 +11,7 @@ import { EditcoursesComponent } from './components/editcourses/editcourses.compo
 import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { QuiztestComponent } from './components/quiztest/quiztest.component';
 
 const routes: Routes = [
   {
@@ -58,6 +59,8 @@ component:ArticleComponent
 {
   path:"aboutus",
   component:AboutusComponent
+  path:"quiztest",
+  component:QuiztestComponent
 }
 ];
 

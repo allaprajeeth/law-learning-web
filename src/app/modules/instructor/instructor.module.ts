@@ -27,6 +27,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { QuiztestComponent } from './components/quiztest/quiztest.component';
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
     VideoplayerComponent,
     CourseInfoComponent,
     AboutusComponent,
+    QuiztestComponent,
 
   ],
   imports: [
