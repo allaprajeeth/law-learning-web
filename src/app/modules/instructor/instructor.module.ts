@@ -26,7 +26,11 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-
+import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { InstructorSidenavComponent } from './components/instructor-sidenav/instructor-sidenav.component';
+// import { MatSidenavContentModule } from '@angular/material/sidenav-content';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,9 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
     ArticleComponent,
     VideoplayerComponent,
     CourseInfoComponent,
-
+    SuccessDialogComponent,
+    InstructorSidenavComponent,
+   
   ],
   imports: [
     FormsModule,
@@ -59,7 +65,9 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
     MatCardModule,
     MatDividerModule,
    MatExpansionModule,
-   MatTabsModule
+   MatTabsModule,
+   MatDialogModule,
+   MatSidenavModule,
 
   ]
 })

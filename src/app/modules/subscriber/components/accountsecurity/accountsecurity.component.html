@@ -1,45 +1,46 @@
 <app-subscribernav></app-subscribernav>
 <mat-sidenav-container>
-   
-    <mat-sidenav #sideNav mode="side" opened>
-        <app-sidenav></app-sidenav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <!-- <app-mainnav></app-mainnav> -->
-        
-        <div class="container-wrapper">
-        <div class="container">
-            <!-- <router-outlet></router-outlet> -->
-            <div class="main-container">
-            
-                <form [formGroup]="accountForm">
-                    
-                    <div class="box" id="head">
-                        <h1>Account Security</h1>
-                        <p>Edit your account settings here...  </p>
-                        <hr/>
-                    </div>
-                    
-                    <div class="box">
-                      <h2>Current Email and Phone</h2>
-                      <p>
-                          <label for="currentEmail">Current Email : </label>
-                          <input type="text" id="currentEmail" formControlName="currentEmail" [disabled]="!isCurrentEmailEditable" placeholder="nuncsystems@gmail.com">
-                          <button type="button" class="editbtn" >
-                              <i class="material-icons">{{ isCurrentEmailEditable ? 'done' : 'edit' }}</i>
-                          </button>
-                      </p>
-                      <p>
-                          <label for="currentPhone">Current Phone : </label>
-                          <input type="text" id="currentPhone" formControlName="currentPhone" [disabled]="!isCurrentPhoneEditable" placeholder="0987654321">
-                          <button type="button" class="editbtn" (click)="editCurrentPhone()" >
-                              <i class="material-icons">{{ isCurrentPhoneEditable ? 'done' : 'edit' }}</i>
-                          </button>
-                      </p>
-                  </div>
-                  
-                  
-                    <!-- <div class="box">
+  <mat-sidenav #sideNav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- <app-mainnav></app-mainnav> -->
+
+    <div class="container-wrapper">
+      <div class="container">
+        <!-- <router-outlet></router-outlet> -->
+        <div class="main-container">
+
+          <form [formGroup]="accountForm">
+
+            <div class="box" id="head">
+              <h1>Account Security</h1>
+              <p>Edit your account settings here... </p>
+              <hr/>
+            </div>
+
+            <div class="box">
+              <h2>Current Email and Phone</h2>
+              <p>
+                <label for="currentEmail">Current Email : </label>
+                <input type="text" id="currentEmail" formControlName="currentEmail" [disabled]="!isCurrentEmailEditable"
+                  placeholder="nuncsystems@gmail.com">
+                <button type="button" class="editbtn">
+                  <i class="material-icons">{{ isCurrentEmailEditable ? 'done' : 'edit' }}</i>
+                </button>
+              </p>
+              <p>
+                <label for="currentPhone">Current Phone : </label>
+                <input type="text" id="currentPhone" formControlName="currentPhone" [disabled]="!isCurrentPhoneEditable"
+                  placeholder="0987654321">
+                <button type="button" class="editbtn" (click)="editCurrentPhone()">
+                  <i class="material-icons">{{ isCurrentPhoneEditable ? 'done' : 'edit' }}</i>
+                </button>
+              </p>
+            </div>
+
+
+            <!-- <div class="box">
                       <p>
                         <label for="newEmail">New Email : </label>
                         <input type="email" id="newEmail" formControlName="newEmail" placeholder="Enter new mail-Id">
@@ -52,7 +53,7 @@
                     </div> -->
 
 
-                    <!-- <div class="box" *ngIf="showOtpFields">
+            <!-- <div class="box" *ngIf="showOtpFields">
                         <p>
                           <label for="Emailotp">Email Otp : </label>
                           <input type="email" id="newEmail" formControlName="newEmail" placeholder="Enter email otp">
@@ -63,26 +64,17 @@
                         </p>
                         <button type="button" (click)="savechanges()">Save Changes </button>
                       </div> -->
-                  </form>
-                  
-            
-        
-            
-            <hr/>
-            <div class="box">
-                
-            </div>
-        
+          </form>
+          <hr/>
+          <div class="box">
+
           </div>
+
         </div>
+      </div>
     </div>
 
-        
-    </mat-sidenav-content>
+
+  </mat-sidenav-content>
 
 </mat-sidenav-container>
-
-
-
-
-

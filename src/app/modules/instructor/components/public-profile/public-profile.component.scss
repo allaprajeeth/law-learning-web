@@ -1,42 +1,84 @@
-.name {
-    color: white;
-    font-size: 25px;
-    padding: 30px 300px;
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e0d9d9;
+  // margin: 40px;
 }
 
-.header {
-    background-color: black;
-    height: 12%;
-    width: 100%;
+.container {
+  width: 80%;
+  background-color: #ffffff;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.para {
-    text-align: center;
-    font-size: 18px;
+.profile-box {
+  text-align-last: center;
+  margin: 0;
+
+  h1 {
     font-weight: bold;
-    padding: 10px;
-    margin: 10px;
+  }
 }
 
-.courses {
-    background-color: rgb(237, 231, 231);
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    padding: 10px 0;
-    width: 100%;
+.image-box {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 90px;
 }
 
-.course-box {
-    height: auto;
-    width: 100%;
-    background-color: rgb(238, 233, 233);
-    padding: 10px;
-
-    .example-form {
-        text-align: center;
-        .example-full-width {
-            width: 60%;
-        }
-    }
+#previewImage {
+  max-width: 200px;
+  max-height: 100px;
+  margin-bottom: 5px;
 }
+
+.example-full-width {
+  width: 80%;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  p {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
+
+.custom-file-input {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007791;
+  border-radius: 5px;
+}
+
+#imageInput {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 0;
+}
+
+#saveButton {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+

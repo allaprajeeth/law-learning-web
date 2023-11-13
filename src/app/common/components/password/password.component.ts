@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-password',
@@ -7,85 +8,64 @@ import { Component } from '@angular/core';
 })
 export class PasswordComponent {
 
-  title = 'AngularCodeTestingProject';
-
   detailsEntered = false;
   email: string = '';
-  phone: string = '';
   emailOTPInput: string = '';
-  phoneOTPInput: string = '';
-
   otpVerified = false;
-  newPassword: string = '';
-  confirmPassword: string = '';
-
-  // updatePhoneNumber: string = '';
+  phone: string = '';
   confirmPhone: string = '';
   updatePhoneMode = false;
+  phoneOTPInput: string = '';
+  showVerifyButton = true;
+  showContainer1 = true;
+  showContainer2 = false;
+  // updatePhoneForm: FormGroup;
 
-  // newPasswordVisible = false;
-  // confirmPasswordVisible = false;
-
-  // passwordResetSuccess = false;
-
-  // toggleNewPasswordVisibility() {
-  //   this.newPasswordVisible = !this.newPasswordVisible;
+  // constructor(private fb: FormBuilder) {
+  //   this.updatePhoneForm = this.fb.group({
+  //     phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+  //     confirmPhone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+  //   }, { validator: this.phoneNumbersMatchValidator });
   // }
 
-  // toggleConfirmPasswordVisibility() {
-  //   this.confirmPasswordVisible = !this.confirmPasswordVisible;
-  // }
+  // phoneNumbersMatchValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  //   const phone = control.get('phone')?.value;
+  //   const confirmPhone = control.get('confirmPhone')?.value;
 
+  //   return phone === confirmPhone ? null : { 'phoneMismatch': true };
+  // }
+  
+  
+
+ 
   sendOTP() {
-    if (this.email  ) {
+    if (!this.detailsEntered) {
+      // Logic to send OTP
+      this.detailsEntered = true;
+    } 
+    else if (this.email && this.phone) {
       this.detailsEntered = true;
     } else {
       alert('Please enter a valid Email.');
     }
   }
 
-  verifyOTP() {
-    // Implement OTP verification logic here
-    if (this.emailOTPInput ) {
-      this.otpVerified = true;
-      // this.updatePhoneMode = true; 
-    } else {
-      alert('Please enter valid emailOTP and phoneOTP');
-    }
-  }
-
-  // resetPassword() {
-  //   if (this.newPassword && this.confirmPassword) {
-  //     if (this.newPassword === this.confirmPassword) {
-  //     } else {
-  //       alert('New Password and Confirm Password must match.');
-  //     }
-  //   } else {
-  //     alert('Please enter valid newPassword and confirmPassword.');
-  //   }
-  // }
-
   updatePhoneNumber() {
-    // ... Update this method for your logic ...
-    this.updatePhoneMode = true; // Set the updatePhoneMode to true to switch to the "OTP Verification" form
+    // Logic to update phone number
+    this.updatePhoneMode = true;
   }
 
-  loginAgain() {
-    if (this.newPassword && this.confirmPassword) {
-      if (this.newPassword === this.confirmPassword) {
-        this.detailsEntered = false;
-        this.otpVerified = false;
-        this.email = '';
-        this.phone = '';
-        this.emailOTPInput = '';
-        this.phoneOTPInput = '';
-        this.newPassword = '';
-        this.confirmPassword = '';
-      } else {
-        alert('New Password and Confirm Password must match.');
-      }
+  verifyOTP() {
+    const otpInputString = String(this.emailOTPInput);
+
+   if (this.emailOTPInput && otpInputString.length === 6) {
+  
+      this.otpVerified = true;
+      this.showVerifyButton = false;
+      this.showContainer1 = false;
+      this.showContainer2 = true;
     } else {
-      alert('Please enter valid newPassword and confirmPassword');
+      alert('Please enter a valid 6-digit OTP.');
     }
   }
 }

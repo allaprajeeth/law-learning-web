@@ -33,7 +33,7 @@
       margin: 0 auto 20px;
   }
     .nav-list {
-      list-style-type: none; 
+      list-style-type: none;
       padding: 15px; 
       margin: 5px; 
       li {
@@ -46,11 +46,13 @@
           border-radius: 5px;
           
           &.active {
-            background-color: #555; 
+            background-color: #555;
+            color: white; 
           }
   
           &:hover {
             background-color: #444; 
+            color: white; 
           }
         }
       }

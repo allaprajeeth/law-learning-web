@@ -10,10 +10,9 @@ export class CartComponent implements OnInit {
   couponCode: string = '';
   totalActualPrice: number = 0;
   cartItems: any[] = [];
-  discountedPrice: number = 0; // Initialize discountedPrice to 0
+  discountedPrice: number = 0; 
   cartIsEmpty: boolean = false;
 
-  // Property to keep track of the number of items in the cart
   cartItemCount: number = 0;
 
   constructor(private cartService: CartService) {}
@@ -23,11 +22,9 @@ export class CartComponent implements OnInit {
       this.cartItems = items;
       console.log('Cart Items:', this.cartItems);
 
-      // Calculate the original price based on the prices of items in the cart
       this.totalActualPrice = this.getTotalActualPrice();
       this.calculateDiscountedPrice();
 
-      // Update the cartItemCount based on the number of items in the cart
       const cartItemCount = this.cartItems.length;
       this.cartService.updateCartItemCount(cartItemCount);
     });
@@ -42,10 +39,9 @@ export class CartComponent implements OnInit {
   }
   
   calculateDiscountedPrice(): void {
-    // Initialize discountedPrice based on totalActualPrice
     this.discountedPrice = this.totalActualPrice;
   // this.totalActualPrice = this.getTotalActualPrice();
-  this.applyCoupon(); // Reapply the coupon code to update the discountedPrice
+  this.applyCoupon();
 }
 
   applyCoupon() {
@@ -66,7 +62,6 @@ export class CartComponent implements OnInit {
     if (coupon) {
       const discountPercentage = coupon.discountPercentage;
 
-      // Calculate the discounted price based on the totalActualPrice and discount percentage
       this.discountedPrice = this.totalActualPrice - (this.totalActualPrice * discountPercentage) / 100;
       this.discountedPrice = Math.round(this.discountedPrice);
     }
@@ -75,20 +70,13 @@ export class CartComponent implements OnInit {
   onRemoveClick(uniqueId: string) {
     console.log('Removing item with uniqueId:', uniqueId);
   
-    const itemIndex = this.cartItems.findIndex((item) => item.uniqueId === uniqueId);
+    const itemIndex = this.cartItems.findIndex((item) => item.id === uniqueId);
     console.log('Item index to remove:', itemIndex);
   
     if (itemIndex !== -1) {
-      // Remove the item from the cart
-      const removedItem = this.cartItems.splice(itemIndex, 1)[0]; // Splice returns an array, so we select the first element (the removed item)
-  
-      // Update the totalActualPrice by subtracting the price of the removed item
-      this.totalActualPrice -= removedItem.price;
-  
-      // Update the discountedPrice by applying the coupon code to the updated totalActualPrice
+      const removedItem = this.cartItems.splice(itemIndex, 1)[0];  
+      this.totalActualPrice -= removedItem.price; 
       this.calculateDiscountedPrice();
-  
-      // Update the cartItemCount
       this.updateCartItemCount();
     }
   

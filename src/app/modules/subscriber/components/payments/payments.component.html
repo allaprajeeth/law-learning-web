@@ -9,13 +9,15 @@
             <th>Heading</th>
             <th>Date</th>
             <th>Price</th>
+            <th>Expires on</th>
             <th>Invoice</th>
           </tr>
           <ng-container *ngFor="let purchase of purchaseHistory; let i = index">
             <tr>
               <td>{{ purchase.heading }}</td>
-              <td>{{ purchase.date }}</td>
+              <td>{{ purchase.date | date: 'dd MMM yyyy'}}</td>
               <td>{{ purchase.price }}</td>
+              <td>{{ purchase.expiryDate | date: 'dd MMM yyyy' }}</td>
               <td><button (click)="downloadInvoice(i)">Download</button></td>
             </tr>
           </ng-container>
