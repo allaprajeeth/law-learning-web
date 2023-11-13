@@ -16,15 +16,15 @@ import {MatCardModule} from '@angular/material/card';
 import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
 import { CarouselModule } from 'primeng/carousel';
 @NgModule({
+ 
   declarations: [
-    BasePageComponent, 
-    FooterComponent, 
+    BasePageComponent,
+    FooterComponent,
     SharedoverviewComponent, 
     DocumentsComponent, 
     PublishingcornerComponent,
-
-  ],
-  declarations: [BasePageComponent, FooterComponent, SharedoverviewComponent, DocumentsComponent, PublishingcornerComponent, SharedaboutusComponent],
+     SharedaboutusComponent
+    ],
 
   imports: [
     CommonModule,
