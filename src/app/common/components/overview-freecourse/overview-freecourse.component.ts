@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-overview-freecourse',
@@ -6,6 +7,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./overview-freecourse.component.scss']
 })
 export class OverviewFreecourseComponent {
+  showRatingOfCourse:boolean=false;
+  showFreeCourse=true;
+  constructor(private route: ActivatedRoute) {
+    this.route.queryParams.subscribe((params) => {
+      this.showRatingOfCourse = params['showRatingOfCourse'] === 'true';
+      this.showFreeCourse=false;
+    });
+  }
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
     panelTitle: `Section ${i + 1}`,
     videos: [
@@ -82,4 +91,5 @@ toggleSectionInfo(i: number, j: number) {
     this.showRating = false;
     this.submittedReview=true
   }
+  
 }

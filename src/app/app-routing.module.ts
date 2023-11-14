@@ -12,7 +12,6 @@ import { DocumentsComponent } from './common/components/documents/documents.comp
 import { CoursesComponent } from './common/components/courses/courses.component';
 import { UploadComponent } from './common/components/upload/upload.component';
 import { LogoutComponent } from './common/components/logout/logout.component';
-import { PasswordComponent } from './common/components/password/password.component';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
 import { LoginComponent } from './common/components/login/login.component';
 import { FooterComponent } from './shared-module/components/footer/footer.component';
@@ -20,14 +19,15 @@ import { CourseInfoComponent } from './common/components/course-info/course-info
 import { OverviewComponent } from './common/components/overview/overview.component';
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
-import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
 import { ModalComponent } from './common/components/modal/modal.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { EditcoursesComponent } from './modules/instructor/components/editcourses/editcourses.component';
-
+import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
+import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
+import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -71,6 +71,11 @@ const routes: Routes = [
     component:HomepageComponent
   },
   {
+    path:'overviewAvailable',
+    component:OverviewFreecourseComponent
+
+  },
+  {
     path: 'header',
     component:HeaderComponent
   },
@@ -97,14 +102,6 @@ const routes: Routes = [
   {
     path: 'upload',
     component:UploadComponent
-  },
-  {
-    path: 'password',
-    component:PasswordComponent
-  },
-  {
-    path: 'phonepassword',
-    component:PhonepasswordComponent
   },
   {
     path: 'videoplayer',
@@ -143,10 +140,14 @@ const routes: Routes = [
     path: 'post/:id', 
     component: PostdetailComponent
   },
-  // {
-  //   path: 'logout',
-  //   component:LogoutComponent
-  // },
+  {
+    path:'forgotPhoneno',
+    component:ForgotPhonenoComponent
+  },
+  {
+    path:'forgotEmail',
+    component:ForgotEmailComponent
+  },
   {
     path: '**',
     component: PageNotFoundComponent
@@ -155,7 +156,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes ,{ scrollPositionRestoration: 'top',})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

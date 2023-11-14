@@ -24,7 +24,7 @@ export class RegisterComponent {
     });
   }
 
-  loginForm: FormGroup;
+  registerForm: FormGroup;
   constructor(public dialog: MatDialog,
     private router: Router,
     private http: HttpClient,
@@ -32,7 +32,7 @@ export class RegisterComponent {
     private formBuilder: FormBuilder,
     private AcceptService:PdfService
     ){
-    this.loginForm = this.formBuilder.group({
+    this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required]], 
       email: ['', [Validators.required, Validators.email]],
        phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
@@ -61,7 +61,7 @@ export class RegisterComponent {
   otpsFilled:boolean=false;
 
   checkInput(): void {
-    this.isInputFilled = (!!this.loginForm.get('email')?.value ?? false) && (!!this.loginForm.get('phone')?.value ?? false);
+    this.isInputFilled = (!!this.registerForm.get('name')?.value ?? false) && (this.registerForm.get('email')?.value ?? false) && (!!this.registerForm.get('phone')?.value ?? false);
   }
   sendOtps(){
     this.showOtpFields();
@@ -178,15 +178,27 @@ onEmailOtpInput(event: any) {
   const input = event.target.value;
   const digitsOnly = input.replace(/\D/g, '');
   const truncatedValue = digitsOnly.slice(0, 6);
-  this.loginForm.get('emailOtp')!.setValue(truncatedValue, { emitEvent: false });
+  this.registerForm.get('emailOtp')!.setValue(truncatedValue, { emitEvent: false });
  
 }
 onPhoneOtpInput(event: any) {
   const input = event.target.value;
   const digitsOnly = input.replace(/\D/g, '');
   const truncatedValue = digitsOnly.slice(0, 6);
-  this.loginForm.get('phoneOtp')!.setValue(truncatedValue, { emitEvent: false });
+  this.registerForm.get('phoneOtp')!.setValue(truncatedValue, { emitEvent: false });
  
+}
+handlePhoneInput(event: any) {
+  this.onPhoneNumberInput(event);
+  this.checkInput();
+}
+onPhoneNumberInput(event:any){
+  const input = event.target.value;
+  const digitsOnly = input.replace(/\D/g, '');
+  const truncatedValue = digitsOnly.slice(0, 10);
+  this.registerForm
+  .get('phone')!
+  .setValue(truncatedValue, { emitEvent: false });
 }
 
 openModal() {
@@ -195,6 +207,7 @@ openModal() {
     height: '600px',
   });
 }
+
 
 }
 

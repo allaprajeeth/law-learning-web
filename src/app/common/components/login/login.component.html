@@ -20,7 +20,7 @@
         Invalid email format.
       </div>
       <label for="phone">Phone:</label>
-      <input type="tel" id="phone" formControlName="phone" (input)="checkInput()" />
+      <input type="tel" id="phone" formControlName="phone" (input)="handlePhoneInput($event)"/>
       <div class="error-message" *ngIf="loginForm.get('phone')?.hasError('required') && loginForm.get('phone')?.touched">
         Phone is required.
       </div>
@@ -38,7 +38,7 @@
       <button
         *ngIf="!isOtpVisible"
         (click)="sendOtps()"
-        [disabled]="!isInputFilled"
+        [disabled]="!isInputFilled" class="sendOtp"
       >
         Send OTPs
       </button>
@@ -76,8 +76,8 @@
       <div class="no-account redirect" routerLink="/register">
         Don't have Account register here
       </div>
-      <div class="forgot redirect" routerLink="/password">Forgot Email ?</div>
-      <div class="forgot redirect phoneno" routerLink="/password">Forgot Phone No?</div>
+      <div class="forgot redirect" routerLink="/forgotEmail">Forgot Email ?</div>
+      <div class="forgot redirect phoneno" routerLink="/forgotPhoneno">Forgot Phone No?</div>
      </form>
     </div>
   </div>
