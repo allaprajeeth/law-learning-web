@@ -56,8 +56,10 @@ import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
+
 
 
 @NgModule({
@@ -121,6 +123,7 @@ import { ForgotEmailComponent } from './common/components/forgot-email/forgot-em
     MatExpansionModule,
     MatDialogModule,
     MatSlideToggleModule,
+    MatCheckboxModule,
     MatMenuModule,
     MatButtonModule,
     FileUploadModule,

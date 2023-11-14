@@ -179,7 +179,7 @@ export class HomepageComponent implements OnInit {
 
   randomMyCourseValues: number[] = [];
 
-  subscribersValues = ['10', '10', '50', '100', '200', '500', '1000'];
+  subscribersValues = ['10', '30', '50', '100', '200', '500', '1000'];
 
   myCourseSubscribers: string[] = [];
   availableCourseSubscribers: string[] = [];
@@ -268,51 +268,49 @@ export class HomepageComponent implements OnInit {
       this.uploadedCoursesDurations.push(duration);
     }
 
-    for (let l = 0; l < 12; l++) 
-    {
-      // const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
-      const randomCourse = COURSES_MOCK[l];
-      const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
-      const ratingValue = parseFloat(`${randomCourse.reviewerRating}?index=${l}`);
+    // for (let l = 0; l < 12; l++) 
+    // {
+    //   // const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
+    //   const randomCourse = COURSES_MOCK[l];
+    //   const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
+    //   const ratingValue = parseFloat(`${randomCourse.reviewerRating}?index=${l}`);
 
-      const fullStars = Math.floor(ratingValue);
-      const hasHalfStar = ratingValue % 1 !== 0;
-      let starsHtml = '';
+    //   const fullStars = Math.floor(ratingValue);
+    //   const hasHalfStar = ratingValue % 1 !== 0;
+    //   let starsHtml = '';
   
-      for (let i = 0; i < fullStars; i++) 
-      {
-        starsHtml += '<i class="fas fa-star"></i>';
-      }
+    //   for (let i = 0; i < fullStars; i++) 
+    //   {
+    //     starsHtml += '<i class="fas fa-star"></i>';
+    //   }
   
-      if (hasHalfStar) {
-        starsHtml += '<i class="fas fa-star-half-alt"></i>';
-      }
+    //   if (hasHalfStar) {
+    //     starsHtml += '<i class="fas fa-star-half-alt"></i>';
+    //   }
       
-      this.availablecoursesimages.push(randomImageURL);
-      // this.ratingValues.push(ratingValue);
+    //   this.availablecoursesimages.push(randomImageURL);
+    //   // this.ratingValues.push(ratingValue);
 
-      const randomSubscribersIndex = Math.floor(
-        Math.random() * this.subscribersValues.length
-      );
-      this.availableCourseSubscribers.push(
-        this.subscribersValues[randomSubscribersIndex]
-      );
+    //   const randomSubscribersIndex = Math.floor(
+    //     Math.random() * this.subscribersValues.length
+    //   );
+    //   this.availableCourseSubscribers.push(
+    //     this.subscribersValues[randomSubscribersIndex]
+    //   );
 
-      const minHours = 1.5;
-      const maxHours = 6;
-      const hours = minHours + Math.random() * (maxHours - minHours);
-      const formattedHours = Math.floor(hours);
-      const minutes = Math.floor((hours % 1) * 60);
-      const formattedMinutes = this.formatWithLeadingZero(minutes);
-      const duration = `${formattedHours}h ${formattedMinutes}m`;
-      this.availableCoursesDurations.push(duration);
-    }
-  
-      
-     
-  
+    //   const minHours = 1.5;
+    //   const maxHours = 6;
+    //   const hours = minHours + Math.random() * (maxHours - minHours);
+    //   const formattedHours = Math.floor(hours);
+    //   const minutes = Math.floor((hours % 1) * 60);
+    //   const formattedMinutes = this.formatWithLeadingZero(minutes);
+    //   const duration = `${formattedHours}h ${formattedMinutes}m`;
+    //   this.availableCoursesDurations.push(duration);
+    // }
   
   }
+
+  
 getStarArray(ratingValue: number): number[] {
   const fullStars = Math.floor(ratingValue);
   const hasHalfStar = ratingValue % 1 !== 0;

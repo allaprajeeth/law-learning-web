@@ -3,7 +3,7 @@ export const COURSES_MOCK = [
         "courseTitle": "Legal Foundations: Introduction to Law",
         "courseInstructor": "Professor Smith",
         "courseType": "Crash Course",
-        "courseLevel": "beginner",
+        "courseLevel": "Beginner",
         "reviewerRating": 4.7,
         "subscribersRating": 4,
         "subscribersCount": "6592+",
@@ -21,10 +21,31 @@ export const COURSES_MOCK = [
         }
     },
     {
+        "courseTitle": "Legal Research and Writing",
+        "courseInstructor": "Professor Johnson",
+        "courseType": "Detailed Course",
+        "courseLevel": "Intermediate",
+        "reviewerRating": 4.5,
+        "subscribersRating": 4.7,
+        "subscribersCount": "7441+",
+        "courseDuration": "7h 15m",
+        "courseThumbnail": "https://picsum.photos/300/200",
+        "otherDetails": {
+            "description": "This course focuses on legal research and writing skills.",
+            "prerequisites": "No prior experience required.",
+            "certification": false,
+            "additionalResources": [
+                "Quizzes",
+                "Assignments",
+                "Live Q&A"
+            ]
+        }
+    },
+    {
         "courseTitle": "Law and Society: Understanding Legal Systems",
         "courseInstructor": "Professor Davis",
         "courseType": "Crash Course",
-        "courseLevel": "expert",
+        "courseLevel": "Expert",
         "reviewerRating": 4.7,
         "subscribersRating": 5,
         "subscribersCount": "6762+",
@@ -44,8 +65,8 @@ export const COURSES_MOCK = [
     {
         "courseTitle": "Introduction to Criminal Law",
         "courseInstructor": "Professor Smith",
-        "courseType": "detailed Course",
-        "courseLevel": "beginner",
+        "courseType": "Detailed Course",
+        "courseLevel": "Beginner",
         "reviewerRating": 5,
         "subscribersRating": 4,
         "subscribersCount": "8701+",
@@ -63,52 +84,10 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Legal Research and Writing",
-        "courseInstructor": "Professor Johnson",
-        "courseType": "detailed Course",
-        "courseLevel": "intermediate",
-        "reviewerRating": 4.5,
-        "subscribersRating": 4.7,
-        "subscribersCount": "7441+",
-        "courseDuration": "7h 15m",
-        "courseThumbnail": "https://picsum.photos/300/200",
-        "otherDetails": {
-            "description": "This course focuses on legal research and writing skills.",
-            "prerequisites": "No prior experience required.",
-            "certification": false,
-            "additionalResources": [
-                "Quizzes",
-                "Assignments",
-                "Live Q&A"
-            ]
-        }
-    },
-    {
-        "courseTitle": "Constitutional Law: Principles and Cases",
-        "courseInstructor": "Professor Smith",
-        "courseType": "detailed Course",
-        "courseLevel": "expert",
-        "reviewerRating": 4,
-        "subscribersRating": 5,
-        "subscribersCount": "9256+",
-        "courseDuration": "15h 45m",
-        "courseThumbnail": "https://picsum.photos/300/200",
-        "otherDetails": {
-            "description": "This course explores constitutional law and important cases.",
-            "prerequisites": "No prior experience required.",
-            "certification": false,
-            "additionalResources": [
-                "Quizzes",
-                "Assignments",
-                "Live Q&A"
-            ]
-        }
-    },
-    {
         "courseTitle": "Legal Ethics and Professional Responsibility",
         "courseInstructor": "Professor Davis",
         "courseType": "Crash Course",
-        "courseLevel": "student",
+        "courseLevel": "Student",
         "reviewerRating": 4.7,
         "subscribersRating": 4.5,
         "subscribersCount": "9934+",
@@ -126,59 +105,17 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "International Law: Concepts and Applications",
-        "courseInstructor": "Professor Davis",
-        "courseType": "Crash Course",
-        "courseLevel": "beginner",
+        "courseTitle": "Legal Research and Writing",
+        "courseInstructor": "Professor Johnson",
+        "courseType": "Detailed Course",
+        "courseLevel": "Intermediate",
         "reviewerRating": 4.5,
-        "subscribersRating": 4,
-        "subscribersCount": "7028+",
+        "subscribersRating": 4.7,
+        "subscribersCount": "7441+",
         "courseDuration": "7h 15m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
-            "description": "This course introduces the fundamentals of international law.",
-            "prerequisites": "No prior experience required.",
-            "certification": true,
-            "additionalResources": [
-                "Quizzes",
-                "Assignments",
-                "Live Q&A"
-            ]
-        }
-    },
-    {
-        "courseTitle": "Legal Writing: Strategies and Techniques",
-        "courseInstructor": "Professor Lee",
-        "courseType": "Crash Course",
-        "courseLevel": "intermediate",
-        "reviewerRating": 4.5,
-        "subscribersRating": 4.5,
-        "subscribersCount": "9903+",
-        "courseDuration": "12h 30m",
-        "courseThumbnail": "https://picsum.photos/300/200",
-        "otherDetails": {
-            "description": "This course focuses on the art of legal writing and effective strategies.",
-            "prerequisites": "No prior experience required.",
-            "certification": false,
-            "additionalResources": [
-                "Quizzes",
-                "Assignments",
-                "Live Q&A"
-            ]
-        }
-    },
-    {
-        "courseTitle": "Civil Procedure: Rules and Litigation Process",
-        "courseInstructor": "Professor Lee",
-        "courseType": "detailed Course",
-        "courseLevel": "student",
-        "reviewerRating": 4.5,
-        "subscribersRating": 4,
-        "subscribersCount": "3491+",
-        "courseDuration": "7h 15m",
-        "courseThumbnail": "https://picsum.photos/300/200",
-        "otherDetails": {
-            "description": "This course covers the rules and procedures of civil litigation.",
+            "description": "This course focuses on legal research and writing skills.",
             "prerequisites": "No prior experience required.",
             "certification": false,
             "additionalResources": [
@@ -192,7 +129,7 @@ export const COURSES_MOCK = [
         "courseTitle": "International Human Rights Law",
         "courseInstructor": "Professor Johnson",
         "courseType": "Crash Course",
-        "courseLevel": "beginner",
+        "courseLevel": "Beginner",
         "reviewerRating": 5,
         "subscribersRating": 4,
         "subscribersCount": "5771+",
@@ -210,17 +147,59 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Contract Law: Agreements and Obligations",
-        "courseInstructor": "Professor Davis",
-        "courseType": "Crash Course",
-        "courseLevel": "expert",
+        "courseTitle": "Civil Procedure: Rules and Litigation Process",
+        "courseInstructor": "Professor Lee",
+        "courseType": "Detailed Course",
+        "courseLevel": "Student",
         "reviewerRating": 4.5,
-        "subscribersRating": 4.5,
-        "subscribersCount": "4812+",
-        "courseDuration": "10h 20m",
+        "subscribersRating": 4,
+        "subscribersCount": "3491+",
+        "courseDuration": "7h 15m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
-            "description": "This course delves into the complexities of contract law and legal agreements.",
+            "description": "This course covers the rules and procedures of civil litigation.",
+            "prerequisites": "No prior experience required.",
+            "certification": false,
+            "additionalResources": [
+                "Quizzes",
+                "Assignments",
+                "Live Q&A"
+            ]
+        }
+    },
+    {
+        "courseTitle": "Legal Writing: Strategies and Techniques",
+        "courseInstructor": "Professor Lee",
+        "courseType": "Crash Course",
+        "courseLevel": "Intermediate",
+        "reviewerRating": 4.5,
+        "subscribersRating": 4.5,
+        "subscribersCount": "9903+",
+        "courseDuration": "12h 30m",
+        "courseThumbnail": "https://picsum.photos/300/200",
+        "otherDetails": {
+            "description": "This course focuses on the art of legal writing and effective strategies.",
+            "prerequisites": "No prior experience required.",
+            "certification": false,
+            "additionalResources": [
+                "Quizzes",
+                "Assignments",
+                "Live Q&A"
+            ]
+        }
+    },
+    {
+        "courseTitle": "Constitutional Law: Principles and Cases",
+        "courseInstructor": "Professor Smith",
+        "courseType": "Detailed Course",
+        "courseLevel": "Expert",
+        "reviewerRating": 4,
+        "subscribersRating": 5,
+        "subscribersCount": "9256+",
+        "courseDuration": "15h 45m",
+        "courseThumbnail": "https://picsum.photos/300/200",
+        "otherDetails": {
+            "description": "This course explores constitutional law and important cases.",
             "prerequisites": "No prior experience required.",
             "certification": false,
             "additionalResources": [
@@ -234,7 +213,7 @@ export const COURSES_MOCK = [
         "courseTitle": "Torts: Personal Injury and Liability Law",
         "courseInstructor": "Professor Smith",
         "courseType": "Crash Course",
-        "courseLevel": "student",
+        "courseLevel": "Student",
         "reviewerRating": 4,
         "subscribersRating": 5,
         "subscribersCount": "10046+",
@@ -252,19 +231,19 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Environmental Law: Conservation and Regulation",
-        "courseInstructor": "Professor Smith",
-        "courseType": "Crash Course",
-        "courseLevel": "intermediate",
-        "reviewerRating": 5,
-        "subscribersRating": 5,
-        "subscribersCount": "1481+",
+        "courseTitle": "International Law: Concepts and Applications",
+        "courseInstructor": "Professor Davis",
+        "courseType": "Detailed Course",
+        "courseLevel": "Beginner",
+        "reviewerRating": 4.5,
+        "subscribersRating": 4,
+        "subscribersCount": "7028+",
         "courseDuration": "7h 15m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
-            "description": "This course examines environmental law and conservation regulations.",
+            "description": "This course introduces the fundamentals of international law.",
             "prerequisites": "No prior experience required.",
-            "certification": false,
+            "certification": true,
             "additionalResources": [
                 "Quizzes",
                 "Assignments",
@@ -272,11 +251,12 @@ export const COURSES_MOCK = [
             ]
         }
     },
+  
     {
         "courseTitle": "Family Law: Rights and Responsibilities",
         "courseInstructor": "Professor Lee",
         "courseType": "Crash Course",
-        "courseLevel": "intermediate",
+        "courseLevel": "Intermediate",
         "reviewerRating": 4,
         "subscribersRating": 5,
         "subscribersCount": "9789+",
@@ -293,11 +273,56 @@ export const COURSES_MOCK = [
             ]
         }
     },
+   
+    {
+        "courseTitle": "Contract Law: Agreements and Obligations",
+        "courseInstructor": "Professor Davis",
+        "courseType": "Crash Course",
+        "courseLevel": "Expert",
+        "reviewerRating": 4.5,
+        "subscribersRating": 4.5,
+        "subscribersCount": "4812+",
+        "courseDuration": "10h 20m",
+        "courseThumbnail": "https://picsum.photos/300/200",
+        "otherDetails": {
+            "description": "This course delves into the complexities of contract law and legal agreements.",
+            "prerequisites": "No prior experience required.",
+            "certification": false,
+            "additionalResources": [
+                "Quizzes",
+                "Assignments",
+                "Live Q&A"
+            ]
+        }
+    },
+ 
+    {
+        "courseTitle": "Environmental Law: Conservation and Regulation",
+        "courseInstructor": "Professor Smith",
+        "courseType": "Detailed Course",
+        "courseLevel": "Intermediate",
+        "reviewerRating": 5,
+        "subscribersRating": 5,
+        "subscribersCount": "1481+",
+        "courseDuration": "7h 15m",
+        "courseThumbnail": "https://picsum.photos/300/200",
+        "otherDetails": {
+            "description": "This course examines environmental law and conservation regulations.",
+            "prerequisites": "No prior experience required.",
+            "certification": false,
+            "additionalResources": [
+                "Quizzes",
+                "Assignments",
+                "Live Q&A"
+            ]
+        }
+    },
+  
     {
         "courseTitle": "Intellectual Property Law",
         "courseInstructor": "Professor Davis",
         "courseType": "Crash Course",
-        "courseLevel": "intermediate",
+        "courseLevel": "Intermediate",
         "reviewerRating": 4,
         "subscribersRating": 4,
         "subscribersCount": "5319+",
@@ -317,8 +342,8 @@ export const COURSES_MOCK = [
     {
         "courseTitle": "Corporate Law: Entities and Governance",
         "courseInstructor": "Professor Lee",
-        "courseType": "detailed Course",
-        "courseLevel": "expert",
+        "courseType": "Detailed Course",
+        "courseLevel": "Expert",
         "reviewerRating": 4,
         "subscribersRating": 4,
         "subscribersCount": "6378+",
@@ -338,8 +363,8 @@ export const COURSES_MOCK = [
     {
         "courseTitle": "Healthcare Law: Regulations and Ethics",
         "courseInstructor": "Professor Smith",
-        "courseType": "detailed Course",
-        "courseLevel": "intermediate",
+        "courseType": "Detailed Course",
+        "courseLevel": "Intermediate",
         "reviewerRating": 4.5,
         "subscribersRating": 4,
         "subscribersCount": "6049+",

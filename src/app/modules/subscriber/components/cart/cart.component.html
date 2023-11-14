@@ -51,7 +51,7 @@
               <h5 class="actualPrice">Actual Price: ₹{{ totalActualPrice }}</h5>
               <p *ngIf="discountedPrice">Discount {{ roundDiscountPercentage(100 - (discountedPrice / totalActualPrice) * 100) }}% Off</p>
               <h5>Total: ₹{{ discountedPrice }}</h5>
-              <button class="btn">Checkout</button>
+              <button class="btn" [routerLink]="['/checkout']">Checkout</button>
             </div>
             <hr class="couponHorizontalLine">
             <div class="promotions">

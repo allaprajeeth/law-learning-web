@@ -5,6 +5,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
+
+  private totalActualPriceSubject = new BehaviorSubject<number>(0);
+  private discountedPriceSubject = new BehaviorSubject<number>(0);
+
+  totalActualPrice$: Observable<number> = this.totalActualPriceSubject.asObservable();
+  discountedPrice$: Observable<number> = this.discountedPriceSubject.asObservable();
+
+  updateTotalActualPrice(totalActualPrice: number) {
+    this.totalActualPriceSubject.next(totalActualPrice);
+  }
+
+  updateDiscountedPrice(discountedPrice: number) {
+    this.discountedPriceSubject.next(discountedPrice);
+  }
+
+  
   private cartItems: any[] = [];
   private cartItemsSubject = new BehaviorSubject<any[]>(this.cartItems);
 
