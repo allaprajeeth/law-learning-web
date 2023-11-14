@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -28,6 +29,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
+import { UploadComponent } from './components/upload/upload.component';
+import { TestpreviewComponent } from './components/testpreview/testpreview.component';
 
 
 @NgModule({
@@ -45,6 +48,8 @@ import { QuiztestComponent } from './components/quiztest/quiztest.component';
     CourseInfoComponent,
     AboutusComponent,
     QuiztestComponent,
+    UploadComponent,
+    TestpreviewComponent,
 
   ],
   imports: [
@@ -56,6 +61,7 @@ import { QuiztestComponent } from './components/quiztest/quiztest.component';
     MatIconModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     MatMenuModule,
     MatTooltipModule,
     MatBadgeModule,

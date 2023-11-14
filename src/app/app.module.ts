@@ -31,11 +31,8 @@ import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
-import { CoursesComponent } from './common/components/courses/courses.component';
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
 import { LogoutComponent } from './common/components/logout/logout.component';
-import { UploadComponent } from './common/components/upload/upload.component';
-
 import { PopupService } from 'src/popup.service';
 import { PasswordComponent } from './common/components/password/password.component';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
@@ -73,9 +70,7 @@ import { ContactusComponent } from './common/components/contactus/contactus.comp
     HomepageComponent,
     ArticleComponent,
     DocumentsComponent,
-    CoursesComponent,
     LogoutComponent,
-    UploadComponent,
     PasswordComponent,
     VideoplayerComponent,
     VideoplayerNavbarComponent,
