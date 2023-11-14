@@ -33,7 +33,6 @@ import { ArticleComponent } from './common/components/article/article.component'
 import { DocumentsComponent } from './common/components/documents/documents.component';
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
 import { LogoutComponent } from './common/components/logout/logout.component';
-import { UploadComponent } from './common/components/upload/upload.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
@@ -75,8 +74,6 @@ import { ForgotEmailComponent } from './common/components/forgot-email/forgot-em
     ArticleComponent,
     DocumentsComponent,
     LogoutComponent,
-    PasswordComponent,
-    UploadComponent,
     VideoplayerComponent,
     VideoplayerNavbarComponent,
     RatingsComponent,

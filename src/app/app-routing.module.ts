@@ -9,9 +9,6 @@ import { NavComponent } from './common/components/nav/nav.component';
 import { HomepageComponent } from './common/components/homepage/homepage.component';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
-import { PasswordComponent } from './common/components/password/password.component';
-import { CoursesComponent } from './common/components/courses/courses.component';
-import { UploadComponent } from './common/components/upload/upload.component';
 import { LogoutComponent } from './common/components/logout/logout.component';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
 import { LoginComponent } from './common/components/login/login.component';
@@ -97,20 +94,7 @@ const routes: Routes = [
     path:"editcourses",
     component:EditcoursesComponent
   },
-  {
 
-    path: 'password',
-    component:PasswordComponent
-  },
-  {
-    path: 'phonepassword',
-    component:PhonepasswordComponent
-  },
-  {
-    path: 'upload',
-    component:UploadComponent
-
-  },
   {
     path: 'videoplayer',
     component:VideoplayerComponent
