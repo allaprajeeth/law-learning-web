@@ -1,4 +1,5 @@
 <app-subscribernav></app-subscribernav>
+
 <div class="cartContainer">
     <h1>Shopping Cart</h1>
     <h5>{{ cartItems.length }} Courses in Cart</h5>
@@ -7,6 +8,7 @@
     </div>
     <div class="course">
         <div class="courseContainer">
+            <!-- {{cartItems | json}} -->
             <div class="courseItems" *ngFor="let item of cartItems">
                 <div class="horizontalLine">
                     <!-- {{item | json}} -->
@@ -37,7 +39,7 @@
                             <p>{{ item.duration }} total hours &nbsp; • 72 lectures &nbsp; • {{ item.coursesText }}</p>
                         </div>
                         <div class="removeButtonContainer">
-                            <button class="removeButton" (click)="onRemoveClick(item.uniqueId)">Remove</button>
+                            <button class="removeButton" (click)="onRemoveClick(item.id)">Remove</button>
                         </div>
                     </div>
                     <div class="price"> ₹{{ item.price }}</div>
@@ -47,9 +49,9 @@
         <div class="totalPriceContainer" *ngIf="cartItems.length > 0">
             <div class="total">
               <h5 class="actualPrice">Actual Price: ₹{{ totalActualPrice }}</h5>
-              <p *ngIf="discountedPrice">Discount {{ roundDiscountPercentage(100 - (discountedPrice / totalActualPrice) * 100) }}% off</p>
+              <p *ngIf="discountedPrice">Discount {{ roundDiscountPercentage(100 - (discountedPrice / totalActualPrice) * 100) }}% Off</p>
               <h5>Total: ₹{{ discountedPrice }}</h5>
-              <button class="btn">Checkout</button>
+              <button class="btn" [routerLink]="['/checkout']">Checkout</button>
             </div>
             <hr class="couponHorizontalLine">
             <div class="promotions">
@@ -60,24 +62,6 @@
               </div>
             </div>
           </div>
-          
-        <!-- <div class="totalPriceContainer" *ngIf="cartItems.length > 0">
-            <div class="total">
-              <h5 class="actualPrice">Actual Price: ₹{{ totalActualPrice }}</h5>          
-                <p *ngIf="discountedPrice">Discount {{ roundPercentage(100 - (discountedPrice / originalPrice) * 100)
-                    }}% off</p>
-                <h5>Total: ₹{{ discountedPrice }}</h5>
-                <button class="btn">Checkout</button>
-            </div>
-            <hr class="couponHorizontalLine">
-            <div class="promotions">
-                <h5>Promotions</h5>
-                <div class="promotionsInputField">
-                    <input [(ngModel)]="couponCode" placeholder="Enter Coupon">
-                    <button (click)="applyCoupon()" class="promotionsButton">Apply</button>
-                </div>
-            </div>
-        </div> -->
     </div>
 </div>
 

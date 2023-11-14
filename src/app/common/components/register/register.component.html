@@ -6,7 +6,7 @@
   <div class="container">
     <div class="login-box">
       <h2>Register</h2>
-      <form [formGroup]="loginForm">
+      <form [formGroup]="registerForm">
         <label for="name">Name:</label>
         <input
           type="text"
@@ -17,8 +17,8 @@
         <div
           class="error-message"
           *ngIf="
-            loginForm.get('name')?.hasError('required') &&
-            loginForm.get('name')?.touched
+            registerForm.get('name')?.hasError('required') &&
+            registerForm.get('name')?.touched
           "
         >
           Name is required.
@@ -33,8 +33,8 @@
         <div
           class="error-message"
           *ngIf="
-            loginForm.get('email')?.hasError('required') &&
-            loginForm.get('email')?.touched
+            registerForm.get('email')?.hasError('required') &&
+            registerForm.get('email')?.touched
           "
         >
           Email is required.
@@ -42,8 +42,8 @@
         <div
           class="error-message"
           *ngIf="
-            loginForm.get('email')?.hasError('email') &&
-            loginForm.get('email')?.touched
+            registerForm.get('email')?.hasError('email') &&
+            registerForm.get('email')?.touched
           "
         >
           Invalid email format.
@@ -54,13 +54,13 @@
           type="tel"
           id="phone"
           formControlName="phone"
-          (input)="checkInput()"
+          (input)="handlePhoneInput($event)" 
         />
         <div
           class="error-message"
           *ngIf="
-            loginForm.get('phone')?.hasError('required') &&
-            loginForm.get('phone')?.touched
+            registerForm.get('phone')?.hasError('required') &&
+            registerForm.get('phone')?.touched
           "
         >
           Phone is required.
@@ -68,8 +68,8 @@
         <div
           class="error-message"
           *ngIf="
-            loginForm.get('phone')?.hasError('pattern') &&
-            loginForm.get('phone')?.touched
+            registerForm.get('phone')?.hasError('pattern') &&
+            registerForm.get('phone')?.touched
           "
         >
           Invalid phone format. (10 digits required)
@@ -106,13 +106,13 @@
           <div
             class="error-message"
             *ngIf="
-              loginForm.get('emailOtp')?.hasError('required') &&
-              loginForm.get('emailOtp')?.touched
+              registerForm.get('emailOtp')?.hasError('required') &&
+              registerForm.get('emailOtp')?.touched
             "
           >
             Email OTP is required.
           </div>
-          <div class="error-message" *ngIf="loginForm.get('emailOtp')?.hasError('pattern') && loginForm.get('emailOtp')?.touched">
+          <div class="error-message" *ngIf="registerForm.get('emailOtp')?.hasError('pattern') && registerForm.get('emailOtp')?.touched">
             Email OTP must consist of digits only.
           </div>
   
@@ -129,8 +129,8 @@
           <div
             class="error-message"
             *ngIf="
-              loginForm.get('phoneOtp')?.hasError('required') &&
-              loginForm.get('phoneOtp')?.touched
+              registerForm.get('phoneOtp')?.hasError('required') &&
+              registerForm.get('phoneOtp')?.touched
             "
           >
             Phone OTP is required.
@@ -138,8 +138,8 @@
           <div
             class="error-message"
             *ngIf="
-              loginForm.get('phoneOtp')?.hasError('pattern') &&
-              loginForm.get('phoneOtp')?.touched
+              registerForm.get('phoneOtp')?.hasError('pattern') &&
+              registerForm.get('phoneOtp')?.touched
             "
           >
          Phone OTP must consist of digits only.
@@ -148,10 +148,10 @@
 
         <button
           *ngIf="isLoginVisible"
-          [disabled]="loginForm.get('emailOtp')?.value.length !== 6 || loginForm.get('phoneOtp')?.value.length !== 6 || !loginForm.valid"
+          [disabled]="registerForm.get('emailOtp')?.value.length !== 6 || registerForm.get('phoneOtp')?.value.length !== 6 || !registerForm.valid"
           [ngStyle]="{
-            'background-color': loginForm.get('emailOtp')?.value.length == 6 && loginForm.get('phoneOtp')?.value.length == 6 && loginForm.valid ? 'blue' : 'gray',
-            color: loginForm.get('emailOtp')?.value.length == 6 && loginForm.get('phoneOtp')?.value.length == 6 && loginForm.valid ? 'white' : 'black'
+            'background-color': registerForm.get('emailOtp')?.value.length == 6 && registerForm.get('phoneOtp')?.value.length == 6 && registerForm.valid ? 'blue' : 'gray',
+            color: registerForm.get('emailOtp')?.value.length == 6 && registerForm.get('phoneOtp')?.value.length == 6 && registerForm.valid ? 'white' : 'black'
           }"
           (click)="signupVerify()"
           

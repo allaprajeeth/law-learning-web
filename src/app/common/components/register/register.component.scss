@@ -1,10 +1,10 @@
 
 .page-container {
   display: flex;
-  justify-content: center; /* Center the content horizontally */
-  align-items: center; /* Center the content vertically */
-  height: 69%; /* Set the height of the container to 100% of the viewport height */
-  background-color: #e0d9d9; /* Add your desired background color */
+  justify-content: center; 
+  align-items: center; 
+  // height: 69%; 
+  background-color: #e0d9d9; 
   margin-bottom: 100px;
   padding: 60px 10px;
 }
@@ -22,9 +22,9 @@
 }
 
 .container {
-max-width: 300px;
+width: 300px;
 margin: 0 auto;
-padding: 40px;
+padding: 30px;
 background-color: #fff;
 }
 .login-box {
@@ -33,7 +33,7 @@ background-color: #fff;
       // border: 1px solid #ccc;
       padding-left: 12px;
       // text-align: center;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
       flex: 1; 
       justify-content: center;
       // align-items: center;

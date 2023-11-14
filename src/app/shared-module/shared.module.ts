@@ -7,7 +7,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
 import { DocumentsComponent } from './components/documents/documents.component';
 import { PublishingcornerComponent } from './components/publishingcorner/publishingcorner.component';
-// import { InstructorLoginComponent } from '../modules/instructor/components/instructor-login/instructor-login.component';
 import { FormsModule } from '@angular/forms';
 import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
 import {  MatDividerModule } from '@angular/material/divider';
@@ -17,7 +16,16 @@ import {MatCardModule} from '@angular/material/card';
 import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
 import { CarouselModule } from 'primeng/carousel';
 @NgModule({
-  declarations: [BasePageComponent, FooterComponent, SharedoverviewComponent, DocumentsComponent, PublishingcornerComponent, SharedaboutusComponent],
+ 
+  declarations: [
+    BasePageComponent,
+    FooterComponent,
+    SharedoverviewComponent, 
+    DocumentsComponent, 
+    PublishingcornerComponent,
+     SharedaboutusComponent
+    ],
+
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -41,6 +49,7 @@ import { CarouselModule } from 'primeng/carousel';
     FormsModule,
     SharedoverviewComponent,
     SharedaboutusComponent
+
     // InstructorLoginComponent
   ]
 

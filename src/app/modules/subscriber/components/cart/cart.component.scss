@@ -4,6 +4,8 @@ body {
 
 .cartContainer {
   position: relative;
+  margin: 0 auto;
+  max-width: 80vw;
 }
 
 .emptyCartText {
@@ -16,6 +18,7 @@ body {
   font-weight: bold;
   margin-bottom: 10px;
   padding: 10px 0 0 20px;
+  color: #007791;
 }
 
 .cartContainer h5 {
@@ -29,10 +32,9 @@ body {
   margin: 20px 20px 40px 20px;
   align-items: flex-start;
   justify-content: space-between;
-  width: calc(100% - 100px);
 
   .courseContainer {
-    overflow-y: scroll;
+    overflow-y: auto;
     max-height: 500px;
     padding-right: 10px;
   }
@@ -45,7 +47,6 @@ body {
 
   .courseDetails {
     display: flex;
-    // width: calc(100% - -655px);
     justify-content: space-between;
     margin-top: 20px;
   }
@@ -86,7 +87,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    margin-left: 50px;
   }
 
   .totalPrice {
@@ -97,7 +98,7 @@ body {
   .price {
     display: flex;
     flex-direction: column;
-    margin: 0 40px;
+    margin: 0 10px 0 10px;
     align-items: center;
     justify-content: center;
     font-weight: bold;
@@ -131,7 +132,7 @@ body {
   .removeButtonContainer {
     display: flex;
     align-items: flex-end;
-    margin: 0 10px 20px 50px;
+    margin: 0 10px 10px 10px;
   }
 
   .removeButton {
@@ -201,3 +202,4 @@ body {
     background-color: #2f2e32;
   }
 }
+

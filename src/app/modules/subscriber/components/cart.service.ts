@@ -5,6 +5,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CartService {
+
+  private totalActualPriceSubject = new BehaviorSubject<number>(0);
+  private discountedPriceSubject = new BehaviorSubject<number>(0);
+
+  totalActualPrice$: Observable<number> = this.totalActualPriceSubject.asObservable();
+  discountedPrice$: Observable<number> = this.discountedPriceSubject.asObservable();
+
+  updateTotalActualPrice(totalActualPrice: number) {
+    this.totalActualPriceSubject.next(totalActualPrice);
+  }
+
+  updateDiscountedPrice(discountedPrice: number) {
+    this.discountedPriceSubject.next(discountedPrice);
+  }
+
+  
   private cartItems: any[] = [];
   private cartItemsSubject = new BehaviorSubject<any[]>(this.cartItems);
 
@@ -45,21 +61,21 @@ export class CartService {
 
 addToCart(product: any) {
   // Check if the item is already in the cart by ID
-  const existingItem = this.cartItems.find((cartItem) => cartItem.uniqueId === product.uniqueId);
+  const isItemExistsInCart = this.cartItems.findIndex((cartItem) => cartItem.id === product.id);
 
-  if (existingItem) {
-    // Item already exists in the cart, you can update the quantity or take other actions here
-    console.log('Item already in cart');
-  } else {
+  if (isItemExistsInCart == -1) {
     // Item doesn't exist in the cart, so add it
     this.cartItems.push(product);
     this.cartItemsSubject.next(this.cartItems);
+  } else {
+    // Item already exists in the cart, you can update the quantity or take other actions here
+    console.log('Item already in cart');
   }
 }
 
   // Remove an item from the cart based on its unique ID
   removeItemById(uniqueId: string) {
-    const indexToRemove = this.cartItems.findIndex((item) => item.uniqueId === uniqueId);
+    const indexToRemove = this.cartItems.findIndex((item) => item.id === uniqueId);
     if (indexToRemove !== -1) {
       this.cartItems.splice(indexToRemove, 1);
       this.cartItemsSubject.next(this.cartItems);

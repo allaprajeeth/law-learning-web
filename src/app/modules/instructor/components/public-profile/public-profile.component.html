@@ -1,49 +1,46 @@
+<app-instructornav></app-instructornav>
 
-    <!-- <app-subscribernav></app-subscribernav> -->
-    <app-instructornav></app-instructornav>
-    <div class="header">
-        <h1 class="name">User Name</h1>
-    </div>
-    
-    <p class="para">Enter your Profile Details Here</p>
-    <!-- <p class="para">Courses you're enrolled in</p> -->
-    <div class="courses">
-        <div class="course-box">
-            <form [formGroup]="profileForm" class="example-form">
-
-                <!-- <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Category" formControlName="category">
-                </mat-form-field> -->
-
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Full Name" formControlName="firstName">
-                </mat-form-field>
-                
-              <br/>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Title" formControlName="title">
-            </mat-form-field>
-              <br/>
-                <!-- <mat-form-field class="example-full-width">
-                   
-                  <input matInput placeholder="Total Students">
-                </mat-form-field>
-                <br/>
-                <mat-form-field class="example-full-width">
-                   
-                    <input matInput placeholder="Reviews">
-                  </mat-form-field>
-                  <br/> -->
-                  <mat-form-field class="example-full-width">
-                    <textarea matInput placeholder="About me" formControlName="aboutMe"></textarea>
-                </mat-form-field>
-                
-              <br/>
-              <button mat-raised-button color="primary" [disabled]="!profileForm.valid">Submit</button>
-
-              </form>
-              
+<mat-sidenav-container>
+  <mat-sidenav #sideNav mode="side" opened>
+    <app-instructor-sidenav></app-instructor-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container-wrapper">
+      <div class="container">
+        <div class="profile-box">
+          <h1>Instructor Profile</h1>
         </div>
+        <hr />
+        <br/>
+        <form [formGroup]="profileForm" class="example-form">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Full Name" formControlName="firstName">
+          </mat-form-field>
+          <br />
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Specialization" formControlName="specialization">
+          </mat-form-field>
+          <br />
+          <div class="image-box">
+            <img [src]="imageUrl" alt="Image Preview" id="previewImage">
+            <div class="upload-btn-wrapper">
+              <label for="imageInput" class="custom-file-input">
+                Choose File
+              </label>
+              <input type="file" id="imageInput" accept="image/*" (change)="onFileSelected($event)">
+              <p>{{ selectedFileName }}</p>
+            </div>
+          </div>         
+          <br/>
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="About me" formControlName="aboutMe"></textarea>
+          </mat-form-field>
+          <br />
+          <button mat-raised-button color="primary" [disabled]="!profileForm.valid"
+            (click)="openSuccessDialog()">Submit</button>
+        </form>
+      </div>
     </div>
-
+  </mat-sidenav-content>
+</mat-sidenav-container>
 

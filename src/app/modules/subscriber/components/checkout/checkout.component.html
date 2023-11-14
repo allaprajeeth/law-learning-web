@@ -1,0 +1,87 @@
+<div class="checkout-container">
+    <div class="billing-information">
+        <h1>Checkout</h1>
+        <h2>Billing Address</h2>
+        <form (ngSubmit)="onCheckout()">
+            <!-- <mat-form-field appearance="outline">
+            <input matInput placeholder="Name" [(ngModel)]="customerName" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Email" [(ngModel)]="customerEmail" name="name" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <input matInput placeholder="Mobile Number" [(ngModel)]="mobileNumber" name="mobile" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <textarea matInput placeholder="Address" [(ngModel)]="address" name="address" required></textarea>
+        </mat-form-field> -->
+
+            <div class="countriesContainer">
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <mat-select [(value)]="selectedCountry" name="country" required>
+                        <mat-option *ngFor="let country of countries" [value]="country.code">
+                            {{ country.name }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="zipCodeField">
+                    <input matInput placeholder="Zip Code" [(ngModel)]="zipCode" name="zipCode" required>
+                </mat-form-field>
+            </div>
+
+            <!-- Payment methods using Angular Material radio buttons -->
+            <div class="payment-methods full-width">
+                <mat-radio-group [(ngModel)]="selectedPaymentMethod" name="paymentMethod">
+                    <mat-radio-button *ngFor="let method of paymentMethods" [value]="method.value">
+                        {{ method.label }}
+                    </mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div *ngIf="selectedPaymentMethod === 'credit_debit_card'" class="creditCard">
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Name on Card" [(ngModel)]="nameOnCard" name="nameOnCard" required>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Card Number" [(ngModel)]="cardNumber" name="cardNumber" required>
+                </mat-form-field>
+
+                <div class="expiry-cvv-container">
+                    <mat-form-field appearance="outline" class="expiry-field">
+                        <input matInput placeholder="MM/YY" [(ngModel)]="expiryDate" name="expiryDate" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="cvv-field">
+                        <input matInput placeholder="CVV" [(ngModel)]="cvv" name="cvv" required>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="securityCodeField">
+                        <input matInput placeholder="Security Code" [(ngModel)]="securityCode" name="securityCode" required>
+                    </mat-form-field>
+                </div>
+
+                <mat-checkbox [(ngModel)]="rememberCard" >Remember this card</mat-checkbox>
+            </div>
+            
+        </form>
+    </div>
+
+    <div class="summary">
+        <h1>Summary</h1>
+        <!-- <h1>Order Summary</h1> -->
+        <p>Original Price: <span class="originalPrice">₹{{ totalActualPrice }}</span></p>
+        <hr />
+        <p *ngIf="discountedPrice">Discount {{ roundDiscountPercentage(100 - (discountedPrice / totalActualPrice) * 100) }}% Off</p>
+        <p>Sub-Total: <span class="subTotalprice">₹{{ discountedPrice }}</span></p>
+        <h2>Total: <span class="totalprice">₹{{ discountedPrice }}</span></h2>
+        
+        <button mat-raised-button class="btn" appearance="outline" [routerLink]="['']">Complete Payment</button>
+    </div>
+
+</div>

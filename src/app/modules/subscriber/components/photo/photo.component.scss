@@ -1,87 +1,91 @@
 .container-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Set height to viewport height for full-screen appearance */
-    background-color: #e0d9d9; /* Background color for the whole page */
-  }
-  
-  .container {
-    width: 80%; /* Set your desired width for the centered box */
-    background-color: #ffffff; /* Background color for the centered box */
-    padding: 20px;
-    border-radius: 10px; /* Optional: Adds rounded corners to the box */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
-    margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set height to viewport height for full-screen appearance */
+  background-color: #e0d9d9;
 }
-        .profile-box {
-            text-align-last: center;
-            // border: 1px solid grey;
-            // background-color: white;
-            padding: 5px;
-            margin: 0;
 
-            h1{
-                font-weight: bold;
-            }  
-        }
-        .image-box {
-            // border: 1px solid grey;
-            // background-color: white;
-            padding: 10px;
-            margin-left: 30px;
-        }
+.container {
+  width: 80%; 
+  background-color: #ffffff; 
+  padding: 20px;
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 40px;
+}
+.profile-box {
+  text-align-last: center;
+  // border: 1px solid grey;
+  // background-color: white;
+  padding: 5px;
+  margin: 0;
 
-        
+  h1 {
+    font-weight: bold;
+  }
+}
 
-        #previewImage {
-            max-width: 100px;
-            max-height: 100px;
-            margin-bottom: 5px;
-        }
+.image-box {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 90px;
+}
 
-        
+#previewImage {
+  max-width: 200px;
+  max-height: 100px;
+  margin-bottom: 5px;
+}
 
-        .upload-btn-wrapper {
-            position: relative;
-            overflow: hidden;
-            display: inline-block;
-            text-align-last:auto;
-            border: 1px solid rgb(153, 142, 142);
-            background-color: white;
-            padding: 0px;
-            margin: 0;
-        }
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
 
-        .btn {
-            border: 1px solid rgb(23, 23, 23);
-            color: rgb(5, 5, 5);
-            background-color: white;
-            padding: 10px;
-            border-radius: 0px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            
-        }
-       
+  p {
+    display: inline-block;
+    margin-left: 5px;
+  }
+}
 
-        .upload-btn-wrapper input[type="file"] {
-            font-size: 10px;
-            position: absolute;
-            left: 10;
-            top: 0;
-            opacity: 0;
-        }
+.custom-file-input {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007791;
+  border-radius: 5px;
+}
 
-        #saveButton {
-            background-color: black;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 0px;
-            cursor: pointer;
-        }
-        .upload-btn-wrapper p {
-            margin: 2px 120px;
-        }
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  h3 {
+    font-weight: 590;
+    margin-bottom: 5px;
+  }
+}
+
+.upload-btn-wrapper input[type="file"] {
+  font-size: 10px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+}
+
+#saveButton {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+

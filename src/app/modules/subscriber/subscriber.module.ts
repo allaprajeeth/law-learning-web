@@ -7,19 +7,19 @@ import { MainnavComponent } from './components/mainnav/mainnav.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 // import {NgFor} from '@angular/common';
-import {MatBadgeModule} from '@angular/material/badge';
-import {MatButtonModule} from '@angular/material/button';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { PhotoComponent } from './components/photo/photo.component';
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
@@ -40,9 +40,13 @@ import { SubarticleComponent } from './subarticle/subarticle.component';
 import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CarouselModule } from 'primeng/carousel';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
-    SidenavComponent,
+    SidenavComponent, 
     MainnavComponent,
     CartComponent,
     AccountsecurityComponent,
@@ -64,6 +68,7 @@ import { CarouselModule } from 'primeng/carousel';
     SubarticleComponent,
     SubdocumentsComponent,
     AboutusComponent,
+    CheckoutComponent,
    
 
   ],
@@ -81,13 +86,14 @@ import { CarouselModule } from 'primeng/carousel';
     FormsModule,
     MatInputModule,
     CarouselModule,
-  
+    MatRadioModule,
     MatMenuModule,
     MatButtonModule,
     MatBadgeModule,
     MatDialogModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule
   ]
 })
 export class SubscriberModule { }

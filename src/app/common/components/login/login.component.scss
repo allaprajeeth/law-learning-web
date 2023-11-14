@@ -1,10 +1,10 @@
 
 .page-container {
     display: flex;
-    justify-content: center; /* Center the content horizontally */
-    align-items: center; /* Center the content vertically */
-    height: 69%; /* Set the height of the container to 100% of the viewport height */
-    background-color: #e0d9d9; /* Add your desired background color */
+    justify-content: center; 
+    align-items: center; 
+    // height: 69%; 
+    background-color: #e0d9d9; 
     margin-bottom: 100px;
     padding: 60px 10px;
   }
@@ -25,14 +25,14 @@
 .container {
   max-width: 300px;
   margin: 0 auto;
-  padding: 40px;
+  padding: 30px;
   background-color: #fff;
 }
 .login-box {
-        //width: 100%;
+        
         background-color: #fff;
         padding-left: 13px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         flex: 1; 
         justify-content: center;
         
@@ -77,13 +77,14 @@ button:disabled {
   border-color: black;
 }
 .redirect{
-  cursor:pointer;
+  
   text-align: center;
   color: rgb(0, 0, 0);
   font-weight: 300;
   margin-bottom: 10px;
 }
 .forgot{
+  cursor:pointer;
   color:rgb(8, 67, 216);
   font-weight: 400;
 }
@@ -98,8 +99,13 @@ button:disabled {
   margin-top: 120px !important; 
 
 }
-
-
+.sendOtp{
+  margin:20px;
+  margin-left: 80px;
+}
+.no-account{
+  cursor: pointer;
+}
 
 
 
