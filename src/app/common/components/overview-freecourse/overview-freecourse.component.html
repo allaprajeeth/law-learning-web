@@ -1,10 +1,31 @@
-<h1 class="freeCourse">Free Course</h1>
+<app-firstnav *ngIf="showRatingOfCourse"></app-firstnav>
+<h1 class="freeCourse" *ngIf="!showRatingOfCourse">Free Course</h1>
 <div class="heading">
   <h1>Introduction to Law: A Comprehensive Overview</h1>
   <p class="first-paragraph">
     Law learning encompasses a diverse range of fascinating subjects and fields
     of study and ethics, and the legal systems that shape our societies.
   </p>
+  <div class="ratingConatiner" *ngIf="showRatingOfCourse">
+    <span>Subscriber Ratings : &nbsp;</span>
+    <span class="star starNumber">4.5</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <i class="fa fa-star-half-o star" aria-hidden="true" style="font-size: 12px;"></i>
+    <span class="star">(1234)</span>
+
+  </div>
+  <div class="ratingConatiner" *ngIf="showRatingOfCourse">
+    <span>Reviewer Ratings : &nbsp;</span>
+    <span class="star starNumber">4</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733;</span>
+    <span class="star">&#9733; </span>
+    <span class="star">&#9734; (22)</span>
+  </div>
   <p>Instructor : Edward Viaene</p>
   <p>Course Duration : 2hr 3m</p>
   <p class="icon">
@@ -124,7 +145,7 @@
           <div class="icon">
             <mat-icon>people</mat-icon>
             <p>2,342,416 Students</p>
-          </div>
+        </div>
           <div class="icon">
             <mat-icon>play_circle_outline</mat-icon>
             <p>7 Courses</p>

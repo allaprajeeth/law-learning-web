@@ -221,4 +221,17 @@ export class LoginComponent {
       .get('phoneOtp')!
       .setValue(truncatedValue, { emitEvent: false });
   }
+  onPhoneNumberInput(event:any){
+    const input = event.target.value;
+    const digitsOnly = input.replace(/\D/g, '');
+    const truncatedValue = digitsOnly.slice(0, 10);
+    this.loginForm
+    .get('phone')!
+    .setValue(truncatedValue, { emitEvent: false });
+  }
+  handlePhoneInput(event: any) {
+    this.onPhoneNumberInput(event);
+    this.checkInput();
+  }
+
 }

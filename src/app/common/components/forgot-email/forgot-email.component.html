@@ -1,0 +1,69 @@
+
+
+<div class="container-wrapper">
+    <div class="container1" *ngIf="showContainer1">
+      <form  #otpForm="ngForm" [formGroup]="forgotEmailForm">
+        <h2>Forgot Email</h2>
+        <mat-form-field class="mat-form-field-wrapper" appearance="outline">
+          <mat-label>Enter your Phone Number </mat-label>
+          <input matInput type="text" [(ngModel)]="phone" name="number" required
+                  formControlName="phoneNumber" (input)="onPhoneNumberInput($event)">
+        </mat-form-field>
+        <div class="button-container">
+          <button mat-raised-button color="primary" type="submit" *ngIf="!detailsEntered"
+            [disabled]="forgotEmailForm.get('phoneNumber')?.value.length !== 10" (click)="sendOTP()">
+            Send OTP 
+          </button>
+        </div>
+      </form>
+  
+      <form *ngIf="detailsEntered"  [formGroup]="phoneOtpForm">
+        <h2>Enter Phone OTP</h2>
+        <input type="text"   formControlName="phoneOtp" required  [attr.autocomplete]="'off'"  (input)="onPhoneOtpInput($event)">
+        <div class="button-container" *ngIf="showVerifyButton">
+          <button mat-raised-button color="primary" type="submit"  (click)="verifyOTP()" [disabled]="phoneOtpForm.get('phoneOtp')?.value.length !== 6"
+            >
+            Verify OTP
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <div class="container2 verify-otp" *ngIf="showContainer2">
+      <form *ngIf="otpVerified " (ngSubmit)="updateEmail()" #updateEmailForm="ngForm">
+        <h2>Update Email</h2>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter New Email</mat-label>
+          <input matInput type="email" [(ngModel)]="email" name="email" required   [attr.autocomplete]="'off'" >
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Confirm New Email</mat-label>
+          <input matInput type="email" [(ngModel)]="confirmEmail" name="confirmEmail" required  (input)="checkEmailMatch(updateEmailForm)" [attr.autocomplete]="'off'" 
+           >
+        </mat-form-field>
+        <mat-error *ngIf="updateEmailForm.hasError('mismatch') && (updateEmailForm.dirty || updateEmailForm.touched)">
+           New Email Id should match
+        </mat-error>
+        <div class="button-container">
+          <button mat-raised-button color="primary" type="submit" *ngIf="!updateEmailMode"
+            [disabled]="updateEmailForm.invalid || (email !== confirmEmail)">
+            Send OTP
+          </button>
+        </div>
+      </form>
+  
+      <form *ngIf="updateEmailMode"  [formGroup]="emailOtpForm">
+        <h2>OTP Verification</h2>
+        <input type="text"   formControlName="emailOtp" required  [attr.autocomplete]="'off'"  (input)="onEmailOtpInput($event)">
+        <div class="button-container">
+          <button mat-raised-button color="primary" type="submit" (click)=" updatedEmailMsg()"
+          [disabled]="emailOtpForm.get('emailOtp')?.value.length !== 6">
+            Update Email
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  

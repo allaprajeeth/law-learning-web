@@ -37,7 +37,6 @@ import { LogoutComponent } from './common/components/logout/logout.component';
 import { UploadComponent } from './common/components/upload/upload.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
-import { PasswordComponent } from './common/components/password/password.component';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
 import { VideoplayerNavbarComponent } from './common/components/videoplayer-navbar/videoplayer-navbar.component';
 import { RatingsComponent } from './common/components/ratings/ratings.component';
@@ -52,13 +51,15 @@ import { ModalComponent } from './common/components/modal/modal.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
-import { PhonepasswordComponent } from './common/components/phonepassword/phonepassword.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
+import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
+
 
 
 @NgModule({
@@ -77,7 +78,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CoursesComponent,
     LogoutComponent,
     UploadComponent,
-    PasswordComponent,
     VideoplayerComponent,
     VideoplayerNavbarComponent,
     RatingsComponent,
@@ -86,16 +86,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,
-    PhonepasswordComponent,
     FreecourseComponent,
     AboutusComponent,
-    PhonepasswordComponent,
     TermsandconComponent,
     OverviewFreecourseComponent,
     PostdetailComponent,  
     OverviewFreecourseComponent,  
     OverviewFreecourseComponent,
     ContactusComponent,
+    ForgotPhonenoComponent,
+    ForgotEmailComponent,
   ],
   imports: [
     CarouselModule,

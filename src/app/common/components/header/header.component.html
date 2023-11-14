@@ -75,7 +75,11 @@
      
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
-
+        <div class="overlay">
+          <a routerLink="/overviewAvailable" [queryParams]="{ showRatingOfCourse: 'true' }">
+            <i class="fa fa-play-circle play-icon"></i>
+          </a>
+        </div>
         <span class="duration">{{ availableCoursesDurations[j] }}</span>
       </div>
       <div class="headingsContainer">
