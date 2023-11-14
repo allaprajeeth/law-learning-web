@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatSelectModule} from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -32,6 +33,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { InstructorSidenavComponent } from './components/instructor-sidenav/instructor-sidenav.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
+import { UploadComponent } from './components/upload/upload.component';
+import { TestpreviewComponent } from './components/testpreview/testpreview.component';
 
 
 @NgModule({
@@ -51,6 +54,8 @@ import { QuiztestComponent } from './components/quiztest/quiztest.component';
     InstructorSidenavComponent,
     AboutusComponent,
     QuiztestComponent,
+    UploadComponent,
+    TestpreviewComponent,
   ],
   imports: [
     FormsModule,
@@ -61,6 +66,7 @@ import { QuiztestComponent } from './components/quiztest/quiztest.component';
     MatIconModule,
     MatSelectModule,
     MatSlideToggleModule,
+    MatSnackBarModule,
     MatMenuModule,
     MatTooltipModule,
     MatBadgeModule,

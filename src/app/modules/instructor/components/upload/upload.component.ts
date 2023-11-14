@@ -30,6 +30,9 @@ interface MainSection {
 export class UploadComponent implements OnInit {
   mainSections: MainSection[] = [];
   isDurationFetched: boolean = false;
+  // hasTest: string = 'no'; 
+  hasTest: string | null = null; 
+
 
   constructor() {}
 
@@ -130,12 +133,10 @@ export class UploadComponent implements OnInit {
   saveSubSection(mainIndex: number, subIndex: number) {
     const subSection = this.mainSections[mainIndex].subSections[subIndex];
   
-    // if (!subSection.file) {
-    //   window.alert('Error: Please select a video file for this subsection.');
-    //   return;
-    // }
-  
-    // Implement logic to save sub-section data
     console.log('Sub-section saved:', subSection);
+  }
+
+  get isCreateQuizButtonDisabled(): boolean {
+    return this.hasTest !== 'yes';
   }
 }

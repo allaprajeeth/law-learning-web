@@ -1,0 +1,262 @@
+/* upload.component.scss */
+.main-container {
+    background-color: #e0d9d9;
+    height: auto;
+    
+  .container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 100vh;
+    background-color: #e0d9d9;
+  }
+  
+  .form-container {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    margin-top: 20px;
+  }
+  
+  .form-group {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: relative; /* Set position to relative for positioning the label */
+  }
+  
+  .textarea-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: bold;
+  }
+  
+  textarea {
+    width: 89%;
+    padding: 10px; /* Adjust padding to create space for the label above the textarea */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px; /* Adjust margin to create space between label and textarea */
+  }
+  
+  
+  h2 {
+    // text-align: center;
+    margin-bottom: 20px;
+    
+  
+  }
+  
+  .duration-input {
+    display: flex;
+    gap: 10px;
+    
+    input[type="number"] {
+      width: 200px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+  }
+  .custom-save-button {
+    background-color: #007791; /* Green background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    margin-top: 10px;
+    cursor: pointer; /* Cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+  
+    &:hover {
+      background-color: #218838; /* Darker green on hover */
+    }
+  }
+  .button-description {
+    margin-top: 5px;
+    margin-left: 15px;
+    font-size: smaller; /* You can adjust the font size as needed */
+  }
+  .status-under-review {
+    font-size: 18px;
+    color:#007791
+  }
+  .sec-save-button{
+    background-color: #28a745; /* Green background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding */
+    margin-top: 10px;
+    cursor: pointer; /* Cursor on hover */
+    transition: background-color 0.3s; /* Smooth background color transition */
+  
+  }
+  
+  .main-section {
+    position: relative;
+    border: 1px solid #413e3e;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  
+    .section-number{
+      font-weight: bolder;
+      font-size: larger;
+    }
+  }
+  
+  .sub-section {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .remove-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background-color: #007791;
+    transition: background-color 0.3s;
+    border-radius: 5px;
+    padding: 5px 6px;
+    margin: 2px 5px;
+    border: none;
+    font-size: 20px;
+    color:#fff;
+    cursor: pointer;
+  
+  }
+  
+  #mainFile,
+  #subFile {
+    margin-top: 10px;
+  }
+  
+  /* Add more styles as needed */
+  /* upload.component.scss */
+  
+  /* Add styling for the add section button */
+  .add-section-button,
+  .add-subsection-button{
+    background-color: #007791;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px; /* Optional: Add margin between buttons */
+  }
+  
+  /* Add hover effect */
+  .add-section-button:hover,
+  .add-subsection-button:hover,
+  .remove-button:hover {
+    background-color: #005e6b;
+  }
+  
+  /* Style the main submit button */
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto; /* Center the button horizontally */
+    display: block; 
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  .sec-submit-button{
+    background-color: #007791;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 auto; /* Center the button horizontally */
+    display: block; 
+  }
+  /* Increase font weight for main section name */
+  .main-section .form-group label {
+    font-weight: bold;
+  }
+  
+  /* Increase font weight for sub-section name */
+  .sub-section .form-group label {
+    font-weight: bold;
+  }
+  .form-group label {
+    font-weight: bold;
+    
+  }
+  // .radio-group input[type="radio"] {
+  //   margin-right: 30px; /* Adjust the value as needed */
+  // }
+  .radio-group {
+    display: flex;
+    gap: 20px;
+  }
+  // .radio-group label {
+  //   margin-right: 2px; /* Adjust the value as needed */
+  // }
+//   .testbutton{
+//     background-color: #848784;
+//     color: white;
+//     padding: 10px 20px;
+//     border: none;
+//     border-radius: 5px;
+//     cursor: pointer;
+//     transition: background-color 0.3s;
+//     margin-left: 15px;
+//     font-weight: bold;
+  
+//     &:hover {
+//       background-color: #282a28;
+//     }
+//   }
+  
+  // Add styles for the enabled and disabled states of the button
+.testbutton {
+    border: none;
+    margin-left: 15px;
+    padding: 10px 20px;
+    font-weight: bold;
+  
+    // Styles for the enabled state
+    &:not([disabled]) {
+      background-color: #282a28;  // Set your desired background color for enabled state
+      color: #fff;  // Set your desired text color for enabled state
+      cursor: pointer;  // Change cursor to pointer for better user interaction
+    }
+  
+    // Styles for the disabled state
+    &:disabled {
+      background-color: #ccc;  // Set your desired background color for disabled state
+      color: #666;  // Set your desired text color for disabled state
+      cursor: not-allowed;  // Change cursor to not-allowed for disabled state
+    }
+  
+    // Common styles for both states
+    // Add any additional common styles here
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  // Add any other styles for your application
+  
+  
+  }

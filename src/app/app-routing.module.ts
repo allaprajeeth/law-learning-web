@@ -9,6 +9,7 @@ import { NavComponent } from './common/components/nav/nav.component';
 import { HomepageComponent } from './common/components/homepage/homepage.component';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
+import { PasswordComponent } from './common/components/password/password.component';
 import { CoursesComponent } from './common/components/courses/courses.component';
 import { UploadComponent } from './common/components/upload/upload.component';
 import { LogoutComponent } from './common/components/logout/logout.component';
@@ -93,16 +94,22 @@ const routes: Routes = [
     component:DocumentsComponent
   },
   {
-    path: 'courses',
-    component:CoursesComponent
-  },
-  {
     path:"editcourses",
     component:EditcoursesComponent
   },
   {
+
+    path: 'password',
+    component:PasswordComponent
+  },
+  {
+    path: 'phonepassword',
+    component:PhonepasswordComponent
+  },
+  {
     path: 'upload',
     component:UploadComponent
+
   },
   {
     path: 'videoplayer',

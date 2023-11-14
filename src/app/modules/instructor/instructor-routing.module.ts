@@ -12,6 +12,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
+import { UploadComponent } from './components/upload/upload.component';
 
 const routes: Routes = [
   {
@@ -63,7 +64,11 @@ component:ArticleComponent
 {
   path:"quiztest",
   component:QuiztestComponent
-}
+},
+{
+  path:"upload",
+  component: UploadComponent
+},
 ];
 
 @NgModule({

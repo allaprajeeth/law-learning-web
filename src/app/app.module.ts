@@ -31,7 +31,6 @@ import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
-import { CoursesComponent } from './common/components/courses/courses.component';
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
 import { LogoutComponent } from './common/components/logout/logout.component';
 import { UploadComponent } from './common/components/upload/upload.component';
@@ -75,8 +74,8 @@ import { ForgotEmailComponent } from './common/components/forgot-email/forgot-em
     HomepageComponent,
     ArticleComponent,
     DocumentsComponent,
-    CoursesComponent,
     LogoutComponent,
+    PasswordComponent,
     UploadComponent,
     VideoplayerComponent,
     VideoplayerNavbarComponent,
