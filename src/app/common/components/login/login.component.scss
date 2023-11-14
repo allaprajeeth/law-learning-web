@@ -77,13 +77,14 @@ button:disabled {
   border-color: black;
 }
 .redirect{
-  cursor:pointer;
+  
   text-align: center;
   color: rgb(0, 0, 0);
   font-weight: 300;
   margin-bottom: 10px;
 }
 .forgot{
+  cursor:pointer;
   color:rgb(8, 67, 216);
   font-weight: 400;
 }
@@ -98,7 +99,10 @@ button:disabled {
   margin-top: 120px !important; 
 
 }
-
+.sendOtp{
+  margin:20px;
+  margin-left: 80px;
+}
 
 
 

@@ -34,7 +34,7 @@
         </div>
       </div>
       <div *ngIf="isDeleteCountdownVisible"  class="container">
-        <div>Your account will be permanently deleted in {{ formatTime(countdown) }}</div>
+        <div>Your account will be permanently deleted in {{ formatTime(countdown) }} Hours</div>
         <br>
         <button (click)="revertDelete()">Revert Delete</button>
       </div>
