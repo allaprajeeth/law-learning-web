@@ -58,6 +58,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -122,6 +123,7 @@ import { ContactusComponent } from './common/components/contactus/contactus.comp
     MatExpansionModule,
     MatDialogModule,
     MatSlideToggleModule,
+    MatCheckboxModule,
     MatMenuModule,
     MatButtonModule,
     FileUploadModule,

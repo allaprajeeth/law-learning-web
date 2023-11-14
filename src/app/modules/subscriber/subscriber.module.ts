@@ -40,6 +40,10 @@ import { SubarticleComponent } from './subarticle/subarticle.component';
 import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CarouselModule } from 'primeng/carousel';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 @NgModule({
   declarations: [
     SidenavComponent, 
@@ -64,6 +68,7 @@ import { CarouselModule } from 'primeng/carousel';
     SubarticleComponent,
     SubdocumentsComponent,
     AboutusComponent,
+    CheckoutComponent,
    
 
   ],
@@ -81,13 +86,14 @@ import { CarouselModule } from 'primeng/carousel';
     FormsModule,
     MatInputModule,
     CarouselModule,
-  
+    MatRadioModule,
     MatMenuModule,
     MatButtonModule,
     MatBadgeModule,
     MatDialogModule,
     MatCardModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatCheckboxModule
   ]
 })
 export class SubscriberModule { }

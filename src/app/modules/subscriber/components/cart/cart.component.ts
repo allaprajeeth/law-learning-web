@@ -27,6 +27,12 @@ export class CartComponent implements OnInit {
 
       const cartItemCount = this.cartItems.length;
       this.cartService.updateCartItemCount(cartItemCount);
+
+      // this.totalActualPrice = this.getTotalActualPrice();
+      // this.calculateDiscountedPrice();
+
+      this.cartService.updateTotalActualPrice(this.totalActualPrice);
+      this.cartService.updateDiscountedPrice(this.discountedPrice);
     });
   }
 

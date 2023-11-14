@@ -27,6 +27,7 @@ import { ModalComponent } from './common/components/modal/modal.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { EditcoursesComponent } from './modules/instructor/components/editcourses/editcourses.component';
+import { CheckoutComponent } from './modules/subscriber/components/checkout/checkout.component';
 
 const routes: Routes = [
   {
@@ -138,6 +139,10 @@ const routes: Routes = [
   { 
     path: 'cart', 
     component: CartComponent 
+  },
+  { 
+    path: 'checkout',
+    component: CheckoutComponent 
   },
   { 
     path: 'post/:id', 
