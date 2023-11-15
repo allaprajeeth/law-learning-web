@@ -1,17 +1,48 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+// import * as CartActions from './modules/subscriber/components/cart/state/createAction';
+import * as CartActions from '../components/cart/state/cart.actions';
+import * as CartSelectors from '../components/cart/state/cart.selectors';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  private totalActualPriceSubject = new BehaviorSubject<number>(0);
-  private discountedPriceSubject = new BehaviorSubject<number>(0);
+  // private totalActualPriceSubject = new BehaviorSubject<number>(0);
+  // private discountedPriceSubject = new BehaviorSubject<number>(0);
 
+  // private discountedPriceSubject = new BehaviorSubject<number>(0);
+  // discountedPrice$ = this.discountedPriceSubject.asObservable();
+
+  // updateDiscountedPrice(discountedPrice: number) {
+  //   this.discountedPriceSubject.next(discountedPrice);
+  // }
+  
+  // totalActualPrice$: Observable<number> = this.totalActualPriceSubject.asObservable();
+  // discountedPrice$: Observable<number> = this.discountedPriceSubject.asObservable();
+
+
+  private totalActualPriceSubject = new BehaviorSubject<number>(0);
   totalActualPrice$: Observable<number> = this.totalActualPriceSubject.asObservable();
+
+  private discountedPriceSubject = new BehaviorSubject<number>(0);
   discountedPrice$: Observable<number> = this.discountedPriceSubject.asObservable();
 
+  private cartItems: any[] = [];
+  private cartItemsSubject = new BehaviorSubject<any[]>(this.cartItems);
+
+  private cartItemCountSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  cartItemCount$: Observable<number> = this.cartItemCountSubject.asObservable();
+
+    // Added property to keep track of the "added to cart" status
+  private addedToCartStatus: Record<string, boolean> = {};
+
+
+  buttonText$ = this.store.select(CartSelectors.selectButtonText);
+
+  
   updateTotalActualPrice(totalActualPrice: number) {
     this.totalActualPriceSubject.next(totalActualPrice);
   }
@@ -21,16 +52,16 @@ export class CartService {
   }
 
   
-  private cartItems: any[] = [];
-  private cartItemsSubject = new BehaviorSubject<any[]>(this.cartItems);
+  // private cartItems: any[] = [];
+  // private cartItemsSubject = new BehaviorSubject<any[]>(this.cartItems);
 
-  private cartItemCountSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  cartItemCount$: Observable<number> = this.cartItemCountSubject.asObservable();
+  // private cartItemCountSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  // cartItemCount$: Observable<number> = this.cartItemCountSubject.asObservable();
 
   // Added property to keep track of the "added to cart" status
-  private addedToCartStatus: Record<string, boolean> = {};
+  // private addedToCartStatus: Record<string, boolean> = {};
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   updateCartItemCount(count: number) {
     this.cartItemCountSubject.next(count);
@@ -97,5 +128,15 @@ addToCart(product: any) {
 
      // Clear the "added to cart" status
      this.addedToCartStatus = {};
+  }
+
+  addToCartClicked() {
+    // Your existing logic for adding to the cart
+    this.store.dispatch(CartActions.setGoToCartButtonText());
+  }
+
+  removeFromCartClicked() {
+    // Your existing logic for removing from the cart
+    this.store.dispatch(CartActions.setAddToCartButtonText());
   }
 }
