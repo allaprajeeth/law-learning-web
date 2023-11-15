@@ -8,12 +8,19 @@
   
           <div *ngFor="let mainSection of mainSections; let mainIndex = index" class="main-section">
             <div class="section-number">Section {{mainIndex + 1}}</div>
+            
             <button type="button" class="remove-button" (click)="removeMainSection(mainIndex)">×</button>
             <br />
+
             <div class="form-group">
-              <label for="mainName{{mainIndex}}">Section Title: </label>
-              <input type="text" id="mainName{{mainIndex}}" [(ngModel)]="mainSection.name" name="mainSectionNames[]" required>
+              <label for="mainName{{mainIndex}}">Section Title <span class="required-field">**</span> : </label>
+              <input type="text" id="mainName{{mainIndex}}" placeholder="Section name" [(ngModel)]="mainSection.name" required (input)="onSectionNameChange(mainIndex)">
             </div>
+
+            <!-- <div class="form-group">
+              <label for="mainName{{mainIndex}}">Section Title <span class="required-field">**</span> : </label>
+              <input type="text"  placeholder="Section name"  required>
+            </div> -->
   
             <div class="form-group">
               <label for="description">Description:</label>
@@ -21,10 +28,11 @@
             </div>
   
             <div *ngFor="let subSection of mainSection.subSections; let subIndex = index">
+              <div class="section-number">{{ subSection.title }}</div>
               <div class="sub-section">
                 <div class="form-group">
-                  <label for="subName{{mainIndex}}_{{subIndex}}">Sub-Section Title: </label>
-                  <input type="text" id="subName{{mainIndex}}_{{subIndex}}" [(ngModel)]="subSection.title" name="subSectionNames[]" required>
+                  <label for="subName{{mainIndex}}_{{subIndex}}">Sub-Section Title<span class="required-field">**</span> :</label>
+                  <input type="text" id="subName{{mainIndex}}_{{subIndex}}" placeholder="Sub-section name" name="subSectionNames[]" required>
                 </div>
   
                 <button type="button" class="remove-button" (click)="removeSubSection(mainIndex, subIndex)">×</button>
@@ -36,7 +44,7 @@
                 </div>
   
                 <div class="form-group">
-                  <label for="mainFile{{mainIndex}}_{{subIndex}}">Upload Video: </label>
+                  <label for="mainFile{{mainIndex}}_{{subIndex}}">Upload Video<span class="required-field">**</span> : </label>
                   <input type="file" id="mainFile{{mainIndex}}_{{subIndex}}" (change)="onMainFileSelected($event, mainIndex, subIndex)">
                 </div>
   
@@ -55,9 +63,9 @@
                 </div>
   
                 <div *ngIf="!subSection.submitted">
-                  <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)">Save</button>
+                  <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)" [disabled]="buttonsDisabled">Save</button>
                   <p class="button-description">By clicking save, all your files related to this subsection will be saved.</p>
-                  <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)">Submit</button>
+                  <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)" [disabled]="buttonsDisabled">Submit</button>
                   <p class="button-description">By clicking submit, all your files related to this subsection will be submitted to the website for review.</p>
                 </div>
                 <div *ngIf="subSection.submitted && subSection.status === 'Under Review'" [ngClass]="'status-under-review'">
@@ -68,9 +76,9 @@
             </div>
   
             <div *ngIf="!mainSection.submitted">
-              <button type="button" class="save-button custom-save-button" (click)="saveMainSection(mainIndex)">Save</button>
+              <button type="button" class="save-button custom-save-button" (click)="saveMainSection(mainIndex)" [disabled]="!isSectionNameValid(mainIndex)">Save</button>
               <p class="button-description">By clicking save, all your files related to this section will be saved.</p>
-              <button type="button" class="sec-submit-button" (click)="submitMainSection(mainIndex)">Submit</button>
+              <button type="button" class="submit-button" (click)="submitMainSection(mainIndex)" [disabled]="buttonsDisabled">Submit</button>
               <p class="button-description">By clicking submit, all your files related to this section will be submitted to the website for review.</p>
             </div>
             <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'" [ngClass]="'status-under-review'">
@@ -122,7 +130,7 @@
 
 
         <div>
-          <button type="button" class="submit-button" (click)="submitSections()">Submit All</button>
+          <button type="button" class="submit-button" (click)="submitSections()" [disabled]="buttonsDisabled">Submit All</button>
         </div>
       </div>
     </div>

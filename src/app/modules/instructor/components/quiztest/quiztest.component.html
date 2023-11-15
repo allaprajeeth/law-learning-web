@@ -44,6 +44,7 @@
                 <textarea id="enterQuestion{{i}}" [(ngModel)]="form.enteredQuestion"
                     placeholder="Enter your question"></textarea>
             </div>
+
             <div *ngIf="form.expanded">
                 <div class="input-group">
                     <button class="add-choice-button" (click)="addChoice(i)">+ Add Choice</button>
@@ -60,13 +61,20 @@
                 <div class="input-group">
                     <div class="input-group-item">
                         <label for="correctAnswer{{i}}">Correct Answer<span class="required">**</span>:</label>
-                        <input id="correctAnswer{{i}}" type="text" [(ngModel)]="form.correctAnswer"
-                            placeholder="Enter correct answer" />
+                       <!-- Inside the additional-form -->
+        <input id="correctAnswer{{i}}" type="text" [(ngModel)]="form.correctAnswer" #correctAnswerControl="ngModel" placeholder="Enter correct answer" />
+       <p class="error-message" *ngIf="isCorrectAnswerInvalid(form, correctAnswerControl)">At least one choice must match the correct answer</p>
+
+                            <!-- <p class="error-message" *ngIf="!isCorrectAnswerValid(form)">At least one choice must match the correct answer</p> -->
                     </div>
+                    <!-- <p class="error-message" *ngIf="isCorrectAnswerInvalid(form)">At least one choice must match the correct answer</p> -->
+
                     <div class="input-group-item">
                         <label for="questionScore{{i}}">Question Score:</label>
                         <input id="questionScore{{i}}" type="number" [(ngModel)]="form.questionScore"
                             placeholder="Enter question score" />
+                           
+      
                     </div>
                 </div>
                 <button class="delete-form-button" (click)="deleteForm(i)">X</button>

@@ -60,20 +60,20 @@
       border-radius: 5px;
     }
   }
-  .custom-save-button {
-    background-color: #007791; /* Green background color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding */
-    margin-top: 10px;
-    cursor: pointer; /* Cursor on hover */
-    transition: background-color 0.3s; /* Smooth background color transition */
+  // .custom-save-button {
+  //   background-color: #007791; /* Green background color */
+  //   color: white; /* Text color */
+  //   border: none; /* No border */
+  //   border-radius: 5px; /* Rounded corners */
+  //   padding: 10px 20px; /* Padding */
+  //   margin-top: 10px;
+  //   cursor: pointer; /* Cursor on hover */
+  //   transition: background-color 0.3s; /* Smooth background color transition */
   
-    &:hover {
-      background-color: #218838; /* Darker green on hover */
-    }
-  }
+  //   &:hover {
+  //     background-color: #218838; /* Darker green on hover */
+  //   }
+  // }
   .button-description {
     margin-top: 5px;
     margin-left: 15px;
@@ -83,17 +83,17 @@
     font-size: 18px;
     color:#007791
   }
-  .sec-save-button{
-    background-color: #28a745; /* Green background color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    padding: 10px 20px; /* Padding */
-    margin-top: 10px;
-    cursor: pointer; /* Cursor on hover */
-    transition: background-color 0.3s; /* Smooth background color transition */
+  // .sec-save-button{
+  //   background-color: #28a745; /* Green background color */
+  //   color: white; /* Text color */
+  //   border: none; /* No border */
+  //   border-radius: 5px; /* Rounded corners */
+  //   padding: 10px 20px; /* Padding */
+  //   margin-top: 10px;
+  //   cursor: pointer; /* Cursor on hover */
+  //   transition: background-color 0.3s; /* Smooth background color transition */
   
-  }
+  // }
   
   .main-section {
     position: relative;
@@ -105,6 +105,9 @@
     .section-number{
       font-weight: bolder;
       font-size: larger;
+    }
+    .required-field{
+      color: red;
     }
   }
   
@@ -162,36 +165,36 @@
   }
   
   /* Style the main submit button */
-  .submit-button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 0 auto; /* Center the button horizontally */
-    display: block; 
-  }
+  // .submit-button {
+  //   background-color: #4caf50;
+  //   color: white;
+  //   padding: 10px 20px;
+  //   border: none;
+  //   border-radius: 5px;
+  //   cursor: pointer;
+  //   transition: background-color 0.3s;
+  //   margin: 0 auto; /* Center the button horizontally */
+  //   display: block; 
+  // }
   
-  .submit-button:hover {
-    background-color: #45a049;
-  }
-  .sec-submit-button{
-    background-color: #007791;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin: 0 auto; /* Center the button horizontally */
-    display: block; 
-  }
-  /* Increase font weight for main section name */
-  .main-section .form-group label {
-    font-weight: bold;
-  }
+  // .submit-button:hover {
+  //   background-color: #45a049;
+  // }
+  // .sec-submit-button{
+  //   background-color: #007791;
+  //   color: white;
+  //   padding: 10px 20px;
+  //   border: none;
+  //   border-radius: 5px;
+  //   cursor: pointer;
+  //   transition: background-color 0.3s;
+  //   margin: 0 auto; /* Center the button horizontally */
+  //   display: block; 
+  // }
+  // /* Increase font weight for main section name */
+  // .main-section .form-group label {
+  //   font-weight: bold;
+  // }
   
   /* Increase font weight for sub-section name */
   .sub-section .form-group label {
@@ -226,6 +229,62 @@
 //       background-color: #282a28;
 //     }
 //   }
+
+.save-button {
+  // Common styles for the button
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
+
+  // Disabled state styles
+  &[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  }
+
+  // Enabled state styles
+  &:not([disabled]) {
+    background-color: #007791;
+    color: #fff;
+
+    &:hover {
+      background-color: #007791; // Change color on hover for enabled state
+    }
+  }
+ 
+}
+.submit-button{
+// Common styles for the button
+padding: 10px 20px;
+font-size: 14px;
+cursor: pointer;
+border-radius: 5px;
+border: none;
+margin: 0 auto;
+display: block;
+
+// Disabled state styles
+&[disabled] {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+// Enabled state styles
+&:not([disabled]) {
+  background-color: #007791;
+  color: #fff;
+
+  &:hover {
+    background-color: #007791; // Change color on hover for enabled state
+  }
+}
+
+}
   
   // Add styles for the enabled and disabled states of the button
 .testbutton {

@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -16,6 +16,8 @@ export class AdditionalForm {
   choice:number=1;
   questionNumber: number = 1;
   expanded: boolean = true;
+  correctAnswerControl: any;
+  
 }
 
 @Component({
@@ -41,6 +43,7 @@ export class QuiztestComponent {
   additionalForms: AdditionalForm[] = [
     new AdditionalForm(), 
   ];
+  
   // router: any;
 
   constructor(private _snackBar: MatSnackBar, private router: Router, public dialog: MatDialog) {}
@@ -53,40 +56,64 @@ export class QuiztestComponent {
     this.isAddingQuestion = true;
   }
 
+
+
 // addChoice(formIndex: number) {
 //   const form = this.additionalForms[formIndex];
-//   for (let i = 0; i < 4; i++) {
-//     form.selectchoice.push(''); // Push empty strings to the choices array of the specific form
+  
+//   // Only add empty strings if the selectchoice array is empty
+//   if (form.selectchoice.length === 0) {
+//     for (let i = 0; i < 4; i++) {
+//       form.selectchoice.push(''); 
+//     }
 //   }
 // }
-
 addChoice(formIndex: number) {
   const form = this.additionalForms[formIndex];
-  
+
   // Only add empty strings if the selectchoice array is empty
   if (form.selectchoice.length === 0) {
     for (let i = 0; i < 4; i++) {
-      form.selectchoice.push(''); // Push empty strings to the choices array of the specific form
+      form.selectchoice.push('');
     }
+  } else {
+    form.selectchoice.push('');
+  }
+
+  // Ensure at least one choice matches the correct answer
+  this.validateCorrectAnswer(form);
+}
+
+validateCorrectAnswer(form: AdditionalForm) {
+  const hasMatchingChoice = form.selectchoice.some(choice => choice === form.correctAnswer);
+
+  // If no matching choice and the correct answer control is dirty or touched, set the correct answer to the first choice
+  if (!hasMatchingChoice && (form.correctAnswerControl?.touched || form.correctAnswerControl?.dirty) && form.selectchoice.length > 0) {
+    form.correctAnswer = form.selectchoice[0];
   }
 }
 
+  
 
-// addChoice(formIndex: number) {
-//   const form = this.additionalForms[formIndex];
+isCorrectAnswerInvalid(form: AdditionalForm, correctAnswerControl: any): boolean {
+  return (
+    form.selectchoice.length > 0 &&
+    !form.selectchoice.includes(form.correctAnswer) &&
+    (correctAnswerControl?.touched || correctAnswerControl?.dirty)
+  );
+}
 
-//   // Only add empty strings if the selectchoice array is empty
-//   if (!form.selectchoice || form.selectchoice.length === 0) {
-//     form.selectchoice = ['']; // Initialize the array with one empty string
-//   } else {
-//     form.selectchoice.push(''); // Add an additional empty string to the existing array
-//   }
+
+
+
+
+// isCorrectAnswerValid(form: AdditionalForm): boolean {
+//   return form.selectchoice.includes(form.correctAnswer);
 // }
 
 
-// addAdditionalForm() {
-//   this.additionalForms.push(new AdditionalForm());
-// }
+
+
 addAdditionalForm() {
   const newForm = new AdditionalForm();
   newForm.questionNumber = this.additionalForms.length + 1; 
