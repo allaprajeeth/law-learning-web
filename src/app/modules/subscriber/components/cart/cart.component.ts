@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -12,13 +13,13 @@ export class CartComponent implements OnInit {
   cartItems: any[] = [];
   discountedPrice: number = 0; 
   cartIsEmpty: boolean = false;
-
   cartItemCount: number = 0;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
     this.cartService.getCartItems().subscribe((items) => {
+      
       this.cartItems = items;
       console.log('Cart Items:', this.cartItems);
 
@@ -28,11 +29,17 @@ export class CartComponent implements OnInit {
       const cartItemCount = this.cartItems.length;
       this.cartService.updateCartItemCount(cartItemCount);
 
-      // this.totalActualPrice = this.getTotalActualPrice();
-      // this.calculateDiscountedPrice();
-
       this.cartService.updateTotalActualPrice(this.totalActualPrice);
       this.cartService.updateDiscountedPrice(this.discountedPrice);
+    });
+    
+    
+    this.cartService.totalActualPrice$.subscribe((price) => {
+      this.totalActualPrice = price;
+    });
+  
+    this.cartService.discountedPrice$.subscribe((price) => {
+      this.discountedPrice = price;
     });
   }
 
@@ -48,6 +55,7 @@ export class CartComponent implements OnInit {
     this.discountedPrice = this.totalActualPrice;
   // this.totalActualPrice = this.getTotalActualPrice();
   this.applyCoupon();
+  this.cartService.updateDiscountedPrice(this.discountedPrice);
 }
 
   applyCoupon() {
@@ -60,16 +68,17 @@ export class CartComponent implements OnInit {
       { code: 'CODE50', discountPercentage: 50 },
       { code: 'CODE60', discountPercentage: 60 },
       { code: 'CODE70', discountPercentage: 70 },
-      { code: 'CODE80', discountPercentage: 80 },
     ];   
 
     const coupon = couponCodes.find((c) => c.code === enteredCode);
 
     if (coupon) {
       const discountPercentage = coupon.discountPercentage;
-
       this.discountedPrice = this.totalActualPrice - (this.totalActualPrice * discountPercentage) / 100;
       this.discountedPrice = Math.round(this.discountedPrice);
+  
+      this.cartService.updateDiscountedPrice(this.discountedPrice);
+      this.couponCode = '';
     }
   }
 
