@@ -59,7 +59,9 @@ import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgo
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { cartReducer, CartEffects } from './modules/subscriber/components/cart/state/cart.state';
+import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
+
+// import { cartReducer, CartEffects } from './app.state';
 
 @NgModule({
   declarations: [
@@ -124,8 +126,8 @@ import { cartReducer, CartEffects } from './modules/subscriber/components/cart/s
     MatMenuModule,
     MatButtonModule,
     FileUploadModule,
-    StoreModule.forRoot({ cart: cartReducer }, {}),
-    EffectsModule.forRoot([ CartEffects ]),
+    StoreModule.forRoot({ cart: cartReducer, }),
+    // EffectsModule.forRoot([ CartEffects ]),
   ],
   providers: [PopupService,
     {
