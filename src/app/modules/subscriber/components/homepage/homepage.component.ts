@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { UniqueIdService } from '../unique-id.service';
 import { CartService } from '../cart.service';
-// import { SearchServiceService } from 'src/app/search.service.service';
 import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 
 interface Categories {
@@ -16,23 +15,10 @@ interface Categories {
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  // @ViewChild('tooltipRef', { read: ElementRef })
-  // tooltipEl!: ElementRef;
 
   uniqueIds: string[] = [];
   coursePrice: number[];
-
-  // private uniqueIdCounter = 1;
-
-  // generateUniqueId(): string {
-  //   const uniqueId = `product_${this.uniqueIdCounter}`;
-  //   this.uniqueIdCounter++;
-  //   console.log(uniqueId);
-  //   return uniqueId;
-  // }
-
   randomFutureDates: Date[] = [];
-
   mycoursesimages: string[] = [];
   availablecoursesimages: string[] = [];
   ratingValues2: number[] = [];
@@ -50,7 +36,7 @@ export class HomepageComponent implements OnInit {
     private router: Router,
     private cartService: CartService,
     public uniqueIdService: UniqueIdService
-  ) // private searchService: SearchServiceService
+  ) 
   {
     // Initialize uniqueIds only if it hasn't been initialized
     if (uniqueIdService.uniqueIds.length === 0) {
@@ -65,8 +51,6 @@ export class HomepageComponent implements OnInit {
   }
 
   addToCartClicked(j: number) {
-    // Generate a unique ID for the product
-    // const uniqueId = this.uniqueIdService.generateUniqueIds(this.availablecoursesimages.length);
 
     // Create the product with a unique ID
     const product = {
@@ -187,8 +171,6 @@ export class HomepageComponent implements OnInit {
   openMyMenu(event: MouseEvent, index: number): void {
     this.showCard = this.showCard.map((_, j) => j === index);
 
-    // console.log("this.tooltipEl", this.tooltipEl);
-
     if (this.showCard[index]) {
       const element = event.currentTarget as HTMLElement;
       const rect = element.getBoundingClientRect();
@@ -221,15 +203,8 @@ export class HomepageComponent implements OnInit {
     this.showCard[index] = false;
   }
 
- 
-
-
   ngOnInit(): void 
   {
-    // this.searchService.searchQuery$.subscribe((query) => {
-    //   // this.searchQuery = query;
-    //   this.filterImages();
-    // });
     this.initializeMyCoursesHeadings();
     this.generateRandomCoursesData();
 
@@ -241,13 +216,8 @@ export class HomepageComponent implements OnInit {
 
     for (let i = 0; i < 4; i++) 
     {
-      // const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
-      // const randomIndex = Math.floor(Math.random() * COURSES_MOCK.length);
       const randomCourse = COURSES_MOCK[i];
       const randomImageURL = `${randomCourse.courseThumbnail}?index=${i}`;
-
-      // const randomImageURL = randomCourse.courseThumbnail;
-
       this.mycoursesimages.push(randomImageURL);
       const randomValue = Math.floor(Math.random() * 100) + 1;
       this.randomMyCourseValues.push(randomValue);
@@ -361,10 +331,6 @@ getStarArray(ratingValue: number): number[] {
       this.availableCoursesDurations.push(duration);
     }
   }
-
-
-  
-  
 
   private generateRandomFutureDates(numDates: number): Date[] {
     const dates: Date[] = [];
