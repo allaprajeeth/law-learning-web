@@ -18,6 +18,7 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
 import { SubarticleComponent } from './subarticle/subarticle.component';
 import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 
 const routes: Routes = [
   {
@@ -96,7 +97,11 @@ const routes: Routes = [
   {
     path:"aboutus",
     component:AboutusComponent
-  }
+  },
+  {
+    path:"submitmesg",
+    component: SubmitmesgComponent
+  },
 
 
 ];

@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'; 
-import { ModalComponent } from 'src/app/common/components/modal/modal.component';
+// import { ModalComponent } from 'src/app/common/components/modal/modal.component';
 import { ActivatedRoute, Router } from '@angular/router';
+// import { ModalComponent } from 'src/app/common/components/modal/modal.component';
 import { ModalserviceService } from 'src/app/common/components/modalservice.service';
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 // import { Renderer2, ElementRef } from '@angular/core';
 interface BlogPost {
   id: number;
   title: string;
+  views: number;
   author: string;
   reviewer: string; 
   editor:string;
@@ -17,6 +19,7 @@ interface BlogPost {
   subheading:string;
   description: string[];
   date: string;
+  // price: number; 
 }
 
 @Component({
@@ -30,6 +33,7 @@ export class PublishingcornerComponent {
   boxes: BlogPost[] = [
     {  id: 1,
       title: '"What Is Criminal Law?"',
+      views: 810, 
     author:'Zoe Kaplan',
     reviewer:'Jeanine Skowronski',  
     editor:'Emily Courtney', 
@@ -53,10 +57,12 @@ export class PublishingcornerComponent {
     
    ],
 
-  date: '02 Nov 2023' // Add the date property for the first blog post
+  date: '02 Nov 2023',
+  // price: 19.99
      },
     { id: 2,
        title: '"Mastering Legal Research:"',
+       views: 630, 
     author:'John Smith',
     reviewer:'Williams',
     editor:'john shi',
@@ -76,11 +82,13 @@ export class PublishingcornerComponent {
      "A degree in law (Juris Doctor or equivalent) is required. Relevant teaching or instructional experience is preferred. Strong knowledge of legal principles, ethics, and case studies. Excellent communication and presentation skills. Patience, adaptability, and the ability to motivate and engage learners. A commitment to ongoing professional development in the legal field."
     
    ],
-    date: '01 Nov 2023'
+    date: '01 Nov 2023',
+    // price: 19.99
   },
      
     {  id: 3,
       title: '"Law School Applications:"', 
+      views: 355, 
      author:'John Smith',
      reviewer:'William john',
      editor:'john',
@@ -100,11 +108,13 @@ export class PublishingcornerComponent {
      "A degree in law (Juris Doctor or equivalent) is required. Relevant teaching or instructional experience is preferred. Strong knowledge of legal principles, ethics, and case studies. Excellent communication and presentation skills. Patience, adaptability, and the ability to motivate and engage learners. A commitment to ongoing professional development in the legal field."
     
    ],
-     date: '30 Oct 2023'
+     date: '30 Oct 2023',
+    //  price: 19.99
     },
     
      {  id: 4,
       title: '"Legal Ethics:Legal Profession"',
+      views: 610, 
      author:'David Wilson',
      reviewer:'John smith',
      editor:'Wilson',
@@ -123,11 +133,13 @@ export class PublishingcornerComponent {
      "A degree in law (Juris Doctor or equivalent) is required. Relevant teaching or instructional experience is preferred. Strong knowledge of legal principles, ethics, and case studies. Excellent communication and presentation skills. Patience, adaptability, and the ability to motivate and engage learners. A commitment to ongoing professional development in the legal field."
     
    ],
-     date: '14 Oct 2023'
+     date: '14 Oct 2023',
+    //  price: 19.99
     },
     
      {  id: 5,
       title: '"Legal Industry:Digital Age"',
+      views: 925, 
      author:'John Smith', 
      reviewer:'Williams',
      editor:'Antony',
@@ -147,11 +159,13 @@ export class PublishingcornerComponent {
      "A degree in law (Juris Doctor or equFivalent) is required. Relevant teaching or instructional experience is preferred. Strong knowledge of legal principles, ethics, and case studies. Excellent communication and presentation skills. Patience, adaptability, and the ability to motivate and engage learners. A commitment to ongoing professional development in the legal field."
     
    ],
-     date: '25 Apr 2023'
+     date: '25 Apr 2023',
+    //  price: 19.99
     },
      
      {  id: 6,
       title: '" Legal Internships:Experience"',
+      views: 738, 
       author:'Williams',
       reviewer:'',
       editor:'Antony',
@@ -171,7 +185,8 @@ export class PublishingcornerComponent {
      
     
    ],
-      date: '04 Apr 2023'
+      date: '04 Apr 2023',
+      // price: 19.99
     },
  
     ];
@@ -204,8 +219,28 @@ export class PublishingcornerComponent {
       this.expandedIndex = -1;
     } else {
       this.expandedIndex = index;
+
+      // Increment the views when "Read more" is clicked
+    this.filteredBoxes[index].views += 1;
     }
+
   }
+
+//   toggleReadMore(index: number) {
+//   if (this.expandedIndex === index) {
+//     this.expandedIndex = -1;
+//   } else {
+//     this.expandedIndex = index;
+
+//     // Increment the views when "Read more" is clicked
+//     this.filteredBoxes[index].views += 1;
+//   }
+// }
+
+  
+  
+
+
 
   isExpanded(index: number): boolean {
     return this.expandedIndex === index;
@@ -215,11 +250,11 @@ export class PublishingcornerComponent {
 
 
   openModal(blogPost: BlogPost): void {
-    this.dialog.open(ModalComponent, {
-      width: '800px',
-      height: 'auto', // Set the width of the modal as per your design
-      data: blogPost // Pass the entire blog post data to the modal
-    });
+    // this.dialog.open(ModalComponent, {
+    //   width: '800px',
+    //   height: 'auto', // Set the width of the modal as per your design
+    //   data: blogPost // Pass the entire blog post data to the modal
+    // });
   }
 
 
@@ -241,6 +276,6 @@ openArticleInNewTab(blogPost: BlogPost): void {
   const postDetailUrl = `/post/${blogPost.id}`; // Replace 'post/:id' with your actual route path
 
   // Open the blog post details in a new tab and pass the entire blog post object
-  window.open(`${postDetailUrl}?postId=${encodeURIComponent(JSON.stringify(blogPost))}`, '_blank');
+  window.open(`${postDetailUrl}?postId=${encodeURIComponent(JSON.stringify(blogPost))}`, '_self');
 }
 }

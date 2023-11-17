@@ -43,6 +43,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SubdocumentsComponent,
     AboutusComponent,
     CheckoutComponent,
+    SubmitmesgComponent,
    
 
   ],

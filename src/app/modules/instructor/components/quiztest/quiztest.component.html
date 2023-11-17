@@ -2,7 +2,7 @@
 <app-instructornav></app-instructornav>
 <div class="main-container">
     <h2>Create a Test</h2>
-    <p *ngIf="questionType !== 'multiple-choice'">Please select the question type to get test questions form</p>
+    <p *ngIf="questionType !== 'multiple-choice'" class="message">Please select the question type to get test questions form</p>
     <div class="quiz-container">
         <div class="quiz-header">
             <div class="input-group">
@@ -50,14 +50,15 @@
                     <button class="add-choice-button" (click)="addChoice(i)">+ Add Choice</button>
                 </div>
                 <div class="input-group" *ngFor="let choice of form.selectchoice; let i = index; trackBy: trackByFn">
-                    <!-- <label for="choice{{ i }}">Choice {{ i + 1 }}:</label> -->
-                    <label for="choice{{ i }}">Choice {{ i + 1 }}</label>
-
+                    <label for="choice{{ i }}">Choice {{ i + 1 }}:</label>
                     <div class="input-container">
                         <input id="choice{{ i }}" [(ngModel)]="form.selectchoice[i]" placeholder="Enter your choice" />
                         <button class="delete-button" (click)="deleteChoice(form, i)">&#10006;</button>
                     </div>
+                    <p class="error-message" *ngIf="isChoiceInvalid(form, i)">Duplicate choice. Please enter a unique choice.</p>
                 </div>
+
+
                 <div class="input-group">
                     <div class="input-group-item">
                         <label for="correctAnswer{{i}}">Correct Answer<span class="required">**</span>:</label>

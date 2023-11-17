@@ -35,6 +35,9 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { TestpreviewComponent } from './components/testpreview/testpreview.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { SubmitarticlemesgComponent } from './components/submitarticlemesg/submitarticlemesg.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 
 @NgModule({
@@ -56,6 +59,9 @@ import { TestpreviewComponent } from './components/testpreview/testpreview.compo
     QuiztestComponent,
     UploadComponent,
     TestpreviewComponent,
+    DocumentsComponent,
+    SubmitarticlemesgComponent,
+    ArticleformComponent,
   ],
   imports: [
     FormsModule,

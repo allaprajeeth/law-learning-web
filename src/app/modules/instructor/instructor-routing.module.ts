@@ -13,6 +13,8 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,10 @@ const routes: Routes = [
   {
     path:"homepage",
     component: HomepageComponent
+  },
+  {
+    path:"document",
+    component:DocumentsComponent
   },
   {
     path:"public-profile",
@@ -65,10 +71,19 @@ component:ArticleComponent
   path:"quiztest",
   component:QuiztestComponent
 },
+// {
+//   path:"documents",
+//   component: DocumentsComponent
+// },
 {
   path:"upload",
   component: UploadComponent
 },
+// {
+//   path:"articleform",
+//   component: ArticleformComponent
+// }
+
 ];
 
 @NgModule({
