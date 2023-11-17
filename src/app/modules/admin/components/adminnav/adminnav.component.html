@@ -4,33 +4,18 @@
     <div>
       <ul class="nav-icons">
         <li>
-          <a
-            routerLink="/admin/homepage"
-            routerLinkActive="active"
-            class="mycourses"
-            >My Home page</a
-          >
+          <a routerLink="/admin/homepage" routerLinkActive="active" class="mycourses">My Home page</a>
         </li>
         <li>
-          <a routerLink="/documents" routerLinkActive="active" class="mycourses"
-            >Library</a
-          >
+          <a routerLink="/documents" routerLinkActive="active" class="mycourses">Library</a>
         </li>
         <li>
-          <a routerLink="/article" routerLinkActive="active" class="mycourses"
-            >Publishing Corner</a
-          >
+          <a routerLink="/article" routerLinkActive="active" class="mycourses">Publishing Corner</a>
         </li>
         <li>
-        <a routerLink="/admin/aboutus" routerLinkActive="active" class="mycourses"
-        >About Us</a
-      >
-      </li>
-        <li>
-          <a routerLink="/reviewer/notification">
-            <mat-icon matBadge="4">notifications</mat-icon>
-          </a>
+          <a routerLink="/admin/aboutus" routerLinkActive="active" class="mycourses">About Us</a>
         </li>
+        <li><a routerLink="/reviewer/notification" routerLinkActive="active" class="mycourses" matBadge="4">Notifications</a></li>
 
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
@@ -40,9 +25,7 @@
             <li class="profile-item">
               <span>
                 <div class="user-circle">
-                  <a routerLink="" class="user-circle-text" style="color: white"
-                    >NS</a
-                  >
+                  <a routerLink="" class="user-circle-text" style="color: white">NS</a>
                 </div>
               </span>
               <span class="info">nuncsystems@gmail.com</span>
