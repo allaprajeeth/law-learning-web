@@ -20,6 +20,7 @@ export class CourseCardComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     // Check if the product is already in the cart and set the isAddedToCart property
     if (this.product) {
+      console.log(this.product);
       this.isAddedToCart = this.cartService.isAddedToCart(this.product.id);
     }
   }
