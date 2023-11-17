@@ -43,7 +43,11 @@ import { CarouselModule } from 'primeng/carousel';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
+
+import { ContactusComponent } from './components/contactus/contactus.component';
+
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import { SubmitmesgComponent } from './components/submitmesg/submitmesg.componen
     SubdocumentsComponent,
     AboutusComponent,
     CheckoutComponent,
+
     SubmitmesgComponent,
+
+    ContactusComponent,
+
    
 
   ],

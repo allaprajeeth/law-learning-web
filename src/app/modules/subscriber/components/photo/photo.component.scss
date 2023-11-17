@@ -16,10 +16,19 @@
 }
 .profile-box {
   text-align-last: center;
-  // border: 1px solid grey;
-  // background-color: white;
   padding: 5px;
   margin: 0;
+  position: relative;
+
+  .publicProfile {
+    position: absolute;
+    left:680px;
+    bottom: 20px;
+
+    .text {
+      font-weight: 600;
+    }
+  }
 
   h1 {
     font-weight: bold;
