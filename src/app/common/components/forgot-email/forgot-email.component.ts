@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl, NgForm } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, Validators,} from '@angular/forms';
 import { Router } from '@angular/router';
 import { ForgotEmailService } from './services/forgot-email.service';
 
@@ -11,11 +10,10 @@ import { ForgotEmailService } from './services/forgot-email.service';
 })
 export class ForgotEmailComponent {
   detailsEntered = false;
-  email: string = '';
   emailOTPInput: string = '';
   otpVerified = false;
   phone: string = '';
-  confirmEmail: string = '';
+
   updateEmailMode = false;
   phoneOTPInput: string = '';
   showVerifyButton = true;
@@ -28,7 +26,6 @@ export class ForgotEmailComponent {
 
   constructor(
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar ,
     private router: Router,
     private forgotEmailService:ForgotEmailService
 
@@ -56,29 +53,12 @@ export class ForgotEmailComponent {
       .get('emailOtp')!
       .setValue(truncatedValue, { emitEvent: false });
   }
-
-  sendOTP() {
-    this.sendOtp()
-    // if (!this.detailsEntered) {
-    //   this.detailsEntered = true;
-    // } 
-    // else if (this.email && this.phone) {
-    //   this.detailsEntered = true;
-    // } 
-  }
-
-  updateEmail() {
-    // Logic to update phone number
-   
-    this.sendOtpEmail()
-  }
-  
-  checkEmailMatch() {
-    const emailControl = this.updateEmailForm?.get('email');
-    const confirmEmailControl = this.updateEmailForm?.get('confirmEmail');
+checkEmailMatch() {
+    const emailControl = this.email?.value;
+    const confirmEmailControl = this.confirmEmail?.value;
 
     if (emailControl && confirmEmailControl) {
-      if (emailControl.value !== confirmEmailControl.value) {
+      if (emailControl !== confirmEmailControl) {
         confirmEmailControl.setErrors({ mismatch: true });
       } else {
         confirmEmailControl.setErrors(null);
@@ -86,11 +66,7 @@ export class ForgotEmailComponent {
     }
   }
  
-  verifyOTP() {
-    this.verifyotp()
-    
-    
-  }
+  
   onPhoneNumberInput(event:any){
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');
@@ -107,13 +83,9 @@ export class ForgotEmailComponent {
       .get('phoneOtp')!
       .setValue(truncatedValue, { emitEvent: false });
   }
-  updatedEmailMsg(){
-    this.verifyotpEmail();
-   
-    // this.snackBar.open("Your Details Successfully Updated. Login with new  credentials.", 'Close', {
-    //   duration: 3000, 
-    //   verticalPosition: 'top',
-    // });
+ 
+  get email(){
+    return this.updateEmailForm.get('email')
   }
   get phoneNumber() {
     return this.forgotEmailForm.get('phoneNumber');
@@ -121,11 +93,23 @@ export class ForgotEmailComponent {
   get phoneOtp(){
     return this.phoneOtpForm.get('phoneOtp')
   }
-  get newEmail(){
+  get confirmEmail(){
     return this.updateEmailForm.get('confirmEmail')
   }
   get emailOtp(){
     return this.emailOtpForm.get('emailOtp')
+  }
+  sendOTP() {
+    this.sendOtp()
+  }
+ verifyOTP() {
+    this.verifyotp()
+  }
+  updateEmail() {
+    this.sendOtpEmail()
+  }
+  updatedEmailMsg(){
+    this.verifyotpEmail();
   }
   sendOtp() {
     const phone = this.phoneNumber?.value;
@@ -158,7 +142,6 @@ export class ForgotEmailComponent {
      }
      this.forgotEmailService.verifyotp(FormData).subscribe(
       ()=>{
-        const otpInputString = String(this.emailOTPInput);
       this.otpVerified = true;
       this.showVerifyButton = false;
       this.showContainer1 = false;
@@ -168,7 +151,7 @@ export class ForgotEmailComponent {
      )
   }
   sendOtpEmail() {
-    const newEmail= this.newEmail?.value;
+    const newEmail= this.confirmEmail?.value;
     const type='sendnewemailotp'
     this.forgotEmailService.validationKey$.next('');
     const FormData = {
