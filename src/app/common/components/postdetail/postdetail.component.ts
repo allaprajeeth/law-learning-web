@@ -14,6 +14,7 @@ interface BlogPost {
   subheading:string;
   description:string[];
   date: string;
+  views: number;
 }
 
 @Component({

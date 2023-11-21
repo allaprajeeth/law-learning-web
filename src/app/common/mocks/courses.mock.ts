@@ -1,9 +1,10 @@
 export const COURSES_MOCK = [
     {
-        "courseTitle": "Legal Foundations: Introduction to Law",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Introduction to Law",
+        "courseInstructor": "John Smith",
         "courseType": "Crash Course",
         "courseLevel": "Beginner",
+        "coursePrice": 3199,
         "reviewerRating": 4.7,
         "subscribersRating": 4,
         "subscribersCount": "6592+",
@@ -22,9 +23,10 @@ export const COURSES_MOCK = [
     },
     {
         "courseTitle": "Legal Research and Writing",
-        "courseInstructor": "Professor Johnson",
+        "courseInstructor": "Johnson",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
+        "coursePrice": 3029,
         "reviewerRating": 4.5,
         "subscribersRating": 4.7,
         "subscribersCount": "7441+",
@@ -42,14 +44,15 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Law and Society: Understanding Legal Systems",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "Understanding Legal Systems",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Expert",
+        "coursePrice": 3229,
         "reviewerRating": 4.7,
         "subscribersRating": 5,
         "subscribersCount": "6762+",
-        "courseDuration": "7h 15m",
+        "courseDuration": "8h 25m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
             "description": "This course covers a wide range of legal topics.",
@@ -64,9 +67,10 @@ export const COURSES_MOCK = [
     },
     {
         "courseTitle": "Introduction to Criminal Law",
-        "courseInstructor": "Professor Smith",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Beginner",
+        "coursePrice": 3009,
         "reviewerRating": 5,
         "subscribersRating": 4,
         "subscribersCount": "8701+",
@@ -84,10 +88,11 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Legal Ethics and Professional Responsibility",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "Professional Responsibility",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Student",
+        "coursePrice": 3599,
         "reviewerRating": 4.7,
         "subscribersRating": 4.5,
         "subscribersCount": "9934+",
@@ -106,13 +111,14 @@ export const COURSES_MOCK = [
     },
     {
         "courseTitle": "Legal Research and Writing",
-        "courseInstructor": "Professor Johnson",
+        "courseInstructor": "Johnson",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
+        "coursePrice": 3055,
         "reviewerRating": 4.5,
         "subscribersRating": 4.7,
         "subscribersCount": "7441+",
-        "courseDuration": "7h 15m",
+        "courseDuration": "6h 20m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
             "description": "This course focuses on legal research and writing skills.",
@@ -126,10 +132,11 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "International Human Rights Law",
-        "courseInstructor": "Professor Johnson",
+        "courseTitle": "International Human Rights",
+        "courseInstructor": "Johnson",
         "courseType": "Crash Course",
         "courseLevel": "Beginner",
+        "coursePrice": 3279,
         "reviewerRating": 5,
         "subscribersRating": 4,
         "subscribersCount": "5771+",
@@ -147,14 +154,15 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Civil Procedure: Rules and Litigation Process",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Civil Procedure",
+        "courseInstructor": "John Lee",
         "courseType": "Detailed Course",
         "courseLevel": "Student",
+        "coursePrice": 3327,
         "reviewerRating": 4.5,
         "subscribersRating": 4,
         "subscribersCount": "3491+",
-        "courseDuration": "7h 15m",
+        "courseDuration": "6h 45m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
             "description": "This course covers the rules and procedures of civil litigation.",
@@ -168,10 +176,11 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Legal Writing: Strategies and Techniques",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Legal Writing",
+        "courseInstructor": "John Lee",
         "courseType": "Crash Course",
         "courseLevel": "Intermediate",
+        "coursePrice": 3087,
         "reviewerRating": 4.5,
         "subscribersRating": 4.5,
         "subscribersCount": "9903+",
@@ -189,10 +198,11 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Constitutional Law: Principles and Cases",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Constitutional Law",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Expert",
+        "coursePrice": 3399,
         "reviewerRating": 4,
         "subscribersRating": 5,
         "subscribersCount": "9256+",
@@ -210,14 +220,15 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Torts: Personal Injury and Liability Law",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Liability Law",
+        "courseInstructor": "Jhon Smith",
         "courseType": "Crash Course",
         "courseLevel": "Student",
+        "coursePrice": 3172,
         "reviewerRating": 4,
         "subscribersRating": 5,
         "subscribersCount": "10046+",
-        "courseDuration": "7h 15m",
+        "courseDuration": "7h 35m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
             "description": "This course covers the principles of tort law and personal injury cases.",
@@ -231,14 +242,15 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "International Law: Concepts and Applications",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "International Law",
+        "courseInstructor": "John Davis",
         "courseType": "Detailed Course",
         "courseLevel": "Beginner",
+        "coursePrice": 3449,
         "reviewerRating": 4.5,
         "subscribersRating": 4,
         "subscribersCount": "7028+",
-        "courseDuration": "7h 15m",
+        "courseDuration": "8h 30m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
             "description": "This course introduces the fundamentals of international law.",
@@ -253,14 +265,15 @@ export const COURSES_MOCK = [
     },
   
     {
-        "courseTitle": "Family Law: Rights and Responsibilities",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Family Law",
+        "courseInstructor": "John Lee",
         "courseType": "Crash Course",
         "courseLevel": "Intermediate",
+        "coursePrice": 2199,
         "reviewerRating": 4,
         "subscribersRating": 5,
         "subscribersCount": "9789+",
-        "courseDuration": "7h 15m",
+        "courseDuration": "9h 10m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
             "description": "This course explores family law and related rights and responsibilities.",
@@ -275,10 +288,11 @@ export const COURSES_MOCK = [
     },
    
     {
-        "courseTitle": "Contract Law: Agreements and Obligations",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "Contract Law",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Expert",
+        "coursePrice": 2567,
         "reviewerRating": 4.5,
         "subscribersRating": 4.5,
         "subscribersCount": "4812+",
@@ -297,14 +311,15 @@ export const COURSES_MOCK = [
     },
  
     {
-        "courseTitle": "Environmental Law: Conservation and Regulation",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Environmental Law",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
+        "coursePrice": 2387,
         "reviewerRating": 5,
         "subscribersRating": 5,
         "subscribersCount": "1481+",
-        "courseDuration": "7h 15m",
+        "courseDuration": "8h 50m",
         "courseThumbnail": "https://picsum.photos/300/200",
         "otherDetails": {
             "description": "This course examines environmental law and conservation regulations.",
@@ -320,9 +335,10 @@ export const COURSES_MOCK = [
   
     {
         "courseTitle": "Intellectual Property Law",
-        "courseInstructor": "Professor Davis",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Intermediate",
+        "coursePrice": 2485,
         "reviewerRating": 4,
         "subscribersRating": 4,
         "subscribersCount": "5319+",
@@ -340,10 +356,11 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Corporate Law: Entities and Governance",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Corporate Law",
+        "courseInstructor": "John Lee",
         "courseType": "Detailed Course",
         "courseLevel": "Expert",
+        "coursePrice": 2514,
         "reviewerRating": 4,
         "subscribersRating": 4,
         "subscribersCount": "6378+",
@@ -361,10 +378,11 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Healthcare Law: Regulations and Ethics",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Healthcare Law",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
+        "coursePrice": 2600,
         "reviewerRating": 4.5,
         "subscribersRating": 4,
         "subscribersCount": "6049+",

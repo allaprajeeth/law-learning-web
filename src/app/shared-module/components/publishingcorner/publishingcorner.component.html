@@ -21,19 +21,26 @@
   <ng-template #showBoxes>
   <div *ngFor="let box of filteredBoxes; let i = index" class="blog-box">
   <h1>{{ box.title }}</h1>
+  <!-- <h3>{{ box.views }}</h3> -->
   <h3>{{ box.author }}</h3>
+   <!-- Display views below author -->
+
   <h3 *ngIf="isExpanded(i) && box.reviewer">Reviewer: {{ box.reviewer }}</h3>
   <h3 *ngIf="isExpanded(i) && box.editor">Editor: {{ box.editor }}</h3>
 
   <p>{{ box.content | slice:0:80 }}{{ box.content.length > 80 ? '...' : '' }}</p>
+  <h3 *ngIf="isExpanded(i) && box.views">{{ box.views }}</h3>
   <!-- <button *ngIf="!isExpanded(i)" (click)="toggleReadMore(i)">Read more</button> -->
 <h4  *ngIf="isExpanded(i) && box.heading">heading: {{box.heading}}</h4>
 <p  *ngIf="isExpanded(i) && box.explanation">explanation: {{box.explanation}}</p>
-
+<h2 *ngIf="isExpanded(i)">{{box.views}}</h2>
 <h2 *ngIf="isExpanded(i) && box.subheading">subheading: {{box.subheading}}</h2>
 <p  *ngIf="isExpanded(i) && box.description">description: {{box.description}}</p>
 <p class="date">{{ box.date }}</p>
+<p class="views">No.of views: {{ box.views }}</p>
 <button (click)="openArticleInNewTab(box)">Read more</button>
+
+<!-- <p class="date">{{ box.date }}</p> -->
 </div>
 </ng-template>
 </div>

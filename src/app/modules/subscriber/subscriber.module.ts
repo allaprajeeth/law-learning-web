@@ -44,6 +44,12 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
+import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
+
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
+
+
 @NgModule({
   declarations: [
     SidenavComponent, 
@@ -69,6 +75,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     SubdocumentsComponent,
     AboutusComponent,
     CheckoutComponent,
+
+    SubmitmesgComponent,
+
+    ContactusComponent,
+      SuccessmesgComponent,
+
    
 
   ],

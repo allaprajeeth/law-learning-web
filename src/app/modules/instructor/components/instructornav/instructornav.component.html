@@ -6,22 +6,14 @@
         <div>
           <ul class="nav-icons">
             <li><a routerLink="/instructor/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
-            <li><a routerLink="/documents" routerLinkActive="active" class="mycourses">Library</a></li>
+            <li><a rouetrLink="/instructor/documents" routerLinkActive="active" class="mycourses">Library</a></li>
+            <!-- <li><a routerLink="/instructor/document" routerLinkActive="active" class="mycourses">Library</a></li> -->
             <li><a routerLink="/instructor/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
             <li><a routerLink="/instructor/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
-            
+            <li><a routerLink="/instructor/notification" routerLinkActive="active" class="mycourses" matBadge="3">Notifications</a></li>
     
                 <!-- <li><a routerLink="/courses" class="mycourses">Create a Course</a></li> -->
 
-            <!-- <li><a routerLink="/subscriber/cart">
-                <mat-icon>shopping_cart_checkout</mat-icon>
-              </a></li> -->
-              
-              <li><a routerLink="/instructor/notification">
-                <mat-icon matBadge="2">notifications</mat-icon>
-              
-              </a></li>
-    
             <li class="user-dropdown">
               <div class="user-circle" (click)="onUserCircleClick($event)">
                 <span class="user-circle-text">NS</span>
@@ -50,6 +42,7 @@
                 <li><a routerLink="/subscriber/acSecurity">Account settings</a></li>
                 <li><a routerLink="/subscriber/payments" >Purchase history</a></li>
                 <li><a routerLink="/subscriber/notifications" >Notification Settings</a></li>
+                <li><a routerLink="/instructor/uploadstatus">Courses status</a></li>
                 <hr/>
                 <li><a routerLink="/termsandcon">Terms & Conditions</a></li>
                 <li><a routerLink="/contactus">Contact Us</a></li>

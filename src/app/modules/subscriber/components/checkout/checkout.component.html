@@ -1,24 +1,9 @@
+<app-subscribernav></app-subscribernav>
 <div class="checkout-container">
     <div class="billing-information">
         <h1>Checkout</h1>
         <h2>Billing Address</h2>
         <form (ngSubmit)="onCheckout()">
-            <!-- <mat-form-field appearance="outline">
-            <input matInput placeholder="Name" [(ngModel)]="customerName" name="name" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <input matInput placeholder="Email" [(ngModel)]="customerEmail" name="name" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <input matInput placeholder="Mobile Number" [(ngModel)]="mobileNumber" name="mobile" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <textarea matInput placeholder="Address" [(ngModel)]="address" name="address" required></textarea>
-        </mat-form-field> -->
-
             <div class="countriesContainer">
                 <mat-form-field appearance="outline">
                     <mat-label>Country</mat-label>
@@ -28,17 +13,23 @@
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
-
-                <mat-form-field appearance="outline" class="zipCodeField">
-                    <input matInput placeholder="Zip Code" [(ngModel)]="zipCode" name="zipCode" required>
+                <mat-form-field appearance="outline" class="stateField">
+                    <mat-label>State/Union Territory</mat-label>
+                    <mat-select [(value)]="selectedState" name="state" required>
+                        <mat-option *ngFor="let state of getStatesForSelectedCountry()" [value]="state">
+                            {{ state }}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
 
             <div class="payment-methods full-width">
                 <mat-radio-group [(ngModel)]="selectedPaymentMethod" name="paymentMethod">
-                    <mat-radio-button *ngFor="let method of paymentMethods" [value]="method.value">
-                        {{ method.label }}
-                    </mat-radio-button>
+                    <div *ngFor="let method of paymentMethods" >
+                        <mat-radio-button [value]="method.value">
+                          {{ method.label }}
+                        </mat-radio-button>
+                      </div>
                 </mat-radio-group>
             </div>
 
@@ -61,13 +52,42 @@
                     </mat-form-field>
 
                     <mat-form-field appearance="outline" class="securityCodeField">
-                        <input matInput placeholder="Security Code" [(ngModel)]="securityCode" name="securityCode" required>
+                        <input matInput placeholder="Security Code" [(ngModel)]="securityCode" name="securityCode"
+                            required>
                     </mat-form-field>
                 </div>
 
-                <mat-checkbox [(ngModel)]="rememberCard" >Remember this card</mat-checkbox>
+                <mat-checkbox [(ngModel)]="rememberCard">Remember this card</mat-checkbox>
             </div>
-            
+
+            <div *ngIf="selectedPaymentMethod === 'phonepay'" class="phonePay">
+                <h1>Login to Pay with PhonePay</h1>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Mobile Number" [(ngModel)]="phonePayNumber" name="phonePay"
+                        required>
+                </mat-form-field>
+
+                <button mat-raised-button class="btn" appearance="outline">Proceed Securely</button>
+            </div>
+
+            <div *ngIf="selectedPaymentMethod === 'googlepay'" class="googlePay">
+                <h1>Login to Pay with GooglePay</h1>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Mobile Number" [(ngModel)]="googlePayNumber" name="googlePay"
+                        required>
+                </mat-form-field>
+
+                <button mat-raised-button class="btn" appearance="outline">Proceed Securely</button>
+            </div>
+
+            <div *ngIf="selectedPaymentMethod === 'paytm'" class="paytm">
+                <h1>Login to Pay with Paytm</h1>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Mobile Number" [(ngModel)]="paytmNumber" name="Paytm" required>
+                </mat-form-field>
+
+                <button mat-raised-button class="btn" appearance="outline">Proceed Securely</button>
+            </div>
         </form>
     </div>
 
@@ -75,12 +95,11 @@
         <h1>Summary</h1>
         <!-- <h1>Order Summary</h1> -->
         <p>Original Price: <span class="originalPrice">₹{{ totalActualPrice }}</span></p>
+        <p *ngIf="discountedPrice">Discounted by {{ roundDiscountPercentage(100 - (discountedPrice / totalActualPrice) * 100) }}% Off</p>
         <hr />
-        <p *ngIf="discountedPrice">Discount {{ roundDiscountPercentage(100 - (discountedPrice / totalActualPrice) * 100) }}% Off</p>
-        <!-- <p>Sub-Total: <span class="subTotalprice">₹{{ discountedPrice }}</span></p> -->
-        <h2>Total: <span class="totalprice">₹{{ discountedPrice }}</span></h2>        
-        
+        <h2>Total: <span class="totalprice">₹{{ discountedPrice }}</span></h2>
         <button mat-raised-button class="btn" appearance="outline" [routerLink]="['']">Complete Payment</button>
     </div>
 
 </div>
+

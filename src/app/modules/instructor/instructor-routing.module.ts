@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InstructorLoginComponent } from './components/instructor-login/instructor-login.component';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CoursesComponent } from './components/courses/courses.component';
@@ -13,6 +12,11 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
+import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
+import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
+import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
 
 const routes: Routes = [
   {
@@ -27,6 +31,10 @@ const routes: Routes = [
   {
     path:"homepage",
     component: HomepageComponent
+  },
+  {
+    path:"document",
+    component:DocumentsComponent
   },
   {
     path:"public-profile",
@@ -65,10 +73,28 @@ component:ArticleComponent
   path:"quiztest",
   component:QuiztestComponent
 },
+// {
+//   path:"documents",
+//   component: DocumentsComponent
+// },
 {
   path:"upload",
   component: UploadComponent
 },
+{
+  path:"uploadstatus",
+  component: UploadstatusComponent
+},
+{ path: 'uploadhistory', component: UploadhistoryComponent },
+{
+  path:"quizsuccessmsg",
+  component: QuizsuccessmsgComponent
+},
+// {
+//   path:"articleform",
+//   component: ArticleformComponent
+// }
+
 ];
 
 @NgModule({

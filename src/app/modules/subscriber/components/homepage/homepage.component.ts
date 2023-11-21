@@ -1,9 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Router } from '@angular/router';
-import { UniqueIdService } from '../unique-id.service';
-import { CartService } from '../cart.service';
-// import { SearchServiceService } from 'src/app/search.service.service';
+import { Component, OnInit } from '@angular/core';
 import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 
 interface Categories {
@@ -16,26 +11,24 @@ interface Categories {
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  // @ViewChild('tooltipRef', { read: ElementRef })
-  // tooltipEl!: ElementRef;
-
-  uniqueIds: string[] = [];
-  coursePrice: number[];
-
-  // private uniqueIdCounter = 1;
-
-  // generateUniqueId(): string {
-  //   const uniqueId = `product_${this.uniqueIdCounter}`;
-  //   this.uniqueIdCounter++;
-  //   console.log(uniqueId);
-  //   return uniqueId;
-  // }
-
+  coursePrice: number[] = [];
   randomFutureDates: Date[] = [];
-
   mycoursesimages: string[] = [];
   availablecoursesimages: string[] = [];
-  ratingValues2: number[] = [];
+  ratingValues: number[] = [];
+  myCoursesAuthors: string[] = [];
+  myCoursesHeadings: string[] = [];
+  myCoursesText: string[] = [];
+  myCoursesDurations: string[] = [];
+  availableCoursesDurations: string[] = [];
+  randomMyCourseValues: number[] = [];
+  myCourseSubscribers: string[] = [];
+  availableCourseSubscribers: string[] = [];
+  availableCoursesHeadings: string[] = [];
+  availableCoursesAuthors: string[] = [];
+  availableCoursesText: string[] = [];
+
+  subscribersValues = ['10', '30', '50', '100', '200', '500', '1000'];
 
   title = 'my-first-app';
   categories: Categories[] = [
@@ -45,62 +38,10 @@ export class HomepageComponent implements OnInit {
     { viewValue: 'Student' },
   ];
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private cartService: CartService,
-    public uniqueIdService: UniqueIdService
-  ) // private searchService: SearchServiceService
-  {
-    // Initialize uniqueIds only if it hasn't been initialized
-    if (uniqueIdService.uniqueIds.length === 0) {
-      uniqueIdService.generateUniqueIds(this.availablecoursesimages.length);
-    }
-
-    this.coursePrice = [
-      3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
-    ];
-
+  constructor() {
     this.randomFutureDates = this.generateRandomFutureDates(5);
   }
 
-  addToCartClicked(j: number) {
-    // Generate a unique ID for the product
-    // const uniqueId = this.uniqueIdService.generateUniqueIds(this.availablecoursesimages.length);
-
-    // Create the product with a unique ID
-    const product = {
-      id: j,
-      image: this.availablecoursesimages[j],
-      heading: this.availableCoursesHeadings[j],
-      coursesText: this.availableCoursesText[j],
-      duration: this.availableCoursesDurations[j],
-      price: this.coursePrice[j],
-    };
-
-    // Call the service to add the product to the cart
-    this.cartService.addToCart(product);
-    this.router.navigate(['/cart']);
-  }
-
-  availableCoursesHeadings: string[] = [
-    'Introduction to Criminal Law',
-    'Contract Law Demystified',
-    'Environmental Law Explained',
-    'Intellectual Property Law',
-    'Civil Rights and Liberties',
-    'Family Law Fundamentals',
-    'Real Estate Law Made Simple',
-    'Business Law Essentials for Entrepreneurs',
-    'Human Rights Law',
-    'Labor and Employment Law',
-    'International Law and Diplomacy',
-    'Torts and Personal Injury Law',
-  ];
-
-  myCoursesHeadings: string[] = [
-
-  ];
   private initializeMyCoursesHeadings(): void {
     COURSES_MOCK.forEach((course) => {
       this.myCoursesHeadings.push(course.courseTitle);
@@ -109,46 +50,23 @@ export class HomepageComponent implements OnInit {
       this.myCoursesAuthors.push(course.courseInstructor);
     });
     COURSES_MOCK.forEach((course) => {
-      this.uploadedCoursesText.push(`${course.courseLevel} | ${course.courseType}`);
-
+      this.myCoursesText.push(`${course.courseLevel} | ${course.courseType}`);
     });
   }
 
-  availableCoursesAuthors: string[] = [
-    'John Smith',
-    'Mary Johnson',
-    'David Wilson',
-    'Sarah Davis',
-    'Michael Brown',
-    'Jennifer White',
-    'Robert Lee',
-    'Susan Anderson',
-    'Charles Harris',
-    'Amanda Lewis',
-    'Laura Roberts',
-    'Robert Lee',
-  ];
-
-  myCoursesAuthors: string[] = [
-   
-  ];
-
-  uploadedCoursesText: string[] = [];
-
-  availableCoursesText: string[] = [
-    'Expert | Detailed Course',
-    'Beginner | Crash Course',
-    'Intermediate | Detailed Course',
-    'Student | Crash Course',
-    'Beginner | Detailed Course',
-    'Intermediate | Crash Course',
-    'Student | Detailed Course',
-    'Expert | Crash Course',
-    'Student | Crash Course',
-    'Beginner | Crash Course',
-    'Intermediate | Detailed Course',
-    'Expert | Detailed Course',
-  ];
+  private initializeAvailableCoursesHeadings(): void {
+    COURSES_MOCK.forEach((course) => {
+      this.availableCoursesHeadings.push(course.courseTitle);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.availableCoursesAuthors.push(course.courseInstructor);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.availableCoursesText.push(
+        `${course.courseLevel} | ${course.courseType}`
+      );
+    });
+  }
 
   courseContent: string[] = [
     'Understanding the legal system and The role of law in society',
@@ -174,20 +92,8 @@ export class HomepageComponent implements OnInit {
     display: string;
   } = { left: '0', right: 'unset', top: '0', display: 'none' };
 
-  uploadedCoursesDurations: string[] = [];
-  availableCoursesDurations: string[] = [];
-
-  randomMyCourseValues: number[] = [];
-
-  subscribersValues = ['10', '30', '50', '100', '200', '500', '1000'];
-
-  myCourseSubscribers: string[] = [];
-  availableCourseSubscribers: string[] = [];
-
   openMyMenu(event: MouseEvent, index: number): void {
     this.showCard = this.showCard.map((_, j) => j === index);
-
-    // console.log("this.tooltipEl", this.tooltipEl);
 
     if (this.showCard[index]) {
       const element = event.currentTarget as HTMLElement;
@@ -221,113 +127,48 @@ export class HomepageComponent implements OnInit {
     this.showCard[index] = false;
   }
 
- 
-
-
-  ngOnInit(): void 
-  {
-    // this.searchService.searchQuery$.subscribe((query) => {
-    //   // this.searchQuery = query;
-    //   this.filterImages();
-    // });
+  ngOnInit(): void {
     this.initializeMyCoursesHeadings();
-    this.generateRandomCoursesData();
+    this.initializeAvailableCoursesHeadings();
 
-    if (this.uniqueIdService.uniqueIds.length === 0) {
-      this.uniqueIdService.generateUniqueIds(
-        this.availablecoursesimages.length
-      );
-    }
-
-    for (let i = 0; i < 4; i++) 
-    {
-      // const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
-      // const randomIndex = Math.floor(Math.random() * COURSES_MOCK.length);
+    for (let i = 0; i < 4; i++) {
       const randomCourse = COURSES_MOCK[i];
       const randomImageURL = `${randomCourse.courseThumbnail}?index=${i}`;
-
-      // const randomImageURL = randomCourse.courseThumbnail;
-
       this.mycoursesimages.push(randomImageURL);
+
       const randomValue = Math.floor(Math.random() * 100) + 1;
       this.randomMyCourseValues.push(randomValue);
+
       const randomSubscribersIndex = Math.floor(
         Math.random() * this.subscribersValues.length
       );
       this.myCourseSubscribers.push(
+        // `${randomCourse.subscribersCount}`
         this.subscribersValues[randomSubscribersIndex]
       );
 
-      const minHours = 1.5;
-      const maxHours = 6;
-      const hours = minHours + Math.random() * (maxHours - minHours);
-      const formattedHours = Math.floor(hours);
-      const minutes = Math.floor((hours % 1) * 60);
-      const formattedMinutes = this.formatWithLeadingZero(minutes);
-      const duration = `${formattedHours}h ${formattedMinutes}m`;
-      this.uploadedCoursesDurations.push(duration);
+      // const minHours = 1.5;
+      // const maxHours = 6;
+      // const hours = minHours + Math.random() * (maxHours - minHours);
+      // const formattedHours = Math.floor(hours);
+      // const minutes = Math.floor((hours % 1) * 60);
+      // const formattedMinutes = this.formatWithLeadingZero(minutes);
+      // const duration = `${formattedHours}h ${formattedMinutes}m`;
+      const duration = `${randomCourse.courseDuration}`;
+      this.myCoursesDurations.push(duration);
     }
 
-    // for (let l = 0; l < 12; l++) 
-    // {
-    //   // const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
-    //   const randomCourse = COURSES_MOCK[l];
-    //   const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
-    //   const ratingValue = parseFloat(`${randomCourse.reviewerRating}?index=${l}`);
-
-    //   const fullStars = Math.floor(ratingValue);
-    //   const hasHalfStar = ratingValue % 1 !== 0;
-    //   let starsHtml = '';
-  
-    //   for (let i = 0; i < fullStars; i++) 
-    //   {
-    //     starsHtml += '<i class="fas fa-star"></i>';
-    //   }
-  
-    //   if (hasHalfStar) {
-    //     starsHtml += '<i class="fas fa-star-half-alt"></i>';
-    //   }
-      
-    //   this.availablecoursesimages.push(randomImageURL);
-    //   // this.ratingValues.push(ratingValue);
-
-    //   const randomSubscribersIndex = Math.floor(
-    //     Math.random() * this.subscribersValues.length
-    //   );
-    //   this.availableCourseSubscribers.push(
-    //     this.subscribersValues[randomSubscribersIndex]
-    //   );
-
-    //   const minHours = 1.5;
-    //   const maxHours = 6;
-    //   const hours = minHours + Math.random() * (maxHours - minHours);
-    //   const formattedHours = Math.floor(hours);
-    //   const minutes = Math.floor((hours % 1) * 60);
-    //   const formattedMinutes = this.formatWithLeadingZero(minutes);
-    //   const duration = `${formattedHours}h ${formattedMinutes}m`;
-    //   this.availableCoursesDurations.push(duration);
-    // }
-  
-  }
-
-  
-getStarArray(ratingValue: number): number[] {
-  const fullStars = Math.floor(ratingValue);
-  const hasHalfStar = ratingValue % 1 !== 0;
-  const starArray = Array(fullStars).fill(1);
-
-  if (hasHalfStar) {
-    starArray.push(0.5);
-  }
-
-  return starArray;
-}
-
-  generateRandomCoursesData() {
     for (let l = 0; l < 12; l++) {
       const randomCourse = COURSES_MOCK[l];
       const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
-      const ratingValue = parseFloat(`${randomCourse.reviewerRating}?index=${l}`);
+      this.availablecoursesimages.push(randomImageURL);
+
+      const randomPrices = `${randomCourse.coursePrice}`;
+      this.coursePrice.push(parseInt(randomPrices, 10));
+
+      const ratingValue = parseFloat(
+        `${randomCourse.reviewerRating}?index=${l}`
+      );
 
       const fullStars = Math.floor(ratingValue);
       const hasHalfStar = ratingValue % 1 !== 0;
@@ -341,30 +182,38 @@ getStarArray(ratingValue: number): number[] {
         starsHtml += '<i class="fas fa-star-half-alt"></i>';
       }
 
-      this.availablecoursesimages.push(randomImageURL);
-      this.ratingValues2.push(ratingValue);
+      this.ratingValues.push(ratingValue);
 
       const randomSubscribersIndex = Math.floor(
         Math.random() * this.subscribersValues.length
       );
       this.availableCourseSubscribers.push(
+        // `${randomCourse.subscribersCount}`
         this.subscribersValues[randomSubscribersIndex]
       );
 
-      const minHours = 1.5;
-      const maxHours = 6;
-      const hours = minHours + Math.random() * (maxHours - minHours);
-      const formattedHours = Math.floor(hours);
-      const minutes = Math.floor((hours % 1) * 60);
-      const formattedMinutes = this.formatWithLeadingZero(minutes);
-      const duration = `${formattedHours}h ${formattedMinutes}m`;
+      // const minHours = 1.5;
+      // const maxHours = 6;
+      // const hours = minHours + Math.random() * (maxHours - minHours);
+      // const formattedHours = Math.floor(hours);
+      // const minutes = Math.floor((hours % 1) * 60);
+      // const formattedMinutes = this.formatWithLeadingZero(minutes);
+      // const duration = `${formattedHours}h ${formattedMinutes}m`;
+      const duration = `${randomCourse.courseDuration}`;
       this.availableCoursesDurations.push(duration);
     }
   }
 
+  getStarArray(ratingValue: number): number[] {
+    const fullStars = Math.floor(ratingValue);
+    const hasHalfStar = ratingValue % 1 !== 0;
+    const starArray = Array(fullStars).fill(1);
 
-  
-  
+    if (hasHalfStar) {
+      starArray.push(0.5);
+    }
+    return starArray;
+  }
 
   private generateRandomFutureDates(numDates: number): Date[] {
     const dates: Date[] = [];

@@ -3,23 +3,12 @@
     <a routerLink="/" class="logo">Law Logo</a>
     <div>
       <ul class="nav-icons">
-
         <li><a routerLink="/subscriber/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
         <li><a routerLink="/subscriber/documents" routerLinkActive="active" class="mycourses">Library</a></li>
         <li><a routerLink="/subscriber/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
         <li><a routerLink="/subscriber/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
-
-        <li>
-          <a routerLink="/subscriber/notification">
-            <mat-icon matBadge="5">notifications</mat-icon>
-          </a>
-        </li>
-
-        <li>
-          <a routerLink="/subscriber/cart">
-            <mat-icon [matBadge]="cartItemCount">shopping_cart_checkout</mat-icon>
-          </a>
-        </li>
+        <li><a routerLink="/subscriber/notification" routerLinkActive="active" class="mycourses" matBadge="5">Notifications</a></li>
+        <li><a routerLink="/subscriber/cart" routerLinkActive="active" class="mycourses" [matBadge]="cartItemCount">Cart</a></li>
 
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
@@ -39,14 +28,10 @@
               <span class="info">040-2980 3199</span>
             </li>
             <hr>
-            <li>
-              <a routerLink="/subscriber/photo">Public profile</a>
-            </li>
-
-            <li><a routerLink="/subscriber/acSecurity">Account settings</a></li>
-            <li><a routerLink="/subscriber/payments">Purchase History</a></li>
+            <li><a routerLink="/subscriber/photo">Profile</a></li>
+            <li><a routerLink="/subscriber/acSecurity">Account Security</a></li>
             <li><a routerLink="/subscriber/notifications" >Notification Settings</a></li>
-            <hr />
+            <li><a routerLink="/subscriber/payments">Purchase History</a></li>
             <hr/>
             <li><a routerLink="/contactus">Contact Us</a></li>
             <li><a routerLink="/termsandcon">Terms & Conditions</a></li>
