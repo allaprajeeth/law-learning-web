@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
-import { DocumentsComponent } from './components/documents/documents.component';
 import { PublishingcornerComponent } from './components/publishingcorner/publishingcorner.component';
 import { FormsModule } from '@angular/forms';
 import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
@@ -13,17 +12,32 @@ import {  MatDividerModule } from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
 import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
 import { CarouselModule } from 'primeng/carousel';
+import { SharedphotoComponent } from './components/sharedphoto/sharedphoto.component';
+import { SharedaccountsecurityComponent } from './components/sharedaccountsecurity/sharedaccountsecurity.component';
+import { SharednotificationsComponent } from './components/sharednotifications/sharednotifications.component';
+import { SharedcontactusComponent } from './components/sharedcontactus/sharedcontactus.component';
+import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
+import { LibraryComponent } from './components/library/library.component';
+
 @NgModule({
  
   declarations: [
     BasePageComponent,
     FooterComponent,
     SharedoverviewComponent, 
-    DocumentsComponent, 
     PublishingcornerComponent,
      SharedaboutusComponent,
+     SharedphotoComponent,
+     SharedaccountsecurityComponent,
+     SharednotificationsComponent,
+     SharedcontactusComponent,
+     ShareddeleteAccountComponent,
+     LibraryComponent,
     ],
 
   imports: [
@@ -36,7 +50,10 @@ import { CarouselModule } from 'primeng/carousel';
     MatIconModule,
     MatCardModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -47,9 +64,15 @@ import { CarouselModule } from 'primeng/carousel';
     FooterComponent,
     PublishingcornerComponent,
     FormsModule,
-    DocumentsComponent,
     SharedoverviewComponent,
     SharedaboutusComponent,
+    SharedphotoComponent,
+    SharedaccountsecurityComponent,
+    SharednotificationsComponent,
+    SharedcontactusComponent,
+    ShareddeleteAccountComponent,
+    LibraryComponent
+
   ]
 
 })

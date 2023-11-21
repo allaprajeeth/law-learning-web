@@ -20,7 +20,7 @@ export class InstructornavComponent {
   onUserCircleClick(event: Event) {
     event.preventDefault();
     // Navigate to the subscriber profile component
-    this.router.navigate(['/subscriber/acSecurity']);
+    this.router.navigate(['/instructor/acSecurity']);
   }
 
   // Function to navigate to the Upload Course component

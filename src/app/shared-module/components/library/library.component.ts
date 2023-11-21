@@ -1,22 +1,11 @@
 import { Component } from '@angular/core';
-import { PdfService } from 'src/app/sharedService.service';
 
 @Component({
-  selector: 'app-documents',
-  templateUrl: './documents.component.html',
-  styleUrls: ['./documents.component.scss']
+  selector: 'app-library',
+  templateUrl: './library.component.html',
+  styleUrls: ['./library.component.scss']
 })
-export class DocumentsComponent {
-
-  // pdfNames: string[] = ['pdf1.pdf', 'pdf2', 'pdf3']; // Replace with your actual PDF file names
-  // selectedPdf: string | null = null;
-  // pdfUrl: string | null = null;
-
-  // constructor(private pdfService: PdfService) { }
-
-  
-
-
+export class LibraryComponent {
   pdfFiles = [
     
     "https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf",
@@ -35,4 +24,5 @@ export class DocumentsComponent {
   openFile(pdfUrl: string) {
     window.open(pdfUrl, '_blank');
   }
+
 }

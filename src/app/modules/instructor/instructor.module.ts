@@ -34,13 +34,20 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { TestpreviewComponent } from './components/testpreview/testpreview.component';
-import { DocumentsComponent } from './components/documents/documents.component';
 import { SubmitarticlemesgComponent } from './components/submitarticlemesg/submitarticlemesg.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
+// import { PhotoComponent } from './components/photo/photo.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
+import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
+import { LibraryComponent } from './components/library/library.component';
 
 @NgModule({
   declarations: [
@@ -60,12 +67,20 @@ import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccess
     QuiztestComponent,
     UploadComponent,
     TestpreviewComponent,
-    DocumentsComponent,
     SubmitarticlemesgComponent,
     ArticleformComponent,
     UploadstatusComponent,
     UploadhistoryComponent,
     QuizsuccessmsgComponent,
+    // PhotoComponent,
+    SidenavComponent,
+    AccountsecurityComponent,
+    NotificationsComponent,
+    ContactusComponent,
+    DeleteAccountComponent,
+    PaymentHistoryComponent,
+    LibraryComponent,
+  
   ],
   providers: [InstructorService],
   imports: [

@@ -1,0 +1,35 @@
+<div class="container-wrapper">
+    <div class="container">
+        <div class="main-container">
+            <form [formGroup]="accountForm">
+                <div class="box" id="head">
+                    <h1>Account Security</h1>
+                    <p>Edit your account settings here... </p>
+                    <hr />
+                </div>
+                <div class="box">
+                    <h2>Current Email and Phone</h2>
+                    <p>
+                        <label for="currentEmail">Current Email : </label>
+                        <input type="text" id="currentEmail" formControlName="currentEmail"
+                            [disabled]="!isCurrentEmailEditable" placeholder="nuncsystems@gmail.com">
+                        <button type="button" class="editbtn">
+                            <i class="material-icons">{{ isCurrentEmailEditable ? 'done' : 'edit' }}</i>
+                        </button>
+                    </p>
+                    <p>
+                        <label for="currentPhone">Current Phone : </label>
+                        <input type="text" id="currentPhone" formControlName="currentPhone"
+                            [disabled]="!isCurrentPhoneEditable" placeholder="0987654321">
+                        <button type="button" class="editbtn" (click)="editCurrentPhone()">
+                            <i class="material-icons">{{ isCurrentPhoneEditable ? 'done' : 'edit' }}</i>
+                        </button>
+                    </p>
+                </div>
+            </form>
+            <hr />
+            <div class="box">
+            </div>
+        </div>
+    </div>
+</div>
