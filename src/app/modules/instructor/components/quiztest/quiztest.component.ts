@@ -166,25 +166,28 @@ isValid(): boolean {
 }
 
 submitTest() {
-  const isValid = this.isValid();
 
-  if (isValid) {
-    // Perform any additional actions before submitting the test
-
-    // Show a snackbar
-    this.openSnackBar('Your test form submitted successfully wait for response. Thank you!', 5000);
-    setTimeout(() => {
-      this.router.navigate(['/instructor/upload']);
-    }, 5000);
-  }
+  
 }
+//   const isValid = this.isValid();
 
-openSnackBar(message: string, duration: number) {
-  this._snackBar.open(message, 'Close', {
-    duration: duration,
-    verticalPosition: 'top', // Set the vertical position to 'top'
-  });
-}
+//   if (isValid) {
+//     // Perform any additional actions before submitting the test
+
+//     // Show a snackbar
+//     this.openSnackBar('Your test form submitted successfully wait for response. Thank you!', 5000);
+//     setTimeout(() => {
+//       this.router.navigate(['/instructor/upload']);
+//     }, 5000);
+//   }
+// }
+
+// openSnackBar(message: string, duration: number) {
+//   this._snackBar.open(message, 'Close', {
+//     duration: duration,
+//     verticalPosition: 'top', // Set the vertical position to 'top'
+//   });
+// }
 
 previewQuestions() {
   const aggregatedData = this.additionalForms.map((form, index) => ({

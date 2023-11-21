@@ -47,6 +47,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 
 
 @NgModule({
@@ -78,6 +79,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
     SubmitmesgComponent,
 
     ContactusComponent,
+      SuccessmesgComponent,
 
    
 

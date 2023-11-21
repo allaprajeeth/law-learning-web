@@ -22,6 +22,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 
 
 const routes: Routes = [
@@ -109,6 +110,10 @@ const routes: Routes = [
   {
     path:"submitmesg",
     component: SubmitmesgComponent
+  },
+  {
+    path:'successmesg',
+    component:SuccessmesgComponent
   },
 
 
