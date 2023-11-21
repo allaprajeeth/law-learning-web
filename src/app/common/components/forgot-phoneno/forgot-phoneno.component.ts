@@ -1,41 +1,46 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl, NgForm } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { ForgotPhoneService } from './Services/forgot-phone.service';
 
 @Component({
   selector: 'app-forgot-phoneno',
   templateUrl: './forgot-phoneno.component.html',
-  styleUrls: ['./forgot-phoneno.component.scss']
+  styleUrls: ['./forgot-phoneno.component.scss'],
 })
 export class ForgotPhonenoComponent {
   detailsEntered = false;
-  email: string = '';
   emailOTPInput: string = '';
   otpVerified = false;
   phone: string = '';
-  confirmPhone: string = '';
   updatePhoneMode = false;
-  phoneOTPInput: string = '';
   showVerifyButton = true;
   showContainer1 = true;
   showContainer2 = false;
-  emailOtpForm:FormGroup;
-  phoneOtpForm:FormGroup;
-  
+
+  emailOtpForm: FormGroup;
+  phoneOtpForm: FormGroup;
+  forgotPhoneForm: FormGroup;
+  updatePhoneForm: FormGroup;
+
   constructor(
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar ,
     private router: Router,
-
-  ){
-     this.emailOtpForm = this.formBuilder.group({
-    emailOtp: ['', [Validators.required]],
-  });
-  this.phoneOtpForm = this.formBuilder.group({
-    phoneOtp: ['', [Validators.required]],
-  });
+    private forgotPhoneService: ForgotPhoneService
+  ) {
+    this.emailOtpForm = this.formBuilder.group({
+      emailOtp: ['', [Validators.required]],
+    });
+    this.phoneOtpForm = this.formBuilder.group({
+      phoneOtp: ['', [Validators.required]],
+    });
+    this.forgotPhoneForm = this.formBuilder.group({
+      email: ['', [Validators.required]],
+    });
+    this.updatePhoneForm = this.formBuilder.group({
+      phone: ['', [Validators.required]],
+      confirmPhone: ['', [Validators.required]],
+    });
   }
   onEmailOtpInput(event: any) {
     const input = event.target.value;
@@ -45,37 +50,6 @@ export class ForgotPhonenoComponent {
       .get('emailOtp')!
       .setValue(truncatedValue, { emitEvent: false });
   }
-
-  sendOTP() {
-    if (!this.detailsEntered) {
-      // Logic to send OTP
-      this.detailsEntered = true;
-    } 
-    else if (this.email && this.phone) {
-      this.detailsEntered = true;
-    } 
-  }
-
-  updatePhoneNumber() {
-    // Logic to update phone number
-    this.updatePhoneMode = true;
-  }
-  
-  checkPhoneMatch(form: NgForm) {
-    if (form.value.phone !== form.value.confirmPhone) {
-      form.control.setErrors({ mismatch: true });
-    } else {
-      form.control.setErrors(null);
-    }
-  }
-  verifyOTP() {
-    const otpInputString = String(this.emailOTPInput);
-      this.otpVerified = true;
-      this.showVerifyButton = false;
-      this.showContainer1 = false;
-      this.showContainer2 = true;
-    
-  }
   onPhoneOtpInput(event: any) {
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');
@@ -84,11 +58,100 @@ export class ForgotPhonenoComponent {
       .get('phoneOtp')!
       .setValue(truncatedValue, { emitEvent: false });
   }
-  updateNumber(){
-    this.router.navigate(['/login']);
-    this.snackBar.open("Your Details Successfully Updated. Login with new  credentials.", 'Close', {
-      duration: 3000, 
-      verticalPosition: 'top',
+
+ 
+  checkPhoneMatch() {
+    const phoneControl = this.updatePhoneForm?.get('phone');
+    const confirmPhoneControl = this.updatePhoneForm?.get('confirmPhone');
+    if (phoneControl && confirmPhoneControl) {
+      if (phoneControl.value !== confirmPhoneControl.value) {
+        confirmPhoneControl.setErrors({ mismatch: true });
+      } else {
+        confirmPhoneControl.setErrors(null);
+      }
+    }
+  }
+  get email() {
+    return this.forgotPhoneForm.get('email');
+  }
+  get phoneOtp() {
+    return this.phoneOtpForm.get('phoneOtp');
+  }
+  get confirmPhone() {
+    return this.updatePhoneForm.get('confirmPhone');
+  }
+  get emailOtp() {
+    return this.emailOtpForm.get('emailOtp');
+  }
+  sendOTP() {
+    this.sendOtp();
+  }
+  updatePhoneNumber() {
+    this.sendOtpPhone();
+  }
+  verifyOTP() {
+    this.verifyotp();
+  }
+  updateDetails() {
+    this.verifyotpPhone();
+  }
+  
+  sendOtp() {
+    const email = this.email?.value;
+    const type = 'sendemailotp';
+    this.forgotPhoneService.validationKey$.next('');
+    const FormData = {
+      type: type,
+      email: email,
+    };
+    this.forgotPhoneService.sendOtp(FormData).subscribe(() => {
+      if (!this.detailsEntered) {
+        this.detailsEntered = true;
+      } else if (this.email && this.phone) {
+        this.detailsEntered = true;
+      }
+    });
+  }
+  verifyotp() {
+    const emailOtp = this.emailOtp?.value;
+    const type = 'verifyemailotp';
+    const FormData = {
+      type: type,
+      email_otp: emailOtp,
+      validation_key: this.forgotPhoneService.validationKey$.value,
+    };
+    this.forgotPhoneService.verifyotp(FormData).subscribe(() => {
+      const otpInputString = String(this.emailOTPInput);
+      this.otpVerified = true;
+      this.showVerifyButton = false;
+      this.showContainer1 = false;
+      this.showContainer2 = true;
+    });
+  }
+  sendOtpPhone() {
+    const phone = this.confirmPhone?.value;
+    const type = 'sendnewphoneotp';
+    this.forgotPhoneService.validationKey$.next('');
+    const FormData = {
+      type: type,
+      newPhone: phone,
+    };
+    this.forgotPhoneService.sendOtpPhone(FormData).subscribe(() => {
+      this.updatePhoneMode = true;
+    });
+  }
+  verifyotpPhone() {
+    const phoneotp = this.phoneOtp?.value;
+    const email = this.email?.value;
+    const type = 'verifynewphoneotp';
+    const FormData = {
+      type: type,
+      email: email,
+      phone_otp: phoneotp,
+      validation_key: this.forgotPhoneService.validationKey$.value,
+    };
+    this.forgotPhoneService.verifyotpPhone(FormData).subscribe(() => {
+      this.router.navigate(['/login']);
     });
   }
 }

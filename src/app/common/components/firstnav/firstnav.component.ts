@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopupService } from 'src/popup.service';
-
+import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-firstnav',
   templateUrl: './firstnav.component.html',
@@ -8,13 +9,20 @@ import { PopupService } from 'src/popup.service';
 })
 export class FirstnavComponent {
   
-  constructor(private sharedService: PopupService) {}
+  constructor(
+    private sharedService: PopupService,
+    public dialog: MatDialog,) {}
 
   get showLogoutAlert(): boolean {
     return this.sharedService.showLogoutAlert;
   }
 
-
+  openModal() {
+    this.dialog.open(TermsandconComponent, {
+      width: '700px',
+      height: '600px',
+    });
+  }
 
   // showLogoutAlert: boolean = true;
 

@@ -23,6 +23,7 @@ import { SharednotificationsComponent } from './components/sharednotifications/s
 import { SharedcontactusComponent } from './components/sharedcontactus/sharedcontactus.component';
 import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
 import { LibraryComponent } from './components/library/library.component';
+
 @NgModule({
  
   declarations: [
@@ -71,6 +72,7 @@ import { LibraryComponent } from './components/library/library.component';
     SharedcontactusComponent,
     ShareddeleteAccountComponent,
     LibraryComponent
+
   ]
 
 })

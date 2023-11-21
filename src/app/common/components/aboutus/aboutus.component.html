@@ -26,7 +26,7 @@
          <ng-template let-profile pTemplate="item">
              <div class="teacher-profile">
                <img  class="avatar" [src]="profile.photo" alt="Teacher Photo">
-               <h2>{{ profile.name }}</h2>
+               <h2><a routerLink="/advisorInfo">{{ profile.name }}</a></h2>
                <h3>{{ profile.title }}</h3>
                <p>{{ profile.description }}</p>
              </div>
@@ -40,7 +40,7 @@
     <ng-template let-profile pTemplate="item">
       <div class="teacher-profile">
         <img class="avatar" [src]="profile.photo" alt="Teacher Photo">
-        <h2>{{ profile.name }}</h2>
+        <h2><a routerLink="/instructor/instructorinfo">{{ profile.name }}</a></h2>
         <h3>{{ profile.title }}</h3>
         <p>{{ profile.description }}</p>
       </div>

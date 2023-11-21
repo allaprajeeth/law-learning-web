@@ -11,7 +11,7 @@ export class RatingsComponent {
  
   stars = [1, 2, 3, 4, 5];
   selected = 0;
-
+  progress=60
   userReview: string = '';
   isratingEditable:boolean=true;
   leaveRatingOpen() {
@@ -36,6 +36,8 @@ export class RatingsComponent {
   getStarArray(): number[] {
     return Array.from({ length: 5 }, (_, i) => i);
   }
-  
+  ratingClicked(i:any){
+    this.isratingEditable=false;
+   }
 
 }

@@ -4,20 +4,19 @@
         <h3  class="leaveRating" >Leave Your Rating Here</h3> 
         <hr>
         <br>
-        <i style="font-size: 16px;">You have to complete 70% to give rating</i>
+        <i style="font-size: 16px;" *ngIf="progress <=69 ">You have to complete 70% to give rating</i>
         <br>
         <br>
-        <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview" >
-          Give Rating
-        </button>
+       
         </div>
-        <div class="overlay" *ngIf="showRating">
+        <div class="overlay" *ngIf="progress >=70">
           <div class="contentt">
             <div class="close" (click)="leaveRatingClose()">&times;</div>
             <h1>How would you rate this course?</h1>
             <ng-container *ngFor="let i of stars">
               <mat-icon
                 (mouseenter)="updaterating(i)"
+                (click)="ratingClicked(i)"
                 [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
                 class="staricon"
               >
