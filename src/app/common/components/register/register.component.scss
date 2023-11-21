@@ -1,99 +1,94 @@
-
 .page-container {
   display: flex;
-  justify-content: center; 
-  align-items: center; 
-  // height: 69%; 
-  background-color: #e0d9d9; 
-  margin-bottom: 100px;
+  justify-content: center;
+  align-items: center;
+  // height: 69%;
+  background-color: #e0d9d9;
   padding: 60px 10px;
 }
 
-  .carousel-container {
-  width: 50%; 
-  padding: 10px; 
+.carousel-container {
+  width: 50%;
+  padding: 10px;
 }
 
-  .carousel-container img {
-  display: block; 
+.carousel-container img {
+  display: block;
   margin: 0 auto;
-  margin-left: 11%;  
+  margin-left: 11%;
   border: 1px solid rgb(198, 194, 194);
 }
 
 .container {
-width: 300px;
-margin: 0 auto;
-padding: 30px;
-background-color: #fff;
+  width: 300px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
 }
 .login-box {
-      // width: 100%;
-      background-color: #fff;
-      // border: 1px solid #ccc;
-      padding-left: 12px;
-      // text-align: center;
-      // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-      flex: 1; 
-      justify-content: center;
-      // align-items: center;
-      // margin-left: 50px;
-    // margin-top: 10px;
+  // width: 100%;
+  background-color: #fff;
+  // border: 1px solid #ccc;
+  padding-left: 12px;
+  // text-align: center;
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  justify-content: center;
+  // align-items: center;
+  // margin-left: 50px;
+  // margin-top: 10px;
 
-   
-    h2 {
-      // margin-bottom: 20px;
-      text-align: center;
-    }   
-    
+  h2 {
+    // margin-bottom: 20px;
+    text-align: center;
+  }
 }
 
-
-input, select, button {
-margin-bottom: 10px;
-width: 90%;
-padding: 8px;
-// text-align: left;
+input,
+select,
+button {
+  margin-bottom: 10px;
+  width: 90%;
+  padding: 8px;
+  // text-align: left;
 }
-#role{
+#role {
   width: 97%;
- padding: 8px;
+  padding: 8px;
 }
-button{
-width: 40%;
-margin-left: 80px;
-background-color: #1331d7;
-color:rgb(255, 255, 255);
-border: none;
-border-radius: 5px;
-padding: 8px 16px;
-cursor: pointer;
-margin-bottom: 0px;
+button {
+  width: 40%;
+  margin-left: 80px;
+  background-color: #1331d7;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-bottom: 0px;
 }
 button:disabled {
-background-color: rgb(125, 137, 149);
-cursor: not-allowed;
-width: 40%;
-margin-left: 80px;
+  background-color: rgb(125, 137, 149);
+  cursor: not-allowed;
+  width: 40%;
+  margin-left: 80px;
 }
 .error-message {
-color: red;
-
+  color: red;
 }
 
 /* Change input border color to red when there's an error */
 .error-input {
-border-color: black;
+  border-color: black;
 }
-.redirect{
-  cursor:pointer;
+.redirect {
+  cursor: pointer;
   color: blue;
-
 }
-.have-account{
+.have-account {
   margin-left: 34px;
 }
-.redirectlogin{
+.redirectlogin {
   padding-bottom: 15px;
 }
 .snackbar-top {
@@ -117,13 +112,12 @@ border-color: black;
   padding: 5px;
   cursor: pointer;
 }
-.termsandcon{
+.termsandcon {
   cursor: pointer;
   text-decoration: underline;
   color: rgb(10, 10, 10);
-  
 }
-.acceptTerms{
+.acceptTerms {
   margin: 6px 0px;
   margin-bottom: 14px;
 }
@@ -134,5 +128,3 @@ border-color: black;
   color: red;
   font-size: 20px;
 }
-
-

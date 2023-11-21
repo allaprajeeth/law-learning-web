@@ -32,7 +32,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
-import { LogoutComponent } from './common/components/logout/logout.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
@@ -60,7 +59,8 @@ import { ForgotEmailComponent } from './common/components/forgot-email/forgot-em
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { cartReducer, CartEffects } from './modules/subscriber/components/cart/state/cart.state';
-
+import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
+import { LogoutService } from './common/services/logout.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +74,6 @@ import { cartReducer, CartEffects } from './modules/subscriber/components/cart/s
     HomepageComponent,
     ArticleComponent,
     DocumentsComponent,
-    LogoutComponent,
     VideoplayerComponent,
     VideoplayerNavbarComponent,
     RatingsComponent,
@@ -93,11 +92,13 @@ import { cartReducer, CartEffects } from './modules/subscriber/components/cart/s
     ContactusComponent,
     ForgotPhonenoComponent,
     ForgotEmailComponent,
+    AdvisorDetailsComponent,
   ],
   imports: [
     CarouselModule,
     MatSnackBarModule,
     BrowserModule,
+    
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
@@ -128,6 +129,7 @@ import { cartReducer, CartEffects } from './modules/subscriber/components/cart/s
     EffectsModule.forRoot([ CartEffects ]),
   ],
   providers: [PopupService,
+   LogoutService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,

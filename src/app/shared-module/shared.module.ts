@@ -15,6 +15,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
 import { CarouselModule } from 'primeng/carousel';
+
 @NgModule({
  
   declarations: [
@@ -23,7 +24,7 @@ import { CarouselModule } from 'primeng/carousel';
     SharedoverviewComponent, 
     DocumentsComponent, 
     PublishingcornerComponent,
-     SharedaboutusComponent
+     SharedaboutusComponent,
     ],
 
   imports: [
