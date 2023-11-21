@@ -8,7 +8,6 @@ import * as CartActions from './course-card/state/cart.actions';
   providedIn: 'root'
 })
 export class CartService {
-
   private totalActualPriceSubject = new BehaviorSubject<number>(0);
   totalActualPrice$: Observable<number> = this.totalActualPriceSubject.asObservable();
 
@@ -21,7 +20,6 @@ export class CartService {
   private cartItemCountSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   cartItemCount$: Observable<number> = this.cartItemCountSubject.asObservable();
 
-  // Added property to keep track of the "added to cart" status
   private addedToCartStatus: Record<string, boolean> = {};
 
   constructor(private store: Store<AppState>) { }
@@ -43,56 +41,32 @@ export class CartService {
   }
 
   generateUniqueProductId() {
-    return new Date().getTime(); // Using a timestamp as a simple example
+    return new Date().getTime();
   }
 
   addToCart(product: any) {
-    // Dispatch the NgRx action to add the product to the cart
-    this.store.dispatch(CartActions.addToCart({ product }));
-  
-    // Note: You might not need the following code if you're using NgRx to manage the state
-    // Check if the item is already in the cart by ID
     const isItemExistsInCart = this.cartItems.findIndex((cartItem) => cartItem.id === product.id);
-  
-    if (isItemExistsInCart == -1) {
-      // Item doesn't exist in the cart, so add it
+
+    if (isItemExistsInCart === -1) {
       this.cartItems.push(product);
       this.cartItemsSubject.next(this.cartItems);
     } else {
-      // Item already exists in the cart, you can update the quantity or take other actions here
       console.log('Item already in cart');
     }
+
+    this.store.dispatch(CartActions.setGoToCartButtonText());
   }
-  
-
-  // addToCart(product: any) {
-
-  //     this.store.dispatch(CartActions.addToCart({ product: product }));
-    
-  //     // Check if the item is already in the cart by ID
-  //     const isItemExistsInCart = this.cartItems.findIndex((cartItem) => cartItem.id === product.id);
-    
-  //     if (isItemExistsInCart == -1) {
-  //       // Item doesn't exist in the cart, so add it
-  //       this.cartItems.push(product);
-  //       this.cartItemsSubject.next(this.cartItems);
-  //     } else {
-  //       // Item already exists in the cart, you can update the quantity or take other actions here
-  //       console.log('Item already in cart');
-  //     }
-  //   }
 
   removeItemById(uniqueId: string) {
-    this.store.dispatch(CartActions.removeFromCart({ productId: uniqueId }));
-
     const indexToRemove = this.cartItems.findIndex((item) => item.id === uniqueId);
     if (indexToRemove !== -1) {
       this.cartItems.splice(indexToRemove, 1);
       this.cartItemsSubject.next(this.cartItems);
     }
 
-    // Remove the "added to cart" status
     delete this.addedToCartStatus[uniqueId];
+
+    this.store.dispatch(CartActions.setAddToCartButtonText());
   }
 
   isAddedToCart(uniqueId: string): boolean {
@@ -103,20 +77,27 @@ export class CartService {
     this.cartItems = [];
     this.cartItemsSubject.next(this.cartItems);
 
-    // Clear the "added to cart" status
     this.addedToCartStatus = {};
   }
 
   addToCartClicked() {
     // Your existing logic for adding to the cart
-    // this.store.dispatch(CartActions.setGoToCartButtonText());
   }
 
   removeFromCartClicked() {
     // Your existing logic for removing from the cart
-    // this.store.dispatch(CartActions.setAddToCartButtonText());
   }
+
+  // subscribeToCartState() {
+  //   this.store.pipe(select('cart')).subscribe((cartState: CartState | undefined) => {
+  //     if (cartState) {
+  //       this.isAddedToCart = this.isAddedToCart(cartState.items[0]); // Assuming the first item is the productId
+  //     }
+  //   });
+  // }
 }
+
+
 
 
 

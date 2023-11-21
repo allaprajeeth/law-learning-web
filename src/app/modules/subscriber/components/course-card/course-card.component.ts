@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -9,7 +9,7 @@ import { AppState } from 'src/app/app.state';
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.scss'],
 })
-export class CourseCardComponent implements OnChanges {
+export class CourseCardComponent implements OnInit {
   @Input() heading: string = '';
   @Input() content: string = '';
   @Input() product: any;
@@ -17,12 +17,8 @@ export class CourseCardComponent implements OnChanges {
 
   constructor(private cartService: CartService, private router: Router, private store: Store<AppState>) {}
 
-  ngOnChanges(changes: SimpleChanges): void {
-    // Check if the product is already in the cart and set the isAddedToCart property
-    if (this.product) {
-      console.log(this.product);
-      this.isAddedToCart = this.cartService.isAddedToCart(this.product.id);
-    }
+  ngOnInit(): void {
+    this.isAddedToCart = this.product?.id ? this.cartService.isAddedToCart(this.product.id) === true : false;
   }
 
   addToCartClicked(productToAdd: any) {
@@ -31,7 +27,7 @@ export class CourseCardComponent implements OnChanges {
       this.router.navigate(['/cart']);
     }
   }
-  
+
 }
 
 

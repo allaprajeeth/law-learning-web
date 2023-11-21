@@ -1,0 +1,22 @@
+<app-subscribernav></app-subscribernav>
+<div class="container">
+    <table class="article-table">
+        <thead>
+            <tr>
+                <th>Article Name</th>
+                <th>Status</th>
+                <th>Date of Submission</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let article of articles">
+                <td>{{ article.name }}</td>
+                <td class="flexContainer" [ngClass]="getStatusClass(article.status)">{{ article.status }}
+                    <a class="view-more-link" (click)="viewMore(article)">View more</a>
+                </td>
+                <td>{{ article.submissionDate }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

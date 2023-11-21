@@ -58,10 +58,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
-
-// import { cartReducer, CartEffects } from './app.state';
 
 @NgModule({
   declarations: [
@@ -127,7 +124,7 @@ import { cartReducer } from './modules/subscriber/components/course-card/state/c
     MatButtonModule,
     FileUploadModule,
     StoreModule.forRoot({ cart: cartReducer, }),
-    // EffectsModule.forRoot([ CartEffects ]),
+  
   ],
   providers: [PopupService,
     {
