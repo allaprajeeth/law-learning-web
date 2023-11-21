@@ -1,0 +1,50 @@
+<app-subscribernav></app-subscribernav>
+<div class="container">
+    <span class="close-button" (click)="closeArticle()">X</span>
+    <table class="article-table">
+        <thead>
+            <tr>
+                <th>Article Name</th>
+                <th>Status</th>
+                <th>Approved by Admin</th>
+                <th>Approved by Content Manager</th>
+                <th>Approved by Reviewer</th>
+                <th>Date of Submission</th>
+                <th>
+                    <ng-container *ngIf="articleData && (articleData.status === 'Approved'); else dateOfAction">
+                        Approved Date
+                    </ng-container>
+                    <ng-template #dateOfAction>
+                        Date of Action
+                    </ng-template>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="articleData">
+                <td>{{ articleData.name }}</td>
+                <td [ngClass]="articleData.className">{{ articleData.status }}</td>
+
+                <ng-container *ngIf="articleData.status === 'Pending';">
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                </ng-container>
+                <ng-container *ngIf="articleData.status === 'Under Review';">
+                    <td>{{ getRandomValue().approvedByAdmin }}</td>
+                    <td>{{ getRandomValue().approvedByContentManager }}</td>
+                    <td>{{ getRandomValue().approvedByReviewer }}</td>
+                </ng-container>
+                <ng-container *ngIf="articleData.status === 'Approved' || articleData.status === 'Rejected';">
+                    <td>{{ articleData.approvedByAdmin }}</td>
+                    <td>{{ articleData.approvedByContentManager }}</td>
+                    <td>{{ articleData.approvedByReviewer }}</td>
+                </ng-container>
+
+                <td>{{ articleData.submissionDate }}</td>
+                <td>{{ articleData.approvedDate }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="back-button" (click)="closeArticle()">Back</button>
+</div>

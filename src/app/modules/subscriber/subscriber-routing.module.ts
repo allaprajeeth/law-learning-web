@@ -18,13 +18,11 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
 import { SubarticleComponent } from './subarticle/subarticle.component';
 import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
-
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
-
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
+import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
-
-
 const routes: Routes = [
   {
     path:"",
@@ -70,6 +68,14 @@ const routes: Routes = [
   {
     path:"payments",
     component: PaymentsComponent
+  },
+  {
+    path:"articleHistory",
+    component: ArticleHistoryComponent
+  },
+  { 
+    path:"articleStatus", 
+    component: ArticleStatusComponent 
   },
   {
     path:"contactus",

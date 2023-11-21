@@ -17,7 +17,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-// import {NgFor} from '@angular/common';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -43,12 +42,11 @@ import { CarouselModule } from 'primeng/carousel';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
-
 import { ContactusComponent } from './components/contactus/contactus.component';
+import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
+import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
-
 
 @NgModule({
   declarations: [
@@ -75,20 +73,18 @@ import { SuccessmesgComponent } from './components/successmesg/successmesg.compo
     SubdocumentsComponent,
     AboutusComponent,
     CheckoutComponent,
-
     SubmitmesgComponent,
-
     ContactusComponent,
+    ArticleHistoryComponent,
+    ArticleStatusComponent,
       SuccessmesgComponent,
-
    
-
   ],
   imports: [
     CommonModule,
     SharedModule,
     SubscriberRoutingModule,
-    ReactiveFormsModule ,
+    ReactiveFormsModule,
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -105,7 +101,7 @@ import { SuccessmesgComponent } from './components/successmesg/successmesg.compo
     MatDialogModule,
     MatCardModule,
     MatBadgeModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ]
 })
 export class SubscriberModule { }

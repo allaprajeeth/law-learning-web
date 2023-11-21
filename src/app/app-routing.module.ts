@@ -26,6 +26,8 @@ import { CheckoutComponent } from './modules/subscriber/components/checkout/chec
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
+import { ArticleHistoryComponent } from './modules/subscriber/components/articleHistory/article-history.component';
+import { ArticleStatusComponent } from './modules/subscriber/components/articleStatus/article-status.component';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 const routes: Routes = [
   {
@@ -147,6 +149,14 @@ const routes: Routes = [
   {
     path:'forgotEmail',
     component:ForgotEmailComponent
+  },
+  {
+    path:"articleHistory",
+    component: ArticleHistoryComponent
+  },
+  { 
+    path:"articleStatus", 
+    component: ArticleStatusComponent 
   },
   {
     path: '**',
