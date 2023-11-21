@@ -1,26 +1,23 @@
-
 .page-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    // height: 69%; 
-    background-color: #e0d9d9; 
-    margin-bottom: 100px;
-    padding: 60px 10px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 69%;
+  background-color: #e0d9d9;
+  padding: 60px 10px;
+}
 
-    .carousel-container {
-    width: 50%; 
-    padding: 10px; 
+.carousel-container {
+  width: 50%;
+  padding: 10px;
+}
 
-  }
-
-  .carousel-container img {
-    display: block; 
-    margin: 0 auto;
-    margin-left: 11%; 
-    border: 1px solid rgb(198, 194, 194);
-  }
+.carousel-container img {
+  display: block;
+  margin: 0 auto;
+  margin-left: 11%;
+  border: 1px solid rgb(198, 194, 194);
+}
 
 .container {
   max-width: 300px;
@@ -29,39 +26,35 @@
   background-color: #fff;
 }
 .login-box {
-        
-        background-color: #fff;
-        padding-left: 13px;
-        // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        flex: 1; 
-        justify-content: center;
-        
+  background-color: #fff;
+  padding-left: 13px;
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  justify-content: center;
 
-     
-      h2 {
-        // margin-bottom: 20px;
-        text-align: center;
-      }   
-      
+  h2 {
+    // margin-bottom: 20px;
+    text-align: center;
+  }
 }
 
-
-input, select, button {
+input,
+select,
+button {
   margin-bottom: 10px;
   width: 90%;
   padding: 8px;
   // text-align: left;
 }
-button{
-  
+button {
   width: 40%;
   margin-left: 80px;
   background-color: #1331d7;
-              color:rgb(255, 255, 255);
-              border: none;
-              border-radius: 5px;
-              padding: 8px 16px;
-              cursor: pointer;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
 }
 button:disabled {
   background-color: rgb(125, 137, 149);
@@ -71,46 +64,35 @@ button:disabled {
 }
 .error-message {
   color: red;
-
 }
 .error-input {
   border-color: black;
 }
-.redirect{
-  
+.redirect {
   text-align: center;
   color: rgb(0, 0, 0);
   font-weight: 300;
   margin-bottom: 10px;
 }
-.forgot{
-  cursor:pointer;
-  color:rgb(8, 67, 216);
+.forgot {
+  cursor: pointer;
+  color: rgb(8, 67, 216);
   font-weight: 400;
 }
-#role{
+#role {
   width: 96%;
- padding: 8px;
+  padding: 8px;
 }
-.phoneno{
+.phoneno {
   padding-bottom: 15px;
 }
 .success-snackbar {
-  margin-top: 120px !important; 
-
+  margin-top: 120px !important;
 }
-.sendOtp{
-  margin:20px;
+.sendOtp {
+  margin: 20px;
   margin-left: 80px;
 }
-.no-account{
+.no-account {
   cursor: pointer;
 }
-
-
-
-
-
-
-
-

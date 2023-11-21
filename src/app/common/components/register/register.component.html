@@ -80,10 +80,10 @@
           formControlName="selectedCategory"
           [disabled]="!isSendOtpsClicked"
         >
-          <option value="Subscriber">Subscriber</option>
-          <option value="Reviewer">Reviewer</option>
-          <option value="Instructor">Instructor</option>
-          <option value="Content_Manager">Content Manager</option>
+          <option value="SUBSCRIBER">SUBSCRIBER</option>
+          <option value="REVIEWER">REVIEWER</option>
+          <option value="INSTRUCTOR">INSTRUCTOR</option>
+          <option value="CONTENTMANAGER">CONTENTMANAGER</option>
           <option value="Admin">Admin</option>
         </select>
         <button *ngIf="!isOtpVisible"
@@ -97,7 +97,7 @@
           <input
             type="text"
             id="emailOtp"
-            formControlName="emailOtp"
+            formControlName="email_otp"
             required
             [attr.autocomplete]="'off'"
             (input)="onEmailOtpInput($event)"
@@ -106,13 +106,13 @@
           <div
             class="error-message"
             *ngIf="
-              registerForm.get('emailOtp')?.hasError('required') &&
-              registerForm.get('emailOtp')?.touched
+              registerForm.get('email_otp')?.hasError('required') &&
+              registerForm.get('email_otp')?.touched
             "
           >
             Email OTP is required.
           </div>
-          <div class="error-message" *ngIf="registerForm.get('emailOtp')?.hasError('pattern') && registerForm.get('emailOtp')?.touched">
+          <div class="error-message" *ngIf="registerForm.get('email_otp')?.hasError('pattern') && registerForm.get('email_otp')?.touched">
             Email OTP must consist of digits only.
           </div>
   
@@ -120,7 +120,7 @@
           <input
             type="text"
             id="phoneOtp"
-            formControlName="phoneOtp"
+            formControlName="phone_otp"
             required
             [attr.autocomplete]="'off'"
             (input)="onPhoneOtpInput($event)"
@@ -129,8 +129,8 @@
           <div
             class="error-message"
             *ngIf="
-              registerForm.get('phoneOtp')?.hasError('required') &&
-              registerForm.get('phoneOtp')?.touched
+              registerForm.get('phone_otp')?.hasError('required') &&
+              registerForm.get('phone_otp')?.touched
             "
           >
             Phone OTP is required.
@@ -138,8 +138,8 @@
           <div
             class="error-message"
             *ngIf="
-              registerForm.get('phoneOtp')?.hasError('pattern') &&
-              registerForm.get('phoneOtp')?.touched
+              registerForm.get('phone_otp')?.hasError('pattern') &&
+              registerForm.get('phone_otp')?.touched
             "
           >
          Phone OTP must consist of digits only.
@@ -148,10 +148,10 @@
 
         <button
           *ngIf="isLoginVisible"
-          [disabled]="registerForm.get('emailOtp')?.value.length !== 6 || registerForm.get('phoneOtp')?.value.length !== 6 || !registerForm.valid"
+          [disabled]="registerForm.get('email_otp')?.value.length !== 6 || registerForm.get('phone_otp')?.value.length !== 6 || !registerForm.valid"
           [ngStyle]="{
-            'background-color': registerForm.get('emailOtp')?.value.length == 6 && registerForm.get('phoneOtp')?.value.length == 6 && registerForm.valid ? 'blue' : 'gray',
-            color: registerForm.get('emailOtp')?.value.length == 6 && registerForm.get('phoneOtp')?.value.length == 6 && registerForm.valid ? 'white' : 'black'
+            'background-color': registerForm.get('email_otp')?.value.length == 6 && registerForm.get('phone_otp')?.value.length == 6 && registerForm.valid ? 'blue' : 'gray',
+            color: registerForm.get('email_otp')?.value.length == 6 && registerForm.get('phone_otp')?.value.length == 6 && registerForm.valid ? 'white' : 'black'
           }"
           (click)="signupVerify()"
           

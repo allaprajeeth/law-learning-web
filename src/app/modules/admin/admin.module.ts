@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
@@ -18,6 +18,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { ErrorHandlerService } from 'src/app/common/services/error-handler/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,12 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
     MatExpansionModule,
     MatTabsModule
     
+  ],
+  providers: [
+    {
+      provide: ErrorHandler,
+      useClass: ErrorHandlerService
+    },
   ]
 })
 export class AdminModule { }

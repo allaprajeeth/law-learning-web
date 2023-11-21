@@ -1,72 +1,69 @@
-
 <div class="container-wrapper">
-    <div class="container1" *ngIf="showContainer1">
-      <form (ngSubmit)="sendOTP()" #otpForm="ngForm">
-        <h2>Forgot Phone Number</h2>
-        <mat-form-field class="mat-form-field-wrapper" appearance="outline">
-          <mat-label>Enter your Email Id</mat-label>
-          <input matInput type="email" [(ngModel)]="email" name="email" required
-                  #emailInput="ngModel">
-          <mat-error *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
-                     class="error-message">
-            Invalid email address
-          </mat-error>
-        </mat-form-field>
-        <div class="button-container">
-          <button mat-raised-button color="primary" type="submit" *ngIf="!detailsEntered"
-            [disabled]="otpForm.invalid ">
-            Send OTP
-          </button>
-        </div>
-      </form>
-  
-      <form *ngIf="detailsEntered"  [formGroup]="emailOtpForm">
-        <h2>Enter Email OTP</h2>
-        <input type="text" id="emailOtp"  formControlName="emailOtp" required  [attr.autocomplete]="'off'"  (input)="onEmailOtpInput($event)">
-        <div class="button-container" *ngIf="showVerifyButton">
-          <button mat-raised-button color="primary" type="submit"  (click)="verifyOTP()" [disabled]="emailOtpForm.get('emailOtp')?.value.length !== 6"
-            >
-            Verify OTP
-          </button>
-        </div>
-      </form>
-    </div>
-  
-    <div class="container2 verify-otp" *ngIf="showContainer2">
-      <form *ngIf="otpVerified " (ngSubmit)="updatePhoneNumber()" #updatePhoneForm="ngForm">
-        <h2>Update Phone Number</h2>
-        <mat-form-field appearance="outline">
-          <mat-label>Enter New Phone Number</mat-label>
-          <input matInput type="tel" [(ngModel)]="phone" name="phone" required pattern="[0-9]{10}" maxlength="10" [attr.autocomplete]="'off'" >
-        </mat-form-field>
-  
-        <mat-form-field appearance="outline">
-          <mat-label>Confirm New Phone Number</mat-label>
-          <input matInput type="tel" [(ngModel)]="confirmPhone" name="confirmPhone" required pattern="[0-9]{10}" (input)="checkPhoneMatch(updatePhoneForm)" [attr.autocomplete]="'off'" 
-            maxlength="10">
-        </mat-form-field>
-        <mat-error *ngIf="updatePhoneForm.hasError('mismatch') && (updatePhoneForm.dirty || updatePhoneForm.touched)">
-           New Phone number should match
+  <div class="container1" *ngIf="showContainer1">
+    <form [formGroup]="forgotPhoneForm">
+      <h2>Forgot Phone Number</h2>
+      <mat-form-field class="mat-form-field-wrapper" appearance="outline">
+        <mat-label>Enter your Email Id</mat-label>
+        <input matInput type="email" formControlName="email" name="email" required>
+        <mat-error class="error-message">
+          Invalid email address
         </mat-error>
-        <div class="button-container">
-          <button mat-raised-button color="primary" type="submit" *ngIf="!updatePhoneMode"
-            [disabled]="updatePhoneForm.invalid || (phone !== confirmPhone)">
-            Send OTP
-          </button>
-        </div>
-      </form>
-  
-      <form *ngIf="updatePhoneMode" (ngSubmit)="updatePhoneNumber()" [formGroup]="phoneOtpForm">
-        <h2>OTP Verification</h2>
-        <input type="text" id="phoneOtp"  formControlName="phoneOtp" required  [attr.autocomplete]="'off'"  (input)="onPhoneOtpInput($event)">
-        <div class="button-container">
-          <button mat-raised-button color="primary" type="submit" (click)="updateNumber()"
-          [disabled]="phoneOtpForm.get('phoneOtp')?.value.length !== 6">
-            Update Phone Number
-          </button>
-        </div>
-      </form>
-    </div>
+      </mat-form-field>
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="forgotPhoneForm.get('email')?.value.length <10" (click)="sendOTP()">
+          Send OTP
+        </button>
+      </div>
+    </form>
+
+    <form *ngIf="detailsEntered" [formGroup]="emailOtpForm">
+      <h2>Enter Email OTP</h2>
+      <input type="text" id="emailOtp" formControlName="emailOtp" required [attr.autocomplete]="'off'"
+        (input)="onEmailOtpInput($event)">
+      <div class="button-container" *ngIf="showVerifyButton">
+        <button mat-raised-button color="primary" type="submit" (click)="verifyOTP()"
+          [disabled]="emailOtpForm.get('emailOtp')?.value.length !== 6">
+          Verify OTP
+        </button>
+      </div>
+    </form>
   </div>
-  
-  
+
+  <div class="container2 verify-otp" *ngIf="showContainer2">
+    <form *ngIf="otpVerified " [formGroup]="updatePhoneForm">
+      <h2>Update Phone Number</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter New Phone Number</mat-label>
+        <input matInput type="tel" formControlName="phone" name="phone" required pattern="[0-9]{10}" maxlength="10"
+          [attr.autocomplete]="'off'">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm New Phone Number</mat-label>
+        <input matInput type="tel" formControlName="confirmPhone" name="confirmPhone" required pattern="[0-9]{10}"
+          (input)="checkPhoneMatch()" [attr.autocomplete]="'off'" maxlength="10">
+      </mat-form-field>
+      <mat-error *ngIf="updatePhoneForm.hasError('mismatch') && (updatePhoneForm.dirty || updatePhoneForm.touched)">
+        New Phone number should match
+      </mat-error>
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" *ngIf="!updatePhoneMode"
+          [disabled]="updatePhoneForm.invalid " (click)="updatePhoneNumber()">
+          Send OTP
+        </button>
+      </div>
+    </form>
+
+    <form *ngIf="updatePhoneMode" [formGroup]="phoneOtpForm">
+      <h2>OTP Verification</h2>
+      <input type="text" id="phoneOtp" formControlName="phoneOtp" required [attr.autocomplete]="'off'"
+        (input)="onPhoneOtpInput($event)">
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" (click)="updateDetails()"
+          [disabled]="phoneOtpForm.get('phoneOtp')?.value.length !== 6">
+          Update Phone Number
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

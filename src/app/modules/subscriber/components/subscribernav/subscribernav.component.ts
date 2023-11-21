@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PopupService } from 'src/popup.service';
 import { CartService } from '../cart.service';
-
-
+import { LogoutService } from 'src/app/common/services/logout.service';
+import { LoginService } from '../../../../common/components/login/services/login.service';
 @Component({
   selector: 'app-subscribernav',
   templateUrl: './subscribernav.component.html',
@@ -12,8 +12,17 @@ import { CartService } from '../cart.service';
 export class SubscribernavComponent implements OnInit {
   cartItemCount: number = 0;
 
-  constructor(private router: Router, private sharedService: PopupService, private cartService: CartService) { }
+  constructor(
+    private router: Router,
+     private sharedService: PopupService, 
+     private cartService: CartService,
+     private logoutService:LogoutService,
+     private loginService:LoginService
+     ) { }
+  
+     email = this.loginService.loggedInUserEmail$.value;
 
+     
   // You can use methods to navigate programmatically if needed
   navigateToUserModule() {
     this.router.navigate(['/subscriber']);
@@ -37,7 +46,11 @@ export class SubscribernavComponent implements OnInit {
   
   onLogoutClick() {
     this.sharedService.showLogoutAlert = true;
-  
+
+    this.logoutService.logOutUser().subscribe(() => {
+      console.log("logged out successfully")
+    });
+    
     setTimeout(() => {
       this.sharedService.showLogoutAlert = false;
     }, 5000);
