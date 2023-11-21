@@ -37,7 +37,7 @@
       border: none;
       border-bottom: 1px solid rgb(222, 207, 207);
       cursor: pointer;
-  
+
       &:hover{
         color: rgb(0, 81, 139);
         text-decoration: underline;
@@ -64,5 +64,9 @@
      
     }
   
-  
+    
+  //   mat-icon[aria-hidden="true"]:hover {
+  //     transform: scale(1.2); 
+  //   }
+    
   

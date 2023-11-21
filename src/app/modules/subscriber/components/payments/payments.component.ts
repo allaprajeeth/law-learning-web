@@ -25,6 +25,12 @@ export class PaymentsComponent {
         price: '₹699',
         expiryDate: this.randomFutureDates[1],
       },
+      {
+        heading: 'Intellectual Property Law',
+        date: '11 oct 2023', 
+        price: '₹999',
+        expiryDate: this.randomFutureDates[0], 
+      },
       // Add more items as needed
     ];
   }

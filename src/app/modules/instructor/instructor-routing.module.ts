@@ -12,11 +12,17 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
-import { DocumentsComponent } from './components/documents/documents.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
+import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
+import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
+import { LibraryComponent } from './components/library/library.component';
+
+// import { PhotoComponent } from './components/photo/photo.component';
 
 const routes: Routes = [
   {
@@ -32,10 +38,8 @@ const routes: Routes = [
     path:"homepage",
     component: HomepageComponent
   },
-  {
-    path:"document",
-    component:DocumentsComponent
-  },
+
+  
   {
     path:"public-profile",
     component: PublicProfileComponent
@@ -73,10 +77,10 @@ component:ArticleComponent
   path:"quiztest",
   component:QuiztestComponent
 },
-// {
-//   path:"documents",
-//   component: DocumentsComponent
-// },
+{
+  path:"notifications",
+  component: NotificationsComponent
+},
 {
   path:"upload",
   component: UploadComponent
@@ -90,10 +94,29 @@ component:ArticleComponent
   path:"quizsuccessmsg",
   component: QuizsuccessmsgComponent
 },
-// {
-//   path:"articleform",
-//   component: ArticleformComponent
-// }
+{
+  path:"acSecurity",
+  component:AccountsecurityComponent
+},
+{
+  path:"contactus",
+  component:ContactusComponent
+},
+{
+  path:"delete-account",
+  component: DeleteAccountComponent
+},
+{
+  path:"payment-history",
+  component: PaymentHistoryComponent
+},
+{
+  path:"library",
+component:LibraryComponent
+},
+
+
+
 
 ];
 

@@ -1,35 +1,9 @@
 <app-subscribernav></app-subscribernav>
-
 <mat-sidenav-container>
     <mat-sidenav #sideNav mode="side" opened>
         <app-sidenav></app-sidenav>
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="container-wrapper">
-            <div class="container">
-                <div class="profile-box">
-                    <h1>Profile</h1>
-                    <p>Add a photo of yourself for your profile</p>
-                    <div class="publicProfile">
-                        <mat-slide-toggle><span class="text">Make my Account Public Profile</span></mat-slide-toggle>
-                    </div>
-                </div>
-                <hr />
-                <div class="image-box">
-                    <h2>Image preview</h2>
-                    <img [src]="imageUrl" alt="Image Preview" id="previewImage">
-                    <div class="upload-btn-wrapper">
-                        <h3>Upload Image</h3>
-                        <label for="imageInput" class="custom-file-input">Choose File</label>
-                        <input type="file" id="imageInput" accept="image/*" (change)="onFileSelected($event)">
-                        <p>{{ selectedFileName }}</p>
-                    </div>
-                </div>
-                <br />
-                <hr />
-                <button id="saveButton">Save</button>
-                <br />
-            </div>
+            <app-sharedphoto></app-sharedphoto>
         </div>
-        <!-- </mat-sidenav-content> -->
-        <!-- </mat-sidenav-container> -->

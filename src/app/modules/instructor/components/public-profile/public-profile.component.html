@@ -1,10 +1,19 @@
 <app-instructornav></app-instructornav>
-
 <mat-sidenav-container>
+  <mat-sidenav #sideNav mode="side" opened>
+      <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+      <!-- <div class="container-wrapper">
+
+          <app-sharedphoto></app-sharedphoto>
+          
+      </div> -->
+<!-- <mat-sidenav-container>
   <mat-sidenav #sideNav mode="side" opened>
     <app-instructor-sidenav></app-instructor-sidenav>
   </mat-sidenav>
-  <mat-sidenav-content>
+  <mat-sidenav-content> -->
     <div class="container-wrapper">
       <div class="container">
         <div class="profile-box">

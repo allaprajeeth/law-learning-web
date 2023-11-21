@@ -12,8 +12,8 @@
     padding: 20px;
     border-radius: 10px; /* Optional: Adds rounded corners to the box */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow to the box */
-    margin-bottom: 50px;
-    margin-top: 50px;
+    // margin-bottom: 50px;
+    // margin-top: 50px;
 }
 .main-box {
     text-align: center;
@@ -25,6 +25,7 @@
     /* font-family: 'Roboto', sans-serif; */
 }
 h1{
+  text-align: center;
     font-weight: bolder;
 }
 
