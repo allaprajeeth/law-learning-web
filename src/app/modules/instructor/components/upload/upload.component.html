@@ -4,23 +4,23 @@
       <div class="form-container">
   
         <div class="form-group">
-          <h2>Upload Sections with Multiple Videos:</h2>
+          <h2 class="heading">Upload Sections with Multiple Videos:</h2>
+          <!-- <div class="message-wrapper">
+            <p class="message">Enter the required fields to enable the Buttons</p>
+          </div> -->
+          <div class="message">
+            <p >Enter the required fields to enable the Buttons</p>
+          </div>
   
           <div *ngFor="let mainSection of mainSections; let mainIndex = index" class="main-section">
             <div class="section-number">Section {{mainIndex + 1}}</div>
             
             <button type="button" class="remove-button" (click)="removeMainSection(mainIndex)">×</button>
             <br />
-
             <div class="form-group">
               <label for="mainName{{mainIndex}}">Section Title <span class="required-field">**</span> : </label>
-              <input type="text" id="mainName{{mainIndex}}" placeholder="Section name" [(ngModel)]="mainSection.name" required (input)="onSectionNameChange(mainIndex)">
+              <input type="text" id="mainName{{mainIndex}}" placeholder="section name" name="mainSectionNames[]" required (input)="onMainSectionNameEntered(mainIndex)" >
             </div>
-
-            <!-- <div class="form-group">
-              <label for="mainName{{mainIndex}}">Section Title <span class="required-field">**</span> : </label>
-              <input type="text"  placeholder="Section name"  required>
-            </div> -->
   
             <div class="form-group">
               <label for="description">Description:</label>
@@ -31,8 +31,11 @@
               <div class="section-number">{{ subSection.title }}</div>
               <div class="sub-section">
                 <div class="form-group">
-                  <label for="subName{{mainIndex}}_{{subIndex}}">Sub-Section Title<span class="required-field">**</span> :</label>
-                  <input type="text" id="subName{{mainIndex}}_{{subIndex}}" placeholder="Sub-section name" name="subSectionNames[]" required>
+                  <div class="form-group">
+                    <label for="subName{{mainIndex}}_{{subIndex}}">Sub-Section Title<span class="required-field">**</span> :</label>
+                    <input type="text" id="subName{{mainIndex}}_{{subIndex}}" placeholder="subsection name" name="subSectionNames[]"  required (input)="onSubSectionNameEntered(mainIndex, subIndex)">
+                  </div>
+                  
                 </div>
   
                 <button type="button" class="remove-button" (click)="removeSubSection(mainIndex, subIndex)">×</button>
@@ -45,8 +48,8 @@
   
                 <div class="form-group">
                   <label for="mainFile{{mainIndex}}_{{subIndex}}">Upload Video<span class="required-field">**</span> : </label>
-                  <input type="file" id="mainFile{{mainIndex}}_{{subIndex}}" (change)="onMainFileSelected($event, mainIndex, subIndex)">
-                </div>
+                  <input type="file" id="mainFile{{mainIndex}}_{{subIndex}}" (change)="onMainFileSelected($event, mainIndex, subIndex)" >
+                </div>                                                           
   
                 <div class="form-group">
                   <label>Video Duration:</label>
@@ -61,13 +64,17 @@
                   <label for="subFile{{mainIndex}}_{{subIndex}}">Upload Documents: </label>
                   <input type="file" id="subFile{{mainIndex}}_{{subIndex}}" (change)="onSubFileSelected($event, mainIndex, subIndex)" accept="video/*">
                 </div>
-  
+
                 <div *ngIf="!subSection.submitted">
-                  <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)" [disabled]="buttonsDisabled">Save</button>
-                  <p class="button-description">By clicking save, all your files related to this subsection will be saved.</p>
-                  <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)" [disabled]="buttonsDisabled">Submit</button>
-                  <p class="button-description">By clicking submit, all your files related to this subsection will be submitted to the website for review.</p>
+                  <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)"  [style.background-color]="subSection.buttonColor" [disabled]="!subSection.isSaveEnabled">Save
+                    <span class="right-click-icon" *ngIf="subSection.buttonColor">&#10003;</span>
+                  </button>
+                  <p class="success-msg" *ngIf="subSection.buttonColor">Above details saved successfully</p>
+                   <p class="button-description" *ngIf="!subSection.buttonColor">By clicking save, all your files related to this subsection will be saved.</p>
+                  <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)" [disabled]="!subSection.isSubmitEnabled">Submit</button>
+                  <p class="button-description" *ngIf="subSection.isSubmitEnabled">By clicking submit, all your files related to this subsection will be submitted to the website for review.</p>
                 </div>
+
                 <div *ngIf="subSection.submitted && subSection.status === 'Under Review'" [ngClass]="'status-under-review'">
                   <span>Status: {{subSection.status}}</span>
                 </div>
@@ -76,11 +83,31 @@
             </div>
   
             <div *ngIf="!mainSection.submitted">
-              <button type="button" class="save-button custom-save-button" (click)="saveMainSection(mainIndex)" [disabled]="!isSectionNameValid(mainIndex)">Save</button>
-              <p class="button-description">By clicking save, all your files related to this section will be saved.</p>
-              <button type="button" class="submit-button" (click)="submitMainSection(mainIndex)" [disabled]="buttonsDisabled">Submit</button>
-              <p class="button-description">By clicking submit, all your files related to this section will be submitted to the website for review.</p>
+
+              <button type="button" class="save-button sec-save-button" 
+        (click)="saveMainSection(mainIndex)"
+        [style.background-color]="mainSection.buttonColor"
+        [disabled]="!mainSection.isSaveEnabled">
+  Save
+
+  <span class="right-click-icon" *ngIf="mainSection.buttonColor">&#10003;</span>
+</button>
+
+              <!-- <button type="button" class="save-button sec-save-button" (click)="saveMainSection(mainIndex)" [disabled]="!mainSection.isSaveEnabled"> -->
+                <!-- Save -->
+                <!-- <span class="right-click-icon" *ngIf="!mainSection.isSaveEnabled">&#10003;</span> -->
+           <!-- Import the required Angular Material icon -->
+         <!-- <mat-icon class="material-symbols-outlined" *ngIf="!mainSection.isSaveEnabled">check_circle</mat-icon> -->
+
+              <!-- </button> -->
+              <p class="success-msg" *ngIf="mainSection.buttonColor">Above details saved successfully</p>
+              <p class="button-description" *ngIf="!mainSection.buttonColor">By clicking save, all your files related to this subsection will be saved.</p>
+              <!-- <p class="button-description" *ngIf="!mainSection.buttonColor">By clicking save, all your files related to this section will be saved.</p> -->
+              <button type="button" class="submit-button" (click)="submitMainSection(mainIndex)" [disabled]="!mainSection.isSubmitEnabled">Submit</button>
+              <p class="button-description" *ngIf="mainSection.isSubmitEnabled">By clicking submit, all your files related to this section will be submitted to the website for review.</p>
             </div>
+
+            
             <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'" [ngClass]="'status-under-review'">
               <span  class="status">Status: {{mainSection.status}}</span>
             </div>
@@ -130,7 +157,7 @@
 
 
         <div>
-          <button type="button" class="submit-button" (click)="submitSections()" [disabled]="buttonsDisabled">Submit All</button>
+          <button type="button" class="submit-button" (click)="submitSections()">Submit All</button>
         </div>
       </div>
     </div>

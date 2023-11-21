@@ -17,6 +17,7 @@ export class AdditionalForm {
   questionNumber: number = 1;
   expanded: boolean = true;
   correctAnswerControl: any;
+  enteredChoice: string = ''; 
   
 }
 
@@ -58,31 +59,36 @@ export class QuiztestComponent {
 
 
 
-// addChoice(formIndex: number) {
-//   const form = this.additionalForms[formIndex];
-  
-//   // Only add empty strings if the selectchoice array is empty
-//   if (form.selectchoice.length === 0) {
-//     for (let i = 0; i < 4; i++) {
-//       form.selectchoice.push(''); 
-//     }
-//   }
-// }
 addChoice(formIndex: number) {
   const form = this.additionalForms[formIndex];
 
-  // Only add empty strings if the selectchoice array is empty
-  if (form.selectchoice.length === 0) {
-    for (let i = 0; i < 4; i++) {
+  // Check if the entered choice already exists in the selectchoice array
+  const isDuplicate = form.selectchoice.includes(form.enteredChoice);
+
+  if (!isDuplicate) {
+    // Only add empty strings if the selectchoice array is empty
+    if (form.selectchoice.length === 0) {
+      for (let i = 0; i < 4; i++) {
+        form.selectchoice.push('');
+      }
+    } else {
       form.selectchoice.push('');
     }
-  } else {
-    form.selectchoice.push('');
-  }
 
-  // Ensure at least one choice matches the correct answer
-  this.validateCorrectAnswer(form);
+    // Ensure at least one choice matches the correct answer
+    this.validateCorrectAnswer(form);
+  }
+  // No need for an else block if you don't want to handle the duplicate case
 }
+
+
+
+
+
+
+
+
+
 
 validateCorrectAnswer(form: AdditionalForm) {
   const hasMatchingChoice = form.selectchoice.some(choice => choice === form.correctAnswer);
@@ -160,25 +166,28 @@ isValid(): boolean {
 }
 
 submitTest() {
-  const isValid = this.isValid();
 
-  if (isValid) {
-    // Perform any additional actions before submitting the test
-
-    // Show a snackbar
-    this.openSnackBar('Your test form submitted successfully wait for response. Thank you!', 5000);
-    setTimeout(() => {
-      this.router.navigate(['/instructor/upload']);
-    }, 5000);
-  }
+  
 }
+//   const isValid = this.isValid();
 
-openSnackBar(message: string, duration: number) {
-  this._snackBar.open(message, 'Close', {
-    duration: duration,
-    verticalPosition: 'top', // Set the vertical position to 'top'
-  });
-}
+//   if (isValid) {
+//     // Perform any additional actions before submitting the test
+
+//     // Show a snackbar
+//     this.openSnackBar('Your test form submitted successfully wait for response. Thank you!', 5000);
+//     setTimeout(() => {
+//       this.router.navigate(['/instructor/upload']);
+//     }, 5000);
+//   }
+// }
+
+// openSnackBar(message: string, duration: number) {
+//   this._snackBar.open(message, 'Close', {
+//     duration: duration,
+//     verticalPosition: 'top', // Set the vertical position to 'top'
+//   });
+// }
 
 previewQuestions() {
   const aggregatedData = this.additionalForms.map((form, index) => ({
@@ -197,4 +206,18 @@ previewQuestions() {
     console.log('The dialog was closed');
   });
 }
+// Inside the QuiztestComponent class
+isChoiceDuplicate(form: AdditionalForm, index: number): boolean {
+  const currentChoice = form.selectchoice[index];
+  return form.selectchoice.indexOf(currentChoice) !== index;
+}
+
+// Inside the QuiztestComponent class
+isChoiceInvalid(form: AdditionalForm, index: number): boolean {
+  const currentChoice = form.selectchoice[index];
+  return form.selectchoice.indexOf(currentChoice) !== index && currentChoice.trim() !== '';
+}
+
+
+
 }

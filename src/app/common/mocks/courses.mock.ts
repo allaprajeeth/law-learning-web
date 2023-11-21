@@ -1,7 +1,7 @@
 export const COURSES_MOCK = [
     {
-        "courseTitle": "Legal Foundations: Introduction to Law",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Introduction to Law",
+        "courseInstructor": "John Smith",
         "courseType": "Crash Course",
         "courseLevel": "Beginner",
         "coursePrice": 3199,
@@ -23,7 +23,7 @@ export const COURSES_MOCK = [
     },
     {
         "courseTitle": "Legal Research and Writing",
-        "courseInstructor": "Professor Johnson",
+        "courseInstructor": "Johnson",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
         "coursePrice": 3029,
@@ -44,8 +44,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Law and Society: Understanding Legal Systems",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "Understanding Legal Systems",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Expert",
         "coursePrice": 3229,
@@ -67,7 +67,7 @@ export const COURSES_MOCK = [
     },
     {
         "courseTitle": "Introduction to Criminal Law",
-        "courseInstructor": "Professor Smith",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Beginner",
         "coursePrice": 3009,
@@ -88,8 +88,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Legal Ethics and Professional Responsibility",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "Professional Responsibility",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Student",
         "coursePrice": 3599,
@@ -111,7 +111,7 @@ export const COURSES_MOCK = [
     },
     {
         "courseTitle": "Legal Research and Writing",
-        "courseInstructor": "Professor Johnson",
+        "courseInstructor": "Johnson",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
         "coursePrice": 3055,
@@ -132,8 +132,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "International Human Rights Law",
-        "courseInstructor": "Professor Johnson",
+        "courseTitle": "International Human Rights",
+        "courseInstructor": "Johnson",
         "courseType": "Crash Course",
         "courseLevel": "Beginner",
         "coursePrice": 3279,
@@ -154,8 +154,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Civil Procedure: Rules and Litigation Process",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Civil Procedure",
+        "courseInstructor": "John Lee",
         "courseType": "Detailed Course",
         "courseLevel": "Student",
         "coursePrice": 3327,
@@ -176,8 +176,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Legal Writing: Strategies and Techniques",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Legal Writing",
+        "courseInstructor": "John Lee",
         "courseType": "Crash Course",
         "courseLevel": "Intermediate",
         "coursePrice": 3087,
@@ -198,8 +198,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Constitutional Law: Principles and Cases",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Constitutional Law",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Expert",
         "coursePrice": 3399,
@@ -220,8 +220,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Torts: Personal Injury and Liability Law",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Liability Law",
+        "courseInstructor": "Jhon Smith",
         "courseType": "Crash Course",
         "courseLevel": "Student",
         "coursePrice": 3172,
@@ -242,8 +242,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "International Law: Concepts and Applications",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "International Law",
+        "courseInstructor": "John Davis",
         "courseType": "Detailed Course",
         "courseLevel": "Beginner",
         "coursePrice": 3449,
@@ -265,8 +265,8 @@ export const COURSES_MOCK = [
     },
   
     {
-        "courseTitle": "Family Law: Rights and Responsibilities",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Family Law",
+        "courseInstructor": "John Lee",
         "courseType": "Crash Course",
         "courseLevel": "Intermediate",
         "coursePrice": 2199,
@@ -288,8 +288,8 @@ export const COURSES_MOCK = [
     },
    
     {
-        "courseTitle": "Contract Law: Agreements and Obligations",
-        "courseInstructor": "Professor Davis",
+        "courseTitle": "Contract Law",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Expert",
         "coursePrice": 2567,
@@ -311,8 +311,8 @@ export const COURSES_MOCK = [
     },
  
     {
-        "courseTitle": "Environmental Law: Conservation and Regulation",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Environmental Law",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
         "coursePrice": 2387,
@@ -335,7 +335,7 @@ export const COURSES_MOCK = [
   
     {
         "courseTitle": "Intellectual Property Law",
-        "courseInstructor": "Professor Davis",
+        "courseInstructor": "John Davis",
         "courseType": "Crash Course",
         "courseLevel": "Intermediate",
         "coursePrice": 2485,
@@ -356,8 +356,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Corporate Law: Entities and Governance",
-        "courseInstructor": "Professor Lee",
+        "courseTitle": "Corporate Law",
+        "courseInstructor": "John Lee",
         "courseType": "Detailed Course",
         "courseLevel": "Expert",
         "coursePrice": 2514,
@@ -378,8 +378,8 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Healthcare Law: Regulations and Ethics",
-        "courseInstructor": "Professor Smith",
+        "courseTitle": "Healthcare Law",
+        "courseInstructor": "John Smith",
         "courseType": "Detailed Course",
         "courseLevel": "Intermediate",
         "coursePrice": 2600,

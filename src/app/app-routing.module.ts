@@ -9,7 +9,6 @@ import { NavComponent } from './common/components/nav/nav.component';
 import { HomepageComponent } from './common/components/homepage/homepage.component';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
-import { LogoutComponent } from './common/components/logout/logout.component';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
 import { LoginComponent } from './common/components/login/login.component';
 import { FooterComponent } from './shared-module/components/footer/footer.component';
@@ -29,7 +28,7 @@ import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgo
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 import { ArticleHistoryComponent } from './modules/subscriber/components/articleHistory/article-history.component';
 import { ArticleStatusComponent } from './modules/subscriber/components/articleStatus/article-status.component';
-
+import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -144,6 +143,10 @@ const routes: Routes = [
     component:ForgotPhonenoComponent
   },
   {
+    path:'advisorInfo',
+    component:AdvisorDetailsComponent
+  },
+  {
     path:'forgotEmail',
     component:ForgotEmailComponent
   },
@@ -159,6 +162,7 @@ const routes: Routes = [
     path: '**',
     component: PageNotFoundComponent
   },
+ 
 
 ];
 

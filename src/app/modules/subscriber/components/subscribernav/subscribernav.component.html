@@ -5,6 +5,8 @@
       <ul class="nav-icons">
         <li><a routerLink="/subscriber/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
         <li><a routerLink="/subscriber/documents" routerLinkActive="active" class="mycourses">Library</a></li>
+
+        
         <li><a routerLink="/subscriber/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
         <li><a routerLink="/subscriber/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
         <li><a routerLink="/subscriber/notification" routerLinkActive="active" class="mycourses"
@@ -23,7 +25,7 @@
                   <a routerLink="" class="user-circle-text" style="color: white">NS</a>
                 </div>
               </span>
-              <span class="info">nuncsystems@gmail.com</span>
+              <span class="info">{{email}}</span>
             </li>
             <li class="username-item">
               <span>Nuncsystems</span>
@@ -34,9 +36,11 @@
             <li><a routerLink="/subscriber/acSecurity">Account Security</a></li>
             <li><a routerLink="/subscriber/notifications">Notification Settings</a></li>
             <li><a routerLink="/subscriber/payments">Purchase History</a></li>
+
             <li><a routerLink="/subscriber/articleHistory">Article History</a></li>
             <hr />
-            <li><a routerLink="/contactus">Contact Us</a></li>
+            <li><a routerLink="/subscriber/contactus">Contact Us</a></li>
+
             <li><a routerLink="/termsandcon">Terms & Conditions</a></li>
             <li>
               <a routerLink="/header" (click)="onLogoutClick()">Logout</a>

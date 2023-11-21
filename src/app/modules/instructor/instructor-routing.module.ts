@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InstructorLoginComponent } from './components/instructor-login/instructor-login.component';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CoursesComponent } from './components/courses/courses.component';
@@ -13,6 +12,17 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
+import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
+import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
+import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
+import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
+import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
+import { LibraryComponent } from './components/library/library.component';
+
+// import { PhotoComponent } from './components/photo/photo.component';
 
 const routes: Routes = [
   {
@@ -28,6 +38,8 @@ const routes: Routes = [
     path:"homepage",
     component: HomepageComponent
   },
+
+  
   {
     path:"public-profile",
     component: PublicProfileComponent
@@ -66,9 +78,46 @@ component:ArticleComponent
   component:QuiztestComponent
 },
 {
+  path:"notifications",
+  component: NotificationsComponent
+},
+{
   path:"upload",
   component: UploadComponent
 },
+{
+  path:"uploadstatus",
+  component: UploadstatusComponent
+},
+{ path: 'uploadhistory', component: UploadhistoryComponent },
+{
+  path:"quizsuccessmsg",
+  component: QuizsuccessmsgComponent
+},
+{
+  path:"acSecurity",
+  component:AccountsecurityComponent
+},
+{
+  path:"contactus",
+  component:ContactusComponent
+},
+{
+  path:"delete-account",
+  component: DeleteAccountComponent
+},
+{
+  path:"payment-history",
+  component: PaymentHistoryComponent
+},
+{
+  path:"library",
+component:LibraryComponent
+},
+
+
+
+
 ];
 
 @NgModule({

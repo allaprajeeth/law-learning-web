@@ -10,10 +10,14 @@ interface SubSection {
     minutes: number;
     seconds: number;
   };
+  isSubSectionNameEntered: boolean;
+  isVideoSelected: boolean; 
+  isSaveEnabled: boolean; 
+  isSubmitEnabled: boolean;
+  buttonColor: string; 
 }
 
 interface MainSection {
-  isSectionNameFilled: boolean;
   duration: { minutes: number; seconds: number; };
   name: string;
   file?: File;
@@ -21,6 +25,10 @@ interface MainSection {
   subSections: SubSection[];
   submitted: boolean;
   status: string;
+  isNameEntered: boolean; 
+  isSaveEnabled: boolean;
+  isSubmitEnabled: boolean;
+  buttonColor: string;
 }
 
 @Component({
@@ -31,10 +39,7 @@ interface MainSection {
 export class UploadComponent implements OnInit {
   mainSections: MainSection[] = [];
   isDurationFetched: boolean = false;
-  // hasTest: string = 'no'; 
   hasTest: string | null = null; 
-  buttonsDisabled: boolean = true;
-  sectionNameInput: string = '';
 
 
   constructor() {}
@@ -42,17 +47,7 @@ export class UploadComponent implements OnInit {
   ngOnInit() {
     // Add the initial main section when the component initializes
     this.addMainSection();
-    this.disableButtons();
   }
-
-  disableButtons() {
-    this.buttonsDisabled = true;
-  }
-
-  enableButtons() {
-    this.buttonsDisabled = false;
-  }
-
   addMainSection() {
     const newMainSection: MainSection = {
       name: `Section ${this.mainSections.length + 1}`,
@@ -64,10 +59,17 @@ export class UploadComponent implements OnInit {
         minutes: 0,
         seconds: 0
       },
-      isSectionNameFilled: false
+      isNameEntered: false,
+      isSaveEnabled: false,
+      isSubmitEnabled: false,
+      buttonColor: '',
     };
     this.mainSections.push(newMainSection);
+  
+    // Initialize isVideoSelected and isSaveAndSubmitEnabled for the new subsection
+    this.addSubSection(this.mainSections.length );
   }
+  
 
   addSubSection(mainIndex: number) {
     const newSubSection: SubSection = {
@@ -78,7 +80,12 @@ export class UploadComponent implements OnInit {
       duration: {
         minutes: 0,
         seconds: 0
-      }
+      },
+      isSubSectionNameEntered: false,
+      isVideoSelected: false, 
+      isSubmitEnabled: false,
+      isSaveEnabled :false,
+      buttonColor: '',
     };
     this.mainSections[mainIndex].subSections.push(newSubSection);
   }
@@ -89,17 +96,7 @@ export class UploadComponent implements OnInit {
 
   removeSubSection(mainIndex: number, subIndex: number) {
     this.mainSections[mainIndex].subSections.splice(subIndex, 1);
-
-      // Recompute the titles for remaining subsections
-  this.recomputeSubsectionTitles(mainIndex);
   }
-
-  recomputeSubsectionTitles(mainIndex: number) {
-    this.mainSections[mainIndex].subSections.forEach((subSection, subIndex) => {
-      subSection.title = `Sub-Section ${mainIndex + 1}.${subIndex + 1}`;
-    });
-  }
-
   onMainFileSelected(event: any, mainIndex: number, subIndex: number) {
     const file = event.target.files[0];
     if (file) {
@@ -109,18 +106,25 @@ export class UploadComponent implements OnInit {
         const duration = video.duration;
         const minutes = Math.floor(duration / 60);
         const seconds = Math.floor(duration % 60);
-        this.mainSections[mainIndex].subSections[subIndex].duration = {
+        const subSection = this.mainSections[mainIndex].subSections[subIndex];
+  
+        // Update the duration and status of the subsection
+        subSection.duration = {
           minutes: minutes,
           seconds: seconds
         };
+        subSection.isVideoSelected = true; // Add this property to track video selection status
+  
+        // Check if both name and video are entered to enable the buttons
+        subSection.isSaveEnabled = subSection.isSubSectionNameEntered && subSection.isVideoSelected;
+        subSection.isSubmitEnabled = subSection.isSubSectionNameEntered && subSection.isVideoSelected;
+
         this.isDurationFetched = true;
         URL.revokeObjectURL(video.src);
       });
       document.body.appendChild(video);
     }
   }
-  
-
   onSubFileSelected(event: any, mainIndex: number, subIndex: number) {
     const file = event.target.files[0];
     if (!file || !file.type.startsWith('video/')) {
@@ -131,7 +135,14 @@ export class UploadComponent implements OnInit {
   }
 
   saveMainSection(mainIndex: number) {
-    // Implement logic to save main section data
+    const mainSection = this.mainSections[mainIndex];
+
+     // Update the flags to disable the "Save" button
+  // mainSection.isSaveEnabled = 'green';
+
+  // mainSection.isSaveEnabled = false;
+  mainSection.buttonColor = 'green';
+    
     console.log('Main section saved:', this.mainSections[mainIndex]);
   }
 
@@ -154,21 +165,41 @@ export class UploadComponent implements OnInit {
 
   saveSubSection(mainIndex: number, subIndex: number) {
     const subSection = this.mainSections[mainIndex].subSections[subIndex];
+
+    subSection.buttonColor = 'green';
   
     console.log('Sub-section saved:', subSection);
   }
 
+  
   get isCreateQuizButtonDisabled(): boolean {
     return this.hasTest !== 'yes';
   }
 
-  onSectionNameChange(mainIndex: number) {
-    // Implement any validation logic here
-    // For example, you can check if the section name is not empty
-    this.mainSections[mainIndex].isSectionNameFilled = this.mainSections[mainIndex].name.trim() !== '';
-  }
+  onMainSectionNameEntered(mainIndex: number){
+    const mainSection = this.mainSections[mainIndex];
+    // Check if the name of the section is entered
+  mainSection.isNameEntered = mainSection.name.trim() !== '';
+  // Check if both name and video are entered to enable the buttons
+  // mainSection.isSaveAndSubmitEnabled = mainSection.isNameEntered;
 
-  isSectionNameValid(mainIndex: number): boolean {
-    return this.mainSections[mainIndex].isSectionNameFilled;
+  mainSection.isSubmitEnabled = mainSection.isNameEntered;
+
+  mainSection.isSaveEnabled = mainSection.isNameEntered;
+
+
+  // isSubmitEnabled: false ,
+  //   isSaveEnabled :false,
   }
+  onSubSectionNameEntered(mainIndex: number, subIndex: number) {
+    const subSection = this.mainSections[mainIndex].subSections[subIndex];
+
+    subSection.isSubSectionNameEntered = subSection.title.trim() !== '';
+
+    // Check if both name and video are entered to enable the buttons
+    subSection.isSaveEnabled = subSection.isSubSectionNameEntered && subSection.isVideoSelected;
+    subSection.isSubmitEnabled = subSection.isSubSectionNameEntered && subSection.isVideoSelected;
+  }
+  
+   
 }

@@ -42,9 +42,11 @@ import { CarouselModule } from 'primeng/carousel';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
+import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 
 @NgModule({
   declarations: [
@@ -71,11 +73,12 @@ import { ArticleStatusComponent } from './components/articleStatus/article-statu
     SubdocumentsComponent,
     AboutusComponent,
     CheckoutComponent,
+    SubmitmesgComponent,
     ContactusComponent,
     ArticleHistoryComponent,
     ArticleStatusComponent,
+      SuccessmesgComponent,
    
-
   ],
   imports: [
     CommonModule,

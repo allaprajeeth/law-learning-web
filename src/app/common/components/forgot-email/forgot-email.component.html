@@ -1,12 +1,10 @@
-
-
 <div class="container-wrapper">
     <div class="container1" *ngIf="showContainer1">
       <form  #otpForm="ngForm" [formGroup]="forgotEmailForm">
         <h2>Forgot Email</h2>
         <mat-form-field class="mat-form-field-wrapper" appearance="outline">
           <mat-label>Enter your Phone Number </mat-label>
-          <input matInput type="text" [(ngModel)]="phone" name="number" required
+          <input matInput type="text"  name="number" required
                   formControlName="phoneNumber" (input)="onPhoneNumberInput($event)">
         </mat-form-field>
         <div class="button-container">
@@ -30,16 +28,16 @@
     </div>
   
     <div class="container2 verify-otp" *ngIf="showContainer2">
-      <form *ngIf="otpVerified " (ngSubmit)="updateEmail()" #updateEmailForm="ngForm">
+      <form *ngIf="otpVerified "  [formGroup]="updateEmailForm">
         <h2>Update Email</h2>
         <mat-form-field appearance="outline">
           <mat-label>Enter New Email</mat-label>
-          <input matInput type="email" [(ngModel)]="email" name="email" required   [attr.autocomplete]="'off'" >
+          <input matInput type="email" formControlName="email" name="email" required   [attr.autocomplete]="'off'" >
         </mat-form-field>
   
         <mat-form-field appearance="outline">
           <mat-label>Confirm New Email</mat-label>
-          <input matInput type="email" [(ngModel)]="confirmEmail" name="confirmEmail" required  (input)="checkEmailMatch(updateEmailForm)" [attr.autocomplete]="'off'" 
+          <input matInput type="email" formControlName="confirmEmail" name="confirmEmail" required  (input)="checkEmailMatch()" [attr.autocomplete]="'off'" 
            >
         </mat-form-field>
         <mat-error *ngIf="updateEmailForm.hasError('mismatch') && (updateEmailForm.dirty || updateEmailForm.touched)">
@@ -47,7 +45,7 @@
         </mat-error>
         <div class="button-container">
           <button mat-raised-button color="primary" type="submit" *ngIf="!updateEmailMode"
-            [disabled]="updateEmailForm.invalid || (email !== confirmEmail)">
+            [disabled]="updateEmailForm.invalid || (email !== confirmEmail)" (click)="updateEmail()" >
             Send OTP
           </button>
         </div>

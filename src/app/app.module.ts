@@ -32,7 +32,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
-import { LogoutComponent } from './common/components/logout/logout.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
@@ -58,6 +57,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
+import { LogoutService } from './common/services/logout.service';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
 
 @NgModule({
@@ -73,7 +76,6 @@ import { cartReducer } from './modules/subscriber/components/course-card/state/c
     HomepageComponent,
     ArticleComponent,
     DocumentsComponent,
-    LogoutComponent,
     VideoplayerComponent,
     VideoplayerNavbarComponent,
     RatingsComponent,
@@ -92,6 +94,7 @@ import { cartReducer } from './modules/subscriber/components/course-card/state/c
     ContactusComponent,
     ForgotPhonenoComponent,
     ForgotEmailComponent,
+    AdvisorDetailsComponent,
   ],
   imports: [
     CarouselModule,
@@ -105,7 +108,6 @@ import { cartReducer } from './modules/subscriber/components/course-card/state/c
     SharedModule,
     SubscriberRoutingModule,
     AngularEditorModule,
-   
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -127,6 +129,7 @@ import { cartReducer } from './modules/subscriber/components/course-card/state/c
   
   ],
   providers: [PopupService,
+   LogoutService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,

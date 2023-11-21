@@ -29,10 +29,10 @@
       </div>
       <label for="category">Category:</label>
       <select id="role" formControlName="selectedCategory" [disabled]="!isSendOtpsClicked">
-        <option value="Subscriber">Subscriber</option>
-        <option value="Reviewer">Reviewer</option>
-        <option value="Instructor">Instructor</option>
-        <option value="Content_Manager">Content Manager</option>
+        <option value="SUBSCRIBER">Subscriber</option>
+        <option value="REVIEWER">Reviewer</option>
+        <option value="INSTRUCTOR">Instructor</option>
+        <option value="CONTENTMANAGER">Content Manager</option>
         <option value="Admin">Admin</option>
       </select>
       <button
@@ -44,37 +44,38 @@
       </button>
 
       <div *ngIf="isOtpVisible">
-        <label for="emailOtp">Email OTP:</label>
-        <input type="text" id="emailOtp"  formControlName="emailOtp" required  [attr.autocomplete]="'off'"  (input)="onEmailOtpInput($event)"
+        <label for="email_otp">Email OTP:</label>
+        <input type="text" id="email_otp"  formControlName="email_otp" required  [attr.autocomplete]="'off'"  (input)="onEmailOtpInput($event)"
         />
-        <div class="error-message" *ngIf="loginForm.get('emailOtp')?.hasError('required') && loginForm.get('emailOtp')?.touched">
+        <div class="error-message" *ngIf="loginForm.get('email_otp')?.hasError('required') && loginForm.get('email_otp')?.touched">
           Email OTP is required.
         </div>
-        <div class="error-message" *ngIf="loginForm.get('emailOtp')?.hasError('pattern') && loginForm.get('emailOtp')?.touched">
+        <div class="error-message" *ngIf="loginForm.get('email_otp')?.hasError('pattern') && loginForm.get('email_otp')?.touched">
           Email OTP must consist of digits only.
         </div>
         <label for="phoneOtp">Phone OTP:</label>
-        <input type="text" id="phoneOtp" formControlName="phoneOtp" required [attr.autocomplete]="'off'"   (input)="onPhoneOtpInput($event)"
+        <input type="text" id="phoneOtp" formControlName="phone_otp" required [attr.autocomplete]="'off'"   (input)="onPhoneOtpInput($event)"
         />
-        <div class="error-message" *ngIf="loginForm.get('phoneOtp')?.hasError('required') && loginForm.get('phoneOtp')?.touched">
+        <div class="error-message" *ngIf="loginForm.get('phone_otp')?.hasError('required') && loginForm.get('phone_otp')?.touched">
           Phone OTP is required.
         </div>
-        <div class="error-message" *ngIf="loginForm.get('phoneOtp')?.hasError('pattern') && loginForm.get('phoneOtp')?.touched">
+        <div class="error-message" *ngIf="loginForm.get('phone_otp')?.hasError('pattern') && loginForm.get('phone_otp')?.touched">
           Email OTP must consist of digits only.
         </div>
       </div>
 
       <button *ngIf="isLoginVisible" 
-      [disabled]="loginForm.get('emailOtp')?.value.length !== 6 || loginForm.get('phoneOtp')?.value.length !== 6 || !loginForm.valid"
+      [disabled]="loginForm.get('email_otp')?.value.length !== 6 || loginForm.get('phone_otp')?.value.length !== 6 || !loginForm.valid"
           [ngStyle]="{
-            'background-color': loginForm.get('emailOtp')?.value.length == 6 && loginForm.get('phoneOtp')?.value.length == 6 && loginForm.valid ? 'blue' : 'gray',
-            color: loginForm.get('emailOtp')?.value.length == 6 && loginForm.get('phoneOtp')?.value.length == 6 && loginForm.valid ? 'white' : 'black'
+            'background-color': loginForm.get('email_otp')?.value.length == 6 && loginForm.get('phone_otp')?.value.length == 6 && loginForm.valid ? 'blue' : 'gray',
+            color: loginForm.get('email_otp')?.value.length == 6 && loginForm.get('phone_otp')?.value.length == 6 && loginForm.valid ? 'white' : 'black'
           }"
       (click)="login()" mat-raised-button>
         Login
       </button>
-      <div class="no-account redirect" routerLink="/register">
-        Don't have Account register here
+      <!-- <div class="no-account redirect" (click)="openModal()"> -->
+      <div class="no-account redirect"  >
+        No  Account register here
       </div>
       <div class="forgot redirect" routerLink="/forgotEmail">Forgot Email ?</div>
       <div class="forgot redirect phoneno" routerLink="/forgotPhoneno">Forgot Phone No?</div>
