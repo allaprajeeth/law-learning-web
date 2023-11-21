@@ -1,0 +1,30 @@
+<!-- Assuming the existing structure of your table -->
+<app-instructornav></app-instructornav>
+<table>
+  <thead>
+    <tr>
+      <th>Course Name</th>
+      <th class="hidden">Approvers</th>
+      <th>Approval Status</th>
+      <th class="hidden">Approval Actions</th>
+      
+      <th>Date of Submission</th>
+      <th></th>
+      <th class="hidden">Date and Time of Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{ course.name }}</td>
+      <td class="hidden">{{ course.approver }}</td>
+      <td ><p [ngStyle]="getStatusStyles(course.status)">{{ course.status }}</p></td>
+      <td class="hidden">{{ course.actions }}</td>
+      <td>{{ course.submissionDate }}</td>
+      <td class="status-button-container"> <a (click)="viewDetails(course)">viewmore</a></td>
+      <td class="hidden">{{ course.actionDate }}</td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<br/>
+<br/>

@@ -95,7 +95,7 @@
 
     <div class="test-button">
         <p class="required-message" *ngIf="!isValid()">Enter the required fields to enable the submit button</p>
-        <button class="test-submit-button" [disabled]="!isValid()" (click)="submitTest()">Submit</button>
+        <button class="test-submit-button" [disabled]="!isValid()" (click)="submitTest()" routerLink="/instructor/quizsuccessmsg">Submit</button>
       <br/>
         <!-- <button class="preview-button" (click)="previewQuestions()">Preview</button> -->
     </div>
