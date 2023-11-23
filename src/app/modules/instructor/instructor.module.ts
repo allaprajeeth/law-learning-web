@@ -48,6 +48,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { LibraryComponent } from './components/library/library.component';
+import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { LibraryComponent } from './components/library/library.component';
     DeleteAccountComponent,
     PaymentHistoryComponent,
     LibraryComponent,
+    InstructorOverviewComponent,
   
   ],
   providers: [InstructorService],
