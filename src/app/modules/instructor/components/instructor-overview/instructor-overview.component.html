@@ -1,0 +1,161 @@
+<div class="heading">
+    <h1>{{ overviewHeading }}</h1>
+    <p class="first-paragraph">{{ overviewDescription }}</p>
+    <p>Instructor : {{ instructorName }}</p>
+    <p>Course Duration : {{ courseDuration }}</p>
+    <p class="icon">
+        <span class="material-icons updated"> report_gmailerrorred </span>Last
+        updated: {{ lastUpdatedText }}
+    </p>
+    <p class="icon">
+        <span class="material-icons language"> language </span>English
+    </p>
+</div>
+
+<div class="courseDescription">
+    <h2>What you'll Learn</h2>
+    <p>
+        <span class="material-icons"> check </span> &nbsp;&nbsp;
+        {{ courseDescriptionText_1 }}
+    </p>
+    <p>
+        <span class="material-icons"> check </span> &nbsp;&nbsp;
+        {{ courseDescriptionText_2 }}
+    </p>
+    <p>
+        <span class="material-icons"> check </span> &nbsp;&nbsp;
+        {{ courseDescriptionText_3 }}
+    </p>
+    <p>
+        <span class="material-icons"> check </span> &nbsp;&nbsp;
+        {{ courseDescriptionText_4 }}
+    </p>
+    <p>
+        <span class="material-icons"> check </span> &nbsp;&nbsp;
+        {{ courseDescriptionText_5 }}
+    </p>
+</div>
+
+<div class="courseFeatures">
+    <h2>This course includes:</h2>
+    <div class="grid-container">
+        <div class="grid-item">
+            <span><mat-icon>videocam</mat-icon> {{ courseFeaturesVideoDuration }} hours on-demand video</span>
+        </div>
+
+        <div class="grid-item">
+            <span><mat-icon>download</mat-icon> {{ courseFeaturesDownloadable }} downloadable resource</span>
+        </div>
+        <div class="grid-item">
+            <span><span class="material-icons">emoji_events</span> Certificate of completion</span>
+        </div>
+    </div>
+    <mat-card class="side-bar">
+        <div class="container">
+            <mat-card-title class="title">
+                <div class="title-text">Course Content</div>
+            </mat-card-title>
+        </div>
+
+        <div class="sectionsInfo">
+            {{ courseSections }} Sections &nbsp;• {{ courseLectures }} lectures &nbsp;• {{ totalCourseDuration }} Total
+            Length
+        </div>
+        <mat-divider></mat-divider>
+        <mat-accordion class="sidebar-content">
+            <mat-expansion-panel *ngFor="let videoGroup of videoGroups; let i = index" #myExpansionPanel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <div class="panelTitle">{{ videoGroup?.panelTitle }}</div>
+                        <div class="section-info">{{ courseSectionLectures }} lectures &nbsp;&nbsp; {{
+                            courseSectionDuration }} min</div>
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <div style="border: 1px solid rgb(237 228 228); padding: 10px; margin-bottom: 15px;">
+                    <h3 style="color: blue;" class="sectionDesc">Description</h3>
+                    <p>{{ descriptionText }}</p>
+                </div>
+                <div class="video-group">
+                    <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
+                        <div class="titleDesc">
+                            <div class="titlehead">
+                                <mat-icon class="custom-icon mat-icon-small">ondemand_video</mat-icon>
+                                <p class="videos-title" (click)="toggleSectionInfo(i, j)">
+                                    {{ video?.title }}
+                                </p>
+                            </div>
+                            <div class="lastUpdated" style="color: rgb(122, 119, 119)">
+                                last updated: {{ video?.lastUpdated }}
+                            </div>
+                            <p style="color: rgb(122, 119, 119)">
+                                {{ video?.time }}
+                            </p>
+                        </div>
+                        <p *ngIf="sectionInfo[i][j]" class="sectionInfo">{{ sectionInfoText }}</p>
+                    </ng-container>
+                </div>
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </mat-card>
+    <div class="container1">
+        <div class="container2">
+            <h2 class="heading1">Instructor</h2>
+            <h2 class="author" routerLink="/instructor/instructorinfo">{{ instructorName }}</h2>
+            <p class="text">{{ instructorDesignation }}</p>
+            <div class="iconsContainer">
+                <img class="avatar"
+                    src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+                    alt="Instructor Image">
+                <div class="icons">
+                    <div class="icon ">
+                        <mat-icon>star</mat-icon>
+                        <p>{{ instructorRating }} Instructor Rating</p>
+                    </div>
+                    <div class="icon">
+                        <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge"
+                            class="reviews-badge">
+                        <p>{{ instructorReviews }} Reviews</p>
+                    </div>
+                    <div class="icon">
+                        <mat-icon>people</mat-icon>
+                        <p>{{ instructorStudents }} Students</p>
+                    </div>
+                    <div class="icon">
+                        <mat-icon>play_circle_outline</mat-icon>
+                        <p>{{ instructorCourses }} Courses</p>
+                    </div>
+                </div>
+            </div><br>
+            <p class="instructorDescription">{{ instructorDescription }}</p>
+        </div>
+
+        <!-- <div class="leave-rating" *ngIf="!submittedReview">
+        <h1 style="color:blue">Leave Your Rating Here</h1>
+        <hr>
+        <br>
+        <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview">
+          Give Rating
+        </button>
+      </div> -->
+
+        <!-- <div class="overlay" *ngIf="showRating">
+        <div class="contentt">
+          <div class="close" (click)="leaveRatingClose()">&times;</div>
+          <h1>How would you rate this course?</h1>
+          <ng-container *ngFor="let i of stars">
+            <mat-icon (mouseenter)="updaterating(i)" [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
+              class="staricon">
+              star
+            </mat-icon>
+          </ng-container>
+          <div class="review">
+            <textarea id="review" [(ngModel)]="userReview" name="userReview" rows="3" cols="36" placeholder="Comments"
+              class="mat-input custom-textarea"></textarea>
+          </div>
+          <button class="custom-button" (click)="submitRating()">Submit </button>
+        </div>
+      </div>
+    </div> -->
+    </div>
