@@ -1,56 +1,23 @@
-
 <!-- <app-instructornav></app-instructornav> -->
 <!-- <app-subscribernav></app-subscribernav> -->
 <div class="container1">
-    <div class="heading1">
-        <div>
-            <h3>Advisor</h3>
-            <h1>kelvin Smith</h1>
-            <h3>Business Planning Expert</h3>
-        </div>
-        <div class="icons">
-            <div class="icon ">
-              <mat-icon>star</mat-icon>
-              <p>4.7 Instructor Rating</p>
-            </div>
-            <div class="icon">
-              <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge" class="reviews-badge">
-              <p>715,505 Reviews</p>
-            </div>
-            <div class="icon">
-              <mat-icon>people</mat-icon>
-              <p>2,342,416 Students</p>
-            </div>
-            <div class="icon">
-              <mat-icon>play_circle_outline</mat-icon>
-              <p>7 Courses</p>
-            </div>
-          </div>
+  <div class="heading1">
+    <div>
+      <h2>Advisor</h2>
+      <h1>kelvin Smith</h1>
+      <h3>Business Planning Expert</h3>
     </div>
-
-    <div class="profile">
-        <img class="avatar"
-            src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
-            alt="Instructor Image">
-
-
-    </div>
-
-
-
+  </div>
+  <div class="profile">
+    <img class="avatar" src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
+      alt="Instructor Image">
+  </div>
 </div>
-
 <div class="description">
-    <h1>About me</h1>
-    <ng-container *ngFor="let para of description; let i = index">
-        <p *ngIf="isDescriptionExpanded || i < 2">{{ para }}</p>
-        <span *ngIf="i === 1 && !isDescriptionExpanded">...</span>
-    </ng-container>
-    <a (click)="toggleDescription()">
-        {{ isDescriptionExpanded ? 'Show Less' : 'Show More' }}
-    </a>
+  <h1>About me</h1>
+  <ng-container *ngFor="let para of description; let i = index">
+    <p>{{ para }}</p>
+  </ng-container>
 </div>
-
-
 <br>
 <br>

@@ -47,8 +47,14 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
+import { VideoplayerSubscriberComponent } from './components/videoplayer-subscriber/videoplayer-subscriber.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
+import { CourseInfoComponent } from './components/course-info/course-info.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { OverviewComponent } from './components/overview/overview.component';
+import { RatingsComponent } from './components/ratings/ratings.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
-
 @NgModule({
   declarations: [
     SidenavComponent, 
@@ -79,6 +85,10 @@ import { SubscriberpostdetailsComponent } from './components/subscriberpostdetai
     ArticleHistoryComponent,
     ArticleStatusComponent,
       SuccessmesgComponent,
+      VideoplayerSubscriberComponent,
+      CourseInfoComponent,
+      OverviewComponent,
+      RatingsComponent,
       SubscriberpostdetailsComponent,
    
   ],
@@ -104,6 +114,9 @@ import { SubscriberpostdetailsComponent } from './components/subscriberpostdetai
     MatCardModule,
     MatBadgeModule,
     MatCheckboxModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatTabsModule,
   ]
 })
 export class SubscriberModule { }

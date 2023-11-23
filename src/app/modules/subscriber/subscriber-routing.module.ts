@@ -23,7 +23,9 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
+import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
+
 const routes: Routes = [
   {
     path:"",
@@ -126,7 +128,10 @@ const routes: Routes = [
     path:'successmesg',
     component:SuccessmesgComponent
   },
-
+  {
+    path:'courseinfo',
+    component:CourseInfoComponent
+  }
 
 ];
 

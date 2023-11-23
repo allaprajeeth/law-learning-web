@@ -1,6 +1,4 @@
-
-
-
+<app-subscribernav></app-subscribernav>
 <mat-divider></mat-divider>
 <div>
   <div class="course-info-container">
@@ -11,7 +9,7 @@
       </div>
     </mat-tab>
     <mat-tab label="Watch Content">
-      <app-videoplayer></app-videoplayer>
+      <app-videoplayer-subscriber></app-videoplayer-subscriber>
 </mat-tab>
 <mat-tab  *ngIf="isTestAvailable" label="Attend Test">
   <div class="test">Complete 80% of the course to attend the test</div>
@@ -24,7 +22,7 @@
     </mat-tab>
     <mat-tab label="Rating">
       <div class="tabs">
-        <!-- <app-ratings></app-ratings> -->
+       <app-ratings></app-ratings>
       </div>
     </mat-tab>
   </mat-tab-group>

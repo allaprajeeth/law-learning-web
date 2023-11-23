@@ -23,8 +23,10 @@ import { SharednotificationsComponent } from './components/sharednotifications/s
 import { SharedcontactusComponent } from './components/sharedcontactus/sharedcontactus.component';
 import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
 import { LibraryComponent } from './components/library/library.component';
+import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
 import { SharedarticleformComponent } from './components/sharedarticleform/sharedarticleform.component';
 import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
+
 
 @NgModule({
  
@@ -40,8 +42,10 @@ import { SharedpostdetailsComponent } from './components/sharedpostdetails/share
      SharedcontactusComponent,
      ShareddeleteAccountComponent,
      LibraryComponent,
+     SharedCertificateComponent,
      SharedarticleformComponent,
      SharedpostdetailsComponent,
+
     ],
 
   imports: [
@@ -76,8 +80,10 @@ import { SharedpostdetailsComponent } from './components/sharedpostdetails/share
     SharedcontactusComponent,
     ShareddeleteAccountComponent,
     LibraryComponent,
+    SharedCertificateComponent,
     SharedarticleformComponent,
     SharedpostdetailsComponent
+
 
   ]
 

@@ -3,13 +3,12 @@ import { MatExpansionPanel } from '@angular/material/expansion';
 import { ActivatedRoute } from '@angular/router';
 import * as Plyr from 'plyr';
 import { PdfService } from 'src/app/sharedService.service';
-
 @Component({
-  selector: 'app-videoplayer',
-  templateUrl: './videoplayer.component.html',
-  styleUrls: ['./videoplayer.component.scss']
+  selector: 'app-videoplayer-subscriber',
+  templateUrl: './videoplayer-subscriber.component.html',
+  styleUrls: ['./videoplayer-subscriber.component.scss']
 })
-export class VideoplayerComponent {
+export class VideoplayerSubscriberComponent {
   isTestAvailable:boolean;
   nextVideoInfo: { sectionIndex: number; videoIndex: number } | undefined;
   @ViewChildren(MatExpansionPanel) expansionPanels!: QueryList<MatExpansionPanel>;
@@ -294,7 +293,4 @@ export class VideoplayerComponent {
     this.expansionPanels.forEach((panel) => panel.close());
     this.expansionPanels.toArray()[sectionIndex].open();
   }
- 
-  
-
 }

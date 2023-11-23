@@ -39,5 +39,4 @@ export class RatingsComponent {
   ratingClicked(i:any){
     this.isratingEditable=false;
    }
-
 }

@@ -147,6 +147,7 @@ const routes: Routes = [
     path:'advisorInfo',
     component:AdvisorDetailsComponent
   },
+  
   {
     path:'forgotEmail',
     component:ForgotEmailComponent
