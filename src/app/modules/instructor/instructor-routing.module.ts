@@ -21,9 +21,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { LibraryComponent } from './components/library/library.component';
-// import { PostdetailComponent } from './components/postdetail/postdetail.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
-// import { PhotoComponent } from './components/photo/photo.component';
+import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 const routes: Routes = [
   {
@@ -39,8 +38,10 @@ const routes: Routes = [
     path:"homepage",
     component: HomepageComponent
   },
-
-  
+  {
+    path:"instructoroverview",
+    component: InstructorOverviewComponent
+  },
   {
     path:"public-profile",
     component: PublicProfileComponent

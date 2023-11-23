@@ -37,7 +37,7 @@
     .star,
     .fa .star {
       color: gold;
-      font-size:16px
+      font-size: 16px;
       //margin-bottom: 10px;
     }
   }
@@ -56,13 +56,14 @@
   margin: 50px 200px;
 
   .grid-container {
-  width:100%;
+    width: 100%;
+
     .grid-item {
       border: 1px solid #ccc;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
       margin-bottom: 10px;
+      padding: 1rem;
+      // display: flex;
+      align-items: center;
       transition: background-color 0.3s;
 
       &:hover {
@@ -86,17 +87,24 @@ mat-panel-title {
   display: flex;
   justify-content: space-between;
 }
-.titleDesc {
-  display: flex;
-  justify-content: space-between;
-}
+
 .custom-icon {
   font-size: 16px;
 }
-.titlehead {
+
+.titleDesc {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+
+  .titlehead {
+    display: flex;
+
+    .videos-title {
+      cursor: pointer;
+    }
+  }
 }
+
 .container,
 .sectionsInfo {
   padding-left: 18px;
@@ -222,6 +230,7 @@ mat-card {
   }
 
   .instructorDescription {
+    text-indent: 100px;
     text-align: justify;
   }
 
@@ -298,7 +307,7 @@ mat-card {
 }
 .contentt {
   margin-left: 120px;
-  background-color:#ebebeb;
+  background-color: #ebebeb;
   padding: 20px;
   color: #050505;
 }
@@ -316,18 +325,18 @@ mat-card {
   margin-top: 5px;
 }
 .staricon:hover {
-  color: orange
+  color: orange;
 }
 .contentt h1 {
   text-align: center;
   margin-bottom: 0px;
 }
 .active {
-  color:  orange;
+  color: orange;
 }
 .staricon.disabled {
-  pointer-events: none; 
-  cursor: not-allowed; 
+  pointer-events: none;
+  cursor: not-allowed;
 }
 .custom-textarea {
   margin-top: 10px;

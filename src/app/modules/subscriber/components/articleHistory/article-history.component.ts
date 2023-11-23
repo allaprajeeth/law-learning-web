@@ -7,28 +7,28 @@ import { ArticleStatusDataService } from '../article-status-data.service';
   templateUrl: './article-history.component.html',
   styleUrls: ['./article-history.component.scss'],
 })
-export class ArticleHistoryComponent {
 
+export class ArticleHistoryComponent {
   articles = [
     {
       name: 'What is Criminal Law',
       status: 'Approved',
-      submissionDate: this.getRandomDate(),
+      submissionDate: '07-07-2023',
     },
     {
       name: 'Mastering Legal Research',
       status: 'Pending',
-      submissionDate: this.getRandomDate(),
+      submissionDate: '10-08-2023',
     },
     {
       name: 'Law School Applications',
       status: 'Under Review',
-      submissionDate: this.getRandomDate(),
+      submissionDate: '14-09-2023',
     },
     {
       name: 'Legal Ethics',
       status: 'Rejected',
-      submissionDate: this.getRandomDate(),
+      submissionDate: '19-10-2023',
     },
   ];
 
@@ -37,32 +37,6 @@ export class ArticleHistoryComponent {
   private adminNames = ['John Doe', 'Alice Smith', 'Bob Johnson', 'Emily Davis'];
   private contentManagerNames = ['Jane Doe', 'Charlie Brown', 'Eva Martinez', 'Daniel Lee'];
   private reviewerNames = ['David Johnson', 'Sarah Smith', 'Michael Brown', 'Jessica Davis'];
-
-  private getRandomName(names: string[]): string {
-    const randomIndex = Math.floor(Math.random() * names.length);
-    return names[randomIndex];
-  }
-
-  private getRandomDate(): string {
-    const currentDate = new Date();
-    const pastMonths = Math.floor(Math.random() * 4) + 1;
-    const pastDays = Math.floor(Math.random() * 30) + 1;
-    currentDate.setMonth(currentDate.getMonth() - pastMonths);
-    currentDate.setDate(currentDate.getDate() - pastDays);
-    return currentDate.toISOString().slice(0, 10);
-  }
-
-  private getRandomApprovedDate(): string {
-    let randomApprovedDate: string;
-    do {
-      const currentDate = new Date();
-      const pastDays = Math.floor(Math.random() * 30) + 1; // Random days between 1 and 7
-      currentDate.setDate(currentDate.getDate() - pastDays);
-      randomApprovedDate = currentDate.toISOString().slice(0, 10);
-    } while (randomApprovedDate <= this.getRandomDate()); // Ensure that getRandomApprovedDate is greater than getRandomDate
-  
-    return randomApprovedDate;
-  }
 
   getStatusClass(status: string): string {
     switch (status) {
@@ -78,23 +52,31 @@ export class ArticleHistoryComponent {
         return '';
     }
   }
+ 
+  private adminIndex = 0;
+  private contentManagerIndex = 1;
+  private reviewerIndex = 2;
 
   viewMore(article: any): void {
+    const approvedByAdmin = this.adminNames[this.adminIndex];
+    const approvedByContentManager = this.contentManagerNames[this.contentManagerIndex];
+    const approvedByReviewer = this.reviewerNames[this.reviewerIndex];
+
+    this.adminIndex = (this.adminIndex + 1) % this.adminNames.length;
+    this.contentManagerIndex = (this.contentManagerIndex + 1) % this.contentManagerNames.length;
+    this.reviewerIndex = (this.reviewerIndex + 1) % this.reviewerNames.length;
+
     const additionalData = {
       className: this.getStatusClass(article.status),
-      approvedByAdmin: this.getRandomName(this.adminNames),
-      approvedByContentManager: this.getRandomName(this.contentManagerNames),
-      approvedByReviewer: this.getRandomName(this.reviewerNames),
-      approvedDate: this.getRandomApprovedDate(),
+      approvedByAdmin: approvedByAdmin,
+      approvedByContentManager: approvedByContentManager,
+      approvedByReviewer: approvedByReviewer,
+      approvedDate: '21-11-2023',
     };
   
-    // Combine article data and additional data
     const dataToPass = { ...article, ...additionalData };
-  
-    // Set data in the service
     this.articleStatusDataService.setData(dataToPass);
-  
     this.router.navigate(['/articleStatus']);
   }
-
 }
+

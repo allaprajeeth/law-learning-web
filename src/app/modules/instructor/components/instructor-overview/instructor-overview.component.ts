@@ -2,18 +2,14 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  selector: 'app-instructor-overview',
+  templateUrl: './instructor-overview.component.html',
+  styleUrls: ['./instructor-overview.component.scss']
 })
-export class OverviewComponent {
+export class InstructorOverviewComponent {
 
   overviewHeading = "Introduction to Law: A Comprehensive Overview";
   overviewDescription = "Law learning encompasses a diverse range of fascinating subjects and fields of study and ethics, and the legal systems that shape our societies.";
-  subscriberRatings = 4.5;
-  subscriberRatingsCount = "(1234)";
-  reviewerRatings = 4;
-  reviewerRatingsCount = "(22)";
   instructorName = "Edward Viaene";
   courseDuration = "2hr 3m";
   lastUpdatedText = "10/2023";
@@ -37,18 +33,7 @@ export class OverviewComponent {
   instructorStudents = "2,342,416";
   instructorCourses = 7;
   instructorDescription = "A Law Learning Instructor is responsible for delivering high-quality instruction and guidance to individuals or groups seeking to expand their knowledge of legal principles and concepts. They play a crucial role in facilitating the learning process, helping students understand the complexities of the legal field, and preparing them for success in their legal studies or careers. Develop and deliver instructional materials, including lectures, workshops, and presentations, on various aspects of the law. Adapt teaching methods and content to accommodate various learning styles and levels of expertise. Create and update curriculum content, including lesson plans, reading materials, and assessment tools. Ensure that curriculum aligns with the latest legal developments and standards. Foster a positive learning environment by encouraging active participation and critical thinking. Provide constructive feedback and support to students, addressing their questions and concerns. A degree in law (Juris Doctor or equivalent) is required. Relevant teaching or instructional experience is preferred. Strong knowledge of legal principles, ethics, and case studies. Excellent communication and presentation skills. Patience, adaptability, and the ability to motivate and engage learners. A commitment to ongoing professional development in the legal field.";
-  courseReviewer_1 = "DW";
-  courseReviewerHeading_1 = "David Wilson";
-  courseReviewerText_1 = "The Law Learning course provided a comprehensive overview of legal principles and their practical applications. The content was well-structured, and the instructors were highly knowledgeable.";
-  courseReviewer_2 = "SD";
-  courseReviewerHeading_2 = "Sarah Davis";
-  courseReviewerText_2 = "I appreciated the flexibility of the Law Learning course, which allowed me to study at my own pace. The online resources and materials were helpful, and the quizzes and assignments provided opportunities for self-assessment.";
-  courseReviewer_3 = "MB";
-  courseReviewerHeading_3 = "Michael Brown";
-  courseReviewerText_3 = "I would highly recommend the Law Learning course to anyone interested in a career in law or those who simply want to expand their legal knowledge. It's a valuable resource for personal and professional growth.";
-  courseReviewer_4 = "SA";
-  courseReviewerHeading_4 = "Susan Anderson";
-  courseReviewerText_4 = "The course was well-organized, and the materials provided were up-to-date. It was clear that the course creators put a lot of effort into maintaining its relevance in the ever-evolving legal landscape.";
+  
 
 
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
@@ -57,19 +42,22 @@ export class OverviewComponent {
       {
         url: 'assets/video2.mp4',
         selected: false,
-        title: 'Introduction',
+        title: '1.1 Introduction',
+        lastUpdated: '09/2023',
         time: '1min',
       },
       {
         url: 'assets/video3.mp4',
         selected: false,
-        title: 'Hands-On Practice',
-        time: '9min',
+        title: '1.2 Hands-On Practice',
+        lastUpdated: '10/2023',
+        time: '2min',
       },
       {
         url: 'assets/video1.mp4',
         selected: false,
-        title: "Let's get started",
+        title: "1.3 Let's get started",
+        lastUpdated: '11/2023',
         time: '2min',
       },
     ],
@@ -101,18 +89,22 @@ toggleSectionInfo(i: number, j: number) {
      
     });
   }
+  showPopup: boolean = false;
+ 
   submittedReview:boolean=false;
-  showRating = false;
+  // showRating = false;
+ 
   stars = [1, 2, 3, 4, 5];
   selected = 0;
+  isMore: boolean = false; 
   userReview: string = '';
   isratingEditable:boolean=true;
-  leaveRatingOpen() {
-    this.showRating = true;
-  }
-  leaveRatingClose() {
-    this.showRating = false;  
-  }
+  // leaveRatingOpen() {
+  //   this.showRating = true;
+  // }
+  // leaveRatingClose() {
+  //   this.showRating = false;  
+  // }
 
   updaterating(r: any) {
     if(this.isratingEditable){
@@ -122,15 +114,11 @@ toggleSectionInfo(i: number, j: number) {
   submitRating() {
     console.log('Selected Rating:', this.selected);
     console.log('User Review:', this.userReview);
-    this.showRating = false;
+    this.isratingEditable=false;
+    // this.showRating = false;
     this.submittedReview=true
   }
   getStarArray(): number[] {
     return Array.from({ length: 5 }, (_, i) => i);
   }
-  ratingClicked(i:any){
-   this.isratingEditable=false;
-  }
-  
 }
-

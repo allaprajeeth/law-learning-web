@@ -40,12 +40,12 @@
           <input matInput type="email" formControlName="confirmEmail" name="confirmEmail" required  (input)="checkEmailMatch()" [attr.autocomplete]="'off'" 
            >
         </mat-form-field>
-        <mat-error *ngIf="updateEmailForm.hasError('mismatch') && (updateEmailForm.dirty || updateEmailForm.touched)">
+        <mat-error *ngIf="updateEmailForm.get('email')?.value !=updateEmailForm.get('confirmEmail')?.value && updateEmailForm.get('confirmEmail')?.touched">
            New Email Id should match
         </mat-error>
         <div class="button-container">
           <button mat-raised-button color="primary" type="submit" *ngIf="!updateEmailMode"
-            [disabled]="updateEmailForm.invalid || (email !== confirmEmail)" (click)="updateEmail()" >
+          [disabled]="updateEmailForm.invalid || updateEmailForm.get('email')?.value !=updateEmailForm.get('confirmEmail')?.value" (click)="updateEmail()" >
             Send OTP
           </button>
         </div>

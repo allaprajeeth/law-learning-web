@@ -48,6 +48,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { LibraryComponent } from './components/library/library.component';
+import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 
@@ -82,6 +83,7 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
     DeleteAccountComponent,
     PaymentHistoryComponent,
     LibraryComponent,
+    InstructorOverviewComponent,
   
     InstructorpostdetailsComponent,
   

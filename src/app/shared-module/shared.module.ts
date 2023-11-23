@@ -31,7 +31,7 @@ import { SharedpostdetailsComponent } from './components/sharedpostdetails/share
   declarations: [
     BasePageComponent,
     FooterComponent,
-    SharedoverviewComponent, 
+     SharedoverviewComponent, 
     PublishingcornerComponent,
      SharedaboutusComponent,
      SharedphotoComponent,

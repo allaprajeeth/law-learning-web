@@ -6,41 +6,54 @@
             <tr>
                 <th>Article Name</th>
                 <th>Status</th>
-                <th>Approved by Admin</th>
                 <th>Approved by Content Manager</th>
                 <th>Approved by Reviewer</th>
+                <th>Approved by Admin</th>
                 <th>Date of Submission</th>
                 <th>
-                    <ng-container *ngIf="articleData && (articleData.status === 'Approved'); else dateOfAction">
+                    <ng-container *ngIf="articleData && (articleData.status === 'Approved')">
                         Approved Date
                     </ng-container>
-                    <ng-template #dateOfAction>
+                    <ng-container *ngIf="!articleData || (articleData.status !== 'Approved')">
                         Date of Action
-                    </ng-template>
+                    </ng-container>
                 </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngIf="articleData">
+            <tr *ngIf="articleData && (articleData.status === 'Approved' || articleData.status === 'Rejected')">
                 <td>{{ articleData.name }}</td>
                 <td [ngClass]="articleData.className">{{ articleData.status }}</td>
-
-                <ng-container *ngIf="articleData.status === 'Pending';">
-                    <td>-</td>
-                    <td>-</td>
-                    <td>-</td>
-                </ng-container>
-                <ng-container *ngIf="articleData.status === 'Under Review';">
-                    <td>{{ getRandomValue().approvedByAdmin }}</td>
-                    <td>{{ getRandomValue().approvedByContentManager }}</td>
-                    <td>{{ getRandomValue().approvedByReviewer }}</td>
-                </ng-container>
-                <ng-container *ngIf="articleData.status === 'Approved' || articleData.status === 'Rejected';">
-                    <td>{{ articleData.approvedByAdmin }}</td>
-                    <td>{{ articleData.approvedByContentManager }}</td>
-                    <td>{{ articleData.approvedByReviewer }}</td>
-                </ng-container>
-
+                <td>{{ articleData.approvedByContentManager }}</td>
+                <td>{{ articleData.approvedByReviewer }}</td>
+                <td>{{ articleData.approvedByAdmin }}</td>
+                <td>{{ articleData.submissionDate }}</td>
+                <td>{{ articleData.approvedDate }}</td>
+            </tr>
+            <tr *ngIf="articleData && articleData.status === 'Pending'">
+                <td>{{ articleData.name }}</td>
+                <td [ngClass]="articleData.className">{{ articleData.status }}</td>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>{{ articleData.submissionDate }}</td>
+                <td>{{ articleData.approvedDate }}</td>
+            </tr>
+            <tr *ngIf="articleData && articleData.status === 'Under Review'">
+                <td>{{ articleData.name }}</td>
+                <td [ngClass]="articleData.className">{{ articleData.status }}</td>
+                <td>{{ articleData.approvedByContentManager }}</td>
+                <td>-</td>
+                <td>{{ articleData.approvedByAdmin }}</td>
+                <td>{{ articleData.submissionDate }}</td>
+                <td>{{ articleData.approvedDate }}</td>
+            </tr>
+            <tr *ngIf="articleData && articleData.status === 'Under Review'">
+                <td>{{ articleData.name }}</td>
+                <td [ngClass]="articleData.className">{{ articleData.status }}</td>
+                <td>{{ articleData.approvedByContentManager }}</td>
+                <td>-</td>
+                <td>-</td>
                 <td>{{ articleData.submissionDate }}</td>
                 <td>{{ articleData.approvedDate }}</td>
             </tr>

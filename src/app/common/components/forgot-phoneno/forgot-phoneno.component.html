@@ -43,12 +43,12 @@
         <input matInput type="tel" formControlName="confirmPhone" name="confirmPhone" required pattern="[0-9]{10}"
           (input)="checkPhoneMatch()" [attr.autocomplete]="'off'" maxlength="10">
       </mat-form-field>
-      <mat-error *ngIf="updatePhoneForm.hasError('mismatch') && (updatePhoneForm.dirty || updatePhoneForm.touched)">
+      <mat-error *ngIf="updatePhoneForm.get('phone')?.value !=updatePhoneForm.get('confirmPhone')?.value && updatePhoneForm.get('confirmPhone')?.touched">
         New Phone number should match
       </mat-error>
       <div class="button-container">
         <button mat-raised-button color="primary" type="submit" *ngIf="!updatePhoneMode"
-          [disabled]="updatePhoneForm.invalid " (click)="updatePhoneNumber()">
+        [disabled]="updatePhoneForm.invalid || updatePhoneForm.get('phone')?.value !=updatePhoneForm.get('confirmPhone')?.value" (click)="updatePhoneNumber()">
           Send OTP
         </button>
       </div>
