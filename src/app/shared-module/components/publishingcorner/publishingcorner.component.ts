@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'; 
 import { ActivatedRoute, Router } from '@angular/router';
-import { ModalserviceService } from 'src/app/common/components/modalservice.service';
+// import { ModalserviceService } from 'src/app/common/components/modalservice.service';
+
 
 
 interface BlogPost {
@@ -209,35 +210,87 @@ export class PublishingcornerComponent {
     return this.expandedIndex === index;
   }
 
-  constructor(public dialog: MatDialog, private router: Router, private route: ActivatedRoute,private modalService: ModalserviceService) { }
+  constructor(public dialog: MatDialog, private router: Router, private route: ActivatedRoute) { }
 
 
   openModal(blogPost: BlogPost): void {
   
   }
 
-
-  openSubmitArticleModal() {
-    this.router.navigate(['/subscriber/articleform']);  
-  
+openSubmitArticleModal() {
+  // Get the current route
+  const currentRoute = this.router.url;
+    // Show an alert if the current route is "/article"
+    if (currentRoute === '/article') {
+      const userResponse = confirm('Login to this website to upload an article. Do you want to proceed?');
+      if (userResponse) {
+        // User clicked "OK" or "Yes"
+        this.router.navigate(['/login']);
+      } else {
+        this.router.navigate(['/article']);
+      }
+    } else {
+      switch (currentRoute) {
+        case '/article':
+          // If in "/article" routing, navigate to "/login" and open dialog
+          this.router.navigate(['/login']).then(() => {
+            // this.openLoginDialog();
+          });
+          break;
+        case '/subscriber/article':
+          // If in "/subscriber/article" routing, navigate to "/subscriber/articleform"
+          this.router.navigate(['/subscriber/articleform']);
+          break;
+        case '/instructor/article':
+          // If in "/instructor/article" routing, navigate to "/instructor/articleform"
+          this.router.navigate(['/instructor/articleform']);
+          break;
+        default:
+          // Default case, navigate to a fallback route or handle as needed
+          break;
+      }
+    }
 }
 
-openArticleInNewTab(blogPost: BlogPost): void {
-  // Construct the URL of the route for displaying blog post details
-  const postDetailUrl = `/post/${blogPost.id}`; // Replace 'post/:id' with your actual route path
 
-  // Open the blog post details in a new tab and pass the entire blog post object
+
+
+
+// openArticleInNewTab(blogPost: BlogPost): void {
+//   // Construct the URL of the route for displaying blog post details
+//    const postDetailUrl = `/instructor/post/${blogPost.id}`; 
+  
+//   // Replace 'post/:id' with your actual route path
+
+//   // Open the blog post details in a new tab and pass the entire blog post object
+//    window.open(`${postDetailUrl}?postId=${encodeURIComponent(JSON.stringify(blogPost))}`, '_self');
+// }
+openArticleInNewTab(blogPost: BlogPost): void {
+  // Get the current route
+  const currentRoute = this.router.url;
+
+  // Define the base route for post details
+  let postDetailRoute: string;
+
+  // Determine the base route based on the current route
+  if (currentRoute.startsWith('/article')) {
+    postDetailRoute = '/post'; // If the current route is "/article", use "/post"
+  } else if (currentRoute.startsWith('/subscriber/article')) {
+    postDetailRoute = '/subscriber/post'; // If the current route is "/subscriber/article", use "/subscriber/post"
+  } else if (currentRoute.startsWith('/instructor/article')) {
+    postDetailRoute = '/instructor/post'; // If the current route is "/instructor/article", use "/instructor/post"
+  } else {
+    postDetailRoute = '/post'; // Fallback to "/post" if the current route doesn't match the specified cases
+  }
+
+  // Construct the URL of the route for displaying blog post details
+  const postDetailUrl = `${postDetailRoute}/${blogPost.id}`;
+
+  // Open the blog post details in a new tab and pass the blog post object as a query parameter
   window.open(`${postDetailUrl}?postId=${encodeURIComponent(JSON.stringify(blogPost))}`, '_self');
 }
-shouldShowSubmitButton(): boolean {
-  const allowedRoutes = [
-    '/subscriber/article',
-    '/instructor/article',
-    '/reviewer/article',
-  ];
 
-  // Check if the current route is one of the allowed routes
-  return allowedRoutes.includes(this.router.url);
-}
+
+
 
 }

@@ -24,6 +24,7 @@ import { ArticleHistoryComponent } from './components/articleHistory/article-his
 import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
 
 const routes: Routes = [
   {
@@ -106,6 +107,10 @@ const routes: Routes = [
   {
     path:"article",
     component:SubarticleComponent
+  },
+  { 
+    path: 'post/:id', 
+    component: SubscriberpostdetailsComponent
   },
   {
     path:"documents",

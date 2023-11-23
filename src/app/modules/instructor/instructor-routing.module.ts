@@ -22,8 +22,11 @@ import { DeleteAccountComponent } from './components/delete-account/delete-accou
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
-
 // import { PhotoComponent } from './components/photo/photo.component';
+import { LibraryComponent } from './components/library/library.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
+import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 
 const routes: Routes = [
   {
@@ -69,6 +72,10 @@ component:InstructorinfoComponent
 component:ArticleComponent
 },
 {
+  path:"articleform",
+component:ArticleformComponent
+},
+{
   path:"courseInfo",
   component:CourseInfoComponent
 },
@@ -97,6 +104,10 @@ component:ArticleComponent
   path:"quizsuccessmsg",
   component: QuizsuccessmsgComponent
 },
+{ 
+  path: 'post/:id', 
+  component: InstructorpostdetailsComponent
+},
 {
   path:"acSecurity",
   component:AccountsecurityComponent
@@ -117,6 +128,7 @@ component:ArticleComponent
   path:'library',
   component:LibraryInstructorComponent
 },
+
 ];
 
 @NgModule({

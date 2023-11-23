@@ -49,6 +49,7 @@ import { DeleteAccountComponent } from './components/delete-account/delete-accou
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
+import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 @NgModule({
   declarations: [
     InstructornavComponent,
@@ -83,6 +84,8 @@ import { LibraryInstructorComponent } from './components/library-instructor/libr
     LibraryInstructorComponent,
 
   
+    InstructorpostdetailsComponent,
+  
   ],
   providers: [InstructorService],
   imports: [
@@ -106,6 +109,10 @@ import { LibraryInstructorComponent } from './components/library-instructor/libr
    MatDialogModule,
    MatSidenavModule,
 
-  ]
+  ],
+  exports: [
+ 
+    // other instructor components
+  ],
 })
 export class InstructorModule { }

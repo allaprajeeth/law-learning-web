@@ -9,7 +9,7 @@
             <p class="message">Enter the required fields to enable the Buttons</p>
           </div> -->
           <div class="message">
-            <p >Enter the required fields to enable the Buttons</p>
+            <p >Enter the required fields to enable save and submit buttons</p>
           </div>
   
           <div *ngFor="let mainSection of mainSections; let mainIndex = index" class="main-section">
@@ -115,10 +115,10 @@
            
   
             <br />
-            <button type="button" class="add-subsection-button" (click)="addSubSection(mainIndex)">+</button>
+            <button type="button" class="add-subsection-button" (click)="addSubSection(mainIndex)">Add Subsection</button>
           </div>
           <br />
-          <button type="button" class="add-section-button" (click)="addMainSection()">+</button>
+          <button type="button" class="add-section-button" (click)="addMainSection()">Add Mainsection</button>
         </div>
   <br/>
 

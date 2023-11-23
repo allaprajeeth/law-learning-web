@@ -24,6 +24,9 @@ import { SharedcontactusComponent } from './components/sharedcontactus/sharedcon
 import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
 import { LibraryComponent } from './components/library/library.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
+import { SharedarticleformComponent } from './components/sharedarticleform/sharedarticleform.component';
+import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
+
 
 @NgModule({
  
@@ -40,6 +43,9 @@ import { SharedCertificateComponent } from './components/shared-certificate/shar
      ShareddeleteAccountComponent,
      LibraryComponent,
      SharedCertificateComponent,
+     SharedarticleformComponent,
+     SharedpostdetailsComponent,
+
     ],
 
   imports: [
@@ -75,6 +81,9 @@ import { SharedCertificateComponent } from './components/shared-certificate/shar
     ShareddeleteAccountComponent,
     LibraryComponent,
     SharedCertificateComponent,
+    SharedarticleformComponent,
+    SharedpostdetailsComponent
+
 
   ]
 

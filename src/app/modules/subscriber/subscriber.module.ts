@@ -54,6 +54,7 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import {MatTabsModule} from '@angular/material/tabs';
 import { OverviewComponent } from './components/overview/overview.component';
 import { RatingsComponent } from './components/ratings/ratings.component';
+import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
 @NgModule({
   declarations: [
     SidenavComponent, 
@@ -88,6 +89,8 @@ import { RatingsComponent } from './components/ratings/ratings.component';
       CourseInfoComponent,
       OverviewComponent,
       RatingsComponent,
+      SubscriberpostdetailsComponent,
+   
   ],
   imports: [
     CommonModule,
