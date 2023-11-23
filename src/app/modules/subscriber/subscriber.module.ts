@@ -47,6 +47,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
+import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { SuccessmesgComponent } from './components/successmesg/successmesg.compo
     ArticleHistoryComponent,
     ArticleStatusComponent,
       SuccessmesgComponent,
+      SubscriberpostdetailsComponent,
    
   ],
   imports: [
