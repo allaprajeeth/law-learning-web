@@ -7,7 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './components/footer/footer.component';
 import { PublishingcornerComponent } from './components/publishingcorner/publishingcorner.component';
 import { FormsModule } from '@angular/forms';
-// import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
+import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
 import {  MatDividerModule } from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
@@ -29,7 +29,7 @@ import { LibraryComponent } from './components/library/library.component';
   declarations: [
     BasePageComponent,
     FooterComponent,
-    // SharedoverviewComponent, 
+     SharedoverviewComponent, 
     PublishingcornerComponent,
      SharedaboutusComponent,
      SharedphotoComponent,
@@ -64,7 +64,7 @@ import { LibraryComponent } from './components/library/library.component';
     FooterComponent,
     PublishingcornerComponent,
     FormsModule,
-    // SharedoverviewComponent,
+    SharedoverviewComponent,
     SharedaboutusComponent,
     SharedphotoComponent,
     SharedaccountsecurityComponent,
