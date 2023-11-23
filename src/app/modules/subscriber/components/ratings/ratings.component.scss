@@ -1,0 +1,174 @@
+.tab-content {
+    margin-top: 50px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  
+  }
+  #container{
+    margin:2% 8%;
+  }
+  .star-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    text-align: center;
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  
+  .star-rating > span {
+    
+    display: inline-block;
+    position: relative;
+    width: 1.1em;
+    color: gold;
+  
+    
+  }
+   
+  h2 {
+    color: #333;
+    text-align: left;
+  }
+  
+  h3 {
+    color: #555;
+  }
+  
+  .review {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+  }
+  
+  .reviewer-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .reviewer-name {
+    font-weight: bold;
+  }
+  
+  
+  
+  .course-rating {
+    display: flex;
+    align-items: center;
+    
+    margin: 20px 0;
+  }
+  
+  .stars {
+    display: flex;
+  }
+  
+  .star {
+    
+    width: 30px;
+    height: 30px;
+    /* // background-color: #006400; */
+    /* // border: 1px solid #ccc; */
+    margin-right: 5px;
+    position: relative;
+    font-size: 37px;
+  }
+  .star:before {
+    content: '\2605';
+    color: gold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    
+  }
+  .rating-number {
+    font-size: 24px;
+    margin-left: 10px;
+    color: gold;
+    font-weight: bold;
+  }
+  .container{
+    width: 80%;
+    margin-left: 10%;
+  }
+  .overlay {
+    position: relative;
+    top: 20px;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+  }
+  .contentt {
+    margin-left: 120px;
+    background-color:#ebebeb;
+    padding: 20px;
+    color: #050505;
+  }
+  
+  .close {
+    position: relative;
+    text-align: end;
+    cursor: pointer;
+    font-size: 30px;
+  }
+  .staricon {
+    font-size: 45px;
+    padding: 14px;
+    margin: 15px;
+    margin-top: 5px;
+  }
+  .staricon:hover {
+    color: orange
+  }
+  .contentt h1 {
+    text-align: center;
+    margin-bottom: 0px;
+  }
+  .active {
+    color:  orange;
+  }
+  .staricon.disabled {
+    pointer-events: none; 
+    cursor: not-allowed; 
+  }
+  .custom-textarea {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px whitesmoke;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 8px;
+    font-size: 16px;
+    margin-left: 31px;
+  }
+  
+  .custom-button {
+    background-color: #007bff;
+    margin-top: 10px;
+    width: 80px;
+    margin-left: 160px;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  .leaveRating{
+    color:blue;
+    margin-top: 20px;
+  }
+  .giverating {
+    font-size: 20px;
+    background-color: rgb(215, 17, 175);
+    border: none;
+    color: white;
+    width: 160px;
+    height: 40px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  

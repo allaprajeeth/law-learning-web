@@ -35,14 +35,11 @@ import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing
 import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
-import { VideoplayerNavbarComponent } from './common/components/videoplayer-navbar/videoplayer-navbar.component';
-import { RatingsComponent } from './common/components/ratings/ratings.component';
 import { OverviewComponent } from './common/components/overview/overview.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { CertificateComponent } from './common/components/certificate/certificate.component';
 import { LoginComponent } from './common/components/login/login.component';
 import { ModalComponent } from './common/components/modal/modal.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
@@ -77,10 +74,7 @@ import { cartReducer } from './modules/subscriber/components/course-card/state/c
     ArticleComponent,
     DocumentsComponent,
     VideoplayerComponent,
-    VideoplayerNavbarComponent,
-    RatingsComponent,
     OverviewComponent,
-    CertificateComponent,
     LoginComponent,
     ModalComponent,
     CourseInfoComponent,

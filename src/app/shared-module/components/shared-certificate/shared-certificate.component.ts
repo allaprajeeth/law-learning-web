@@ -3,37 +3,38 @@ import { ElementRef, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
 import {jsPDF} from 'jspdf';
 
+
 @Component({
-  selector: 'app-certificate',
-  templateUrl: './certificate.component.html',
-  styleUrls: ['./certificate.component.scss']
+  selector: 'app-shared-certificate',
+  templateUrl: './shared-certificate.component.html',
+  styleUrls: ['./shared-certificate.component.scss']
 })
-export class CertificateComponent {
+export class SharedCertificateComponent {
+
   showCertificate = false;
   // totalProgress=60;
    toggleCertificate() {
      this.showCertificate = !this.showCertificate;
    }
    @ViewChild('certificate', { static: false }) el: ElementRef | undefined;
-   @Input() totalProgress: number = 80;
+   @Input() totalProgress: number = 60;
  
    downloadCertificate() {
      if (this.el) {
        const certificateContent = this.el.nativeElement;
-       const customWidth = 480; // Width in millimeters
- const customHeight = 480; 
-       // Create a new jsPDF instance
+       const customWidth = 480; 
+       const customHeight = 480; 
        const pdf = new jsPDF('p', 'pt',  [customWidth, customHeight]);
  
-       // Convert the certificate section to a canvas
+       
        html2canvas(certificateContent).then(canvas => {
-         // Add the canvas to the PDF
+         
          const imgData = canvas.toDataURL('image/png');
          const imgWidth = 480;
          const imgHeight = (canvas.height * imgWidth) / canvas.width;
          pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
  
-         // Save the PDF
+         
          pdf.save('certificate.pdf');
        });
      }

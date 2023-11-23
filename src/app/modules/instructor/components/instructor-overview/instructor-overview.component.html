@@ -79,18 +79,16 @@
                 <div class="video-group">
                     <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
                         <div class="titleDesc">
-                            <div class="titlehead">
-                                <mat-icon class="custom-icon mat-icon-small">ondemand_video</mat-icon>
-                                <p class="videos-title" (click)="toggleSectionInfo(i, j)">
+                            <div class="titlehead  "   (click)="toggleSectionInfo(i, j)">
                                     {{ video?.title }}
-                                </p>
+                            </div>
+                            
+                            <div class=" video-time" style="color: rgb(122, 119, 119)">
+                                {{ video?.time }}
                             </div>
                             <div class="lastUpdated" style="color: rgb(122, 119, 119)">
                                 last updated: {{ video?.lastUpdated }}
                             </div>
-                            <p style="color: rgb(122, 119, 119)">
-                                {{ video?.time }}
-                            </p>
                         </div>
                         <p *ngIf="sectionInfo[i][j]" class="sectionInfo">{{ sectionInfoText }}</p>
                     </ng-container>
@@ -131,31 +129,5 @@
             <p class="instructorDescription">{{ instructorDescription }}</p>
         </div>
 
-        <!-- <div class="leave-rating" *ngIf="!submittedReview">
-        <h1 style="color:blue">Leave Your Rating Here</h1>
-        <hr>
-        <br>
-        <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview">
-          Give Rating
-        </button>
-      </div> -->
-
-        <!-- <div class="overlay" *ngIf="showRating">
-        <div class="contentt">
-          <div class="close" (click)="leaveRatingClose()">&times;</div>
-          <h1>How would you rate this course?</h1>
-          <ng-container *ngFor="let i of stars">
-            <mat-icon (mouseenter)="updaterating(i)" [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
-              class="staricon">
-              star
-            </mat-icon>
-          </ng-container>
-          <div class="review">
-            <textarea id="review" [(ngModel)]="userReview" name="userReview" rows="3" cols="36" placeholder="Comments"
-              class="mat-input custom-textarea"></textarea>
-          </div>
-          <button class="custom-button" (click)="submitRating()">Submit </button>
-        </div>
-      </div>
-    </div> -->
+     
     </div>

@@ -13,12 +13,10 @@ export class TermsandconComponent {
   isCheckboxChecked: boolean = false;
   constructor(private dialogRef: MatDialogRef<TermsandconComponent>,
     private AcceptServie: PdfService,
-    private snackBar: MatSnackBar ,
-    private notificationService:NotificationService,
     private router: Router,) {}
   
   onCloseClick(): void {
-    this.notificationService.notify("You can't register without accepting our Terms & Conditions")
+    alert("You can't register without accepting our Terms & Conditions")
     this.dialogRef.close();
     
   }

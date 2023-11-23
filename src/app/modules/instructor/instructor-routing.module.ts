@@ -20,8 +20,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-import { LibraryComponent } from './components/library/library.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 
 // import { PhotoComponent } from './components/photo/photo.component';
 
@@ -114,13 +114,9 @@ component:ArticleComponent
   component: PaymentHistoryComponent
 },
 {
-  path:"library",
-component:LibraryComponent
+  path:'library',
+  component:LibraryInstructorComponent
 },
-
-
-
-
 ];
 
 @NgModule({
