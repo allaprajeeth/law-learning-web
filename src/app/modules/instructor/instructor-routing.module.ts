@@ -24,7 +24,10 @@ import { LibraryComponent } from './components/library/library.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { HistoryComponent } from './components/history/history.component';
 import { StatusComponent } from './components/status/status.component';
-
+import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
+import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 
 const routes: Routes = [
   {
@@ -70,6 +73,10 @@ component:InstructorinfoComponent
 component:ArticleComponent
 },
 {
+  path:"articleform",
+component:ArticleformComponent
+},
+{
   path:"courseInfo",
   component:CourseInfoComponent
 },
@@ -109,6 +116,10 @@ component:ArticleComponent
   path:"quizsuccessmsg",
   component: QuizsuccessmsgComponent
 },
+{ 
+  path: 'post/:id', 
+  component: InstructorpostdetailsComponent
+},
 {
   path:"acSecurity",
   component:AccountsecurityComponent
@@ -126,12 +137,9 @@ component:ArticleComponent
   component: PaymentHistoryComponent
 },
 {
-  path:"library",
-component:LibraryComponent
+  path:'library',
+  component:LibraryInstructorComponent
 },
-
-
-
 
 ];
 

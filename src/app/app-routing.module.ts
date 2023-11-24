@@ -18,8 +18,6 @@ import { FreecourseComponent } from './common/components/freecourse/freecourse.c
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
-import { ModalComponent } from './common/components/modal/modal.component';
-import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { EditcoursesComponent } from './modules/instructor/components/editcourses/editcourses.component';
 import { CheckoutComponent } from './modules/subscriber/components/checkout/checkout.component';
@@ -31,7 +29,7 @@ import { ArticleStatusComponent } from './modules/subscriber/components/articleS
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { HistoryComponent } from './modules/instructor/components/history/history.component';
 import { StatusComponent } from './modules/instructor/components/status/status.component';
-
+import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 
 const routes: Routes = [
   {
@@ -150,6 +148,7 @@ const routes: Routes = [
     path:'advisorInfo',
     component:AdvisorDetailsComponent
   },
+  
   {
     path:'forgotEmail',
     component:ForgotEmailComponent

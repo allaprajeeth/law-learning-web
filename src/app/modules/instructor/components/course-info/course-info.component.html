@@ -12,5 +12,16 @@
     <mat-tab label="Watch Content">
       <app-videoplayer></app-videoplayer>
    </mat-tab>
+   <mat-tab label="Attend Test">
+    <div class="upload-test">
+    <div class="testLine"><i>You didn't uploaded test yet.</i></div>
+    <br>
+    <br>
+    <button mat-raised-button  color="primary" routerLink="/instructor/quiztest" >Create Test</button>
+   </div>
+   </mat-tab>
+   <mat-tab label="Certificate"> 
+   <app-shared-certificate></app-shared-certificate>
+   </mat-tab>
   </mat-tab-group>
 </div>

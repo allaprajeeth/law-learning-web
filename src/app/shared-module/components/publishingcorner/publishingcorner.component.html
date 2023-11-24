@@ -6,7 +6,7 @@
   <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button>
 </div> -->
 
-<div class="submit-button" *ngIf="shouldShowSubmitButton()">
+<div class="submit-button" >
   <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button>
 </div>
 
@@ -35,9 +35,13 @@
 <p  *ngIf="isExpanded(i) && box.description">description: {{box.description}}</p>
 <p class="date">{{ box.date }}</p>
 <p class="views">No.of views: {{ box.views }}</p>
-<button (click)="openArticleInNewTab(box)">Read more</button>
+<button  (click)="openArticleInNewTab(box)">Read more</button>
 </div>
 </ng-template>
 </div>
+
+
+ 
+
 
 

@@ -46,10 +46,11 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-import { LibraryComponent } from './components/library/library.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { HistoryComponent } from './components/history/history.component';
 import { StatusComponent } from './components/status/status.component';
+import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
+import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 
 @NgModule({
   declarations: [
@@ -80,12 +81,13 @@ import { StatusComponent } from './components/status/status.component';
     ContactusComponent,
     DeleteAccountComponent,
     PaymentHistoryComponent,
-    LibraryComponent,
     InstructorOverviewComponent,
     StatusComponent,
     HistoryComponent,
-  
+    LibraryInstructorComponent,
+    InstructorpostdetailsComponent,
   ],
+  
   providers: [InstructorService],
   imports: [
     FormsModule,
@@ -107,7 +109,11 @@ import { StatusComponent } from './components/status/status.component';
    MatTabsModule,
    MatDialogModule,
    MatSidenavModule,
-
-  ]
+  ],
+  
+  exports: [
+ 
+    // other instructor components
+  ],
 })
 export class InstructorModule { }

@@ -1,18 +1,27 @@
 import { Component} from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { LoginService } from './services/login.service';
+import { MatDialog } from '@angular/material/dialog';
+import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+openModal() {
+  this.dialog.open(TermsandconComponent, {
+    width: '700px',
+    height: '600px',
+  });
+}
   loginForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private loginService:LoginService
+    private loginService:LoginService,
+    public dialog: MatDialog,
 
   ) {
     this.loginForm = this.formBuilder.group({

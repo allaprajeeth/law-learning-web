@@ -8,6 +8,7 @@
         <!-- <div class="message-wrapper">
             <p class="message">Enter the required fields to enable the Buttons</p>
           </div> -->
+
         <div class="message">
           <p>Enter the required fields to enable the Buttons</p>
         </div>
@@ -21,6 +22,10 @@
             <label for="mainName{{mainIndex}}">Section Title <span class="required-field">**</span> : </label>
             <input type="text" id="mainName{{mainIndex}}" placeholder="section name" name="mainSectionNames[]" required
               (input)="onMainSectionNameEntered(mainIndex)">
+
+          <div class="message">
+            <p >Enter the required fields to enable save and submit buttons</p>
+
           </div>
 
           <div class="form-group">
@@ -95,6 +100,9 @@
               </div>
 
             </div>
+            <br />
+            <button type="button" class="add-subsection-button" (click)="addSubSection(mainIndex)">Add Subsection</button>
+
           </div>
 
           <div *ngIf="!mainSection.submitted">
@@ -127,11 +135,9 @@
           <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'" [ngClass]="'status-under-review'">
             <span class="status">Status: {{mainSection.status}}</span>
           </div>
-
-
-
           <br />
           <button type="button" class="add-subsection-button" (click)="addSubSection(mainIndex)">+</button>
+          <button type="button" class="add-section-button" (click)="addMainSection()">Add Mainsection</button>
         </div>
         <br />
         <button type="button" class="add-section-button" (click)="addMainSection()">+</button>

@@ -1,6 +1,6 @@
-<app-nav></app-nav> 
 
-<!-- <app-videoplayer-navbar></app-videoplayer-navbar> -->
+
+
 <mat-divider></mat-divider>
 <div>
   <div class="course-info-container">
@@ -14,17 +14,17 @@
       <app-videoplayer></app-videoplayer>
 </mat-tab>
 <mat-tab  *ngIf="isTestAvailable" label="Attend Test">
-  <div style="margin:80px">Attend Test</div>
+  <div class="test">Complete 80% of the course to attend the test</div>
 </mat-tab>
    
     <mat-tab label="Certificate">
       <div class="tabs">
-        <app-certificate [totalProgress]="80"></app-certificate>
+        <app-shared-certificate [totalProgress]="80"></app-shared-certificate>
       </div>
     </mat-tab>
     <mat-tab label="Rating">
       <div class="tabs">
-        <app-ratings></app-ratings>
+        <!-- <app-ratings></app-ratings> -->
       </div>
     </mat-tab>
   </mat-tab-group>

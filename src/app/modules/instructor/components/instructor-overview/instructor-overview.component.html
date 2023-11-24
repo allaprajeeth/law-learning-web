@@ -79,18 +79,16 @@
                 <div class="video-group">
                     <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
                         <div class="titleDesc">
-                            <div class="titlehead">
-                                <mat-icon class="custom-icon mat-icon-small">ondemand_video</mat-icon>
-                                <p class="videos-title" (click)="toggleSectionInfo(i, j)">
+                            <div class="titlehead  "   (click)="toggleSectionInfo(i, j)">
                                     {{ video?.title }}
-                                </p>
+                            </div>
+                            
+                            <div class=" video-time" style="color: rgb(122, 119, 119)">
+                                {{ video?.time }}
                             </div>
                             <div class="lastUpdated" style="color: rgb(122, 119, 119)">
                                 last updated: {{ video?.lastUpdated }}
                             </div>
-                            <p style="color: rgb(122, 119, 119)">
-                                {{ video?.time }}
-                            </p>
                         </div>
                         <p *ngIf="sectionInfo[i][j]" class="sectionInfo">{{ sectionInfoText }}</p>
                     </ng-container>
@@ -130,6 +128,6 @@
             </div><br>
             <p class="instructorDescription">{{ instructorDescription }}</p>
         </div>
+    </div>   
     </div>
 
-    

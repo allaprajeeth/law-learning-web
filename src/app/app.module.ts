@@ -35,23 +35,20 @@ import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing
 import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
-import { VideoplayerNavbarComponent } from './common/components/videoplayer-navbar/videoplayer-navbar.component';
-import { RatingsComponent } from './common/components/ratings/ratings.component';
 import { OverviewComponent } from './common/components/overview/overview.component';
 import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AngularEditorModule } from '@kolkov/angular-editor';
-import { CertificateComponent } from './common/components/certificate/certificate.component';
 import { LoginComponent } from './common/components/login/login.component';
-import { ModalComponent } from './common/components/modal/modal.component';
+// import { ModalComponent } from './common/components/modal/modal.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
-import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
+// import { PostdetailComponent } from './common/components/postingdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
@@ -62,7 +59,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { LogoutService } from './common/services/logout.service';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
-
+// import { LoginDialogComponent } from './common/components/login-dialog/login-dialog.component';
+import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,24 +75,23 @@ import { cartReducer } from './modules/subscriber/components/course-card/state/c
     ArticleComponent,
     DocumentsComponent,
     VideoplayerComponent,
-    VideoplayerNavbarComponent,
-    RatingsComponent,
     OverviewComponent,
-    CertificateComponent,
     LoginComponent,
-    ModalComponent,
+    // ModalComponent,
     CourseInfoComponent,
     FreecourseComponent,
     AboutusComponent,
     TermsandconComponent,
     OverviewFreecourseComponent,
-    PostdetailComponent,  
+    // PostdetailComponent,  
     OverviewFreecourseComponent,  
     OverviewFreecourseComponent,
     ContactusComponent,
     ForgotPhonenoComponent,
     ForgotEmailComponent,
     AdvisorDetailsComponent,
+    PostdetailComponent
+    // LoginDialogComponent,
   ],
   imports: [
     CarouselModule,
