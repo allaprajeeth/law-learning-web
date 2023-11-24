@@ -40,7 +40,6 @@ import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
-// import { PhotoComponent } from './components/photo/photo.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -48,8 +47,11 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+import { HistoryComponent } from './components/history/history.component';
+import { StatusComponent } from './components/status/status.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
+
 @NgModule({
   declarations: [
     InstructornavComponent,
@@ -73,7 +75,6 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
     UploadstatusComponent,
     UploadhistoryComponent,
     QuizsuccessmsgComponent,
-    // PhotoComponent,
     SidenavComponent,
     AccountsecurityComponent,
     NotificationsComponent,
@@ -81,12 +82,12 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
     DeleteAccountComponent,
     PaymentHistoryComponent,
     InstructorOverviewComponent,
+    StatusComponent,
+    HistoryComponent,
     LibraryInstructorComponent,
-
-  
     InstructorpostdetailsComponent,
-  
   ],
+  
   providers: [InstructorService],
   imports: [
     FormsModule,
@@ -108,8 +109,8 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
    MatTabsModule,
    MatDialogModule,
    MatSidenavModule,
-
   ],
+  
   exports: [
  
     // other instructor components
