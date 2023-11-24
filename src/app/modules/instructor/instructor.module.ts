@@ -40,7 +40,6 @@ import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
-// import { PhotoComponent } from './components/photo/photo.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -49,6 +48,8 @@ import { DeleteAccountComponent } from './components/delete-account/delete-accou
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { LibraryComponent } from './components/library/library.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+import { HistoryComponent } from './components/history/history.component';
+import { StatusComponent } from './components/status/status.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,6 @@ import { InstructorOverviewComponent } from './components/instructor-overview/in
     UploadstatusComponent,
     UploadhistoryComponent,
     QuizsuccessmsgComponent,
-    // PhotoComponent,
     SidenavComponent,
     AccountsecurityComponent,
     NotificationsComponent,
@@ -82,6 +82,8 @@ import { InstructorOverviewComponent } from './components/instructor-overview/in
     PaymentHistoryComponent,
     LibraryComponent,
     InstructorOverviewComponent,
+    StatusComponent,
+    HistoryComponent,
   
   ],
   providers: [InstructorService],

@@ -1,0 +1,91 @@
+<app-instructornav></app-instructornav>
+<div class="container">
+    <div>
+        <h1 class="approvedCourses">Approved Courses</h1>
+        <table class="article-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Date of Submission</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of approvedArticles">
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.submissionDate }}</td>
+                    <td class="flexContainer">
+                        <a class="view-more" (click)="viewMore(article)">view more</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1 class="pendingCourses">Pending Courses</h1>
+        <table class="article-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Date of Submission</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of pendingArticles">
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.submissionDate }}</td>
+                    <td class="flexContainer">
+                        <a class="view-more" (click)="viewMore(article)">view more</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1 class="underReviewCourses">UnderReview Courses</h1>
+        <table class="article-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Date of Submission</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of underReviewArticles">
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.submissionDate }}</td>
+                    <td class="flexContainer">
+                        <a class="view-more" (click)="viewMore(article)">view more</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1 class="commitedCourses">Commited Courses</h1>
+        <table class="article-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Date of Submission</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of commitedArticles">
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.submissionDate }}</td>
+                    <td class="flexContainer">
+                        <a class="view-more" (click)="viewMore(article)">view more</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,3 +1,4 @@
+<app-instructornav></app-instructornav>
 <div class="container-wrapper">
     <div class="form-container">
         <h2>Edit Course</h2>
@@ -13,13 +14,16 @@
             <div class="form-group">
                 <label>Skill Level:</label>
                 <div class="radio-group">
-                    <input type="radio" id="beginner" name="skillLevel" value="beginner" required [(ngModel)]="skillLevel">
+                    <input type="radio" id="beginner" name="skillLevel" value="beginner" required
+                        [(ngModel)]="skillLevel">
                     <label for="beginner" class="skill">Beginner</label>
-                    <input type="radio" id="intermediate" name="skillLevel" value="intermediate" required [(ngModel)]="skillLevel">
+                    <input type="radio" id="intermediate" name="skillLevel" value="intermediate" required
+                        [(ngModel)]="skillLevel">
                     <label for="intermediate" class="skill">Intermediate</label>
                     <input type="radio" id="expert" name="skillLevel" value="expert" required [(ngModel)]="skillLevel">
                     <label for="expert" class="skill">Expert</label>
-                    <input type="radio" id="student" name="skillLevel" value="student" required [(ngModel)]="skillLevel">
+                    <input type="radio" id="student" name="skillLevel" value="student" required
+                        [(ngModel)]="skillLevel">
                     <label for="student" class="skill">Student</label>
                 </div>
             </div>
@@ -28,7 +32,8 @@
                 <div class="radio-group">
                     <input type="radio" id="crash" name="courseType" value="Crash" required [(ngModel)]="courseType">
                     <label for="crash" class="skill">Crash Course</label>
-                    <input type="radio" id="detailed" name="courseType" value="Detailed" required [(ngModel)]="courseType">
+                    <input type="radio" id="detailed" name="courseType" value="Detailed" required
+                        [(ngModel)]="courseType">
                     <label for="detailed" class="skill">Detailed Course</label>
                 </div>
             </div>
@@ -37,9 +42,7 @@
                 <input type="text" id="language" name="language" value="English" disabled>
             </div>
             <button type="submit" class="center-button" routerLink="/upload">Next</button>
+        </form>
+    </div>
+</div>
 
-                
-                <!-- Other form fields with ngModel bindings -->
-              
-              </form>
-              

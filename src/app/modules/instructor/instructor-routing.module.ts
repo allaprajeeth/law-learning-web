@@ -22,8 +22,9 @@ import { DeleteAccountComponent } from './components/delete-account/delete-accou
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { LibraryComponent } from './components/library/library.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+import { HistoryComponent } from './components/history/history.component';
+import { StatusComponent } from './components/status/status.component';
 
-// import { PhotoComponent } from './components/photo/photo.component';
 
 const routes: Routes = [
   {
@@ -53,7 +54,7 @@ const routes: Routes = [
 component:CoursesComponent
 },
 {
-  path:"editcourses",
+  path:"instructor/editcourses",
 component:EditcoursesComponent
 },
 {
@@ -92,7 +93,18 @@ component:ArticleComponent
   path:"uploadstatus",
   component: UploadstatusComponent
 },
-{ path: 'uploadhistory', component: UploadhistoryComponent },
+{ 
+  path: 'uploadhistory', 
+  component: UploadhistoryComponent 
+},
+{ 
+  path: 'articlehistory', 
+  component: HistoryComponent 
+},
+{ 
+  path: 'status', 
+  component: StatusComponent
+},
 {
   path:"quizsuccessmsg",
   component: QuizsuccessmsgComponent

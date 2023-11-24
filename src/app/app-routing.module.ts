@@ -29,6 +29,10 @@ import { OverviewFreecourseComponent } from './common/components/overview-freeco
 import { ArticleHistoryComponent } from './modules/subscriber/components/articleHistory/article-history.component';
 import { ArticleStatusComponent } from './modules/subscriber/components/articleStatus/article-status.component';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
+import { HistoryComponent } from './modules/instructor/components/history/history.component';
+import { StatusComponent } from './modules/instructor/components/status/status.component';
+
+
 const routes: Routes = [
   {
     path: 'admin',
@@ -93,7 +97,7 @@ const routes: Routes = [
     component:DocumentsComponent
   },
   {
-    path:"editcourses",
+    path:"instructor/editcourses",
     component:EditcoursesComponent
   },
 
@@ -157,6 +161,14 @@ const routes: Routes = [
   { 
     path:"articleStatus", 
     component: ArticleStatusComponent 
+  },
+  { 
+    path: "articlehistory", 
+    component: HistoryComponent 
+  },
+  { 
+    path: "status", 
+    component: StatusComponent
   },
   {
     path: '**',
