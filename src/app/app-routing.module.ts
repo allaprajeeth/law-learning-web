@@ -29,6 +29,7 @@ import { ArticleHistoryComponent } from './modules/subscriber/components/article
 import { ArticleStatusComponent } from './modules/subscriber/components/articleStatus/article-status.component';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
+import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 const routes: Routes = [
 
   {
@@ -97,7 +98,10 @@ const routes: Routes = [
     path:"editcourses",
     component:EditcoursesComponent
   },
-
+  
+    { path: 'pdf-viewer', 
+      component:PdfViewerComponent
+   },
   {
     path: 'videoplayer',
     component:VideoplayerComponent

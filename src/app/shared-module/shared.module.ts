@@ -26,7 +26,8 @@ import { LibraryComponent } from './components/library/library.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
 import { SharedarticleformComponent } from './components/sharedarticleform/sharedarticleform.component';
 import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
-
+import { PdfviewerComponent } from './components/pdfviewer/pdfviewer.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
  
@@ -45,6 +46,7 @@ import { SharedpostdetailsComponent } from './components/sharedpostdetails/share
      SharedCertificateComponent,
      SharedarticleformComponent,
      SharedpostdetailsComponent,
+     PdfviewerComponent,
 
     ],
 
@@ -61,7 +63,8 @@ import { SharedpostdetailsComponent } from './components/sharedpostdetails/share
     CarouselModule,
     MatSidenavModule,
     MatSlideToggleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PdfViewerModule
   ],
   exports: [
     CommonModule,
@@ -82,7 +85,8 @@ import { SharedpostdetailsComponent } from './components/sharedpostdetails/share
     LibraryComponent,
     SharedCertificateComponent,
     SharedarticleformComponent,
-    SharedpostdetailsComponent
+    SharedpostdetailsComponent,
+    PdfviewerComponent
 
 
   ]
