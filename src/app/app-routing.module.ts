@@ -30,7 +30,7 @@ import { AdvisorDetailsComponent } from './common/components/advisor-details/adv
 import { HistoryComponent } from './modules/instructor/components/history/history.component';
 import { StatusComponent } from './modules/instructor/components/status/status.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
-
+import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -52,10 +52,6 @@ const routes: Routes = [
     path: 'authentication',
     loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
-  // {
-  //   path: 'user',
-  //   loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)
-  // },
   {
     path: '',
     canActivate: [authGuard],
@@ -98,7 +94,10 @@ const routes: Routes = [
     path:"instructor/editcourses",
     component:EditcoursesComponent
   },
-
+  
+    { path: 'pdf-viewer', 
+      component:PdfViewerComponent
+   },
   {
     path: 'videoplayer',
     component:VideoplayerComponent
