@@ -18,7 +18,6 @@ import { FreecourseComponent } from './common/components/freecourse/freecourse.c
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CartComponent } from './modules/subscriber/components/cart/cart.component'; 
-// import { ModalComponent } from './common/components/modal/modal.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { EditcoursesComponent } from './modules/instructor/components/editcourses/editcourses.component';
 import { CheckoutComponent } from './modules/subscriber/components/checkout/checkout.component';
@@ -28,9 +27,11 @@ import { OverviewFreecourseComponent } from './common/components/overview-freeco
 import { ArticleHistoryComponent } from './modules/subscriber/components/articleHistory/article-history.component';
 import { ArticleStatusComponent } from './modules/subscriber/components/articleStatus/article-status.component';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
+import { HistoryComponent } from './modules/instructor/components/history/history.component';
+import { StatusComponent } from './modules/instructor/components/status/status.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
-const routes: Routes = [
 
+const routes: Routes = [
   {
     path: 'admin',
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
@@ -94,7 +95,7 @@ const routes: Routes = [
     component:DocumentsComponent
   },
   {
-    path:"editcourses",
+    path:"instructor/editcourses",
     component:EditcoursesComponent
   },
 
@@ -159,6 +160,14 @@ const routes: Routes = [
   { 
     path:"articleStatus", 
     component: ArticleStatusComponent 
+  },
+  { 
+    path: "articlehistory", 
+    component: HistoryComponent 
+  },
+  { 
+    path: "status", 
+    component: StatusComponent
   },
   {
     path: '**',
