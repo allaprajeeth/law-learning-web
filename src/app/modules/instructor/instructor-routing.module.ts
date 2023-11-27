@@ -28,6 +28,7 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
 
+
 const routes: Routes = [
   {
     path:"",

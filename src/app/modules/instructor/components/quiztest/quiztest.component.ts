@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TestpreviewComponent } from '../testpreview/testpreview.component';
+import { ShortAnstestpreviewComponent } from '../short-anstestpreview/short-anstestpreview.component';
 
 
 export class AdditionalForm {
@@ -30,6 +31,7 @@ export class QuiztestComponent {
 
   
   quizName: string = '';
+  selectedQuestionType: string = 'multiple-choice';
   questionType: string = '';
   sectionTimer: number = 0;
   timePeriod: number = 0;
@@ -154,16 +156,28 @@ toggleExpand(form: AdditionalForm) {
   form.expanded = !form.expanded;
 }
 
-isValid(): boolean {
-  const isValid =
-    this.quizName.trim() !== '' &&
-    this.timePeriod > 0 &&
-    this.additionalForms.every(
-      (form) => form.enteredQuestion.trim() !== '' && form.correctAnswer.trim() !== ''
-    );
 
-  return isValid;
-}
+  isValid(): boolean {
+    if (this.selectedQuestionType === 'multiple-choice') {
+      return (
+        this.quizName.trim() !== '' &&
+        this.timePeriod > 0 &&
+        this.additionalForms.every(
+          (form) => form.enteredQuestion.trim() !== '' && form.correctAnswer.trim() !== ''
+        )
+      );
+    } else if (this.selectedQuestionType === 'short-answer') {
+      return (
+        this.quizName.trim() !== '' &&
+        this.timePeriod > 0 &&
+        this.additionalForms.every(
+          (form) => form.enteredQuestion.trim() !== ''
+        )
+      );
+    }
+
+    return false; // Default to false if the question type is not recognized
+  }
 
 submitTest() {
 
@@ -216,6 +230,21 @@ isChoiceDuplicate(form: AdditionalForm, index: number): boolean {
 isChoiceInvalid(form: AdditionalForm, index: number): boolean {
   const currentChoice = form.selectchoice[index];
   return form.selectchoice.indexOf(currentChoice) !== index && currentChoice.trim() !== '';
+}
+
+openShortAnswerPreview() {
+  const dialogRef = this.dialog.open(ShortAnstestpreviewComponent, {
+    width: '800px',
+    data: this.additionalForms.map((form, index) => ({
+      questionNumber: index + 1,
+      enteredQuestion: form.enteredQuestion,
+      questionScore: form.questionScore,
+    })),
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+  });
 }
 
 

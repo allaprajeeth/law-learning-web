@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { BehaviorSubject } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
+  private expandedSource = new BehaviorSubject<string[]>([]);
+  currentExpanded = this.expandedSource.asObservable();
 
-  constructor(private dialog: MatDialog) { }
+  constructor() {}
 
-  // openModal(data: any): void {
-  //   this.dialog.open(ModalComponent, {
-  //     width: '800px',
-  //     data: data
-  //   });
-  // }
+  changeExpanded(expanded: string[]) {
+    this.expandedSource.next(expanded);
+  }
 }

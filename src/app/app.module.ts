@@ -57,10 +57,11 @@ import { StoreModule } from '@ngrx/store';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { LogoutService } from './common/services/logout.service';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
-// import { LoginDialogComponent } from './common/components/login-dialog/login-dialog.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
+// import { LoginDialogComponent } from './common/components/login-dialog/login-dialog.component';
 import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +93,6 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     AdvisorDetailsComponent,
     PostdetailComponent,
     PdfViewerComponent
-    // LoginDialogComponent,
   ],
   imports: [
     CarouselModule,
