@@ -1,0 +1,59 @@
+.container {
+  background-color: #ffffff;
+  padding: 0 130px 0 130px;
+}
+
+.article-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: medium;
+  margin-bottom: 50px;
+  
+  th,
+  td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f9f9f9;
+    font-weight: bolder;
+  }
+
+  tr {
+    &:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+  }
+
+  .flexContainer {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .view-more {
+    color: chocolate;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.approvedArticles {
+  font-weight: bolder;
+  color: green;
+}
+
+.underReviewArticles {
+  font-weight: bolder;
+  color: orange;
+}
+
+.commentedArticles {
+  font-weight: bolder;
+  color: red;
+}
+

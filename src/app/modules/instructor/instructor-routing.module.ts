@@ -20,11 +20,13 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-
+import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+import { HistoryComponent } from './components/history/history.component';
+import { StatusComponent } from './components/status/status.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
-import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
+import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
 
 
 const routes: Routes = [
@@ -55,7 +57,7 @@ const routes: Routes = [
 component:CoursesComponent
 },
 {
-  path:"editcourses",
+  path:"instructor/editcourses",
 component:EditcoursesComponent
 },
 {
@@ -98,7 +100,18 @@ component:ArticleformComponent
   path:"uploadstatus",
   component: UploadstatusComponent
 },
-{ path: 'uploadhistory', component: UploadhistoryComponent },
+{ 
+  path: 'uploadhistory', 
+  component: UploadhistoryComponent 
+},
+{ 
+  path: 'articlehistory', 
+  component: HistoryComponent 
+},
+{ 
+  path: 'status', 
+  component: StatusComponent
+},
 {
   path:"quizsuccessmsg",
   component: QuizsuccessmsgComponent
@@ -127,6 +140,10 @@ component:ArticleformComponent
   path:'library',
   component:LibraryInstructorComponent
 },
+{ path: 'pdf-viewer',
+ component: PdfviewerComponent 
+},
+
 
 ];
 

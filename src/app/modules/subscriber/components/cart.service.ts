@@ -50,6 +50,9 @@ export class CartService {
     if (isItemExistsInCart === -1) {
       this.cartItems.push(product);
       this.cartItemsSubject.next(this.cartItems);
+
+      // Set addedToCart status
+      this.addedToCartStatus[product.id] = true;
     } else {
       console.log('Item already in cart');
     }
@@ -69,8 +72,12 @@ export class CartService {
     this.store.dispatch(CartActions.setAddToCartButtonText());
   }
 
-  isAddedToCart(uniqueId: string): boolean {
-    return !!this.addedToCartStatus[uniqueId];
+  // isAddedToCart(uniqueId: string): boolean {
+  //   return !!this.addedToCartStatus[uniqueId];
+  // }
+
+  isAddedToCart(productId: string): boolean {
+    return !!this.addedToCartStatus[productId];
   }
 
   clearCart() {
@@ -80,21 +87,19 @@ export class CartService {
     this.addedToCartStatus = {};
   }
 
-  addToCartClicked() {
-    // Your existing logic for adding to the cart
-  }
+  removeFromCart(uniqueId: string) {
+    const indexToRemove = this.cartItems.findIndex((item) => item.id === uniqueId);
+    if (indexToRemove !== -1) {
+      this.cartItems.splice(indexToRemove, 1);
+      this.cartItemsSubject.next(this.cartItems);
+    }
 
-  removeFromCartClicked() {
-    // Your existing logic for removing from the cart
-  }
+    // Update addedToCartStatus
+    delete this.addedToCartStatus[uniqueId];
 
-  // subscribeToCartState() {
-  //   this.store.pipe(select('cart')).subscribe((cartState: CartState | undefined) => {
-  //     if (cartState) {
-  //       this.isAddedToCart = this.isAddedToCart(cartState.items[0]); // Assuming the first item is the productId
-  //     }
-  //   });
-  // }
+    // Dispatch action to set the button text
+    this.store.dispatch(CartActions.setAddToCartButtonText());
+  }
 }
 
 

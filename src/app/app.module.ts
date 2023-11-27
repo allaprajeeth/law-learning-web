@@ -54,13 +54,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { LogoutService } from './common/services/logout.service';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 // import { LoginDialogComponent } from './common/components/login-dialog/login-dialog.component';
+import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -92,8 +92,7 @@ import { PostdetailComponent } from './common/components/postdetail/postdetail.c
     ForgotEmailComponent,
     AdvisorDetailsComponent,
     PostdetailComponent,
-   
-    // LoginDialogComponent,
+    PdfViewerComponent
   ],
   imports: [
     CarouselModule,
@@ -124,9 +123,11 @@ import { PostdetailComponent } from './common/components/postdetail/postdetail.c
     MatMenuModule,
     MatButtonModule,
     FileUploadModule,
+    PdfViewerModule,
     StoreModule.forRoot({ cart: cartReducer, }),
   
   ],
+  
   providers: [PopupService,
    LogoutService,
     {

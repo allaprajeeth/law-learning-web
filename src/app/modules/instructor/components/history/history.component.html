@@ -1,0 +1,71 @@
+<app-instructornav></app-instructornav>
+<div class="container">
+    <div>
+        <h1 class="approvedArticles">Published Articles</h1>
+        <table class="article-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Date of Submission</th>
+                    <th>Published Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of approvedArticles">
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.submissionDate }}</td>
+                    <td>{{ article.publishedDate }}</td>
+                    <td class="flexContainer">
+                        <a class="view-more" (click)="viewMore(article)">view more</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1 class="underReviewArticles">Articles UnderReview</h1>
+        <table class="article-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Date of Submission</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of underReviewArticles">
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.submissionDate }}</td>
+                    <td class="flexContainer">
+                        <a class="view-more" (click)="viewMore(article)">view more</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h1 class="commentedArticles">Commented Articles</h1>
+        <table class="article-table">
+            <thead>
+                <tr>
+                    <th>Article Name</th>
+                    <th>Date of Submission</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of commentedArticles">
+                    <td>{{ article.name }}</td>
+                    <td>{{ article.submissionDate }}</td>
+                    <td class="flexContainer">
+                        <a class="view-more" (click)="viewMore(article)">view more</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

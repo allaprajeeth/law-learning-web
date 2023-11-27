@@ -5,6 +5,7 @@ interface Notification {
   heading: string;
   message: string;
   icon: string;
+  notificationDate: string;
 }
 @Component({
   selector: 'app-notification',
@@ -13,14 +14,14 @@ interface Notification {
 })
 export class NotificationComponent implements OnInit{
   notificationOpened: boolean = false;
- 
+
   notifications: Notification[] = [
-    { heading: 'Check This Course', message: 'New Course Added.', icon: 'M' },
-    { heading: 'Courses Reminder', message: 'Upcoming New Courses', icon: 'E' },
-    { heading: 'Promotion Codes', message: 'Check the Promotion Codes', icon: 'M' },
-    { heading: 'Check This Course', message: 'New Course Added.', icon: 'E' },
-    { heading: 'New Message', message: 'You have a new message', icon: 'M' },
-    { heading: 'Courses Reminder', message: 'Upcoming New Courses', icon: 'E' },
+    { heading: 'Check This Course', message: 'New Course Added.', icon: 'M',  notificationDate: '25-11-2023'},
+    { heading: 'Courses Reminder', message: 'Upcoming New Courses', icon: 'E', notificationDate: '05-10-2023'},
+    { heading: 'Promotion Codes', message: 'Check the Promotion Codes', icon: 'M', notificationDate: '13-09-2023'},
+    { heading: 'Check This Course', message: 'New Course Added.', icon: 'E', notificationDate: '28-10-2023'},
+    { heading: 'New Message', message: 'You have a new message', icon: 'M', notificationDate: '17-11-2023'},
+    { heading: 'Courses Reminder', message: 'Upcoming New Courses', icon: 'E', notificationDate: '10-09-2023'},
   ];
 
   openNotification() {
@@ -49,7 +50,5 @@ export class NotificationComponent implements OnInit{
     }
     return color;
   }
-
-  today: Date = new Date();
 
 }

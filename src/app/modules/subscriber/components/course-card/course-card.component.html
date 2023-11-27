@@ -10,19 +10,27 @@
         <p class="contentText">{{ content }}</p>
         <ul>
             <li><span class="material-icons">
-                check
-                </span> This course provides a comprehensive introduction to the field of law and legal systems, and practical skills such as legal research and writing.</li>
+                    check
+                </span> This course provides a comprehensive introduction to the field of law and legal systems, and
+                practical skills such as legal research and writing.</li>
             <li><span class="material-icons">
-                check
+                    check
                 </span> It also explores specialized areas of law and emerging trends in the legal profession.</li>
             <li><span class="material-icons">
-                check
+                    check
                 </span> Students who complete the course may earn a certification in Law Learning.</li>
         </ul>
     </mat-card-content>
-    <div class="courseCardButtons">
+    <!-- <div class="courseCardButtons">
         <button class="addToCartButton" (click)="addToCartClicked(product)">
             {{ product.isAddedToCart ? 'Go to Cart' : 'Add to Cart' }}
         </button>
+    </div> -->
+
+    <div class="courseCardButtons">
+        <button class="addToCartButton" (click)="addToCartClicked(product)">
+            {{ isAddedToCart ? 'Go to Cart' : 'Add to Cart' }}
+        </button>
     </div>
 </div>
+
