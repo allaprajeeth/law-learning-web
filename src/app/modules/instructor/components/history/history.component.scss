@@ -1,6 +1,6 @@
 .container {
   background-color: #ffffff;
-  padding: 0 200px 0 200px;
+  padding: 0 130px 0 130px;
 }
 
 .article-table {
@@ -8,7 +8,7 @@
   width: 100%;
   font-size: medium;
   margin-bottom: 50px;
-
+  
   th,
   td {
     padding: 8px;
@@ -17,7 +17,7 @@
 
   th {
     background-color: #f9f9f9;
-    font-weight: bold;
+    font-weight: bolder;
   }
 
   tr {
@@ -42,19 +42,18 @@
   }
 }
 
-.approvedCourses {
+.approvedArticles {
+  font-weight: bolder;
   color: green;
 }
 
-.pendingCourses {
-  color: blue;
-}
-
-.underReviewCourses {
+.underReviewArticles {
+  font-weight: bolder;
   color: orange;
 }
 
-.commitedCourses {
+.commentedArticles {
+  font-weight: bolder;
   color: red;
 }
 
