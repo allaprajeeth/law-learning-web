@@ -26,6 +26,7 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 
+
 const routes: Routes = [
   {
     path:"",

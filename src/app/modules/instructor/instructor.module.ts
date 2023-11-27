@@ -50,6 +50,8 @@ import { PaymentHistoryComponent } from './components/payment-history/payment-hi
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
+import { ShortAnstestpreviewComponent } from './components/short-anstestpreview/short-anstestpreview.component';
+
 @NgModule({
   declarations: [
     InstructornavComponent,
@@ -82,10 +84,8 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
     PaymentHistoryComponent,
     InstructorOverviewComponent,
     LibraryInstructorComponent,
-
-  
     InstructorpostdetailsComponent,
-  
+    ShortAnstestpreviewComponent,
   ],
   providers: [InstructorService],
   imports: [
@@ -109,10 +109,6 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
    MatDialogModule,
    MatSidenavModule,
 
-  ],
-  exports: [
- 
-    // other instructor components
   ],
 })
 export class InstructorModule { }

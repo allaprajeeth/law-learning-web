@@ -2,22 +2,19 @@
 <app-instructornav></app-instructornav>
 <div class="main-container">
     <h2>Create a Test</h2>
-    <p *ngIf="questionType !== 'multiple-choice'" class="message">Please select the question type to get test questions form</p>
+    <p *ngIf="questionType !== 'multiple-choice'" class="message">Please select the question type to get test questions
+        form</p>
     <div class="quiz-container">
         <div class="quiz-header">
             <div class="input-group">
-                <!-- <label for="quizName">Enter Test Name:</label> -->
                 <label for="quizName">Enter Test Name <span class="required">**</span>:</label>
-
-
                 <input id="quizName" [(ngModel)]="quizName" placeholder="Quiz Name" />
             </div>
             <div class="input-group">
                 <label for="questionType">Select Question Type:</label>
-                <select id="questionType" [(ngModel)]="questionType">
+                <select id="questionType" [(ngModel)]="questionType" >
                     <option value="multiple-choice">Multiple Choice</option>
-                    <option value="true-false">True/False</option>
-                    <option value="true-false">Short Answer</option>
+                    <option value="short-answer">Short Answer</option>
                 </select>
             </div>
             <div class="input-group">
@@ -27,84 +24,124 @@
             <span class="span">minutes</span>
         </div>
     </div>
-
-    <div class="main-additional-form"   *ngIf="questionType === 'multiple-choice'">
-    <div class="additional-form-container" *ngFor="let form of additionalForms; let i = index">
-        <div class="additional-form">
-            <div class="input-group">
-                <label for="enterQuestion{{i}}">Enter Question {{form.questionNumber}}<span class="required">**</span>:</label>
+    <div class="main-additional-form" *ngIf="questionType === 'multiple-choice'">
+        <div class="additional-form-container" *ngFor="let form of additionalForms; let i = index">
+            <div class="additional-form">
                 <div class="input-group">
-                    <button class="expand-button" (click)="toggleExpand(form)">
-                        <span class="material-icons">
-                            {{ form.expanded ? 'expand_less' : 'expand_more' }}
-                        </span>
-                    </button>
-                </div>
-
-                <textarea id="enterQuestion{{i}}" [(ngModel)]="form.enteredQuestion"
-                    placeholder="Enter your question"></textarea>
-            </div>
-
-            <div *ngIf="form.expanded">
-                <div class="input-group">
-                    <button class="add-choice-button" (click)="addChoice(i)">+ Add Choice</button>
-                </div>
-                <div class="input-group" *ngFor="let choice of form.selectchoice; let i = index; trackBy: trackByFn">
-                    <label for="choice{{ i }}">Choice {{ i + 1 }}:</label>
-                    <div class="input-container">
-                        <input id="choice{{ i }}" [(ngModel)]="form.selectchoice[i]" placeholder="Enter your choice" />
-                        <button class="delete-button" (click)="deleteChoice(form, i)">&#10006;</button>
+                    <label for="enterQuestion{{i}}">Enter Question {{form.questionNumber}}<span
+                            class="required">**</span>:</label>
+                    <div class="input-group">
+                        <button class="expand-button" (click)="toggleExpand(form)">
+                            <span class="material-icons">
+                                {{ form.expanded ? 'expand_less' : 'expand_more' }}
+                            </span>
+                        </button>
                     </div>
-                    <p class="error-message" *ngIf="isChoiceInvalid(form, i)">Duplicate choice. Please enter a unique choice.</p>
+
+                    <textarea id="enterQuestion{{i}}" [(ngModel)]="form.enteredQuestion"
+                        placeholder="Enter your question"></textarea>
                 </div>
-
-
-                <div class="input-group">
-                    <div class="input-group-item">
-                        <label for="correctAnswer{{i}}">Correct Answer<span class="required">**</span>:</label>
-                       <!-- Inside the additional-form -->
-        <input id="correctAnswer{{i}}" type="text" [(ngModel)]="form.correctAnswer" #correctAnswerControl="ngModel" placeholder="Enter correct answer" />
-       <p class="error-message" *ngIf="isCorrectAnswerInvalid(form, correctAnswerControl)">At least one choice must match the correct answer</p>
-
-                            <!-- <p class="error-message" *ngIf="!isCorrectAnswerValid(form)">At least one choice must match the correct answer</p> -->
+                <div *ngIf="form.expanded">
+                    <div class="input-group">
+                        <button class="add-choice-button" (click)="addChoice(i)">+ Add Choice</button>
                     </div>
-                    <!-- <p class="error-message" *ngIf="isCorrectAnswerInvalid(form)">At least one choice must match the correct answer</p> -->
-
-                    <div class="input-group-item">
-                        <label for="questionScore{{i}}">Question Score:</label>
-                        <input id="questionScore{{i}}" type="number" [(ngModel)]="form.questionScore"
-                            placeholder="Enter question score" />
-                           
-      
+                    <div class="input-group"
+                        *ngFor="let choice of form.selectchoice; let i = index; trackBy: trackByFn">
+                        <label for="choice{{ i }}">Choice {{ i + 1 }}:</label>
+                        <div class="input-container">
+                            <input id="choice{{ i }}" [(ngModel)]="form.selectchoice[i]"
+                                placeholder="Enter your choice" />
+                            <button class="delete-button" (click)="deleteChoice(form, i)">&#10006;</button>
+                        </div>
+                        <p class="error-message" *ngIf="isChoiceInvalid(form, i)">Duplicate choice. Please enter a
+                            unique choice.</p>
                     </div>
+
+
+                    <div class="input-group">
+                        <div class="input-group-item">
+                            <label for="correctAnswer{{i}}">Correct Answer<span class="required">**</span>:</label>
+                            <!-- Inside the additional-form -->
+                            <input id="correctAnswer{{i}}" type="text" [(ngModel)]="form.correctAnswer"
+                                #correctAnswerControl="ngModel" placeholder="Enter correct answer" />
+                            <p class="error-message" *ngIf="isCorrectAnswerInvalid(form, correctAnswerControl)">At least
+                                one choice must match the correct answer</p>
+                        </div>
+                        <div class="input-group-item">
+                            <label for="questionScore{{i}}">Question Score:</label>
+                            <input id="questionScore{{i}}" type="number" [(ngModel)]="form.questionScore"
+                                placeholder="Enter question score" />
+                        </div>
+                    </div>
+                    <button class="delete-form-button" (click)="deleteForm(i)">X</button>
                 </div>
                 <button class="delete-form-button" (click)="deleteForm(i)">X</button>
             </div>
-            <button class="delete-form-button" (click)="deleteForm(i)">X</button>
+        </div>
+        <div class="question-button">
+            <button class="add-question-button" (click)="addAdditionalForm()">+ Add Question</button>
+            <button class="preview-button" (click)="previewQuestions()">Preview</button>
+        </div>
+        <div class="test-button">
+            <p class="required-message" *ngIf="!isValid()">Enter the required fields to enable the submit button</p>
+            <button class="test-submit-button" [disabled]="!isValid()" (click)="submitTest()"
+                routerLink="/instructor/quizsuccessmsg">Submit</button>
+            <br />
         </div>
     </div>
-    <div class="question-button">
-        <button class="add-question-button" (click)="addAdditionalForm()">+ Add Question</button>
-        <button class="preview-button" (click)="previewQuestions()">Preview</button>
+
+
+
+
+
+
+
+
+    <div class="main-additional-form" *ngIf="questionType === 'short-answer'">
+        <div class="additional-form-container" *ngFor="let form of additionalForms; let i = index">
+            <div class="additional-form">
+                <div class="input-group">
+                    <label for="enterQuestion{{i}}">Enter Question {{form.questionNumber}}<span
+                            class="required">**</span>:</label>
+                    <div class="input-group">
+                        <button class="expand-button" (click)="toggleExpand(form)">
+                            <span class="material-icons">
+                                {{ form.expanded ? 'expand_less' : 'expand_more' }}
+                            </span>
+                        </button>
+                    </div>
+
+                    <textarea id="enterQuestion{{i}}" [(ngModel)]="form.enteredQuestion"
+                        placeholder="Enter your question"></textarea>
+                </div>
+                <div *ngIf="form.expanded">
+                    <div class="input-group">
+
+                        <div class="input-group-item">
+                            <label for="questionScore{{i}}">Question Score:</label>
+                            <input id="questionScore{{i}}" type="number" [(ngModel)]="form.questionScore"
+                                placeholder="Enter question score" />
+                        </div>
+                    </div>
+                    <button class="delete-form-button" (click)="deleteForm(i)">X</button>
+                </div>
+                <button class="delete-form-button" (click)="deleteForm(i)">X</button>
+            </div>
+        </div>
+        <div class="question-button">
+            <button class="add-question-button" (click)="addAdditionalForm()">+ Add Question</button>
+            <button class="preview-button" (click)="openShortAnswerPreview()">Preview</button>
+        </div>
+        <div class="test-button">
+            <p class="required-message" *ngIf="!isValid()">Enter the required fields to enable the submit button</p>
+            <button class="test-submit-button" [disabled]="!isValid()" (click)="submitTest()"
+                routerLink="/instructor/quizsuccessmsg">Submit</button>
+
+                
+            <br />
+        </div>
     </div>
-<!-- 
-    <div class="test-button">
-        <button class="test-submit-button" [disabled]="!isValid()" (click)="submitTest()">Submit</button>
-
-    </div> -->
-
-    <div class="test-button">
-        <p class="required-message" *ngIf="!isValid()">Enter the required fields to enable the submit button</p>
-        <button class="test-submit-button" [disabled]="!isValid()" (click)="submitTest()" routerLink="/instructor/quizsuccessmsg">Submit</button>
-      <br/>
-        <!-- <button class="preview-button" (click)="previewQuestions()">Preview</button> -->
-    </div>
-      
 </div>
-</div>
-
-
 <br />
 <br />
 <br />
-
