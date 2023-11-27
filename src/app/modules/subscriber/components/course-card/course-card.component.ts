@@ -1,6 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.state';
 
@@ -15,10 +17,22 @@ export class CourseCardComponent implements OnInit {
   @Input() product: any;
   isAddedToCart: boolean = false;
 
-  constructor(private cartService: CartService, private router: Router, private store: Store<AppState>) {}
+  private cartSubscription: Subscription = new Subscription();
+
+  constructor(private cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
-    this.isAddedToCart = this.product?.id ? this.cartService.isAddedToCart(this.product.id) === true : false;
+    this.isAddedToCart = this.cartService.isAddedToCart(this.product.id);
+
+    // Subscribe to cart changes
+    this.cartSubscription = this.cartService.getCartItems().subscribe((cartItems) => {
+      this.isAddedToCart = this.cartService.isAddedToCart(this.product.id);
+    });
+  }
+
+  ngOnDestroy(): void {
+    // Unsubscribe from the cart changes to avoid memory leaks
+    this.cartSubscription.unsubscribe();
   }
 
   addToCartClicked(productToAdd: any) {

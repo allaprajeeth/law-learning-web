@@ -50,23 +50,19 @@
     }
   }
 
-  .Pending {
-    color: blue;
-    font-weight: 590;
-  }
-
   .Approved {
     color: green;
-    font-weight: 590;
+    font-weight: 600;
   }
 
   .UnderReview {
     color: orange;
-    font-weight: 590;
+    font-weight: 800;
+    font-size: large;
   }
 
-  .Commited {
+  .Commented {
     color: red;
-    font-weight: 590;
+    font-weight: 600;
   }
 }

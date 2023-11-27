@@ -18,11 +18,7 @@ export class HistoryComponent {
       name: 'The Impact of Technology on Patent Law',
       status: 'Approved',
       submissionDate: '07-07-2023',
-    },
-    {
-      name: 'Laws Governing Workplace Discrimination',
-      status: 'Pending',
-      submissionDate: '10-08-2023',
+      publishedDate: '10-08-2023',
     },
     {
       name: 'Law School Applications',
@@ -31,7 +27,7 @@ export class HistoryComponent {
     },
     {
       name: 'Immigration Laws and Global Migration Trends',
-      status: 'Commited',
+      status: 'Commented',
       submissionDate: '19-10-2023',
     },
     {
@@ -42,12 +38,8 @@ export class HistoryComponent {
     {
       name: 'Understanding Intellectual Property Law',
       status: 'Approved',
-      submissionDate: '17-08-2023',
-    },
-    {
-      name: 'The Role of Family Law in Society',
-      status: 'Pending',
       submissionDate: '15-07-2023',
+      publishedDate: '17-08-2023',
     },
     {
       name: 'Landmark Cases in Criminal Law',
@@ -56,7 +48,7 @@ export class HistoryComponent {
     },
     {
       name: 'Privacy Laws in the Digital Age',
-      status: 'Commited',
+      status: 'Commented',
       submissionDate: '21-07-2023',
     },
     {
@@ -68,62 +60,53 @@ export class HistoryComponent {
       name: 'Challenges in International Human Rights Law',
       status: 'Approved',
       submissionDate: '11-09-2023',
-    },
-    {
-      name: 'Corporate Governance and Business Law',
-      status: 'Pending',
-      submissionDate: '18-09-2023',
+      publishedDate: '18-09-2023',
     },
     {
       name: 'Comparative Legal Systems around the World',
-      status: 'Commited',
+      status: 'Commented',
       submissionDate: '09-08-2023',
     },
     {
       name: 'Environmental Law and Sustainable Development',
       status: 'Approved',
       submissionDate: '20-07-2023',
-    },
-    {
-      name: 'An Analysis of Cybersecurity Laws',
-      status: 'Pending',
-      submissionDate: '28-09-2023',
+      publishedDate: '28-09-2023',
     },
     {
       name: 'Legal Implications of Artificial Intelligence',
-      status: 'Commited',
+      status: 'Commented',
       submissionDate: '27-10-2023',
     },
   ];
 
   approvedArticles: any[] = [];
-  pendingArticles: any[] = [];
   underReviewArticles: any[] = [];
-  commitedArticles: any[] = [];
+  commentedArticles: any[] = [];
 
   constructor(
     private router: Router,
     private articleHistoryDataService: ArticleHistoryDataService
   ) {}
   
-  private adminNames = [
-    'John Doe',
-    'Alice Smith',
-    'Bob Johnson',
-    'Emily Davis',
-  ];
-  private contentManagerNames = [
-    'Jane Doe',
-    'Charlie Brown',
-    'Eva Martinez',
-    'Daniel Lee',
-  ];
-  private reviewerNames = [
-    'David Johnson',
-    'Sarah Smith',
-    'Michael Brown',
-    'Jessica Davis',
-  ];
+  // private adminNames = [
+  //   'John Doe',
+  //   'Alice Smith',
+  //   'Bob Johnson',
+  //   'Emily Davis',
+  // ];
+  // private contentManagerNames = [
+  //   'Jane Doe',
+  //   'Charlie Brown',
+  //   'Eva Martinez',
+  //   'Daniel Lee',
+  // ];
+  // private reviewerNames = [
+  //   'David Johnson',
+  //   'Sarah Smith',
+  //   'Michael Brown',
+  //   'Jessica Davis',
+  // ];
 
   getStatusClass(status: string): string {
     switch (status) {
@@ -131,33 +114,31 @@ export class HistoryComponent {
         return 'Approved';
       case 'Under Review':
         return 'UnderReview';
-      case 'Commited':
-        return 'Commited';
-      case 'Pending':
-        return 'Pending';
+      case 'Commented':
+        return 'Commented';
       default:
         return '';
     }
   }
 
-  private adminIndex = 0;
-  private contentManagerIndex = 1;
-  private reviewerIndex = 2;
+  // private adminIndex = 0;
+  // private contentManagerIndex = 1;
+  // private reviewerIndex = 2;
 
   viewMore(article: any): void {
     const additionalData = {
       className: this.getStatusClass(article.status),
-      approvedByAdmin: this.adminNames[this.adminIndex],
-      approvedByContentManager:
-        this.contentManagerNames[this.contentManagerIndex],
-      approvedByReviewer: this.reviewerNames[this.reviewerIndex],
+      // approvedByAdmin: this.adminNames[this.adminIndex],
+      // approvedByContentManager:
+      //   this.contentManagerNames[this.contentManagerIndex],
+      // approvedByReviewer: this.reviewerNames[this.reviewerIndex],
       approvedDate: '21-11-2023',
     };
 
-    this.adminIndex = (this.adminIndex + 1) % this.adminNames.length;
-    this.contentManagerIndex =
-      (this.contentManagerIndex + 1) % this.contentManagerNames.length;
-    this.reviewerIndex = (this.reviewerIndex + 1) % this.reviewerNames.length;
+    // this.adminIndex = (this.adminIndex + 1) % this.adminNames.length;
+    // this.contentManagerIndex =
+    //   (this.contentManagerIndex + 1) % this.contentManagerNames.length;
+    // this.reviewerIndex = (this.reviewerIndex + 1) % this.reviewerNames.length;
 
     const dataToPass = { ...article, ...additionalData };
     this.articleHistoryDataService.setData(dataToPass);
@@ -174,14 +155,11 @@ export class HistoryComponent {
         case 'Approved':
           this.approvedArticles.push(article);
           break;
-        case 'Pending':
-          this.pendingArticles.push(article);
-          break;
         case 'Under Review':
           this.underReviewArticles.push(article);
           break;
-        case 'Commited':
-          this.commitedArticles.push(article);
+        case 'Commented':
+          this.commentedArticles.push(article);
           break;
       }
     });

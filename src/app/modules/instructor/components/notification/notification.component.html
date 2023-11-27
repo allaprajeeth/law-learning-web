@@ -7,7 +7,6 @@
     <div class="notification-list">
       <ng-container *ngFor="let notification of notifications; let i = index">
         <div class="notification-item" (click)="openNotification()">
-          <!-- <a routerLink="/instructor/notification/notification-item-clicked"></a> -->
           <div class="circle" [style.backgroundColor]="getRandomColor()">
             {{ notification.icon }}
           </div>
@@ -17,11 +16,10 @@
             </div>
             <div class="notification-message">{{ notification.message }}</div>
           </div>
-          <span class="date">{{ today | date: 'MMM d' }}</span>
+          <span class="date">{{ notification.notificationDate }}</span>
           <mat-icon class="delete-icon" (click)="deleteNotification(i)">delete</mat-icon>
         </div>
       </ng-container>
-      <!-- <button routerLink="/notification-item-clicked">ddd</button> -->
     </div>
   </div>
   
