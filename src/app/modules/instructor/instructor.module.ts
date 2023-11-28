@@ -51,7 +51,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { StatusComponent } from './components/status/status.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
-import { ShortAnstestpreviewComponent } from './components/short-anstestpreview/short-anstestpreview.component';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +87,8 @@ import { ShortAnstestpreviewComponent } from './components/short-anstestpreview/
     HistoryComponent,
     LibraryInstructorComponent,
     InstructorpostdetailsComponent,
-    ShortAnstestpreviewComponent,
+    TermsandcondiComponent
+   
   ],
   
   providers: [InstructorService],

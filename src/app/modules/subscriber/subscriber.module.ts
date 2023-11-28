@@ -55,6 +55,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { OverviewComponent } from './components/overview/overview.component';
 import { RatingsComponent } from './components/ratings/ratings.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 @NgModule({
   declarations: [
     SidenavComponent, 
@@ -90,6 +91,7 @@ import { SubscriberpostdetailsComponent } from './components/subscriberpostdetai
       OverviewComponent,
       RatingsComponent,
       SubscriberpostdetailsComponent,
+      TermsandcondiComponent,
    
   ],
   imports: [

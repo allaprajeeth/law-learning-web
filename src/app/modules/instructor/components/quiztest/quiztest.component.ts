@@ -3,7 +3,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { TestpreviewComponent } from '../testpreview/testpreview.component';
-import { ShortAnstestpreviewComponent } from '../short-anstestpreview/short-anstestpreview.component';
 
 
 export class AdditionalForm {
@@ -59,8 +58,6 @@ export class QuiztestComponent {
     this.isAddingQuestion = true;
   }
 
-
-
 addChoice(formIndex: number) {
   const form = this.additionalForms[formIndex];
 
@@ -83,15 +80,6 @@ addChoice(formIndex: number) {
   // No need for an else block if you don't want to handle the duplicate case
 }
 
-
-
-
-
-
-
-
-
-
 validateCorrectAnswer(form: AdditionalForm) {
   const hasMatchingChoice = form.selectchoice.some(choice => choice === form.correctAnswer);
 
@@ -99,9 +87,7 @@ validateCorrectAnswer(form: AdditionalForm) {
   if (!hasMatchingChoice && (form.correctAnswerControl?.touched || form.correctAnswerControl?.dirty) && form.selectchoice.length > 0) {
     form.correctAnswer = form.selectchoice[0];
   }
-}
-
-  
+}  
 
 isCorrectAnswerInvalid(form: AdditionalForm, correctAnswerControl: any): boolean {
   return (
@@ -111,31 +97,20 @@ isCorrectAnswerInvalid(form: AdditionalForm, correctAnswerControl: any): boolean
   );
 }
 
-
-
-
-
-// isCorrectAnswerValid(form: AdditionalForm): boolean {
-//   return form.selectchoice.includes(form.correctAnswer);
-// }
-
-
-
-
 addAdditionalForm() {
   const newForm = new AdditionalForm();
-  newForm.questionNumber = this.additionalForms.length + 1; 
+  newForm.questionNumber = this.additionalForms.length + 1;
+
+  // Set the question type based on the selected question type in the main component
   newForm.questionType = this.questionType;
+
   this.additionalForms.push(newForm);
 }
+
 
 numberOfFormsArray(): number[] {
   return this.formsArray;
 }
-// deleteForm(index: number) {
-//   this.additionalForms.splice(index, 1);
-// }
-
 deleteForm(index: number) {
   this.additionalForms.splice(index, 1);
 
@@ -183,43 +158,32 @@ submitTest() {
 
   
 }
-//   const isValid = this.isValid();
-
-//   if (isValid) {
-//     // Perform any additional actions before submitting the test
-
-//     // Show a snackbar
-//     this.openSnackBar('Your test form submitted successfully wait for response. Thank you!', 5000);
-//     setTimeout(() => {
-//       this.router.navigate(['/instructor/upload']);
-//     }, 5000);
-//   }
-// }
-
-// openSnackBar(message: string, duration: number) {
-//   this._snackBar.open(message, 'Close', {
-//     duration: duration,
-//     verticalPosition: 'top', // Set the vertical position to 'top'
-//   });
-// }
-
 previewQuestions() {
+  console.log('Additional Forms:', this.additionalForms);
+
   const aggregatedData = this.additionalForms.map((form, index) => ({
     questionNumber: index + 1,
     enteredQuestion: form.enteredQuestion,
     selectchoice: form.selectchoice,
     correctAnswer: form.correctAnswer,
-    questionScore: form.questionScore
+    questionScore: form.questionScore,
+    questionType: form.questionType,
   }));
+  
+
+  console.log('Aggregated Data:', aggregatedData);
+
 
   const dialogRef = this.dialog.open(TestpreviewComponent, {
     width: '800px',
-    data: aggregatedData, // Pass the aggregated data to the dialog
+    data: aggregatedData,
   });
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
   });
 }
+
+
 // Inside the QuiztestComponent class
 isChoiceDuplicate(form: AdditionalForm, index: number): boolean {
   const currentChoice = form.selectchoice[index];
@@ -232,20 +196,7 @@ isChoiceInvalid(form: AdditionalForm, index: number): boolean {
   return form.selectchoice.indexOf(currentChoice) !== index && currentChoice.trim() !== '';
 }
 
-openShortAnswerPreview() {
-  const dialogRef = this.dialog.open(ShortAnstestpreviewComponent, {
-    width: '800px',
-    data: this.additionalForms.map((form, index) => ({
-      questionNumber: index + 1,
-      enteredQuestion: form.enteredQuestion,
-      questionScore: form.questionScore,
-    })),
-  });
 
-  dialogRef.afterClosed().subscribe(result => {
-    console.log('The dialog was closed');
-  });
-}
 
 
 

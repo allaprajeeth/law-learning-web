@@ -28,6 +28,7 @@ import { SharedarticleformComponent } from './components/sharedarticleform/share
 import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
 import { PdfviewerComponent } from './components/pdfviewer/pdfviewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 
 @NgModule({
  
@@ -47,6 +48,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
      SharedarticleformComponent,
      SharedpostdetailsComponent,
      PdfviewerComponent,
+     SharedTCComponent,
 
     ],
 
@@ -86,7 +88,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     SharedCertificateComponent,
     SharedarticleformComponent,
     SharedpostdetailsComponent,
-    PdfviewerComponent
+    PdfviewerComponent,
+    SharedTCComponent,
 
 
   ]
