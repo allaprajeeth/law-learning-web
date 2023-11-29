@@ -51,6 +51,7 @@ import { StatusComponent } from './components/status/status.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 
 @NgModule({
   declarations: [
@@ -86,8 +87,7 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
     HistoryComponent,
     LibraryInstructorComponent,
     InstructorpostdetailsComponent,
-    TermsandcondiComponent
-   
+    TermsandcondiComponent,
   ],
   
   providers: [InstructorService],
