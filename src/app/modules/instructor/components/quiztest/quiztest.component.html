@@ -2,7 +2,7 @@
 <app-instructornav></app-instructornav>
 <div class="main-container">
     <h2>Create a Test</h2>
-    <p *ngIf="questionType !== 'multiple-choice'" class="message">Please select the question type to get test questions
+    <p *ngIf="!questionType || questionType.trim() === ''" class="message">Please select the question type to get test questions
         form</p>
     <div class="quiz-container">
         <div class="quiz-header">
@@ -12,7 +12,7 @@
             </div>
             <div class="input-group">
                 <label for="questionType">Select Question Type:</label>
-                <select id="questionType" [(ngModel)]="questionType" >
+                <select id="questionType" [(ngModel)]="questionType" [disabled]="hasQuestions()" >
                     <option value="multiple-choice">Multiple Choice</option>
                     <option value="short-answer">Short Answer</option>
                 </select>
@@ -89,10 +89,6 @@
             <br />
         </div>
     </div>
-
-
-
-
 
 
 
