@@ -23,6 +23,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 
 const routes: Routes = [
   {
@@ -121,6 +122,10 @@ const routes: Routes = [
   {
     path:'courseinfo',
     component:CourseInfoComponent
+  },
+  {
+    path:'termsandcondi',
+    component:TermsandcondiComponent
   }
 ];
 

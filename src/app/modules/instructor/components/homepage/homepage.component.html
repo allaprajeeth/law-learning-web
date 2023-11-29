@@ -1,75 +1,87 @@
 <app-instructornav></app-instructornav>
 
-
 <div class="container">
-    <div class="heading">
-      <div class="heading2">
-      <h1>Courses for submission</h1>
-      <p class="create-course"><a routerLink="/instructor/courses" class="mycourses">Create a Course</a></p>
-    </div>
-  <p class="comment">Create a course, upload your files and submit to the website</p>
-  </div>
-  <div class="image-grid">
-    <div *ngFor="let image of uploadedimages; let i = index" class="image-item" routerLink="/instructor/courseInfo">
-      <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <i class="fa fa-play-circle play-icon"></i>
+      <div class="heading">
+        <div class="heading2">
+          <h1>Courses for submission</h1>
+          <p class="create-course"><a routerLink="/instructor/courses" class="mycourses">Create a Course</a></p>
         </div>
-        <span class="duration">{{ uploadedCoursesDurations[i] }}</span>
+        <p class="comment">Create a course, upload your files and submit to the website</p>
       </div>
-      <div class="headingsContainer">
-        <h5>{{ uploadedCoursesHeadings[i] }}</h5>
-        <p>{{ uploadedCoursesAuthors[i] }}</p>
-        <h4>{{ uploadedCoursesText[i] }}</h4>
+       <div class="image-grid" >
+        <div *ngFor="let image of uploadedimages; let i = index" class="image-item" routerLink="/instructor/courseInfo">
+          <div (click)="openCourseInfo('Courses for submission')">
+          <div class="imagesContainer">
+            <img [src]="image" class="img" alt="Random Image">
+            <div class="overlay">
+              <i class="fa fa-play-circle play-icon"></i>
+            </div>
+            <span class="duration">{{ uploadedCoursesDurations[i] }}</span>
+          </div>
+          <div class="headingsContainer">
+            <h5>{{ uploadedCoursesHeadings[i] }}</h5>
+            <p>{{ uploadedCoursesAuthors[i] }}</p>
+            <h4>{{ uploadedCoursesText[i] }}</h4>
+          </div>
+          <button routerLink="/instructor/editcourses" class="mycourses">Edit Course</button> 
+        </div>
       </div>
-      <button routerLink="/instructor/editcourses" class="mycourses">Edit Course</button>
+      <!-- <button routerLink="/instructor/editcourses" class="mycourses">Edit Course</button> -->
       
     </div>
   </div>
-  <br/>
-  <hr/>
-  <br/>
+  <!-- <br/> -->
+  <!-- <hr/> -->
+  <!-- <br/> -->
   <div class="container">
-    <div class="heading">
+    <!-- <div class="heading">
       <h1>Courses under review </h1>
       <p>You have successfully submitted your course; it is under review. If there are any comments kindly correct them.</p>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of underreviewimages; let k = index" class="image-item" routerLink="/instructor/courseInfo">
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <i class="fa fa-play-circle play-icon"></i>
+    </div> -->
+    <br/>
+    <hr/>
+    <br/>
+    <div class="container">
+      <div class="heading">
+        <h1>Courses under review </h1>
+        <p>You have successfully submitted your course; it is under review. If there are any comments kindly correct them.</p>
+      </div>
+      <div class="image-grid">
+        <div *ngFor="let image of underreviewimages; let k = index" class="image-item" routerLink="/instructor/courseInfo">
+          <div (click)="openCourseInfo('Courses under review')">
+          <div class="imagesContainer">
+            <img [src]="image" class="img" alt="Random Image">
+            <div class="overlay">
+              <i class="fa fa-play-circle play-icon"></i>
+            </div>
+            <span class="duration">{{ underreviewDurations[k] }}</span>  
           </div>
-          <span class="duration">{{ underreviewDurations[k] }}</span>  
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ underreviewHeadings[k] }}</h5>
-          <p>{{ underreviewAuthors[k] }}</p>
-          <h4>{{ underreviewText[k] }}</h4>
-        </div>
-        <div class="container1">
-          <div class="Conatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
+          <div class="headingsContainer">
+            <h5>{{ underreviewHeadings[k] }}</h5>
+            <p>{{ underreviewAuthors[k] }}</p>
+            <h4>{{ underreviewText[k] }}</h4>
           </div>
-          <div class="Conatiner2">
-            <span>Reviewer Ratings</span>
+          <div class="container1">
+            <div class="Conatiner2">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9734;</span>
+            </div>
+            <div class="Conatiner2">
+              <span>Reviewer Ratings</span>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-<br/>
-<br/>
-<hr/>
-<br/>
-
-  <div class="heading">
+  <br/>
+  <br/>
+  <hr/>
+  <br/>
+ <div class="heading">
     <h1>Approved Courses </h1>
     <p>Congratulations, your course has been approved and it is now available to the subscribers.</p>
   </div>
@@ -104,6 +116,7 @@
   </div>
   <div class="image-grid">
     <div *ngFor="let image of approvedcoursesimages; let l = index" class="image-item" routerLink="/instructor/courseInfo">
+      <div (click)="openCourseInfo('Approved Courses')">
       <div class="imagesContainer">
         <img [src]="image" class="img" alt="Random Image">
         <div class="overlay">
@@ -149,40 +162,79 @@
       <br/>
     </div>
   </div>
+  </div>
   <hr/>
-<div class="heading">
-  <h1>Commented Courses</h1>
-  <p>This course has several comments, kindly rework and resubmit.</p>
-</div>
-<div class="image-grid">
-  <div *ngFor="let image of rejectedimages; let j = index" class="image-item" routerLink="/instructor/courseInfo">
-
-    <div class="imagesContainer">
-      <img [src]="image" class="img" alt="Random Image">
-      <div class="overlay">
-        <i class="fa fa-play-circle play-icon"></i>
+  <div class="heading">
+    <h1>Commented Courses</h1>
+    <p>This course has several comments, kindly rework and resubmit.</p>
+  </div>
+  <div class="image-grid">
+    <div *ngFor="let image of rejectedimages; let j = index" class="image-item" routerLink="/instructor/courseInfo">
+      <div (click)="openCourseInfo('Commented Courses')">
+      <div class="imagesContainer">
+        <img [src]="image" class="img" alt="Random Image">
+        <div class="overlay">
+          <i class="fa fa-play-circle play-icon"></i>
+        </div>
+        <span class="duration">{{ rejectedCoursesDurations[j] }}</span>
       </div>
-      <span class="duration">{{ rejectedCoursesDurations[j] }}</span>
-    </div>
-    <div class="headingsContainer">
-      <h5>{{ rejectedCoursesHeadings[j] }}</h5>
-      <p>{{ rejectedCoursesAuthors[j] }}</p>
-      <h4>{{ rejectedCoursesText[j] }}</h4>
-    </div>
-    <div class="container1">
-      <div class="Conatiner2">
-        <span class="star">&#9733;</span>
-        <span class="star">&#9733;</span>
-        <span class="star">&#9733;</span>
-        <span class="star">&#9733;</span>
-        <span class="star">&#9734;</span>
+      <div class="headingsContainer">
+        <h5>{{ rejectedCoursesHeadings[j] }}</h5>
+        <p>{{ rejectedCoursesAuthors[j] }}</p>
+        <h4>{{ rejectedCoursesText[j] }}</h4>
       </div>
-      <div class="Conatiner2">
-        <span>Reviewer Ratings</span>
+      <div class="container1">
+        <div class="Conatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
+        </div>
+        <div class="Conatiner2">
+          <span>Reviewer Ratings</span>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-<br />
-<br />
+  </div>
+  </div>
+  <br />
+  <br /> 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+
+
+
+
+<!-- 
+      <div (click)="openCourseInfo('Courses for submission')">
+        <h1>Courses for submission</h1>
+        <p>111111111111111111</p>
+      </div> -->
+
+      <!-- <div (click)="openCourseInfo('Courses under review')">
+        <h1>Courses under review</h1>
+        <p>2222222222222</p>
+      </div> -->
+
+      <!-- <div (click)="openCourseInfo('Approved Courses')">
+        <h1>Approved Courses</h1>
+        <p>333333333333</p>
+      </div> -->
+
+      <!-- <div (click)="openCourseInfo('Commented Courses')">
+        <h1>Commented Courses</h1>
+        <p>44444444444</p>
+      </div>
+    </div>
+  </div> -->

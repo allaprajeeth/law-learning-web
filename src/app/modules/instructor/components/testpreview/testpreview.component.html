@@ -1,18 +1,28 @@
+<!-- testpreview.component.html -->
 <div class="preview-container">
-<h2 mat-dialog-title>Preview Questions</h2>
-<div mat-dialog-content>
-  <div *ngFor="let question of data">
-    <p>Question {{ question.questionNumber }}: {{ question.enteredQuestion }}</p>
-    <p>Choices:</p>
-    <ul>
-      <li *ngFor="let choice of question.selectchoice; let i = index">{{ i + 1 }}. {{ choice }}</li>
-    </ul>
-    <p style="font-weight: bolder;">Correct Answer: {{ question.correctAnswer }}</p>
-    <!-- <p>Question Score: {{ question.questionScore }}</p> -->
-    <hr />
+  <h2 mat-dialog-title>Preview Questions</h2>
+  <div mat-dialog-content>
+    <div *ngFor="let question of data">
+      <p>Question {{ question.questionNumber }}: {{ question.enteredQuestion }}</p>
+
+      <!-- Display "Choices" only for 'multiple-choice' questions -->
+      <ng-container *ngIf="question.questionType === 'multiple-choice'">
+        <p>Choices:</p>
+        <ul>
+          <li *ngFor="let choice of question.selectchoice; let i = index">{{ i + 1 }}. {{ choice }}</li>
+        </ul>
+        <p style="font-weight: bolder;">Correct Answer: {{ question.correctAnswer }}</p>
+      </ng-container>
+
+      <!-- Display "Question Score" for all question types -->
+      <p *ngIf="question.questionScore !== undefined && question.questionScore !== null">
+        Question Score: {{ question.questionScore }}
+      </p>
+
+      <hr />
+    </div>
   </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onClose()">Close</button>
-</div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onClose()">Close</button>
+  </div>
 </div>

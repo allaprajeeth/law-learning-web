@@ -86,6 +86,8 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
     HistoryComponent,
     LibraryInstructorComponent,
     InstructorpostdetailsComponent,
+    TermsandcondiComponent
+   
   ],
   
   providers: [InstructorService],

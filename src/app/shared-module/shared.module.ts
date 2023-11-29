@@ -29,7 +29,7 @@ import { SharedarticleformComponent } from './components/sharedarticleform/share
 import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
 import { PdfviewerComponent } from './components/pdfviewer/pdfviewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
+import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 
 @NgModule({
  
@@ -49,7 +49,7 @@ import { SharedNotificationComponent } from './components/shared-notification/sh
      SharedarticleformComponent,
      SharedpostdetailsComponent,
      PdfviewerComponent,
-     SharedNotificationComponent,
+     SharedTCComponent,
     ],
 
   imports: [
@@ -90,7 +90,7 @@ import { SharedNotificationComponent } from './components/shared-notification/sh
     SharedarticleformComponent,
     SharedpostdetailsComponent,
     PdfviewerComponent,
-    SharedNotificationComponent,
+    SharedTCComponent,
   ]
 
 })

@@ -30,6 +30,7 @@ export class QuiztestComponent {
 
   
   quizName: string = '';
+  selectedQuestionType: string = 'multiple-choice';
   questionType: string = '';
   sectionTimer: number = 0;
   timePeriod: number = 0;
@@ -57,8 +58,6 @@ export class QuiztestComponent {
     this.isAddingQuestion = true;
   }
 
-
-
 addChoice(formIndex: number) {
   const form = this.additionalForms[formIndex];
 
@@ -81,15 +80,6 @@ addChoice(formIndex: number) {
   // No need for an else block if you don't want to handle the duplicate case
 }
 
-
-
-
-
-
-
-
-
-
 validateCorrectAnswer(form: AdditionalForm) {
   const hasMatchingChoice = form.selectchoice.some(choice => choice === form.correctAnswer);
 
@@ -97,9 +87,7 @@ validateCorrectAnswer(form: AdditionalForm) {
   if (!hasMatchingChoice && (form.correctAnswerControl?.touched || form.correctAnswerControl?.dirty) && form.selectchoice.length > 0) {
     form.correctAnswer = form.selectchoice[0];
   }
-}
-
-  
+}  
 
 isCorrectAnswerInvalid(form: AdditionalForm, correctAnswerControl: any): boolean {
   return (
@@ -109,31 +97,20 @@ isCorrectAnswerInvalid(form: AdditionalForm, correctAnswerControl: any): boolean
   );
 }
 
-
-
-
-
-// isCorrectAnswerValid(form: AdditionalForm): boolean {
-//   return form.selectchoice.includes(form.correctAnswer);
-// }
-
-
-
-
 addAdditionalForm() {
   const newForm = new AdditionalForm();
-  newForm.questionNumber = this.additionalForms.length + 1; 
+  newForm.questionNumber = this.additionalForms.length + 1;
+
+  // Set the question type based on the selected question type in the main component
   newForm.questionType = this.questionType;
+
   this.additionalForms.push(newForm);
 }
+
 
 numberOfFormsArray(): number[] {
   return this.formsArray;
 }
-// deleteForm(index: number) {
-//   this.additionalForms.splice(index, 1);
-// }
-
 deleteForm(index: number) {
   this.additionalForms.splice(index, 1);
 
@@ -154,58 +131,59 @@ toggleExpand(form: AdditionalForm) {
   form.expanded = !form.expanded;
 }
 
-isValid(): boolean {
-  const isValid =
-    this.quizName.trim() !== '' &&
-    this.timePeriod > 0 &&
-    this.additionalForms.every(
-      (form) => form.enteredQuestion.trim() !== '' && form.correctAnswer.trim() !== ''
-    );
 
-  return isValid;
-}
+  isValid(): boolean {
+    if (this.selectedQuestionType === 'multiple-choice') {
+      return (
+        this.quizName.trim() !== '' &&
+        this.timePeriod > 0 &&
+        this.additionalForms.every(
+          (form) => form.enteredQuestion.trim() !== '' && form.correctAnswer.trim() !== ''
+        )
+      );
+    } else if (this.selectedQuestionType === 'short-answer') {
+      return (
+        this.quizName.trim() !== '' &&
+        this.timePeriod > 0 &&
+        this.additionalForms.every(
+          (form) => form.enteredQuestion.trim() !== ''
+        )
+      );
+    }
+
+    return false; // Default to false if the question type is not recognized
+  }
 
 submitTest() {
 
   
 }
-//   const isValid = this.isValid();
-
-//   if (isValid) {
-//     // Perform any additional actions before submitting the test
-
-//     // Show a snackbar
-//     this.openSnackBar('Your test form submitted successfully wait for response. Thank you!', 5000);
-//     setTimeout(() => {
-//       this.router.navigate(['/instructor/upload']);
-//     }, 5000);
-//   }
-// }
-
-// openSnackBar(message: string, duration: number) {
-//   this._snackBar.open(message, 'Close', {
-//     duration: duration,
-//     verticalPosition: 'top', // Set the vertical position to 'top'
-//   });
-// }
-
 previewQuestions() {
+  console.log('Additional Forms:', this.additionalForms);
+
   const aggregatedData = this.additionalForms.map((form, index) => ({
     questionNumber: index + 1,
     enteredQuestion: form.enteredQuestion,
     selectchoice: form.selectchoice,
     correctAnswer: form.correctAnswer,
-    questionScore: form.questionScore
+    questionScore: form.questionScore,
+    questionType: form.questionType,
   }));
+  
+
+  console.log('Aggregated Data:', aggregatedData);
+
 
   const dialogRef = this.dialog.open(TestpreviewComponent, {
     width: '800px',
-    data: aggregatedData, // Pass the aggregated data to the dialog
+    data: aggregatedData,
   });
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
   });
 }
+
+
 // Inside the QuiztestComponent class
 isChoiceDuplicate(form: AdditionalForm, index: number): boolean {
   const currentChoice = form.selectchoice[index];
@@ -217,6 +195,8 @@ isChoiceInvalid(form: AdditionalForm, index: number): boolean {
   const currentChoice = form.selectchoice[index];
   return form.selectchoice.indexOf(currentChoice) !== index && currentChoice.trim() !== '';
 }
+
+
 
 
 

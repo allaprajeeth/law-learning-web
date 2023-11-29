@@ -1,8 +1,12 @@
 <app-instructornav></app-instructornav>
+
+<div *ngFor="let heading of headings ?? []">
+  <h2>{{ heading }}</h2>
+</div>
 <mat-divider></mat-divider>
 <div>
-  <div class="course-info-container">
-    <mat-tab-group>
+ <div class="course-info-container">
+  <mat-tab-group>
     <mat-tab label="Overview">
       <div class="tabs">
         <app-instructor-overview></app-instructor-overview>
@@ -20,8 +24,9 @@
     <button mat-raised-button  color="primary" routerLink="/instructor/quiztest" >Create Test</button>
    </div>
    </mat-tab>
-   <mat-tab label="Certificate"> 
+   <mat-tab label="Certificate">
    <app-shared-certificate></app-shared-certificate>
    </mat-tab>
   </mat-tab-group>
+ </div> 
 </div>

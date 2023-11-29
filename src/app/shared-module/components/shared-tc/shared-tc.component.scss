@@ -1,0 +1,95 @@
+.terms-and-conditions {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .box-shadow {
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 60px 30px;
+    position: relative;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .term-text {
+    padding: 0 20px;
+    overflow-y: auto;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .term-text::-webkit-scrollbar {
+    width: 2px;
+    background-color: white;
+  }
+  
+  .term-text h2 {
+    text-transform: uppercase;
+  }
+  
+  .buttons {
+    display: flex;
+    padding: 0 20px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .btn {
+    height: 50px;
+    width:80px;
+    border: 0;
+    border-radius: 6px;
+    font-size: 19px;
+    font-weight: 500;
+    color: white;
+    // color: rgb(33, 33, 34);
+    cursor: pointer;
+  }
+  
+  .red-btn {
+    background-color: red;
+    width: 100px;
+    margin: 10px;
+  }
+  
+  .gray-btn {
+    background-color: black;
+    width: 100px;
+    margin: 10px;
+  }
+  
+  
+  .acceptButton {
+    width: 100px;
+    margin: 10px;
+    background-color: rgb(0, 124, 128);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .disabled-button {
+    width: 100px;
+    margin: 10px;
+    background-color: rgb(161, 206, 206);
+    color: white;
+    cursor: not-allowed;
+  }
+  
+  h4 {
+    font-weight: bolder;
+  }
+  

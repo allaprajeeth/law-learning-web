@@ -25,6 +25,8 @@ import { LibraryInstructorComponent } from './components/library-instructor/libr
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+
 
 const routes: Routes = [
   {
@@ -132,6 +134,10 @@ component:ArticleformComponent
 { path: 'pdf-viewer',
  component: PdfviewerComponent 
 },
+{
+  path:'termsandcondi',
+  component:TermsandcondiComponent
+}
 
 
 ];
