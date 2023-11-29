@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/shared-module/shared.module';
 import { FormsModule } from '@angular/forms';
 import { InstructorRoutingModule } from './instructor-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -51,6 +50,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { StatusComponent } from './components/status/status.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
+import { SharedModule } from 'src/app/shared-module/shared.module';
 
 @NgModule({
   declarations: [

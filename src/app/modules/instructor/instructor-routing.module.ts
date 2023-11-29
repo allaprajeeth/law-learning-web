@@ -21,8 +21,6 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
-import { HistoryComponent } from './components/history/history.component';
-import { StatusComponent } from './components/status/status.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
@@ -102,14 +100,6 @@ component:ArticleformComponent
 { 
   path: 'uploadhistory', 
   component: UploadhistoryComponent 
-},
-{ 
-  path: 'articlehistory', 
-  component: HistoryComponent 
-},
-{ 
-  path: 'status', 
-  component: StatusComponent
 },
 {
   path:"quizsuccessmsg",

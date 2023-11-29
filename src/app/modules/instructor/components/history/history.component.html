@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let article of approvedArticles">
-                    <td>{{ article.name }}</td>
+                    <td class="articleName">{{ article.name }}</td>
                     <td>{{ article.submissionDate }}</td>
                     <td>{{ article.publishedDate }}</td>
                     <td class="flexContainer">
@@ -25,7 +25,7 @@
     </div>
 
     <div>
-        <h1 class="underReviewArticles">Articles UnderReview</h1>
+        <h1 class="underReviewArticles">Articles Under Review</h1>
         <table class="article-table">
             <thead>
                 <tr>
@@ -36,7 +36,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let article of underReviewArticles">
-                    <td>{{ article.name }}</td>
+                    <td class="articleName">{{ article.name }}</td>
                     <td>{{ article.submissionDate }}</td>
                     <td class="flexContainer">
                         <a class="view-more" (click)="viewMore(article)">view more</a>
@@ -58,7 +58,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let article of commentedArticles">
-                    <td>{{ article.name }}</td>
+                    <td class="articleName">{{ article.name }}</td>
                     <td>{{ article.submissionDate }}</td>
                     <td class="flexContainer">
                         <a class="view-more" (click)="viewMore(article)">view more</a>

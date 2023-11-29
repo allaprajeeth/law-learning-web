@@ -16,7 +16,7 @@
   }
 
   th {
-    background-color: #f9f9f9;
+    background-color: #e2e2e2;
     font-weight: bolder;
   }
 
@@ -25,6 +25,11 @@
       cursor: pointer;
       background-color: #f2f2f2;
     }
+  }
+
+  .articleName {
+    padding-left: 200px;
+    text-align: left;
   }
 
   .flexContainer {
@@ -42,18 +47,7 @@
   }
 }
 
-.approvedArticles {
-  font-weight: bolder;
-  color: green;
-}
-
-.underReviewArticles {
-  font-weight: bolder;
-  color: orange;
-}
-
-.commentedArticles {
-  font-weight: bolder;
-  color: red;
+.approvedArticles, .underReviewArticles, .commentedArticles {
+  font-weight: 590;
 }
 

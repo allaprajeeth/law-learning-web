@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
 import { CarouselModule } from 'primeng/carousel';
@@ -28,6 +29,7 @@ import { SharedarticleformComponent } from './components/sharedarticleform/share
 import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
 import { PdfviewerComponent } from './components/pdfviewer/pdfviewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
 
 @NgModule({
  
@@ -47,7 +49,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
      SharedarticleformComponent,
      SharedpostdetailsComponent,
      PdfviewerComponent,
-
+     SharedNotificationComponent,
     ],
 
   imports: [
@@ -63,6 +65,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     CarouselModule,
     MatSidenavModule,
     MatSlideToggleModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     PdfViewerModule
   ],
@@ -86,9 +89,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     SharedCertificateComponent,
     SharedarticleformComponent,
     SharedpostdetailsComponent,
-    PdfviewerComponent
-
-
+    PdfviewerComponent,
+    SharedNotificationComponent,
   ]
 
 })

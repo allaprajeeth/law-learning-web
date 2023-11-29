@@ -5,6 +5,7 @@ import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 const routes: Routes = [
   {
@@ -31,8 +32,11 @@ const routes: Routes = [
   {
     path:'aboutus',
     component:AboutusComponent
-  }
-  
+  },
+  {
+    path:'notification',
+    component:NotificationComponent
+  },
 ];
 
 @NgModule({

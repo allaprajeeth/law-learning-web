@@ -11,7 +11,7 @@ import { AppState } from 'src/app/app.state';
   templateUrl: './course-card.component.html',
   styleUrls: ['./course-card.component.scss'],
 })
-export class CourseCardComponent implements OnInit {
+export class CourseCardComponent implements OnInit, OnDestroy {
   @Input() heading: string = '';
   @Input() content: string = '';
   @Input() product: any;
@@ -42,6 +42,9 @@ export class CourseCardComponent implements OnInit {
     }
   }
 
+  goToCartClicked() {
+    this.router.navigate(['/cart']);
+  }
 }
 
 

@@ -97,6 +97,6 @@ export class ArticleHistoryComponent {
     const dataToPass = { ...article, ...additionalData };
     this.articleStatusDataService.setData(dataToPass);
 
-    this.router.navigate(['/articleStatus']);
+    this.router.navigate(['/subscriber/articleStatus']);
   }
 }

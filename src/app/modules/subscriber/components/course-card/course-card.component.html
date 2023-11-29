@@ -23,13 +23,17 @@
     </mat-card-content>
     <!-- <div class="courseCardButtons">
         <button class="addToCartButton" (click)="addToCartClicked(product)">
-            {{ product.isAddedToCart ? 'Go to Cart' : 'Add to Cart' }}
+            {{ isAddedToCart ? 'Go to Cart' : 'Add to Cart' }}
         </button>
     </div> -->
 
     <div class="courseCardButtons">
-        <button class="addToCartButton" (click)="addToCartClicked(product)">
-            {{ isAddedToCart ? 'Go to Cart' : 'Add to Cart' }}
+        <!-- Use *ngIf to conditionally display the button based on isAddedToCart -->
+        <button *ngIf="!isAddedToCart" class="addToCartButton" (click)="addToCartClicked(product)">
+            Add to Cart
+        </button>
+        <button *ngIf="isAddedToCart" class="addToCartButton" (click)="goToCartClicked()">
+            Go to Cart
         </button>
     </div>
 </div>

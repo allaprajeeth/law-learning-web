@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from 'src/app/shared-module/shared.module';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -19,6 +18,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ErrorHandlerService } from 'src/app/common/services/error-handler/error-handler.service';
+import { NotificationComponent } from './components/notification/notification.component';
+import { SharedModule } from 'src/app/shared-module/shared.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ErrorHandlerService } from 'src/app/common/services/error-handler/error
     AdminnavComponent,
     CourseInfoComponent,
     VideoplayerComponent,
-    AboutusComponent
+    AboutusComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,

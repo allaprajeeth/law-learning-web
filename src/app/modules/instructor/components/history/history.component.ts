@@ -145,7 +145,7 @@ export class HistoryComponent {
 
     console.log('Data to pass:', dataToPass);
 
-    this.router.navigate(['/status']);
+    this.router.navigate(['/instructor/status']);
   }
 
   // Function to categorize articles based on status
