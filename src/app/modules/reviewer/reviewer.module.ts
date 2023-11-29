@@ -31,6 +31,7 @@ import { DocumentsComponent } from './components/documents/documents.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
     DocumentsComponent,
     CourseInfoComponent,
     AboutusComponent,
+    TermsandcondiComponent,
     // InstructorLoginComponent
   ],
   imports: [
