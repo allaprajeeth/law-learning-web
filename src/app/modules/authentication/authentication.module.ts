@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/shared-module/shared.module';
 
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 // import { ComponentsComponent } from './components/components.component';
@@ -27,6 +26,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { SharedModule } from 'src/app/shared-module/shared.module';
 
 @NgModule({
   declarations: [

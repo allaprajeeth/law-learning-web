@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
 import { CarouselModule } from 'primeng/carousel';
@@ -49,7 +50,6 @@ import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
      SharedpostdetailsComponent,
      PdfviewerComponent,
      SharedTCComponent,
-
     ],
 
   imports: [
@@ -65,6 +65,7 @@ import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
     CarouselModule,
     MatSidenavModule,
     MatSlideToggleModule,
+    MatToolbarModule,
     ReactiveFormsModule,
     PdfViewerModule
   ],
@@ -90,8 +91,6 @@ import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
     SharedpostdetailsComponent,
     PdfviewerComponent,
     SharedTCComponent,
-
-
   ]
 
 })

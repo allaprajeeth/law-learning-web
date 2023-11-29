@@ -21,17 +21,12 @@ export class StatusComponent implements OnInit {
   
 
   ngOnInit(): void {
-    console.log('StatusComponent - ngOnInit');
-    
     this.articleData = this.articleHistoryDataService.getData();
     const statusFromRoute = this.route.snapshot.paramMap.get('status');
-    // this.status = statusFromRoute !== null ? statusFromRoute : '';
-
-  // console.log('Received data:', this.articleData, this.status);
   }
 
   closeArticle(): void {
-    this.router.navigate(['/articlehistory']);
+    this.router.navigate(['/instructor/articlehistory']);
   }
 }
 

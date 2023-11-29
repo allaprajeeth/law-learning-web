@@ -17,14 +17,9 @@ export const cartReducer = createReducer(
     const isItemExistsInCart = state.items.some(item => item.id === product.id);
 
     if (isItemExistsInCart) {
-      // If the item is already in the cart, update its isAddedToCart property
-      const updatedItems = state.items.map(item =>
-        item.id === product.id ? { ...item, isAddedToCart: true } : item
-      );
-
       return {
         ...state,
-        items: [...state.items, product.productId],
+        items: [...state.items],
       };
     } else {
       // If the item is not in the cart, add it with isAddedToCart property
@@ -32,9 +27,12 @@ export const cartReducer = createReducer(
     }
   }),
   
-  on(CartActions.removeFromCart, (state, { productId }) => {
+   on(CartActions.removeFromCart, (state, { productId }) => {
     // Remove the item from the cart and update its isAddedToCart property
-    const updatedItems = state.items.filter(item => item.id !== productId);
+    const updatedItems = state.items.map(item =>
+      item.id === productId ? { ...item, isAddedToCart: false } : item
+    );
+
     return { ...state, items: updatedItems };
   })
 );

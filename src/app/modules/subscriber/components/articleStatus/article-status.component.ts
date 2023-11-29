@@ -22,7 +22,7 @@ export class ArticleStatusComponent implements OnInit {
   }
 
   closeArticle(): void {
-    this.router.navigate(['/articleHistory']);
+    this.router.navigate(['/subscriber/articleHistory']);
   }
 }
 

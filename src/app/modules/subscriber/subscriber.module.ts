@@ -29,7 +29,7 @@ import { SubscribernavComponent } from './components/subscribernav/subscribernav
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
-import { NotificationComponent } from './notification/notification.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CoursesPageComponent } from 'src/app/common/components/courses-page/courses-page.component';
 import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';

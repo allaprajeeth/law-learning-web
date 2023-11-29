@@ -8,6 +8,7 @@ import * as CartActions from './course-card/state/cart.actions';
   providedIn: 'root'
 })
 export class CartService {
+
   private totalActualPriceSubject = new BehaviorSubject<number>(0);
   totalActualPrice$: Observable<number> = this.totalActualPriceSubject.asObservable();
 
@@ -44,33 +45,77 @@ export class CartService {
     return new Date().getTime();
   }
 
+  private updateButtonText() {
+    const isCartEmpty = this.cartItems.length === 0;
+
+    if (isCartEmpty) {
+      this.store.dispatch(CartActions.setAddToCartButtonText());
+    } else {
+      this.store.dispatch(CartActions.setGoToCartButtonText());
+    }
+  }
+
+  // addToCart(product: any) {
+  //   const isItemExistsInCart = this.cartItems.findIndex((cartItem) => cartItem.id === product.id);
+
+  //   if (isItemExistsInCart === -1) {
+  //     this.cartItems.push(product);
+  //     this.cartItemsSubject.next(this.cartItems);
+
+  //     // Set addedToCart status
+  //     this.addedToCartStatus[product.id] = true;
+  //   } else {
+  //     console.log('Item already in cart');
+  //   }
+
+  //   this.store.dispatch(CartActions.setGoToCartButtonText());
+
+  //   this.updateButtonText();
+  // }
+
+  // removeItemById(uniqueId: string) {
+  //   const indexToRemove = this.cartItems.findIndex((item) => item.id === uniqueId);
+  //   if (indexToRemove !== -1) {
+  //     this.cartItems.splice(indexToRemove, 1);
+  //     this.cartItemsSubject.next(this.cartItems);
+  //   }
+
+  //   delete this.addedToCartStatus[uniqueId];
+
+  //   this.updateButtonText();
+  // }
+
   addToCart(product: any) {
     const isItemExistsInCart = this.cartItems.findIndex((cartItem) => cartItem.id === product.id);
-
+  
     if (isItemExistsInCart === -1) {
       this.cartItems.push(product);
       this.cartItemsSubject.next(this.cartItems);
-
+  
       // Set addedToCart status
       this.addedToCartStatus[product.id] = true;
     } else {
       console.log('Item already in cart');
     }
-
+  
     this.store.dispatch(CartActions.setGoToCartButtonText());
+  
+    this.updateButtonText();
   }
-
+  
   removeItemById(uniqueId: string) {
     const indexToRemove = this.cartItems.findIndex((item) => item.id === uniqueId);
     if (indexToRemove !== -1) {
       this.cartItems.splice(indexToRemove, 1);
       this.cartItemsSubject.next(this.cartItems);
     }
-
+  
+    // Clear addedToCart status for the removed product
     delete this.addedToCartStatus[uniqueId];
-
-    this.store.dispatch(CartActions.setAddToCartButtonText());
+  
+    this.updateButtonText();
   }
+  
 
   // isAddedToCart(uniqueId: string): boolean {
   //   return !!this.addedToCartStatus[uniqueId];
@@ -83,22 +128,9 @@ export class CartService {
   clearCart() {
     this.cartItems = [];
     this.cartItemsSubject.next(this.cartItems);
-
     this.addedToCartStatus = {};
-  }
 
-  removeFromCart(uniqueId: string) {
-    const indexToRemove = this.cartItems.findIndex((item) => item.id === uniqueId);
-    if (indexToRemove !== -1) {
-      this.cartItems.splice(indexToRemove, 1);
-      this.cartItemsSubject.next(this.cartItems);
-    }
-
-    // Update addedToCartStatus
-    delete this.addedToCartStatus[uniqueId];
-
-    // Dispatch action to set the button text
-    this.store.dispatch(CartActions.setAddToCartButtonText());
+    this.updateButtonText();
   }
 }
 

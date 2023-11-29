@@ -10,7 +10,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let article of articles">
-                <td>{{ article.name }}</td>
+                <td class="articleName">{{ article.name }}</td>
                 <td class="flexContainer" [ngClass]="getStatusClass(article.status)">{{ article.status }}
                     <a class="view-more-link" (click)="viewMore(article)">View more</a>
                 </td>
@@ -19,3 +19,4 @@
         </tbody>
     </table>
 </div>
+

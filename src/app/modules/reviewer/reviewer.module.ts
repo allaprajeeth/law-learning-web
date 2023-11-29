@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SharedModule } from 'src/app/shared-module/shared.module';
 import { ReviewerRoutingModule } from './reviewer-routing.module';
 import { ReviewerLoginComponent } from './components/reviewer-login/reviewer-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -31,6 +30,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { DocumentsComponent } from './components/documents/documents.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { SharedModule } from 'src/app/shared-module/shared.module';
 
 @NgModule({
   declarations: [

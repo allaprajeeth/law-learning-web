@@ -5,16 +5,16 @@
             <tr>
                 <th></th>
                 <th></th>
-                <th colspan="3" class="border">Actions by</th>
+                <th colspan="3">Actions by</th>
                 <th></th>
                 <th></th>
             </tr>
             <tr>
                 <th>Article Name</th>
                 <th>Status</th>
-                <th class="border">Content Manager</th>
-                <th class="border">Reviewer</th>
-                <th class="border">Admin</th>
+                <th>Content Manager</th>
+                <th>Reviewer</th>
+                <th>Admin</th>
                 <th>Date of Submission</th>
                 <th>
                     <ng-container *ngIf="articleData && (articleData.status === 'Approved')">
@@ -31,27 +31,27 @@
             <tr *ngIf="articleData && articleData.status === 'Approved'">
                 <td>{{ articleData.name }}</td>
                 <td [ngClass]="articleData.className">{{ articleData.status }}</td>
-                <td class="border">{{ articleData.status }}</td>
-                <td class="border">{{ articleData.status }}</td>
-                <td class="border">{{ articleData.status }}</td>
+                <td>{{ articleData.status }}</td>
+                <td>{{ articleData.status }}</td>
+                <td>{{ articleData.status }}</td>
                 <td>{{ articleData.submissionDate }}</td>
                 <td>{{ articleData.approvedDate }}</td>
             </tr>
             <tr *ngIf="articleData && articleData.status ==='Commented'">
                 <td>{{ articleData.name }}</td>
                 <td [ngClass]="articleData.className">{{ articleData.status }}</td>
-                <td class="border">{{ articleData.status }}</td>
-                <td class="border">{{ articleData.status }}</td>
-                <td class="border">-</td>
+                <td>{{ articleData.status }}</td>
+                <td>-</td>
+                <td>{{ articleData.status }}</td>
                 <td>{{ articleData.submissionDate }}</td>
                 <td>{{ articleData.approvedDate }}</td>
             </tr>
             <tr *ngIf="articleData && articleData.status === 'Under Review'">
                 <td>{{ articleData.name }}</td>
                 <td [ngClass]="articleData.className">{{ articleData.status }}</td>
-                <td class="border">{{ articleData.status }}</td>
-                <td class="border">-</td>
-                <td class="border">{{ articleData.status }}</td>
+                <td>Approved</td>
+                <td>-</td>
+                <td>{{ articleData.status }}</td>
                 <td>{{ articleData.submissionDate }}</td>
                 <td>{{ articleData.approvedDate }}</td>
             </tr>

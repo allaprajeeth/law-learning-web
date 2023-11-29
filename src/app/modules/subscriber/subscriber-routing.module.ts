@@ -12,7 +12,7 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { NotificationComponent } from './notification/notification.component';
+import { NotificationComponent } from './components/notification/notification.component';
 import { SubscribernavComponent } from './components/subscribernav/subscribernav.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { SubarticleComponent } from './subarticle/subarticle.component';
@@ -20,8 +20,6 @@ import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
-import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
-import { ArticleStatusComponent } from './components/articleStatus/article-status.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
@@ -72,14 +70,6 @@ const routes: Routes = [
   {
     path:"payments",
     component: PaymentsComponent
-  },
-  {
-    path:"articleHistory",
-    component: ArticleHistoryComponent
-  },
-  { 
-    path:"articleStatus", 
-    component: ArticleStatusComponent 
   },
   {
     path:"contactus",
@@ -137,7 +127,6 @@ const routes: Routes = [
     path:'termsandcondi',
     component:TermsandcondiComponent
   }
-
 ];
 
 @NgModule({

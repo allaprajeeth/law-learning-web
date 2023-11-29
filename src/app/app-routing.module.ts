@@ -125,7 +125,6 @@ const routes: Routes = [
   {
     path: 'termsandcon',
     component: TermsandconComponent
-
   },
   { 
     path: 'cart', 
@@ -153,19 +152,19 @@ const routes: Routes = [
     component:ForgotEmailComponent
   },
   {
-    path:"articleHistory",
+    path:"subscriber/articleHistory",
     component: ArticleHistoryComponent
   },
   { 
-    path:"articleStatus", 
+    path:"subscriber/articleStatus", 
     component: ArticleStatusComponent 
   },
   { 
-    path: "articlehistory", 
+    path: "instructor/articlehistory", 
     component: HistoryComponent 
   },
   { 
-    path: "status", 
+    path: "instructor/status", 
     component: StatusComponent
   },
   {
