@@ -104,7 +104,7 @@ const routes: Routes = [
     component: SubscriberpostdetailsComponent
   },
   {
-    path:"documents",
+    path:"library",
     component:SubdocumentsComponent
   },
   {

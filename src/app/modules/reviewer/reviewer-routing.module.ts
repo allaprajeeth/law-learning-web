@@ -10,6 +10,7 @@ import { DocumentsComponent } from './components/documents/documents.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { LibraryReviewerComponent } from './components/library-reviewer/library-reviewer.component';
 
 const routes: Routes = [
   {
@@ -52,7 +53,11 @@ const routes: Routes = [
   {
     path:'termsandconditions',
     component:TermsandcondiComponent
-  }
+  },
+  {
+    path:'library',
+    component:LibraryReviewerComponent
+  },
   
 ];
 

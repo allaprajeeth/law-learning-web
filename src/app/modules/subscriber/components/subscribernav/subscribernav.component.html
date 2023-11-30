@@ -4,16 +4,13 @@
     <div>
       <ul class="nav-icons">
         <li><a routerLink="/subscriber/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
-        <li><a routerLink="/subscriber/documents" routerLinkActive="active" class="mycourses">Library</a></li>
-
-        
+        <li><a routerLink="/subscriber/library" routerLinkActive="active" class="mycourses">Library</a></li>
         <li><a routerLink="/subscriber/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
         <li><a routerLink="/subscriber/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
         <li><a routerLink="/subscriber/notification" routerLinkActive="active" class="mycourses"
             matBadge="5">Notifications</a></li>
         <li><a routerLink="/subscriber/cart" routerLinkActive="active" class="mycourses"
             [matBadge]="cartItemCount">Cart</a></li>
-
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
             <span class="user-circle-text">NS</span>
@@ -36,7 +33,6 @@
             <li><a routerLink="/subscriber/acSecurity">Account Security</a></li>
             <li><a routerLink="/subscriber/notifications">Notification Settings</a></li>
             <li><a routerLink="/subscriber/payments">Purchase History</a></li>
-
             <li><a routerLink="/subscriber/articleHistory">My Publishings</a></li>
             <hr />
             <li><a routerLink="/subscriber/contactus">Contact Us</a></li>
