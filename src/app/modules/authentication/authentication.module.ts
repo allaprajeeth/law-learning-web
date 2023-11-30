@@ -28,6 +28,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { ContentManagerLibraryComponent } from './components/content-manager-library/content-manager-library.component';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,9 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
     VideoplayerComponent,
     AboutusComponent,
     TermsandcondiComponent,
+ 
+    ContentManagerLibraryComponent,
+       ArticleComponent,
   
   ],
   imports: [
