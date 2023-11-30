@@ -44,8 +44,8 @@ export class UploadstatusComponent {
     {
       name: 'International Human Rights',
       approver: 'John Smith',
-      status: 'Rejected',
-      actions: 'Rejected by John Smith',
+      status: 'Commented',
+      actions: 'Commented by John Smith',
       submissionDate: '2023-04-05 03:20 PM',
       actionDate: '2023-04-08 01:30 PM'
     },

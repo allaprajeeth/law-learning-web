@@ -1,31 +1,21 @@
-
      <nav class="navbar">
-
       <div class="navbar-container">
         <a routerLink="/" class="logo">Law Logo</a>
         <div>
           <ul class="nav-icons">
             <li><a routerLink="/instructor/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
             <li><a routerLink="/instructor/library" routerLinkActive="active" class="mycourses">Library</a></li>
-            <!-- <li><a rouetrLink="/instructor/documents" routerLinkActive="active" class="mycourses">Library</a></li> -->
-            <!-- <li><a routerLink="/instructor/document" routerLinkActive="active" class="mycourses">Library</a></li> -->
             <li><a routerLink="/instructor/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
             <li><a routerLink="/instructor/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
-
             <li><a routerLink="/instructor/notification" routerLinkActive="active" class="mycourses" matBadge="3">Notifications</a></li>
-    
-                <!-- <li><a routerLink="/courses" class="mycourses">Create a Course</a></li> -->
-
             <li class="user-dropdown">
               <div class="user-circle" (click)="onUserCircleClick($event)">
                 <span class="user-circle-text">NS</span>
               </div>
               <ul class="user-menu">
-    
                 <li class="profile-item">
                   <span>
                     <div class="user-circle">
-    
                       <a routerLink="" class="user-circle-text" style="color: white;">NS</a>
                     </div>
                   </span>
@@ -38,13 +28,14 @@
                 <hr />
     
                 <li>
-                  <a routerLink="/instructor/public-profile">Public profile</a>
+                  <a routerLink="/instructor/public-profile">Profile</a>
                 </li>
                 
-                <li><a routerLink="/instructor/acSecurity">Account settings</a></li>
-                <li><a routerLink="/instructor/payment-history" >payment-history</a></li>
+                <li><a routerLink="/instructor/acSecurity">Account Security</a></li>
+                <li><a routerLink="/instructor/payment-history" >Payment History</a></li>
                 <li><a routerLink="/instructor/notifications" >Notification Settings</a></li>
-                <li><a routerLink="/instructor/uploadstatus">Courses status</a></li>
+                <hr/>
+                <li><a routerLink="/instructor/uploadstatus">Courses Status</a></li>
                 <li><a routerLink="/instructor/articlehistory">My Publishings</a></li>
                 <hr/>
                 <li><a routerLink="/instructor/termsandconditions">Terms & Conditions</a></li>

@@ -40,7 +40,7 @@ export class QuiztestComponent {
  constructor( public dialog: MatDialog) {}
 
  hasQuestions(): boolean {
-  return this.additionalForms.length > 0 && this.additionalForms.some(form => form.enteredQuestion.trim() !== ''&& form.questionType !== '');
+    return this.additionalForms.some(form => form.enteredQuestion.trim() !== '');
 }
   closeQuiz() {
     console.log('Quiz closed!');
@@ -75,7 +75,6 @@ export class QuiztestComponent {
     const hasMatchingChoice = form.selectchoice.some(
       (choice) => choice === form.correctAnswer
     );
-
     // If no matching choice and the correct answer control is dirty or touched, set the correct answer to the first choice
     if (
       !hasMatchingChoice &&
@@ -101,10 +100,8 @@ export class QuiztestComponent {
   addAdditionalForm() {
     const newForm = new AdditionalForm();
     newForm.questionNumber = this.additionalForms.length + 1;
-
     // Set the question type based on the selected question type in the main component
     newForm.questionType = this.questionType;
-
     this.additionalForms.push(newForm);
   }
 
@@ -153,7 +150,7 @@ export class QuiztestComponent {
   
     return false; // Default to false if the question type is not recognized
   }
-  
+
 
   submitTest() {}
   previewQuestions() {

@@ -5,6 +5,7 @@
     <h3>{{ blogPost.author }}</h3>
     <h3 *ngIf="blogPost.reviewer" >Reviewed by: {{ blogPost.reviewer }}</h3>
     <h3 *ngIf="blogPost.editor">Edited by: {{ blogPost.editor}}</h3>
+    <p class="date">Published on : {{ blogPost.date }}</p>
     <p class="views">No.of views: {{ blogPost.views }}</p>
     <p>{{ blogPost.content }}</p>
     <h1 *ngIf="blogPost.heading">{{ blogPost.heading }}</h1>
@@ -18,8 +19,6 @@
     </div>
     <br/>
     <br/>
-    
-    <p class="date">{{ blogPost.date }}</p>
   </div>
 <div>
   <button (click)="goBack()">Go Back</button>
