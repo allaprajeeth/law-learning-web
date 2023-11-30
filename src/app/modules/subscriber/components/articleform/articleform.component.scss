@@ -1,52 +1,52 @@
-// h2{
-//     text-align: center;
-//     margin-right: 60px;
-// }
+h2{
+    text-align: center;
+    margin-right: 60px;
+}
 
-// .article-form {
-//     margin: 0 auto;
-//     padding: 20px;
-//     background-color: #dcd9d9;
-//     border-radius: 8px;
-//     display: flex;
-//     justify-content: center; /* Center the form horizontally */
-//     flex-direction: column; /* Stack the form elements vertically */
+.article-form {
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #dcd9d9;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center; /* Center the form horizontally */
+    flex-direction: column; /* Stack the form elements vertically */
    
-// form {
-//     border: 1px solid rgb(174, 170, 170);
-//     padding: 50px;
-//     margin-left: 250px;
-//     margin-right: 250px;
-// }
-//     label {
-//       display: block;
-//       margin-bottom: 8px;
-//       font-weight: bold;
-//     }
+form {
+    border: 1px solid rgb(174, 170, 170);
+    padding: 50px;
+    margin-left: 250px;
+    margin-right: 250px;
+}
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
 
-//     input[type="text"],
-//     textarea {
-//       width: 90%;
-//       padding: 8px;
-//       margin-bottom: 16px;
-//       font-size: 14px;
-//       border: 1px solid #ccc;
-//       border-radius: 4px;
-//     }
+    input[type="text"],
+    textarea {
+      width: 90%;
+      padding: 8px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-//     button[type="submit"] {
-//         // align-items: center;
-//       background-color: #007791;
-//       color: #fff;
-//       border: none;
-//       padding: 10px 20px;
-//       border-radius: 5px;
-//       cursor: pointer;
-//       font-size: 16px;
-//       transition: background-color 0.3s ease;
+    button[type="submit"] {
+        // align-items: center;
+      background-color: #007791;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
 
-//       &:hover {
-//         background-color: #005f6b;
-//       }
-//     }
-// }
+      &:hover {
+        background-color: #005f6b;
+      }
+    }
+}

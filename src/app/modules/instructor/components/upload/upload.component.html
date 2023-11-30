@@ -5,13 +5,11 @@
 
       <div class="form-group">
         <h2 class="heading">Upload Sections with Multiple Videos:</h2>
-        <!-- <div class="message-wrapper">
-            <p class="message">Enter the required fields to enable the Buttons</p>
-          </div> -->
 
-        <div class="message">
-          <p>Enter the required fields to enable the Buttons</p>
-        </div>
+          <div class="message">
+            <p >Enter the required fields to enable save and submit buttons</p>
+
+          </div>
 
         <div *ngFor="let mainSection of mainSections; let mainIndex = index" class="main-section">
           <div class="section-number">Section {{mainIndex + 1}}</div>
@@ -23,10 +21,7 @@
             <input type="text" id="mainName{{mainIndex}}" placeholder="section name" name="mainSectionNames[]" required
               (input)="onMainSectionNameEntered(mainIndex)">
 
-          <div class="message">
-            <p >Enter the required fields to enable save and submit buttons</p>
-
-          </div>
+          
 
           <div class="form-group">
             <label for="description">Description:</label>
