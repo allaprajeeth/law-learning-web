@@ -32,6 +32,7 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { LibraryReviewerComponent } from './components/library-reviewer/library-reviewer.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
     CourseInfoComponent,
     AboutusComponent,
     TermsandcondiComponent,
+    LibraryReviewerComponent,
     // InstructorLoginComponent
   ],
   imports: [
