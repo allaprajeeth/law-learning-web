@@ -50,7 +50,7 @@ const routes: Routes = [
     component:AboutusComponent
   },
   {
-    path:'termsandcondi',
+    path:'termsandconditions',
     component:TermsandcondiComponent
   }
   

@@ -124,7 +124,7 @@ const routes: Routes = [
     component:CourseInfoComponent
   },
   {
-    path:'termsandcondi',
+    path:'termsandconditions',
     component:TermsandcondiComponent
   }
 ];
