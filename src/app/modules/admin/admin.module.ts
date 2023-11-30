@@ -20,6 +20,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ErrorHandlerService } from 'src/app/common/services/error-handler/error-handler.service';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
     CourseInfoComponent,
     VideoplayerComponent,
     AboutusComponent,
-    NotificationComponent
+    NotificationComponent,
+    TermsandcondiComponent
   ],
   imports: [
     CommonModule,

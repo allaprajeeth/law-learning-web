@@ -27,6 +27,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
+import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
     CourseInfoComponent,
     VideoplayerComponent,
     AboutusComponent,
+    TermsandcondiComponent,
   
   ],
   imports: [

@@ -135,7 +135,7 @@ component:ArticleformComponent
  component: PdfviewerComponent 
 },
 {
-  path:'termsandcondi',
+  path:'termsandconditions',
   component:TermsandcondiComponent
 }
 
