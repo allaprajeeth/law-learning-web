@@ -104,7 +104,7 @@ const routes: Routes = [
     component: SubscriberpostdetailsComponent
   },
   {
-    path:"documents",
+    path:"library",
     component:SubdocumentsComponent
   },
   {
@@ -124,7 +124,7 @@ const routes: Routes = [
     component:CourseInfoComponent
   },
   {
-    path:'termsandcondi',
+    path:'termsandconditions',
     component:TermsandcondiComponent
   }
 ];
