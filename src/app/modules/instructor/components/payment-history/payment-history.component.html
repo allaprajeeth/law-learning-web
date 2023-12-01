@@ -1,32 +1,29 @@
-<!-- <app-subscribernav></app-subscribernav> -->
 <app-instructornav></app-instructornav>
 <mat-sidenav-container>
   <mat-sidenav #sideNav mode="side" opened>
-      <app-sidenav></app-sidenav>
+    <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
-<div class="container-wrapper">
-  <div class="container">
-    <div class="main-container">
-      <div class="main-box">
-        <h1>Payment-History</h1>
-        <table class="purchase-table">
-          <tr>
-            <th>course name</th>
-            <th>Price</th>
-            <th>No.of Subscribers</th>
-          </tr>
-          <ng-container *ngFor="let purchase of purchaseHistory; let i = index">
+    <div class="container-wrapper">
+      <div class="container">
+        <div class="main-box">
+          <h1>Payment-History</h1>
+          <table class="purchase-table">
             <tr>
-              <td>{{ purchase.heading }}</td>
-              <td>{{ purchase.price }}</td>
-              <td>{{purchase.noofsubscribers}}</td>
-              <!-- <td>{{ purchase.expiryDate | date: 'dd MMM yyyy' }}</td> -->
-              <!-- <td><button (click)="downloadInvoice(i)">Download</button></td> -->
+              <th>course name</th>
+              <th>Price</th>
+              <th>No.of Subscribers</th>
             </tr>
-          </ng-container>
-        </table>
+            <ng-container *ngFor="let purchase of purchaseHistory; let i = index">
+              <tr>
+                <td>{{ purchase.heading }}</td>
+                <td>{{ purchase.price }}</td>
+                <td>{{purchase.noofsubscribers}}</td>
+              </tr>
+            </ng-container>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

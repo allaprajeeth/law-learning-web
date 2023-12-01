@@ -36,7 +36,6 @@ import { TestpreviewComponent } from './components/testpreview/testpreview.compo
 import { SubmitarticlemesgComponent } from './components/submitarticlemesg/submitarticlemesg.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
-import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -47,7 +46,6 @@ import { DeleteAccountComponent } from './components/delete-account/delete-accou
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { HistoryComponent } from './components/history/history.component';
-import { StatusComponent } from './components/status/status.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
@@ -74,7 +72,6 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
     SubmitarticlemesgComponent,
     ArticleformComponent,
     UploadstatusComponent,
-    UploadhistoryComponent,
     QuizsuccessmsgComponent,
     SidenavComponent,
     AccountsecurityComponent,
@@ -83,7 +80,6 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
     DeleteAccountComponent,
     PaymentHistoryComponent,
     InstructorOverviewComponent,
-    StatusComponent,
     HistoryComponent,
     LibraryInstructorComponent,
     InstructorpostdetailsComponent,

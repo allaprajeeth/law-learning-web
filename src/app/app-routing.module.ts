@@ -25,13 +25,12 @@ import { ForgotEmailComponent } from './common/components/forgot-email/forgot-em
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 import { ArticleHistoryComponent } from './modules/subscriber/components/articleHistory/article-history.component';
-import { ArticleStatusComponent } from './modules/subscriber/components/articleStatus/article-status.component';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { HistoryComponent } from './modules/instructor/components/history/history.component';
-import { StatusComponent } from './modules/instructor/components/status/status.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { SharedTCComponent } from './shared-module/components/shared-tc/shared-tc.component';
+
 const routes: Routes = [
   {
     path: 'admin',
@@ -147,7 +146,6 @@ const routes: Routes = [
     path:'advisorInfo',
     component:AdvisorDetailsComponent
   },
-  
   {
     path:'forgotEmail',
     component:ForgotEmailComponent
@@ -157,23 +155,14 @@ const routes: Routes = [
     component: ArticleHistoryComponent
   },
   { 
-    path:"subscriber/articleStatus", 
-    component: ArticleStatusComponent 
-  },
-  { 
     path: "instructor/articlehistory", 
     component: HistoryComponent 
-  },
-  { 
-    path: "instructor/status", 
-    component: StatusComponent
   },
   {
     path: '**',
     component: PageNotFoundComponent
   },
  
-
 ];
 
 @NgModule({
@@ -181,7 +170,3 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
-
-
-
