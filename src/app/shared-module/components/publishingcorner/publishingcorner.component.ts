@@ -182,8 +182,12 @@ export class PublishingcornerComponent {
     ];
   filteredBoxes: BlogPost[] = [];
   searchTerm: string = '';
+  isInArticlePage:boolean=false;
   ngOnInit() {
-    
+    const currentRoute = this.router.url;
+    if (currentRoute === '/article') {
+    this.isInArticlePage=true
+    }
     this.filteredBoxes = this.boxes;
   }
   filterBoxes() {

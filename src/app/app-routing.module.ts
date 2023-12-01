@@ -31,6 +31,7 @@ import { HistoryComponent } from './modules/instructor/components/history/histor
 import { StatusComponent } from './modules/instructor/components/status/status.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
+import { SharedTCComponent } from './shared-module/components/shared-tc/shared-tc.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -124,7 +125,7 @@ const routes: Routes = [
   },
   {
     path: 'termsandcon',
-    component: TermsandconComponent
+    component: SharedTCComponent
   },
   { 
     path: 'cart', 

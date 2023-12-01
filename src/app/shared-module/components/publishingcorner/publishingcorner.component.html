@@ -1,15 +1,10 @@
 <div class="search-bar">
   <input type="text" placeholder="search by author name or title..." [(ngModel)]="searchTerm" (input)="filterBoxes()" />
 </div>
-
-<!-- <div class="submit-button">
-  <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button>
-</div> -->
-
 <div class="submit-button" >
   <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button>
 </div>
-
+<div *ngIf="isInArticlePage" class="message">To submit your article please login to the webiste </div>
 <div class="post-box">
 
   <div *ngIf="noResults; else showBoxes" class="no-results-message">

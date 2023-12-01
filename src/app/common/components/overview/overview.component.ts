@@ -13,7 +13,6 @@ export class OverviewComponent {
   subscriberRatings = 4.5;
   subscriberRatingsCount = "(1234)";
   reviewerRatings = 4;
-  reviewerRatingsCount = "(22)";
   instructorName = "Edward Viaene";
   courseDuration = "2hr 3m";
   lastUpdatedText = "10/2023";
