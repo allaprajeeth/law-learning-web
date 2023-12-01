@@ -32,6 +32,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { LibraryReviewerComponent } from './components/library-reviewer/library-reviewer.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { LibraryReviewerComponent } from './components/library-reviewer/library-
     AboutusComponent,
     TermsandcondiComponent,
     LibraryReviewerComponent,
+    ArticleformComponent,
     // InstructorLoginComponent
   ],
   imports: [

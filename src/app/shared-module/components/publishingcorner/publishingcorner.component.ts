@@ -249,6 +249,18 @@ openSubmitArticleModal() {
           // If in "/instructor/article" routing, navigate to "/instructor/articleform"
           this.router.navigate(['/instructor/articleform']);
           break;
+
+          case '/reviewer/article':
+          this.router.navigate(['/reviewer/articleform']);
+          break;
+
+          case '/admin/article':
+          this.router.navigate(['/admin/articleform']);
+          break;
+
+          case '/authentication/article':
+          this.router.navigate(['/authentication/articleform']);
+          break;
         default:
           // Default case, navigate to a fallback route or handle as needed
           break;

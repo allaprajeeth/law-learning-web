@@ -30,6 +30,7 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { ContentManagerLibraryComponent } from './components/content-manager-library/content-manager-library.component';
 import { ArticleComponent } from './components/article/article.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ArticleComponent } from './components/article/article.component';
  
     ContentManagerLibraryComponent,
        ArticleComponent,
+       ArticleformComponent,
   
   ],
   imports: [
