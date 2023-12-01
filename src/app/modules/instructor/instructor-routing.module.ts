@@ -13,7 +13,6 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
-import { UploadhistoryComponent } from './components/uploadhistory/uploadhistory.component';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -27,123 +26,118 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
 import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 
-
 const routes: Routes = [
   {
-    path:"",
+    path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path:"login",
-    component: HeaderComponent
+    path: 'login',
+    component: HeaderComponent,
   },
   {
-    path:"homepage",
-    component: HomepageComponent
+    path: 'homepage',
+    component: HomepageComponent,
   },
   {
-    path:"instructoroverview",
-    component: InstructorOverviewComponent
+    path: 'instructoroverview',
+    component: InstructorOverviewComponent,
   },
   {
-    path:"public-profile",
-    component: PublicProfileComponent
+    path: 'public-profile',
+    component: PublicProfileComponent,
   },
-  
   {
-    path:"courses",
-component:CoursesComponent
-},
-{
-  path:"instructor/editcourses",
-component:EditcoursesComponent
-},
-{
-  path:"notification",
-component:NotificationComponent
-},
-{
-  path:"instructorinfo",
-component:InstructorinfoComponent
-},
-{
-  path:"article",
-component:ArticleComponent
-},
-{
-  path:"articleform",
-component:ArticleformComponent
-},
-{
-  path:"courseInfo",
-  component:CourseInfoComponent
-},
-{
-  path:"aboutus",
-  component:AboutusComponent,
-},
-{
-  path:"quiztest",
-  component:QuiztestComponent
-},
-{
-  path:"notifications",
-  component: NotificationsComponent
-},
-{
-  path:"upload",
-  component: UploadComponent
-},
-{
-  path:"uploadstatus",
-  component: UploadstatusComponent
-},
-{ 
-  path: 'uploadhistory', 
-  component: UploadhistoryComponent 
-},
-{
-  path:"quizsuccessmsg",
-  component: QuizsuccessmsgComponent
-},
-{ 
-  path: 'post/:id', 
-  component: InstructorpostdetailsComponent
-},
-{
-  path:"acSecurity",
-  component:AccountsecurityComponent
-},
-{
-  path:"contactus",
-  component:ContactusComponent
-},
-{
-  path:"delete-account",
-  component: DeleteAccountComponent
-},
-{
-  path:"payment-history",
-  component: PaymentHistoryComponent
-},
-{
-  path:'library',
-  component:LibraryInstructorComponent
-},
-{ path: 'pdf-viewer',
- component: PdfviewerComponent 
-},
-{
-  path:'termsandconditions',
-  component:TermsandcondiComponent
-}
-
+    path: 'courses',
+    component: CoursesComponent,
+  },
+  {
+    path: 'instructor/editcourses',
+    component: EditcoursesComponent,
+  },
+  {
+    path: 'notification',
+    component: NotificationComponent,
+  },
+  {
+    path: 'instructorinfo',
+    component: InstructorinfoComponent,
+  },
+  {
+    path: 'article',
+    component: ArticleComponent,
+  },
+  {
+    path: 'articleform',
+    component: ArticleformComponent,
+  },
+  {
+    path: 'courseInfo',
+    component: CourseInfoComponent,
+  },
+  {
+    path: 'aboutus',
+    component: AboutusComponent,
+  },
+  {
+    path: 'quiztest',
+    component: QuiztestComponent,
+  },
+  {
+    path: 'notifications',
+    component: NotificationsComponent,
+  },
+  {
+    path: 'upload',
+    component: UploadComponent,
+  },
+  {
+    path: 'uploadstatus',
+    component: UploadstatusComponent,
+  },
+  {
+    path: 'quizsuccessmsg',
+    component: QuizsuccessmsgComponent,
+  },
+  {
+    path: 'post/:id',
+    component: InstructorpostdetailsComponent,
+  },
+  {
+    path: 'acSecurity',
+    component: AccountsecurityComponent,
+  },
+  {
+    path: 'contactus',
+    component: ContactusComponent,
+  },
+  {
+    path: 'delete-account',
+    component: DeleteAccountComponent,
+  },
+  {
+    path: 'payment-history',
+    component: PaymentHistoryComponent,
+  },
+  {
+    path: 'library',
+    component: LibraryInstructorComponent,
+  },
+  { 
+    path: 'pdf-viewer', 
+    component: PdfviewerComponent 
+  },
+  {
+    path: 'termsandconditions',
+    component: TermsandcondiComponent,
+  },
 
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class InstructorRoutingModule { }
+
+export class InstructorRoutingModule {}

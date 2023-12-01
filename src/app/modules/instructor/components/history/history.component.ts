@@ -1,18 +1,12 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { ArticleHistoryDataService } from '../article-history-data.service';
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.scss'],
 })
+
 export class HistoryComponent {
-  ngOnInit() {
-    console.log('HistoryComponent - ngOnInit');
-    this.categorizeArticles();
-  }
-  
   articles = [
     {
       name: 'The Impact of Technology on Patent Law',
@@ -80,88 +74,7 @@ export class HistoryComponent {
     },
   ];
 
-  approvedArticles: any[] = [];
+  publishedArticles: any[] = [];
   underReviewArticles: any[] = [];
   commentedArticles: any[] = [];
-
-  constructor(
-    private router: Router,
-    private articleHistoryDataService: ArticleHistoryDataService
-  ) {}
-  
-  // private adminNames = [
-  //   'John Doe',
-  //   'Alice Smith',
-  //   'Bob Johnson',
-  //   'Emily Davis',
-  // ];
-  // private contentManagerNames = [
-  //   'Jane Doe',
-  //   'Charlie Brown',
-  //   'Eva Martinez',
-  //   'Daniel Lee',
-  // ];
-  // private reviewerNames = [
-  //   'David Johnson',
-  //   'Sarah Smith',
-  //   'Michael Brown',
-  //   'Jessica Davis',
-  // ];
-
-  getStatusClass(status: string): string {
-    switch (status) {
-      case 'Approved':
-        return 'Approved';
-      case 'Under Review':
-        return 'UnderReview';
-      case 'Commented':
-        return 'Commented';
-      default:
-        return '';
-    }
-  }
-
-  // private adminIndex = 0;
-  // private contentManagerIndex = 1;
-  // private reviewerIndex = 2;
-
-  viewMore(article: any): void {
-    const additionalData = {
-      className: this.getStatusClass(article.status),
-      // approvedByAdmin: this.adminNames[this.adminIndex],
-      // approvedByContentManager:
-      //   this.contentManagerNames[this.contentManagerIndex],
-      // approvedByReviewer: this.reviewerNames[this.reviewerIndex],
-      approvedDate: '21-11-2023',
-    };
-
-    // this.adminIndex = (this.adminIndex + 1) % this.adminNames.length;
-    // this.contentManagerIndex =
-    //   (this.contentManagerIndex + 1) % this.contentManagerNames.length;
-    // this.reviewerIndex = (this.reviewerIndex + 1) % this.reviewerNames.length;
-
-    const dataToPass = { ...article, ...additionalData };
-    this.articleHistoryDataService.setData(dataToPass);
-
-    console.log('Data to pass:', dataToPass);
-
-    this.router.navigate(['/instructor/status']);
-  }
-
-  // Function to categorize articles based on status
-  categorizeArticles(): void {
-    this.articles.forEach((article) => {
-      switch (article.status) {
-        case 'Approved':
-          this.approvedArticles.push(article);
-          break;
-        case 'Under Review':
-          this.underReviewArticles.push(article);
-          break;
-        case 'Commented':
-          this.commentedArticles.push(article);
-          break;
-      }
-    });
-  }
 }
