@@ -14,8 +14,12 @@
             </div>
             <div class="icon">
               <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge" class="reviews-badge">
-              <p>715,505 Reviews</p>
+              <p>715,505 Reviews by Subscribers </p>
             </div>
+            <div class="icon">
+                <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge" class="reviews-badge">
+                <p>15 Reviews by Reviewers </p>
+              </div>
             <div class="icon">
               <mat-icon>people</mat-icon>
               <p>2,342,416 Students</p>
@@ -42,15 +46,9 @@
 <div class="description">
     <h1>About me</h1>
     <ng-container *ngFor="let para of description; let i = index">
-        <p *ngIf="isDescriptionExpanded || i < 2">{{ para }}</p>
-        <span *ngIf="i === 1 && !isDescriptionExpanded">...</span>
+        <p >{{ para }}</p>
     </ng-container>
-    <a (click)="toggleDescription()">
-        {{ isDescriptionExpanded ? 'Show Less' : 'Show More' }}
-    </a>
 </div>
-
-
 <div>
     <div class="container">
         <div class="heading">
@@ -72,10 +70,6 @@
                     <p>{{ myCoursesAuthors[i] }}</p>
                     <h5>{{ uploadedCoursesText[i] }}</h5>
                 </div>
-                <!-- <div class="status-bar">
-                    <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
-                </div> -->
-                <!-- <span>{{ randomMyCourseValues[i] }}% complete</span> -->
                 <div class="ratingscontainer1">
                     <div class="ratingConatiner2">
                         <span class="star">&#9733;</span>
@@ -103,6 +97,7 @@
                 <div class="subscribers" style="font-weight: 410;">
                     <span>Number of Subscribers:{{ myCourseSubscribers[i] }}+ </span>
                 </div>
+                <h5 class="price">Price : ₹{{ coursePrice[i] }}</h5>
             </div>
         </div>
 

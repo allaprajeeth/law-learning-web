@@ -1,24 +1,2 @@
 <app-subscribernav></app-subscribernav>
-<div class="article-form">
-  <h2>Article Form</h2>
-    <form [formGroup]="articleForm" (ngSubmit)="onSubmit()">
-      
-      <label for="name">Title of the Article:</label>
-      <input type="text" id="name" formControlName="name" />
-  
-      <label for="articleName">Name of the Author:</label>
-      <input type="text" id="articleName" formControlName="articleName" />
-  
-      <label for="description">Description:</label>
-      <textarea id="description" formControlName="description"></textarea>
-
-      <label for="file">Choose Word Document File (.docx, .doc):</label>
-      <input type="file" id="file" formControlName="file" accept=".docx, .doc">
-      
-      
-  <br/><br/>
-  <div class="button-container">
-    <button type="submit" routerLink="/subscriber/submitmesg">Submit</button>
-  </div>
-    </form>
-  </div>
+<app-sharedarticleform></app-sharedarticleform>

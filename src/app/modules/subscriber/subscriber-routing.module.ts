@@ -24,6 +24,7 @@ import { SuccessmesgComponent } from './components/successmesg/successmesg.compo
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { OverviewComponent } from './components/overview/overview.component';
 
 const routes: Routes = [
   {
@@ -126,6 +127,10 @@ const routes: Routes = [
   {
     path:'termsandconditions',
     component:TermsandcondiComponent
+  },
+  {
+   path:'overview',
+   component:OverviewComponent
   }
 ];
 
