@@ -5,11 +5,10 @@
     <a routerLink="/" class="logo">Law Logo</a>
     <div>
       <ul class="nav-icons">
-        <li><a routerLink="/authentication/homepage" class="mycourses">
-          My Home page</a></li>
-        <li><a routerLink="/authentication/library" class="mycourses"> Library</a></li>
-        <li><a routerLink="/authentication/article" class="mycourses">Publishing Corner</a></li> 
-        <li><a routerLink="/authentication/aboutus" class="mycourses">About Us</a></li>        
+        <li><a routerLink="/authentication/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
+        <li><a routerLink="/authentication/library" routerLinkActive="active" class="mycourses">Library</a></li>
+        <li><a routerLink="/authentication/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li> 
+        <li><a routerLink="/authentication/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>        
 
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">

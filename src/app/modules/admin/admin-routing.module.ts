@@ -7,6 +7,9 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { AdminLibraryComponent } from './components/admin-library/admin-library.component';
+import { ArticleComponent } from './components/article/article.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 const routes: Routes = [
   {
@@ -31,6 +34,14 @@ const routes: Routes = [
     component:CourseInfoComponent
   },
   {
+    path:'library',
+    component:AdminLibraryComponent
+  },
+  {
+    path:'article',
+    component:ArticleComponent
+  },
+  {
     path:'aboutus',
     component:AboutusComponent
   },
@@ -42,6 +53,11 @@ const routes: Routes = [
     path:'termsandconditions',
     component:TermsandcondiComponent
   },
+  {
+    path:"articleform",
+    component:ArticleformComponent
+  },
+  
 ];
 
 @NgModule({

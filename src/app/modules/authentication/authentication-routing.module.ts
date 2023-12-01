@@ -6,6 +6,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { ContentManagerLibraryComponent } from './components/content-manager-library/content-manager-library.component';
 import { ArticleComponent } from './components/article/article.component';
+import { ArticleformComponent } from './components/articleform/articleform.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,12 @@ const routes: Routes = [
   {
    path:'article',
    component:ArticleComponent
-  }
+  },
+  {
+    path:"articleform",
+    component:ArticleformComponent
+  },
+  
 ];
 
 @NgModule({

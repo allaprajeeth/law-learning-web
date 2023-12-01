@@ -2,41 +2,30 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-sharedarticleform',
   templateUrl: './sharedarticleform.component.html',
-  styleUrls: ['./sharedarticleform.component.scss']
+  styleUrls: ['./sharedarticleform.component.scss'],
 })
-export class SharedarticleformComponent  {
+
+export class SharedarticleformComponent {
   articleForm: FormGroup;
 
-  constructor(private fb: FormBuilder,
-    private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router) {
     this.articleForm = this.fb.group({
       name: ['', Validators.required],
       articleName: ['', Validators.required],
       description: ['', Validators.required],
     });
-    
   }
-
-
 
   onSubmit() {
     if (this.articleForm.invalid) {
-      this.articleForm.markAllAsTouched();
-      window.alert('Please fill out all the required fields.');
-      return;
+      // this.articleForm.markAllAsTouched();
     }
   }
 
-    navigateToSuccessMessage() {
-      this.router.navigate(['/subscriber/submitmesg']); 
-    }
-    
+  navigateToSuccessMessage() {
+    this.router.navigate(['/subscriber/submitmesg']);
   }
-
-
-
-
+}
