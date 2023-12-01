@@ -1,17 +1,19 @@
 <div class="container-wrapper">
-<div class="sidenav-container">
-<div class="sidenav">
-    <div class="logo">NS</div>
- 
-    <ul class="nav-list">  
+  <div class="sidenav-container">
+    <div class="sidenav">
+      <div class="logo">NS</div>
+      <ul class="nav-list">
         <li><a routerLink="/instructor/public-profile" routerLinkActive="active">Profile</a></li>
         <li><a routerLink="/instructor/acSecurity" routerLinkActive="active">Account Security</a></li>
-        <li><a routerLink="/instructor/notifications" routerLinkActive="active">Notification Settings</a></li>
         <li><a routerLink="/instructor/payment-history" routerLinkActive="active">Payment History</a></li>
-        <li><a routerLink="/instructor/contactus" routerLinkActive="active">Contact Us</a></li> 
-        <li><a routerLink="/instructor/delete-account" routerLinkActive="active">Delete Account</a></li>   
+        <li><a routerLink="/instructor/notifications" routerLinkActive="active">Notification Settings</a></li>
+        <li><a routerLink="/instructor/uploadstatus" routerLinkActive="active">Courses Status</a></li>
+        <li><a routerLink="/instructor/articlehistory" routerLinkActive="active">My Publishings</a></li>
+        <li><a routerLink="/instructor/termsandconditions" routerLinkActive="active">Terms & Conditions</a></li>
+        <li><a routerLink="/instructor/contactus" routerLinkActive="active">Contact Us</a></li>
+        <li><a routerLink="/instructor/delete-account" routerLinkActive="active" class="deleteAccount">Delete Account</a></li>
+        <li><a routerLink="/header" (click)="onLogoutClick()">Logout</a></li>
       </ul>
-</div> 
+    </div>
+  </div>
 </div>
-</div>
-

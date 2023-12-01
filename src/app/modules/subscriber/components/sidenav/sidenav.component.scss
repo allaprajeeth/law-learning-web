@@ -1,61 +1,75 @@
 .container-wrapper {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh; 
-  background-color: #e0d9d9; 
+  height: 100%;
+  background-color: #e0d9d9;
 }
+
 .sidenav-container {
   background-color: #e0d9d9;
-  padding: 30px;
-  height: 90%;
-  
+  padding: 0 30px 0 30px;
 }
-    .sidenav {
-      height: 70%;
-      width: 200px;
-      background-color: #f4f4f4;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      text-align: center;
-      margin-top: 40px;
-  
-    .logo {
-      width: 80px;
-      height: 80px;
-      background-color: #007791;
-      color: white;
-      border-radius: 50%;
-      font-size: 24px;
-      font-weight: bold;
-      line-height: 80px;
-      margin: 0 auto 20px;
+
+.sidenav {
+  height: 70%;
+  width: 200px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+
+  .logo {
+    width: 80px;
+    height: 80px;
+    background-color: #007791;
+    color: white;
+    border-radius: 50%;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 80px;
+    margin: 0 auto;
   }
-    .nav-list {
-      list-style-type: none;
-      padding: 15px; 
-      margin: 5px; 
-      li {
-        margin: 5px 1px; 
-        a {
-          color: #000; 
-          text-decoration: none; 
-          display: block; 
-          padding: 7px 5px; 
-          border-radius: 5px;
-          
-          &.active {
-            background-color: #555;
-            color: white; 
-          }
-  
-          &:hover {
-            background-color: #444; 
-            color: white; 
-          }
+  .nav-list {
+    list-style-type: none;
+    padding: 15px 0;
+    
+    li {
+      a.deleteAccount {
+        color: red;
+        font-size: medium;
+        font-weight: 600;
+
+        &.active {
+          font-weight: normal;
+          background-color: rgb(243, 42, 42);
+          color: white;
+        }
+
+        &:hover {
+          background-color: red;
+          color: white;
+          font-weight: 590;
+        }
+      }
+
+      a {
+        color: #000;
+        text-decoration: none;
+        display: block;
+        padding: 7px 0;
+        border-radius: 5px;
+
+        &.active {
+          background-color: #555;
+          color: white;
+        }
+
+        &:hover {
+          background-color: #444;
+          color: white;
         }
       }
     }
   }
-  
+}

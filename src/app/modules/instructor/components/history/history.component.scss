@@ -1,14 +1,25 @@
+.container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #e0d9d9;
+}
+
 .container {
   background-color: #ffffff;
-  padding: 0 130px 0 130px;
+  margin: 60px;
+  padding: 60px 70px 60px 70px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .article-table {
   border-collapse: collapse;
   width: 100%;
   font-size: medium;
-  margin-bottom: 50px;
-  
+
   th,
   td {
     padding: 8px;
@@ -27,14 +38,17 @@
     }
   }
 
-  .articleName {
-    padding-left: 200px;
-    text-align: left;
+  .articleHeading {
+    padding-right: 100px;
+  }
+  
+  .publishedDate {
+    padding-right: 20px;
   }
 
-  .flexContainer {
-    display: flex;
-    justify-content: space-around;
+  .articleName {
+    padding-left: 50px;
+    text-align: left;
   }
 
   .view-more {
@@ -47,7 +61,20 @@
   }
 }
 
-.approvedArticles, .underReviewArticles, .commentedArticles {
+.publishedArticles {
+  color: green;
+  padding-bottom: 10px;
   font-weight: 590;
 }
 
+.underReviewArticles {
+  color: orange;
+  padding: 20px 0 10px 0;
+  font-weight: 590;
+}
+
+ .commentedArticles {
+  color: red;
+  padding: 20px 0 10px 0;
+  font-weight: 590;
+}

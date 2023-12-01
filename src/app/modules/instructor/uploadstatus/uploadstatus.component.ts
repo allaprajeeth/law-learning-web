@@ -1,29 +1,29 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-uploadstatus',
   templateUrl: './uploadstatus.component.html',
-  styleUrls: ['./uploadstatus.component.scss']
+  styleUrls: ['./uploadstatus.component.scss'],
 })
+
 export class UploadstatusComponent {
   courses = [
-    { 
+    {
       name: 'Introduction to Law',
       approver: 'Johnson',
       status: 'Pending',
       actions: 'Pending',
       submissionDate: '2023-01-15 09:30 AM',
-      actionDate: '-'
+      actionDate: '-',
     },
-   
+
     {
       name: 'Professional Responsibility',
       approver: 'John Davis',
       status: 'Under-Review',
       actions: 'Under-Review',
       submissionDate: '2023-03-10 11:00 AM',
-      actionDate: '-'
+      actionDate: '-',
     },
     {
       name: 'Intellectual Property Law',
@@ -31,7 +31,7 @@ export class UploadstatusComponent {
       status: 'Under-Review',
       actions: 'Under-Review',
       submissionDate: '2023-03-10 11:00 AM',
-      actionDate: '-'
+      actionDate: '-',
     },
     {
       name: 'Legal Research and Writing',
@@ -39,7 +39,7 @@ export class UploadstatusComponent {
       status: 'Approved',
       actions: 'Approved by Prof. Johnson',
       submissionDate: '2023-02-02 02:45 PM',
-      actionDate: '2023-02-05 10:15 AM'
+      actionDate: '2023-02-05 10:15 AM',
     },
     {
       name: 'International Human Rights',
@@ -47,7 +47,7 @@ export class UploadstatusComponent {
       status: 'Commented',
       actions: 'Commented by John Smith',
       submissionDate: '2023-04-05 03:20 PM',
-      actionDate: '2023-04-08 01:30 PM'
+      actionDate: '2023-04-08 01:30 PM',
     },
     {
       name: 'Civil Procedure',
@@ -55,22 +55,9 @@ export class UploadstatusComponent {
       status: 'Approved',
       actions: 'Approved by Johnson',
       submissionDate: '2023-05-20 05:45 PM',
-      actionDate: '2023-05-25 09:00 AM'
-    }
+      actionDate: '2023-05-25 09:00 AM',
+    },
   ];
-  
-
-  // toggleDetails(course: any): void {
-    
-  //   console.log(course);
-  // }
-  constructor(private router: Router) {}
-
-  
-
-  viewDetails(course: any): void {
-    this.router.navigate(['instructor/uploadhistory', { course: JSON.stringify(course) }]);
-  }
 
   getStatusStyles(status: string): any {
     switch (status) {
@@ -81,7 +68,7 @@ export class UploadstatusComponent {
       case 'Approved':
         return { color: 'green' };
       default:
-        return {}; // No specific style for other statuses
+        return {};
     }
-}
+  }
 }
