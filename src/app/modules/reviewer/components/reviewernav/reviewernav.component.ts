@@ -13,14 +13,14 @@ export class ReviewernavComponent {
 
   // You can use methods to navigate programmatically if needed
   navigateToUserModule() {
-    this.router.navigate(['/subscriber']);
+    this.router.navigate(['/reviewer']);
   }
 
  
   onUserCircleClick(event: Event) {
     event.preventDefault();
     // Navigate to the subscriber profile component
-    this.router.navigate(['/subscriber/acSecurity']);
+    this.router.navigate(['/reviewer/acSecurity']);
   }
   get showLogoutAlert(): boolean {
     return this.sharedService.showLogoutAlert;

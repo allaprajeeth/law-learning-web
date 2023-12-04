@@ -24,6 +24,14 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
 import { AdminLibraryComponent } from './components/admin-library/admin-library.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { PhotoComponent } from './components/photo/photo.component';
+import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { PaymentsComponent } from './components/payments/payments.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +45,14 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
     TermsandcondiComponent,
     AdminLibraryComponent,
     ArticleComponent,
-    ArticleformComponent
+    ArticleformComponent,
+    PhotoComponent,
+    DeleteaccountComponent,
+    ContactusComponent,
+    PaymentsComponent,
+    NotificationsComponent,
+    SidenavComponent,
+    AccountsecurityComponent
   ],
   imports: [
     CommonModule,
@@ -52,8 +67,8 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
     MatCardModule,
     MatDividerModule,
     MatExpansionModule,
-    MatTabsModule
-    
+    MatTabsModule,
+    MatSidenavModule,
   ],
   providers: [
     {

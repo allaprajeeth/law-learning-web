@@ -8,7 +8,6 @@
         <li><a routerLink="/admin/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
         <li><a routerLink="/admin/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
         <li><a routerLink="/admin/notification" routerLinkActive="active" class="mycourses" matBadge="4">Notifications</a></li>
-
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
             <span class="user-circle-text">NS</span>
@@ -26,20 +25,15 @@
               <span>Nuncsystems</span>
               <span class="info">040-2980 3199</span>
             </li>
-            <hr />
-
-            <li>
-              <a routerLink="/subscriber/public-profile">Public profile</a>
-            </li>
-
-            <li><a routerLink="/subscriber/acSecurity">Account settings</a></li>
-            <li><a routerLink="/subscriber/payments">Purchase History</a></li>
-            <hr />
+            <hr/>
+            <li><a routerLink="/admin/photo">Public profile</a></li>
+            <li><a routerLink="/admin/acSecurity">Account settings</a></li>
+            <li><a routerLink="/admin/payments">Purchase History</a></li>
+            <li><a routerLink="/admin/notifications">Notification Settings</a></li>
+            <hr/>
             <li><a routerLink="/admin/termsandconditions">Terms & Conditions</a></li>
-            <li><a routerLink="/contactus">Contact Us</a></li>
-            <li>
-              <a routerLink="/header" (click)="onLogoutClick()">Logout</a>
-            </li>
+            <li><a routerLink="/admin/contactus">Contact Us</a></li>
+            <li><a routerLink="/header" (click)="onLogoutClick()">Logout</a></li>
           </ul>
         </li>
       </ul>

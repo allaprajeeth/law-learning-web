@@ -1,0 +1,35 @@
+<app-adminnav></app-adminnav>
+<mat-sidenav-container>
+    <mat-sidenav #sideNav mode="side" opened>
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container-wrapper">
+            <div class="container">
+                <div class="main-container">
+                    <div class="main-box">
+                        <h1>Purchase-History</h1>
+                        <table class="purchase-table">
+                            <tr>
+                                <th>Course name</th>
+                                <th>Date</th>
+                                <th>Price</th>
+                                <th>Expires on</th>
+                                <th>Invoice</th>
+                            </tr>
+                            <ng-container *ngFor="let purchase of purchaseHistory; let i = index">
+                                <tr>
+                                    <td>{{ purchase.heading }}</td>
+                                    <td>{{ purchase.date | date: 'dd MMM yyyy'}}</td>
+                                    <td>{{ purchase.price }}</td>
+                                    <td>{{ purchase.expiryDate | date: 'dd MMM yyyy' }}</td>
+                                    <td><button (click)="downloadInvoice(i)">Download</button></td>
+                                </tr>
+                            </ng-container>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

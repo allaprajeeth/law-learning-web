@@ -33,6 +33,14 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { LibraryReviewerComponent } from './components/library-reviewer/library-reviewer.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PaymentsComponent } from './components/payments/payments.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
+import { PhotoComponent } from './components/photo/photo.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +55,20 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
     TermsandcondiComponent,
     LibraryReviewerComponent,
     ArticleformComponent,
+    AccountsecurityComponent,
+    SidenavComponent,
+    NotificationsComponent,
+    PaymentsComponent,
+    ContactusComponent,
+    DeleteaccountComponent,
+    PhotoComponent,
     // InstructorLoginComponent
   ],
   imports: [
     CommonModule,
     ReviewerRoutingModule,
     SharedModule,
-
+    MatSidenavModule,
     ReactiveFormsModule,
     MatIconModule,
     MatMenuModule,

@@ -10,6 +10,12 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
 import { AdminLibraryComponent } from './components/admin-library/admin-library.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
+import { PhotoComponent } from './components/photo/photo.component';
+import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PaymentsComponent } from './components/payments/payments.component';
+import { ContactusComponent } from './components/contactus/contactus.component';
+import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 
 const routes: Routes = [
   {
@@ -56,6 +62,30 @@ const routes: Routes = [
   {
     path:"articleform",
     component:ArticleformComponent
+  },
+  {
+    path:"photo",
+    component: PhotoComponent
+  },
+  {
+    path:'acSecurity',
+    component:AccountsecurityComponent
+  },
+  {
+    path:"notifications",
+    component: NotificationsComponent
+  },
+  {
+    path:"payments",
+    component: PaymentsComponent
+  },
+  {
+    path:"contactus",
+    component: ContactusComponent
+  },
+  {
+    path:"delete-account",
+    component: DeleteaccountComponent
   },
   
 ];
