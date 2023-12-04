@@ -11,6 +11,8 @@ export class SharedoverviewComponent {
   overviewHeading = "Introduction to Law: A Comprehensive Overview";
   overviewDescription = "Law learning encompasses a diverse range of fascinating subjects and fields of study and ethics, and the legal systems that shape our societies.";
   instructorName = "Edward Viaene";
+  instructorReviewsbyReviewer='3'
+  instructorReviewsbySubscriber ='299'
   courseDuration = "2hr 3m";
   lastUpdatedText = "10/2023";
   courseDescriptionText_1 = "From constitutional law, criminal law, and international law to environmental law, intellectual property law, and human rights law, there's a captivating world of legal knowledge to explore.";

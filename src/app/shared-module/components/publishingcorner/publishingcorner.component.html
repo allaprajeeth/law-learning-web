@@ -4,7 +4,7 @@
 <div class="submit-button" >
   <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button>
 </div>
-<div *ngIf="isInArticlePage" class="message">To submit your article please login to the webiste </div>
+<div *ngIf="isInArticlePage" class="message">To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>to the website.</div>
 <div class="post-box">
 
   <div *ngIf="noResults; else showBoxes" class="no-results-message">

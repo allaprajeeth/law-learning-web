@@ -13,6 +13,8 @@ export class OverviewComponent {
   subscriberRatingsCount = "(1234)";
   reviewerRatings = 4;
   instructorName = "Edward Viaene";
+  instructorReviewsbySubscriber ='299'
+  instructorReviewsbyReviewer='2'
   courseDuration = "2hr 3m";
   lastUpdatedText = "10/2023";
   courseDescriptionText_1 = "From constitutional law, criminal law, and international law to environmental law, intellectual property law, and human rights law, there's a captivating world of legal knowledge to explore.";

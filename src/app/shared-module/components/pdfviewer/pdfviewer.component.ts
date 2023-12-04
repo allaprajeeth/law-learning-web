@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
 @Component({
   selector: 'app-pdfviewer',
   templateUrl: './pdfviewer.component.html',
@@ -18,4 +17,6 @@ export class PdfviewerComponent {
       console.log(this.pdfSrc)
     });
   }
+  
+  
 }
