@@ -42,11 +42,11 @@
 .message{
   position: absolute;
   top: 60px;
-  margin-top: 80px;
+  margin-top: 90px;
   right:65px;
   font-size: 16px;
   margin-bottom: 5px;
-  color: Red;
+  color:#007791
   
 }
 
@@ -74,7 +74,7 @@
     margin: 20px;
     border-radius: 7px;
     padding: 20px;
-    margin-top: 60px;
+    margin-top: 80px;
     position: relative; /* Make sure the position is relative for child elements */
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 
@@ -129,8 +129,10 @@
     }
   }
 }
-
-
+.login{
+  cursor: pointer;
+  font-weight: 900;
+}
 
 
 
