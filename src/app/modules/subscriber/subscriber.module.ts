@@ -21,7 +21,6 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { PhotoComponent } from './components/photo/photo.component';
-import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
@@ -64,7 +63,6 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
     AccountsecurityComponent,
     SubscriptionsComponent,
     PhotoComponent,
-    PublicProfileComponent,
     NotificationsComponent,
     PaymentsComponent,
     DeleteAccountComponent,

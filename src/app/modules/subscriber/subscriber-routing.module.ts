@@ -7,7 +7,6 @@ import { HeaderComponent } from 'src/app/common/components/header/header.compone
 import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { CartComponent } from './components/cart/cart.component';
-import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
@@ -59,10 +58,6 @@ const routes: Routes = [
   {
     path:"photo",
     component: PhotoComponent
-  },
-  {
-    path:"public-profile",
-    component:PublicProfileComponent
   },
   {
     path:"notifications",
