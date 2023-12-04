@@ -112,9 +112,15 @@
           src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
           alt="Instructor Image">
         <div class="icons">
-          <div class="icon ">
-            <mat-icon>star</mat-icon>
-            <p>{{ instructorRating }} Instructor Rating</p>
+          <div class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge"
+              class="reviews-badge">
+            <p>{{ instructorReviewsbySubscriber }} Reviews by Subscribers </p>
+          </div>
+          <div class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge"
+              class="reviews-badge">
+            <p>{{ instructorReviewsbyReviewer}} Reviews by Reviewers </p>
           </div>
           <div class="icon">
             <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge"
@@ -123,7 +129,7 @@
           </div>
           <div class="icon">
             <mat-icon>people</mat-icon>
-            <p>{{ instructorStudents }} Students</p>
+            <p>{{ instructorStudents }} Subscribers</p>
           </div>
           <div class="icon">
             <mat-icon>play_circle_outline</mat-icon>

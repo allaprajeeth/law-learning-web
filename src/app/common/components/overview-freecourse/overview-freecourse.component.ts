@@ -15,6 +15,8 @@ export class OverviewFreecourseComponent {
   subscribersCount = "(1234)";
   reviewersCount = "(22)";
   instructorName = "Edward Viaene";
+  instructorReviewsbySubscriber="75332"
+  instructorReviewsbyReviewer='5'
   courseDuration = "2hr 3m";
   courseLastUpdated = "10/2023";
   courseDescription_1 = "From constitutional law, criminal law, and international law to environmental law, intellectual property law, and human rights law, there's a captivating world of legal knowledge to explore.";
