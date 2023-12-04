@@ -293,7 +293,9 @@ openArticleInNewTab(blogPost: BlogPost): void {
   // Open the blog post details in a new tab and pass the blog post object as a query parameter
   window.open(`${postDetailUrl}?postId=${encodeURIComponent(JSON.stringify(blogPost))}`, '_self');
 }
-
+navigateToLogin(){
+  this.router.navigate(['/login']);
+}
 
 
 
