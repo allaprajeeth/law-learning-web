@@ -1,5 +1,8 @@
 <app-subscribernav></app-subscribernav>
 <div class="container">
+  <div class="app-description">
+    <h2>Currently all courses are free of charge, so there's no requirement to make a purchase.</h2>  
+  </div>
   <div class="heading">
     <h1>My Courses</h1>
   </div>
@@ -136,9 +139,19 @@
         </div>
       </div>
       <div class="subscribers" style="font-weight: 410;">
+        <span>Number of Subscribers: {{ availableCourseSubscribers[j] + '+' }}</span>
+      
+        <h5 class="price">
+          <span *ngIf="coursePrice[j] > 0">
+            <del>₹{{ coursePrice[j] }}</del> 
+            <span style="color: green; margin-left: 5px;" class="free">Free</span> 
+          </span>
+        </h5>
+      </div>
+      <!-- <div class="subscribers" style="font-weight: 410;">
         <span>Number of Subscribers:{{ availableCourseSubscribers[j] + '+' }}</span>
         <h5 class="price">Price : ₹{{ coursePrice[j] }}</h5>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

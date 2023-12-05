@@ -279,4 +279,34 @@ display: block;
     border-radius: 5px;
     margin-top: 10px;
   } 
-  }
+}
+
+
+
+  /* Add these styles to your component's SCSS file */
+.success-message {
+  background-color: #e0d9d9;
+  color: black;
+  padding: 70px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 70px;
+}
+
+.success-message button {
+  background-color: #007791;
+  color: white;
+  border: none;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+  // }
+
+
+  

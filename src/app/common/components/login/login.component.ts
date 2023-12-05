@@ -68,21 +68,21 @@ openModal() {
     return this.loginForm.get('selectedCategory');
   }
   sendOtpLogin() {
-    
-    const email = this.email?.value;
-    const phone = this.phone?.value;
-    const selectedCategory=this.selectedCategory?.value
-    this.loginService.validationKey$.next('');
-    const loginRequestFormData = {
-      email: email,
-      phone: phone,
-      role: selectedCategory
-    };
-    this.loginService.sendOtpLogin(loginRequestFormData).subscribe(
-      ()=>{
-        this.showOtpFields()
-      }
-    )
+    this.showOtpFields()
+    // const email = this.email?.value;
+    // const phone = this.phone?.value;
+    // const selectedCategory=this.selectedCategory?.value
+    // this.loginService.validationKey$.next('');
+    // const loginRequestFormData = {
+    //   email: email,
+    //   phone: phone,
+    //   role: selectedCategory
+    // };
+    // this.loginService.sendOtpLogin(loginRequestFormData).subscribe(
+    //   ()=>{
+    //     this.showOtpFields()
+    //   }
+    // )
    
   }
   showOtpFields(): void {
@@ -92,7 +92,8 @@ openModal() {
     this.isSendOtpsClicked = !this.isSendOtpsClicked;
   }
   login() {
-    this.loginpage();
+   // this.loginpage();
+   this.loginValidation();
    
   }
    loginpage() {

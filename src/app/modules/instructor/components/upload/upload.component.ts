@@ -41,13 +41,21 @@ export class UploadComponent implements OnInit {
   isDurationFetched: boolean = false;
   hasTest: string | null = null;
   submitAllMessage: string | null = null;
+  anyMainSectionSubmitted: boolean = false; 
+  allMainSectionsSubmitted: boolean = false;
+
+  showForm: boolean = true;
+
 
   constructor() {}
 
   ngOnInit() {
-    // Add the initial main section when the component initializes
     this.addMainSection();
+    this.showForm = true; 
   }
+
+  
+  
   addMainSection() {
     const newMainSection: MainSection = {
       name: `Section ${this.mainSections.length + 1}`,
@@ -65,8 +73,6 @@ export class UploadComponent implements OnInit {
       buttonColor: '',
     };
     this.mainSections.push(newMainSection);
-
-    // Initialize isVideoSelected and isSaveAndSubmitEnabled for the new subsection
     this.addSubSection(this.mainSections.length);
   }
 
@@ -91,13 +97,28 @@ export class UploadComponent implements OnInit {
     this.mainSections[mainIndex].subSections.push(newSubSection);
   }
 
+
   removeMainSection(index: number) {
     this.mainSections.splice(index, 1);
+    this.updateSectionNumbering();
+    this.anyMainSectionSubmitted = this.hasAnyMainSectionSubmitted(); 
   }
 
   removeSubSection(mainIndex: number, subIndex: number) {
     this.mainSections[mainIndex].subSections.splice(subIndex, 1);
+    this.updateSectionNumbering();
   }
+
+  private updateSectionNumbering() {
+    this.mainSections.forEach((mainSection, mainIndex) => {
+      mainSection.name = `Section ${mainIndex + 1}`;
+      mainSection.subSections.forEach((subSection, subIndex) => {
+        subSection.title = `Sub-Section ${mainIndex + 1}.${subIndex + 1}`;
+      });
+    });
+  }
+
+
   onMainFileSelected(event: any, mainIndex: number, subIndex: number) {
     const file = event.target.files[0];
     if (file) {
@@ -109,14 +130,14 @@ export class UploadComponent implements OnInit {
         const seconds = Math.floor(duration % 60);
         const subSection = this.mainSections[mainIndex].subSections[subIndex];
 
-        // Update the duration and status of the subsection
+       
         subSection.duration = {
           minutes: minutes,
           seconds: seconds,
         };
-        subSection.isVideoSelected = true; // Add this property to track video selection status
+        subSection.isVideoSelected = true; 
 
-        // Check if both name and video are entered to enable the buttons
+        
         subSection.isSaveEnabled =
           subSection.isSubSectionNameEntered && subSection.isVideoSelected;
         subSection.isSubmitEnabled =
@@ -125,7 +146,7 @@ export class UploadComponent implements OnInit {
         this.isDurationFetched = true;
         URL.revokeObjectURL(video.src);
       });
-      document.body.appendChild(video);
+      //document.body.appendChild(video);
     }
   }
   onSubFileSelected(event: any, mainIndex: number, subIndex: number) {
@@ -139,21 +160,20 @@ export class UploadComponent implements OnInit {
 
   saveMainSection(mainIndex: number) {
     const mainSection = this.mainSections[mainIndex];
-
-    // Update the flags to disable the "Save" button
-    // mainSection.isSaveEnabled = 'green';
-
-    // mainSection.isSaveEnabled = false;
     mainSection.buttonColor = 'green';
-
     console.log('Main section saved:', this.mainSections[mainIndex]);
   }
 
   submitMainSection(mainIndex: number) {
     this.mainSections[mainIndex].submitted = true;
     this.mainSections[mainIndex].status = 'Under Review';
+    this.anyMainSectionSubmitted = this.hasAnyMainSectionSubmitted();
     console.log('Main section submitted:', this.mainSections[mainIndex]);
   }
+  private hasAnyMainSectionSubmitted(): boolean {
+    return this.mainSections.some(mainSection => mainSection.submitted);
+  }
+ 
 
   submitSubSection(mainIndex: number, subIndex: number) {
     this.mainSections[mainIndex].subSections[subIndex].submitted = true;
@@ -178,24 +198,21 @@ export class UploadComponent implements OnInit {
 
   onMainSectionNameEntered(mainIndex: number) {
     const mainSection = this.mainSections[mainIndex];
-    // Check if the name of the section is entered
+   
     mainSection.isNameEntered = mainSection.name.trim() !== '';
-    // Check if both name and video are entered to enable the buttons
-    // mainSection.isSaveAndSubmitEnabled = mainSection.isNameEntered;
 
     mainSection.isSubmitEnabled = mainSection.isNameEntered;
 
     mainSection.isSaveEnabled = mainSection.isNameEntered;
 
-    // isSubmitEnabled: false ,
-    //   isSaveEnabled :false,
+    
   }
   onSubSectionNameEntered(mainIndex: number, subIndex: number) {
     const subSection = this.mainSections[mainIndex].subSections[subIndex];
 
     subSection.isSubSectionNameEntered = subSection.title.trim() !== '';
 
-    // Check if both name and video are entered to enable the buttons
+    
     subSection.isSaveEnabled =
       subSection.isSubSectionNameEntered && subSection.isVideoSelected;
     subSection.isSubmitEnabled =
@@ -212,13 +229,42 @@ export class UploadComponent implements OnInit {
     return false;
   }
 
-  submitSections() {
-    // Implement logic to submit all sections data to your backend or storage system
-    console.log('Submitted Data:', this.mainSections);
+  // submitSections() {
+  //   if (this.hasSubmitEnabledSubSections()) {
+  //     // Additional logic for handling successful submission
+  //     this.submitAllMessage = 'All sections submitted Successfully and Under Review.';
+  //   } else {
+  //     // If no submit-enabled subsections, you might want to handle it accordingly.
+  //     // For now, let's set a message for demonstration purposes.
+  //     this.submitAllMessage = 'No sections to submit or submission is not enabled for any section.';
+  //   }
+  // }
+// // In the component class
+// showForm: boolean = true;
 
-    if (this.hasSubmitEnabledSubSections()) {
-      this.submitAllMessage =
-        'All sections submitted Successfully and Under Review.';
-    }
+// ...
+
+submitSections() {
+  if (this.hasSubmitEnabledSubSections()) {
+
+    console.log('submitSections called');
+    // Additional logic for handling successful submission
+    this.submitAllMessage = 'All sections submitted Successfully and Under Review.';
+    // Hide the form and show the success message
+    this.showForm = false;
+  } else {
+    console.log('submitSections called');
+    // If no submit-enabled subsections, you might want to handle it accordingly.
+    // For now, let's set a message for demonstration purposes.
+    this.submitAllMessage = 'No sections to submit or submission is not enabled for any section.';
   }
+}
+
+goBack() {
+  // Show the form again
+  this.showForm = true;
+  // Clear the success message
+  this.submitAllMessage = null;
+}
+
 }
