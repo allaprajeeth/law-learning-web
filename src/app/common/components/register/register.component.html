@@ -74,18 +74,21 @@
         >
           Invalid phone format. (10 digits required)
         </div>
-        <label for="category">Category:</label>
+
+
+        <!-- <label for="category">Category:</label>
         <select
           id="role"
           formControlName="selectedCategory"
-          [disabled]="!isSendOtpsClicked"
-        >
+          [disabled]="!isSendOtpsClicked">
           <option value="SUBSCRIBER">SUBSCRIBER</option>
           <option value="REVIEWER">REVIEWER</option>
           <option value="INSTRUCTOR">INSTRUCTOR</option>
           <option value="CONTENTMANAGER">CONTENTMANAGER</option>
           <option value="Admin">Admin</option>
-        </select>
+        </select> -->
+
+
         <button *ngIf="!isOtpVisible"
           (click)="sendOtps()"
           [disabled]="!isInputFilled "

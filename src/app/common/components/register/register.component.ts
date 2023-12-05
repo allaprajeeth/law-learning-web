@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  lawimage = '/assets/law.png';
+  lawimage = '/assets/Law.png';
   isSendOtpsClicked: boolean = true;
   images: string[] = ['assets/Law Learning.png'];
   currentIndex: number = 0;
@@ -25,7 +25,7 @@ export class RegisterComponent {
   isInputFilled: boolean = false;
   isOtpVisible: boolean = false;
   isLoginVisible: boolean = false;
-  disableCategorySelect: boolean = false;
+  // disableCategorySelect: boolean = false;
   otpsFilled: boolean = false;
   isAcceptButtonClicked = false;
   registerForm: FormGroup;
@@ -81,30 +81,31 @@ export class RegisterComponent {
   }
 
   sendOtpSignup() {
-    const name = this.name?.value;
-    const email = this.email?.value;
-    const phone = this.phone?.value;
-    const selectedCategory=this.selectedCategory?.value
-    this.registrationService.validationKey$.next('');
-    const signUpFormData = {
-      name: name,
-      email: email,
-      phone: phone,
-      role: selectedCategory
-    };
+    this.showOtpFields()
+    // const name = this.name?.value;
+    // const email = this.email?.value;
+    // const phone = this.phone?.value;
+    // const selectedCategory=this.selectedCategory?.value
+    // this.registrationService.validationKey$.next('');
+    // const signUpFormData = {
+    //   name: name,
+    //   email: email,
+    //   phone: phone,
+    //   role: selectedCategory
+    // };
 
-    this.registrationService.sendOtpSignup(signUpFormData).subscribe(
-      ()=>{
-        this.showOtpFields()
-      }
-    )
+    // this.registrationService.sendOtpSignup(signUpFormData).subscribe(
+    //   ()=>{
+    //     this.showOtpFields()
+    //   }
+    // )
 
   }
 
   showOtpFields(): void {
     this.isOtpVisible = true;
     this.isLoginVisible = true;
-    this.disableCategorySelect = true;
+    // this.disableCategorySelect = true;
     this.isSendOtpsClicked = !this.isSendOtpsClicked;
   }
   signupVerify() {
@@ -112,21 +113,22 @@ export class RegisterComponent {
   
   }
   signUppage() {
-    const phoneOtp = this.phoneOtp?.value;
-    const emailOtp = this.emailOtp?.value;
+    this.router.navigate(['/login']);
+    // const phoneOtp = this.phoneOtp?.value;
+    // const emailOtp = this.emailOtp?.value;
 
-     const signUpCompleteFormData={
-         phone_otp:phoneOtp,
-         email_otp:emailOtp,
-         validation_key :this.registrationService.validationKey$.value
-     }
-     this.registrationService.signUppage(signUpCompleteFormData).subscribe(
-      ()=>{
+    //  const signUpCompleteFormData={
+    //      phone_otp:phoneOtp,
+    //      email_otp:emailOtp,
+    //      validation_key :this.registrationService.validationKey$.value
+    //  }
+    //  this.registrationService.signUppage(signUpCompleteFormData).subscribe(
+    //   ()=>{
         
-          this.router.navigate(['/login']);
+    //       this.router.navigate(['/login']);
        
-      }
-     )
+    //   }
+    //  )
   }
   
 

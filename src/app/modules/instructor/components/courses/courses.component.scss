@@ -40,6 +40,24 @@
       .skill{
         font-weight: 400;
       }
+
+      .input-with-symbol {
+        position: relative;
+      }
+      
+      .currency-symbol {
+        position: absolute;
+        left: 10px; /* Adjust the distance from the left */
+        top: 50%;
+        transform: translateY(-50%);
+        color: #333; /* Adjust the color */
+      }
+      
+      /* Additional styling for the input field */
+      .input-with-symbol input {
+        padding-left: 30px; /* Adjust to accommodate the symbol */
+      }
+      
   
       input[type="text"],
       input[type="number"],
