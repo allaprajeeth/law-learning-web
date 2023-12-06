@@ -1,0 +1,37 @@
+/* statuspostdetails.component.scss */
+
+.article-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 30px; /* Add margin to the entire container */
+    border-radius: 5px;
+  
+    h2 {
+      color: #333;
+      padding-bottom: 10px; /* Add padding below the title */
+      margin-bottom: 10px; /* Add margin below the title */
+    }
+  
+    p {
+      margin-bottom: 10px;
+    }
+  
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
+      margin-bottom: 10px;
+    }
+  
+    div {
+      margin-top: 15px; /* Add margin between sections */
+    }
+  
+    strong {
+      font-weight: bold; /* Apply bold styling to the <strong> tag */
+    }
+    .views{
+        font-size: 14px;
+        color: #666;
+      }
+  }
+  

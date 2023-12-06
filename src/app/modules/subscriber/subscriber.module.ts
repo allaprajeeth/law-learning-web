@@ -54,6 +54,8 @@ import { OverviewComponent } from './components/overview/overview.component';
 import { RatingsComponent } from './components/ratings/ratings.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
+
 
 @NgModule({
   declarations: [
@@ -89,6 +91,8 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
     RatingsComponent,
     SubscriberpostdetailsComponent,
     TermsandcondiComponent,
+    StatusarticlepageComponent,
+ 
    
   ],
   imports: [

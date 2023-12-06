@@ -10,22 +10,25 @@ export class ArticleHistoryComponent {
 
   publishedArticles = [
     {
-      name: 'The Impact of Technology on Patent Law',
+      id: 1,
+      title: 'What Is Criminal Law?',
       submissionDate: '07-07-2023',
       publishedDate: '10-08-2023',
     },
     {
-      name: 'Understanding Intellectual Property Law',
+      id: 2,
+      title: 'Mastering Legal Research',
       submissionDate: '15-07-2023',
       publishedDate: '17-08-2023',
     },
     {
-      name: 'Challenges in International Human Rights Law',
+      title: 'Challenges in International Human Rights Law',
       submissionDate: '11-09-2023',
       publishedDate: '18-09-2023',
     },
     {
-      name: 'Environmental Law and Sustainable Development',
+  
+      title: 'Environmental Law and Sustainable Development',
       submissionDate: '20-07-2023',
       publishedDate: '28-09-2023',
     }

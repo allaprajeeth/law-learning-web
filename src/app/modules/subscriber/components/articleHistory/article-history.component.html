@@ -16,8 +16,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let article of publishedArticles">
-                            <td class="articleName">{{ article.name }}</td>
+                        <tr *ngFor="let article of publishedArticles" >
+                            <td class="articleName" [routerLink]="['/subscriber/article-details', article.id]">{{ article.title }}</td>
                             <td>{{ article.submissionDate }}</td>
                             <td>{{ article.publishedDate }}</td>
                         </tr>
@@ -57,3 +57,6 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+
+
