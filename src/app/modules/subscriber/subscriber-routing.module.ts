@@ -24,6 +24,8 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { OverviewComponent } from './components/overview/overview.component';
+import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
+import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 
 const routes: Routes = [
   {
@@ -126,7 +128,25 @@ const routes: Routes = [
   {
    path:'overview',
    component:OverviewComponent
-  }
+  },
+  {
+    path:'statusarticlepage',
+    component:StatusarticlepageComponent
+   },
+   {
+    path:'published-articles',
+    component:ArticleHistoryComponent
+   },
+   { 
+    path: 'article-details/:id', 
+    component: StatusarticlepageComponent
+   },
+  //  {
+  //   path:'statusarticlepage',
+  //   component:StatusarticlepageComponent
+  //  },
+
+
 ];
 
 @NgModule({
