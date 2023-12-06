@@ -50,6 +50,7 @@ import { LibraryInstructorComponent } from './components/library-instructor/libr
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
    MatTabsModule,
    MatDialogModule,
    MatSidenavModule,
+   MatCheckboxModule
   ],
   
   exports: [
