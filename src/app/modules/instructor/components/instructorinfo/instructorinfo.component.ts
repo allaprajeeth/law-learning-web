@@ -19,22 +19,13 @@ export class InstructorinfoComponent implements OnInit {
     "Foster a positive learning environment by encouraging active participation and critical thinking. Provide constructive feedback and support to students, addressing their questions and concerns.",
     "A degree in law (Juris Doctor or equivalent) is required. Relevant teaching or instructional experience is preferred. Strong knowledge of legal principles, ethics, and case studies. Excellent communication and presentation skills. Patience, adaptability, and the ability to motivate and engage learners. A commitment to ongoing professional development in the legal field."
   ];
-
+  instructorRating = 4.7;
   coursePrice = [
     3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
   ];
 
 
   
-
-
-  
-
-
-
-
-
-
   mycoursesimages: string[] = [];
   availablecoursesimages: string[] = [];
 
@@ -105,7 +96,7 @@ uploadedCoursesText: string[] = [
 
   uploadedCoursesDurations: string[] = [];
   availableCoursesDurations: string[] = [];
-
+  instructorReviewsbySubscriber='233';
   randomMyCourseValues: number[] = [];
   
   subscribersValues = ["10", "50", "100", "200", "500", "1000"];

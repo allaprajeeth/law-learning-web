@@ -38,7 +38,7 @@ export class RegisterComponent {
   ) {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.pattern(/^[\w\.-]+@[a-zA-Z\d\.-]+\.[a-zA-Z]{2,}$/)]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       selectedCategory: ['SUBSCRIBER', [Validators.required]],
       email_otp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],

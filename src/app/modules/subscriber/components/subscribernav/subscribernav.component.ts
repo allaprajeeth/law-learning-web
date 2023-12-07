@@ -22,8 +22,6 @@ export class SubscribernavComponent implements OnInit {
   
      email = this.loginService.loggedInUserEmail$.value;
 
-     
-  // You can use methods to navigate programmatically if needed
   navigateToUserModule() {
     this.router.navigate(['/subscriber']);
   }
@@ -37,7 +35,6 @@ export class SubscribernavComponent implements OnInit {
  
   onUserCircleClick(event: Event) {
     event.preventDefault();
-    // Navigate to the subscriber profile component
     this.router.navigate(['/subscriber/photo']);
   }
   get showLogoutAlert(): boolean {

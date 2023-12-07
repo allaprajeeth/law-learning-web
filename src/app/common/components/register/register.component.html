@@ -42,7 +42,7 @@
         <div
           class="error-message"
           *ngIf="
-            registerForm.get('email')?.hasError('email') &&
+            registerForm.get('email')?.hasError('pattern') &&
             registerForm.get('email')?.touched
           "
         >
