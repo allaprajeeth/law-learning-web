@@ -17,7 +17,7 @@ export class LibraryComponent {
   pdfFiles: PdfFile[] = [
     {
       name: "INTRODUCTION TO LAW AND LEGAL REASONING",
-      url: "https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf"
+      url:"https://www.law.berkeley.edu/wp-content/uploads/2017/11/CommonLawCivilLawTraditions.pdf"
     },
     {
       name: "THE SIX LAWS OF LEARNING",
