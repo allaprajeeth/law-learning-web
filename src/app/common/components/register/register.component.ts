@@ -13,9 +13,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent {
 
-  lawimage = '/assets/Law.png';
+  //lawimage = '/assets/Law.png';
   isSendOtpsClicked: boolean = true;
-  images: string[] = ['assets/Law Learning.png'];
+  images: string[] = ['assets/law.png'];
   currentIndex: number = 0;
   // selectedCategory: string = '';
   emailotp: string = '';
@@ -32,7 +32,6 @@ export class RegisterComponent {
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
-    private registrationService: RegistrationService,
     private acceptButtonService:PdfService,
     private router:Router
   ) {
