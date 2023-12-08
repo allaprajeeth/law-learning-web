@@ -15,7 +15,7 @@ export class StatusarticlepageComponent {
   
   articles = [
     {  id: 1,
-      title: '"What Is Criminal Law?"',
+      title: '"What Is Criminal Law"',
       views: 810, 
     author:'Zoe Kaplan',
     reviewer:'Jeanine Skowronski',  

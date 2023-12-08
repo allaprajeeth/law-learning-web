@@ -10,6 +10,7 @@
 .container {
   width: 80%;
   background-color: #ffffff;
+  margin-bottom: 20px;
   padding: 20px;
   text-align: center;
   border-radius: 10px;
@@ -21,7 +22,8 @@
   margin: 0;
 
   h1 {
-    font-weight: bold;
+    font-weight: 500;
+    font-size: 24px;
   }
 }
 

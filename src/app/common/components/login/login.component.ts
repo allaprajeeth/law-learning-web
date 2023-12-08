@@ -33,7 +33,7 @@ openModal() {
     });
   }
   isSendOtpsClicked: boolean = true;
-  images: string[] = ['assets/Law Learning.png'];
+  images: string[] = ['assets/5th Estate ADR 1.png'];
   currentIndex: number = 0;
   email_otp: string = '';
   phone_otp: string = '';

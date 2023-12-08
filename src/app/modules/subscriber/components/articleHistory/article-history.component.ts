@@ -14,7 +14,7 @@ export class ArticleHistoryComponent {
   publishedArticles = [
     {
       id: 1,
-      title: 'What Is Criminal Law?',
+      title: 'What Is Criminal Law',
       submissionDate: '07-07-2023',
       publishedDate: '10-08-2023',
     },

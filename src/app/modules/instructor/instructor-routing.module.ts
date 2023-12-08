@@ -25,6 +25,7 @@ import { ArticleformComponent } from './components/articleform/articleform.compo
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
+import { HistoryComponent } from './components/history/history.component';
 
 const routes: Routes = [
   {
@@ -45,7 +46,7 @@ const routes: Routes = [
     component: InstructorOverviewComponent,
   },
   {
-    path: 'public-profile',
+    path: 'profile',
     component: PublicProfileComponent,
   },
   {
@@ -132,7 +133,11 @@ const routes: Routes = [
     path: 'termsandconditions',
     component: TermsandcondiComponent,
   },
-
+  { 
+    path: "articlehistory", 
+    component: HistoryComponent 
+  },
+  
 ];
 
 @NgModule({

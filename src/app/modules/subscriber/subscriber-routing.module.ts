@@ -60,7 +60,7 @@ const routes: Routes = [
     component: SubscriptionsComponent
   },
   {
-    path:"photo",
+    path:"profile",
     component: PhotoComponent
   },
   {
@@ -145,6 +145,9 @@ const routes: Routes = [
    },
    {
     path:'published-articles',
+   },
+  {
+    path:'articleHistory',
     component:ArticleHistoryComponent
    },
    { 

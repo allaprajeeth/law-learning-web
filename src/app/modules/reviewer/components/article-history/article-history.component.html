@@ -1,0 +1,29 @@
+<app-reviewernav></app-reviewernav>
+<mat-sidenav-container>
+    <mat-sidenav #sideNav mode="side" opened>
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="container-wrapper">
+            <div class="container">
+                <h1 class="articlesHeading">Articles History</h1>
+                <table class="article-table">
+                    <thead>
+                        <tr>
+                            <th class="articleHeading">Article Name</th>
+                            <th>Date of Submission</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let article of publishedArticles" >
+                            <td class="articleName" >{{ article.title }}</td>
+                            <td>{{ article.submissionDate }}</td>
+                            <td [ngStyle]="getStatusStyles(article.status)">{{ article.status }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
