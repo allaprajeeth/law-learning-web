@@ -37,10 +37,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { PaymentsComponent } from './components/payments/payments.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { PhotoComponent } from './components/photo/photo.component';
+import { UploadStatusComponent } from './components/upload-status/upload-status.component';
+import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 
 @NgModule({
   declarations: [
@@ -58,10 +59,11 @@ import { PhotoComponent } from './components/photo/photo.component';
     AccountsecurityComponent,
     SidenavComponent,
     NotificationsComponent,
-    PaymentsComponent,
     ContactusComponent,
     DeleteaccountComponent,
     PhotoComponent,
+    UploadStatusComponent,
+    ArticleHistoryComponent,
     // InstructorLoginComponent
   ],
   imports: [

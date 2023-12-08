@@ -126,15 +126,17 @@
   
         .profile-item,
         .username-item {
-          padding: 8px 12px;
-          display: inline-block;
           display: flex;
           justify-content: space-between;
           align-items: center;
-          padding: 8px 12px;
+          padding: 8px 4px 4px 12px;
           width: 100%;
         }
   
+        .navbarContent {
+          width: 95%;
+        }
+        
         .info {
           margin-left: 10px;
           /* Adjust margin as needed */
