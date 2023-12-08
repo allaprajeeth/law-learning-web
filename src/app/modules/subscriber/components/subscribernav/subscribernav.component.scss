@@ -46,7 +46,6 @@
   margin: 0;
   padding: 0;
   
-
   li {
     margin-right: 40px;
     .mycourses.active {
@@ -64,7 +63,6 @@
       background-color: #007791; 
     }
     
-
     .mycourses {
       color: #007791;
       font-size: 15px;
@@ -87,7 +85,6 @@
     }
   }
 
-  /* Show the dropdown when hovering over the user icon */
   .user-dropdown:hover {
     .user-menu {
       display: block;
@@ -114,25 +111,27 @@
     .user-menu {
       display: none;
       position: absolute;
-      // display: flex;
       top: 50px;
       right: 35px;
       background-color: #fff;
       border: 1px solid #ccc;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       list-style-type: none;
-      padding: 20px;
+      padding: 5px 20px 20px 20px;
       margin: 0;
       z-index: 4;
 
       .profile-item,
       .username-item {
-        display: inline-block;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 8px 4px 8px 12px;
         width: 100%;
+      }
+
+      .navbarContent {
+        width: 95%;
       }
 
       .info {

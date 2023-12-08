@@ -9,17 +9,10 @@ import { PopupService } from 'src/popup.service';
 })
 export class AdminnavComponent {
   constructor(private router: Router,private sharedService: PopupService) { }
-
-  // You can use methods to navigate programmatically if needed
-  navigateToUserModule() {
-    this.router.navigate(['/subscriber']);
-  }
-
  
   onUserCircleClick(event: Event) {
     event.preventDefault();
-    // Navigate to the subscriber profile component
-    this.router.navigate(['/subscriber/acSecurity']);
+    this.router.navigate(['/admin/profile']);
   }
   get showLogoutAlert(): boolean {
     return this.sharedService.showLogoutAlert;

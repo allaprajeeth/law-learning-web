@@ -14,7 +14,7 @@
       font-weight: bold;
       text-decoration: none;
       color: #333;
-      margin: 10px 0 10px 112px;
+      margin: 10px 0 10px 80px;
     }
 
     .login-buttons {
@@ -45,7 +45,7 @@
   margin-right: 30px;
 
   li {
-    margin-right: 50px;
+    margin-right: 45px;
 
     .mycourses.active::after {
       content: "";
@@ -116,12 +116,15 @@
 
       .profile-item,
       .username-item {
-        display: inline-block;
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 8px 4px 8px 12px;
         width: 100%;
+      }
+
+      .navbarContent {
+        width: 95%;
       }
 
       .info {

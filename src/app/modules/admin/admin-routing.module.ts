@@ -64,7 +64,7 @@ const routes: Routes = [
     component:ArticleformComponent
   },
   {
-    path:"photo",
+    path:"profile",
     component: PhotoComponent
   },
   {
