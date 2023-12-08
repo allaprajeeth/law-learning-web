@@ -13,10 +13,11 @@ import { LibraryReviewerComponent } from './components/library-reviewer/library-
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { PaymentsComponent } from './components/payments/payments.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { PhotoComponent } from './components/photo/photo.component';
+import { UploadStatusComponent } from './components/upload-status/upload-status.component';
+import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 
 const routes: Routes = [
   {
@@ -65,7 +66,7 @@ const routes: Routes = [
     component:ArticleformComponent
   },
   {
-    path:"photo",
+    path:"profile",
     component: PhotoComponent
   },
   {
@@ -77,16 +78,20 @@ const routes: Routes = [
     component: NotificationsComponent
   },
   {
-    path:"payments",
-    component: PaymentsComponent
-  },
-  {
     path:"contactus",
     component: ContactusComponent
   },
   {
     path:"delete-account",
     component: DeleteaccountComponent
+  },
+  {
+    path: 'uploadstatus',
+    component: UploadStatusComponent,
+  },
+  {
+    path:"articleHistory",
+    component: ArticleHistoryComponent
   },
 
 ];

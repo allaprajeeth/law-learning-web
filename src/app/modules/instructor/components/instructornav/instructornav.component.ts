@@ -11,22 +11,9 @@ export class InstructornavComponent {
   
   constructor(private router: Router, private sharedService: PopupService) { }
 
-  // You can use methods to navigate programmatically if needed
-  navigateToUserModule() {
-    this.router.navigate(['/subscriber']);
-  }
-
- 
   onUserCircleClick(event: Event) {
     event.preventDefault();
-    // Navigate to the subscriber profile component
-    this.router.navigate(['/instructor/acSecurity']);
-  }
-
-  // Function to navigate to the Upload Course component
-  navigateToUploadComponent() {
-    // Navigate to the upload course route
-    this.router.navigate(['/upload']);
+    this.router.navigate(['/instructor/profile']);
   }
 
   onLogoutClick() {

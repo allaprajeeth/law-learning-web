@@ -24,9 +24,7 @@ import { CheckoutComponent } from './modules/subscriber/components/checkout/chec
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
-import { ArticleHistoryComponent } from './modules/subscriber/components/articleHistory/article-history.component';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
-import { HistoryComponent } from './modules/instructor/components/history/history.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { SharedTCComponent } from './shared-module/components/shared-tc/shared-tc.component';
@@ -149,14 +147,6 @@ const routes: Routes = [
   {
     path:'forgotEmail',
     component:ForgotEmailComponent
-  },
-  {
-    path:"subscriber/articleHistory",
-    component: ArticleHistoryComponent
-  },
-  { 
-    path: "instructor/articlehistory", 
-    component: HistoryComponent 
   },
   {
     path: '**',
