@@ -7,6 +7,7 @@
         <div class="container-wrapper">
             <div class="container">
                 <h1 class="publishedArticles">Published Articles</h1>
+                
                 <table class="article-table">
                     <thead>
                         <tr>
@@ -15,14 +16,16 @@
                             <th class="publishedDate">Published Date</th>
                         </tr>
                     </thead>
+
                     <tbody>
-                        <tr *ngFor="let article of publishedArticles" >
-                            <td class="articleName" [routerLink]="['/subscriber/article-details', article.id]">{{ article.title }}</td>
+                        <tr *ngFor="let article of publishedArticles" routerLink="/subscriber/article-details">
+                            <td class="articleName" >{{ article.title }}</td>
                             <td>{{ article.submissionDate }}</td>
                             <td>{{ article.publishedDate }}</td>
                         </tr>
                     </tbody>
                 </table>
+
                 <h1 class="underReviewArticles">Articles Under Review</h1>
                 <table class="article-table">
                     <thead>
@@ -32,8 +35,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let article of underReviewArticles">
-                            <td class="articleName">{{ article.name }}</td>
+                        <tr *ngFor="let article of underReviewArticles" >
+                            <td class="articleName" routerLink="/subscriber/under-review">{{ article.name }}</td>
                             <td>{{ article.submissionDate }}</td>
                         </tr>
                     </tbody>
@@ -47,7 +50,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let article of commentedArticles">
+                        <tr *ngFor="let article of commentedArticles" routerLink="/subscriber/commented">
                             <td class="articleName">{{ article.name }}</td>
                             <td>{{ article.submissionDate }}</td>
                         </tr>
