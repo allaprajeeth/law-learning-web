@@ -26,6 +26,8 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
 import { OverviewComponent } from './components/overview/overview.component';
 import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
+import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
+import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
 
 const routes: Routes = [
   {
@@ -130,8 +132,16 @@ const routes: Routes = [
    component:OverviewComponent
   },
   {
-    path:'statusarticlepage',
+    path:'article-details',
     component:StatusarticlepageComponent
+   },
+   {
+    path:'under-review',
+    component:UnderreviewarticleComponent
+   },
+   {
+    path:'commented',
+    component:CommentedarticleComponent
    },
    {
     path:'published-articles',

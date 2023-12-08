@@ -55,6 +55,8 @@ import { RatingsComponent } from './components/ratings/ratings.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
+import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
+import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
 
 
 @NgModule({
@@ -92,6 +94,8 @@ import { StatusarticlepageComponent } from './components/statusarticlepage/statu
     SubscriberpostdetailsComponent,
     TermsandcondiComponent,
     StatusarticlepageComponent,
+    UnderreviewarticleComponent,
+    CommentedarticleComponent,
  
    
   ],

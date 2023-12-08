@@ -31,7 +31,7 @@ import { PdfviewerComponent } from './components/pdfviewer/pdfviewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
-import { StatuspostdetailsComponent } from './components/statuspostdetails/statuspostdetails.component'
+
 
 @NgModule({
  
@@ -53,7 +53,7 @@ import { StatuspostdetailsComponent } from './components/statuspostdetails/statu
      PdfviewerComponent,
      SharedTCComponent,
      SharedNotificationComponent,
-     StatuspostdetailsComponent,
+    
     ],
 
   imports: [
@@ -96,7 +96,7 @@ import { StatuspostdetailsComponent } from './components/statuspostdetails/statu
     PdfviewerComponent,
     SharedTCComponent,
     SharedNotificationComponent,
-    StatuspostdetailsComponent
+   
   ]
 
 })

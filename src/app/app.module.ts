@@ -62,6 +62,7 @@ import { PostdetailComponent } from './common/components/postdetail/postdetail.c
 import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -92,7 +93,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     ForgotEmailComponent,
     AdvisorDetailsComponent,
     PostdetailComponent,
-    PdfViewerComponent
+    PdfViewerComponent,
+
   ],
   imports: [
     CarouselModule,
