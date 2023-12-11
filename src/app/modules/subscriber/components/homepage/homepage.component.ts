@@ -1,10 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 
-interface Categories {
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -27,16 +23,15 @@ export class HomepageComponent implements OnInit {
   availableCoursesHeadings: string[] = [];
   availableCoursesAuthors: string[] = [];
   availableCoursesText: string[] = [];
+  selectedCategory: string | null = null;
+  selectedCourseType: string | null = null;
+  availableCoursesType: string[] = [];
+  availableCoursesLevel: string[] = [];
+  filteredCourses: any[] = [];
 
   subscribersValues = ['10', '30', '50', '100', '200', '500', '1000'];
 
   title = 'my-first-app';
-  categories: Categories[] = [
-    { viewValue: 'Beginner' },
-    { viewValue: 'Intermediate' },
-    { viewValue: 'Expert' },
-    { viewValue: 'Student' },
-  ];
 
   constructor() {
     this.randomFutureDates = this.generateRandomFutureDates(5);
@@ -92,7 +87,41 @@ export class HomepageComponent implements OnInit {
     display: string;
   } = { left: '0', right: 'unset', top: '0', display: 'none' };
 
-  openMyMenu(event: MouseEvent, index: number): void {
+  updateSelectedCourseType(courseType: string): void {
+    const [level, type] = courseType.split(' | ');
+    this.selectedCourseType = null;
+    if (level && type) {
+      this.selectedCategory = level;
+      this.selectedCourseType = type;
+      this.filteredCourses = this.availablecoursesimages
+        .map((image, index) => ({
+          image,
+          level: this.availableCoursesLevel[index],
+          type: this.availableCoursesType[index],
+          heading: this.availableCoursesHeadings[index],
+          author: this.availableCoursesAuthors[index],
+          text: this.availableCoursesText[index],
+          duration: this.availableCoursesDurations[index],
+          subscribers: this.availableCourseSubscribers[index],
+          price: this.coursePrice[index],
+        }))
+        .filter(
+          (course) =>
+            (!this.selectedCategory ||
+              course.level === this.selectedCategory) &&
+            (!this.selectedCourseType ||
+              course.type === this.selectedCourseType)
+        );
+    } else {
+      this.filteredCourses = [];
+    }
+  }
+
+  openMyMenu(
+    event: MouseEvent,
+    index: number,
+    isFiltered: boolean = false
+  ): void {
     this.showCard = this.showCard.map((_, j) => j === index);
 
     if (this.showCard[index]) {
@@ -119,6 +148,12 @@ export class HomepageComponent implements OnInit {
 
         const courseCardPosition = { top: '-40px', left: '261px' };
         Object.assign(this.tooltipPosition, courseCardPosition);
+
+        if (isFiltered) {
+          this.filteredCourses[index].tooltipPosition = {
+            ...this.tooltipPosition,
+          };
+        }
       }
     }
   }
@@ -143,17 +178,9 @@ export class HomepageComponent implements OnInit {
         Math.random() * this.subscribersValues.length
       );
       this.myCourseSubscribers.push(
-        // `${randomCourse.subscribersCount}`
         this.subscribersValues[randomSubscribersIndex]
       );
 
-      // const minHours = 1.5;
-      // const maxHours = 6;
-      // const hours = minHours + Math.random() * (maxHours - minHours);
-      // const formattedHours = Math.floor(hours);
-      // const minutes = Math.floor((hours % 1) * 60);
-      // const formattedMinutes = this.formatWithLeadingZero(minutes);
-      // const duration = `${formattedHours}h ${formattedMinutes}m`;
       const duration = `${randomCourse.courseDuration}`;
       this.myCoursesDurations.push(duration);
     }
@@ -188,19 +215,14 @@ export class HomepageComponent implements OnInit {
         Math.random() * this.subscribersValues.length
       );
       this.availableCourseSubscribers.push(
-        // `${randomCourse.subscribersCount}`
         this.subscribersValues[randomSubscribersIndex]
       );
 
-      // const minHours = 1.5;
-      // const maxHours = 6;
-      // const hours = minHours + Math.random() * (maxHours - minHours);
-      // const formattedHours = Math.floor(hours);
-      // const minutes = Math.floor((hours % 1) * 60);
-      // const formattedMinutes = this.formatWithLeadingZero(minutes);
-      // const duration = `${formattedHours}h ${formattedMinutes}m`;
       const duration = `${randomCourse.courseDuration}`;
       this.availableCoursesDurations.push(duration);
+
+      this.availableCoursesType.push(randomCourse.courseType);
+      this.availableCoursesLevel.push(randomCourse.courseLevel);
     }
   }
 

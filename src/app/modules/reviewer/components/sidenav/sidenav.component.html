@@ -3,19 +3,30 @@
         <div class="sidenav">
             <div class="logo">NS</div>
             <ul class="nav-list">
-                <hr/>
+                <hr />
                 <li><a routerLink="/reviewer/profile" routerLinkActive="active">Profile</a></li>
                 <li><a routerLink="/reviewer/acSecurity" routerLinkActive="active">Account Security</a></li>
                 <li><a routerLink="/reviewer/notifications" routerLinkActive="active">Notification Settings</a></li>
-                <hr/>
+                <hr />
                 <li><a routerLink="/reviewer/uploadstatus" routerLinkActive="active">Courses History</a></li>
                 <li><a routerLink="/reviewer/articleHistory" routerLinkActive="active">Article History</a></li>
-                <hr/>
+                <hr />
                 <li><a routerLink="/reviewer/termsandconditions" routerLinkActive="active">Terms & Conditions</a></li>
                 <li><a routerLink="/reviewer/contactus" routerLinkActive="active">Contact Us</a></li>
-                <li><a routerLink="/header" (click)="onLogoutClick()">Logout</a></li>
-                <li><a routerLink="/reviewer/delete-account" routerLinkActive="active" class="deleteAccount">Delete Account</a></li>
+                <li><a (click)="onLogoutClick()">Logout</a></li>
+                <li><a routerLink="/reviewer/delete-account" routerLinkActive="active" class="deleteAccount">Delete
+                        Account</a></li>
             </ul>
         </div>
     </div>
 </div>
+<!-- <div class="pop" *ngIf="popup">
+    <div class="close" (click)="reject()">X</div>
+    <div class="popupContainer">
+        <h1>Are you sure you want to logout?</h1>
+        <div class="logout">
+            <button mat-raised-button color="primary" (click)="approve()">OK</button>
+            <button mat-raised-button color="warn" (click)="reject()">Close</button>
+        </div>
+    </div>
+</div> -->

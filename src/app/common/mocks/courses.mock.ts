@@ -110,28 +110,6 @@ export const COURSES_MOCK = [
         }
     },
     {
-        "courseTitle": "Legal Research and Writing",
-        "courseInstructor": "Johnson",
-        "courseType": "Detailed Course",
-        "courseLevel": "Intermediate",
-        "coursePrice": 3055,
-        "reviewerRating": 4.5,
-        "subscribersRating": 4.7,
-        "subscribersCount": "7441+",
-        "courseDuration": "6h 20m",
-        "courseThumbnail": "https://picsum.photos/300/200",
-        "otherDetails": {
-            "description": "This course focuses on legal research and writing skills.",
-            "prerequisites": "No prior experience required.",
-            "certification": false,
-            "additionalResources": [
-                "Quizzes",
-                "Assignments",
-                "Live Q&A"
-            ]
-        }
-    },
-    {
         "courseTitle": "International Human Rights",
         "courseInstructor": "Johnson",
         "courseType": "Crash Course",

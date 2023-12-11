@@ -1,9 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-
-interface Categories {
-  viewValue: string;
-}
+import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 
 @Component({
   selector: 'app-header',
@@ -11,163 +7,147 @@ interface Categories {
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
-  availablecoursesimages: string[] = [];
-  freecoursesimages:string[]=[]
+
+  filteredCourses: any[] = [];
+  coursePrice: number[] = [];
+  freeCoursesImages: string[] = [];
+  paidCoursesimages: string[] = [];
+  ratingValues: number[] = [];
+  freeCoursesAuthors: string[] = [];
+  freeCoursesHeadings: string[] = [];
+  freeCoursesText: string[] = [];
+  freeCoursesDurations: string[] = [];
+  paidCoursesDurations: string[] = [];
+  paidCoursesSubscribers: string[] = [];
+  paidCoursesHeadings: string[] = [];
+  paidCoursesAuthors: string[] = [];
+  paidCoursesText: string[] = [];
+  selectedCategory: string | null = null;
+  selectedCourseType: string | null = null;
+  paidCoursesType: string[] = [];
+  paidCoursesLevel: string[] = [];
+ 
+
   title = 'my-first-app';
-  categories: Categories[] = [
-    { viewValue: 'Beginner' },
-    { viewValue: 'Intermediate' },
-    { viewValue: 'Expert' },
-    { viewValue: 'Student' },
-  ];
 
-  constructor(
-    private route: ActivatedRoute,
-    // private searchService: SearchServiceService
-  ) {}
-
-  availableCoursesHeadings: string[] = [
-    "Introduction to Criminal Law",
-    "Contract Law Demystified",
-    "Environmental Law Explained",
-    "Intellectual Property Law",
-    "Civil Rights and Liberties",
-    "Family Law Fundamentals",
-    "Real Estate Law Made Simple",
-    "Business Law Essentials for Entrepreneurs",
-    "Human Rights Law",
-    "Labor and Employment Law",
-    "International Law and Diplomacy",
-    "Torts and Personal Injury Law",
-  ];
-
-  myCoursesHeadings: string[] = [
-    "Bankruptcy Law",
-    "Healthcare Law",
-    "Immigration Law 101",
-    "Estate Planning and Probate Law",
-  ];
-
-  availableCoursesAuthors: string[] = [
-    'John Smith',
-    'Mary Johnson',
-    'David Wilson',
-    'Sarah Davis',
-    'Michael Brown',
-    'Jennifer White',
-    'Robert Lee',
-    'Susan Anderson',
-    'Charles Harris',
-    'Amanda Lewis',
-    'Laura Roberts',
-    'Robert Lee',
-  ];
-
-
-uploadedCoursesText: string[] = [
-  'Expert | Detailed Course', 
-  'Beginner | Crash Course', 
-  'Intermediate | Detailed Course', 
-  'Student | Crash Course',
-];
-
-availableCoursesText: string[] = [
-  'Expert | Detailed Course', 
-  'Beginner | Crash Course', 
-  'Intermediate | Detailed Course', 
-  'Student | Crash Course', 
-  'Beginner | Detailed Course', 
-  'Intermediate | Crash Course', 
-  'Student | Detailed Course',
-  'Expert | Crash Course',
-  'Student | Crash Course', 
-  'Beginner | Crash Course',
-  'Intermediate | Detailed Course',
-  'Expert | Detailed Course', 
-];
 
   uploadedCoursesDurations: string[] = [];
-  availableCoursesDurations: string[] = [];
-   freeCoursesDurations:string[]=[]
-  randomMyCourseValues: number[] = [];
 
   numberofviews = ["11", "43", "64", "10", "55", "66"]
   
   subscribersValues = ["10", "50", "100", "200", "500", "1000"];
 
-  coursePrice = [
-    3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
-  ];
+  private initializeFreeCoursesHeadings(): void {
+    COURSES_MOCK.forEach((course) => {
+      this.freeCoursesHeadings.push(course.courseTitle);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.freeCoursesAuthors.push(course.courseInstructor);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.freeCoursesText.push(`${course.courseLevel} | ${course.courseType}`);
+    });
+  }
 
-  myCourseSubscribers: string[] = [];
-  availableCourseSubscribers: string[] = [];
+  private initializePaidCoursesHeadings(): void {
+    COURSES_MOCK.forEach((course) => {
+      this.paidCoursesHeadings.push(course.courseTitle);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.paidCoursesAuthors.push(course.courseInstructor);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.paidCoursesText.push(
+        `${course.courseLevel} | ${course.courseType}`
+      );
+    });
+  }
+  
   ngOnInit(): void {
-    for (let l = 0; l < 12; l++) {
-      const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
-      this.availablecoursesimages.push(randomImageURL);
-      const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
-      this.availableCourseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+    this.initializeFreeCoursesHeadings();
+    this.initializePaidCoursesHeadings();
 
-      const minHours = 1.5;
-      const maxHours = 6;
-      const hours = minHours + Math.random() * (maxHours - minHours);     
-      const formattedHours = Math.floor(hours);
-      const minutes = Math.floor((hours % 1) * 60);
-      const formattedMinutes = this.formatWithLeadingZero(minutes);    
-      const duration = `${formattedHours}h ${formattedMinutes}m`;
-      this.availableCoursesDurations.push(duration);
-    }
-    for (let l = 13; l < 17; l++) {
-      const randomImageURL = `https://picsum.photos/300/200?random=${l}`;
-      this.freecoursesimages.push(randomImageURL);
-      const minHours = 0.3;
-      const maxHours = 0.5;
-      const hours = minHours + Math.random() * (maxHours - minHours);     
-      const formattedHours = Math.floor(hours);
-      const minutes = Math.floor((hours % 1) * 60);
-      const formattedMinutes = this.formatWithLeadingZero(minutes);    
-      const duration = `${formattedHours}h ${formattedMinutes}m`;
+    for (let i = 0; i < 4; i++) {
+      const randomCourse = COURSES_MOCK[i];
+      const randomImageURL = `${randomCourse.courseThumbnail}?index=${i}`;
+      this.freeCoursesImages.push(randomImageURL);
+
+      const duration = `${randomCourse.courseDuration}`;
       this.freeCoursesDurations.push(duration);
+    }
+
+    for (let l = 0; l < 12; l++) {
+      const randomCourse = COURSES_MOCK[l];
+      const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
+      this.paidCoursesimages.push(randomImageURL);
+
+      const randomPrices = `${randomCourse.coursePrice}`;
+      this.coursePrice.push(parseInt(randomPrices, 10));
+
+      const ratingValue = parseFloat(
+        `${randomCourse.reviewerRating}?index=${l}`
+      );
+
+      const fullStars = Math.floor(ratingValue);
+      const hasHalfStar = ratingValue % 1 !== 0;
+      let starsHtml = '';
+
+      for (let i = 0; i < fullStars; i++) {
+        starsHtml += '<i class="fas fa-star"></i>';
+      }
+
+      if (hasHalfStar) {
+        starsHtml += '<i class="fas fa-star-half-alt"></i>';
+      }
+
+      this.ratingValues.push(ratingValue);
+
+      const randomSubscribersIndex = Math.floor(
+        Math.random() * this.subscribersValues.length
+      );
+      this.paidCoursesSubscribers.push(
+        this.subscribersValues[randomSubscribersIndex]
+      );
+
+      const duration = `${randomCourse.courseDuration}`;
+      this.paidCoursesDurations.push(duration);
+
+      this.paidCoursesType.push(randomCourse.courseType);
+      this.paidCoursesLevel.push(randomCourse.courseLevel);
+    }
+  }
+  updateSelectedCourseType(courseType: string): void {
+    const [level, type] = courseType.split(' | ');
+    this.selectedCourseType = null;
+    if (level && type) {
+      this.selectedCategory = level;
+      this.selectedCourseType = type;
+      this.filteredCourses = this.paidCoursesimages
+        .map((image, index) => ({
+          image,
+          level: this.paidCoursesLevel[index],
+          type: this.paidCoursesType[index],
+          heading: this.paidCoursesHeadings[index],
+          author: this.paidCoursesAuthors[index],
+          text: this.paidCoursesText[index],
+          duration: this.paidCoursesDurations[index],
+          subscribers: this.paidCoursesSubscribers[index],
+          price: this.coursePrice[index],
+        }))
+        .filter(
+          (course) =>
+            (!this.selectedCategory ||
+              course.level === this.selectedCategory) &&
+            (!this.selectedCourseType ||
+              course.type === this.selectedCourseType)
+        );
+    } else {
+      this.filteredCourses = [];
     }
   }
 
   formatWithLeadingZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
-  
-  freeCoursesHeadings: string[] = [
-    "Bankruptcy Law Intro",
-    "Healthcare Law Benifits",
-    "Immigration Law 101",
-    "Estate Planning and Probate Law",
-  ];
-  
-  freeCoursesAuthors: string[] = [
-    'William Jackson',
-    'Laura Roberts',
-    'Richard Martin',
-    'Lisa Miller',
-  ];
-  }
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-  
+}
+   

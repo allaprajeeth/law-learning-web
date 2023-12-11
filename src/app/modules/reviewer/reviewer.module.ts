@@ -42,6 +42,7 @@ import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -87,12 +88,7 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    // BrowserModule,
-    // BrowserAnimationsModule
-
-
-
-
+    MatCheckboxModule
 
   ]
 })
