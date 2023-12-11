@@ -54,6 +54,18 @@ margin: 0;
   text-decoration: underline; 
 }
 
+.custom-width {
+  width: 280px;
+}
+
+.mat-menu {
+  width: 260px;
+}
+
+.mat-menu-panel {
+  width: 220px;
+}
+
 .image-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

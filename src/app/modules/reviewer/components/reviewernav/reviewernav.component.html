@@ -7,7 +7,8 @@
         <li><a routerLink="/reviewer/library" routerLinkActive="active" class="mycourses">Library</a></li>
         <li><a routerLink="/reviewer/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
         <li><a routerLink="/reviewer/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
-        <li><a routerLink="/reviewer/notification" routerLinkActive="active" class="mycourses" matBadge="4">Notifications</a></li>
+        <li><a routerLink="/reviewer/notification" routerLinkActive="active" class="mycourses"
+            matBadge="4">Notifications</a></li>
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
             <span class="user-circle-text">NS</span>
@@ -25,20 +26,30 @@
               <span>Nuncsystems</span>
               <span class="info">040-2980 3199</span>
             </li>
-            <hr/>
+            <hr />
             <li class="navbarContent"><a routerLink="/reviewer/profile">Profile</a></li>
             <li class="navbarContent"><a routerLink="/reviewer/acSecurity">Account Security</a></li>
             <li class="navbarContent"><a routerLink="/reviewer/notifications">Notification Settings</a></li>
-            <hr/>
+            <hr />
             <li class="navbarContent"><a routerLink="/reviewer/uploadstatus">Courses History</a></li>
             <li class="navbarContent"><a routerLink="/reviewer/articleHistory">Article History</a></li>
-            <hr/>
+            <hr />
             <li class="navbarContent"><a routerLink="/reviewer/termsandconditions">Terms & Conditions</a></li>
             <li class="navbarContent"><a routerLink="/reviewer/contactus">Contact Us</a></li>
-            <li class="navbarContent"><a routerLink="/header" (click)="onLogoutClick()">Logout</a></li>
+            <li class="navbarContent"><a (click)="onLogoutClick()">Logout</a></li>
           </ul>
         </li>
       </ul>
+    </div>
+  </div>
+  <div class="pop" *ngIf="popup">
+    <div class="close" (click)="reject()">X</div>
+    <div class="popupContainer">
+      <h1>Are you sure you want to logout?</h1>
+      <div class="logout">
+        <button mat-raised-button color="primary" (click)="approve()">OK</button>
+        <button mat-raised-button color="warn" (click)="reject()">Close</button>
+      </div>
     </div>
   </div>
 </nav>

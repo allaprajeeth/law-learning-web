@@ -17,11 +17,16 @@ export class InstructornavComponent {
   }
 
   onLogoutClick() {
-    this.sharedService.showLogoutAlert = true;
-  
-    setTimeout(() => {
-      this.sharedService.showLogoutAlert = false;
-    }, 5000);
-   }
+    const confirmed = window.confirm('Are you sure you want to logout?');
 
+    if (confirmed) {
+      this.sharedService.showLogoutAlert = true;
+
+      setTimeout(() => {
+        this.sharedService.showLogoutAlert = false;
+      }, 5000);
+
+      this.router.navigate(['/header']);
+    }
+  }
 }
