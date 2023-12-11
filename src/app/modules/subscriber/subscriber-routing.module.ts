@@ -143,9 +143,9 @@ const routes: Routes = [
     path:'commented',
     component:CommentedarticleComponent
    },
-   {
-    path:'published-articles',
-   },
+  //  {
+  //   path:'published-articles',
+  //  },
   {
     path:'articleHistory',
     component:ArticleHistoryComponent
