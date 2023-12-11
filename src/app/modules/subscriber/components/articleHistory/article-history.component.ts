@@ -84,9 +84,7 @@ export class ArticleHistoryComponent {
     }
   ];
 
-  openArticleDetails(articleId: number | undefined) {
-    // if (articleId !== undefined) {
-    //   this.router.navigate(['/subscriber/article-details', articleId]);
-    // }
-  }
+  // openArticleDetails(articleId: number | undefined) {
+    
+  // }
 }
