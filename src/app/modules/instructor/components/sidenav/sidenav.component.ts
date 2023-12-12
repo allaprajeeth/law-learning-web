@@ -9,16 +9,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent {
+  showLogoutPopup = false;
   constructor(
     private sharedService: PopupService,
     private logoutService: LogoutService,
     private router: Router
   ) {}
 
-  onLogoutClick() {
-    const confirmed = window.confirm('Are you sure you want to logout?');
+  onLogoutClick(): void {
+    this.showLogoutPopup = true;
+  }
 
-    if (confirmed) {
+  onClosePopup(): void {
+    this.showLogoutPopup = false;
+  }
+
+  onLogout(): void {
       this.sharedService.showLogoutAlert = true;
 
       this.logoutService.logOutUser().subscribe(() => {
@@ -28,8 +34,7 @@ export class SidenavComponent {
       setTimeout(() => {
         this.sharedService.showLogoutAlert = false;
       }, 5000);
-
       this.router.navigate(['/header']);
-    }
+      this.showLogoutPopup = false;
   }
 }

@@ -1,3 +1,4 @@
+<div class="navbar_section">
 <nav class="navbar">
   <div class="navbar-container">
     <a routerLink="/" class="logo">5th Estate ADR</a>
@@ -42,14 +43,7 @@
       </ul>
     </div>
   </div>
-  <div class="pop" *ngIf="popup">
-    <div class="close" (click)="reject()">X</div>
-    <div class="popupContainer">
-      <h1>Are you sure you want to logout?</h1>
-      <div class="logout">
-        <button mat-raised-button color="primary" (click)="approve()">OK</button>
-        <button mat-raised-button color="warn" (click)="reject()">Close</button>
-      </div>
-    </div>
-  </div>
+  <app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
+  </app-logout-popup>
 </nav>
+</div>

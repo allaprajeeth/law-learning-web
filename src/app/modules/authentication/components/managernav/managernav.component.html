@@ -1,6 +1,5 @@
-
+<div class="navbar_section">
 <nav class="navbar">
-
   <div class="navbar-container">
     <a routerLink="/" class="logo">5th Estate ADR</a>
     <div>
@@ -9,13 +8,11 @@
         <li><a routerLink="/authentication/library" routerLinkActive="active" class="mycourses">Library</a></li>
         <li><a routerLink="/authentication/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li> 
         <li><a routerLink="/authentication/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>        
-
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
             <span class="user-circle-text">NS</span>
           </div>
           <ul class="user-menu">
-
             <li class="profile-item">
               <span>
                 <div class="user-circle">
@@ -43,3 +40,7 @@
       </ul>
     </div>
   </div>
+  <app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
+  </app-logout-popup>
+</nav>
+</div>

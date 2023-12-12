@@ -1,12 +1,17 @@
 .navbar {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px 0;
+  position:fixed;
+  top: 0;
+  z-index: 6;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .navbar-container {
-  max-width: 1200px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -99,13 +104,11 @@
     display: block;
   }
 }
+
 .nav-icons {
   list-style: none;
   display: flex;
   align-items: center;
-  margin: 0;
-  padding: 0;
-  margin-left: 40px;
 
   li {
     margin-right: 40px;
@@ -113,7 +116,6 @@
     .mycourses.active {
       position: relative;
       color: #007791;
-      // margin-right: 90px;
     }
     .mycourses.active::after {
       content: "";

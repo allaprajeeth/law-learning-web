@@ -50,7 +50,7 @@ export class UploadstatusComponent {
       actionDate: '2023-04-08 01:30 PM',
     },
     {
-      name: 'Civil Procedure',
+      name: 'Environmental Law and Sustainable Development',
       approver: 'Johnson',
       status: 'Approved',
       actions: 'Approved by Johnson',

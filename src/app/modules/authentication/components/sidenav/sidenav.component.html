@@ -17,3 +17,5 @@
         </div>
     </div>
 </div>
+<app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
+</app-logout-popup>

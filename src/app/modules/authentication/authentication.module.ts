@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 // import { ComponentsComponent } from './components/components.component';
 import { ManagerloginComponent } from './components/managerlogin/managerlogin.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ManagernavComponent } from './components/managernav/managernav.component';
-
 import {MatIconModule} from '@angular/material/icon';
 // import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -38,6 +36,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/logout-popup.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,7 @@ import { AccountsecurityComponent } from './components/accountsecurity/accountse
     VideoplayerComponent,
     AboutusComponent,
     TermsandcondiComponent,
- 
+    LogoutPopupComponent,
     ContentManagerLibraryComponent,
        ArticleComponent,
        ArticleformComponent,
