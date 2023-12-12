@@ -11,6 +11,7 @@ import { LoginService } from '../../../../common/components/login/services/login
 })
 export class SubscribernavComponent implements OnInit {
   cartItemCount: number = 0;
+  showLogoutPopup = false;
 
   constructor(
     private router: Router,
@@ -27,7 +28,6 @@ export class SubscribernavComponent implements OnInit {
   }
 
   ngOnInit() {
- // Subscribe to the cartItemCount$ observable to keep it updated
     this.cartService.cartItemCount$.subscribe((count) => {
       this.cartItemCount = count;
     });
@@ -41,10 +41,15 @@ export class SubscribernavComponent implements OnInit {
     return this.sharedService.showLogoutAlert;
   }
   
-  onLogoutClick() {
-    const confirmed = window.confirm('Are you sure you want to logout?');
+  onLogoutClick(): void {
+    this.showLogoutPopup = true;
+  }
 
-    if (confirmed) {
+  onClosePopup(): void {
+    this.showLogoutPopup = false;
+  }
+
+  onLogout(): void {
       this.sharedService.showLogoutAlert = true;
 
       this.logoutService.logOutUser().subscribe(() => {
@@ -56,6 +61,6 @@ export class SubscribernavComponent implements OnInit {
       }, 5000);
 
       this.router.navigate(['/header']);
-    }
+      this.showLogoutPopup = false;
   }
 }

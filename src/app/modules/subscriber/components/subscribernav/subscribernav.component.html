@@ -1,7 +1,7 @@
-<nav class="navbar">
-  <div class="navbar-container">
-    <a routerLink="/" class="logo">5th Estate ADR</a>
-    <div>
+<div class="navbar_section">
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a routerLink="/" class="logo">5th Estate ADR</a>
       <ul class="nav-icons">
         <li><a routerLink="/subscriber/homepage" routerLinkActive="active" class="mycourses">My Home page</a></li>
         <li><a routerLink="/subscriber/library" routerLinkActive="active" class="mycourses">Library</a></li>
@@ -42,5 +42,7 @@
         </li>
       </ul>
     </div>
-  </div>
-</nav>
+    <app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
+    </app-logout-popup>
+  </nav>
+</div>

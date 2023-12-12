@@ -8,7 +8,7 @@ import { PopupService } from 'src/popup.service';
   styleUrls: ['./instructornav.component.scss']
 })
 export class InstructornavComponent {
-  
+  showLogoutPopup = false;
   constructor(private router: Router, private sharedService: PopupService) { }
 
   onUserCircleClick(event: Event) {
@@ -16,17 +16,21 @@ export class InstructornavComponent {
     this.router.navigate(['/instructor/profile']);
   }
 
-  onLogoutClick() {
-    const confirmed = window.confirm('Are you sure you want to logout?');
+  onLogoutClick(): void {
+    this.showLogoutPopup = true;
+  }
 
-    if (confirmed) {
+  onClosePopup(): void {
+    this.showLogoutPopup = false;
+  }
+
+  onLogout(): void {
       this.sharedService.showLogoutAlert = true;
 
       setTimeout(() => {
         this.sharedService.showLogoutAlert = false;
       }, 5000);
-
       this.router.navigate(['/header']);
+      this.showLogoutPopup = false;
     }
-  }
 }

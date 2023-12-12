@@ -57,7 +57,7 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
 import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
-
+import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/logout-popup.component';
 
 @NgModule({
   declarations: [
@@ -96,9 +96,10 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     StatusarticlepageComponent,
     UnderreviewarticleComponent,
     CommentedarticleComponent,
- 
+    LogoutPopupComponent,
    
   ],
+  
   imports: [
     CommonModule,
     SharedModule,

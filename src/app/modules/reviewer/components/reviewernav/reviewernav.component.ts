@@ -8,7 +8,7 @@ import { PopupService } from 'src/popup.service';
   styleUrls: ['./reviewernav.component.scss'],
 })
 export class ReviewernavComponent {
-  popup:boolean = false;
+  showLogoutPopup = false;
 
   constructor(private router: Router, private sharedService: PopupService) {}
 
@@ -20,21 +20,21 @@ export class ReviewernavComponent {
     return this.sharedService.showLogoutAlert;
   }
 
-  onLogoutClick() {
-    this.popup = true;
+  onLogoutClick(): void {
+    this.showLogoutPopup = true;
   }
 
-  approve(){
+  onClosePopup(): void {
+    this.showLogoutPopup = false;
+  }
+
+  onLogout(): void {
     this.sharedService.showLogoutAlert = true;
 
     setTimeout(() => {
       this.sharedService.showLogoutAlert = false;
     }, 5000);
     this.router.navigate(['/header']);
-    this.popup=false;
-  }
-
-  reject(){
-    this.popup = false;
+    this.showLogoutPopup = false;
   }
 }

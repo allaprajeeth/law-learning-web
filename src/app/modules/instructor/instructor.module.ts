@@ -51,6 +51,7 @@ import { InstructorpostdetailsComponent } from './components/instructorpostdetai
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/logout-popup.component';
 
 @NgModule({
   declarations: [
@@ -85,6 +86,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     LibraryInstructorComponent,
     InstructorpostdetailsComponent,
     TermsandcondiComponent,
+    LogoutPopupComponent,
   ],
   
   providers: [InstructorService],

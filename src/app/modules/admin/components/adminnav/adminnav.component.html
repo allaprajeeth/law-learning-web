@@ -1,3 +1,4 @@
+<div class="navbar_section">
 <nav class="navbar">
   <div class="navbar-container">
     <a routerLink="/" class="logo">5th Estate ADR</a>
@@ -39,4 +40,7 @@
       </ul>
     </div>
   </div>
+  <app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
+  </app-logout-popup>
 </nav>
+</div>

@@ -32,6 +32,7 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/logout-popup.component';
 
 @NgModule({
   declarations: [
@@ -52,8 +53,10 @@ import { AccountsecurityComponent } from './components/accountsecurity/accountse
     PaymentsComponent,
     NotificationsComponent,
     SidenavComponent,
-    AccountsecurityComponent
+    AccountsecurityComponent,
+    LogoutPopupComponent,
   ],
+  
   imports: [
     CommonModule,
     SharedModule,
