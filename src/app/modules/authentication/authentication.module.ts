@@ -36,7 +36,6 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
-import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/logout-popup.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +47,6 @@ import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/log
     VideoplayerComponent,
     AboutusComponent,
     TermsandcondiComponent,
-    LogoutPopupComponent,
     ContentManagerLibraryComponent,
        ArticleComponent,
        ArticleformComponent,
