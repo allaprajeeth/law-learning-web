@@ -1,12 +1,4 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
+
   .my-flex{
     margin-left: 130px;
     // margin-right: 10px;
@@ -17,9 +9,9 @@
   }
   
   .heading {
-    padding: 30px 0 5px 0;
+    padding:5px 0;
   }
-  h1{
+  h2{
     font-weight: bolder;
     color: #007791;
   }
@@ -89,6 +81,11 @@
   
       .status-bar + span {
         padding: 3px;
+      }
+      .price {
+        font-size: small;
+        font-weight: bold;
+        margin-top: 5px;
       }
     }
   
@@ -211,6 +208,13 @@
       margin-top: 20px;
       grid-template-columns: repeat(2, 1fr);
     }
+    h4 {
+      margin-top: 8px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #7803d8;
+    }
+  
   }
   
   
