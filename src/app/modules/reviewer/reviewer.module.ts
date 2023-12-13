@@ -43,7 +43,6 @@ import { PhotoComponent } from './components/photo/photo.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/logout-popup.component';
 
 @NgModule({
   declarations: [
@@ -66,8 +65,8 @@ import { LogoutPopupComponent } from 'src/app/common/components/logout-popup/log
     PhotoComponent,
     UploadStatusComponent,
     ArticleHistoryComponent,
-    LogoutPopupComponent,
   ],
+  
   imports: [
     CommonModule,
     ReviewerRoutingModule,
