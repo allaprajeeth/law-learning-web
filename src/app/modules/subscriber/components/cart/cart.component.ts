@@ -92,6 +92,9 @@ export class CartComponent implements OnInit {
       this.totalActualPrice -= removedItem.price; 
       this.calculateDiscountedPrice();
       this.updateCartItemCount();
+
+     // Update isAddedToCart property in course-card.component
+     this.cartService.updateAddedToCartStatus(removedItem.id, false);
     }
   
     if (this.cartItems.length === 0) {

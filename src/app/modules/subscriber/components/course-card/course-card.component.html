@@ -29,7 +29,7 @@
 
     <div class="courseCardButtons">
         <!-- Use *ngIf to conditionally display the button based on isAddedToCart -->
-        <button *ngIf="!isAddedToCart" class="addToCartButton" (click)="addToCartClicked(product)">
+        <button *ngIf="!isAddedToCart" class="addToCartButton" (click)="addToCartClicked()">
             Add to Cart
         </button>
         <button *ngIf="isAddedToCart" class="addToCartButton" (click)="goToCartClicked()">
@@ -37,4 +37,3 @@
         </button>
     </div>
 </div>
-

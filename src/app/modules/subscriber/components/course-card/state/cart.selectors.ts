@@ -8,7 +8,6 @@ export const selectCartItems = createSelector(
   (state) => state.items
 );
 
-// Example selector to check if an item is in the cart
 export const selectIsItemInCart = createSelector(
   selectCartItems,
   (items: any[], props: { productId: string }) =>
