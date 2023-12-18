@@ -24,6 +24,10 @@
     .contentBox {
       background-color: white;
       padding: 4px 0 4px 20px;
+      .emailContainer, .phoneContainer {
+        display: flex;
+        align-items: center;
+      }
     }
     #head {
       text-align: center;
@@ -31,7 +35,7 @@
     .editbtn {
       background-color: black;
       color: white;
-      padding-bottom: 11px;
+      padding: 6px;
       border: none;
       cursor: pointer;
       border-radius: 2px;
@@ -49,7 +53,6 @@
     input[type="text"] {
       width: 60%;
       padding: 10px;
-      margin-bottom: 10px;
     }
     input[type="email"] {
       width: 75%;

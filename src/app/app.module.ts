@@ -41,14 +41,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { LoginComponent } from './common/components/login/login.component';
-// import { ModalComponent } from './common/components/modal/modal.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
 import { FreecourseComponent } from './common/components/freecourse/freecourse.component';
 import { AboutusComponent } from './common/components/aboutus/aboutus.component';
 import { TermsandconComponent } from './common/termsandcon/termsandcon.component';
 import { CarouselModule } from 'primeng/carousel';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
-// import { PostdetailComponent } from './common/components/postingdetail/postdetail.component';
 import { ContactusComponent } from './common/components/contactus/contactus.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
@@ -59,10 +57,11 @@ import { AdvisorDetailsComponent } from './common/components/advisor-details/adv
 import { LogoutService } from './common/services/logout.service';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
-// import { LoginDialogComponent } from './common/components/login-dialog/login-dialog.component';
 import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { CartEffects } from './modules/subscriber/components/course-card/state/cart.effects';
+import { EmailVerificationComponent } from './common/components/email-verification/email-verification.component';
+import { PhoneVerificationComponent } from './common/components/phone-verification/phone-verification.component';
 
 @NgModule({
   declarations: [
@@ -80,13 +79,11 @@ import { CartEffects } from './modules/subscriber/components/course-card/state/c
     VideoplayerComponent,
     OverviewComponent,
     LoginComponent,
-    // ModalComponent,
     CourseInfoComponent,
     FreecourseComponent,
     AboutusComponent,
     TermsandconComponent,
-    OverviewFreecourseComponent,
-    // PostdetailComponent,  
+    OverviewFreecourseComponent,  
     OverviewFreecourseComponent,  
     OverviewFreecourseComponent,
     ContactusComponent,
@@ -95,6 +92,8 @@ import { CartEffects } from './modules/subscriber/components/course-card/state/c
     AdvisorDetailsComponent,
     PostdetailComponent,
     PdfViewerComponent,
+    EmailVerificationComponent,
+    PhoneVerificationComponent,
 
   ],
   imports: [

@@ -31,7 +31,6 @@ import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './components/notification/notification.component';
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CoursesPageComponent } from 'src/app/common/components/courses-page/courses-page.component';
-import { NumberchangepopupComponent } from './components/numberchangepopup/numberchangepopup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { SubarticleComponent } from './subarticle/subarticle.component';
@@ -76,7 +75,6 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     NotificationComponent,
     CourseCardComponent,
     CoursesPageComponent,
-    NumberchangepopupComponent,
     ArticleformComponent,
     SubarticleComponent,
     SubdocumentsComponent,

@@ -1,20 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { NumberchangepopupComponent } from 'src/app/modules/subscriber/components/numberchangepopup/numberchangepopup.component';
+import { EmailVerificationComponent } from 'src/app/common/components/email-verification/email-verification.component';
+import { PhoneVerificationComponent } from 'src/app/common/components/phone-verification/phone-verification.component';
 
 @Component({
   selector: 'app-sharedaccountsecurity',
   templateUrl: './sharedaccountsecurity.component.html',
   styleUrls: ['./sharedaccountsecurity.component.scss']
 })
-export class SharedaccountsecurityComponent implements OnInit  {
+export class SharedaccountsecurityComponent {
 
-  accountForm: FormGroup;
+  accountForm!: FormGroup;
   isCurrentEmailEditable = false;
   isCurrentPhoneEditable = false;
 
   constructor(private fb: FormBuilder, private dialog: MatDialog) {
+    this.initializeForm();
+  }
+
+  initializeForm() {
     this.accountForm = this.fb.group({
       currentEmail: [{ value: '', disabled: true }, Validators.required],
       currentPhone: [{ value: '', disabled: true }, Validators.required],
@@ -24,23 +29,25 @@ export class SharedaccountsecurityComponent implements OnInit  {
       phoneOtp: ['']
     });
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  openPhoneVerificationModal() {
-    const dialogRef = this.dialog.open(NumberchangepopupComponent, {
-      width: '700px', // Set the width of the modal
-    });
 
-    dialogRef.afterClosed().subscribe(newPhoneNumber => {
-      if (newPhoneNumber) {
-        // Handle the new phone number, e.g., update your form control or send it to the server.
-        console.log('New Phone Number:', newPhoneNumber);
-      }
-    });
-  }
+  openVerificationModal(changeType: 'phone' | 'email') {
+    let dialogRef;
+    if (changeType === 'phone') {
+      dialogRef = this.dialog.open(PhoneVerificationComponent, {
+        width: '700px'
+      });
+    } else if (changeType === 'email') {
+      dialogRef = this.dialog.open(EmailVerificationComponent, {
+        width: '700px'
+      });
+    }
+  }  
+
   editCurrentPhone() {
-    console.log('Edit button clicked');
-    this.openPhoneVerificationModal();
+    this.openVerificationModal('phone');
+  }
+  
+  editCurrentEmail() {
+    this.openVerificationModal('email');
   }
 }

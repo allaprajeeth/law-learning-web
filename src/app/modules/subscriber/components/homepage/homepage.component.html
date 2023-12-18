@@ -104,7 +104,7 @@
 
   <ng-container *ngIf="!selectedCategory && !selectedCourseType">
     <div class="image-grid">
-      <div *ngFor="let image of availablecoursesimages; index as availableCourses;" class="image-item"
+      <div *ngFor="let image of availableCoursesimages; index as availableCourses;" class="image-item"
         (mouseover)="openMyMenu($event, availableCourses)" (mouseleave)="closeMyMenu(availableCourses)">
         <div class="imagesContainer">
           <img [src]="image" width="300" height="200" class="img" alt="Random Image">

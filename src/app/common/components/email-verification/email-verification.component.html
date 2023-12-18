@@ -1,0 +1,54 @@
+<form [formGroup]="accountForm">
+  <div class="modal-content" style="width: 700px;" *ngIf="showContainer1">
+    <button class="close-button" (click)="closeDialog()">&times;</button>
+    <h2>Verify your Phone Number</h2>
+      <input type="text" id="currentPhone" formControlName="currentPhone"
+      [disabled]="!isCurrentPhoneEditable" placeholder="0987654321">
+    <button type="button" (click)="sendOtp()">Send OTP</button>
+    <input *ngIf="showOtpInput" type="text" id="phoneOtp" formControlName="phoneOtp" placeholder="Enter OTP"
+      maxlength="6">
+    <button *ngIf="showOtpInput" type="button" [disabled]="!accountForm.get('phoneOtp')?.valid"
+      (click)="verifyotp()">Verify and Update Number</button>
+  </div>
+
+  <div class="modal-content" style="width: 700px;" *ngIf="showContainer2">
+    <button class="close-button" (click)="closeDialog()">&times;</button>
+    <form *ngIf="otpVerified" [formGroup]="updateEmailForm">
+      <h2>Update Email</h2>
+      <mat-form-field appearance="outline">
+        <mat-label>Enter New Email</mat-label>
+        <input matInput type="email" formControlName="email" name="email" required [attr.autocomplete]="'off'">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm New Email</mat-label>
+        <input matInput type="email" formControlName="confirmEmail" name="confirmEmail" required
+          (input)="checkEmailMatch()" [attr.autocomplete]="'off'">
+      </mat-form-field>
+
+      <mat-error
+        *ngIf="updateEmailForm.get('email')?.value != updateEmailForm.get('confirmEmail')?.value && updateEmailForm.get('confirmEmail')?.touched">
+        New Email Id should match
+      </mat-error>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" *ngIf="!updateEmailMode"
+          [disabled]="updateEmailForm.invalid || !isEmailMatching()" (click)="sendOtpEmail()">
+          Send OTP
+        </button>
+      </div>
+    </form>
+
+    <form *ngIf="updateEmailMode" [formGroup]="emailOtpForm">
+      <h2>OTP Verification</h2>
+      <input type="text" formControlName="emailOtp" required [attr.autocomplete]="'off'"
+        (input)="onEmailOtpInput($event)">
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit"
+          [disabled]="emailOtpForm.get('emailOtp')?.value.length !== 6" (click)="verifyAndUpdate()">
+          Update Email
+        </button>
+      </div>
+    </form>
+  </div>
+</form>

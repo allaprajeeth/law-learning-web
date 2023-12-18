@@ -10,7 +10,7 @@ export class HomepageComponent implements OnInit {
   coursePrice: number[] = [];
   randomFutureDates: Date[] = [];
   mycoursesimages: string[] = [];
-  availablecoursesimages: string[] = [];
+  availableCoursesimages: string[] = [];
   ratingValues: number[] = [];
   myCoursesAuthors: string[] = [];
   myCoursesHeadings: string[] = [];
@@ -93,7 +93,7 @@ export class HomepageComponent implements OnInit {
     if (level && type) {
       this.selectedCategory = level;
       this.selectedCourseType = type;
-      this.filteredCourses = this.availablecoursesimages
+      this.filteredCourses = this.availableCoursesimages
         .map((image, index) => ({
           image,
           level: this.availableCoursesLevel[index],
@@ -188,7 +188,7 @@ export class HomepageComponent implements OnInit {
     for (let l = 0; l < 12; l++) {
       const randomCourse = COURSES_MOCK[l];
       const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
-      this.availablecoursesimages.push(randomImageURL);
+      this.availableCoursesimages.push(randomImageURL);
 
       const randomPrices = `${randomCourse.coursePrice}`;
       this.coursePrice.push(parseInt(randomPrices, 10));
