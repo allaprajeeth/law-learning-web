@@ -16,13 +16,8 @@ export class SharedarticleformComponent {
       name: ['', Validators.required],
       articleName: ['', Validators.required],
       description: ['', Validators.required],
+      file: ['', Validators.required],
     });
-  }
-
-  onSubmit() {
-    if (this.articleForm.invalid) {
-      // this.articleForm.markAllAsTouched();
-    }
   }
 
   navigateToSuccessMessage() {

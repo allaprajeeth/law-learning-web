@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../modal.service';
 import { ActivatedRoute } from '@angular/router';
-
-interface Categories {
-  viewValue: string;
-}
+import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 
 @Component({
   selector: 'app-unique-homepage',
@@ -13,30 +10,15 @@ interface Categories {
 })
 export class HomepageComponent implements OnInit {
 
-  headings: string[] = ['Course 1', 'Course 2', 'Course 3', 'Course 4'];
+  // headings: string[] = ['Course 1', 'Course 2', 'Course 3', 'Course 4'];
 
-  // constructor(private modelService: ModalService) {}
-
-  openCourseInfo(heading: string) {
-    this.modelService.changeExpanded([heading]);
-    // Add code to navigate to CourseInfo component
-  }
-
-
-
-  // ngOnInit(): void {
-  //   throw new Error('Method not implemented.');
+  // openCourseInfo(heading: string) {
+  //   this.modelService.changeExpanded([heading]);
+  //   // Add code to navigate to CourseInfo component
   // }
 
   title = 'my-first-app';
-  categories: Categories[] = [
-    { viewValue: 'Beginner' },
-    { viewValue: 'Intermediate' },
-    { viewValue: 'Expert' },
-    { viewValue: 'Student' },
-  ];
-
-   constructor(private route: ActivatedRoute, private modelService: ModalService) { }
+  //  constructor(private route: ActivatedRoute, private modelService: ModalService) { }
 
   coursesForSubmission: any[] = [];
   coursesUnderReview: any[] = [];
@@ -45,33 +27,22 @@ export class HomepageComponent implements OnInit {
 
   uploadedimages: string[] = [];
   rejectedimages: string[] = [];
-  approvedcoursesimages: string[] = [];
+  approvedCoursesimages: string[] = [];
   underreviewimages: string[] = [];
 
   uploadedCoursesDurations: string[] = [];
   rejectedCoursesDurations: string[] = [];
   approvedCoursesDurations: string[] = [];
   underreviewDurations: string[] = [];
-
-  coursePrice = [
-    3199, 3029, 3229, 3009, 3599, 3055, 3199, 3327, 3087, 3299, 3172, 3449,
-  ];
-
-  
-  approvedCoursesHeadings: string[] = [
-    "Real Estate Law Made Simple",
-    "Intellectual Property Law",
-    "Family Law Fundamentals",
-    "Environmental Law Explained",
-    "International Law and Diplomacy",
-    "Civil Rights and Liberties",
-    "Contract Law Demystified",
-    "Human Rights Law",
-    "Introduction to Criminal Law",
-    "Business Law Essentials",
-    "Torts and Personal Injury Law",
-    "Labor and Employment Law",
-  ];
+  approvedCoursesType: string[] = [];
+  approvedCoursesLevel: string[] = [];
+  coursePrice: number[] = [];
+  selectedCategory: string | null = null;
+  selectedCourseType: string | null = null;
+  filteredCourses: any[] = [];
+  approvedCoursesText: string[] = [];
+  approvedCoursesHeadings: string[] = [];
+  approvedCoursesAuthors: string[] = [];
 
   underreviewHeadings: string[] = [
     "Bankruptcy Law",
@@ -90,11 +61,6 @@ export class HomepageComponent implements OnInit {
   rejectedCoursesHeadings: string[] = [
     "Business Law Essentials for Entrepreneurs",
     "Torts and Personal Injury Law",
-  ];
-
-  approvedCoursesAuthors: string[] = [
-    'John Smith', 'Mary Johnson', 'David Wilson', 'Sarah Davis', 'Michael Brown', 'Jennifer White',
-    'Robert Lee', 'Susan Anderson', 'Charles Harris', 'Amanda Lewis', 'Laura Roberts', 'Robert Lee',
   ];
 
   underreviewAuthors: string[] = [
@@ -128,21 +94,6 @@ export class HomepageComponent implements OnInit {
     'Intermediate | Detailed Course',
   ];
 
-  approvedCoursesText: string[] = [
-    'Expert | Detailed Course',
-    'Beginner | Crash Course',
-    'Intermediate | Detailed Course',
-    'Student | Crash Course',
-    'Beginner | Detailed Course',
-    'Intermediate | Crash Course',
-    'Student | Detailed Course',
-    'Expert | Crash Course',
-    'Student | Crash Course',
-    'Beginner | Crash Course',
-    'Intermediate | Detailed Course',
-    'Expert | Detailed Course',
-  ];
-
   randomUploadValues: number[] = [];
   randomRejectedValues: number[] = [];
   randomunderreviewValues: number[] = [];
@@ -153,18 +104,79 @@ export class HomepageComponent implements OnInit {
   approvedCourseSubscribers: string[] = [];
   underreviewSubscribers: string[] = [];
 
-  ngOnInit(): void {
+  private initializeApprovedCoursesHeadings(): void {
+    COURSES_MOCK.forEach((course) => {
+      this.approvedCoursesHeadings.push(course.courseTitle);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.approvedCoursesAuthors.push(course.courseInstructor);
+    });
+    COURSES_MOCK.forEach((course) => {
+      this.approvedCoursesText.push(
+        `${course.courseLevel} | ${course.courseType}`
+      );
+    });
+  }
+ 
+  updateSelectedCourseType(courseType: string): void {
+    const [level, type] = courseType.split(' | ');
+    this.selectedCourseType = null;
+    if (level && type) {
+      this.selectedCategory = level;
+      this.selectedCourseType = type;
+      this.filteredCourses = this.approvedCoursesimages
+        .map((image, index) => ({
+          image,
+          level: this.approvedCoursesLevel[index],
+          type: this.approvedCoursesType[index],
+          heading: this.approvedCoursesHeadings[index],
+          author: this.approvedCoursesAuthors[index],
+          text: this.approvedCoursesText[index],
+          duration: this.approvedCoursesDurations[index],
+          subscribers: this.approvedCourseSubscribers[index],
+          price: this.coursePrice[index],
+        }))
+        .filter(
+          (course) =>
+            (!this.selectedCategory || course.level === this.selectedCategory) &&
+            (!this.selectedCourseType || course.type === this.selectedCourseType)
+        );
+    } else {
+      this.filteredCourses = [];
+    }
+  }
 
+  ngOnInit(): void {
+    this.initializeApprovedCoursesHeadings();
     this.coursesForSubmission = this.generateCoursesData(4, this.uploadedimages, this.randomUploadValues,
       this.uploadSubscribers, this.uploadedCoursesDurations);
 
     this.coursesUnderReview = this.generateCoursesData(2, this.underreviewimages, this.randomunderreviewValues,
       this.underreviewSubscribers, this.underreviewDurations);
 
-    this.approvedCourses = this.generateCoursesData(12, this.approvedcoursesimages, [], this.approvedCourseSubscribers,
-      this.approvedCoursesDurations);
-
     this.commentedCourses = this.generateCoursesData(2, this.rejectedimages, this.randomRejectedValues, [], this.rejectedCoursesDurations);
+
+      for (let l = 0; l < 12; l++) {
+        const randomCourse = COURSES_MOCK[l];
+        const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
+        this.approvedCoursesimages.push(randomImageURL);
+  
+        const randomPrices = `${randomCourse.coursePrice}`;
+        this.coursePrice.push(parseInt(randomPrices, 10));
+  
+        const randomSubscribersIndex = Math.floor(
+          Math.random() * this.subscribersValues.length
+        );
+        this.approvedCourseSubscribers.push(
+          this.subscribersValues[randomSubscribersIndex]
+        );
+  
+        const duration = `${randomCourse.courseDuration}`;
+        this.approvedCoursesDurations.push(duration);
+  
+        this.approvedCoursesType.push(randomCourse.courseType);
+        this.approvedCoursesLevel.push(randomCourse.courseLevel);
+      }
   }
 
   generateCoursesData(count: number, images: string[], randomValues: number[],
@@ -176,12 +188,12 @@ export class HomepageComponent implements OnInit {
       images.push(randomImageURL);
       const randomValue = Math.floor(Math.random() * 100) + 1;
       randomValues.push(randomValue);
-
+ 
       if (subscribers.length > 0) {
         const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
         subscribers.push(this.subscribersValues[randomSubscribersIndex]);
       }
-
+ 
       const minHours = 1.5;
       const maxHours = 6;
       const hours = minHours + Math.random() * (maxHours - minHours);
@@ -190,7 +202,7 @@ export class HomepageComponent implements OnInit {
       const formattedMinutes = this.formatWithLeadingZero(minutes);
       const duration = `${formattedHours}h ${formattedMinutes}m`;
       durations.push(duration);
-
+ 
       courses.push({
         // Add other properties as needed based on your actual data structure
         title: `Course ${i + 1}`,
