@@ -112,7 +112,7 @@ export class HeaderComponent implements OnInit {
     }
   }
   updateSelectedCourseType(courseType: string): void {
-    if (courseType === 'Clear All Filters') {
+    if (courseType === 'Clear Filters') {
       this.selectedCategory = null;
       this.selectedCourseType = null;
       this.filteredCourses = [];

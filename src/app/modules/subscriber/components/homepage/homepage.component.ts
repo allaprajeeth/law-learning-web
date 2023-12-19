@@ -88,7 +88,7 @@ export class HomepageComponent implements OnInit {
   } = { left: '0', right: 'unset', top: '0', display: 'none' };
 
   updateSelectedCourseType(courseType: string): void {
-    if (courseType === 'Clear All Filters') {
+    if (courseType === 'Clear Filters') {
       this.selectedCategory = null;
       this.selectedCourseType = null;
       this.filteredCourses = [];
