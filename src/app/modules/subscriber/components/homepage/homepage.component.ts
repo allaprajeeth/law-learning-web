@@ -88,32 +88,38 @@ export class HomepageComponent implements OnInit {
   } = { left: '0', right: 'unset', top: '0', display: 'none' };
 
   updateSelectedCourseType(courseType: string): void {
-    const [level, type] = courseType.split(' | ');
-    this.selectedCourseType = null;
-    if (level && type) {
-      this.selectedCategory = level;
-      this.selectedCourseType = type;
-      this.filteredCourses = this.availableCoursesimages
-        .map((image, index) => ({
-          image,
-          level: this.availableCoursesLevel[index],
-          type: this.availableCoursesType[index],
-          heading: this.availableCoursesHeadings[index],
-          author: this.availableCoursesAuthors[index],
-          text: this.availableCoursesText[index],
-          duration: this.availableCoursesDurations[index],
-          subscribers: this.availableCourseSubscribers[index],
-          price: this.coursePrice[index],
-        }))
-        .filter(
-          (course) =>
-            (!this.selectedCategory ||
-              course.level === this.selectedCategory) &&
-            (!this.selectedCourseType ||
-              course.type === this.selectedCourseType)
-        );
-    } else {
+    if (courseType === 'Clear All Filters') {
+      this.selectedCategory = null;
+      this.selectedCourseType = null;
       this.filteredCourses = [];
+    } else {
+      const [level, type] = courseType.split(' | ');
+      this.selectedCourseType = null;
+      if (level && type) {
+        this.selectedCategory = level;
+        this.selectedCourseType = type;
+        this.filteredCourses = this.availableCoursesimages
+          .map((image, index) => ({
+            image,
+            level: this.availableCoursesLevel[index],
+            type: this.availableCoursesType[index],
+            heading: this.availableCoursesHeadings[index],
+            author: this.availableCoursesAuthors[index],
+            text: this.availableCoursesText[index],
+            duration: this.availableCoursesDurations[index],
+            subscribers: this.availableCourseSubscribers[index],
+            price: this.coursePrice[index],
+          }))
+          .filter(
+            (course) =>
+              (!this.selectedCategory ||
+                course.level === this.selectedCategory) &&
+              (!this.selectedCourseType ||
+                course.type === this.selectedCourseType)
+          );
+      } else {
+        this.filteredCourses = [];
+      }
     }
   }
 

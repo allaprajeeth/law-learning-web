@@ -1,13 +1,12 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit{
-
+export class HeaderComponent implements OnInit {
   filteredCourses: any[] = [];
   coursePrice: number[] = [];
   freeCoursesImages: string[] = [];
@@ -26,16 +25,14 @@ export class HeaderComponent implements OnInit{
   selectedCourseType: string | null = null;
   paidCoursesType: string[] = [];
   paidCoursesLevel: string[] = [];
- 
 
   title = 'my-first-app';
 
-
   uploadedCoursesDurations: string[] = [];
 
-  numberofviews = ["11", "43", "64", "10", "55", "66"]
-  
-  subscribersValues = ["10", "50", "100", "200", "500", "1000"];
+  numberofviews = ['11', '43', '64', '10', '55', '66'];
+
+  subscribersValues = ['10', '50', '100', '200', '500', '1000'];
 
   private initializeFreeCoursesHeadings(): void {
     COURSES_MOCK.forEach((course) => {
@@ -57,12 +54,10 @@ export class HeaderComponent implements OnInit{
       this.paidCoursesAuthors.push(course.courseInstructor);
     });
     COURSES_MOCK.forEach((course) => {
-      this.paidCoursesText.push(
-        `${course.courseLevel} | ${course.courseType}`
-      );
+      this.paidCoursesText.push(`${course.courseLevel} | ${course.courseType}`);
     });
   }
-  
+
   ngOnInit(): void {
     this.initializeFreeCoursesHeadings();
     this.initializePaidCoursesHeadings();
@@ -117,32 +112,38 @@ export class HeaderComponent implements OnInit{
     }
   }
   updateSelectedCourseType(courseType: string): void {
-    const [level, type] = courseType.split(' | ');
-    this.selectedCourseType = null;
-    if (level && type) {
-      this.selectedCategory = level;
-      this.selectedCourseType = type;
-      this.filteredCourses = this.paidCoursesimages
-        .map((image, index) => ({
-          image,
-          level: this.paidCoursesLevel[index],
-          type: this.paidCoursesType[index],
-          heading: this.paidCoursesHeadings[index],
-          author: this.paidCoursesAuthors[index],
-          text: this.paidCoursesText[index],
-          duration: this.paidCoursesDurations[index],
-          subscribers: this.paidCoursesSubscribers[index],
-          price: this.coursePrice[index],
-        }))
-        .filter(
-          (course) =>
-            (!this.selectedCategory ||
-              course.level === this.selectedCategory) &&
-            (!this.selectedCourseType ||
-              course.type === this.selectedCourseType)
-        );
-    } else {
+    if (courseType === 'Clear All Filters') {
+      this.selectedCategory = null;
+      this.selectedCourseType = null;
       this.filteredCourses = [];
+    } else {
+      const [level, type] = courseType.split(' | ');
+      this.selectedCourseType = null;
+      if (level && type) {
+        this.selectedCategory = level;
+        this.selectedCourseType = type;
+        this.filteredCourses = this.paidCoursesimages
+          .map((image, index) => ({
+            image,
+            level: this.paidCoursesLevel[index],
+            type: this.paidCoursesType[index],
+            heading: this.paidCoursesHeadings[index],
+            author: this.paidCoursesAuthors[index],
+            text: this.paidCoursesText[index],
+            duration: this.paidCoursesDurations[index],
+            subscribers: this.paidCoursesSubscribers[index],
+            price: this.coursePrice[index],
+          }))
+          .filter(
+            (course) =>
+              (!this.selectedCategory ||
+                course.level === this.selectedCategory) &&
+              (!this.selectedCourseType ||
+                course.type === this.selectedCourseType)
+          );
+      } else {
+        this.filteredCourses = [];
+      }
     }
   }
 
@@ -150,4 +151,3 @@ export class HeaderComponent implements OnInit{
     return value < 10 ? `0${value}` : `${value}`;
   }
 }
-   
