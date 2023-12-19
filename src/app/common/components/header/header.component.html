@@ -39,15 +39,12 @@
 <br>
 <br>
 
-    <div *ngIf="!selectedCategory && !selectedCourseType" class="heading" >
+    <div class="heading" >
       <h1>Paid Courses</h1>
-    </div>
-    <div *ngIf="selectedCategory || selectedCourseType" class="heading">
-      <h1>Filtered Courses</h1>
     </div>
     <div class="my-flex">
       <mat-form-field appearance="outline" id="filters" class="custom-width">
-        <mat-label>Filters</mat-label>
+        <mat-label>{{ selectedCategory ? selectedCategory + ' | ' + selectedCourseType : 'Filters' }}</mat-label>
         <mat-select [matMenuTriggerFor]="filters">
           <mat-menu #filters="matMenu" yPosition="below">
             <button mat-menu-item [matMenuTriggerFor]="beginner" class="mat-menu">Beginner</button>

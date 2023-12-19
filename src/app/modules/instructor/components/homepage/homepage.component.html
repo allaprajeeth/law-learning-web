@@ -9,14 +9,11 @@
   </div>
   <div class="image-grid">
     <div *ngFor="let image of uploadedimages; let i = index" class="image-item" routerLink="/instructor/courseInfo">
-      <!-- <div (click)="openCourseInfo('Courses for submission')"> -->
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
           <i class="fa fa-play-circle play-icon"></i>
         </div>
-
-
         <span class="duration">{{ uploadedCoursesDurations[i] }}</span>
       </div>
       <div class="headingsContainer">
@@ -25,7 +22,6 @@
         <h4>{{ uploadedCoursesText[i] }}</h4>
       </div>
       <button routerLink="/instructor/editcourses" class="mycourses">Edit Course</button>
-      <!-- </div> -->
     </div>
   </div>
   <br />
@@ -39,7 +35,6 @@
   </div>
   <div class="image-grid">
     <div *ngFor="let image of underreviewimages; let k = index" class="image-item" routerLink="/instructor/courseInfo">
-      <!-- <div (click)="openCourseInfo('Courses under review')"> -->
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
@@ -64,7 +59,6 @@
           <span>Reviewer Ratings</span>
         </div>
       </div>
-      <!-- </div> -->
     </div>
   </div>
   <br />
@@ -72,17 +66,13 @@
   <hr />
   <br />
 
-  <div *ngIf="!selectedCategory && !selectedCourseType" class="heading">
+  <div class="heading">
     <h1>Approved Courses</h1>
-    <p>Congratulations, your course has been approved and it is now available to the subscribers.</p>
-  </div>
-  <div *ngIf="selectedCategory || selectedCourseType" class="heading">
-    <h1>Filtered Courses</h1>
     <p>Congratulations, your course has been approved and it is now available to the subscribers.</p>
   </div>
   <div class="my-flex">
     <mat-form-field appearance="outline" id="filters" class="custom-width">
-      <mat-label>Filters</mat-label>
+      <mat-label>{{ selectedCategory ? selectedCategory + ' | ' + selectedCourseType : 'Filters' }}</mat-label>
       <mat-select [matMenuTriggerFor]="filters">
         <mat-menu #filters="matMenu" yPosition="below">
           <button mat-menu-item [matMenuTriggerFor]="beginner" class="mat-menu">Beginner</button>
@@ -122,7 +112,6 @@
     <div class="image-grid">
       <div *ngFor="let image of approvedCoursesimages; let l = index" class="image-item"
         routerLink="/instructor/courseInfo">
-        <!-- <div (click)="openCourseInfo('Approved Courses')"> -->
         <div class="imagesContainer">
           <img [src]="image" width="300" height="200" class="img" alt="Random Image">
           <div class="overlay">
@@ -166,7 +155,6 @@
         </div>
         <br />
         <br />
-        <!-- </div> -->
       </div>
     </div>
   </ng-container>
@@ -175,8 +163,6 @@
     <div class="image-grid">
       <div *ngFor="let course of filteredCourses; let filteredIndex = index" class="image-item"
         routerLink="/instructor/courseInfo">
-        <!-- {{filteredCourses | json}} -->
-        <!-- <div (click)="openCourseInfo('Approved Courses')"> -->
         <div class="imagesContainer">
           <img [src]="course.image" width="300" height="200" class="img" alt="Random Image">
           <div class="overlay">
@@ -220,7 +206,6 @@
         </div>
         <br />
         <br />
-        <!-- </div> -->
       </div>
     </div>
   </div>
@@ -232,7 +217,6 @@
   </div>
   <div class="image-grid">
     <div *ngFor="let image of rejectedimages; let j = index" class="image-item" routerLink="/instructor/courseInfo">
-      <!-- <div (click)="openCourseInfo('Commented Courses')"> -->
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
@@ -257,7 +241,6 @@
           <span>Reviewer Ratings</span>
         </div>
       </div>
-      <!-- </div> -->
     </div>
   </div>
 </div>

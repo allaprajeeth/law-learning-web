@@ -52,9 +52,8 @@ export class CartComponent implements OnInit {
   
   calculateDiscountedPrice(): void {
     this.discountedPrice = this.totalActualPrice;
-  // this.totalActualPrice = this.getTotalActualPrice();
-  this.applyCoupon();
-  this.cartService.updateDiscountedPrice(this.discountedPrice);
+    this.applyCoupon();
+    this.cartService.updateDiscountedPrice(this.discountedPrice);
 }
 
   applyCoupon() {
@@ -83,7 +82,6 @@ export class CartComponent implements OnInit {
 
   onRemoveClick(uniqueId: string) {
     console.log('Removing item with uniqueId:', uniqueId);
-  
     const itemIndex = this.cartItems.findIndex((item) => item.id === uniqueId);
     console.log('Item index to remove:', itemIndex);
   
@@ -102,7 +100,6 @@ export class CartComponent implements OnInit {
     }
   }
   
-
   updateCartItemCount() {
     this.cartItemCount = this.cartItems.length;
     this.cartService.updateCartItemCount(this.cartItemCount);
@@ -112,4 +109,3 @@ export class CartComponent implements OnInit {
     return Math.round(discount);
   }
 }
-

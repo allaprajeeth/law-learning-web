@@ -6,7 +6,6 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class CartEffects {
-
     addToCartRedirect$ = createEffect(() =>
     this.actions$.pipe(
     ofType(CartActions.addToCart),

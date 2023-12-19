@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalService } from '../modal.service';
-import { ActivatedRoute } from '@angular/router';
 import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 
 @Component({
@@ -9,16 +7,7 @@ import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
-
-  // headings: string[] = ['Course 1', 'Course 2', 'Course 3', 'Course 4'];
-
-  // openCourseInfo(heading: string) {
-  //   this.modelService.changeExpanded([heading]);
-  //   // Add code to navigate to CourseInfo component
-  // }
-
   title = 'my-first-app';
-  //  constructor(private route: ActivatedRoute, private modelService: ModalService) { }
 
   coursesForSubmission: any[] = [];
   coursesUnderReview: any[] = [];

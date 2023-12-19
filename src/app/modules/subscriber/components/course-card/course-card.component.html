@@ -21,14 +21,8 @@
                 </span> Students who complete the course may earn a certification in Law Learning.</li>
         </ul>
     </mat-card-content>
-    <!-- <div class="courseCardButtons">
-        <button class="addToCartButton" (click)="addToCartClicked(product)">
-            {{ isAddedToCart ? 'Go to Cart' : 'Add to Cart' }}
-        </button>
-    </div> -->
 
     <div class="courseCardButtons">
-        <!-- Use *ngIf to conditionally display the button based on isAddedToCart -->
         <button *ngIf="!isAddedToCart" class="addToCartButton" (click)="addToCartClicked()">
             Add to Cart
         </button>
