@@ -4,7 +4,7 @@ import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 @Component({
   selector: 'app-unique-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent implements OnInit {
   title = 'my-first-app';
@@ -34,35 +34,39 @@ export class HomepageComponent implements OnInit {
   approvedCoursesAuthors: string[] = [];
 
   underreviewHeadings: string[] = [
-    "Bankruptcy Law",
-    "Healthcare Law",
-    "Immigration Law 101",
-    "Estate Planning and Probate Law",
+    'Bankruptcy Law',
+    'Healthcare Law',
+    'Immigration Law 101',
+    'Estate Planning and Probate Law',
   ];
 
   uploadedCoursesHeadings: string[] = [
-    "Cybersecurity and Privacy Law",
-    "Tax Law Essentials",
-    "Criminal Procedure",
-    "Administrative Law",
+    'Cybersecurity and Privacy Law',
+    'Tax Law Essentials',
+    'Criminal Procedure',
+    'Administrative Law',
   ];
 
   rejectedCoursesHeadings: string[] = [
-    "Business Law Essentials for Entrepreneurs",
-    "Torts and Personal Injury Law",
+    'Business Law Essentials for Entrepreneurs',
+    'Torts and Personal Injury Law',
   ];
 
   underreviewAuthors: string[] = [
-    'William Jackson', 'Laura Roberts', 'Richard Martin', 'Lisa Miller',
+    'William Jackson',
+    'Laura Roberts',
+    'Richard Martin',
+    'Lisa Miller',
   ];
 
   uploadedCoursesAuthors: string[] = [
-    'James Young', 'Elizabeth Wilson', 'Thomas Baker', 'Patricia Moore',
+    'James Young',
+    'Elizabeth Wilson',
+    'Thomas Baker',
+    'Patricia Moore',
   ];
 
-  rejectedCoursesAuthors: string[] = [
-    'Daniel Clark', 'Linda Taylor',
-  ];
+  rejectedCoursesAuthors: string[] = ['Daniel Clark', 'Linda Taylor'];
 
   uploadedCoursesText: string[] = [
     'Expert | Detailed Course',
@@ -87,7 +91,7 @@ export class HomepageComponent implements OnInit {
   randomRejectedValues: number[] = [];
   randomunderreviewValues: number[] = [];
 
-  subscribersValues = ["10", "50", "100", "200", "500", "1000"];
+  subscribersValues = ['10', '50', '100', '200', '500', '1000'];
 
   uploadSubscribers: string[] = [];
   approvedCourseSubscribers: string[] = [];
@@ -106,70 +110,99 @@ export class HomepageComponent implements OnInit {
       );
     });
   }
- 
+
   updateSelectedCourseType(courseType: string): void {
-    const [level, type] = courseType.split(' | ');
-    this.selectedCourseType = null;
-    if (level && type) {
-      this.selectedCategory = level;
-      this.selectedCourseType = type;
-      this.filteredCourses = this.approvedCoursesimages
-        .map((image, index) => ({
-          image,
-          level: this.approvedCoursesLevel[index],
-          type: this.approvedCoursesType[index],
-          heading: this.approvedCoursesHeadings[index],
-          author: this.approvedCoursesAuthors[index],
-          text: this.approvedCoursesText[index],
-          duration: this.approvedCoursesDurations[index],
-          subscribers: this.approvedCourseSubscribers[index],
-          price: this.coursePrice[index],
-        }))
-        .filter(
-          (course) =>
-            (!this.selectedCategory || course.level === this.selectedCategory) &&
-            (!this.selectedCourseType || course.type === this.selectedCourseType)
-        );
-    } else {
+    if (courseType === 'Clear All Filters') {
+      this.selectedCategory = null;
+      this.selectedCourseType = null;
       this.filteredCourses = [];
+    } else {
+      const [level, type] = courseType.split(' | ');
+      this.selectedCourseType = null;
+      if (level && type) {
+        this.selectedCategory = level;
+        this.selectedCourseType = type;
+        this.filteredCourses = this.approvedCoursesimages
+          .map((image, index) => ({
+            image,
+            level: this.approvedCoursesLevel[index],
+            type: this.approvedCoursesType[index],
+            heading: this.approvedCoursesHeadings[index],
+            author: this.approvedCoursesAuthors[index],
+            text: this.approvedCoursesText[index],
+            duration: this.approvedCoursesDurations[index],
+            subscribers: this.approvedCourseSubscribers[index],
+            price: this.coursePrice[index],
+          }))
+          .filter(
+            (course) =>
+              (!this.selectedCategory ||
+                course.level === this.selectedCategory) &&
+              (!this.selectedCourseType ||
+                course.type === this.selectedCourseType)
+          );
+      } else {
+        this.filteredCourses = [];
+      }
     }
   }
 
   ngOnInit(): void {
     this.initializeApprovedCoursesHeadings();
-    this.coursesForSubmission = this.generateCoursesData(4, this.uploadedimages, this.randomUploadValues,
-      this.uploadSubscribers, this.uploadedCoursesDurations);
+    this.coursesForSubmission = this.generateCoursesData(
+      4,
+      this.uploadedimages,
+      this.randomUploadValues,
+      this.uploadSubscribers,
+      this.uploadedCoursesDurations
+    );
 
-    this.coursesUnderReview = this.generateCoursesData(2, this.underreviewimages, this.randomunderreviewValues,
-      this.underreviewSubscribers, this.underreviewDurations);
+    this.coursesUnderReview = this.generateCoursesData(
+      2,
+      this.underreviewimages,
+      this.randomunderreviewValues,
+      this.underreviewSubscribers,
+      this.underreviewDurations
+    );
 
-    this.commentedCourses = this.generateCoursesData(2, this.rejectedimages, this.randomRejectedValues, [], this.rejectedCoursesDurations);
+    this.commentedCourses = this.generateCoursesData(
+      2,
+      this.rejectedimages,
+      this.randomRejectedValues,
+      [],
+      this.rejectedCoursesDurations
+    );
 
-      for (let l = 0; l < 12; l++) {
-        const randomCourse = COURSES_MOCK[l];
-        const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
-        this.approvedCoursesimages.push(randomImageURL);
-  
-        const randomPrices = `${randomCourse.coursePrice}`;
-        this.coursePrice.push(parseInt(randomPrices, 10));
-  
-        const randomSubscribersIndex = Math.floor(
-          Math.random() * this.subscribersValues.length
-        );
-        this.approvedCourseSubscribers.push(
-          this.subscribersValues[randomSubscribersIndex]
-        );
-  
-        const duration = `${randomCourse.courseDuration}`;
-        this.approvedCoursesDurations.push(duration);
-  
-        this.approvedCoursesType.push(randomCourse.courseType);
-        this.approvedCoursesLevel.push(randomCourse.courseLevel);
-      }
+    for (let l = 0; l < 12; l++) {
+      const randomCourse = COURSES_MOCK[l];
+      const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
+      this.approvedCoursesimages.push(randomImageURL);
+
+      const randomPrices = `${randomCourse.coursePrice}`;
+      this.coursePrice.push(parseInt(randomPrices, 10));
+
+      const randomSubscribersIndex = Math.floor(
+        Math.random() * this.subscribersValues.length
+      );
+      this.approvedCourseSubscribers.push(
+        this.subscribersValues[randomSubscribersIndex]
+      );
+
+      const duration = `${randomCourse.courseDuration}`;
+      this.approvedCoursesDurations.push(duration);
+
+      this.approvedCoursesType.push(randomCourse.courseType);
+      this.approvedCoursesLevel.push(randomCourse.courseLevel);
+    }
   }
 
-  generateCoursesData(count: number, images: string[], randomValues: number[],
-    subscribers: string[], durations: string[]): any[] {
+  generateCoursesData(
+    count: number,
+    images: string[],
+    randomValues: number[],
+    subscribers: string[],
+    durations: string[]
+  ): any[] {
     const courses: any[] = [];
 
     for (let i = 0; i < count; i++) {
@@ -177,12 +210,14 @@ export class HomepageComponent implements OnInit {
       images.push(randomImageURL);
       const randomValue = Math.floor(Math.random() * 100) + 1;
       randomValues.push(randomValue);
- 
+
       if (subscribers.length > 0) {
-        const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
+        const randomSubscribersIndex = Math.floor(
+          Math.random() * this.subscribersValues.length
+        );
         subscribers.push(this.subscribersValues[randomSubscribersIndex]);
       }
- 
+
       const minHours = 1.5;
       const maxHours = 6;
       const hours = minHours + Math.random() * (maxHours - minHours);
@@ -191,7 +226,7 @@ export class HomepageComponent implements OnInit {
       const formattedMinutes = this.formatWithLeadingZero(minutes);
       const duration = `${formattedHours}h ${formattedMinutes}m`;
       durations.push(duration);
- 
+
       courses.push({
         // Add other properties as needed based on your actual data structure
         title: `Course ${i + 1}`,
