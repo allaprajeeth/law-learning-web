@@ -72,7 +72,7 @@
   </div>
   <div class="my-flex">
     <mat-form-field appearance="outline" id="filters" class="custom-width">
-      <mat-label>Filters</mat-label>
+      <mat-label>{{ selectedCategory ? selectedCategory + ' | ' + selectedCourseType : 'Filters' }}</mat-label>
       <mat-select [matMenuTriggerFor]="filters">
         <mat-menu #filters="matMenu" yPosition="below">
           <button mat-menu-item [matMenuTriggerFor]="beginner" class="mat-menu">Beginner</button>

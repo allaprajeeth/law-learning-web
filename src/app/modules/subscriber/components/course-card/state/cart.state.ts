@@ -2,8 +2,8 @@ import { createReducer, on, Action } from '@ngrx/store';
 import * as CartActions from './cart.actions';
 
 export interface CartState {
-  product: any; // Adjust based on your actual structure
-  items: string[]; // Adjust based on your actual structure
+  product: any;
+  items: string[];
 }
 
 export const initialState: CartState = {
