@@ -24,7 +24,6 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
-import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -44,13 +43,21 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+// import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { HistoryComponent } from './components/history/history.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SubmissionCoursesOverviewComponent } from './components/submission-courses-overview/submission-courses-overview.component';
+import { UnderReviewOverviewComponent } from './components/under-review-overview/under-review-overview.component';
+import { ApprovedCoursesOverviewComponent } from './components/approved-courses-overview/approved-courses-overview.component';
+import { ApprovedCoursesInfoComponent } from './components/approved-courses-info/approved-courses-info.component';
+import { SubmissionCoursesInfoComponent } from './components/submission-courses-info/submission-courses-info.component';
+import { UnderReviewCoursesInfoComponent } from './components/under-review-courses-info/under-review-courses-info.component';
+import { CommentedCoursesInfoComponent } from './components/commented-courses-info/commented-courses-info.component';
+import { CommentedCoursesOverviewComponent } from './components/commented-courses-overview/commented-courses-overview.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +70,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     EditcoursesComponent,
     ArticleComponent,
     VideoplayerComponent,
-    CourseInfoComponent,
     SuccessDialogComponent,
     InstructorSidenavComponent,
     AboutusComponent,
@@ -80,11 +86,19 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     ContactusComponent,
     DeleteAccountComponent,
     PaymentHistoryComponent,
-    InstructorOverviewComponent,
+    // InstructorOverviewComponent,
     HistoryComponent,
     LibraryInstructorComponent,
     InstructorpostdetailsComponent,
     TermsandcondiComponent,
+    SubmissionCoursesOverviewComponent,
+    UnderReviewOverviewComponent,
+    ApprovedCoursesOverviewComponent,
+    ApprovedCoursesInfoComponent,
+    SubmissionCoursesInfoComponent,
+    UnderReviewCoursesInfoComponent,
+    CommentedCoursesInfoComponent,
+    CommentedCoursesOverviewComponent,
   ],
   
   providers: [InstructorService],

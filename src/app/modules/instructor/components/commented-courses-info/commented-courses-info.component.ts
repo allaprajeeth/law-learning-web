@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ModalService } from '../modal.service';
 
 @Component({
-  selector: 'app-course-info',
-  templateUrl: './course-info.component.html',
-  styleUrls: ['./course-info.component.scss']
+  selector: 'app-commented-courses-info',
+  templateUrl: './commented-courses-info.component.html',
+  styleUrls: ['./commented-courses-info.component.scss']
 })
-export class CourseInfoComponent implements OnInit {
+export class CommentedCoursesInfoComponent implements OnInit {
   headings: string[] = [];
   isCheckboxChecked1: boolean = false;
   isCheckboxChecked2: boolean = false;
