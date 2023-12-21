@@ -2,13 +2,13 @@
 <div class="container">
   <div class="heading">
     <div class="heading2">
-      <h1>Courses for submission</h1>
+      <h1>Courses for Submission</h1>
       <p class="create-course"><a routerLink="/instructor/courses" class="mycourses">Create a Course</a></p>
     </div>
     <p class="comment">Create a course, upload your files and submit to the website</p>
   </div>
   <div class="image-grid">
-    <div *ngFor="let image of uploadedimages; let i = index" class="image-item" routerLink="/instructor/courseInfo">
+    <div *ngFor="let image of uploadedimages; let i = index" class="image-item" routerLink="/instructor/submissioncoursesInfo">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
@@ -29,12 +29,12 @@
   <br />
 
   <div class="heading">
-    <h1>Courses under review </h1>
+    <h1>Courses UnderReview </h1>
     <p>You have successfully submitted your course; it is under review. If there are any comments kindly correct them.
     </p>
   </div>
   <div class="image-grid">
-    <div *ngFor="let image of underreviewimages; let k = index" class="image-item" routerLink="/instructor/courseInfo">
+    <div *ngFor="let image of underreviewimages; let k = index" class="image-item" routerLink="/instructor/underreviewcoursesInfo">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
@@ -112,7 +112,7 @@
   <ng-container *ngIf="!selectedCategory && !selectedCourseType">
     <div class="image-grid">
       <div *ngFor="let image of approvedCoursesimages; let l = index" class="image-item"
-        routerLink="/instructor/courseInfo">
+        routerLink="/instructor/approvedcoursesInfo">
         <div class="imagesContainer">
           <img [src]="image" width="300" height="200" class="img" alt="Random Image">
           <div class="overlay">
@@ -163,7 +163,7 @@
   <div *ngIf="selectedCategory || selectedCourseType" class="filtered-container">
     <div class="image-grid">
       <div *ngFor="let course of filteredCourses; let filteredIndex = index" class="image-item"
-        routerLink="/instructor/courseInfo">
+        routerLink="/instructor/approvedcoursesInfo">
         <div class="imagesContainer">
           <img [src]="course.image" width="300" height="200" class="img" alt="Random Image">
           <div class="overlay">
@@ -217,7 +217,7 @@
     <p>This course has several comments, kindly rework and resubmit.</p>
   </div>
   <div class="image-grid">
-    <div *ngFor="let image of rejectedimages; let j = index" class="image-item" routerLink="/instructor/courseInfo">
+    <div *ngFor="let image of rejectedimages; let j = index" class="image-item" routerLink="/instructor/commentedcoursesInfo">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">

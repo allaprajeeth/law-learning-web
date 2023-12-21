@@ -38,7 +38,6 @@
     .fa .star {
       color: gold;
       font-size: 16px;
-      //margin-bottom: 10px;
     }
   }
 }
@@ -95,20 +94,20 @@ mat-panel-title {
 .titleDesc {
   display: flex;
   justify-content: space-evenly;
-  width:100%;
+  width: 100%;
   .titlehead {
-    width:77%;
+    width: 77%;
   }
   .titlehead {
     .videos-title {
       cursor: pointer;
     }
   }
-  .lastUpdated{
+  .lastUpdated {
     display: flex;
     justify-content: flex-end;
   }
-  .video-time{
+  .video-time {
     display: flex;
     justify-content: flex-end;
   }
@@ -176,9 +175,7 @@ mat-card {
     color: #333;
     margin: 3px 0;
   }
-
- 
-  }
+}
 
 .container1 {
   .container2 {
@@ -233,21 +230,4 @@ mat-card {
     text-indent: 100px;
     text-align: justify;
   }
-
- 
-
- 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,7 +8,6 @@ import { PublicProfileComponent } from './components/public-profile/public-profi
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
 import { EditcoursesComponent } from './components/editcourses/editcourses.component';
 import { ArticleComponent } from './components/article/article.component';
-import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
@@ -19,13 +18,18 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
+// import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { HistoryComponent } from './components/history/history.component';
+import { ApprovedCoursesOverviewComponent } from './components/approved-courses-overview/approved-courses-overview.component';
+import { SubmissionCoursesInfoComponent } from './components/submission-courses-info/submission-courses-info.component';
+import { UnderReviewCoursesInfoComponent } from './components/under-review-courses-info/under-review-courses-info.component';
+import { ApprovedCoursesInfoComponent } from './components/approved-courses-info/approved-courses-info.component';
+import { CommentedCoursesInfoComponent } from './components/commented-courses-info/commented-courses-info.component';
 
 const routes: Routes = [
   {
@@ -43,7 +47,7 @@ const routes: Routes = [
   },
   {
     path: 'instructoroverview',
-    component: InstructorOverviewComponent,
+    component: ApprovedCoursesOverviewComponent,
   },
   {
     path: 'profile',
@@ -74,8 +78,21 @@ const routes: Routes = [
     component: ArticleformComponent,
   },
   {
-    path: 'courseInfo',
-    component: CourseInfoComponent,
+    path: 'submissioncoursesInfo',
+    component: SubmissionCoursesInfoComponent,
+  },
+  {
+    path: 'underreviewcoursesInfo',
+    component: UnderReviewCoursesInfoComponent,
+  },
+  {
+    path: 'approvedcoursesInfo',
+    component: ApprovedCoursesInfoComponent,
+  },
+  {
+    path: 'commentedcoursesInfo',
+    component: CommentedCoursesInfoComponent
+    ,
   },
   {
     path: 'aboutus',

@@ -1,6 +1,15 @@
 <div class="heading">
     <h1>{{ overviewHeading }}</h1>
     <p class="first-paragraph">{{ overviewDescription }}</p>
+    <div class="ratingConatiner">
+        <span> Reviewer Ratings : &nbsp;</span>
+        <span class="star starNumber">{{ reviewerRatings }}</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733; </span>
+        <span class="star">&#9734; </span>
+    </div>
     <p>Instructor : {{ instructorName }}</p>
     <p>Course Duration : {{ courseDuration }}</p>
     <p class="icon">
@@ -79,10 +88,10 @@
                 <div class="video-group">
                     <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
                         <div class="titleDesc">
-                            <div class="titlehead  "   (click)="toggleSectionInfo(i, j)">
-                                    {{ video?.title }}
+                            <div class="titlehead  " (click)="toggleSectionInfo(i, j)">
+                                {{ video?.title }}
                             </div>
-                            
+
                             <div class=" video-time" style="color: rgb(122, 119, 119)">
                                 {{ video?.time }}
                             </div>
@@ -127,6 +136,5 @@
             </div><br>
             <p class="instructorDescription">{{ instructorDescription }}</p>
         </div>
-    </div>   
     </div>
-
+</div>

@@ -1,0 +1,86 @@
+<app-instructornav></app-instructornav>
+
+<div *ngFor="let heading of headings ?? []">
+  <h2>{{ heading }}</h2>
+</div>
+<mat-divider></mat-divider>
+<div>
+  <div class="course-info-container">
+    <span class="badge">3</span>
+    <mat-tab-group>
+      <mat-tab label="Overview">
+        <div class="tabs">
+          <app-approved-courses-overview></app-approved-courses-overview>
+          <!-- <app-submission-courses-overview></app-submission-courses-overview> -->
+          <!-- <app-under-review-commented-overview></app-under-review-commented-overview> -->
+        </div>
+      </mat-tab>
+      <mat-tab label="Watch Content">
+        <app-videoplayer></app-videoplayer>
+      </mat-tab>
+      <mat-tab label="Attend Test">
+        <div class="upload-test">
+          <p class="testLine"><i>You didn't uploaded test yet.</i></p>
+          <br>
+          <br>
+          <button mat-raised-button color="primary" routerLink="/instructor/quiztest">Create Test</button>
+        </div>
+      </mat-tab>
+      <mat-tab label="Certificate">
+        <app-shared-certificate></app-shared-certificate>
+      </mat-tab>
+
+      <mat-tab label="Comments" matBadge="3">
+        <div class="container-wrapper">
+          <div class="container">
+            <h1 style="text-align: center;">Comments</h1>
+            <div class="section">
+              <div [class]="toggleClass1()">
+                <h3 style="font-weight: 590;">Section 1</h3>
+                <p>1.2 Hands On Practise</p>
+                <div class="commentsContainer">
+                  <h4 [class]="commentClass1">Comments by Reviewer</h4>
+                  <p class="text">The analysis in this section could be strengthened by providing more recent case law
+                    examples.</p>
+                </div>
+                </div>
+                <mat-checkbox [(ngModel)]="isCheckboxChecked1" (change)="toggleColor(1)"></mat-checkbox>
+                <span>Check to mark as Completed</span>
+            </div>
+            <div class="section">
+              <div [class]="toggleClass2()">
+                <h3 style="font-weight: 590;">Section 3</h3>
+                <p>3.1 Introduction</p>
+                <div class="commentsContainer">
+                  <h4 [class]="commentClass2">Comments by Admin</h4>
+                  <p class="text">The tone in certain sections could be made more accessible for learners without
+                    compromising on legal precision.</p>
+                </div>
+              </div>
+              <mat-checkbox [(ngModel)]="isCheckboxChecked2" (change)="toggleColor(2)"></mat-checkbox>
+              <span>Check to mark as Completed</span>
+            </div>
+            <div class="section">
+              <div [class]="toggleClass3()">
+                <h3 style="font-weight: 590;">Section 4</h3>
+                <p>4.3 Let's get started</p>
+                <div class="commentsContainer">
+                  <h4 [class]="commentClass3">Comments by Reviewer</h4>
+                  <p class="text">Ensure that the content aligns with the learning objectives outlined for this
+                    module.</p>
+                </div>
+                <div class="commentsContainer">
+                  <h4 [class]="commentClass3">Comments by Admin</h4>
+                  <p class="text">Consider expanding on the practical implications of the legal principles discussed
+                    here.</p>
+                </div>
+              </div>
+              <mat-checkbox [(ngModel)]="isCheckboxChecked3" (change)="toggleColor(3)"></mat-checkbox>
+              <span>Check to mark as Completed</span>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
