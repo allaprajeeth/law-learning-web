@@ -33,7 +33,8 @@ export class RegisterComponent {
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
     private acceptButtonService:PdfService,
-    private router:Router
+    private router:Router,
+    private  registrationService: RegistrationService
   ) {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required]],
@@ -80,24 +81,24 @@ export class RegisterComponent {
   }
 
   sendOtpSignup() {
-    this.showOtpFields()
-    // const name = this.name?.value;
-    // const email = this.email?.value;
-    // const phone = this.phone?.value;
-    // const selectedCategory=this.selectedCategory?.value
-    // this.registrationService.validationKey$.next('');
-    // const signUpFormData = {
-    //   name: name,
-    //   email: email,
-    //   phone: phone,
-    //   role: selectedCategory
-    // };
+    // this.showOtpFields()
+    const name = this.name?.value;
+    const email = this.email?.value;
+    const phone = this.phone?.value;
+   // const selectedCategory=this.selectedCategory?.value
+    this.registrationService.validationKey$.next('');
+    const signUpFormData = {
+      name: name,
+      email: email,
+      phone: phone,
+      //role: selectedCategory
+    };
 
-    // this.registrationService.sendOtpSignup(signUpFormData).subscribe(
-    //   ()=>{
-    //     this.showOtpFields()
-    //   }
-    // )
+    this.registrationService.sendOtpSignup(signUpFormData).subscribe(
+      ()=>{
+        this.showOtpFields()
+      }
+    )
 
   }
 
@@ -113,21 +114,20 @@ export class RegisterComponent {
   }
   signUppage() {
     this.router.navigate(['/login']);
-    // const phoneOtp = this.phoneOtp?.value;
-    // const emailOtp = this.emailOtp?.value;
-
-    //  const signUpCompleteFormData={
-    //      phone_otp:phoneOtp,
-    //      email_otp:emailOtp,
-    //      validation_key :this.registrationService.validationKey$.value
-    //  }
-    //  this.registrationService.signUppage(signUpCompleteFormData).subscribe(
-    //   ()=>{
+    const phoneOtp = this.phoneOtp?.value;
+    const emailOtp = this.emailOtp?.value;
+     const signUpCompleteFormData={
+         phone_otp:phoneOtp,
+         email_otp:emailOtp,
+         validation_key :this.registrationService.validationKey$.value
+     }
+     this.registrationService.signUppage(signUpCompleteFormData).subscribe(
+      ()=>{
         
-    //       this.router.navigate(['/login']);
+          this.router.navigate(['/login']);
        
-    //   }
-    //  )
+      }
+     )
   }
   
 

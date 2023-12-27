@@ -24,9 +24,9 @@ export class LogoutService {
       
     
 logOutUser(): Observable<any> {
-  const email = this.loginService.loggedInUserEmail$.value;
+  const email = this.loginService.loggedInUserEmail$
   const jwtToken =this.authTokenService.jwtToken$.value;
-
+  console.log(email)
   const logoutData={
     email: email,
     jwt_token:jwtToken

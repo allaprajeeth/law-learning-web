@@ -23,7 +23,7 @@ export class RegistrationService {
     .pipe(
      
       tap((response: any) => {
-        if(!!response && !!response?.message){
+        if(!!response ){
           this.validationKey$.next(response.data.validation_key);
           this.notificationService.notify(`OTP's sent successfully`)
         }
@@ -45,7 +45,7 @@ export class RegistrationService {
     return this.apiService.post(url, data)
     .pipe(
       tap((response: any) => {
-        if(!!response && !!response?.message){
+        if(!!response ){
           this.notificationService.notify(`User Registered Successfully`)
         }
       }),
