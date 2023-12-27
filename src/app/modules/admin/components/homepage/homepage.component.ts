@@ -3,14 +3,24 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
 
+
 interface Categories {
   viewValue: string;
 }
+interface PdfFile {
+  name: string;
+  url: string;
+}
 
+interface articleFile {
+  name: string;
+  // url: string;
+}
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  
 })
 export class HomepageComponent implements OnInit{
   selectedFilter: string = ''; 
@@ -199,10 +209,123 @@ export class HomepageComponent implements OnInit{
       const duration = `${formattedHours}h ${formattedMinutes}m`;
       this.uploadedCoursesDurations.push(duration);
     }
+
+    
   }
 
   formatWithLeadingZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router:Router) { }
+
+  reviewpdfs = [
+    { name: 'Human Rights Law and Theory', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
+    { name: 'Intellectual Property Rights', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
+    { name: 'Banking and Insurance Law', icon: 'path/to/icon3.png', url: 'path/to/document3.pdf' },
+    { name: 'Constitutional Law I', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
+  ];
+
+  reviewedpdfs = [
+    { name: 'Law of Contract Explanation', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
+    { name: 'Labour and Industrial Law', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
+    { name: 'Constitutional Law I', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
+    { name: 'Public International Law', icon: 'path/to/icon6.png', url: 'path/to/document6.pdf' },
+  ];
+
+  pdfFiles: PdfFile[] = [
+    {
+      name: "Introduction to law and Legal Reasoning",
+      url:"https://www.law.berkeley.edu/wp-content/uploads/2017/11/CommonLawCivilLawTraditions.pdf"
+    },
+    {
+      name: "The Six Laws of Learning",
+      url: "https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf"
+    },
+    {
+      name: "The Book in Legal Education",
+      url: "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/178/Learning_the_Law_catalog__reduced.pdf?sequence=2&isAllowed=y"
+    },
+  {
+    name:"Law and Legal Reasoning Explanation",
+    url:"https://www.lawspice.com/webresources/webworld/pdf/Futura%20BK%20BT.pdf"
+  },
+  {
+    name:"The Common Law and Civil Law",
+    url:"https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf"
+  },
+  {
+    name:"Legal Education Explanation",
+    url:"https://openyls.law.yale.edu/bitstream/handle/20.500.13051/178/Learning_the_Law_catalog__reduced.pdf?sequence=2&isAllowed=y"
+  },
+  {
+    name:"The Book in Early Legal Education",
+    url:"https://www.lawspice.com/webresources/webworld/pdf/Futura%20BK%20BT.pdf"
+  },
+  {
+    name:"The Common Law and Civil Law Traditions",
+    url:"https://www.law.berkeley.edu/wp-content/uploads/2017/11/CommonLawCivilLawTraditions.pdf"
+  },
+  ];
+
+
+  openFile(pdfFileIndex: number): void {
+    const selectedPdf = this.pdfFiles[pdfFileIndex];
+    this.router.navigate(['/pdf-viewer'], { queryParams: { src: selectedPdf.url } });
+    
+  }
+
+  reviewarticles = [
+    { name: 'Intellectual Property Trends', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
+    { name: 'Constitutional Challenges Today', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
+    { name: 'Ethics in Criminal Defense', icon: 'path/to/icon3.png', url: 'path/to/document3.pdf' },
+    { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
+    
+  ];
+
+  reviewedarticles = [
+    { name: 'Cybersecurity Legal Insights', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
+    { name: 'New Trends in Governance', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
+    { name: 'Common vs. Civil Law Snapshot', icon: 'path/to/icon3.png', url: 'path/to/document3.pdf' },
+    { name: 'Family Law Dynamics', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
+    
+  ];
+
+
+  articleFiles: articleFile[] = [
+    {
+      name: '"What Is Criminal Law"',
+    },
+    {
+      name: '"Criminal Law Definition"',
+    },
+    {
+      name: '"Mastering Legal Research:"',
+    },
+  {
+    name:'"Law School Applications:"',
+  },
+  {
+    name:'"Legal Ethics:Legal Profession"',
+  },
+  {
+    name:'"Legal Industry:Digital Age"',
+  },
+  {
+    name: '"Legal Internships:Experience"',
+  },
+  {
+    name:"The Common Law and Civil Law Traditions",
+  },
+  ];
+
+  checkAuditReport() {
+    
+    this.router.navigate(["admin/audit-report"]);
+   
+    // console.log('Checking Audit Report...');
+  } 
 }
+
+
+
+

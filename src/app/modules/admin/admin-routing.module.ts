@@ -16,7 +16,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { PaymentsComponent } from './components/payments/payments.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
-
+import { AuditReportComponent } from './components/audit-report/audit-report.component';
+import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
 const routes: Routes = [
   {
     path:"",
@@ -86,6 +87,14 @@ const routes: Routes = [
   {
     path:"delete-account",
     component: DeleteaccountComponent
+  },
+  {
+    path:"audit-report",
+    component: AuditReportComponent
+  },
+  {
+    path: 'post/:id',
+    component:AdminPostdetailComponent
   },
   
 ];

@@ -159,7 +159,7 @@ export class PublishingcornerComponent {
 
     },
      {  id: 6,
-      title: '" Legal Internships:Experience"',
+      title: '"Legal Internships:Experience"',
       views: 738, 
       author:'Williams',
       reviewer:'',
@@ -295,7 +295,9 @@ openArticleInNewTab(blogPost: BlogPost): void {
     postDetailRoute = '/subscriber/post'; // If the current route is "/subscriber/article", use "/subscriber/post"
   } else if (currentRoute.startsWith('/instructor/article')) {
     postDetailRoute = '/instructor/post'; // If the current route is "/instructor/article", use "/instructor/post"
-  } else {
+  } else if (currentRoute.startsWith('/admin/article')){
+    postDetailRoute = '/admin/post';
+  }else {
     postDetailRoute = '/post'; // Fallback to "/post" if the current route doesn't match the specified cases
   }
 
