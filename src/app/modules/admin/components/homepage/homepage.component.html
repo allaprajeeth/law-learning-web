@@ -1,16 +1,24 @@
 <app-adminnav></app-adminnav>
 <br />
 <br>
-<div class="my-flex" style="width: 300px;">
-  <mat-form-field appearance="outline" style="width: 100%;">
-    <mat-label>Filters</mat-label>
-    <mat-select [(ngModel)]="selectedFilter" style="width: 100%" appearance="outline" start>
-      <mat-option value="contentManager">Content-Manager section</mat-option>
-      <mat-option value="reviewer">Reviewer section</mat-option>
-      <mat-option value="uploaded">Uploaded section</mat-option>
-    </mat-select>
-  </mat-form-field>
+<div class="flex-container">
+  <div class="my-flex" style="width: 300px;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Filters</mat-label>
+      <mat-select [(ngModel)]="selectedFilter" style="width: 100%" appearance="outline" start>
+        <mat-option value="contentManager">Content-Manager section</mat-option>
+        <mat-option value="reviewer">Reviewer section</mat-option>
+        <mat-option value="uploaded">Uploaded section</mat-option>
+        <mat-option value="library">Library</mat-option>
+        <mat-option value="Publishing-corner">Publishing Corner</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div>
+    <button class="report-btn" (click)="checkAuditReport()">Check Audit Report</button>
+  </div>
 </div>
+
 
 <div *ngIf="selectedFilter === 'contentManager' || selectedFilter === ''">
   <div class="container">
@@ -201,7 +209,106 @@
         </h5>
       </div>
     </div>
+    <br />
+    <hr />
   </div>
 </div>
-<br />
-<br />
+
+<br>
+<div *ngIf="selectedFilter === 'library' || selectedFilter === ''">
+  <h2 class="section-name">Library(Documents)</h2>
+
+  <!-- <div> -->
+  <div class="container">
+    <!-- <h1>Reviewer Section</h1> -->
+    <div class="heading">
+      <h2>Documents to Review</h2>
+    </div>
+    <div class="pdf-list">
+      <div *ngFor="let reviewpdf of reviewpdfs">
+        <div class="pdf-item">
+          <mat-icon>picture_as_pdf</mat-icon>
+          <span class="pdf-name">{{ reviewpdf.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading">
+      <h2>Reviewed Documents</h2>
+    </div>
+    <div class="pdf-list">
+      <div *ngFor="let reviewedpdf of reviewedpdfs">
+        <div class="pdf-item">
+          <mat-icon>picture_as_pdf</mat-icon>
+          <span class="pdf-name">{{ reviewedpdf.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading">
+      <h2>Uploaded Documents</h2>
+    </div>
+
+    <div class="pdf-grid">
+      <div *ngFor="let pdfFile of pdfFiles; let i = index" class="pdf-item" (click)="openFile(i)">
+
+        <mat-icon>picture_as_pdf</mat-icon>
+        <div class="pdf-name">{{ pdfFile.name }}</div>
+      </div>
+    </div>
+    <hr />
+    <br />
+
+
+
+  </div>
+</div>
+
+<div *ngIf="selectedFilter === 'Publishing-corner' || selectedFilter === ''">
+  <h2 class="section-name">Publishing Corner(Articles)</h2>
+
+  <!-- <div> -->
+  <div class="container">
+    <!-- <h1>Reviewer Section</h1> -->
+    <div class="heading">
+      <h2>Articles to Review</h2>
+    </div>
+    <div class="article-list">
+      <div *ngFor="let reviewarticle of reviewarticles">
+        <div class="article-item">
+          <mat-icon>description</mat-icon>
+          <span class="article-name">{{ reviewarticle.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading">
+      <h2>Reviewed Articles</h2>
+    </div>
+    <div class="article-list">
+      <div *ngFor="let reviewedarticle of reviewedarticles">
+        <div class="article-item">
+          <mat-icon>description</mat-icon>
+          <span class="article-name">{{ reviewedarticle.name }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="heading">
+      <h2>Uploaded Articles</h2>
+    </div>
+
+    <div class="article-grid">
+      <div *ngFor="let articleFile of articleFiles; let i = index" class="article-item">
+
+        <mat-icon>description</mat-icon>
+        <div class="article-name">{{ articleFile.name }}</div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+  </div>
+</div>

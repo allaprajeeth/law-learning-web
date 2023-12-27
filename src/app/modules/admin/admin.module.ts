@@ -32,6 +32,8 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { AuditReportComponent } from './components/audit-report/audit-report.component';
+import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { AccountsecurityComponent } from './components/accountsecurity/accountse
     NotificationsComponent,
     SidenavComponent,
     AccountsecurityComponent,
+    AuditReportComponent,
+    AdminPostdetailComponent,
   ],
   
   imports: [
