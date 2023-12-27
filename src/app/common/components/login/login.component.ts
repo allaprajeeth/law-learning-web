@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -50,7 +51,7 @@ openModal() {
       (!!this.loginForm.get('phone')?.value ?? false);
   }
   sendOtps() {
-    this.sendOtpLogin();
+    this.sendOtpClick();
   }
   get email() {
     return this.loginForm.get('email');
@@ -64,25 +65,22 @@ openModal() {
   get phoneOtp() {
     return this.loginForm.get('phone_otp');
   }
-  get selectedCategory(){
-    return this.loginForm.get('selectedCategory');
-  }
-  sendOtpLogin() {
-    this.showOtpFields()
-    // const email = this.email?.value;
-    // const phone = this.phone?.value;
-    // const selectedCategory=this.selectedCategory?.value
-    // this.loginService.validationKey$.next('');
-    // const loginRequestFormData = {
-    //   email: email,
-    //   phone: phone,
-    //   role: selectedCategory
-    // };
-    // this.loginService.sendOtpLogin(loginRequestFormData).subscribe(
-    //   ()=>{
-    //     this.showOtpFields()
-    //   }
-    // )
+ 
+  sendOtpClick() {
+    // this.showOtpFields()
+    const email = this.email?.value;
+    const phone = this.phone?.value;
+    this.loginService.validationKey$.next('');
+    const loginRequestFormData = {
+      email: email,
+      phone: phone,
+    };
+    
+    this.loginService.sendOtpClick(loginRequestFormData).subscribe(
+      ()=>{
+        this.showOtpFields()
+      }
+    )
    
   }
   showOtpFields(): void {
@@ -92,28 +90,29 @@ openModal() {
     this.isSendOtpsClicked = !this.isSendOtpsClicked;
   }
   login() {
-   // this.loginpage();
-   this.loginValidation();
+   this.loginClick()
+   //this.loginValidation();
    
   }
-   loginpage() {
+   loginClick() {
     const email = this.email?.value;
     const phone = this.phone?.value;
-    const selectedCategory=this.selectedCategory?.value
     const phoneOtp = this.phoneOtp?.value;
     const emailOtp = this.emailOtp?.value;
 
      const loginVerifyFormData={
          email:email,
          phone:phone,
-         role:selectedCategory,
          phone_otp:phoneOtp,
          email_otp:emailOtp,
-         validation_key :this.loginService.validationKey$.value
+         validation_key :this.loginService.validationKey$.value,
+         
      }
-     this.loginService.loginpage(loginVerifyFormData).subscribe(
+     this.loginService.loginClick(loginVerifyFormData).subscribe(
       ()=>{
+        console.log(this.loginService.validationKey$.value)
         this.loginValidation();
+        
       }
      )
   }

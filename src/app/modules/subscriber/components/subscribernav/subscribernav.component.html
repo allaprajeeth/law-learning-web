@@ -22,7 +22,7 @@
                   <a routerLink="" class="user-circle-text" style="color: white">NS</a>
                 </div>
               </span>
-              <span class="info">{{email}}</span>
+              <p>Email: {{ loggedInUserEmail$ | async }}</p>
             </li>
             <li class="username-item">
               <span>Nuncsystems</span>

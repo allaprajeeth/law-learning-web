@@ -62,7 +62,8 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { CartEffects } from './modules/subscriber/components/course-card/state/cart.effects';
 import { EmailVerificationComponent } from './common/components/email-verification/email-verification.component';
 import { PhoneVerificationComponent } from './common/components/phone-verification/phone-verification.component';
-
+import { AuthEffects } from './common/components/login/store/auth.effects';
+import { authReducer } from './common/components/login/store/auth.reducer';
 @NgModule({
   declarations: [
     AppComponent,
@@ -126,10 +127,14 @@ import { PhoneVerificationComponent } from './common/components/phone-verificati
     MatButtonModule,
     FileUploadModule,
     PdfViewerModule,
-    StoreModule.forRoot({ cart: cartReducer, }),
-    EffectsModule.forRoot([CartEffects]),
-  
-  ],
+    StoreModule.forRoot({ 
+      cart: cartReducer, 
+      auth: authReducer,
+    }),
+    EffectsModule.forRoot(
+      [AuthEffects,
+      CartEffects]
+      ),],
   
   providers: [PopupService,
    LogoutService,
