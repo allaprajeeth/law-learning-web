@@ -53,6 +53,11 @@
     width: 100%;
   }
 
+  input[matInput][type="text"] {
+    height: 0;
+    margin-bottom: 0;
+  }
+  
   button {
     padding: 6px;
     margin: 5px;

@@ -5,8 +5,8 @@
     <input type="text" id="currentEmail" formControlName="currentEmail" [disabled]="!isCurrentEmailEditable"
       placeholder="nuncsystems@gmail.com">
     <button type="button" (click)="sendOtp()">Send OTP</button>
-    <input *ngIf="showOtpInput" type="text" id="emailOtp" formControlName="emailOtp" placeholder="Enter OTP"
-      maxlength="6">
+    <input *ngIf="showOtpInput" type="text" id="emailOtp" formControlName="emailOtp" placeholder="Enter OTP" [attr.autocomplete]="'off'"
+     maxlength="6" (input)="onEmailOtpInput($event)">
     <button *ngIf="showOtpInput" type="button" [disabled]="!accountForm.controls['emailOtp'].valid"
       (click)="verifyotp()">Verify and Update Number</button>
   </div>
@@ -17,14 +17,14 @@
       <h2>Update Phone Number</h2>
       <mat-form-field appearance="outline">
         <mat-label>Enter New Phone Number</mat-label>
-        <input matInput type="tel" formControlName="phone" name="phone" required pattern="[0-9]{10}" maxlength="10"
-          [attr.autocomplete]="'off'">
+        <input matInput type="text" formControlName="phone" name="phone" required pattern="[0-9]{10}" maxlength="10"
+          [attr.autocomplete]="'off'" (input)="newPhoneNumberInput($event)">
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Confirm New Phone Number</mat-label>
-        <input matInput type="tel" formControlName="confirmPhone" name="confirmPhone" required pattern="[0-9]{10}"
-          (input)="checkPhoneMatch()" [attr.autocomplete]="'off'" maxlength="10">
+        <input matInput type="text" formControlName="confirmPhone" name="confirmPhone" required pattern="[0-9]{10}"
+          (input)="checkPhoneMatch($event)" [attr.autocomplete]="'off'" maxlength="10">
       </mat-form-field>
       <mat-error
         *ngIf="updatePhoneForm.get('phone')?.value !=updatePhoneForm.get('confirmPhone')?.value && updatePhoneForm.get('confirmPhone')?.touched">

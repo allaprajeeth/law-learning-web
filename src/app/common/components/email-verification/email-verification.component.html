@@ -5,8 +5,8 @@
       <input type="text" id="currentPhone" formControlName="currentPhone"
       [disabled]="!isCurrentPhoneEditable" placeholder="0987654321">
     <button type="button" (click)="sendOtp()">Send OTP</button>
-    <input *ngIf="showOtpInput" type="text" id="phoneOtp" formControlName="phoneOtp" placeholder="Enter OTP"
-      maxlength="6">
+    <input *ngIf="showOtpInput" type="text" id="phoneOtp" formControlName="phoneOtp" placeholder="Enter OTP" [attr.autocomplete]="'off'"
+      maxlength="6" (input)="onPhoneOtpInput($event)">
     <button *ngIf="showOtpInput" type="button" [disabled]="!accountForm.get('phoneOtp')?.valid"
       (click)="verifyotp()">Verify and Update Number</button>
   </div>

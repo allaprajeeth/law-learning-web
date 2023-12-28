@@ -24,6 +24,15 @@ export class EmailVerificationComponent {
   updateEmailForm: FormGroup;
   isCurrentPhoneEditable = false;
 
+  onPhoneOtpInput(event: any) {
+    const input = event.target.value;
+    const digitsOnly = input.replace(/\D/g, '');
+    const truncatedValue = digitsOnly.slice(0, 6);
+    this.accountForm.get('phoneOtp')!.setValue(truncatedValue, {
+      emitEvent: false,
+    });
+  }
+
   onEmailOtpInput(event: any) {
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');
