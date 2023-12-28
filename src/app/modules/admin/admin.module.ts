@@ -16,6 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MatListModule } from '@angular/material/list';
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ErrorHandlerService } from 'src/app/common/services/error-handler/error-handler.service';
 import { NotificationComponent } from './components/notification/notification.component';
@@ -34,6 +35,9 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
+import { DashboardNotificationsComponent } from './components/dashboard-notifications/dashboard-notifications.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +61,9 @@ import { AdminPostdetailComponent } from './components/admin-postdetail/admin-po
     AccountsecurityComponent,
     AuditReportComponent,
     AdminPostdetailComponent,
+    AdminDashboardComponent,
+    DashboardSidenavComponent,
+    DashboardNotificationsComponent,
   ],
   
   imports: [
@@ -74,6 +81,7 @@ import { AdminPostdetailComponent } from './components/admin-postdetail/admin-po
     MatExpansionModule,
     MatTabsModule,
     MatSidenavModule,
+    MatListModule
   ],
   providers: [
     {
