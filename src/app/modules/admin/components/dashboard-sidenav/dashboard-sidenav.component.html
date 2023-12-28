@@ -1,0 +1,33 @@
+<!-- sidenav.component.html -->
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #sidenav mode="side" opened>
+      <!-- Your sidebar content goes here -->
+      <mat-nav-list>
+        <a mat-list-item routerLink="/dashboard">
+            <span class="icon-span"><mat-icon>dashboard</mat-icon></span>
+          <span>Dashboard</span>
+        </a>
+
+        <a mat-list-item routerLink="/user-profile">
+            <span class="icon-span">
+              <mat-icon>person</mat-icon>
+            </span>
+            <span class="span">All Profiles</span>
+          </a>
+
+          <a mat-list-item routerLink="/admin/dash-notifications">
+            <span class="icon-span">
+              <mat-icon>notifications</mat-icon>
+            </span>
+            <span class="span">Notifications</span>
+          </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <!-- Your main content goes here -->
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

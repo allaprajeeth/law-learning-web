@@ -14,7 +14,7 @@ interface PdfFile {
 
 interface articleFile {
   name: string;
-  // url: string;
+  url: string;
 }
 @Component({
   selector: 'app-homepage',
@@ -294,27 +294,35 @@ export class HomepageComponent implements OnInit{
   articleFiles: articleFile[] = [
     {
       name: '"What Is Criminal Law"',
+      url: 'path/to/document1.pdf'
     },
     {
       name: '"Criminal Law Definition"',
+      url: 'path/to/document1.pdf'
     },
     {
       name: '"Mastering Legal Research:"',
+      url: 'path/to/document1.pdf'
     },
   {
     name:'"Law School Applications:"',
+    url: 'path/to/document1.pdf'
   },
   {
     name:'"Legal Ethics:Legal Profession"',
+    url: 'path/to/document1.pdf'
   },
   {
     name:'"Legal Industry:Digital Age"',
+    url: 'path/to/document1.pdf'
   },
   {
     name: '"Legal Internships:Experience"',
+    url: 'path/to/document1.pdf'
   },
   {
     name:"The Common Law and Civil Law Traditions",
+    url: 'path/to/document1.pdf'
   },
   ];
 

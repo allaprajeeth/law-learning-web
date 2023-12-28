@@ -18,6 +18,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { DashboardNotificationsComponent } from './components/dashboard-notifications/dashboard-notifications.component';
 const routes: Routes = [
   {
     path:"",
@@ -96,6 +98,14 @@ const routes: Routes = [
     path: 'post/:id',
     component:AdminPostdetailComponent
   },
+  {
+    path:"dashboard",
+    component:AdminDashboardComponent
+  },
+  {
+    path:"dash-notifications",
+    component:DashboardNotificationsComponent
+  }
   
 ];
 
