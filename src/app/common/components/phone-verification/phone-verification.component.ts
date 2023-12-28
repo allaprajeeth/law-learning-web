@@ -39,9 +39,7 @@ export class PhoneVerificationComponent {
     });
     this.updatePhoneForm = this.fb.group({
       phone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
-      confirmPhone: [
-        '',
-        [Validators.required, Validators.pattern('[0-9]{10}')],
+      confirmPhone: ['', [Validators.required, Validators.pattern('[0-9]{10}')],
       ],
     });
   }
@@ -65,6 +63,24 @@ export class PhoneVerificationComponent {
     this.dialogRef.close();
   }
 
+  onEmailOtpInput(event: any) {
+    const input = event.target.value;
+    const digitsOnly = input.replace(/\D/g, '');
+    const truncatedValue = digitsOnly.slice(0, 6);
+    this.accountForm.get('emailOtp')!.setValue(truncatedValue, {
+      emitEvent: false,
+    });
+  }
+
+  newPhoneNumberInput(event: any) {
+    const input = event.target.value;
+    const digitsOnly = input.replace(/\D/g, '');
+    const truncatedValue = digitsOnly.slice(0, 10);
+    this.updatePhoneForm.get('phone')!.setValue(truncatedValue, {
+      emitEvent: false,
+    });
+  }
+
   onPhoneOtpInput(event: any) {
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');
@@ -74,17 +90,21 @@ export class PhoneVerificationComponent {
       .setValue(truncatedValue, { emitEvent: false });
   }
 
-  checkPhoneMatch() {
+  checkPhoneMatch(event: any) {
     const phoneControl = this.updatePhoneForm?.get('phone');
     const confirmPhoneControl = this.updatePhoneForm?.get('confirmPhone');
     if (phoneControl && confirmPhoneControl) {
-      if (phoneControl.value !== confirmPhoneControl.value) {
+      const input = event.target.value;
+      const digitsOnly = input.replace(/\D/g, '');
+      const truncatedValue = digitsOnly.slice(0, 10);
+      confirmPhoneControl.setValue(truncatedValue, { emitEvent: false });
+      if (phoneControl.value !== truncatedValue) {
         confirmPhoneControl.setErrors({ mismatch: true });
       } else {
         confirmPhoneControl.setErrors(null);
       }
     }
-  }
+  }   
 
   sendOtpPhone() {
     this.updatePhoneMode = true;
