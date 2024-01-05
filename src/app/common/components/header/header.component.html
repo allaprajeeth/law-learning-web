@@ -1,21 +1,25 @@
 <app-firstnav></app-firstnav>
 <div class="container">
   <div class="app-description">
-    <h1>Welcome to our  e-learning Platform!</h1>
-    <p>Discover a comprehensive collection of courses that cover various facets of the legal world. From introductory content for aspiring legal professionals to advanced topics for seasoned lawyers, our app provides in-depth, accessible, and up-to-date resources. Dive into the intricacies of law, explore case studies, and stay informed about the latest legal developments. Whether you're a student, a legal enthusiast, or a practicing attorney, our app is your one-stop destination for legal knowledge and skills.</p>
+    <h1>Welcome to our e-learning Platform!</h1>
+    <p>Discover a comprehensive collection of courses that cover various facets of the legal world. From introductory
+      content for aspiring legal professionals to advanced topics for seasoned lawyers, our app provides in-depth,
+      accessible, and up-to-date resources. Dive into the intricacies of law, explore case studies, and stay informed
+      about the latest legal developments. Whether you're a student, a legal enthusiast, or a practicing attorney, our
+      app is your one-stop destination for legal knowledge and skills.</p>
     <p>Explore more on our <a href="#">website</a>.</p>
   </div>
 
   <div class="free-text">
-    <h2>Currently all courses are free of charge, so there's no requirement to make a purchase.</h2>  
+    <h2>Currently all courses are free of charge, so there's no requirement to make a purchase.</h2>
   </div>
   <div>
-    <div class="heading" >
+    <div class="heading">
       <h1>Free Courses</h1>
     </div>
   </div>
-  <div class="image-grid" >
-    <div *ngFor="let image of freeCoursesImages; let j = index" class="image-item" >
+  <div class="image-grid">
+    <div *ngFor="let image of freeCoursesImages; let j = index" class="image-item">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
@@ -29,61 +33,95 @@
         <h5>{{ freeCoursesHeadings[j] }}</h5>
         <p>{{ freeCoursesAuthors[j] }}</p>
         <h4>{{ freeCoursesText[j] }}</h4>
-        <div class="subscribers" style="font-weight: 410;">
-          <span>Number of Views:{{ numberofviews[j] }}</span>
+
+
+        <!-- <span>{{ randomMyCourseValues[i] }}% complete</span> -->
+        <div class="ratingscontainer1">
+          <div class="ratingConatiner2">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+          </div>
+          <div class="ratingConatiner2">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+          </div>
         </div>
-      </div> 
+        <div class="ratingscontainer1">
+          <div class="ratingConatiner2">
+            <span>Reviewer Ratings</span>
+          </div>
+          <div class="ratingConatiner2">
+            <span>Subscribers Ratings</span>
+          </div>
+        </div>
+        <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
+          <span>Number of Subscribers:{{ myCourseSubscribers[j] + '+'}}</span>
+          <!-- <p style="color: #d80303; font-weight: bolder;"> This Course Expires on: {{ randomFutureDates[i] | date: 'dd MMM
+          yyyy' }}</p> -->
+        </div>
+      </div>
+      <!-- <div class="subscribers" style="font-weight: 410;"> -->
+      <!-- <span>Number of Views:{{ numberofviews[j] }}</span> -->
+      <!-- </div> -->
     </div>
   </div>
+<!-- </div> -->
 <br>
 <br>
 <br>
 
-    <div class="heading" >
-      <h1>Paid Courses</h1>
-    </div>
-    <div class="my-flex">
-      <mat-form-field appearance="outline" id="filters" class="custom-width">
-        <mat-label>{{ selectedCategory ? selectedCategory + ' | ' + selectedCourseType : 'Filters' }}</mat-label>
-        <mat-select [matMenuTriggerFor]="filters">
-          <mat-menu #filters="matMenu" yPosition="below">
-            <button mat-menu-item [matMenuTriggerFor]="beginner" class="mat-menu">Beginner</button>
-            <button mat-menu-item [matMenuTriggerFor]="intermediate" class="mat-menu">Intermediate</button>
-            <button mat-menu-item [matMenuTriggerFor]="expert" class="mat-menu">Expert</button>
-            <button mat-menu-item [matMenuTriggerFor]="student" class="mat-menu">Student</button>
-            <button mat-menu-item class="mat-menu" (click)="updateSelectedCourseType('Clear Filters')">Clear Filters</button>
-          </mat-menu>
-        </mat-select>
-      </mat-form-field>
-      <mat-menu #beginner="matMenu">
-        <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Beginner | Crash Course')">Crash
-          Course</button>
-        <button mat-menu-item class="mat-menu-panel"
-          (click)="updateSelectedCourseType('Beginner | Detailed Course')">Detailed Course</button>
+<div class="heading">
+  <h1>Paid Courses</h1>
+</div>
+<div class="my-flex">
+  <mat-form-field appearance="outline" id="filters" class="custom-width">
+    <mat-label>{{ selectedCategory ? selectedCategory + ' | ' + selectedCourseType : 'Filters' }}</mat-label>
+    <mat-select [matMenuTriggerFor]="filters">
+      <mat-menu #filters="matMenu" yPosition="below">
+        <button mat-menu-item [matMenuTriggerFor]="beginner" class="mat-menu">Beginner</button>
+        <button mat-menu-item [matMenuTriggerFor]="intermediate" class="mat-menu">Intermediate</button>
+        <button mat-menu-item [matMenuTriggerFor]="expert" class="mat-menu">Expert</button>
+        <button mat-menu-item [matMenuTriggerFor]="student" class="mat-menu">Student</button>
+        <button mat-menu-item class="mat-menu" (click)="updateSelectedCourseType('Clear Filters')">Clear
+          Filters</button>
       </mat-menu>
-      <mat-menu #intermediate="matMenu">
-        <button mat-menu-item class="mat-menu-panel"
-          (click)="updateSelectedCourseType('Intermediate | Crash Course')">Crash Course</button>
-        <button mat-menu-item class="mat-menu-panel"
-          (click)="updateSelectedCourseType('Intermediate | Detailed Course')">Detailed Course</button>
-      </mat-menu>
-      <mat-menu #expert="matMenu">
-        <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert | Crash Course')">Crash
-          Course</button>
-        <button mat-menu-item class="mat-menu-panel"
-          (click)="updateSelectedCourseType('Expert | Detailed Course')">Detailed Course</button>
-      </mat-menu>
-      <mat-menu #student="matMenu">
-        <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Student | Crash Course')">Crash
-          Course</button>
-        <button mat-menu-item class="mat-menu-panel"
-          (click)="updateSelectedCourseType('Student | Detailed Course')">Detailed Course</button>
-      </mat-menu>
-    </div>
-    
-  <ng-container *ngIf="!selectedCategory && !selectedCourseType">   
-   <div class="image-grid" >
-    <div *ngFor="let image of paidCoursesimages; let j = index" class="image-item" >
+    </mat-select>
+  </mat-form-field>
+  <mat-menu #beginner="matMenu">
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Beginner | Crash Course')">Crash
+      Course</button>
+    <button mat-menu-item class="mat-menu-panel"
+      (click)="updateSelectedCourseType('Beginner | Detailed Course')">Detailed Course</button>
+  </mat-menu>
+  <mat-menu #intermediate="matMenu">
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Intermediate | Crash Course')">Crash
+      Course</button>
+    <button mat-menu-item class="mat-menu-panel"
+      (click)="updateSelectedCourseType('Intermediate | Detailed Course')">Detailed Course</button>
+  </mat-menu>
+  <mat-menu #expert="matMenu">
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert | Crash Course')">Crash
+      Course</button>
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert | Detailed Course')">Detailed
+      Course</button>
+  </mat-menu>
+  <mat-menu #student="matMenu">
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Student | Crash Course')">Crash
+      Course</button>
+    <button mat-menu-item class="mat-menu-panel"
+      (click)="updateSelectedCourseType('Student | Detailed Course')">Detailed Course</button>
+  </mat-menu>
+</div>
+
+<ng-container *ngIf="!selectedCategory && !selectedCourseType">
+  <div class="image-grid">
+    <div *ngFor="let image of paidCoursesimages; let j = index" class="image-item">
       <div class="imagesContainer">
         <img [src]="image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
@@ -123,23 +161,24 @@
         </div>
       </div>
 
-     <div class="subscribers" style="font-weight: 410;">
-      <span>Number of Subscribers: {{ paidCoursesSubscribers[j] + '+' }}</span>
+      <div class="subscribers" style="font-weight: 410;">
+        <span>Number of Subscribers: {{ paidCoursesSubscribers[j] + '+' }}</span>
 
-      <h5 class="price">
-     <span *ngIf="coursePrice[j] > 0">
-      <del>₹{{ coursePrice[j] }}</del> 
-      <span style="color: green; margin-left: 5px;" class="free">Free</span> 
-     </span>
-     </h5>
-   </div>
+        <h5 class="price">
+          <span *ngIf="coursePrice[j] > 0">
+            <del>₹{{ coursePrice[j] }}</del>
+            <span style="color: green; margin-left: 5px;" class="free">Free</span>
+          </span>
+        </h5>
+      </div>
     </div>
   </div>
-  </ng-container>
+</ng-container>
 
-  <div *ngIf="selectedCategory || selectedCourseType" class="filtered-container">
-  <div class="image-grid" >
-    <div *ngFor="let course of (filteredCourses.length > 0 ? filteredCourses : paidCoursesimages); let j = index" class="image-item">
+<div *ngIf="selectedCategory || selectedCourseType" class="filtered-container">
+  <div class="image-grid">
+    <div *ngFor="let course of (filteredCourses.length > 0 ? filteredCourses : paidCoursesimages); let j = index"
+      class="image-item">
       <div class="imagesContainer">
         <img [src]="course.image" width="300" height="200" class="img" alt="Random Image">
         <div class="overlay">
@@ -179,19 +218,19 @@
         </div>
       </div>
 
-     <div class="subscribers" style="font-weight: 410;">
-      <span>Number of Subscribers: {{ course.subscribers + '+' }}</span>
+      <div class="subscribers" style="font-weight: 410;">
+        <span>Number of Subscribers: {{ course.subscribers + '+' }}</span>
 
-      <h5 class="price">
-     <span *ngIf="course.price > 0">
-      <del>₹{{ course.price }}</del> 
-      <span style="color: green; margin-left: 5px;" class="free">Free</span> 
-     </span>
-     </h5>
-   </div>
+        <h5 class="price">
+          <span *ngIf="course.price > 0">
+            <del>₹{{ course.price }}</del>
+            <span style="color: green; margin-left: 5px;" class="free">Free</span>
+          </span>
+        </h5>
+      </div>
     </div>
   </div>
- </div>
+</div>
 </div>
 <br>
 <br>

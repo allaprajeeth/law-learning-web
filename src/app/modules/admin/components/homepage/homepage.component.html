@@ -1,32 +1,29 @@
 <app-adminnav></app-adminnav>
 <br />
 <br>
-<div class="flex-container">
-  <div class="my-flex" style="width: 300px;">
-    <mat-form-field appearance="outline" style="width: 100%;">
-      <mat-label>Filters</mat-label>
-      <mat-select [(ngModel)]="selectedFilter" style="width: 100%" appearance="outline" start>
-        <mat-option value="contentManager">Content-Manager section</mat-option>
-        <mat-option value="reviewer">Reviewer section</mat-option>
-        <mat-option value="uploaded">Uploaded section</mat-option>
-        <mat-option value="library">Library</mat-option>
-        <mat-option value="Publishing-corner">Publishing Corner</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div>
-    <button class="report-btn" (click)="checkAuditReport()">Check Audit Report</button>
-  </div>
-</div>
 
+<div>
 
-<div *ngIf="selectedFilter === 'contentManager' || selectedFilter === ''">
   <div class="container">
-    <h1>Content-Manager Section</h1>
-
-    <div class="heading">
-      <h2>Courses to Review</h2>
+    <div class="filter-section">
+      <div class="heading">
+        <h2>Courses</h2>
+      </div>
+      <div class="flex-container">
+        <div class="my-flex" style="width: 250px;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Filters</mat-label>
+            <mat-select [(ngModel)]="coursesFilter" style="width: 100%" appearance="outline" start>
+              <mat-option value="contentManager">Content-Manager </mat-option>
+              <mat-option value="reviewer">Reviewer</mat-option>
+              <mat-option value="uploadedCourses">Uploaded-courses</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
+
+
     <div class="image-grid">
       <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
         <div class="imagesContainer">
@@ -49,214 +46,92 @@
         </div>
       </div>
     </div>
-    <div class="heading">
-      <h2>Courses Under-review</h2>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <a routerLink="/admin/courseInfo">
-              <i class="fa fa-play-circle play-icon"></i>
-            </a>
-          </div>
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ headings[i] }}</h5>
-          <p>{{ reviewCoursesAuthors[i] }}</p>
-          <h4>{{ reviewCoursesText[i] }}</h4>
-          <p>{{ paragraphs[i] }}</p>
-        </div>
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
-        </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span>
-        <div class="container1">
-          <div class="Conatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="Conatiner2">
-            <span>Reviewer Ratings</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <br />
-    <hr />
   </div>
-</div>
-<br />
-<div *ngIf="selectedFilter === 'reviewer' || selectedFilter === ''">
-  <div class="container">
-    <h1>Reviewer Section</h1>
-    <div class="heading">
-      <h2>Courses to Review</h2>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <a routerLink="/admin/courseInfo">
-              <i class="fa fa-play-circle play-icon"></i>
-            </a>
-          </div>
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ headings[i] }}</h5>
-          <p>{{ reviewCoursesAuthors[i] }}</p>
-          <h4>{{ reviewCoursesText[i] }}</h4>
-          <p>{{ paragraphs[i] }}</p>
-        </div>
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="heading">
-      <h2>Courses Under-review</h2>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <a routerLink="/admin/courseInfo">
-              <i class="fa fa-play-circle play-icon"></i>
-            </a>
-          </div>
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ headings[i] }}</h5>
-          <p>{{ reviewCoursesAuthors[i] }}</p>
-          <h4>{{ reviewCoursesText[i] }}</h4>
-          <p>{{ paragraphs[i] }}</p>
-        </div>
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
-        </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span>
-        <div class="container1">
-          <div class="Conatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="Conatiner2">
-            <span>Reviewer Ratings</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br />
-    <br />
-    <hr />
-  </div>
-</div>
-<br />
-<div *ngIf="selectedFilter === 'uploaded' || selectedFilter === ''">
-  <div class="container">
-    <h1>Uploaded Section</h1>
-    <div class="heading">
-      <h2>Uploaded Courses</h2>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of uploadedimages; let i = index" class="image-item">
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <a routerLink="/admin/courseInfo">
-              <i class="fa fa-play-circle play-icon"></i>
-            </a>
-          </div>
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ uploadedheadings[i] }}</h5>
-          <p>{{ uploadedCoursesAuthors[i] }}</p>
-          <h4>{{ uploadedCoursesText[i] }}</h4>
-          <p>{{ uploadedparagraphs[i] }}</p>
-        </div>
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomuploadedValues[i]"></div>
-        </div>
-        <span>{{ randomuploadedValues[i] }}%complete</span>
-        <div class="container1">
-          <div class="Conatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="Conatiner2">
-            <span>Reviewer Ratings</span>
-          </div>
-        </div>
-        <h5 class="price">
-          <span *ngIf="coursePrice[j] > 0">
-            <del>₹{{ coursePrice[j] }}</del>
-            <span style="color: green; margin-left: 5px;" class="free">Free</span>
-          </span>
-        </h5>
-      </div>
-    </div>
-    <br />
-    <hr />
-  </div>
-</div>
 
-<br>
-<div *ngIf="selectedFilter === 'library' || selectedFilter === ''">
+</div>
+<br />
+<br />
+<br />
+
+<!--<div class="container">
+  <div class="filter-section">
+    <div class="heading">
+      <h2>Courses</h2>
+    </div>
+    <div class="flex-container">
+      <div class="my-flex" style="width: 250px;">
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Filters</mat-label>
+          <mat-select [(ngModel)]="coursesFilter" (change)="updateFilteredCourses()" style="width: 100%" appearance="outline" start>
+            <mat-option value="all">All</mat-option>
+            <mat-option value="Content-Manager">Content-Manager</mat-option>
+            <mat-option value="Reviewer">Reviewer</mat-option>
+            <mat-option value="Uploaded-courses">Uploaded-courses</mat-option>
+          </mat-select>
+        </mat-form-field>
+        
+        
+      </div>
+    </div>
+  </div>
+  <div class="image-grid">
+    <div class="image-item" *ngFor="let course of courses">
+      <div class="imagesContainer">
+        <img [src]="course.image" class="img" alt="Course Image"> 
+        <div class="overlay">
+          <a routerLink="/admin/courseInfo">
+            <i class="fa fa-play-circle play-icon"></i>
+          </a>
+        </div>
+      </div>
+      <div class="headingsContainer">
+        <img [src]="course.image" alt="Course Image">
+        <div>
+          <h3>{{ course.heading }}</h3>
+          <p>{{ course.author }}</p>
+          <p> {{ course.text }}</p>
+          <p>{{ course.duration }}</p>
+          <p>{{ course.category }}</p>
+        </div>
+      </div>
+      <div class="ratingscontainer1">
+        
+      </div>
+    </div>
+  </div>
+  -->
+
+<div>
   <h2 class="section-name">Library(Documents)</h2>
 
-  <!-- <div> -->
+
   <div class="container">
-    <!-- <h1>Reviewer Section</h1> -->
-    <div class="heading">
-      <h2>Documents to Review</h2>
+    <div class="filter-section">
+      <div class="heading">
+        <h2>Documents</h2>
+      </div>
+      <div class="flex-container">
+
+        <div class="my-flex" style="width: 250px;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Filters</mat-label>
+            <mat-select [(ngModel)]="libraryFilter" style="width: 100%" appearance="outline" start>
+              <mat-option value="contentManager">Content-Manager </mat-option>
+              <mat-option value="reviewer">Reviewer</mat-option>
+              <mat-option value="uploadedCourses">Uploaded-documents</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
     </div>
+
     <div class="pdf-list">
       <div *ngFor="let reviewpdf of reviewpdfs">
         <div class="pdf-item">
-          <mat-icon>picture_as_pdf</mat-icon>
-          <span class="pdf-name">{{ reviewpdf.name }}</span>
+          <mat-icon>description</mat-icon>
         </div>
       </div>
     </div>
-
-    <div class="heading">
-      <h2>Documents Under-review</h2>
-    </div>
-    <div class="pdf-list">
-      <div *ngFor="let reviewedpdf of reviewedpdfs">
-        <div class="pdf-item">
-          <mat-icon>picture_as_pdf</mat-icon>
-          <span class="pdf-name">{{ reviewedpdf.name }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="heading">
-      <h2>Uploaded Documents</h2>
-    </div>
-
-    <div class="pdf-grid">
-      <div *ngFor="let pdfFile of pdfFiles; let i = index" class="pdf-item" (click)="openFile(i)">
-
-        <mat-icon>picture_as_pdf</mat-icon>
-        <div class="pdf-name">{{ pdfFile.name }}</div>
-      </div>
-    </div>
-    <hr />
     <br />
 
 
@@ -264,46 +139,75 @@
   </div>
 </div>
 
-<div *ngIf="selectedFilter === 'Publishing-corner' || selectedFilter === ''">
+
+
+
+
+
+
+<div>
   <h2 class="section-name">Publishing Corner(Articles)</h2>
-
-  <!-- <div> -->
   <div class="container">
-    <!-- <h1>Reviewer Section</h1> -->
-    <div class="heading">
-      <h2>Articles to Review</h2>
-    </div>
-    <div class="article-list">
-      <div *ngFor="let reviewarticle of reviewarticles">
-        <div class="article-item">
-          <mat-icon>description</mat-icon>
-          <span class="article-name">{{ reviewarticle.name }}</span>
+    <div class="filter-section">
+      <div class="heading">
+        <h2>Articles</h2>
+      </div>
+
+      <div class="flex-container">
+        <div class="my-flex" style="width: 250px;">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Filter by Category</mat-label>
+        <mat-select [(value)]="selectedFilter" (selectionChange)="filterArticles()" style="width: 100%" appearance="outline">
+          <mat-option value="all">All</mat-option>
+          <mat-option value="contentManager">Content Manager</mat-option>
+          <mat-option value="reviewer">Reviewer</mat-option>
+          <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+
+
+
         </div>
       </div>
+
+
+
+
+
+
+
     </div>
 
-    <div class="heading">
-      <h2>Articles Under-review</h2>
-    </div>
     <div class="article-list">
-      <div *ngFor="let reviewedarticle of reviewedarticles">
-        <div class="article-item">
-          <mat-icon>description</mat-icon>
-          <span class="article-name">{{ reviewedarticle.name }}</span>
+      <!-- Display Articles Based on Selected Filter -->
+      <div *ngFor="let article of filteredArticles; let i = index">
+        <!-- Your HTML structure for displaying each article -->
+        <!-- <div>{{ article.name }}</div> -->
+        <div class="article-item"><mat-icon>description</mat-icon> </div>
+        <!-- <div>{{ article.url }}</div> -->
+        <!-- <div>{{ article.category }}</div> -->
+        <!-- Add other properties as needed -->
+      </div>
+
+      <ng-container *ngIf="publishingCornerFilter === 'reviewer'">
+        <div >
+          <div class="article-item">
+            <mat-icon>description</mat-icon>
+            <!-- Display other details of the reviewer article -->
+          </div>
         </div>
-      </div>
-    </div>
+      </ng-container>
 
-    <div class="heading">
-      <h2>Uploaded Articles</h2>
-    </div>
-
-    <div class="article-grid">
-      <div *ngFor="let articleFile of articleFiles; let i = index" class="article-item">
-
-        <mat-icon>description</mat-icon>
-        <div class="article-name">{{ articleFile.name }}</div>
-      </div>
+      <ng-container *ngIf="publishingCornerFilter === 'uploadedCourses'">
+        <div >
+          <div class="article-item">
+            <mat-icon>description</mat-icon>
+           
+          </div>
+        </div>
+      </ng-container>
     </div>
 
     <br />
@@ -312,3 +216,8 @@
     <br />
   </div>
 </div>
+
+
+
+
+ 

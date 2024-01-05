@@ -24,16 +24,20 @@
 .section-name {
   font-weight: bolder;
   font-size: 25px;
-  // color: #007791;
   text-align: center;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
   .my-flex{
-    margin-left: 130px;
-    // margin-right: 10px;
+    margin-left: 770px;
   }
   .container {
     margin: 0 auto;
     max-width: 80vw;
+
+    .filter-section {
+      display: flex;
+    }
 
     h1{
       font-size: 19px;
@@ -45,10 +49,10 @@
   .heading {
     padding:5px 0;
     color: #007791;
+    
   }
   h2{
     font-weight: bolder;
-    // color: #007791;
   }
   
   .image-grid {
@@ -153,9 +157,9 @@
       
     
       span {
-        font-size: 12px; // Adjust font size if needed
-        text-align: center; // Center the text if needed
-        // margin-top: 5px; // Adjust the margin between stars and text
+        font-size: 12px; 
+        text-align: center; 
+        
       }
     }
   
@@ -176,15 +180,11 @@
           font-size: 20px;
         }
       }
-      
-    
       span {
-        font-size: 12px; // Adjust font size if needed
-        text-align: center; // Center the text if needed
-        // margin-top: 5px; // Adjust the margin between stars and text
+        font-size: 12px; 
+        text-align: center; 
       }
     }
-    
     .ratingText {
       font-size: 14px;
     }
@@ -254,7 +254,7 @@
   .pdf-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
   
     .pdf-item {
       flex: 0 0 calc(16.666% - 20px);
@@ -267,9 +267,9 @@
      padding: 10px;
   
       &:hover {
-        transform: translateY(-5px); /* Add a slight lift effect */
+        transform: translateY(-5px); 
         box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-        // padding: 5px;
+       
       }
   
       mat-icon {
@@ -285,17 +285,21 @@
   
   .pdf-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns as needed */
-    gap: 20px; /* Adjust the gap between items as needed */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px;
   }
   
   .pdf-item {
+    width: 120px;
+    height: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    background-color: #f4eded;
     transition: transform 0.5s, box-shadow 0.4s;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 10%;
   
     &:hover {
       transform: translateY(-5px); 
@@ -303,14 +307,14 @@
     }
   
     mat-icon {
-      // font-size: 36px; 
       color: rgb(207, 86, 86);
-      margin-bottom: 5px; /* Spacing between icon and name */
+      margin-bottom: 5px; 
+      margin-top: 10px;
     }
   
     .pdf-name {
-      margin-top: 5px; /* Adjust the margin between the icon and text as needed */
-      font-size: 14px; /* Adjust the size of the name as needed */
+      margin-top: 5px; 
+      font-size: 14px; 
       text-align: center;
     }
   }
@@ -321,12 +325,12 @@
   .article-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
   
     .article-item {
       flex: 0 0 calc(16.666% - 20px);
-      display: flex;
-      flex-direction: column;
+       display: flex;
+       flex-direction: column;
       align-items: center;
       margin-bottom: 20px;
       cursor: pointer;
@@ -356,12 +360,16 @@
   }
   
   .article-item {
+    width: 100px;
+    // height: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
     cursor: pointer;
+    background-color: #f4eded;
     transition: transform 0.5s, box-shadow 0.4s;
     padding: 10px;
+    border-radius: 10%;
   
     &:hover {
       transform: translateY(-5px); 

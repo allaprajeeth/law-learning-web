@@ -38,7 +38,7 @@ import { AdminPostdetailComponent } from './components/admin-postdetail/admin-po
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
 import { DashboardNotificationsComponent } from './components/dashboard-notifications/dashboard-notifications.component';
-
+// import { FilterByCategoryService } from './components/filter-by-category.service';
 @NgModule({
   declarations: [
     AdminLoginComponent,
@@ -64,6 +64,7 @@ import { DashboardNotificationsComponent } from './components/dashboard-notifica
     AdminDashboardComponent,
     DashboardSidenavComponent,
     DashboardNotificationsComponent,
+   
   ],
   
   imports: [
