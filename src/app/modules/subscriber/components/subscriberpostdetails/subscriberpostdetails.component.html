@@ -1,2 +1,99 @@
 <app-subscribernav></app-subscribernav>
 <app-sharedpostdetails></app-sharedpostdetails>
+
+
+       
+
+<div class="container">
+    <div style="margin-top: 20px; font-size: 24px;">Subscribers Ratings</div>
+
+    <button class="giverating" *ngIf="!submittedReview" (click)="leaveRatingOpen()">Leave a Rating</button>
+
+    <div class="overlay" *ngIf="showRating">
+   
+            <div class="contentt">
+              <div class="close" (click)="leaveRatingClose()">&times;</div>
+              <h1>How would you rate this Article?</h1>
+              <ng-container *ngFor="let i of stars">
+                <mat-icon
+                  (mouseenter)="updaterating(i)"
+                  (click)="ratingClicked(i)"
+                  [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
+                  class="staricon"
+                >
+                  star
+                </mat-icon>
+              </ng-container>
+              <div class="review">
+                <textarea
+                  id="review"
+                  [(ngModel)]="userReview"
+                  name="userReview"
+                  rows="3"
+                  cols="36"
+                  placeholder="Comments"
+                  class="mat-input custom-textarea"
+                ></textarea>
+              </div>
+              <button class="custom-button"(click)="submitRating()">Submit </button>
+            </div>
+          
+    </div>
+
+    <div class="tab-content">
+       
+            <div class="course-rating">
+                <div class="stars">
+                    <div class="star star-anim"></div>
+                    <div class="star star-anim"></div>
+                    <div class="star star-anim"></div>
+                    <div class="star star-anim"></div>
+                    <div class="star star-anim"></div>
+                </div>
+                <div class="rating-number">4.7</div>
+            </div>
+            <h2>Course Rating</h2>
+            <h3>Reviews</h3>
+
+            <div *ngFor="let review of reviews" class="review">
+                <div class="reviewer-info">
+                  <span class="reviewer-name">{{ review.reviewerName }}</span>
+                  <div class="star-rating">
+                    <!-- Display star icons based on the star rating -->
+                    <span *ngFor="let i of getStarArray()" [ngClass]="{ 'active': i < review.starRating }">&#9733;</span>
+                  </div>
+                </div>
+                <p>{{ review.comment }}</p>
+              </div>
+
+            <div class="review">
+              <div class="reviewer-info">
+                  <span class="reviewer-name">Alice Johnson</span>
+                  <div class="star-rating">
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                  </div>
+              </div>
+              <p>Informative and engaging course. I loved this Article!</p>
+              
+          </div>
+          <div class="review">
+              <div class="reviewer-info">
+                  <span class="reviewer-name">Bob Anderson</span>
+                  <div class="star-rating">
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                      <span>&#9733;</span>
+                  </div>
+              </div>
+              <p>Practical content, well-structured content.</p>
+          </div>
+        </div>  
+</div>
+<br/>
+<br/>

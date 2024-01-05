@@ -7,6 +7,9 @@ import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
+  // i: number = 0;
+  
   filteredCourses: any[] = [];
   coursePrice: number[] = [];
   freeCoursesImages: string[] = [];
@@ -16,6 +19,9 @@ export class HeaderComponent implements OnInit {
   freeCoursesHeadings: string[] = [];
   freeCoursesText: string[] = [];
   freeCoursesDurations: string[] = [];
+  myCourseSubscribers: string[] = [];
+  randomFutureDates: Date[] = [];
+
   paidCoursesDurations: string[] = [];
   paidCoursesSubscribers: string[] = [];
   paidCoursesHeadings: string[] = [];
@@ -30,7 +36,7 @@ export class HeaderComponent implements OnInit {
 
   uploadedCoursesDurations: string[] = [];
 
-  numberofviews = ['11', '43', '64', '10', '55', '66'];
+  NumberofSubscribers = ['11', '43', '64', '10', '55', '66'];
 
   subscribersValues = ['10', '50', '100', '200', '500', '1000'];
 
@@ -69,6 +75,13 @@ export class HeaderComponent implements OnInit {
 
       const duration = `${randomCourse.courseDuration}`;
       this.freeCoursesDurations.push(duration);
+
+      const randomSubscribersIndex = Math.floor(
+        Math.random() * this.subscribersValues.length
+      );
+      this.myCourseSubscribers.push(
+        this.subscribersValues[randomSubscribersIndex]
+      );
     }
 
     for (let l = 0; l < 12; l++) {

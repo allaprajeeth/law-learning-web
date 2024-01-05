@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { FilterByCategoryService } from '../filter-by-category.service';
 
 
 
@@ -23,14 +24,20 @@ interface articleFile {
   
 })
 export class HomepageComponent implements OnInit{
-  selectedFilter: string = ''; 
+  selectedFilter: string = 'all';
+  filteredArticles: any[] = []; 
 
-  categories: Categories[] = [
-    { viewValue: 'Beginner' },
-    { viewValue: 'Intermediate' },
-    { viewValue: 'Expert' },
-    { viewValue: 'Student' },
-  ];
+  coursesFilter: string = ''; 
+  libraryFilter: string = ''; 
+  publishingCornerFilter: string = ''; 
+
+
+  // categories: Categories[] = [
+  //   { viewValue: 'Beginner' },
+  //   { viewValue: 'Intermediate' },
+  //   { viewValue: 'Expert' },
+  //   { viewValue: 'Student' },
+  // ];
 
 
   rejectedimages:string[]=[];
@@ -50,6 +57,8 @@ export class HomepageComponent implements OnInit{
   j: number = 0; 
 
   isHovered: boolean[] = new Array(this.availablecoursesimages.length).fill(false);
+
+  
 
   headings: string[] = [
     'Constitutional Law',
@@ -168,8 +177,39 @@ export class HomepageComponent implements OnInit{
 
   availableCousrseSubscribers: string[] = [];
   myCourseSubscribers: string[] = [];
+
+  allArticles: any[] = [/* your array of articles */];
+  contentManagerArticles: any[] = [];
+  reviewerArticles: any[] = [];
+  uploadedArticles: any[] = [];
+
   
   ngOnInit(): void {
+
+    // Initialize your data and other logic here
+    // For example:
+    this.allArticles = [
+      { name: 'Intellectual Property Trends', category: 'contentManager' },
+      { name: 'Constitutional Challenges Today', category: 'contentManager' },
+      { name: 'Ethics in Criminal Defense', category: 'reviewer' },
+      { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedArticles'},
+      { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedArticles'},
+      { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedArticles'},
+     
+    ];
+
+    // reviewarticles: { name: string; icon: string; url: string; category: string }[] = [
+    //   { name: 'Intellectual Property Trends', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf',  category: 'contentManager' },
+    //   { name: 'Constitutional Challenges Today', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf', category: 'reviewer' },
+    //   { name: 'Ethics in Criminal Defense', icon: 'path/to/icon3.png', url: 'path/to/document3.pdf',  category: 'reviewer'},
+    //   { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'reviewer'},
+    //   { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedCourses'},
+    //   { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedCourses'},
+     
+      
+    // ];
+
+    this.filteredArticles = [...this.allArticles];
 
     for (let i = 0; i < 2; i++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
@@ -216,124 +256,144 @@ export class HomepageComponent implements OnInit{
   formatWithLeadingZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
-  constructor(private route: ActivatedRoute, private router:Router) { }
+  constructor(private route: ActivatedRoute, private router:Router, private filterService:FilterByCategoryService)
+   {
+
+   
+   {
+    // Filter articles based on categories
+    this.contentManagerArticles = this.allArticles.filter(
+      (article) => article.category === 'contentManager'
+    );
+    this.reviewerArticles = this.allArticles.filter(
+      (article) => article.category === 'reviewer'
+    );
+    this.uploadedArticles = this.allArticles.filter(
+      (article) => article.category === 'uploadedCourses'
+    );
+  }
+ }
+
+  
 
   reviewpdfs = [
     { name: 'Human Rights Law and Theory', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
     { name: 'Intellectual Property Rights', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
     { name: 'Banking and Insurance Law', icon: 'path/to/icon3.png', url: 'path/to/document3.pdf' },
     { name: 'Constitutional Law I', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
-  ];
-
-  reviewedpdfs = [
-    { name: 'Law of Contract Explanation', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
-    { name: 'Labour and Industrial Law', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
     { name: 'Constitutional Law I', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
-    { name: 'Public International Law', icon: 'path/to/icon6.png', url: 'path/to/document6.pdf' },
+    { name: 'Constitutional Law I', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
   ];
 
-  pdfFiles: PdfFile[] = [
-    {
-      name: "Introduction to law and Legal Reasoning",
-      url:"https://www.law.berkeley.edu/wp-content/uploads/2017/11/CommonLawCivilLawTraditions.pdf"
-    },
-    {
-      name: "The Six Laws of Learning",
-      url: "https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf"
-    },
-    {
-      name: "The Book in Legal Education",
-      url: "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/178/Learning_the_Law_catalog__reduced.pdf?sequence=2&isAllowed=y"
-    },
-  {
-    name:"Law and Legal Reasoning Explanation",
-    url:"https://www.lawspice.com/webresources/webworld/pdf/Futura%20BK%20BT.pdf"
-  },
-  {
-    name:"The Common Law and Civil Law",
-    url:"https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf"
-  },
-  {
-    name:"Legal Education Explanation",
-    url:"https://openyls.law.yale.edu/bitstream/handle/20.500.13051/178/Learning_the_Law_catalog__reduced.pdf?sequence=2&isAllowed=y"
-  },
-  {
-    name:"The Book in Early Legal Education",
-    url:"https://www.lawspice.com/webresources/webworld/pdf/Futura%20BK%20BT.pdf"
-  },
-  {
-    name:"The Common Law and Civil Law Traditions",
-    url:"https://www.law.berkeley.edu/wp-content/uploads/2017/11/CommonLawCivilLawTraditions.pdf"
-  },
-  ];
-
-
-  openFile(pdfFileIndex: number): void {
-    const selectedPdf = this.pdfFiles[pdfFileIndex];
-    this.router.navigate(['/pdf-viewer'], { queryParams: { src: selectedPdf.url } });
-    
+  filterArticles(): void {
+    if (this.selectedFilter === 'all') {
+      this.filteredArticles = [...this.allArticles];
+    } else {
+      this.filteredArticles = this.filterService.filterByCategory(this.allArticles, this.selectedFilter);
+    }
   }
-
-  reviewarticles = [
-    { name: 'Intellectual Property Trends', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
-    { name: 'Constitutional Challenges Today', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
-    { name: 'Ethics in Criminal Defense', icon: 'path/to/icon3.png', url: 'path/to/document3.pdf' },
-    { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
-    
-  ];
-
-  reviewedarticles = [
-    { name: 'Cybersecurity Legal Insights', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
-    { name: 'New Trends in Governance', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
-    { name: 'Common vs. Civil Law Snapshot', icon: 'path/to/icon3.png', url: 'path/to/document3.pdf' },
-    { name: 'Family Law Dynamics', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
-    
-  ];
-
-
-  articleFiles: articleFile[] = [
-    {
-      name: '"What Is Criminal Law"',
-      url: 'path/to/document1.pdf'
-    },
-    {
-      name: '"Criminal Law Definition"',
-      url: 'path/to/document1.pdf'
-    },
-    {
-      name: '"Mastering Legal Research:"',
-      url: 'path/to/document1.pdf'
-    },
-  {
-    name:'"Law School Applications:"',
-    url: 'path/to/document1.pdf'
-  },
-  {
-    name:'"Legal Ethics:Legal Profession"',
-    url: 'path/to/document1.pdf'
-  },
-  {
-    name:'"Legal Industry:Digital Age"',
-    url: 'path/to/document1.pdf'
-  },
-  {
-    name: '"Legal Internships:Experience"',
-    url: 'path/to/document1.pdf'
-  },
-  {
-    name:"The Common Law and Civil Law Traditions",
-    url: 'path/to/document1.pdf'
-  },
-  ];
-
-  checkAuditReport() {
-    
-    this.router.navigate(["admin/audit-report"]);
-   
-    // console.log('Checking Audit Report...');
-  } 
+  
 }
 
+
+
+
+  // reviewedpdfs = [
+  //   { name: 'Law of Contract Explanation', icon: 'path/to/icon1.png', url: 'path/to/document1.pdf' },
+  //   { name: 'Labour and Industrial Law', icon: 'path/to/icon2.png', url: 'path/to/document2.pdf' },
+  //   { name: 'Constitutional Law I', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf' },
+  //   { name: 'Public International Law', icon: 'path/to/icon6.png', url: 'path/to/document6.pdf' },
+  // ];
+
+  // pdfFiles: PdfFile[] = [
+  //   {
+  //     name: "Introduction to law and Legal Reasoning",
+  //     url:"https://www.law.berkeley.edu/wp-content/uploads/2017/11/CommonLawCivilLawTraditions.pdf"
+  //   },
+  //   {
+  //     name: "The Six Laws of Learning",
+  //     url: "https://medicine.hofstra.edu/pdf/faculty/facdev/facdev_sixlaws_oflearning.pdf"
+  //   },
+  //   {
+  //     name: "The Book in Legal Education",
+  //     url: "https://openyls.law.yale.edu/bitstream/handle/20.500.13051/178/Learning_the_Law_catalog__reduced.pdf?sequence=2&isAllowed=y"
+  //   },
+  // {
+  //   name:"Law and Legal Reasoning Explanation",
+  //   url:"https://www.lawspice.com/webresources/webworld/pdf/Futura%20BK%20BT.pdf"
+  // },
+  // {
+  //   name:"The Common Law and Civil Law",
+  //   url:"https://www.uncfsu.edu/assets/Documents/College%20of%20Business%20and%20Economics/legal.pdf"
+  // },
+  // {
+  //   name:"Legal Education Explanation",
+  //   url:"https://openyls.law.yale.edu/bitstream/handle/20.500.13051/178/Learning_the_Law_catalog__reduced.pdf?sequence=2&isAllowed=y"
+  // },
+  // {
+  //   name:"The Book in Early Legal Education",
+  //   url:"https://www.lawspice.com/webresources/webworld/pdf/Futura%20BK%20BT.pdf"
+  // },
+  // {
+  //   name:"The Common Law and Civil Law Traditions",
+  //   url:"https://www.law.berkeley.edu/wp-content/uploads/2017/11/CommonLawCivilLawTraditions.pdf"
+  // },
+  // ];
+
+
+  // openFile(pdfFileIndex: number): void {
+  //   const selectedPdf = this.pdfFiles[pdfFileIndex];
+  //   this.router.navigate(['/pdf-viewer'], { queryParams: { src: selectedPdf.url } });
+    
+  // }
+
+  
+
+  
+ 
+// categories: Categories[] = [
+//   { viewValue: 'All' },
+//   { viewValue: 'Content-Manager' },
+//   { viewValue: 'Reviewer' },
+//   { viewValue: 'Uploaded-courses' },
+// ];
+
+//   courses: Course[] = [
+//     {
+//       image: 'https://www.osgu.ac.in/wp-content/uploads/2020/07/law-courses-subjects-eligibility-careers-jobs-benefits.jpg',
+//       heading: 'Course 1',
+//       author: 'Author 1',
+//       text: 'Description of Course 1',
+//       duration: '1h 30m',
+//       category: 'Content-Manager',
+//     },
+//     {
+//       image: 'path-to-image-2',
+//       heading: 'Course 3',
+//       author: 'Author 3',
+//       text: 'Description of Course 1',
+//       duration: '1h 30m',
+//       category: 'Content-Manager',
+//     },
+//     {
+//       image: 'path-to-image-3',
+//       heading: 'Course 4',
+//       author: 'Author 4',
+//       text: 'Description of Course 1',
+//       duration: '1h 30m',
+//       category: 'Reviewer',
+//     },
+//     {
+//       image: 'path-to-image-4',
+//       heading: 'Course 5',
+//       author: 'Author 5',
+//       text: 'Description of Course 1',
+//       duration: '1h 30m',
+//       category: 'Uploaded-courses',
+//     },
+
+   
+//   ];
 
 
 
