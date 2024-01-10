@@ -21,23 +21,39 @@ export class LogoutService {
     
   ) { }
   
-      
+email=''
     
 logOutUser(): Observable<any> {
-  const email = this.loginService.loggedInUserEmail$
-  const jwtToken =this.authTokenService.jwtToken$.value;
-  console.log(email)
+  // const email = this.loginService.loggedInUserEmail$
+  // const jwtToken =this.authTokenService.jwtToken$.value;
+  // console.log(email)email=''
+  const token = localStorage.getItem('jwtToken');
+  const userDetails= localStorage.getItem('userDetails');
+  const username = localStorage.getItem('loggedInUserName');
+  if (userDetails) { 
+    try {
+      const userDetail= JSON.parse(userDetails);
+
+      // Check if the expected properties are present
+        this.email = userDetail.email;
+    
+      
+    } catch (error) {
+      console.error('Error parsing user details:', error);
+    }
+  }
   const logoutData={
-    email: email,
-    jwt_token:jwtToken
+   token,
+   email:this.email
+  
   
   }
     let url = endPoints.baseApi + endPoints.logout;
 
     return this.apiService.post(url, logoutData).pipe(
       tap((response: any) => {
-        if (!!response && !!response?.message) {
-          this.authTokenService.jwtToken$.next('');
+        if (!!response ) {
+          console.log("log out successful")
         }
       }),
       catchError((errorResponse: any) => {

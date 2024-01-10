@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-
+ 
   //lawimage = '/assets/Law.png';
   isSendOtpsClicked: boolean = true;
   images: string[] = ['assets/law.png'];
@@ -77,9 +77,9 @@ export class RegisterComponent {
   }
   sendOtps() {
     this.sendOtpSignup();
-    
+   
   }
-
+ 
   sendOtpSignup() {
     // this.showOtpFields()
     const name = this.name?.value;
@@ -93,15 +93,15 @@ export class RegisterComponent {
       phone: phone,
       //role: selectedCategory
     };
-
+ 
     this.registrationService.sendOtpSignup(signUpFormData).subscribe(
       ()=>{
         this.showOtpFields()
       }
     )
-
+ 
   }
-
+ 
   showOtpFields(): void {
     this.isOtpVisible = true;
     this.isLoginVisible = true;
@@ -110,7 +110,7 @@ export class RegisterComponent {
   }
   signupVerify() {
     this.signUppage();
-  
+ 
   }
   signUppage() {
     this.router.navigate(['/login']);
@@ -123,16 +123,16 @@ export class RegisterComponent {
      }
      this.registrationService.signUppage(signUpCompleteFormData).subscribe(
       ()=>{
-        
+       
           this.router.navigate(['/login']);
        
       }
      )
   }
-  
-
-  
-
+ 
+ 
+ 
+ 
  
   onEmailOtpInput(event: any) {
     const input = event.target.value;
@@ -162,7 +162,7 @@ export class RegisterComponent {
       .get('phone')!
       .setValue(truncatedValue, { emitEvent: false });
   }
-
+ 
   openModal() {
     this.dialog.open(TermsandconComponent, {
       width: '700px',

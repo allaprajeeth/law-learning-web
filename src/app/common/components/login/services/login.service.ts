@@ -9,23 +9,34 @@ import { endPoints } from 'src/app/common/api-layer/endpoints';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../store/auth.actions';
 import * as fromAuth from '../store/auth.reducer';
-
+ 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   validationKey$: BehaviorSubject<string> = new BehaviorSubject('');
   loggedInUserEmail$: BehaviorSubject<string> = new BehaviorSubject('');
-
+  
+ 
   constructor(
     private apiService: ApiService,
-    private authTokenService: AuthTokenService,
+    public authTokenService: AuthTokenService,
     private loggingService: LoggingService,
     private notificationService: NotificationService,
     private store: Store<fromAuth.AuthState>
-    
+   
   ) {}
 
+  setUserInfoInLocalStorage(email: string, name: string, phone: string) {
+    localStorage.setItem('loggedInUserEmail', email);
+    localStorage.setItem('loggedInUserName', name);
+    localStorage.setItem('loggedInUserPhone', phone);
+  }
+
+  getAuthTokenService(): AuthTokenService {
+    return this.authTokenService;
+  }
+ 
   sendOtpClick(data: any): Observable<any> {
     let url = endPoints.baseApi + endPoints.loginRequest;
     return this.apiService.post(url, data).pipe(
@@ -44,22 +55,31 @@ export class LoginService {
       })
     );
   }
-
+ 
   loginClick(data: any): Observable<any> {
     let url = endPoints.baseApi + endPoints.loginComplete;
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response) {
+
           this.authTokenService.jwtToken$.next(response.data.jwt_token);
+          console.log('JWT Token after login:', response.data.jwt_token);
+
           this.loggedInUserEmail$.next(data.email);
-          this.store.dispatch(AuthActions.loginSuccess({ 
+  
+          // Store data in localStorage
+          localStorage.setItem('jwtToken', response.data.jwt_token);
+
+          localStorage.setItem('userDetails',JSON.stringify(response.data.user));
+  
+          this.store.dispatch(AuthActions.loginSuccess({
             user: {
               jwtToken: response.data.jwt_token,
               userEmail: data.email,
               name: response.data.user.name,
               phone: response.data.user.phone
             }
-          }));          
+          }));
           this.notificationService.notify(`Login Successfull`);
         }
       }),

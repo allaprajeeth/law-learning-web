@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
-
+ 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,7 +23,7 @@ openModal() {
     private router: Router,
     private loginService:LoginService,
     public dialog: MatDialog,
-
+ 
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -44,7 +44,7 @@ openModal() {
   isOtpVisible: boolean = false;
   isLoginVisible: boolean = false;
   disableCategorySelect: boolean = false;
-
+ 
   checkInput(): void {
     this.isInputFilled =
       (!!this.loginForm.get('email')?.value ?? false) &&
@@ -75,7 +75,7 @@ openModal() {
       email: email,
       phone: phone,
     };
-    
+   
     this.loginService.sendOtpClick(loginRequestFormData).subscribe(
       ()=>{
         this.showOtpFields()
@@ -99,7 +99,7 @@ openModal() {
     const phone = this.phone?.value;
     const phoneOtp = this.phoneOtp?.value;
     const emailOtp = this.emailOtp?.value;
-
+ 
      const loginVerifyFormData={
          email:email,
          phone:phone,
@@ -112,7 +112,7 @@ openModal() {
       ()=>{
         console.log(this.loginService.validationKey$.value)
         this.loginValidation();
-        
+       
       }
      )
   }
@@ -133,10 +133,10 @@ openModal() {
       route = 'admin/homepage';
     }
     this.router.navigate([route]);
-
+ 
     // Clear error messages and remove error border
   }
-  
+ 
   onEmailOtpInput(event: any) {
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');
@@ -165,5 +165,6 @@ openModal() {
     this.onPhoneNumberInput(event);
     this.checkInput();
   }
-
+ 
 }
+ 

@@ -7,16 +7,18 @@ import {
 } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthTokenService } from '../auth-token/auth-token.service';
+import { LoginService } from '../../components/login/services/login.service';
+// import { LogoutService } from '../logout.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HttpInterceptorService implements HttpInterceptor {
   excludedUrls = ['login','signup'];
+  
+  constructor(private authTokenService: AuthTokenService, private loginService: LoginService ) {}
 
-  constructor(private authTokenService: AuthTokenService) {}
-
-  isValidUrl(url: string){
+  isValidUrl(url: string): boolean {
     let anyUrl = this.excludedUrls?.filter((endpoint: string) => url.includes(endpoint))?.[0]
     return !!anyUrl;
   }
@@ -29,9 +31,10 @@ export class HttpInterceptorService implements HttpInterceptor {
     if(this.isValidUrl(request.url)){// need to work further
       modifiedRequest = request.clone();
     }else{
+      const jwtToken=  localStorage.getItem('jwtToken');
       modifiedRequest = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${this.authTokenService.jwtToken$.value}`,
+          Authorization: `Bearer ${jwtToken}`,
         },
       });
     }

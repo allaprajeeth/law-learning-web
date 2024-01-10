@@ -1,6 +1,6 @@
 <div class="article-form">
   <h2>Article Form</h2>
-  <form [formGroup]="articleForm">
+  <form [formGroup]="articleForm" (submit)="onSubmit()">
     <label for="name">Title of the Article:</label>
     <input type="text" id="name" formControlName="name" />
     <label for="articleName">Name of the Author:</label>
@@ -8,10 +8,15 @@
     <label for="description">Description:</label>
     <textarea id="description" formControlName="description"></textarea>
     <label for="file">Choose Word Document File (.docx, .doc):</label>
-    <input type="file" id="file" formControlName="file" accept=".docx, .doc">
+    <input type="file" id="file" formControlName="file" accept=".docx, .doc" (change)="onFileUpload($event)">
     <br /><br />
-    <div class="button-container">
+    <!-- <div class="button-container">
       <button type="submit" (click)="navigateToSuccessMessage()" [disabled]="articleForm.invalid"
+        [ngClass]="{'disabled-button': articleForm.invalid, 'enabled-button': !articleForm.invalid}">Submit</button>
+    </div> -->
+
+    <div class="button-container">
+      <button type="submit" 
         [ngClass]="{'disabled-button': articleForm.invalid, 'enabled-button': !articleForm.invalid}">Submit</button>
     </div>
   </form>

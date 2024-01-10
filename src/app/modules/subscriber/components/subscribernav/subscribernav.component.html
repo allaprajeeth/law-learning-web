@@ -13,20 +13,27 @@
             [matBadge]="cartItemCount">Cart</a></li>
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
-            <span class="user-circle-text">NS</span>
+            <span class="user-circle-text">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</span>
           </div>
           <ul class="user-menu">
             <li class="profile-item">
               <span>
                 <div class="user-circle">
-                  <a routerLink="" class="user-circle-text" style="color: white">NS</a>
+                  <a routerLink="" class="user-circle-text" style="color: white">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</a>
                 </div>
               </span>
-              <p>Email: {{ loggedInUserEmail$ | async }}</p>
+              <!-- <p> {{ loggedInUserEmail$ | async }}</p> -->
+              <p>{{ email }}</p>
             </li>
             <li class="username-item">
-              <span>Nuncsystems</span>
-              <span class="info">040-2980 3199</span>
+              <!-- <span>Nuncsystems</span> -->
+              <!-- <span>{{ loggedInUserName$ | async }}</span> -->
+              <span>{{ name }}</span>
+              <span>{{ username }}</span>
+              
+              <!-- <span class="info">{{ email }}</span> -->
+              <!-- <span class="info">040-2980 3199</span> -->
+              <!-- <span class="info"> {{ loggedInUserPhone$ | async }}</span> -->
             </li>
             <hr>
             <li class="navbarContent"><a routerLink="/subscriber/profile">Profile</a></li>

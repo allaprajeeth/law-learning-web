@@ -5,18 +5,18 @@ import { ApiService } from 'src/app/common/services/api/api.service';
 import { LoggingService } from 'src/app/common/services/logging/logging.service';
 import { NotificationService } from '../../../services/notification/notification.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
-
+ 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationService {
   validationKey$: BehaviorSubject<string> = new BehaviorSubject('');
   // validationKey: string='';
-
+ 
   constructor(private apiService: ApiService,
     private loggingService: LoggingService,
     private notificationService:NotificationService) { }
-
+ 
   sendOtpSignup(data: any): Observable<any>{
     let url = endPoints.baseApi+endPoints.signUp;
     return this.apiService.post(url, data)
@@ -39,7 +39,7 @@ export class RegistrationService {
       })
     )
   }
-
+ 
   signUppage(data: any): Observable<any>{
     let url = endPoints.baseApi+endPoints.signUpComplete;
     return this.apiService.post(url, data)
@@ -58,10 +58,11 @@ export class RegistrationService {
         }
         return EMPTY;
       })
-      
+     
     )
-
+ 
   }
-
-
+ 
+ 
 }
+ 

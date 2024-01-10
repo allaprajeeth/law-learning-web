@@ -18,8 +18,8 @@ loginClick$ = createEffect(() =>
             user: { 
               jwtToken: response.data.jwt_token,
               userEmail: response.data.user.email,
-              name: response.data.user.name,
-              phone: response.data.user.phone,
+              userName: response.data.user.name,
+              userPhone: response.data.user.phone,
             }
           })),
           catchError(() => EMPTY)

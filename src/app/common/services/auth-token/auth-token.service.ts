@@ -1,3 +1,5 @@
+// auth-token.service.ts
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -5,7 +7,12 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthTokenService {
-  jwtToken$ = new BehaviorSubject('');
 
+  // Change the access modifier from private to public
+  public jwtToken$ = new BehaviorSubject('');
+
+  getCurrentToken(): string {
+    return this.jwtToken$.value;
+  }
   constructor() { }
 }
