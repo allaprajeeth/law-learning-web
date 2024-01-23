@@ -9,6 +9,7 @@ import { endPoints } from 'src/app/common/api-layer/endpoints';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../store/auth.actions';
 import * as fromAuth from '../store/auth.reducer';
+import { Router } from '@angular/router';
  
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,7 @@ export class LoginService {
     public authTokenService: AuthTokenService,
     private loggingService: LoggingService,
     private notificationService: NotificationService,
+    private router: Router,
     private store: Store<fromAuth.AuthState>
    
   ) {}
@@ -80,7 +82,17 @@ export class LoginService {
               phone: response.data.user.phone
             }
           }));
+
           this.notificationService.notify(`Login Successfull`);
+
+          const role: string = response.data.user.role;
+          if (role === 'CONTENTMANAGER') {
+            this.router.navigate(['authentication/homepage']);
+            console.log('User Role:', role);
+          } else {
+            this.router.navigate(['subscriber/homepage']);
+          }
+
         }
       }),
       catchError((errorResponse: any) => {

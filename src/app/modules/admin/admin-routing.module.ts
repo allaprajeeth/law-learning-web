@@ -20,6 +20,10 @@ import { AuditReportComponent } from './components/audit-report/audit-report.com
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { DashboardNotificationsComponent } from './components/dashboard-notifications/dashboard-notifications.component';
+import { AuditReport2Component } from './components/audit-report2/audit-report2.component';
+import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
+import { ArticleHistoryComponent } from './components/article-history/article-history.component';
+import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 const routes: Routes = [
   {
     path:"",
@@ -93,6 +97,22 @@ const routes: Routes = [
   {
     path:"audit-report",
     component: AuditReportComponent
+  },
+  {
+    path:"audit-report2",
+    component: AuditReport2Component
+  },
+  {
+    path:"courses-history",
+    component: CoursesHistoryComponent
+  },
+  {
+    path:"all-profiles",
+    component: AllProfilesComponent
+  },
+  {
+    path:"article-history",
+    component: ArticleHistoryComponent
   },
   {
     path: 'post/:id',

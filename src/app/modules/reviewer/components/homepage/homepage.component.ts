@@ -28,6 +28,10 @@ export class HomepageComponent implements OnInit{
 
   uploadedCoursesDurations: string[] = [];
   availableCoursesDurations: string[] = [];
+
+  //articles
+  filteredArticles: any[] = [];
+  allArticles: any[] = [/* your array of articles */];
   
   j: number = 0; 
 
@@ -164,6 +168,18 @@ export class HomepageComponent implements OnInit{
       const duration = `${formattedHours}h ${formattedMinutes}m`;
       this.availableCoursesDurations.push(duration);
     }
+
+     //articles
+     this.allArticles = [
+      { name: 'Intellectual Property Trends', category: 'contentManager' },
+      { name: 'Constitutional Challenges Today', category: 'contentManager' },
+      { name: 'Ethics in Criminal Defense', category: 'reviewer' },
+      { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedArticles'},
+      { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedArticles'},
+      { name: 'Global Human Rights Updates', icon: 'path/to/icon4.png', url: 'path/to/document4.pdf', category: 'uploadedArticles'},
+      { name: 'Ethics in Criminal Defense', category: 'reviewer' },
+      { name: 'Ethics in Criminal Defense', category: 'reviewer' },
+    ];
   }
 
   formatWithLeadingZero(value: number): string {

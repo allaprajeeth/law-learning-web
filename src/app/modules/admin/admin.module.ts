@@ -38,6 +38,10 @@ import { AdminPostdetailComponent } from './components/admin-postdetail/admin-po
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
 import { DashboardNotificationsComponent } from './components/dashboard-notifications/dashboard-notifications.component';
+import { AuditReport2Component } from './components/audit-report2/audit-report2.component';
+import { ArticleHistoryComponent } from './components/article-history/article-history.component';
+import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
+import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 // import { FilterByCategoryService } from './components/filter-by-category.service';
 @NgModule({
   declarations: [
@@ -64,6 +68,10 @@ import { DashboardNotificationsComponent } from './components/dashboard-notifica
     AdminDashboardComponent,
     DashboardSidenavComponent,
     DashboardNotificationsComponent,
+    AuditReport2Component,
+    ArticleHistoryComponent,
+    CoursesHistoryComponent,
+    AllProfilesComponent,
    
   ],
   

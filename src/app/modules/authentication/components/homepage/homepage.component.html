@@ -1,69 +1,105 @@
 <app-managernav></app-managernav>
-  <div class="container">
-    <div class="heading">
-      <h1>Courses to Review</h1>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <a routerLink="/authentication/courseInfo">
+<div class="container">
+  <div class="heading">
+    <h1>Courses to Review</h1>
+  </div>
+  <div class="image-grid">
+    <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
+      <div class="imagesContainer">
+        <img [src]="image" class="img" alt="Random Image">
+        <div class="overlay">
+          <a routerLink="/authentication/courseInfo">
             <i class="fa fa-play-circle play-icon"></i>
           </a>
-          </div>
         </div>
-        <div class="headingsContainer">
-          <h5>{{ reviewheadings[i] }}</h5>
-          <p>{{reviewAuthors[i]}}</p>
-          <h4>{{reviewText[i]}}</h4>
-        </div>
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
-          </div>
+      </div>
+      <div class="headingsContainer">
+        <h5>{{ reviewheadings[i] }}</h5>
+        <p>{{reviewAuthors[i]}}</p>
+        <h4>{{reviewText[i]}}</h4>
+      </div>
+      <div class="ratingscontainer1">
+        <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
         </div>
       </div>
     </div>
-    <div class="heading">
-      <h1>Reviewed Courses</h1>
-    </div>
-    <div class="image-grid">
-      <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
-        <div class="imagesContainer">
-          <img [src]="image" class="img" alt="Random Image">
-          <div class="overlay">
-            <a routerLink="/authentication/courseInfo">
+  </div>
+  <div class="heading">
+    <h1>Reviewed Courses</h1>
+  </div>
+  <div class="image-grid">
+    <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
+      <div class="imagesContainer">
+        <img [src]="image" class="img" alt="Random Image">
+        <div class="overlay">
+          <a routerLink="/authentication/courseInfo">
             <i class="fa fa-play-circle play-icon"></i>
-            </a>
-          </div>
+          </a>
         </div>
-        <div class="headingsContainer">
-          <h5>{{ reviewedheadings[i] }}</h5>
-          <p>{{reviewedAuthors[i]}}</p>
-          <h4>{{reviewedText[i]}}</h4>
+      </div>
+      <div class="headingsContainer">
+        <h5>{{ reviewedheadings[i] }}</h5>
+        <p>{{reviewedAuthors[i]}}</p>
+        <h4>{{reviewedText[i]}}</h4>
+      </div>
+      <div class="status-bar">
+        <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
+      </div>
+      <span>{{ randomMyCourseValues[i] }}%complete</span>
+      <div class="container1">
+        <div class="Conatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
         </div>
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
-        </div>
-        <span>{{ randomMyCourseValues[i] }}%complete</span>
-        <div class="container1">
-          <div class="Conatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="Conatiner2">
-            <span>Reviewer Ratings</span>    
-      </div>  
+        <div class="Conatiner2">
+          <span>Reviewer Ratings</span>
         </div>
       </div>
     </div>
-    <br/>
-    <br/>
-    <div> 
+  </div>
+  <br />
+  <br />
+  <div>
+  </div>
+
+
+  <div>
+    <div class="heading" *ngIf="articles && articles.length > 0; else noArticles">
+      <h1>Articles to Review</h1>
+      <div class="container">
+        <div class="article-list">
+          <div class="article-item" *ngFor="let article of articles">
+            <mat-icon>description</mat-icon>
+            <div (click)="navigateToArticleDetail(article.id)">
+              <h3>{{ article.title }}</h3>
+
+              <!-- <p *ngIf="article.files && article.files.length > 0">
+                File Name: {{ article.files[0].fileName }}
+              </p> -->
+            </div>
+            <!-- <button (click)="deleteArticle(article.id)">Delete</button> -->
+          </div>
+        </div>
+      </div>
     </div>
-  <br/>
-  <br/>
-  
+    <ng-template #noArticles>
+      <p>No articles available.</p>
+    </ng-template>
+  </div>
+</div>
+  <!-- 
+<div *ngIf="articles && articles.length > 0; else noArticles">
+  <h1>Review Articles</h1>
+  <div *ngFor="let article of articles">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.description }}</p>
+   
+  </div>
+</div>
+
+<ng-template #noArticles>
+  <p>No articles available.</p>
+</ng-template> -->

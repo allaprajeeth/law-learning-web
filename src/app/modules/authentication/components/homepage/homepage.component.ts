@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-
+import { ArticleService } from '../article.service';
+import { Article } from '../article.model';
 interface Categories {
   viewValue: string;
 }
-
-
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit{
+
   title = 'my-first-app';
   categories: Categories[] = [
     { viewValue: 'Beginner' },
@@ -29,6 +29,10 @@ export class HomepageComponent implements OnInit{
 
   uploadedCoursesDurations: string[] = [];
   availableCoursesDurations: string[] = [];
+
+  //articles
+  
+  articles: Article[] = []; 
   
   j: number = 0; 
 
@@ -118,12 +122,20 @@ export class HomepageComponent implements OnInit{
     'Intermediate | Detailed Course',
   ];
   randomMyCourseValues: number[] = [];
-  randomAvailableCourses: number[] = [];
   randomRejectedValues:number[]=[];
-  availableCousrseSubscribers: string[] = [];
   myCourseSubscribers: string[] = [];
   
   ngOnInit(): void {
+
+    this.articleService.getArticles().subscribe(
+      (articles) => {
+        this.articles = articles;
+        console.log('Number of articles:', this.articles.length);
+      },
+      (error) => {
+        console.error('Error fetching articles:', error);
+      }
+    );
 
     for (let i = 0; i < 2; i++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
@@ -148,28 +160,27 @@ export class HomepageComponent implements OnInit{
       this.uploadedCoursesDurations.push(duration);
     }
 
-    for (let j = 0; j < 12; j++) {
-      const randomImageURL = `https://picsum.photos/300/200?random=${j}`;
-      this.availablecoursesimages.push(randomImageURL);
-      const randomValue = Math.floor(Math.random() * 100) + 1;
-      this.randomAvailableCourses.push(randomValue);
-      const randomSubscribersIndex = Math.floor(Math.random() * this.subscribersValues.length);
-      this.availableCousrseSubscribers.push(this.subscribersValues[randomSubscribersIndex]);
+    this.loadArticles();
 
-      const minHours = 1.5;
-      const maxHours = 6;
-      const hours = minHours + Math.random() * (maxHours - minHours);     
-      const formattedHours = Math.floor(hours);
-      const minutes = Math.floor((hours % 1) * 60);
-      const formattedMinutes = this.formatWithLeadingZero(minutes);    
-      const duration = `${formattedHours}h ${formattedMinutes}m`;
-      this.availableCoursesDurations.push(duration);
-    }
   }
-
   formatWithLeadingZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private articleService: ArticleService, private router: Router) { }
+
+  loadArticles() {
+    this.articleService.getArticles().subscribe(
+      (response: any) => {
+        this.articles = response.data.content;
+      },
+      (error) => {
+        console.error('Error fetching articles:', error);
+      }
+    );
+  }
+  navigateToArticleDetail(articleId: number): void {
+    this.articleService.setSelectedArticle(articleId);
+    this.router.navigate(['/authentication/detail-articles', articleId]);
+  } 
 }
