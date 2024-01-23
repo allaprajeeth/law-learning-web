@@ -36,6 +36,8 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
+import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { AccountsecurityComponent } from './components/accountsecurity/accountse
        DeleteaccountComponent,
        PhotoComponent,
        AccountsecurityComponent,
+       ArticlelistHistoryComponent,
+       ArticleDetailComponent,
   
   ],
   imports: [

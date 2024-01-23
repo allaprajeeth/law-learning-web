@@ -13,6 +13,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { PaymentsComponent } from './components/payments/payments.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
+import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 const routes: Routes = [
   {
@@ -72,6 +74,16 @@ const routes: Routes = [
     path:"contactus",
     component: ContactusComponent
   },
+  {
+    path:"articleListHistory",
+    component: ArticlelistHistoryComponent
+  },
+  { path: 'detail-articles/:id', 
+  component: ArticleDetailComponent 
+},
+{ path: 'articles/:fileId',
+ component: ArticleDetailComponent },
+  
   {
     path:"delete-account",
     component: DeleteaccountComponent

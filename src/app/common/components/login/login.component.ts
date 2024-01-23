@@ -121,18 +121,18 @@ openModal() {
     const selectedCategoryValue = this.loginForm.get('selectedCategory')?.value;
     console.log('Selected Category:', selectedCategoryValue);
     let route: string = '';
-    if (selectedCategoryValue === 'SUBSCRIBER') {
-      route = 'subscriber/homepage';
-    } else if (selectedCategoryValue === 'INSTRUCTOR') {
-      route = 'instructor/homepage';
-    } else if (selectedCategoryValue === 'REVIEWER') {
-      route = 'reviewer/homepage';
-    } else if (selectedCategoryValue === 'CONTENTMANAGER') {
-      route = 'authentication/homepage';
-    } else if (selectedCategoryValue === 'Admin') {
-      route = 'admin/homepage';
-    }
-    this.router.navigate([route]);
+    // if (selectedCategoryValue === 'SUBSCRIBER') {
+    //   route = 'subscriber/homepage';
+    // } else if (selectedCategoryValue === 'INSTRUCTOR') {
+    //   route = 'instructor/homepage';
+    // } else if (selectedCategoryValue === 'REVIEWER') {
+    //   route = 'reviewer/homepage';
+    // } else if (selectedCategoryValue === 'CONTENTMANAGER') {
+    //   route = 'authentication/homepage';
+    // } else if (selectedCategoryValue === 'Admin') {
+    //   route = 'admin/homepage';
+    // }
+    // this.router.navigate([route]);
  
     // Clear error messages and remove error border
   }

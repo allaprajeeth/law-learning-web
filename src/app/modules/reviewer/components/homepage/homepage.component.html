@@ -62,6 +62,26 @@
     <br/>
     <div> 
     </div>
-  <br/>
-  <br/>
+    <div>
+      <div class="heading">
+        <h1>Articles to Review</h1>
+      </div>
+      <div class="container">
+        <div class="article-list">
+          <div *ngFor="let article of allArticles; let i = index">
+            <div class="article-item">
+              <mat-icon>description</mat-icon>
+              <div>{{ article.name }}</div>
+              <!-- Display other details of the article, e.g., category, icon, etc. -->
+            </div>
+          </div>
+          
+        </div>
+    
+        <br />
+        <br />
+        <br />
+        <br />
+      </div>
+    </div>
   

@@ -12,6 +12,7 @@ import { ArticleformService } from '../articleform.service';
 export class SharedarticleformComponent {
   articleForm: FormGroup;
   formData: FormData;
+  
   constructor(private fb: FormBuilder, private router: Router,  private articleformService: ArticleformService) {
     this.articleForm = this.fb.group({
       name: ['', Validators.required],
@@ -35,12 +36,12 @@ export class SharedarticleformComponent {
   onSubmit() {
     if (this.articleForm.valid) {  
       // Add individual fields to the 'articleBean' parameter
-      this.formData.append('articleBean', JSON.stringify({
+      this.formData.set('articleBean', new Blob([JSON.stringify({
          title: this.articleForm.get('name')!.value,
         author: this.articleForm.get('articleName')!.value,
         subject: this.articleForm.get('description')!.value,
         description: this.articleForm.get('description')!.value
-      }));
+      })], {type: 'application/json'}));
 
       // Make API request using the ApiService
       this.articleformService.post<any>('http://192.168.1.42:8080/api/v1/secure/articles', this.formData).subscribe(

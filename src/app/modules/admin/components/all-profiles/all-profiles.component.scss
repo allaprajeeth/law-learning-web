@@ -1,0 +1,70 @@
+/* all-profiles.component.scss */
+
+.heading {
+  h1 {
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+.main-container {
+  background-color: rgb(226, 226, 226);
+  display: flex;
+  height: 100vh;
+
+  .sidenav {
+    width: 240px;
+    background-color: rgb(226, 226, 226);
+    padding: 20px;
+    padding-left: 50px;
+  }
+
+  .profile-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .profile-item {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-left: 60px;
+      margin-top: 10px;
+      padding: 10px;
+      width: 220%;
+      height: 10%;
+      box-sizing: border-box;
+      background-color: white;
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+
+        .profile-placeholder {
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          background-color: #bbb;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          margin-right: 10px;
+        }
+
+        .profile-info {
+          display: flex;
+          flex-direction: row; /* Display info side by side */
+
+          h3 {
+            margin: 0;
+            margin-right: 10px;
+          }
+
+          p {
+            margin: 0; /* Adjust margin as needed */
+          }
+        }
+      }
+    }
+  }
+}

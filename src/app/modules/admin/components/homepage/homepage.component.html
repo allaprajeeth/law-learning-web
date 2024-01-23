@@ -186,7 +186,8 @@
       <div *ngFor="let article of filteredArticles; let i = index">
         <!-- Your HTML structure for displaying each article -->
         <!-- <div>{{ article.name }}</div> -->
-        <div class="article-item"><mat-icon>description</mat-icon> </div>
+        <div class="article-item" >
+          <mat-icon routerLink="/admin/audit-report">description</mat-icon> </div>
         <!-- <div>{{ article.url }}</div> -->
         <!-- <div>{{ article.category }}</div> -->
         <!-- Add other properties as needed -->
@@ -194,16 +195,16 @@
 
       <ng-container *ngIf="publishingCornerFilter === 'reviewer'">
         <div >
-          <div class="article-item">
+          <div class="article-item" routerLink="/admin/audit-report">
             <mat-icon>description</mat-icon>
             <!-- Display other details of the reviewer article -->
           </div>
         </div>
       </ng-container>
 
-      <ng-container *ngIf="publishingCornerFilter === 'uploadedCourses'">
+      <ng-container *ngIf="publishingCornerFilter === 'uploadedCourses'" routerLink="/admin/audit-report2">
         <div >
-          <div class="article-item">
+          <div class="article-item" routerLink="/admin/audit-report2">
             <mat-icon>description</mat-icon>
            
           </div>
