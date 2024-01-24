@@ -160,7 +160,7 @@ export class HomepageComponent implements OnInit{
       this.uploadedCoursesDurations.push(duration);
     }
 
-    this.loadArticles();
+    // this.loadArticles();
 
   }
   formatWithLeadingZero(value: number): string {

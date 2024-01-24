@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 // import { ComponentsComponent } from './components/components.component';
 import { ManagerloginComponent } from './components/managerlogin/managerlogin.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
@@ -38,6 +39,8 @@ import { PhotoComponent } from './components/photo/photo.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { FileSaverModule } from 'ngx-filesaver';
+import { ArticleFileComponent } from './components/article-file/article-file.component';
 
 @NgModule({
   declarations: [
@@ -61,12 +64,15 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
        AccountsecurityComponent,
        ArticlelistHistoryComponent,
        ArticleDetailComponent,
+       ArticleFileComponent,
   
   ],
   imports: [
     CommonModule,
     SharedModule,
     AuthenticationRoutingModule,
+    HttpClientModule,
+    FileSaverModule,
     MatIconModule,
     MatSidenavModule,
     MatToolbarModule,

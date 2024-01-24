@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { Article } from './article.model';
 import { map } from 'rxjs/operators';
-import { Article, CreatedBy, UpdatedBy, File } from './article.model';
-
+import { saveAs } from 'file-saver';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,7 @@ export class ArticleService {
 
   getArticles(): Observable<Article[]> {
     return this.http.get<any>(this.apiUrl).pipe(
-      map(response => response.data.content as Article[]),
+      map(response => response.data.content),
       tap((articles) => {
         this.articles = articles;
         console.log('Articles from server:', articles);
@@ -30,6 +30,15 @@ export class ArticleService {
     );
   }
   
+  getArticle(articleId: number): Observable<Article> {
+    const articleUrl = `${this.apiUrl}/${articleId}`;
+    return this.http.get<Article>(articleUrl);
+  }
+  // Add this method to get the file URL
+  getArticleFileUrl(articleId: number): string {
+    return `${this.apiUrl}/${articleId}/file`;
+  }
+
 
   setSelectedArticle(articleId: number): void {
     this.selectedArticle = this.articles.find((article) => article.id === articleId);
@@ -38,4 +47,16 @@ export class ArticleService {
   getSelectedArticle(): Article | undefined {
     return this.selectedArticle;
   }
+
+  
+  
+
+  getArticleFileContent(articleId: number, fileEndpoint: string): Observable<string> {
+    const fileUrl = `${this.apiUrl}/articles/${articleId}/${fileEndpoint}`;
+
+    // Assuming the server returns the file content as plain text
+    return this.http.get(fileUrl, { responseType: 'text' });
+  }
+  
+  
 }
