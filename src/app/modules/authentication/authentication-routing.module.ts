@@ -81,8 +81,9 @@ const routes: Routes = [
   { path: 'detail-articles/:id', 
   component: ArticleDetailComponent 
 },
-{ path: 'articles/:fileId',
- component: ArticleDetailComponent },
+
+//  { path: 'articles/:fileId',
+//  component: ArticleDetailComponent },
   
   {
     path:"delete-account",

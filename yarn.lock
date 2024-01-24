@@ -2393,7 +2393,7 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
-"@types/file-saver@^2.0.7":
+"@types/file-saver@^2.0.0", "@types/file-saver@^2.0.7":
   version "2.0.7"
   resolved "https://registry.npmjs.org/@types/file-saver/-/file-saver-2.0.7.tgz"
   integrity sha512-dNKVfHd/jk0SkR/exKGj2ggkB45MAkzvWCaqLUUgkyjITkGNzH8H+yUwr+BLJUBjZOe9w8X3wgmXhZDRg1ED6A==
@@ -4380,7 +4380,7 @@ figures@^3.0.0:
   dependencies:
     escape-string-regexp "^1.0.5"
 
-file-saver@^2.0.5:
+file-saver@^2.0.0, file-saver@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/file-saver/-/file-saver-2.0.5.tgz"
   integrity sha512-P9bmyZ3h/PRG+Nzga+rbdI4OEpNDzAVyy74uVO9ATgzLK6VtAsYybF/+TOCvrc0MO793d6+42lLyZTw7/ArVzA==
@@ -6022,6 +6022,13 @@ ng2-pdf-viewer@10.0.0:
   integrity sha512-zEefcAsTpDoxFceQYs3ycPMaUAkt5UX4OcTstVQoNqRK6w+vOY+V8z8aFCuBwnt+7iN1EHaIpquOf4S9mWc04g==
   dependencies:
     pdfjs-dist "~2.16.105"
+    tslib "^2.3.0"
+
+ngx-filesaver@^17.0.0:
+  version "17.0.0"
+  resolved "https://registry.npmjs.org/ngx-filesaver/-/ngx-filesaver-17.0.0.tgz"
+  integrity sha512-Ym2U2/mW3osQeVGBs2nps/1VudIJgv0wzUiuFsy0A47kxi3Id3dAeQR6W0K1EMr7YKhqtXLr98PiOdGBlxHv7A==
+  dependencies:
     tslib "^2.3.0"
 
 node-forge@^1:

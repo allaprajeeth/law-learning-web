@@ -28,4 +28,5 @@ export interface Article {
   createdDate: string;
   updatedDate: string;
   files: File[];
+  fileContent?: string | undefined;
 }
