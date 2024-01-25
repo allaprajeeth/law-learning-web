@@ -1,22 +1,16 @@
 <app-managernav></app-managernav>
-
 <div *ngIf="article">
   <h2>{{ article.title }}</h2>
   <p>{{ article.description }}</p>
 
-  <div>
-    <h2>Article Detail</h2>
-    <p>{{ fileContent }}</p>
-  </div>
-
   <button *ngIf="article.files && article.files.length > 0" (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
   <div *ngIf="article.files && article.files.length > 0">
-    <!-- Include the dynamic parameter in the router link -->
-    <!-- <a *ngIf="fileOpened" [routerLink]="['/authentication/detail-articles', article.id, dynamicParam]">Go to Detail</a> -->
+    <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url" [fileName]="article.files[0]?.fileName"></app-article-file> -->
+    <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url"></app-article-file> -->
   </div>
 
   <div>
-    <p>{{ storedFileContent }}</p>
+    <!-- <p>{{ storedFileContent }}</p> -->
   </div>
 </div>
 

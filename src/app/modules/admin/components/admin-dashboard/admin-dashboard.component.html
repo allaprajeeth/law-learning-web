@@ -1,8 +1,5 @@
-<app-adminnav></app-adminnav>
 <!-- admin-dashboard.component.html -->
-
-<div class="app-adminnav"></div>
-
+<app-adminnav></app-adminnav>
 <div class="heading">
   <h1>Admin-Dashboard</h1>
 </div>
@@ -42,7 +39,8 @@
       </div>
 
       <!-- Login Button -->
-<button [disabled]="!isFormValid()" (click)="send()">Send</button>
+      <button [disabled]="!isFormValid()" (click)="send()">Send</button>
+      <p class="btn-text">Please fill above all details to enable the button.</p>
 
     </div>
   </div>

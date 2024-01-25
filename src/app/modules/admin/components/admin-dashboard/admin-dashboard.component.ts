@@ -39,8 +39,8 @@ export class AdminDashboardComponent implements OnInit {
       // Add more menu items
     ];
 
-     // Initialize the form with validators
-     this.loginForm = this.formBuilder.group({
+    // Initialize the form with validators
+    this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
@@ -73,9 +73,6 @@ export class AdminDashboardComponent implements OnInit {
     // console.log('Email:', this.email);
     // console.log('Phone Number:', this.phoneNumber);
   }
-
- 
-  
 }
 
 // Define the RouteInfo interface

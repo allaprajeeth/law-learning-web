@@ -1,37 +1,37 @@
-.heading {
-    h1 {
-        text-align: center;
-        padding: 10px;
-        margin-top: 10px;
-        font-weight: 500;
-    }
-}
-    .main-container {
-      background-color: rgb(226, 226, 226);
-      display: flex;
-      height: 100vh; 
-  
-      .sidenav {
-        width: 240px;
-        background-color: rgb(226, 226, 226); 
-        padding: 20px;
-        padding-left: 50px;
-        height: 80%; 
-      
+// admin-dashboard.component.scss
 
-      }
-  
-      .content {
-        flex-grow: 1;
-        padding: 20px;
-        height: 100%; 
-        
-        h4 {
-          color: #333; 
-        }
-      }
+.heading {
+  h1 {
+    text-align: center;
+    padding: 10px;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+}
+
+.main-container {
+  background-color: rgb(226, 226, 226);
+  display: flex;
+  height: 100vh;
+
+  .sidenav {
+    width: 240px;
+    background-color: rgb(226, 226, 226);
+    padding: 20px;
+    padding-left: 50px;
+    height: 80%;
+  }
+
+  .content {
+    flex-grow: 1;
+    padding: 20px;
+    height: 100%;
+
+    h4 {
+      color: #333;
     }
-/* login.component.scss */
+  }
+}
 
 .login-container {
   max-width: 700px;
@@ -42,7 +42,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: white;
-  height: 400px;
+  height: 420px;
 
   h2 {
     font-size: 24px;
@@ -61,7 +61,7 @@
     }
 
     input,
-    select  {
+    select {
       width: 100%;
       padding: 8px;
       border: 1px solid #ccc;
@@ -82,5 +82,14 @@
     &:hover {
       background-color: #2980b9;
     }
+
+    // Initially disable the button
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+  .btn-text{
+    color: #4c4b4b;
   }
 }
