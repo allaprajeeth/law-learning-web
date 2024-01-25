@@ -292,6 +292,19 @@ export class HomepageComponent implements OnInit{
       this.filteredArticles = this.filterService.filterByCategory(this.allArticles, this.selectedFilter);
     }
   }
+  filteredImages() {
+    switch (this.coursesFilter) {
+      case 'contentManager':
+        return this.mycoursesimages.slice(0, 3);
+      case 'reviewer':
+        return this.mycoursesimages.slice(0, 2);
+      case 'uploadedCourses':
+        return this.mycoursesimages; // Keep all images for 'uploadedCourses'
+      default:
+        return this.mycoursesimages.slice(0, 1);; // Display all images if no filter is selected
+    }
+  }
+  
   
 }
 
