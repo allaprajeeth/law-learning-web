@@ -15,6 +15,7 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Filters</mat-label>
             <mat-select [(ngModel)]="coursesFilter" style="width: 100%" appearance="outline" start>
+              <mat-option value="All">All</mat-option>
               <mat-option value="contentManager">Content-Manager </mat-option>
               <mat-option value="reviewer">Reviewer</mat-option>
               <mat-option value="uploadedCourses">Uploaded-courses</mat-option>
@@ -117,6 +118,7 @@
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Filters</mat-label>
             <mat-select [(ngModel)]="libraryFilter" style="width: 100%" appearance="outline" start>
+              <mat-option value="All">All</mat-option>
               <mat-option value="contentManager">Content-Manager </mat-option>
               <mat-option value="reviewer">Reviewer</mat-option>
               <mat-option value="uploadedCourses">Uploaded-documents</mat-option>
@@ -127,7 +129,7 @@
     </div>
 
     <div class="pdf-list">
-      <div *ngFor="let reviewpdf of reviewpdfs">
+      <div *ngFor="let reviewpdf of filteredPDFs()">
         <div class="pdf-item">
           <mat-icon>picture_as_pdf</mat-icon>
         </div>

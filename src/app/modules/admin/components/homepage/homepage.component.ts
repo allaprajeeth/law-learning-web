@@ -294,17 +294,33 @@ export class HomepageComponent implements OnInit{
   }
   filteredImages() {
     switch (this.coursesFilter) {
+      case 'All':
+        return this.mycoursesimages;
       case 'contentManager':
         return this.mycoursesimages.slice(0, 3);
       case 'reviewer':
         return this.mycoursesimages.slice(0, 2);
       case 'uploadedCourses':
-        return this.mycoursesimages; // Keep all images for 'uploadedCourses'
+        return this.mycoursesimages.slice(0, 1); // Keep all images for 'uploadedCourses'
       default:
-        return this.mycoursesimages.slice(0, 1);; // Display all images if no filter is selected
+        return this.mycoursesimages;
     }
   }
-  
+  // Assuming you have an array of PDFs, e.g., reviewpdfs
+filteredPDFs() {
+  switch (this.libraryFilter) {
+    case 'All':
+      return this.reviewpdfs; // Display all PDFs if no filter is selected
+    case 'contentManager':
+      return this.reviewpdfs.slice(0, 3); // Display the first 3 PDFs for 'contentManager'
+    case 'reviewer':
+      return this.reviewpdfs.slice(0, 4); // Display the first 2 PDFs for 'reviewer'
+    case 'uploadedCourses':
+      return this.reviewpdfs.slice(0, 5); // Display all PDFs for 'uploadedCourses'
+    default:
+      return this.reviewpdfs; // Display all PDFs if no filter is selected
+  }
+}
   
 }
 
