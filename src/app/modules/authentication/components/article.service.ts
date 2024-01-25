@@ -47,16 +47,5 @@ export class ArticleService {
   getSelectedArticle(): Article | undefined {
     return this.selectedArticle;
   }
-
-  
-  
-
-  getArticleFileContent(articleId: number, fileEndpoint: string): Observable<string> {
-    const fileUrl = `${this.apiUrl}/articles/${articleId}/${fileEndpoint}`;
-
-    // Assuming the server returns the file content as plain text
-    return this.http.get(fileUrl, { responseType: 'text' });
-  }
-  
-  
 }
+

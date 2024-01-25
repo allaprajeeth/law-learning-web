@@ -9,26 +9,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllProfilesComponent implements OnInit {
   subscriberProfiles: any[] = [
-    { username: 'Subscriber1', role: 'subscriber' },
-    { username: 'Subscriber2', role: 'subscriber' },
+    { username: 'Pushpa', role: 'Subscriber', status: 'Active' },
+    { username: 'Vani', role: 'Subscriber', status: 'Inactive' },
+    { username: 'Lokesh', role: 'Subscriber', status: 'Blocked' },
     // Add more subscriber profiles
   ];
 
   instructorProfiles: any[] = [
-    { username: 'Instructor1', role: 'instructor' },
-    { username: 'Instructor2', role: 'instructor' },
+    { username: 'John', role: 'Instructor', status: 'Active' },
+    { username: 'Davis', role: 'Instructor', status: 'Inactive' },
     // Add more instructor profiles
   ];
 
   reviewerProfiles: any[] = [
-    { username: 'Reviewer1', role: 'reviewer' },
-    { username: 'Reviewer2', role: 'reviewer' },
+    { username: 'Wilson', role: 'Reviewer', status: 'Active' },
+    { username: 'Smith', role: 'Reviewer', status: 'Inactive' },
     // Add more reviewer profiles
   ];
 
   contentManagerProfiles: any[] = [
-    { username: 'ContentManager1', role: 'content-manager' },
-    { username: 'ContentManager2', role: 'content-manager' },
+    { username: 'Johnson', role: 'Content-manager', status: 'Active' },
+    // { username: 'sarah', role: 'Content-manager', status: 'Inactive' },
     // Add more content manager profiles
   ];
 
@@ -51,4 +52,18 @@ export class AllProfilesComponent implements OnInit {
     const initials = username.split(' ').map(word => word[0]).join('');
     return initials.toUpperCase();
   }
+
+  getStatusStyles(status: string): any {
+    switch (status.toLowerCase()) {
+      case 'inactive':
+        return { color: 'blue' };
+      case 'blocked':
+        return { color: 'red' };
+      case 'active':
+        return { color: 'green' };
+      default:
+        return {};
+    }
+  }
+  
 }
