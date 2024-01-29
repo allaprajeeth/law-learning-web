@@ -58,12 +58,34 @@ export class DashboardNotificationsComponent  implements OnInit{
     },
   ];
 
+
+  ngOnInit() {
+    this.cdr.detectChanges();
+  }
+
+
+deleteNotification(index: number) {
+  
+    const isConfirmed = window.confirm('Are you sure you want to delete the notification?');
+
+  if (isConfirmed) {
+    // User clicked 'OK', perform the delete action
+    // Implement your logic to delete the notification here
+  
+    this.cdr.detectChanges();
+    this.notifications.splice(index, 1);
+  }
+  }
+
+  
+
   filteredNotifications: Notification[] = []; // Array to store filtered notifications
   selectedNotification: string = 'all'; // Default selected notification type
   
 
   editingIndex: number = -1; // Track which notification is being edited
   constructor(private cdr: ChangeDetectorRef, private router: Router, private zone: NgZone) {}
+
 
   ngOnInit(): void {
     // Initialize filteredNotifications with all notifications initially
