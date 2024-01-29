@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,7 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AdminDashboardComponent implements OnInit {
 
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
+  showMessageStatus: boolean = false;
+  showcredentialStatus: boolean = true;
 
   username: string = '';
   email: string = '';
@@ -21,7 +24,7 @@ export class AdminDashboardComponent implements OnInit {
 
   menuItems: RouteInfo[];
 
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private formBuilder: FormBuilder) {
+  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private formBuilder: FormBuilder, private location: Location) {
     // Register Material Icons
     this.matIconRegistry.addSvgIcon(
       'dashboard',
@@ -39,7 +42,15 @@ export class AdminDashboardComponent implements OnInit {
       // Add more menu items
     ];
 
-    // Initialize the form with validators
+    // // Initialize the form with validators
+    // this.myForm = this.formBuilder.group({
+    //   username: ['', Validators.required],
+    //   email: ['', [Validators.required, Validators.email]],
+    //   phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+    //   selectedRole: ['instructor', Validators.required]
+    // });
+  }
+  initializeForm() {
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -48,8 +59,14 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+  send() {
+    // Implement your login logic here
+    this.showMessageStatus = true;
+    this.showcredentialStatus = false;
+    console.log('Form values:', this.loginForm.value);
+  }
   ngOnInit() {
-    // You can perform additional initialization logic here
+    this.initializeForm();
   }
 
   get formControls() {
@@ -66,13 +83,18 @@ export class AdminDashboardComponent implements OnInit {
     return window.innerWidth <= 991;
   }
 
-  send() {
-    // Implement your login logic here
-    // console.log('Login clicked');
-    // console.log('Username:', this.username);
-    // console.log('Email:', this.email);
-    // console.log('Phone Number:', this.phoneNumber);
+  closePage() {
+    // this.closeClicked.emit();
+    location.reload(); 
   }
+
+  // send() {
+  //   // Implement your login logic here
+  //   // console.log('Login clicked');
+  //   // console.log('Username:', this.username);
+  //   // console.log('Email:', this.email);
+  //   // console.log('Phone Number:', this.phoneNumber);
+  // }
 }
 
 // Define the RouteInfo interface
