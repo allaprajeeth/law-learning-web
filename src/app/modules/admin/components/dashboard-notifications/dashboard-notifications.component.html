@@ -27,7 +27,7 @@
           </div>
           <span class="date">{{ notification.notificationDate }}</span>
 
-            <mat-icon aria-label="Edit" class="Edit-icon" (click)="onEditClick(i)">edit</mat-icon>
+            <mat-icon aria-label="Edit" class="Edit-icon" *ngIf="notification.type === 'comments'"(click)="onEditClick(i)">edit</mat-icon>
             <!-- <mat-icon class="delete-icon" (click)="deleteNotification(i)">delete</mat-icon>             -->
 
           <!-- <mat-icon aria-label="Edit"  (click)="onEditClick(i)">edit</mat-icon> -->
