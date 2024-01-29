@@ -257,7 +257,7 @@ export class HomepageComponent implements OnInit{
     return value < 10 ? `0${value}` : `${value}`;
   }
   constructor(private route: ActivatedRoute, private router:Router, private filterService:FilterByCategoryService)
-   {
+   {   
 
    
    {

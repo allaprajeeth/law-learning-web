@@ -53,7 +53,25 @@ export class DashboardNotificationsComponent  {
   editingIndex: number = -1; // Track which notification is being edited
   constructor(private cdr: ChangeDetectorRef, private router: Router) {}
 
+  ngOnInit() {
+    this.cdr.detectChanges();
+  }
 
+
+deleteNotification(index: number) {
+  
+    const isConfirmed = window.confirm('Are you sure you want to delete the notification?');
+
+  if (isConfirmed) {
+    // User clicked 'OK', perform the delete action
+    // Implement your logic to delete the notification here
+  
+    this.cdr.detectChanges();
+    this.notifications.splice(index, 1);
+  }
+  }
+
+  
 
   getRandomColor(): string {
     const letters = '0123456789ABCDEF';

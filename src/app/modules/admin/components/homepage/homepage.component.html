@@ -37,7 +37,10 @@
           </div>
         </div>
         <div class="headingsContainer">
-          <h5>{{ headings[i] }}</h5>
+          <div class="unseen">
+            <h5>{{ headings[i] }}</h5>
+            <div  class="unverified" *ngIf="(coursesFilter && i % 2 !== 0)||(!coursesFilter && i % 2 !== 0)"></div>
+          </div>        
           <p>{{ reviewCoursesAuthors[i] }}</p>
           <h4>{{ reviewCoursesText[i] }}</h4>
           <p>{{ paragraphs[i] }}</p>
@@ -129,8 +132,9 @@
     </div>
 
     <div class="pdf-list">
-      <div *ngFor="let reviewpdf of filteredPDFs()">
+      <div *ngFor="let reviewpdf of filteredPDFs();let i = index">
         <div class="pdf-item">
+          <div  class="unverified"*ngIf="(libraryFilter && i % 2 === 0)||(!libraryFilter && i % 2 === 0)"></div>
           <mat-icon>picture_as_pdf</mat-icon>
         </div>
       </div>
@@ -189,7 +193,9 @@
         <!-- Your HTML structure for displaying each article -->
         <!-- <div>{{ article.name }}</div> -->
         <div class="article-item" >
-          <mat-icon routerLink="/admin/audit-report">description</mat-icon> </div>
+          <div  class="unverified"*ngIf="(libraryFilter && i % 2 !== 0)||(!libraryFilter && i % 2 !== 0)"></div>
+          <mat-icon routerLink="/admin/audit-report">description</mat-icon>
+        </div>
         <!-- <div>{{ article.url }}</div> -->
         <!-- <div>{{ article.category }}</div> -->
         <!-- Add other properties as needed -->

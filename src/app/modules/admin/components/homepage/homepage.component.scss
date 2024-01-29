@@ -389,9 +389,25 @@
     }
   }
 
- 
+  .unverified{
+     
+    width: 10px;
+    height: 10px;
+      background: red;
+      border-radius:50%;
+
   
-  
+  }
+  .unseen{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .article-item .unverified,.pdf-item .unverified{
+    margin-left: 75px;
+
+  }
+
   
   
   
