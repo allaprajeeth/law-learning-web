@@ -28,9 +28,9 @@
           <span class="date">{{ notification.notificationDate }}</span>
 
             <mat-icon aria-label="Edit" class="Edit-icon" (click)="onEditClick(i)">edit</mat-icon>
-            <mat-icon class="delete-icon" (click)="deleteNotification(i)">delete</mat-icon>            
+            <!-- <mat-icon class="delete-icon" (click)="deleteNotification(i)">delete</mat-icon>             -->
 
-          <mat-icon aria-label="Edit"  (click)="onEditClick(i)">edit</mat-icon>
+          <!-- <mat-icon aria-label="Edit"  (click)="onEditClick(i)">edit</mat-icon> -->
 
           <button *ngIf="editingIndex === i" (click)="onSaveClick(i)">Save</button>
           <button *ngIf="editingIndex === i" (click)="onCancelClick()">Cancel</button>

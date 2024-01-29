@@ -14,6 +14,9 @@
               <mat-icon>person</mat-icon>
             </span>
             <span class="span">All Profiles</span>
+            <span class="expand-icon">
+              <mat-icon>{{ showRoles ? 'expand_less' : 'expand_more' }}</mat-icon>
+            </span>
             
           </a>
           <ul *ngIf="showRoles">
@@ -31,6 +34,9 @@
           <a mat-list-item routerLink="/admin/dash-notifications" (click)="toggleNotifications()" routerLinkActive="active-link">
             <span class="icon-span"><mat-icon>notifications</mat-icon></span>
             <span class="span">Notifications</span>
+            <span class="expand-icon">
+              <mat-icon>{{ showNotifications ? 'expand_less' : 'expand_more' }}</mat-icon>
+            </span>
           </a>
           
           <ul *ngIf="showNotifications">

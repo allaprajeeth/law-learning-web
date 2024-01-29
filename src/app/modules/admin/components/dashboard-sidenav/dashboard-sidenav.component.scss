@@ -23,7 +23,12 @@ mat-nav-list a {
     align-items: center;
     margin-right: 8px; /* Adjust margin as needed */
   }
+ 
 }
+.expand-icon {
+  margin-left: 20px; /* Push the icon to the right */
+}
+
 
 mat-sidenav-content {
   padding: 20px;
