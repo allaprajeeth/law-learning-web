@@ -59,9 +59,9 @@ export class DashboardNotificationsComponent  implements OnInit{
   ];
 
 
-  ngOnInit() {
-    this.cdr.detectChanges();
-  }
+  // ngOnInit() {
+  //   this.cdr.detectChanges();
+  // }
 
 
 deleteNotification(index: number) {
@@ -90,6 +90,8 @@ deleteNotification(index: number) {
   ngOnInit(): void {
     // Initialize filteredNotifications with all notifications initially
     this.filteredNotifications = this.notifications;
+
+    this.cdr.detectChanges();
   }
 
   // getRandomColor(): string {
