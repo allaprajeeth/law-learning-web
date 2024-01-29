@@ -59,7 +59,7 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
-  send() {
+  submit() {
     // Implement your login logic here
     this.showMessageStatus = true;
     this.showcredentialStatus = false;
