@@ -7,7 +7,8 @@
 
 <div class="main-container">
   <div class="sidenav">
-    <app-dashboard-sidenav></app-dashboard-sidenav>
+    <app-dashboard-sidenav (roleSelected)="onRoleSelected($event)"></app-dashboard-sidenav>
+    <!-- <app-dashboard-sidenav></app-dashboard-sidenav> -->
   </div>
 
   <div class="profile-list">

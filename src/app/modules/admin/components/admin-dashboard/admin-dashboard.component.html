@@ -1,10 +1,9 @@
-<!-- admin-dashboard.component.html -->
 <app-adminnav></app-adminnav>
 <div class="heading">
   <h1>Admin-Dashboard</h1>
 </div>
 
-<div class="main-container">
+<div  *ngIf="showcredentialStatus" class="main-container">
   <div class="sidenav">
     <app-dashboard-sidenav></app-dashboard-sidenav>
   </div>
@@ -13,35 +12,48 @@
     <div class="login-container">
       <h2>Create login credentials for Reviewer, Content Manager, Instructor, and other Admins.</h2>
 
-      <div class="input-group">
-        <label for="username">Username:</label>
-        <input type="text" id="username" [(ngModel)]="username" required />
-      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="send()">
+        <div class="input-group">
+          <label for="username">Username:</label>
+          <input type="text" id="username" formControlName="username" required />
+        </div>
 
-      <div class="input-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" [(ngModel)]="email" pattern="[a-zA-Z0-9._%+-]+@gmail\.com$" required />
-      </div>
+        <div class="input-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" formControlName="email" required />
+        </div>
 
-      <div class="input-group">
-        <label for="phoneNumber">Phone Number:</label>
-        <input type="tel" id="phoneNumber" [(ngModel)]="phoneNumber" pattern="[0-9]{10}" required />
-      </div>
+        <div class="input-group">
+          <label for="phoneNumber">Phone Number:</label>
+          <input type="tel" id="phoneNumber" formControlName="phoneNumber" required />
+        </div>
 
-      <div class="input-group">
-        <label for="role">Role:</label>
-        <select id="role" [(ngModel)]="selectedRole" required>
-          <option value="instructor">Instructor</option>
-          <option value="content-manager">Content Manager</option>
-          <option value="reviewer">Reviewer</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
+        <div class="input-group">
+          <label for="role">Role:</label>
+          <select id="role" formControlName="selectedRole" required>
+            <option value="instructor">Instructor</option>
+            <option value="content-manager">Content Manager</option>
+            <option value="reviewer">Reviewer</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
 
-      <!-- Login Button -->
-      <button [disabled]="!isFormValid()" (click)="send()">Send</button>
+        <!-- Login Button -->
+        <button [disabled]="!loginForm.valid" type="submit" (click)="send">Send</button>
+      </form>
       <p class="btn-text">Please fill above all details to enable the button.</p>
-
     </div>
   </div>
 </div>
+
+
+<div  *ngIf="showMessageStatus" class="message-status">
+  <div class="submission-status">
+    <span class="close-icon" (click)="closePage()">&#10006;</span>
+    <h3>Credentials submitted successfully. Please wait for some time; you will be notified.</h3>
+    <button class="close-button" (click)="closePage()">Close</button>
+  </div>
+</div>
+
+
+

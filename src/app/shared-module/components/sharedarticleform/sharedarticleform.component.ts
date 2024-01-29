@@ -57,7 +57,7 @@ export class SharedarticleformComponent {
   }
   
   
-  // navigateToSuccessMessage() {
-  //   this.router.navigate(['/subscriber/submitmesg']);
-  // }
+  navigateToSuccessMessage() {
+    this.router.navigate(['/subscriber/submitmesg']);
+  }
 }
