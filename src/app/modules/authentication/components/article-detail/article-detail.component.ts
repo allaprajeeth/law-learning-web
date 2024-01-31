@@ -6,6 +6,7 @@ import { Article } from '../article.model';
 import { FileSaverService } from 'ngx-filesaver';
 import { saveAs } from 'file-saver';
 
+
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
@@ -15,14 +16,17 @@ export class ArticleDetailComponent implements OnInit {
   article: Article | undefined;
   fileOpened: boolean = false;
   approvalStatus: 'approved' | 'rejected' | 'pending' = 'pending';
-  
+  comment: string = '';
+  commentError: boolean = false;
+  articleApproved: boolean = false;
+  articleee:boolean=true;
   constructor(
     private route: ActivatedRoute,
     public articleService: ArticleService,
     private router: Router,
     private fileSaverService: FileSaverService,
     private cdr: ChangeDetectorRef,
-   
+  
   ) {}
 
   ngOnInit(): void {
@@ -83,17 +87,31 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   approveArticle(): void {
+      // Show success message using MatSnackBar
+
     // Additional logic for article approval goes here
     // For now, let's just update the approvalStatus
     this.approvalStatus = 'approved';
+    this.articleApproved = true;
+    this.articleee=false;
+    
   }
 
   rejectArticle(): void {
+    if (this.comment.trim() === '') {
+      this.commentError = true;
+    } else {
+      this.commentError = false;
+      this.approvalStatus = 'rejected';
+    }
     // Additional logic for article rejection goes here
     // For now, let's just update the approvalStatus
-    this.approvalStatus = 'rejected';
+    // this.approvalStatus = 'rejected';
+    
+
   }
   closeMessage(): void {
     this.approvalStatus = 'pending'; // Reset approval status to hide the message
   }
+
 }

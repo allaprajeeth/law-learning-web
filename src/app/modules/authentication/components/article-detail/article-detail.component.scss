@@ -68,3 +68,33 @@
 .rejection-message {
   background-color: #f2dede; /* Red background for rejection, you can customize */
 }
+.error-message{
+
+  color: red;
+ 
+}
+.comments{
+  display: table-caption;
+  margin-top: 30px;
+  label{
+     font-size: 15px;
+
+  }
+}
+.submission-status {
+
+  background-color: white;
+  transform: translate(30%, 0px);
+  width: 700px;
+  height: 200px;
+  padding: 20px;
+  margin: 60px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Add position relative to position close icon */
+}
+
