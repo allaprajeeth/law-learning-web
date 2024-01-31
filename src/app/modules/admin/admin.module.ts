@@ -9,6 +9,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatMenuModule} from '@angular/material/menu';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { VideoplayerComponent } from './components/videoplayer/videoplayer.component';
@@ -42,6 +43,7 @@ import { AuditReport2Component } from './components/audit-report2/audit-report2.
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
+import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 // import { FilterByCategoryService } from './components/filter-by-category.service';
 @NgModule({
   declarations: [
@@ -72,6 +74,7 @@ import { AllProfilesComponent } from './components/all-profiles/all-profiles.com
     ArticleHistoryComponent,
     CoursesHistoryComponent,
     AllProfilesComponent,
+    ProfileDetailsComponent,
    
   ],
   
@@ -90,7 +93,8 @@ import { AllProfilesComponent } from './components/all-profiles/all-profiles.com
     MatExpansionModule,
     MatTabsModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatSlideToggleModule
   ],
   providers: [
     {

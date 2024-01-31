@@ -13,7 +13,7 @@
 
   <div class="profile-list">
     <!-- Display All Profiles in a Single Line -->
-    <div *ngFor="let profile of allProfiles" class="profile-item">
+    <div *ngFor="let profile of allProfiles" class="profile-item" routerLink="/admin/profile-details">
       <div class="profile-info">
         <div class="profile-placeholder">{{ getInitials(profile.username) }}</div>
         <div class="profile-details">
