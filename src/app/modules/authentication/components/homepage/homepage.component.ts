@@ -136,7 +136,8 @@ export class HomepageComponent implements OnInit{
         console.error('Error fetching articles:', error);
       }
     );
-
+    
+   
     for (let i = 0; i < 2; i++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
       this.rejectedimages.push(randomImageURL);

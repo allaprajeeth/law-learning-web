@@ -13,6 +13,7 @@ export class ArticleService {
   private apiUrl = 'http://192.168.1.42:8080/api/v1/secure/articles/review';
   private articles: Article[] = [];
   private selectedArticle: Article | undefined;
+  setItem: any;
 
   constructor(private http: HttpClient) {}
 
@@ -41,7 +42,9 @@ export class ArticleService {
 
 
   setSelectedArticle(articleId: number): void {
+   
     this.selectedArticle = this.articles.find((article) => article.id === articleId);
+  
   }
 
   getSelectedArticle(): Article | undefined {
