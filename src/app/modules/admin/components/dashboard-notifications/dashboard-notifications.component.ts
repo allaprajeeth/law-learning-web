@@ -38,13 +38,13 @@ export class DashboardNotificationsComponent  implements OnInit{
     {
       heading: 'Comment',
       message: 'Check the Promotion Codes',
-      icon: 'M',
+      icon: 'C',
       notificationDate: '13-09-2023',
       type: 'comments'
     },
     {
       heading: 'Comment',
-      message: 'New Course Added.',
+      message: 'New Comment Added.',
       icon: 'E',
       notificationDate: '28-10-2023',
       type: 'comments'
@@ -108,11 +108,16 @@ deleteNotification(index: number) {
   }
 
   onSaveClick(index: number): void {
-    // Save the edited content and reset editingIndex
-    const editedMessage = this.notifications[index].editedMessage;
-    if (editedMessage !== undefined) {
-      this.notifications[index].message = editedMessage;
-    }
+    // Find all objects with heading 'Comment'
+    const commentNotifications = this.notifications.filter(notification => notification.heading === 'Comment');
+  
+    // Update the edited content for each matching notification
+    commentNotifications.forEach(commentNotification => {
+      const editedMessage = commentNotification.editedMessage;
+      if (editedMessage !== undefined) {
+        commentNotification.message = editedMessage;
+      }
+    }); 
     this.editingIndex = -1;
   }
   

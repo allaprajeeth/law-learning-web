@@ -14,17 +14,17 @@
 
       <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="input-group">
-          <label for="username">*Username:</label>
+        <div><label for="username" style="color: red;">*</label>Username:</div>  
           <input type="text" id="username" formControlName="username" required />
         </div>
 
         <div class="input-group">
-          <label for="email">*Email:</label>
+          <div> <label for="email" style="color: red;">*</label>Email:</div>
           <input type="email" id="email" formControlName="email" required />
         </div>
 
         <div class="input-group">
-          <label for="phoneNumber">*Phone Number:</label>
+          <div><label for="phoneNumber" style="color: red;">*</label>Phone Number:</div>
           <input type="tel" id="phoneNumber" formControlName="phoneNumber" required />
         </div>
 
