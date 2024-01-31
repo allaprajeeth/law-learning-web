@@ -1,22 +1,39 @@
 <app-managernav></app-managernav>
-<div *ngIf="article">
-  <h2>{{ article.title }}</h2>
-  <p>{{ article.description }}</p>
 
-  <button *ngIf="article.files && article.files.length > 0" (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
-  <div *ngIf="article.files && article.files.length > 0">
-    <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url" [fileName]="article.files[0]?.fileName"></app-article-file> -->
-    <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url"></app-article-file> -->
+<div class="article" >
+  <div *ngIf="article">
+    <h2>{{ article.title }}</h2>
+    <p>{{ article.description }}</p>
+
+    <button *ngIf="article.files && article.files.length > 0"
+      (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
+    <div *ngIf="article.files && article.files.length > 0">
+      <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url" [fileName]="article.files[0]?.fileName"></app-article-file> -->
+      <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url"></app-article-file> -->
+    </div>
+
+    <div>
+      <!-- <p>{{ storedFileContent }}</p> -->
+    </div>
   </div>
 
-  <div>
-    <!-- <p>{{ storedFileContent }}</p> -->
+  <div *ngIf="approvalStatus !== 'approved' && approvalStatus !== 'rejected'" class="button-container">
+    <button class="approve-button" (click)="approveArticle()">Approve</button>
+    <button class="reject-button" (click)="rejectArticle()">Reject</button>
   </div>
+  <br />
+  <button (click)="goBack()" class="goBack-button">Go Back</button>
 </div>
-
-<div class="button-container">
-  <button class="approve-button">Approve</button>
-  <button class="reject-button">Reject</button>
+<br />
+<br />
+<br />
+<div>
+<div *ngIf="approvalStatus === 'approved'" class="approval-message">
+  <p>Article Approved Successfully. It will be re-checked by Admin. Thank you.</p>
+  <span (click)="goBack()" class="icon">&#10003;</span> <!-- Checkmark icon -->
 </div>
-
-<button (click)="goBack()" class="goBack-button">Go Back</button>
+<div *ngIf="approvalStatus === 'rejected'" class="rejection-message">
+  <p>Article Rejected. Please review and make necessary changes.</p>
+  <span (click)="goBack()" class="icon">&#10008;</span> <!-- Cross (X) icon -->
+</div>
+</div>

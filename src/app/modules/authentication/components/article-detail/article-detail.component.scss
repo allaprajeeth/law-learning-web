@@ -1,3 +1,11 @@
+.article{
+  margin:30px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 .button-container {
     display: flex;
     justify-content: center; /* Center the buttons horizontally */
@@ -31,8 +39,32 @@
     cursor: pointer;
     font-size: 16px;
     border-radius: 5px;
-    align-self: center; /* Center the button vertically */
-    margin-left: auto; /* Move to the right to center horizontally */
-    margin-right: auto; /* Move to the left to center horizontally */
+    align-self: center;
+    margin-left: 580px; 
+    background-color: #3498db;
+    color: #fff;
+    // margin-right: auto; 
+  }
+
+
+  .approval-message,
+  .rejection-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #dff0d8; 
+    padding: 40px;
+    margin: auto;
+    font-size: 16px;
+    text-align: center;
   }
   
+  .icon {
+    cursor: pointer;
+    font-size: 24px;
+    margin-left: 10px;
+  }
+  
+.rejection-message {
+  background-color: #f2dede; /* Red background for rejection, you can customize */
+}

@@ -17,6 +17,7 @@ export interface File {
 }
 
 export interface Article {
+  approvalStatus: string;
   id: number;
   reviewStatus: string;
   description: string;
