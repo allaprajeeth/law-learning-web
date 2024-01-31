@@ -24,6 +24,7 @@ import { AuditReport2Component } from './components/audit-report2/audit-report2.
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
+import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 const routes: Routes = [
   {
     path:"",
@@ -109,6 +110,10 @@ const routes: Routes = [
   {
     path:"all-profiles",
     component: AllProfilesComponent
+  },
+  {
+    path:"profile-details",
+    component: ProfileDetailsComponent
   },
   {
     path:"article-history",
