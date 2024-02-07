@@ -56,6 +56,7 @@ import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi
 import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     StatusarticlepageComponent,
     UnderreviewarticleComponent,
     CommentedarticleComponent,
+    ArticleDetailComponent,
    
   ],
   

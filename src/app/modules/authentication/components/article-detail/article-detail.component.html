@@ -1,39 +1,66 @@
 <app-managernav></app-managernav>
+ 
+<div class="article"  >
+  <div class="hh" *ngIf="articleee">
+ 
+    <div *ngIf="article">
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.description }}</p>
+       
+      <button *ngIf="article.files && article.files.length > 0"
+        (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
+ 
 
-<div class="article" >
-  <div *ngIf="article">
-    <h2>{{ article.title }}</h2>
-    <p>{{ article.description }}</p>
-
-    <button *ngIf="article.files && article.files.length > 0"
-      (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
-    <div *ngIf="article.files && article.files.length > 0">
-      <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url" [fileName]="article.files[0]?.fileName"></app-article-file> -->
-      <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url"></app-article-file> -->
-    </div>
-
-    <div>
-      <!-- <p>{{ storedFileContent }}</p> -->
+        <p>{{ storedFileContent }}</p>
+       
+        <div class="comments"  *ngIf="article.files && article.files.length > 0" >
+          <label for="">comments:</label>
+          <textarea placeholder="Type your comment here..." [(ngModel)]="comment"></textarea>
+          <div *ngIf="commentError" class="error-message">
+            *Comment is mandatory. Please enter some text.
+          </div>
+        </div>
+      <div *ngIf="article.files && article.files.length > 0">
+        <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url" [fileName]="article.files[0]?.fileName"></app-article-file> -->
+        <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url"></app-article-file> -->
+      </div>
+ 
+      <div>
+        <!-- <p>{{ storedFileContent }}</p> -->
+      </div>
     </div>
   </div>
-
+  
+  
+  <div *ngIf="articleApproved" class="message-status">
+    <div class="submission-status success">
+      <i class="icon close-icon" (click)="goBack()">&#10006;</i>
+      <h3>Article Approved Successfully. It will be re-checked by Admin. Thank you.</h3>
+     
+    </div>
+  </div>
+  
+  <div *ngIf="articleRejected" class="message-status">
+    <div class="submission-status rejection">
+      <i class="icon close-icon" (click)="goBack()">&#10006;</i>
+      <h3>Article Rejected. Please review and make necessary changes.</h3>
+      
+    </div>
+  </div>
+  
   <div *ngIf="approvalStatus !== 'approved' && approvalStatus !== 'rejected'" class="button-container">
     <button class="approve-button" (click)="approveArticle()">Approve</button>
     <button class="reject-button" (click)="rejectArticle()">Reject</button>
   </div>
+ 
+ 
   <br />
   <button (click)="goBack()" class="goBack-button">Go Back</button>
 </div>
+ 
 <br />
 <br />
 <br />
 <div>
-<div *ngIf="approvalStatus === 'approved'" class="approval-message">
-  <p>Article Approved Successfully. It will be re-checked by Admin. Thank you.</p>
-  <span (click)="goBack()" class="icon">&#10003;</span> <!-- Checkmark icon -->
-</div>
-<div *ngIf="approvalStatus === 'rejected'" class="rejection-message">
-  <p>Article Rejected. Please review and make necessary changes.</p>
-  <span (click)="goBack()" class="icon">&#10008;</span> <!-- Cross (X) icon -->
-</div>
+
 </div>

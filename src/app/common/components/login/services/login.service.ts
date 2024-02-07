@@ -85,13 +85,49 @@ export class LoginService {
 
           this.notificationService.notify(`Login Successfull`);
 
+          // const role: string = response.data.user.role;
+          // if (role === 'CONTENTMANAGER') {
+          //   this.router.navigate(['authentication/homepage']);
+          //   console.log('User Role:', role);
+          // } else {
+          //   this.router.navigate(['subscriber/homepage']);
+          // }
+
+
           const role: string = response.data.user.role;
-          if (role === 'CONTENTMANAGER') {
-            this.router.navigate(['authentication/homepage']);
-            console.log('User Role:', role);
-          } else {
-            this.router.navigate(['subscriber/homepage']);
-          }
+
+switch (role) {
+  case 'CONTENTMANAGER':
+    this.router.navigate(['authentication/homepage']);
+    // console.log('User Role:', role);
+    break;
+  
+  case 'ADMIN':
+    this.router.navigate(['admin/homepage']);
+    console.log('User Role:', role);
+    break;
+
+  case 'INSTRUCTOR':
+    this.router.navigate(['instructor/homepage']);
+    console.log('User Role:', role);
+    break;
+
+  case 'SUBSCRIBER':
+    this.router.navigate(['subscriber/homepage']);
+    console.log('User Role:', role);
+    break;
+
+    case 'REVIEWER':
+    this.router.navigate(['reviewer/homepage']);
+    console.log('User Role:', role);
+    break;
+
+  // Add more cases for other roles as needed
+
+  default:
+    // Handle default case or unknown roles
+    break;
+}
 
         }
       }),
