@@ -18,6 +18,7 @@ import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount
 import { PhotoComponent } from './components/photo/photo.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 const routes: Routes = [
   {
@@ -89,6 +90,9 @@ const routes: Routes = [
     path: 'uploadstatus',
     component: UploadStatusComponent,
   },
+  { path: 'detail-articles/:id', 
+  component: ArticleDetailComponent
+},
   {
     path:"articleHistory",
     component: ArticleHistoryComponent

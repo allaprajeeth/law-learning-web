@@ -1,6 +1,7 @@
 // subscriberpostdetails.component.ts
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 interface Review {
   reviewerName: string;
@@ -12,7 +13,11 @@ interface Review {
   templateUrl: './subscriberpostdetails.component.html',
   styleUrls: ['./subscriberpostdetails.component.scss']
 })
-export class SubscriberpostdetailsComponent {
+export class SubscriberpostdetailsComponent implements OnInit{
+
+  articleId: number | null = null;
+
+
   submittedReview: boolean = false;
   showRating = false;
   stars = [1, 2, 3, 4, 5];
@@ -60,5 +65,20 @@ export class SubscriberpostdetailsComponent {
 
   ratingClicked(i: any) {
     this.isratingEditable = false;
+  }
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.articleId = +params['id'] || null;
+
+      if (this.articleId !== null) {
+        // Fetch and display article details based on this.articleId
+        // You can call a service method to fetch details or perform any necessary logic.
+      } else {
+        console.error('Article ID is null or undefined');
+      }
+    });
   }
 }

@@ -32,6 +32,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
 import { LogoutPopupComponent } from './components/logout-popup/logout-popup.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 
 
 @NgModule({
@@ -55,6 +56,7 @@ import { LogoutPopupComponent } from './components/logout-popup/logout-popup.com
      SharedTCComponent,
      SharedNotificationComponent,
      LogoutPopupComponent,
+     ArticleDetailComponent,
     ],
 
   imports: [

@@ -25,6 +25,9 @@ import { CoursesHistoryComponent } from './components/courses-history/courses-hi
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+
+
 const routes: Routes = [
   {
     path:"",
@@ -130,7 +133,10 @@ const routes: Routes = [
   {
     path:"dash-notifications",
     component:DashboardNotificationsComponent
-  }
+  },
+  { path: 'detail-articles/:id', 
+  component: ArticleDetailComponent
+},
   
 ];
 

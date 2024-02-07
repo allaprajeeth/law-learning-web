@@ -44,7 +44,9 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
-// import { FilterByCategoryService } from './components/filter-by-category.service';
+import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+
+
 @NgModule({
   declarations: [
     AdminLoginComponent,
@@ -75,6 +77,8 @@ import { ProfileDetailsComponent } from './components/profile-details/profile-de
     CoursesHistoryComponent,
     AllProfilesComponent,
     ProfileDetailsComponent,
+    ArticleDetailComponent
+  
    
   ],
   

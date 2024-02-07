@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { PopupService } from 'src/popup.service';
 import { LogoutService } from 'src/app/common/services/logout.service';
 import { Router } from '@angular/router';
+import { ProfileService } from '../profile.service';
+// import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,13 +11,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
+  // name = "";
+
   showLogoutPopup = false;
   constructor(
     private sharedService: PopupService,
     private logoutService: LogoutService,
-    private router: Router
+    private router: Router,
+    // private adminService: AdminService,
+    private profileService: ProfileService
   ) {}
 
+  get name(): string {
+    return this.profileService.getUserName();
+  }
   onLogoutClick(): void {
     this.showLogoutPopup = true;
   }

@@ -14,6 +14,7 @@ export class ArticleService {
   private articles: Article[] = [];
   private selectedArticle: Article | undefined;
   setItem: any;
+  private approvalResponse: any;
 
   constructor(private http: HttpClient) {}
 
@@ -50,5 +51,18 @@ export class ArticleService {
   getSelectedArticle(): Article | undefined {
     return this.selectedArticle;
   }
+  // Inside your ArticleService
+getFileContent(fileUrl: string): Observable<string> {
+  return this.http.get(fileUrl, { responseType: 'text' });
+}
+
+setApprovalResponse(response: any): void {
+  this.approvalResponse = response;
+}
+
+getApprovalResponse(): any {
+  return this.approvalResponse;
+}
+
 }
 

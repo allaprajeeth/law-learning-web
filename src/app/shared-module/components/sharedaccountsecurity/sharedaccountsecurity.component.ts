@@ -1,32 +1,49 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { EmailVerificationComponent } from 'src/app/common/components/email-verification/email-verification.component';
 import { PhoneVerificationComponent } from 'src/app/common/components/phone-verification/phone-verification.component';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-sharedaccountsecurity',
   templateUrl: './sharedaccountsecurity.component.html',
   styleUrls: ['./sharedaccountsecurity.component.scss']
 })
-export class SharedaccountsecurityComponent {
+export class SharedaccountsecurityComponent implements OnInit {
+
+  userEmail: string | null = null;
+  userPhone: string | null = null;
 
   accountForm!: FormGroup;
   isCurrentEmailEditable = false;
   isCurrentPhoneEditable = false;
 
-  constructor(private fb: FormBuilder, private dialog: MatDialog) {
+  constructor(
+    private fb: FormBuilder,
+    private dialog: MatDialog,
+    private sharedService: SharedService,
+  ) {
     this.initializeForm();
   }
 
   initializeForm() {
     this.accountForm = this.fb.group({
-      currentEmail: [{ value: '', disabled: true }, Validators.required],
-      currentPhone: [{ value: '', disabled: true }, Validators.required],
+      currentEmail: [{ value: 'nuncsystems@gmail.com', disabled: true }, Validators.required],
+      currentPhone: [{ value: '0987654321', disabled: true }, Validators.required],
       newEmail: [''],
       newPhone: [''],
       emailOtp: [''],
       phoneOtp: ['']
+    });
+  }
+
+  ngOnInit() {
+    this.sharedService.getUserDetails().subscribe(userDetails => {
+      if (userDetails) {
+        this.userEmail = userDetails.email;
+        this.userPhone = userDetails.phone;
+      }
     });
   }
 
@@ -41,12 +58,12 @@ export class SharedaccountsecurityComponent {
         width: '700px'
       });
     }
-  }  
+  }
 
   editCurrentPhone() {
     this.openVerificationModal('phone');
   }
-  
+
   editCurrentEmail() {
     this.openVerificationModal('email');
   }

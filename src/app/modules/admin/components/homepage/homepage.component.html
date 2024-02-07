@@ -1,10 +1,7 @@
 <app-adminnav></app-adminnav>
 <br />
 <br>
-
-
-<div>
-
+<!-- <div>
   <div class="container">
     <div class="filter-section">
       <div class="heading">
@@ -24,8 +21,6 @@
         </div>
       </div>
     </div>
-
-
     <div class="image-grid">
       <div *ngFor="let image of filteredImages(); let i = index" class="image-item">
         <div class="imagesContainer">
@@ -39,8 +34,8 @@
         <div class="headingsContainer">
           <div class="unseen">
             <h5>{{ headings[i] }}</h5>
-            <div  class="unverified" *ngIf="(coursesFilter && i % 2 !== 0)||(!coursesFilter && i % 2 !== 0)"></div>
-          </div>        
+            <div class="unverified" *ngIf="(coursesFilter && i % 2 !== 0)||(!coursesFilter && i % 2 !== 0)"></div>
+          </div>
           <p>{{ reviewCoursesAuthors[i] }}</p>
           <h4>{{ reviewCoursesText[i] }}</h4>
           <p>{{ paragraphs[i] }}</p>
@@ -52,71 +47,20 @@
       </div>
     </div>
   </div>
-
-</div>
-<br />
+</div> -->
 <br />
 <br />
 
-<!--<div class="container">
-  <div class="filter-section">
-    <div class="heading">
-      <h2>Courses</h2>
-    </div>
-    <div class="flex-container">
-      <div class="my-flex" style="width: 250px;">
-        <mat-form-field appearance="outline" style="width: 100%;">
-          <mat-label>Filters</mat-label>
-          <mat-select [(ngModel)]="coursesFilter" (change)="updateFilteredCourses()" style="width: 100%" appearance="outline" start>
-            <mat-option value="all">All</mat-option>
-            <mat-option value="Content-Manager">Content-Manager</mat-option>
-            <mat-option value="Reviewer">Reviewer</mat-option>
-            <mat-option value="Uploaded-courses">Uploaded-courses</mat-option>
-          </mat-select>
-        </mat-form-field>
-        
-        
-      </div>
-    </div>
-  </div>
-  <div class="image-grid">
-    <div class="image-item" *ngFor="let course of courses">
-      <div class="imagesContainer">
-        <img [src]="course.image" class="img" alt="Course Image"> 
-        <div class="overlay">
-          <a routerLink="/admin/courseInfo">
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
-        </div>
-      </div>
-      <div class="headingsContainer">
-        <img [src]="course.image" alt="Course Image">
-        <div>
-          <h3>{{ course.heading }}</h3>
-          <p>{{ course.author }}</p>
-          <p> {{ course.text }}</p>
-          <p>{{ course.duration }}</p>
-          <p>{{ course.category }}</p>
-        </div>
-      </div>
-      <div class="ratingscontainer1">
-        
-      </div>
-    </div>
-  </div>
-  -->
 
+<!-- <br />
 <div>
   <h2 class="section-name">Library(Documents)</h2>
-
-
   <div class="container">
     <div class="filter-section">
       <div class="heading">
         <h2>Documents</h2>
       </div>
       <div class="flex-container">
-
         <div class="my-flex" style="width: 250px;">
           <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Filters</mat-label>
@@ -130,29 +74,19 @@
         </div>
       </div>
     </div>
-
     <div class="pdf-list">
       <div *ngFor="let reviewpdf of filteredPDFs();let i = index">
         <div class="pdf-item">
-          <div  class="unverified"*ngIf="(libraryFilter && i % 2 === 0)||(!libraryFilter && i % 2 === 0)"></div>
+          <div class="unverified" *ngIf="(libraryFilter && i % 2 === 0)||(!libraryFilter && i % 2 === 0)"></div>
           <mat-icon>picture_as_pdf</mat-icon>
         </div>
       </div>
     </div>
-    <br />
-
-
-
+    <br/>
   </div>
-</div>
+</div> -->
+<!-- <div>
 
-
-
-
-
-
-
-<div>
   <h2 class="section-name">Publishing Corner(Articles)</h2>
   <div class="container">
     <div class="filter-section">
@@ -162,72 +96,120 @@
 
       <div class="flex-container">
         <div class="my-flex" style="width: 250px;">
-      <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>Filter by Category</mat-label>
-        <mat-select [(value)]="selectedFilter" (selectionChange)="filterArticles()" style="width: 100%" appearance="outline">
-          <mat-option value="all">All</mat-option>
-          <mat-option value="contentManager">Content Manager</mat-option>
-          <mat-option value="reviewer">Reviewer</mat-option>
-          <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-
-
-
-
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Filter by Category</mat-label>
+            <mat-select [(value)]="selectedFilter" (selectionChange)="filterArticles()" style="width: 100%"
+              appearance="outline">
+              <mat-option value="all">All</mat-option>
+              <mat-option value="contentManager">Content Manager</mat-option>
+              <mat-option value="reviewer">Reviewer</mat-option>
+              <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
-
-
-
-
-
-
-
     </div>
+
 
     <div class="article-list">
-      <!-- Display Articles Based on Selected Filter -->
       <div *ngFor="let article of filteredArticles; let i = index">
-        <!-- Your HTML structure for displaying each article -->
-        <!-- <div>{{ article.name }}</div> -->
-        <div class="article-item" >
-          <div  class="unverified"*ngIf="(libraryFilter && i % 2 !== 0)||(!libraryFilter && i % 2 !== 0)"></div>
+        <div class="article-item">
+          <div class="unverified" *ngIf="(libraryFilter && i % 2 !== 0)||(!libraryFilter && i % 2 !== 0)"></div>
           <mat-icon routerLink="/admin/audit-report">description</mat-icon>
         </div>
-        <!-- <div>{{ article.url }}</div> -->
-        <!-- <div>{{ article.category }}</div> -->
-        <!-- Add other properties as needed -->
       </div>
-
       <ng-container *ngIf="publishingCornerFilter === 'reviewer'">
-        <div >
+        <div>
           <div class="article-item" routerLink="/admin/audit-report">
             <mat-icon>description</mat-icon>
-            <!-- Display other details of the reviewer article -->
           </div>
         </div>
       </ng-container>
-
       <ng-container *ngIf="publishingCornerFilter === 'uploadedCourses'" routerLink="/admin/audit-report2">
-        <div >
+        <div>
           <div class="article-item" routerLink="/admin/audit-report2">
             <mat-icon>description</mat-icon>
-           
           </div>
         </div>
       </ng-container>
     </div>
-
     <br />
     <br />
     <br />
     <br />
   </div>
+</div> -->
+
+
+
+
+
+<!-- homepage.component.html -->
+<!-- <h2 class="section-name">Publishing Corner(Articles)</h2>
+<div class="container">
+  <div class="filter-section">
+    <div class="heading">
+      <h2>Articles</h2>
+    </div>
+    <div class="flex-container">
+      <div class="my-flex" style="width: 250px;">
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Filter by Category</mat-label> -->
+          <!-- <mat-select [(value)]="selectedFilter" (selectionChange)="filterArticles()" style="width: 100%" -->
+          <!-- <mat-select [(value)]="selectedFilter" style="width: 100%" appearance="outline">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="contentManager">Content Manager</mat-option>
+            <mat-option value="reviewer">Reviewer</mat-option>
+            <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+        <div class="container">
+          <div class="filter-section">
+            <div class="heading">
+              <h2>Articles</h2>
+            </div>
+            <div class="flex-container">
+              <div class="my-flex" style="width: 250px;">
+                <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Filter by Category</mat-label>
+                 <mat-select  style="width: 100%" appearance="outline">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="contentManager">Content Manager</mat-option>
+            <mat-option value="reviewer">Reviewer</mat-option>
+            <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
+          </mat-select>
+        </mat-form-field>
+            </div>
+        </div>
+        </div>
+
+    <h2 class="section-name">Publishing Corner(Articles)</h2>
+    <div class="article-list">
+    <div *ngFor="let article of approvedArticles">
+  <div  class="article-item">
+  <mat-icon>description</mat-icon>
+  <h2 class="article-name" (click)="navigateToArticleDetail(article.id)">{{ article.title }}</h2>
+  <!-- <p>{{ article.description }}</p> -->
+  <!-- Add other details as needed -->
 </div>
+</div>
+        </div>
 
 
-
-
- 
