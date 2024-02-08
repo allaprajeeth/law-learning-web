@@ -1,11 +1,13 @@
-<p>article-detail works!</p>
 <div class="article">
   <div *ngIf="articleDetails">
     <h2>{{ articleDetails.data.title }}</h2>
     <p>Description: {{ articleDetails.data.description }}</p>
-  
-    <!-- <button *ngIf="articleDetails.data.files && articleDetails.data.files.length > 0"
-      (click)="downloadFile(articleDetails.data.files[0]?.url, articleDetails.data.files[0]?.fileName)" class="filebtn">Open File</button>
-   -->
-    <!-- <p *ngIf="fileOpened && storedFileContent" class="file-content">{{ storedFileContent }}</p> -->
+    
+    <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p>
   </div>
+</div>
+<div>
+  <button (click)="goBack()">Go Back</button>
+</div>
+<br/>
+<br/>

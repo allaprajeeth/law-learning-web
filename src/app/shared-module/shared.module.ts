@@ -84,6 +84,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     MatButtonModule,
     FooterComponent,
     PublishingcornerComponent,
+    ArticleDetailComponent,
     FormsModule,
     SharedoverviewComponent,
     SharedaboutusComponent,

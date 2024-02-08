@@ -1,7 +1,10 @@
 // subscriberpostdetails.component.ts
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Article } from 'src/app/shared-module/components/fetcharticle.model';
+import { FetcharticlesService } from 'src/app/shared-module/components/fetcharticles.service';
 
 interface Review {
   reviewerName: string;
@@ -16,6 +19,10 @@ interface Review {
 export class SubscriberpostdetailsComponent implements OnInit{
 
   articleId: number | null = null;
+  articleDetails: Article | null = null;
+  loading = false;
+  error: string | null = null;
+
 
 
   submittedReview: boolean = false;
@@ -26,6 +33,7 @@ export class SubscriberpostdetailsComponent implements OnInit{
   userReview: string = '';
   isratingEditable: boolean = true;
   reviews: Review[] = [];
+ 
 
   leaveRatingOpen() {
     this.showRating = true;
@@ -67,18 +75,48 @@ export class SubscriberpostdetailsComponent implements OnInit{
     this.isratingEditable = false;
   }
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,
+    private fetcharticle:FetcharticlesService,
+    private fetcharticleService: FetcharticlesService,
+  // private route: ActivatedRoute,
+  private router: Router,
+  public dialog: MatDialog
+    ) {}
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.articleId = +params['id'] || null;
+    ngOnInit(): void {
+      this.route.params.subscribe(params => {
+        this.articleId = +params['id'] || null;
+    
+        if (this.articleId !== null) {
+          console.log('Article ID:', this.articleId);
+          this.loadArticleDetails();
+        } else {
+          console.error('Article ID is null or undefined');
+        }
+      });
+    }
+    
+    
 
-      if (this.articleId !== null) {
-        // Fetch and display article details based on this.articleId
-        // You can call a service method to fetch details or perform any necessary logic.
-      } else {
-        console.error('Article ID is null or undefined');
-      }
-    });
+  loadArticleDetails(): void {
+    this.loading = true;
+    this.error = null;
+  
+    if (this.articleId !== null) {
+      this.fetcharticle.getArticleDetails(this.articleId).subscribe(
+        (response) => {
+          this.articleDetails = response || null;
+          console.log('Article Details:', this.articleDetails);
+        },
+        (error) => {
+          console.error('Error fetching article details:', error);
+          this.error = 'Failed to fetch article details. Please try again later.';
+        }
+      ).add(() => {
+        this.loading = false;
+      });
+    } else {
+      console.error('Article ID is null or undefined');
+    }
   }
 }
