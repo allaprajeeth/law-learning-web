@@ -168,7 +168,9 @@ export class HomepageComponent implements OnInit{
     return value < 10 ? `0${value}` : `${value}`;
   }
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService, private router: Router) { }
+  constructor(private route: ActivatedRoute, 
+    private articleService: ArticleService, 
+    private router: Router) { }
 
   loadArticles() {
     this.articleService.getArticles().subscribe(

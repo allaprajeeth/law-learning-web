@@ -54,6 +54,25 @@ export class PublishingcornerComponent implements OnInit {
   //   console.log('Selected Article ID:', articleId);
   //   this.router.navigate(['/subscriber/publish-articles', articleId]);
   // }
+
+
+
+
+  navigateToArticleDetail(articleId: number): void {
+    console.log('Selected Article ID:', articleId);
+ 
+    // Get the current URL
+    const currentUrl = this.router.url;
+ 
+    // Determine the route prefix based on the current URL
+    let routePrefix = '/subscriber/publish-articles';
+    if (currentUrl.includes('/authentication/article')) {
+      routePrefix = '/authentication/publish-articles';
+      // console.log('HAPPY PATH'+this.articles);
+     
+    }
+ 
+
   navigateToArticleDetail(articleId: number): void {
     console.log('Selected Article ID:', articleId);
   
@@ -71,10 +90,13 @@ export class PublishingcornerComponent implements OnInit {
     }else if (currentUrl.includes('/reviewer/article')) {
       routePrefix = '/reviewer/publish-articles';
     }
-    
+
     // Navigate using the dynamically constructed route
     this.router.navigate([routePrefix, articleId]);
   }
+
+
+
 
   navigateToLogin(): void {
     this.router.navigate(['/login']);

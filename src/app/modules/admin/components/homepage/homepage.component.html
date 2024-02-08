@@ -206,6 +206,9 @@
   <div  class="article-item">
   <mat-icon>description</mat-icon>
   <h2 class="article-name" (click)="navigateToArticleDetail(article.id)">{{ article.title }}</h2>
+  <p>{{ article.createdDate | date:'mediumDate' }}</p>
+  <p class="author-name">{{ article.createdBy.name }}</p>
+
   <!-- <p>{{ article.description }}</p> -->
   <!-- Add other details as needed -->
 </div>
