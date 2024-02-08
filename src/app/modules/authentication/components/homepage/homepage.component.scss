@@ -227,8 +227,10 @@ h1{
     align-items: center;
     margin-bottom: 20px;
     cursor: pointer;
+    background-color: #f4eded;
+    border-radius: 10%;
     transition: transform 0.3s, box-shadow 0.3s; 
-    padding: 20px;
+    padding: 10px 20px;
 
     &:hover {
       transform: translateY(-5px); /* Add a slight lift effect */
@@ -242,6 +244,11 @@ h1{
 
     .article-name {
       font-size: 14px;
+      font-weight: bold;
+    }
+    .author-name{
+      margin-right: 70px;
+      font-weight: bold;
     }
   }
 }

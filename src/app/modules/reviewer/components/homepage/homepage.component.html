@@ -9,7 +9,10 @@
   <div *ngFor="let article of approvedArticles">
     <div class="article-item" (click)="navigateToArticleDetail(article.id)">
       <mat-icon>description</mat-icon>
-    <h2>{{ article.title }}</h2>
+    <h2 class="article-name">{{ article.title }}</h2>
+    <p>{{ article.createdDate | date:'mediumDate' }}</p>
+   <p class="author-name">{{ article.createdBy.name }}</p>
+
     <!-- <p>{{ article.description }}</p> -->
     <!-- Add more details as needed -->
     </div>
