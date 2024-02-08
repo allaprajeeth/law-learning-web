@@ -41,6 +41,7 @@ import { ArticlelistHistoryComponent } from './components/articlelist-history/ar
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { FileSaverModule } from 'ngx-filesaver';
 import { ArticleFileComponent } from './components/article-file/article-file.component';
+import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { ArticleFileComponent } from './components/article-file/article-file.com
        ArticlelistHistoryComponent,
        ArticleDetailComponent,
        ArticleFileComponent,
+       CmPostdetailsComponent,
   
   ],
   imports: [
