@@ -1,35 +1,28 @@
-<div>
 <div class="search-bar">
-  <input type="text" placeholder="search by author name or title..." [(ngModel)]="searchTerm"  />
+  <input type="text" placeholder="Search by title name..." [(ngModel)]="searchTerm" (input)="searchArticles()" />
 </div>
+
 <div class="submit-button">
-  <!-- <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button> -->
-  <button  routerLink="/subscriber/articleform">Submit Article</button>
+  <button routerLink="/subscriber/articleform">Submit Article</button>
 </div>
-<!-- <div *ngIf="isInArticlePage" class="message">
-  To submit your article, please <span class="login"
-    (click)="navigateToLogin()">Login </span>to the website.</div> -->
-    <div class="message">
-      To submit your article, please <span class="login"
-        (click)="navigateToLogin()">Login </span>to the website.</div>
+
+<div class="message">
+  To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>to the website.
+</div>
+
 <div class="post-box">
-  <!-- <div *ngIf="noResults; else showBoxes" class="no-results-message">
-    No results found.
-  </div> -->
-  
+  <div class="blog-box" *ngFor="let article of filteredArticles">
+    <div class="article-item">
+      <div>
+        <h2 class="article-name">{{ article.title }}</h2>
+        <p class="description">Description: {{ article.subject }}</p>
+        <p>{{ article.date }}</p>
+      </div>
+      <button (click)="navigateToArticleDetail(article.id)">Read more</button>
+    </div>
+  </div>
 </div>
 
-
-
-<div class="article-list">
-<div *ngFor="let article of articles">
-  <div  class="article-item">
-  <div (click)="navigateToArticleDetail(article.id)">
-  <h2  class="article-name" >{{ article.title }}</h2>
-  <p>{{ article.date }}</p>
-</div>
-  <!-- <button (click)="openArticleInNewTab(article)">Read more</button> -->
-</div>
 
 
 <!-- <div class="search-bar">
