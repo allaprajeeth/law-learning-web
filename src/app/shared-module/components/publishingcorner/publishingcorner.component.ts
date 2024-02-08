@@ -13,7 +13,7 @@ export class PublishingcornerComponent implements OnInit {
   articles: ArticleApiResponse[] = [];
   filteredArticles: ArticleApiResponse[] = [];
   searchTerm: string = '';
-
+  isVisible: boolean = false;
   constructor(
     private fetcharticleService: FetcharticlesService,
     private route: ActivatedRoute,
@@ -23,6 +23,7 @@ export class PublishingcornerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPublishArticles();
+    this.checkRoute();
   }
 
   loadPublishArticles(): void {
@@ -37,16 +38,42 @@ export class PublishingcornerComponent implements OnInit {
       }
     );
   }
-
+  checkRoute() {
+    // Get the first part of the path ('subscriber' or 'instructor')
+    const firstPathSegment = this.router.url.split('/')[1];
+    // Set visibility based on the path
+    this.isVisible = ['subscriber', 'instructor'].includes(firstPathSegment);
+  }
   searchArticles(): void {
     this.filteredArticles = this.articles.filter((article) =>
       article.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
 
+  // navigateToArticleDetail(articleId: number): void {
+  //   console.log('Selected Article ID:', articleId);
+  //   this.router.navigate(['/subscriber/publish-articles', articleId]);
+  // }
   navigateToArticleDetail(articleId: number): void {
     console.log('Selected Article ID:', articleId);
-    this.router.navigate(['/subscriber/publish-articles', articleId]);
+  
+    // Get the current URL
+    const currentUrl = this.router.url;
+  
+    // Determine the route prefix based on the current URL
+    let routePrefix = '/subscriber/publish-articles';
+    if (currentUrl.includes('/admin/article')) {
+      routePrefix = '/admin/publish-articles';
+    } else if (currentUrl.includes('/instructor/article')) {
+      routePrefix = '/instructor/publish-articles';
+    }else if (currentUrl.includes('/authentication/article')) {
+      routePrefix = '/authentication/publish-articles';
+    }else if (currentUrl.includes('/reviewer/article')) {
+      routePrefix = '/reviewer/publish-articles';
+    }
+    
+    // Navigate using the dynamically constructed route
+    this.router.navigate([routePrefix, articleId]);
   }
 
   navigateToLogin(): void {
