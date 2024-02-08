@@ -1,59 +1,65 @@
 <!-- sidenav.component.html -->
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav mode="side" opened>
-      <!-- Your sidebar content goes here -->
-      <mat-nav-list>
-        <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active-link">
-            <span class="icon-span"><mat-icon>dashboard</mat-icon></span>
-          <span>Dashboard</span>
+  <mat-sidenav #sidenav mode="side" opened>
+    <!-- Your sidebar content goes here -->
+    <mat-nav-list>
+   
+      <div>
+      <a mat-list-item routerLink="/admin/all-profiles" (click)="toggleRoles()" routerLinkActive="active-link">
+          <span class="icon-span">
+            <mat-icon>group</mat-icon>
+          </span>
+          <span class="span">All Profiles</span>
+          <span class="expand-icon">
+            <mat-icon>{{ showRoles ? 'expand_less' : 'expand_more' }}</mat-icon>
+          </span>
+         
         </a>
+        <ul *ngIf="showRoles">
+          <li (click)="selectRole('all')" routerLinkActive="active-link">All</li>
+          <li (click)="selectRole('subscribers')" routerLinkActive="active-link">Subscribers</li>
+          <li (click)="selectRole('reviewers')" routerLinkActive="active-link">Reviewers</li>
+          <li (click)="selectRole('instructors')" routerLinkActive="active-link">Instructors</li>
+          <li (click)="selectRole('content-managers')" routerLinkActive="active-link">Content Managers</li>
 
-        <div>
-        <a mat-list-item routerLink="/admin/all-profiles" (click)="toggleRoles()" routerLinkActive="active-link">
-            <span class="icon-span">
-              <mat-icon>person</mat-icon>
-            </span>
-            <span class="span">All Profiles</span>
-            <span class="expand-icon">
-              <mat-icon>{{ showRoles ? 'expand_less' : 'expand_more' }}</mat-icon>
-            </span>
-            
-          </a>
-          <ul *ngIf="showRoles">
-            <li (click)="selectRole('all')" routerLinkActive="active-link">All</li>
-            <li (click)="selectRole('subscribers')" routerLinkActive="active-link">Subscribers</li>
-            <li (click)="selectRole('reviewers')" routerLinkActive="active-link">Reviewers</li>
-            <li (click)="selectRole('instructors')" routerLinkActive="active-link">Instructors</li>
-            <li (click)="selectRole('content-managers')" routerLinkActive="active-link">Content Managers</li>
+          <!-- <li *ngFor="let role of profile.roles">{{ role }}</li> -->
+        </ul>
 
-            <!-- <li *ngFor="let role of profile.roles">{{ role }}</li> -->
-          </ul>
-        </div>
-
-        <div>
-          <a mat-list-item routerLink="/admin/dash-notifications" (click)="toggleNotifications()" routerLinkActive="active-link">
-            <span class="icon-span"><mat-icon>notifications</mat-icon></span>
-            <span class="span">Notifications</span>
-            <span class="expand-icon">
-              <mat-icon>{{ showNotifications ? 'expand_less' : 'expand_more' }}</mat-icon>
-            </span>
-          </a>
-          
-          <ul *ngIf="showNotifications">
-            <li (click)="selectNotification('all')" routerLinkActive="active-link">all</li>
-            <li (click)="selectNotification('comments')" routerLinkActive="active-link">comments</li>
-            <li (click)="selectNotification('joined')" routerLinkActive="active-link">joined</li>
-            <li (click)="selectNotification('courses')" routerLinkActive="active-link">courses</li>
-            <li (click)="selectNotification('articles')" routerLinkActive="active-link">articles</li>
-          </ul>
-        </div>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <!-- Your main content goes here -->
-      <div class="content">
-        <router-outlet></router-outlet>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+<div>
+<a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active-link">
+  <span class="icon-span"><mat-icon>person</mat-icon>
+
+
+
+  </span>
+<span>create user</span>
+</a>
+</div>
+      <div>
+        <a mat-list-item routerLink="/admin/dash-notifications" (click)="toggleNotifications()" routerLinkActive="active-link">
+          <span class="icon-span"><mat-icon>notifications</mat-icon></span>
+          <span class="span">Notifications</span>
+          <span class="expand-icon">
+            <mat-icon>{{ showNotifications ? 'expand_less' : 'expand_more' }}</mat-icon>
+          </span>
+        </a>
+       
+        <ul *ngIf="showNotifications">
+          <li (click)="selectNotification('all')" routerLinkActive="active-link">all</li>
+          <li (click)="selectNotification('comments')" routerLinkActive="active-link">comments</li>
+          <li (click)="selectNotification('joined')" routerLinkActive="active-link">joined</li>
+          <li (click)="selectNotification('courses')" routerLinkActive="active-link">courses</li>
+          <li (click)="selectNotification('articles')" routerLinkActive="active-link">articles</li>
+        </ul>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <!-- Your main content goes here -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
   
