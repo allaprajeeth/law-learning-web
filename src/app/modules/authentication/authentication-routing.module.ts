@@ -15,6 +15,7 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,10 @@ const routes: Routes = [
   },
   { path: 'detail-articles/:id', 
   component: ArticleDetailComponent 
+},
+{
+  path: 'publish-articles/:id',
+  component: CmPostdetailsComponent
 },
 
 //  { path: 'articles/:fileId',

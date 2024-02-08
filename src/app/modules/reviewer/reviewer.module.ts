@@ -44,6 +44,7 @@ import { UploadStatusComponent } from './components/upload-status/upload-status.
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     UploadStatusComponent,
     ArticleHistoryComponent,
     ArticleDetailComponent,
+    ReviewerPostdetailsComponent,
   ],
   
   imports: [

@@ -7,14 +7,14 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 
-
 @Component({
-  selector: 'app-article-detail',
-  templateUrl: './article-detail.component.html',
-  styleUrls: ['./article-detail.component.scss']
+  selector: 'app-publish-articles',
+  templateUrl: './publish-articles.component.html',
+  styleUrls: ['./publish-articles.component.scss']
 })
-export class ArticleDetailComponent implements OnInit {
-  articleId: number | null = null;
+export class PublishArticlesComponent  implements OnInit{
+
+ articleId: number | null = null;
   articleDetails: Article | null = null;
   loading = false;
   error: string | null = null;
@@ -116,3 +116,5 @@ export class ArticleDetailComponent implements OnInit {
     this.location.back();
   }
 }
+
+

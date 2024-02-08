@@ -119,7 +119,7 @@ const routes: Routes = [
     component: QuizsuccessmsgComponent,
   },
   {
-    path: 'post/:id',
+    path: 'publish-articles/:id',
     component: InstructorpostdetailsComponent,
   },
   {

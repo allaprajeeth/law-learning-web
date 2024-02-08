@@ -137,6 +137,10 @@ const routes: Routes = [
   { path: 'detail-articles/:id', 
   component: ArticleDetailComponent
 },
+{
+  path: 'publish-articles/:id',
+  component: AdminPostdetailComponent
+}
   
 ];
 
