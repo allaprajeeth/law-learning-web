@@ -58,19 +58,7 @@ export class PublishingcornerComponent implements OnInit {
 
 
 
-  navigateToArticleDetail(articleId: number): void {
-    console.log('Selected Article ID:', articleId);
- 
-    // Get the current URL
-    const currentUrl = this.router.url;
- 
-    // Determine the route prefix based on the current URL
-    let routePrefix = '/subscriber/publish-articles';
-    if (currentUrl.includes('/authentication/article')) {
-      routePrefix = '/authentication/publish-articles';
-      // console.log('HAPPY PATH'+this.articles);
-     
-    }
+
  
 
   navigateToArticleDetail(articleId: number): void {
