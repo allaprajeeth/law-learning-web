@@ -4,9 +4,9 @@
   </div>
       <table border="1" class="pdftable">
         <tbody>
-              <tr *ngFor="let pdfFile of pdfFiles; let i = index" (click)="openFile(i)">
+              <tr *ngFor="let library of libraries; let i = index" (click)="openFile(library)">
                 <td><mat-icon>picture_as_pdf</mat-icon></td>
-                <td target="blank"   [title]="pdfFile.url">{{ pdfFile.name }}</td>
+                <td target="blank"   [title]="library.url">{{ library.fileName }}</td>
               </tr>
         </tbody>
       </table>

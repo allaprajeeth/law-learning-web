@@ -8,5 +8,7 @@ export const endPoints = {
     loginComplete:'login/verify',
     logout:'logout',
     forgotEmail:'forgetEmail',
-    forgotPhone:'forgetPhone'
+    forgotPhone:'forgetPhone',
+    baseURL: 'http://202.53.86.12:8080/api/v1',
+    libraries: '/libraries'
 }
