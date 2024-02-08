@@ -9,21 +9,7 @@ import { Article } from '../fetcharticle.model';
 import { ArticleApiResponse } from '../fetcharticle.model';
 import { endPoints } from 'src/app/common/api-layer/endpoints';
 
-// interface BlogPost {
-//   id: number;
-//   title: string;
-//   views: number;
-//   author: string;
-//   reviewer: string; 
-//   editor:string;
-//   content: string;
-//   heading:string;
-//   explanation: string[];
-//   subheading:string;
-//   description: string[];
-//   date: string;
-   
-// }
+
 
 @Component({
   selector: 'app-publishingcorner',
@@ -34,30 +20,20 @@ export class PublishingcornerComponent implements OnInit{
 
   publisharticles: ArticleApiResponse[] = [];
   articles: any[] = [];
+  searchTerm: string = '';
   // router: any;
 
   constructor(
     private fetcharticleService: FetcharticlesService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog,    ) {}
+    public dialog: MatDialog, 
+       ) {}
 
   ngOnInit(): void {
     this.loadPublishArticles();
   }
-  // loadPublishArticles(): void {
-  //   this.fetcharticleService.getArticles().subscribe(
-  //     (response: ArticleApiResponse) => {
-  //       this.publisharticles = response.content || [];
-  //       console.log('Publish Articles:', this.publisharticles);
-  //       console.log('content ', response.content);
-  //       console.log(response);
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching articles:', error);
-  //     }
-  //   );
-  // }
+  
   
   loadPublishArticles(){
 
@@ -74,14 +50,15 @@ export class PublishingcornerComponent implements OnInit{
   
   }
  
- 
-  // navigateToArticle(articleId: number): void {
-  //   this.router.navigate(['/subscriber/detail-articles', articleId]);
-  // }
+
+
+  
 
   navigateToArticleDetail(articleId: number): void {
-    this.router.navigate(['/subscriberpostdetails', articleId]);
+    console.log('Selected Article ID:', articleId);
+    this.router.navigate(['/subscriber/publish-articles', articleId]);
   }
+  
   
 
 
@@ -117,7 +94,9 @@ export class PublishingcornerComponent implements OnInit{
     // }
     
     
-    
+    navigateToLogin(){
+        this.router.navigate(['/login']);
+      }    
 
 }
 

@@ -1,6 +1,24 @@
 <div>
-  <h1>Articles</h1>
+<div class="search-bar">
+  <input type="text" placeholder="search by author name or title..." [(ngModel)]="searchTerm"  />
 </div>
+<div class="submit-button">
+  <!-- <button (click)="openSubmitArticleModal()" routerLink="/subscriber/articleform">Submit Article</button> -->
+  <button  routerLink="/subscriber/articleform">Submit Article</button>
+</div>
+<!-- <div *ngIf="isInArticlePage" class="message">
+  To submit your article, please <span class="login"
+    (click)="navigateToLogin()">Login </span>to the website.</div> -->
+    <div class="message">
+      To submit your article, please <span class="login"
+        (click)="navigateToLogin()">Login </span>to the website.</div>
+<div class="post-box">
+  <!-- <div *ngIf="noResults; else showBoxes" class="no-results-message">
+    No results found.
+  </div> -->
+  
+</div>
+
 
 
 <div class="article-list">
@@ -12,36 +30,6 @@
 </div>
   <!-- <button (click)="openArticleInNewTab(article)">Read more</button> -->
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- <div class="search-bar">

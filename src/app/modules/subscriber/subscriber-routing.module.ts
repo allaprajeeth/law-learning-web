@@ -99,10 +99,10 @@ const routes: Routes = [
     path:"article",
     component:SubarticleComponent
   },
-  { 
-    path: 'post/:id', 
-    component: SubscriberpostdetailsComponent
-  },
+  // { 
+  //   path: 'post/:id', 
+  //   component: SubscriberpostdetailsComponent
+  // },
   {
     path:"library",
     component:SubdocumentsComponent
@@ -131,10 +131,10 @@ const routes: Routes = [
    path:'overview',
    component:OverviewComponent
   },
-  {
-    path:'article-details',
-    component:StatusarticlepageComponent
-   },
+  // {
+  //   path:'article-details',
+  //   component:StatusarticlepageComponent
+  //  },
    {
     path:'under-review',
     component:UnderreviewarticleComponent
@@ -150,10 +150,14 @@ const routes: Routes = [
     path:'articleHistory',
     component:ArticleHistoryComponent
    },
-   { 
-    path: 'article-details/:id', 
-    component: StatusarticlepageComponent
-   },
+  //  { 
+  //   path: 'article-details/:id', 
+  //   component: StatusarticlepageComponent
+  //  },
+   {
+    path: 'publish-articles/:id',
+    component: SubscriberpostdetailsComponent
+  }
   //  {
   //   path:'statusarticlepage',
   //   component:StatusarticlepageComponent

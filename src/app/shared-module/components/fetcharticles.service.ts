@@ -60,7 +60,7 @@ export class FetcharticlesService {
   }
   
   getArticleDetails(articleId: number): Observable<Article> {
-    const articleDetailsUrl = `${this.apiUrl}/articles/${articleId}`;
+    const articleDetailsUrl = `${this.apiUrl}/${articleId}`;
     return this.http.get<Article>(articleDetailsUrl).pipe(
       catchError((error) => {
         console.error('Error fetching article details:', error);
