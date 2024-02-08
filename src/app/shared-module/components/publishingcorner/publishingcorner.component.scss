@@ -106,6 +106,14 @@
       color: #666;
       margin-bottom: 20px;
     }
+    .description {
+      max-height: 5em; // Adjust this based on the number of lines you want to display
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
 
     button {
       background-color: #007791;

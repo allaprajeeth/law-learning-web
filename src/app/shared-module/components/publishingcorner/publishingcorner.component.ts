@@ -1,88 +1,60 @@
-
-
-
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog'; 
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FetcharticlesService } from '../fetcharticles.service';
-import { Article } from '../fetcharticle.model';
 import { ArticleApiResponse } from '../fetcharticle.model';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
-
-// interface BlogPost {
-//   id: number;
-//   title: string;
-//   views: number;
-//   author: string;
-//   reviewer: string; 
-//   editor:string;
-//   content: string;
-//   heading:string;
-//   explanation: string[];
-//   subheading:string;
-//   description: string[];
-//   date: string;
-   
-// }
 
 @Component({
   selector: 'app-publishingcorner',
   templateUrl: './publishingcorner.component.html',
   styleUrls: ['./publishingcorner.component.scss']
 })
-export class PublishingcornerComponent implements OnInit{
-
-  publisharticles: ArticleApiResponse[] = [];
-  articles: any[] = [];
-  // router: any;
+export class PublishingcornerComponent implements OnInit {
+  articles: ArticleApiResponse[] = [];
+  filteredArticles: ArticleApiResponse[] = [];
+  searchTerm: string = '';
 
   constructor(
     private fetcharticleService: FetcharticlesService,
     private route: ActivatedRoute,
     private router: Router,
-    public dialog: MatDialog,    ) {}
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit(): void {
     this.loadPublishArticles();
   }
-  // loadPublishArticles(): void {
-  //   this.fetcharticleService.getArticles().subscribe(
-  //     (response: ArticleApiResponse) => {
-  //       this.publisharticles = response.content || [];
-  //       console.log('Publish Articles:', this.publisharticles);
-  //       console.log('content ', response.content);
-  //       console.log(response);
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching articles:', error);
-  //     }
-  //   );
-  // }
-  
-  loadPublishArticles(){
 
-  this.fetcharticleService.loadPublishArticles().subscribe(
-    (response: any) => {
-    
-      this.articles = response.data.content || [] ;
-      console.log(this.articles)
-    },
-    (error) => {
-      // Handle error if needed
-    }
-  )
-  
+  loadPublishArticles(): void {
+    this.fetcharticleService.loadPublishArticles().subscribe(
+      (response: any) => {
+        this.articles = response.data.content || [];
+        this.filteredArticles = [...this.articles];
+        console.log(this.articles);
+      },
+      (error) => {
+        // Handle error if needed
+      }
+    );
   }
- 
- 
-  // navigateToArticle(articleId: number): void {
-  //   this.router.navigate(['/subscriber/detail-articles', articleId]);
-  // }
+
+  searchArticles(): void {
+    this.filteredArticles = this.articles.filter((article) =>
+      article.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+  }
 
   navigateToArticleDetail(articleId: number): void {
-    this.router.navigate(['/subscriberpostdetails', articleId]);
+    console.log('Selected Article ID:', articleId);
+    this.router.navigate(['/subscriber/publish-articles', articleId]);
   }
-  
+
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
+  }
+}
+
+
 
 
   // openArticleInNewTab(article: ArticleApiResponse): void {
@@ -117,10 +89,7 @@ export class PublishingcornerComponent implements OnInit{
     // }
     
     
-    
-
-}
-
+  
 
 
 

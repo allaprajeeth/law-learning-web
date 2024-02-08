@@ -21,6 +21,11 @@ export interface Article {
 
  
   export interface ArticleApiResponse {
+    
+      title: string;
+      subject: string;
+      date: string;
+      id: number;
     data: any;
     content: Article[];
     articles: Article[];
