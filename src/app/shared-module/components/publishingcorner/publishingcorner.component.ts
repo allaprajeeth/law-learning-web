@@ -106,7 +106,7 @@ export class PublishingcornerComponent implements OnInit {
       this.router.navigateByUrl('/instructor/articleform');
     }
   }
-  shouldDisableButton(): any {
+  matchesBaseUrl(): any {
     // Check if the base URL is '/article'
     return this.router.url === '/article';
     
