@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class SidenavComponent {
   showLogoutPopup = false;
+  name: string = '';
+  
   constructor(
     private sharedService: PopupService,
     private logoutService: LogoutService,
