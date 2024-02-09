@@ -12,20 +12,20 @@
             matBadge="4">Notifications</a></li>
         <li class="user-dropdown">
           <div class="user-circle" (click)="onUserCircleClick($event)">
-            <span class="user-circle-text">NS</span>
+            <span class="user-circle-text">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</span>
           </div>
           <ul class="user-menu">
             <li class="profile-item">
               <span>
                 <div class="user-circle">
-                  <a routerLink="" class="user-circle-text" style="color: white;">NS</a>
+                  <a routerLink="" class="user-circle-text" style="color: white;">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</a>
                 </div>
               </span>
-              <span class="info">nuncsystems@gmail.com</span>
+              <p>{{ email }}</p>
             </li>
             <li class="username-item">
-              <span>Nuncsystems</span>
-              <span class="info">040-2980 3199</span>
+              <span>{{ name }}</span>
+              <span>{{ username }}</span>
             </li>
             <hr />
             <li class="navbarContent"><a routerLink="/reviewer/profile">Profile</a></li>
