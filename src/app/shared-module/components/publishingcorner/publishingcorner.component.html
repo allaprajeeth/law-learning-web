@@ -3,7 +3,7 @@
 </div>
 
 <div class="submit-button" *ngIf="isVisible" >
-  <button (click)="navigateToArticleForm()">Submit Article</button>
+  <button (click)="navigateToArticleForm()" [ngClass]="{'no-drop': matchesBaseUrl(), 'pointer' : !matchesBaseUrl()}">Submit Article</button>
 </div>
 
 
