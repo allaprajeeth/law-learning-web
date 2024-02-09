@@ -5,12 +5,13 @@ import { catchError, tap } from 'rxjs/operators';
 import { Article } from './article.model';
 import { map } from 'rxjs/operators';
 import { saveAs } from 'file-saver';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
-  private apiUrl = 'http://192.168.1.42:8080/api/v1/secure/articles/review';
+  private apiUrl = endPoints.baseURL + '/secure/articles/review';
   private articles: Article[] = [];
   private selectedArticle: Article | undefined;
   setItem: any;

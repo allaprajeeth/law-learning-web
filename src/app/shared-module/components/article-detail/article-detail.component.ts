@@ -6,6 +6,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
 
 
 @Component({
@@ -80,7 +81,7 @@ export class ArticleDetailComponent implements OnInit {
   
   
   openFile(fileUrl?: string, fileName?: string): void {
-    this.http.get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, { responseType: 'text' })
+    this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
       .subscribe(
         (data: string) => {
           this.storedFileContent = data;
@@ -101,7 +102,7 @@ export class ArticleDetailComponent implements OnInit {
   }
 
   fetchFileContent(fileUrl?: string): void {
-    this.http.get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, { responseType: 'text' })
+    this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
       .subscribe(
         (data: string) => {
           this.storedFileContent = data;

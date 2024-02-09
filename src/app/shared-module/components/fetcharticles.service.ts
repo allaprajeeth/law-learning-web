@@ -6,12 +6,13 @@ import { catchError, tap } from 'rxjs/operators';
 import { Article, ArticleApiResponse } from './fetcharticle.model';
 import { LoggingService } from 'src/app/common/services/logging/logging.service';
 import { ApiService } from 'src/app/common/services/api/api.service';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
 @Injectable({
   providedIn: 'root'
 })
 export class FetcharticlesService {
 
-  private apiUrl = 'http://192.168.1.42:8080/api/v1/articles';
+  private apiUrl = endPoints.baseURL + '/articles';
 
   constructor (
     private apiService: ApiService,
@@ -41,7 +42,7 @@ export class FetcharticlesService {
 
 
   loadPublishArticles(search: string = '', number: number = 0, size: number = 20, sort: string = 'title,DESC'): Observable<any> {
-    let url = `http://192.168.1.42:8080/api/v1/articles?search=${search}&number=${number}&size=${size}&sort=${sort}`;
+    let url = endPoints.baseURL + `/articles?search=${search}&number=${number}&size=${size}&sort=${sort}`;
   
     return this.apiService.get(url).pipe(
       tap((response: any) => {

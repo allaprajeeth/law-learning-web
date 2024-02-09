@@ -5,6 +5,7 @@ import { Article } from '../reviewer.model';
 import { FileSaverService } from 'ngx-filesaver';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
 
 @Component({
   selector: 'app-article-detail',
@@ -74,7 +75,7 @@ export class ArticleDetailComponent implements OnInit{
 
 
   downloadFile(fileUrl?: string, fileName?: string): void {
-    this.http.get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, { responseType: 'text' })
+    this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
       .subscribe(
         (data: string) => {
           this.storedFileContent = data;
@@ -95,7 +96,7 @@ export class ArticleDetailComponent implements OnInit{
   }
 
   fetchFileContent(fileUrl?: string): void {
-    this.http.get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, { responseType: 'text' })
+    this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
       .subscribe(
         (data: string) => {
           this.storedFileContent = data;
@@ -114,7 +115,7 @@ export class ArticleDetailComponent implements OnInit{
     const articleId = this.articleId;
 
     if (articleId) {
-      const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+      const articleUrl = endPoints.baseURL + `/secure/articles/review/${articleId}`;
 
       const articleData = {
         status: 'APPROVED',

@@ -21,7 +21,7 @@ export class ForgotPhoneService {
   validationKey$: BehaviorSubject<string> = new BehaviorSubject('');
 
   sendOtp(data: any): Observable<any> {
-    let url = endPoints.baseApi + endPoints.forgotPhone;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.forgotPhone;
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response && !!response?.message) {
@@ -40,7 +40,7 @@ export class ForgotPhoneService {
   }
 
   verifyotp(data: any): Observable<any> {
-    let url = endPoints.baseApi + endPoints.forgotPhone;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.forgotPhone;
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response && !!response?.message) {
@@ -57,7 +57,7 @@ export class ForgotPhoneService {
     );
   }
   sendOtpPhone(data: any): Observable<any> {
-    let url = endPoints.baseApi + endPoints.forgotPhone;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.forgotPhone;
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response && !!response?.message) {
@@ -76,7 +76,7 @@ export class ForgotPhoneService {
   }
  
   verifyotpPhone(data: any): Observable<any> {
-    let url = endPoints.baseApi + endPoints.forgotPhone;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.forgotPhone;
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response && !!response?.message) {

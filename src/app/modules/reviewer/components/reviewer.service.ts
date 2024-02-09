@@ -3,13 +3,12 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Article, ArticleApiResponse } from './reviewer.model';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReviewerService {
-
-  private apiUrl = 'http://192.168.1.42:8080/api/v1';
   approvalResponse: any;
 
   constructor(private http: HttpClient) {}
@@ -19,7 +18,7 @@ export class ReviewerService {
   // }
 
   getApprovedArticles(): Observable<ArticleApiResponse> {
-    return this.http.get<ArticleApiResponse>(`${this.apiUrl}/secure/articles/review`).pipe(
+    return this.http.get<ArticleApiResponse>(`${endPoints.baseURL}/secure/articles/review`).pipe(
       catchError((error) => {
         console.error('Error fetching approved articles:', error);
         return throwError(error);
@@ -28,7 +27,7 @@ export class ReviewerService {
   }
 
   getArticleDetails(articleId: number): Observable<Article> {
-    const articleDetailsUrl = `${this.apiUrl}/articles/${articleId}`;
+    const articleDetailsUrl = `${endPoints.baseURL}/articles/${articleId}`;
     return this.http.get<Article>(articleDetailsUrl).pipe(
       catchError((error) => {
         console.error('Error fetching article details:', error);
@@ -38,7 +37,7 @@ export class ReviewerService {
   }
 
   getFileContent(fileId: number | string): Observable<string> {
-    const fileContentUrl = `${this.apiUrl}/files/${fileId}`;
+    const fileContentUrl = `${endPoints.baseURL}/files/${fileId}`;
     return this.http.get<string>(fileContentUrl).pipe(
       catchError((error) => {
         console.error('Error fetching file content:', error);

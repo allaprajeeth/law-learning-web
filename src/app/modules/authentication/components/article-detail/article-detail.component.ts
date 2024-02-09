@@ -6,6 +6,7 @@ import { Article } from '../article.model';
 import { FileSaverService } from 'ngx-filesaver';
 import { saveAs } from 'file-saver';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
  
  
 @Component({
@@ -59,7 +60,7 @@ export class ArticleDetailComponent implements OnInit {
   openFile(fileUrl?: string, fileName?: string): void {
     if (fileUrl) {
         // Construct the download URL with the fileUrl
-        const downloadUrl = `http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`;
+        const downloadUrl = endPoints.baseURL + `/downloadFile?path=${fileUrl}`;
 
         // Fetch the file content
         this.articleService.getFileContent(downloadUrl).subscribe(
@@ -113,7 +114,7 @@ export class ArticleDetailComponent implements OnInit {
   
     // Check if the article ID is available
     if (articleId) {
-      const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+      const articleUrl = endPoints.baseURL + `/secure/articles/review/${articleId}`;
   
       // Modify the request payload according to your API
       const articleData = {
