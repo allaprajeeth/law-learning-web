@@ -19,6 +19,7 @@ import { PhotoComponent } from './components/photo/photo.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
 
 const routes: Routes = [
   {
@@ -49,6 +50,10 @@ const routes: Routes = [
   {
     path:"courseInfo",
     component:CourseInfoComponent
+  },
+  {
+    path: 'publish-articles/:id',
+    component: ReviewerPostdetailsComponent,
   },
   {
     path:'aboutus',
