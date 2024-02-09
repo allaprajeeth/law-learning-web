@@ -42,25 +42,27 @@ export class PublishingcornerComponent implements OnInit {
     // Get the first part of the path ('subscriber' or 'instructor')
     const firstPathSegment = this.router.url.split('/')[1];
     // Set visibility based on the path
-    this.isVisible = ['subscriber', 'instructor'].includes(firstPathSegment);
+    this.isVisible = ['subscriber', 'instructor', 'article'].includes(firstPathSegment);
+
+    // this.router.navigate(['/subscriber/articleform']);
   }
+
+  navigateToArticleForm(): void {
+    this.router.navigate(['/subscriber/article-form']);
+  }
+  
+  
+
+  isArticleRoute(): boolean {
+    // Check if the current route is exactly 'article'
+    return this.router.url === '/article';
+  }
+  
   searchArticles(): void {
     this.filteredArticles = this.articles.filter((article) =>
       article.title.toLowerCase().includes(this.searchTerm.toLowerCase())
     );
   }
-
-  // navigateToArticleDetail(articleId: number): void {
-  //   console.log('Selected Article ID:', articleId);
-  //   this.router.navigate(['/subscriber/publish-articles', articleId]);
-  // }
-
-
-
-
-
- 
-
   navigateToArticleDetail(articleId: number): void {
     console.log('Selected Article ID:', articleId);
   
@@ -77,6 +79,8 @@ export class PublishingcornerComponent implements OnInit {
       routePrefix = '/authentication/publish-articles';
     }else if (currentUrl.includes('/reviewer/article')) {
       routePrefix = '/reviewer/publish-articles';
+    }else if (currentUrl.includes('/article')){
+      routePrefix = '/publish-articles';
     }
 
     // Navigate using the dynamically constructed route
@@ -89,6 +93,8 @@ export class PublishingcornerComponent implements OnInit {
   navigateToLogin(): void {
     this.router.navigate(['/login']);
   }
+
+  
 }
 
 

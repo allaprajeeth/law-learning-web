@@ -46,7 +46,7 @@ export class FetcharticlesService {
     return this.apiService.get(url).pipe(
       tap((response: any) => {
         if (!!response) {
-          console.log("vani" ,response.data);
+          console.log(response.data);
           return response.data.content
         }
       }),

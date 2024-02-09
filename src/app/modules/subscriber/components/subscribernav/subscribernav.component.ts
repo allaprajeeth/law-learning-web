@@ -60,7 +60,7 @@ export class SubscribernavComponent implements OnInit {
   }
   
   ngOnInit() {
-    console.log("test", this.store);
+    // console.log("test", this.store);
     
     this.loggedInUserEmail$ = this.store.select(AuthSelectors.selectLoggedInUserEmail);
     this.loggedInUserPhone$ = this.store.select(AuthSelectors.selectLoggedInUserPhone);

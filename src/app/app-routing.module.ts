@@ -132,8 +132,8 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent 
   },
-  { 
-    path: 'post/:id', 
+  {
+    path: 'publish-articles/:id',
     component: PostdetailComponent
   },
   {
