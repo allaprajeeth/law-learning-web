@@ -47,9 +47,9 @@ export class PublishingcornerComponent implements OnInit {
     // this.router.navigate(['/subscriber/articleform']);
   }
 
-  navigateToArticleForm(): void {
-    this.router.navigate(['/subscriber/article-form']);
-  }
+  // navigateToArticleForm(): void {
+  //   this.router.navigate(['/subscriber/article-form']);
+  // }
   
   
 
@@ -93,8 +93,26 @@ export class PublishingcornerComponent implements OnInit {
   navigateToLogin(): void {
     this.router.navigate(['/login']);
   }
-
+  navigateToArticleForm(): void {
+    // Check the current URL to determine the appropriate destination
+    const currentUrl = this.router.url;
   
+    if (currentUrl.includes('/subscriber/article')) {
+      // If the current URL contains '/subscriber/article', navigate to '/subscriber/articleform'
+      this.router.navigateByUrl('/subscriber/article-form');
+    } else if (currentUrl.includes('instructor/article')){
+      // Otherwise, navigate to a default destination or handle it based on your requirements
+      // For example:
+      this.router.navigateByUrl('/instructor/articleform');
+    }
+  }
+  shouldDisableButton(): any {
+    // Check if the base URL is '/article'
+    return this.router.url === '/article';
+    
+    
+    
+  }
 }
 
 
