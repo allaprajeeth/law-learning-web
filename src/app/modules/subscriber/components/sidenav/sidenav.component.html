@@ -1,7 +1,7 @@
 <div class="container-wrapper">
   <div class="sidenav-container">
     <div class="sidenav">
-      <div class="logo">NS</div>
+      <div class="logo">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</div>
       <ul class="nav-list">
         <hr/>
         <li><a routerLink="/subscriber/profile" routerLinkActive="active">Profile</a></li>

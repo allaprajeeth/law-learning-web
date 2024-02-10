@@ -32,6 +32,14 @@
     &:hover {
       background-color: #005f6b;
     }
+
+    &.no-drop {
+      cursor: no-drop;
+    }
+    
+    &.pointer {
+      cursor: pointer;
+    }
   }
 }
 
@@ -134,6 +142,7 @@
   cursor: pointer;
   font-weight: 900;
 }
+
 
 
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/common/components/login/services/login.service';
 import { PopupService } from 'src/popup.service';
 
 @Component({
@@ -9,8 +10,13 @@ import { PopupService } from 'src/popup.service';
 })
 export class ReviewernavComponent {
   showLogoutPopup = false;
+  name: string = '';
+  email="";
+  username="";
 
-  constructor(private router: Router, private sharedService: PopupService) {}
+  constructor(private router: Router, 
+    private sharedService: PopupService,
+    private loginService:LoginService,) {}
 
   onUserCircleClick(event: Event) {
     event.preventDefault();

@@ -92,7 +92,7 @@ const routes: Routes = [
     component:SubscribernavComponent
   },
   {
-    path:"articleform",
+    path:"article-form",
     component:ArticleformComponent
   },
   {
