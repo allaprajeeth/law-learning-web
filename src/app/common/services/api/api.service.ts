@@ -15,10 +15,12 @@ export class ApiService {
     private httpClient: HttpClient,
     private authTokenService: AuthTokenService
   ) {
-    this.commonHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${this.authTokenService.getCurrentToken()}`
-    });
+    let headers: any = {'Content-Type': 'application/json'};
+    const token = this.authTokenService.getCurrentToken();
+    if(token && token.length > 0) {
+      headers['Authorization'] = `Bearer ${this.authTokenService.getCurrentToken()}`;
+    }
+    this.commonHeaders = new HttpHeaders(headers);
   }
 
   get<T>(url: string, params?: HttpParams | {}): Observable<T> {

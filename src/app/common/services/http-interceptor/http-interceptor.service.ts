@@ -27,18 +27,19 @@ export class HttpInterceptorService implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let modifiedRequest;
     if(this.isValidUrl(request.url)){// need to work further
-      modifiedRequest = request.clone();
+      return next.handle(request.clone());
     }else{
       const jwtToken=  localStorage.getItem('jwtToken');
-      modifiedRequest = request.clone({
-        setHeaders: {
-          Authorization: `Bearer ${jwtToken}`,
-        },
-      });
+      if(jwtToken && jwtToken.length > 0) {
+        let modifiedRequest = request.clone({
+          setHeaders: {
+            Authorization: `Bearer ${jwtToken}`,
+          },
+        });
+        return next.handle(modifiedRequest);
+      }
+      return next.handle(request.clone());
     }
-
-    return next.handle(modifiedRequest);
   }
 }

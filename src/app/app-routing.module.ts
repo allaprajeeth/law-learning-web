@@ -28,39 +28,53 @@ import { AdvisorDetailsComponent } from './common/components/advisor-details/adv
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { SharedTCComponent } from './shared-module/components/shared-tc/shared-tc.component';
+import { roleGuard } from './common/guards/role-guard/role.guard';
+import { redirectGuard } from './common/guards/redirect-guard/redirect.guard';
 
 const routes: Routes = [
   {
     path: 'admin',
+    canActivateChild: [roleGuard],
+    data: { roles: ['ADMIN'] },
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: 'instructor',
+    canActivateChild: [roleGuard],
+    data: { roles: ['INSTRUCTOR'] },
     loadChildren: () => import('./modules/instructor/instructor.module').then(m => m.InstructorModule)
   },
   {
     path: 'subscriber',
+    canActivateChild: [roleGuard],
+    data: { roles: ['SUBSCRIBER'] },
     loadChildren: () => import('./modules/subscriber/subscriber.module').then(m => m.SubscriberModule)
   },
   {
     path: 'reviewer',
+    canActivateChild: [roleGuard],
+    data: { roles: ['REVIEWER'] },
     loadChildren: () => import('./modules/reviewer/reviewer.module').then(m => m.ReviewerModule)
   },
   {
     path: 'authentication',
+    canActivateChild: [roleGuard],
+    data: { roles: ['CONTENTMANAGER'] },
     loadChildren: () => import('./modules/authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
     path: '',
-    canActivate: [authGuard],
+    canActivate: [redirectGuard],
     component: HeaderComponent
   },
   {
     path: 'login',
+    canActivate: [redirectGuard],
     component: LoginComponent
   },
   {
     path: 'register',
+    canActivate: [redirectGuard],
     component: RegisterComponent
   },
   {
@@ -74,6 +88,7 @@ const routes: Routes = [
   },
   {
     path: 'header',
+    canActivate: [redirectGuard],
     component:HeaderComponent
   },
   {
