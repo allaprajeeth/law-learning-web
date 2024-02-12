@@ -7,9 +7,11 @@
       <h2>{{ article.title }}</h2>
       <p>{{ article.description }}</p>
        
-      <button *ngIf="article.files && article.files.length > 0"
-        (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
- 
+      <!-- article-detail.component.html -->
+
+<button *ngIf="fileButtonVisible && article.files && article.files.length > 0"
+  (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
+
 
         <p>{{ storedFileContent }}</p>
        
@@ -20,15 +22,7 @@
             *Comment is mandatory. Please enter some text.
           </div>
         </div>
-      <div *ngIf="article.files && article.files.length > 0">
-        <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url" [fileName]="article.files[0]?.fileName"></app-article-file> -->
-        <!-- <app-article-file *ngIf="fileOpened" [fileUrl]="article.files[0]?.url"></app-article-file> -->
-      </div>
- 
-      <div>
-        <!-- <p>{{ storedFileContent }}</p> -->
-      </div>
-    </div>
+     
   </div>
   
   

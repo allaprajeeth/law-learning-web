@@ -24,6 +24,8 @@ export class ArticleDetailComponent implements OnInit {
   articleRejected: boolean = false;
   articleee:boolean=true;
   storedFileContent: string | undefined;
+  fileButtonVisible: boolean = true;
+
   constructor(
     private route: ActivatedRoute,
     public articleService: ArticleService,
@@ -55,7 +57,40 @@ export class ArticleDetailComponent implements OnInit {
    
    
   }
- 
+  downloadFile(fileUrl?: string, fileName?: string): void {
+    this.http.get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, { responseType: 'blob' })
+      .subscribe(
+        (data: Blob) => {
+          this.fileOpened = true;
+  
+          // Create a Blob object and create a download link
+          const blob = new Blob([data], { type: 'application/octet-stream' });
+          const link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = fileName || 'downloaded-file'; // Specify the file name
+          link.style.display = 'none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        },
+        (error) => {
+          console.error('Error downloading file:', error);
+        }
+      );
+  }
+  
+  fetchFileContent(fileUrl?: string): void {
+    this.http.get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, { responseType: 'text' })
+      .subscribe(
+        (data: string) => {
+          this.storedFileContent = data;
+        },
+        (error) => {
+          console.error('Error fetching file content:', error);
+        }
+      );
+  }
+  
 
   openFile(fileUrl?: string, fileName?: string): void {
     if (fileUrl) {
@@ -68,12 +103,11 @@ export class ArticleDetailComponent implements OnInit {
                 // Set the fileOpened flag to true
                 this.fileOpened = true;
 
-                // Do something with the file content (e.g., store it in a variable)
-                // For demonstration purposes, let's assume there's a property called 'storedFileContent'
+                
                 this.storedFileContent = fileContent;
+                this.fileButtonVisible = false;
 
-                // Alternatively, you can display the content directly in the component's template
-                // by binding it to an HTML element (e.g., <p>{{ storedFileContent }}</p>)
+               
             },
             (error) => {
                 console.error('Error fetching file content:', error);
@@ -100,10 +134,6 @@ export class ArticleDetailComponent implements OnInit {
   }
  
   approveArticle(): void {
-    // Show success message using MatSnackBar
-  
-    // Additional logic for article approval goes here
-  
     // For now, let's just update the approvalStatus
     this.approvalStatus = 'approved';
     this.articleApproved = true;
@@ -153,14 +183,44 @@ export class ArticleDetailComponent implements OnInit {
       this.commentError = false;
       this.approvalStatus = 'rejected';
       this.articleRejected = true;
-    this.articleee=false;
+      this.articleee = false;
+  
+      // Assuming this.article is defined
+      const articleId = this.article?.id;
+  
+      // Check if the article ID is available
+      if (articleId) {
+        const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+  
+        // Modify the request payload according to your API
+        const articleData = {
+          status: 'REJECTED',
+          summary: this.comment,
+        };
+  
+        // Example headers, adjust accordingly
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+  
+        // Make the HTTP PATCH request with the updated URL
+        this.http.patch(articleUrl, articleData, { headers }).subscribe(
+          (response) => {
+            console.log('Article rejection successful:', response);
+            this.articleService.setApprovalResponse(response);
+            this.articleee = false;
+  
+          },
+          (error) => {
+            console.error('Error rejecting article:', error);
+          }
+        );
+      } else {
+        console.error('Article ID is undefined.');
+      }
     }
-    // Additional logic for article rejection goes here
-    // For now, let's just update the approvalStatus
-    // this.approvalStatus = 'rejected';
-   
- 
   }
+  
   closeMessage(): void {
     this.approvalStatus = 'pending'; // Reset approval status to hide the message
   }

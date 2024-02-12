@@ -6,6 +6,9 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+.review-status{
+  font-weight: bold;
+}
 .button-container {
     display: flex;
     justify-content: center; /* Center the buttons horizontally */
@@ -29,6 +32,10 @@
     .reject-button {
       background-color: #f44336; /* Red */
       color: white;
+    }
+    .resubmit-button {
+      background-color: rgb(164, 150, 27); 
+      color:white ;
     }
   }
  
