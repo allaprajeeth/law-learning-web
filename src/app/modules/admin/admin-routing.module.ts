@@ -31,7 +31,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
 const routes: Routes = [
   {
     path:"",
-    redirectTo: 'login',
+    redirectTo: 'homepage',
     pathMatch: 'full'
   },
   {

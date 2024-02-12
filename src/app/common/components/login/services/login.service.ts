@@ -40,7 +40,7 @@ export class LoginService {
   }
  
   sendOtpClick(data: any): Observable<any> {
-    let url = endPoints.baseApi + endPoints.loginRequest;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.loginRequest;
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response) {
@@ -59,7 +59,7 @@ export class LoginService {
   }
  
   loginClick(data: any): Observable<any> {
-    let url = endPoints.baseApi + endPoints.loginComplete;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.loginComplete;
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response) {

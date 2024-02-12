@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticleformService } from '../articleform.service';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
 
 @Component({
   selector: 'app-sharedarticleform',
@@ -44,7 +45,7 @@ export class SharedarticleformComponent {
       })], {type: 'application/json'}));
 
       // Make API request using the ApiService
-      this.articleformService.post<any>('http://192.168.1.42:8080/api/v1/secure/articles', this.formData).subscribe(
+      this.articleformService.post<any>(endPoints.baseURL + '/secure/articles', this.formData).subscribe(
         (response) => {
           console.log('Article submitted successfully:', response);
           this.router.navigate(['/subscriber/submitmesg']);

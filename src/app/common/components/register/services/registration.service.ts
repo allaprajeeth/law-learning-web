@@ -18,7 +18,7 @@ export class RegistrationService {
     private notificationService:NotificationService) { }
  
   sendOtpSignup(data: any): Observable<any>{
-    let url = endPoints.baseApi+endPoints.signUp;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.signUp;
     return this.apiService.post(url, data)
     .pipe(
      
@@ -41,7 +41,7 @@ export class RegistrationService {
   }
  
   signUppage(data: any): Observable<any>{
-    let url = endPoints.baseApi+endPoints.signUpComplete;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.signUpComplete;
     return this.apiService.post(url, data)
     .pipe(
       tap((response: any) => {

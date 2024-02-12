@@ -48,7 +48,7 @@ logOutUser(): Observable<any> {
   
   
   }
-    let url = endPoints.baseApi + endPoints.logout;
+    let url = endPoints.baseURL + endPoints.auth + endPoints.logout;
 
     return this.apiService.post(url, logoutData).pipe(
       tap((response: any) => {
