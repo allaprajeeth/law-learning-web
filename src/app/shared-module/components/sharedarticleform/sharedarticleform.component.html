@@ -8,7 +8,7 @@
     <label for="description">Description:</label>
     <textarea id="description" formControlName="description"></textarea>
     <label for="file">Choose Word Document File (.docx, .doc):</label>
-    <input type="file" id="file" formControlName="file" accept=".docx, .doc" (change)="onFileUpload($event)">
+    <input type="file" id="file" formControlName="file" (change)="onFileUpload($event)">
     <br /><br />
     <!-- <div class="button-container">
       <button type="submit" (click)="navigateToSuccessMessage()" [disabled]="articleForm.invalid"

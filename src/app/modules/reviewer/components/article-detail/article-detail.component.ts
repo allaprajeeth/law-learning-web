@@ -139,6 +139,43 @@ export class ArticleDetailComponent implements OnInit{
     }
   }
 
+  resubmitArticle(): void {
+    if (this.comment.trim() === '') {
+      this.commentError = true;
+    } else {
+      this.commentError = false;
+      this.approvalStatus = 'resubmitted';
+  
+      const articleId = this.articleId;
+  
+      if (articleId) {
+        const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+  
+        const articleData = {
+          status: 'RESUBMITTED',
+          summary: this.comment,
+        };
+  
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+  
+        this.http.patch(articleUrl, articleData, { headers }).subscribe(
+          (response) => {
+            console.log('Article re-submission successful:', response);
+            this.reviewerService.setApprovalResponse(response);
+          },
+          (error) => {
+            console.error('Error re-submitting article:', error);
+          }
+        );
+      } else {
+        console.error('Article ID is undefined.');
+      }
+    }
+  }
+
+
   rejectArticle(): void {
     if (this.comment.trim() === '') {
       this.commentError = true;
