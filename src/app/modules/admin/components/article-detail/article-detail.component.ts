@@ -223,5 +223,5 @@ export class ArticleDetailComponent implements OnInit {
   }
 }
 
-}
+
 
