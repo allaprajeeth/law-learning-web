@@ -15,11 +15,10 @@ export abstract class BaseService<T extends BaseModel<T>> {
     protected apiUrl: string
   ) {}
 
-  public get(): Observable<T[]> {
+  public get(params: any): Observable<T[]> {
     return this.httpClient
-      .get<T>(`${this.apiUrl}`)
+      .get<T>(`${this.apiUrl}`, {params:params})
       .pipe(map((result) => {
-        console.log(result)
         if(result && result.status === 200) {
           const data = result.data?.content;
           if(data)

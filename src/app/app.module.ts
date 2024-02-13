@@ -64,6 +64,7 @@ import { EmailVerificationComponent } from './common/components/email-verificati
 import { PhoneVerificationComponent } from './common/components/phone-verification/phone-verification.component';
 import { AuthEffects } from './common/components/login/store/auth.effects';
 import { authReducer } from './common/components/login/store/auth.reducer';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -125,6 +126,7 @@ import { authReducer } from './common/components/login/store/auth.reducer';
     MatCheckboxModule,
     MatMenuModule,
     MatButtonModule,
+    MatProgressSpinnerModule,
     FileUploadModule,
     PdfViewerModule,
     StoreModule.forRoot({ 

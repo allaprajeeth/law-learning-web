@@ -11,6 +11,35 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     height: 70px;
 }
 
+.fixed-header {
+    min-height: 85%;
+}
+
+#loadMore {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    text-align: center;
+    width: 100%;
+}
+#loadMore button {
+    background-color: #007791;
+    color: #fff;
+    border: none;
+    padding: 7px 9px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 3px;
+    text-decoration: none;
+    //pointer-events: all;
+    &:hover {
+        background-color: #0056b3;
+    }
+}
+
+#loadMore mat-icon {
+    padding: 2px;
+}
+
 // mat-form-field{
 //     font-size: 12px !important;
 // }
