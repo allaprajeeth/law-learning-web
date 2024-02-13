@@ -40,6 +40,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     padding: 2px;
 }
 
+.submit-button {
+    position: absolute;
+    top: 90px;
+    right: 80px;
+    z-index: 1;
+  
+    button {
+      padding: 10px 20px;
+      background-color: #007791;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-right: 50px;
+  
+      &:hover {
+        background-color: #005f6b;
+      }
+  
+      &.no-drop {
+        cursor: no-drop;
+      }
+      
+      &.pointer {
+        cursor: pointer;
+      }
+    }
+  }
+
 // mat-form-field{
 //     font-size: 12px !important;
 // }

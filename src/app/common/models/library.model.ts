@@ -8,7 +8,7 @@ export class Library extends BaseModel<Library> {
   public url!: string;
   public deleted!: boolean;
 
-    constructor(model?: Partial<Library>) {
+    constructor(model?: Library) {
       super(model);
     }
   }

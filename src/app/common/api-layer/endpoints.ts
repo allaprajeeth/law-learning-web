@@ -10,5 +10,6 @@ export const endPoints = {
     forgotEmail:'/forgetEmail',
     forgotPhone:'/forgetPhone',
     libraries: '/libraries',
-    auth: '/auth'
+    auth: '/auth',
+    secure: '/secure'
 }

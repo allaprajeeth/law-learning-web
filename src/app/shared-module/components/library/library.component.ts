@@ -1,8 +1,9 @@
 import {  Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { Library } from 'src/app/common/models/library.model';
-import { BaseModel } from 'src/app/common/models/base.model';
 import { LibraryService } from 'src/app/common/services/library/library.service';
+import { HttpResponse } from 'src/app/common/models/response.model';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 @Component({
   selector: 'app-library',
@@ -11,20 +12,21 @@ import { LibraryService } from 'src/app/common/services/library/library.service'
 
 })
 export class LibraryComponent {
-  public libraries: Library[] = [];
-  public apiLoading = false;
-  constructor(private router:Router, private libraryService: LibraryService) {}
+  libraries: Library[] = [];
+  private pagination: Pagination = new Pagination();
+  apiLoading = false;
+  constructor(private router:Router, private libraryService: LibraryService) {
+  }
   
   ngOnInit(): void {
-    let params: any = {page: 0, size: 2};
-    this.loadLibraries(params);
+    this.loadLibraries(this.pagination.getPaginationRequest());
   }
 
   loadLibraries(params: any) {
-    this.libraryService.get(params).subscribe((libraries: Library[]) => {
-      console.log(libraries)
-      for(var i in libraries){
-        this.libraries.push(libraries[i]);
+    this.libraryService.get(params).subscribe((response: HttpResponse<Library>) => {
+      for(var i in response.records){
+        this.libraries.push(response.records[i]);
+        this.pagination = new Pagination(response.pagination);
       }
     });
   }
@@ -35,8 +37,8 @@ export class LibraryComponent {
 
   loadMore() {
     this.apiLoading = true;
-    let params: any = {number: 0, size: 20};
-    this.loadLibraries(params);
+    this.pagination.page++;
+    this.loadLibraries(this.pagination.getPaginationRequest());
     this.apiLoading = false;
   }
 }
