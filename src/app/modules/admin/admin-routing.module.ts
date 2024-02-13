@@ -7,7 +7,7 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { AdminLibraryComponent } from './components/admin-library/admin-library.component';
+import { AdminLibraryComponent } from './components/library/library.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { PhotoComponent } from './components/photo/photo.component';

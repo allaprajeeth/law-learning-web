@@ -23,7 +23,7 @@ import { ErrorHandlerService } from 'src/app/common/services/error-handler/error
 import { NotificationComponent } from './components/notification/notification.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { AdminLibraryComponent } from './components/admin-library/admin-library.component';
+import { AdminLibraryComponent } from './components/library/library.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
