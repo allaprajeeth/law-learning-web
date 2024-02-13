@@ -28,6 +28,7 @@ export class ArticleDetailComponent implements OnInit {
   comment: string = '';
   commentError: boolean = false;
   articleee: boolean = false;
+  fileButtonVisible: boolean = true;  
 
   constructor(
     private route: ActivatedRoute,
@@ -77,7 +78,8 @@ export class ArticleDetailComponent implements OnInit {
       .subscribe(
         (data: string) => {
           this.storedFileContent = data;
-          this.fileOpened = true; 
+          this.fileOpened = true;
+          this.fileButtonVisible = false; 
           const blob = new Blob([data], { type: 'application/octet-stream' });
           const link = document.createElement('a');
           link.href = window.URL.createObjectURL(blob);
@@ -138,6 +140,8 @@ export class ArticleDetailComponent implements OnInit {
     }
   }
 
+
+
   rejectArticle(): void {
     if (this.comment.trim() === '') {
       this.commentError = true;
@@ -146,10 +150,78 @@ export class ArticleDetailComponent implements OnInit {
       this.approvalStatus = 'rejected';
       this.articleRejected = true;
       this.articleee = false;
+  
+      const articleId = this.articleId;
+  
+      if (articleId) {
+        const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+  
+        const articleData = {
+          status: 'REJECTED',
+          summary: this.comment,
+        };
+  
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+  
+        this.http.patch(articleUrl, articleData, { headers }).subscribe(
+          (response) => {
+            console.log('Article rejection successful:', response);
+            this.adminService.setApprovalResponse(response);
+          },
+          (error) => {
+            console.error('Error rejecting article:', error);
+          }
+        );
+      } else {
+        console.error('Article ID is undefined.');
+      }
     }
   }
+  
+  resubmitArticle(): void {
+    if (this.comment.trim() === '') {
+      this.commentError = true;
+    } else {
+      this.commentError = false;
+      this.approvalStatus = 'resubmitted';
+  
+      const articleId = this.articleId;
+  
+      if (articleId) {
+        const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+  
+        const articleData = {
+          status: 'RESUBMITTED',
+          summary: this.comment,
+        };
+  
+        const headers = {
+          'Content-Type': 'application/json',
+        };
+  
+        this.http.patch(articleUrl, articleData, { headers }).subscribe(
+          (response) => {
+            console.log('Article re-submission successful:', response);
+            this.adminService.setApprovalResponse(response);
+          },
+          (error) => {
+            console.error('Error re-submitting article:', error);
+          }
+        );
+      } else {
+        console.error('Article ID is undefined.');
+      }
+    }
+  }
+
+
 
   goBack(): void {
     this.router.navigate(['/admin/homepage']);
   }
 }
+
+
+
