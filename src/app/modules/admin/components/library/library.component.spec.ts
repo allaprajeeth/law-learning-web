@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdminLibraryComponent } from './admin-library.component';
+import { AdminLibraryComponent } from './library.component';
 
 describe('AdminLibraryComponent', () => {
   let component: AdminLibraryComponent;

@@ -33,7 +33,7 @@ import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
 import { LogoutPopupComponent } from './components/logout-popup/logout-popup.component';
 import { PublishArticlesComponent } from './components/publish-articles/publish-articles.component';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
  
@@ -74,7 +74,8 @@ import { PublishArticlesComponent } from './components/publish-articles/publish-
     MatSlideToggleModule,
     MatToolbarModule,
     ReactiveFormsModule,
-    PdfViewerModule
+    PdfViewerModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,

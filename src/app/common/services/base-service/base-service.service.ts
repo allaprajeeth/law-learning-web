@@ -1,31 +1,40 @@
 import { Injectable } from '@angular/core';
 import { BaseModel } from '../../models/base.model';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { HttpResponse } from '../../models/response.model';
+import { Library } from '../../models/library.model';
+import { endPoints } from '../../api-layer/endpoints';
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class BaseService<T extends BaseModel<T>> {
+export abstract class BaseService<T> {
 
   constructor(
     private httpClient: HttpClient,
-    private tConstructor: { new (m: Partial<T>, ...args: unknown[]): T },
+    private tConstructor: { new (m: HttpResponse<T>, ...args: unknown[]): HttpResponse<T> },
     protected apiUrl: string
   ) {}
 
-  public get(): Observable<T[]> {
+  public get(params: any): Observable<HttpResponse<T>> {
     return this.httpClient
-      .get<T>(`${this.apiUrl}`)
+      .get<HttpResponse<T>>(`${this.apiUrl}`+ endPoints.libraries, {params:params})
       .pipe(map((result) => {
-        console.log(result)
-        if(result && result.status === 200) {
-          const data = result.data?.content;
-          if(data)
-            return data.map((i) => new this.tConstructor(i))
-        }
-        return [];
+        return new this.tConstructor(result);
       }));
+  }
+
+  public post(url: string, data: FormData): Observable<HttpResponse<T>> {
+    const headers = new HttpHeaders();
+    return this.httpClient.post<HttpResponse<T>>(`${this.apiUrl}` + url, data, { headers }).pipe(map((result) => {
+      return new this.tConstructor(result);
+    }), catchError((error: any, caught: Observable<any>): Observable<any> => {
+      console.error('There was an error!', error);
+      // after handling error, return a new observable 
+      // that doesn't emit any values and completes
+      return of();
+  }));;
   }
 }
