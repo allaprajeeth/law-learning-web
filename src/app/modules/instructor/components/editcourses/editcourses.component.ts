@@ -52,3 +52,4 @@ export class EditcoursesComponent implements OnInit {
     return false; // Prevent default form submission
   }
 }
+

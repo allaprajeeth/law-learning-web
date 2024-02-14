@@ -98,14 +98,23 @@ export class ManagernavComponent implements OnInit{
     this.showLogoutPopup = false;
   }
 
+  
   onLogout(): void {
-      this.sharedService.showLogoutAlert = true;
+    this.sharedService.showLogoutAlert = true;
+  
+    this.logoutService.logOutUser().subscribe(() => {
+      console.log('logged out successfully');
+  
+      localStorage.removeItem('loggedInUserEmail');
+      localStorage.removeItem('userDetails');
 
-      setTimeout(() => {
-        this.sharedService.showLogoutAlert = false;
-      }, 5000);
-
-      this.router.navigate(['/header']);
-      this.showLogoutPopup = false;
+    });
+  
+    setTimeout(() => {
+      this.sharedService.showLogoutAlert = false;
+    }, 5000);
+  
+    this.router.navigate(['/header']);
+    this.showLogoutPopup = false;
   }
 }
