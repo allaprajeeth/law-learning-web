@@ -1,60 +1,69 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { CourseService } from 'src/app/common/services/course.service';
+import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { FormDataService } from 'src/app/common/services/form-data.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
 })
-export class CoursesComponent implements OnInit {
-  courseForm!: FormGroup;
-  isFormValid: boolean = false;
+export class CoursesComponent {
+  courseForm: FormGroup;
+  formData: FormData;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
-
-  ngOnInit() {
+  constructor(
+    private fb: FormBuilder, 
+    private router: Router, 
+    private httpClient: HttpClient,
+    private courseService: CourseService,
+    private formDataService: FormDataService
+  ) {
     this.courseForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      skillLevel: ['', Validators.required], 
+      skillLevel: ['', Validators.required],
       courseType: ['', Validators.required],
-      // hasTest: ['', Validators.required]
+      price: [null],
+      language: ['English', Validators.required],
+      courseFile: [null]
     });
 
-    // Subscribe to specific form control changes to update the isFormValid variable
-    this.courseForm.get('title')?.statusChanges.subscribe(() => {
-      this.updateFormValidity();
-    });
-
-    this.courseForm.get('description')?.statusChanges.subscribe(() => {
-      this.updateFormValidity();
-    });
-
-    this.courseForm.get('skillLevel')?.valueChanges.subscribe(() => {
-      this.updateFormValidity();
-    });
-    this.courseForm.get('courseType')?.valueChanges.subscribe(() => {
-      this.updateFormValidity();
-    });
+    this.formData = new FormData();
   }
 
-  updateFormValidity() {
-    this.isFormValid = (this.courseForm.get('title')?.valid ?? false) && 
-                      (this.courseForm.get('description')?.valid ?? false) && 
-                      (this.courseForm.get('skillLevel')?.valid ?? false) &&
-                      (this.courseForm.get('courseType')?.valid ?? false);
-                      // (this.courseForm.get('hasTest')?.valid ?? false);
-  }
-
-  onSubmit() {
-    if (this.isFormValid) {
-      this.router.navigate(['/instructor/upload']);
-     
-    } else {
-      // Form is invalid, handle it as needed
+  onFileUpload(event: any) {
+    const files = event.target.files;
+    if (files !== null && files.length > 0) {
+      const file: File | null = files[0];
+      if (file) {
+        this.formData.append('courseFile', file);
+      }
     }
   }
 
-  
+  onSubmit() {
+    if (this.courseForm.valid) {
+      const courseFormData = this.courseForm.value;
+      console.log('Course Form Data:', courseFormData);
+
+      this.formDataService.setCourseFormData(this.formData);
+
+      this.router.navigate(['/instructor/upload']);
+    }
+  }
+
+  onNext() {
+    if (this.courseForm.valid) {
+      const courseFormData = this.courseForm.value;
+      console.log('Course Form Data:', courseFormData);
+
+      this.formDataService.setCourseFormData(this.formData);
+
+      this.router.navigate(['/instructor/upload']);
+    }
+  }
 }

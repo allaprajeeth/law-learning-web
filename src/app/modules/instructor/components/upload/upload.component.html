@@ -1,4 +1,108 @@
 <app-instructornav></app-instructornav>
+<div class="main-container">
+  <div class="container-wrapper">
+    <div class="form-container">
+
+      <div class="form-group">
+        <h2 class="heading">Upload Sections with Multiple Videos:</h2>
+        <p class="message">Enter the required fields to enable save and submit buttons</p>
+      </div>
+
+      <div class="main-section">
+        <div class="section-number">Section </div>
+        <br />
+        <div [formGroup]="uploadForm">
+
+          <div class="form-group">
+            <label for="sectionTitle">Section Title <span class="required-field">**</span> : </label>
+            <input type="text" id="sectionTitle" formControlName="sectionTitle" required>
+          </div>
+
+          <div class="form-group">
+            <label for="sectionDescription">Description:</label>
+            <textarea id="sectionDescription" formControlName="sectionDescription" rows="4" required></textarea>
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="sectionTitle">Sub-Section Title <span class="required-field">**</span> : </label>
+            <input type="text" id="sectionTitle" formControlName="sectionTitle" required>
+          </div>
+
+
+
+          <div class="form-group">
+            <label for="mainFile">Upload Video<span class="required-field">**</span> :
+            </label>
+            <input type="file">
+          </div>
+
+          <div class="form-group">
+            <label>Video Duration:</label>
+            <div class="duration-input">
+              <input type="number"  id="minutes" name="minutes"
+                placeholder="Minutes" required >
+
+              <input type="number"  id="sec" name="seconds"
+                placeholder="Seconds" required >
+            </div>
+          </div>
+         
+
+         
+        </div>
+
+      </div>
+      <br />
+
+      <!-- <button type="button" class="add-section-button" >Add Mainsection</button> -->
+
+      <br />
+      <br />
+      <!-- <div class="form-group">
+        <label>Does this course have any test?</label>
+        <div class="radio-group">
+          <input type="radio" id="yes" name="hasTest" value="yes">
+          <label for="yes" class="test">Yes</label>
+
+          <input type="radio" id="no" name="hasTest" value="no">
+          <label for="no" class="test">No</label>
+        </div>
+      </div> -->
+      <div>
+        <button routerLink="/instructor/quiztest" class="testbutton">Create a Test</button>
+      </div>
+      <div>
+        <button type="button" class="submit-button" (click)="onSubmitUploadForm()">Submit All</button>
+      </div>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <app-instructornav></app-instructornav>
 <div class="main-container" >
   <div class="container-wrapper" *ngIf="showForm">
     <div class="form-container" >
@@ -98,11 +202,8 @@
           <button type="button" class="save-button sec-save-button" (click)="saveMainSection(mainIndex)"
             [style.background-color]="mainSection.buttonColor" [disabled]="!mainSection.isSaveEnabled">
             Save
-
             <span class="right-click-icon" *ngIf="mainSection.buttonColor">&#10003;</span>
           </button>
-
-         
           <p class="success-msg" *ngIf="mainSection.buttonColor">Above details saved successfully</p>
           <p class="button-description" *ngIf="!mainSection.buttonColor">By clicking save, all your files related to
             this subsection will be saved.</p>
@@ -135,35 +236,17 @@
     <div>
       <button routerLink="/instructor/quiztest" class="testbutton" [disabled]="hasTest !== 'yes'">Create a Test</button>
     </div>
-
-    <!-- <div>
-      <button type="button" class="submit-button" (click)="submitSections()">Submit All</button>
-    </div> -->
-
     <div>
       <button type="button" class="submit-button" (click)="submitSections()" [disabled]="!anyMainSectionSubmitted">Submit All</button>
-    </div>
-    
+    </div> 
   </div>
     <br />
-    <br />
-   
-    <!-- <div *ngIf="submitAllMessage" class="success-message">
-      <p>{{ submitAllMessage }}</p>
-      <button type="button" (click)="goBack()">Go Back</button>
-    </div>
-      -->
+    <br /> 
 </div>
 </div>
-
-<!-- <div *ngIf="submitAllMessage" class="success-message">
-  <p>{{ submitAllMessage }}</p>
-  <button type="button" (click)="goBack()">Go Back</button>
-</div> -->
-
 <div *ngIf="!showForm && submitAllMessage" class="success-message">
   <p>{{ submitAllMessage }}</p>
   <button type="button" (click)="goBack()">Go Back</button>
 </div>
  
-
+ -->

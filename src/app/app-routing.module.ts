@@ -64,17 +64,17 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [redirectGuard],
+    //canActivate: [redirectGuard],
     component: HeaderComponent
   },
   {
     path: 'login',
-    canActivate: [redirectGuard],
+    //canActivate: [redirectGuard],
     component: LoginComponent
   },
   {
     path: 'register',
-    canActivate: [redirectGuard],
+    //canActivate: [redirectGuard],
     component: RegisterComponent
   },
   {
