@@ -34,6 +34,7 @@ import { SharedNotificationComponent } from './components/shared-notification/sh
 import { LogoutPopupComponent } from './components/logout-popup/logout-popup.component';
 import { PublishArticlesComponent } from './components/publish-articles/publish-articles.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FileUploadComponent } from './components/file-upload/file-upload.component';
 
 @NgModule({
  
@@ -57,6 +58,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
      SharedNotificationComponent,
      LogoutPopupComponent,
      PublishArticlesComponent,
+     FileUploadComponent,
     ],
 
   imports: [
@@ -102,6 +104,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     SharedTCComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,
+    FileUploadComponent
   ]
 
 })
