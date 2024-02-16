@@ -58,9 +58,13 @@ const routes: Routes = [
     component: CoursesComponent,
   },
   {
-    path: 'instructor/editcourses',
-    component: EditcoursesComponent,
+    path: 'courses/:id',
+    component: CoursesComponent,
   },
+  // {
+  //   path: 'instructor/editcourses',
+  //   component: EditcoursesComponent,
+  // },
   {
     path: 'notification',
     component: NotificationComponent,
