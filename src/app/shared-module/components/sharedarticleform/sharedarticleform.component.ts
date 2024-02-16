@@ -14,7 +14,11 @@ export class SharedarticleformComponent {
   articleForm: FormGroup;
   formData: FormData;
   
-  constructor(private fb: FormBuilder, private router: Router,  private articleformService: ArticleformService) {
+  constructor(private fb: FormBuilder, 
+    private router: Router, 
+     private articleformService: ArticleformService
+     ) {
+
     this.articleForm = this.fb.group({
       name: ['', Validators.required],
       articleName: ['', Validators.required],
@@ -23,6 +27,7 @@ export class SharedarticleformComponent {
     });
     this.formData = new FormData();
   }
+  
   onFileUpload(event: any){
     console.log(event.target.files);
     const files = event.target.files;

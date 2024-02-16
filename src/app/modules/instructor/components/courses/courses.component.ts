@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { CourseService } from 'src/app/common/services/course.service';
 import { endPoints } from 'src/app/common/api-layer/endpoints';
-import { FormDataService } from 'src/app/common/services/form-data.service';
+import { CourseService } from 'src/app/common/services/course.service';
 
 @Component({
   selector: 'app-courses',
@@ -14,13 +13,13 @@ import { FormDataService } from 'src/app/common/services/form-data.service';
 export class CoursesComponent {
   courseForm: FormGroup;
   formData: FormData;
+  currentCourseId: number | null;
 
   constructor(
     private fb: FormBuilder, 
     private router: Router, 
     private httpClient: HttpClient,
-    private courseService: CourseService,
-    private formDataService: FormDataService
+    private courseService: CourseService
   ) {
     this.courseForm = this.fb.group({
       title: ['', Validators.required],
@@ -33,6 +32,7 @@ export class CoursesComponent {
     });
 
     this.formData = new FormData();
+    this.currentCourseId = null;
   }
 
   onFileUpload(event: any) {
@@ -40,30 +40,66 @@ export class CoursesComponent {
     if (files !== null && files.length > 0) {
       const file: File | null = files[0];
       if (file) {
-        this.formData.append('courseFile', file);
+        this.formData.append('file', file);
       }
     }
   }
 
   onSubmit() {
-    if (this.courseForm.valid) {
-      const courseFormData = this.courseForm.value;
-      console.log('Course Form Data:', courseFormData);
+    if (this.courseForm.valid) { 
+      
+      if (this.currentCourseId === null) { 
 
-      this.formDataService.setCourseFormData(this.formData);
+      this.formData.set('course', new Blob([JSON.stringify({
+        title: this.courseForm.get('title')!.value,
+        description: this.courseForm.get('description')!.value,
+        level: this.courseForm.get('skillLevel')!.value,
+        type: this.courseForm.get('courseType')!.value
+      })], { type: 'application/json' }));
 
-      this.router.navigate(['/instructor/upload']);
+
+
+      this.courseService.post<any>(endPoints.baseURL + '/secure/courses', this.formData).subscribe(
+        (response) => {
+          console.log('course form submitted successfully:', response);
+          this.router.navigate(['/instructor/upload']);
+        },
+        (error) => {
+          console.error('Error submitting course:', error);
+        }
+      );
+      }else{
+        this.loadCourseDetails(this.currentCourseId);
+        
+        this.courseService.post<any>(endPoints.baseURL + '/secure/courses/' + this.currentCourseId, this.formData).subscribe(
+          (response) => {
+            console.log('Course updated successfully:', response);
+            this.router.navigate(['/instructor/upload']);
+          },
+          (error) => {
+            console.error('Error updating course:', error);
+          }
+        );
+      }
     }
   }
 
-  onNext() {
-    if (this.courseForm.valid) {
-      const courseFormData = this.courseForm.value;
-      console.log('Course Form Data:', courseFormData);
-
-      this.formDataService.setCourseFormData(this.formData);
-
-      this.router.navigate(['/instructor/upload']);
-    }
+  private loadCourseDetails(courseId: number) {
+   
+    this.courseService.getCourseDetails(courseId).subscribe((courseDetails) => {
+      this.courseForm.patchValue(courseDetails);
+     });
   }
+
+  onEditCourse(courseId: number) {
+  this.courseService.getCourseDetails(courseId).subscribe(
+    (courseDetails) => {
+      console.log('Course Details for ID ' + courseId + ':', courseDetails);
+    },
+    (error) => {
+      console.error('Error retrieving course details:', error);
+    }
+  );
+}
+
 }

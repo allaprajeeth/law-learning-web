@@ -1,19 +1,33 @@
+// form-data.service.ts
+
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class FormDataService {
-  private readonly courseFormDataKey = 'courseFormData';
+  courseFormData: any;
+  uploadFormData: any;
+  combinedFormData: any;
 
-  setCourseFormData(formData: FormData) {
-    const formDataString = JSON.stringify(formData);
-    localStorage.setItem(this.courseFormDataKey, formDataString);
+  setCourseFormData(data: any) {
+    this.courseFormData = data;
+    this.combineFormData();
   }
 
-  getCourseFormData(): Observable<string | null> {
-    const formDataString = localStorage.getItem(this.courseFormDataKey);
-    return of(formDataString);
+  setUploadFormData(data: any) {
+    this.uploadFormData = data;
+    this.combineFormData();
+  }
+
+  getCombinedFormData() {
+    return this.combinedFormData;
+  }
+
+  private combineFormData() {
+    this.combinedFormData = {
+      ...this.courseFormData,
+      ...this.uploadFormData
+    };
   }
 }

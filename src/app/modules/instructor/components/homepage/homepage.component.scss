@@ -1,9 +1,9 @@
-
-
 .container {
   margin: 0 auto;
   max-width: 80vw;
+  
 }
+
 .heading {
   position: relative;
   margin-top: 20px;
@@ -40,6 +40,63 @@
       }
     }
   }
+  img {
+    height: 200px;
+    width: 270px;
+  }
+  .course-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    cursor: pointer;
+    
+  }
+  
+  .course-item {
+    flex: 1 1 calc(25% - 20px); 
+    max-width: calc(25% - 20px); 
+
+    .imagesContainer {
+      position: relative;
+    }
+    
+    .overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    
+    .play-icon {
+      font-size: 4em; 
+      color: white; 
+    }
+   .mycourses{
+    background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+   }
+   h4 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #7803d8;
+    text-transform: capitalize; 
+  } 
+  p {
+    font-size: 12px;
+    color: #666;
+  }
+  }
+  
 }
 
 /* Add these styles to your component's SCSS file */
@@ -52,7 +109,7 @@
 .edit-button,
 .preview-button {
   padding: 7px;
-   background-color: #0056b3;
+  background-color: #0056b3;
   color: white;
   border: none;
   border-radius: 5px;
@@ -68,6 +125,7 @@
     // background-color: #7803d8;
     margin-left: 8px;
   }
+
   &.edit-button {
     background-color: #0056b3;
     // background-color: #7803d8;
@@ -114,9 +172,10 @@
 
     .imagesContainer {
       position: relative;
+
       .duration {
         position: absolute;
-        bottom: 5px; 
+        bottom: 5px;
         right: 5px;
         background: rgba(0, 0, 0, 0.7);
         color: #fff;
@@ -153,23 +212,17 @@
       font-size: 15px;
       font-weight: bold;
     }
-    h4 {
-      font-size: 15px;
-      font-weight: bold;
-      color: #7803d8;
-    }
 
-    p {
-      font-size: 12px;
-      color: #666;
-    }
+   
+
+    
 
     .play-icon {
       color: white;
       font-size: 80px;
     }
 
-    .status-bar + span {
+    .status-bar+span {
       padding: 3px;
     }
 
@@ -184,29 +237,31 @@
     height: 3px;
     background-color: #ccc;
     margin: 0 2px 2px 2px;
+
     .status-fill {
       height: 100%;
       background-color: #7803d8;
     }
   }
+
   .container1 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
+
     .Conatiner2 {
       display: flex;
       align-items: center;
 
-      
-      
+
+
       .star {
         color: gold;
         font-size: 20px;
       }
     }
-    
-  
+
+
     span {
       font-size: 12px; // Adjust font size if needed
       text-align: center; // Center the text if needed
@@ -218,28 +273,28 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
-    
+
+
     .ratingConatiner2 {
       display: flex;
       align-items: center;
 
-      
-      
+
+
       .star {
         color: gold;
         font-size: 20px;
       }
     }
-    
-  
+
+
     span {
       font-size: 12px; // Adjust font size if needed
       text-align: center; // Center the text if needed
       // margin-top: 5px; // Adjust the margin between stars and text
     }
   }
-  
+
   .ratingText {
     font-size: 14px;
   }
@@ -266,6 +321,7 @@
   font-size: 15px;
   padding: 18px;
 }
+
 .searchButton {
   padding: 12px;
   color: white;
@@ -275,7 +331,7 @@
 }
 
 .comment {
-  font-size:15px;
+  font-size: 15px;
   font-weight: 400;
 }
 
@@ -302,8 +358,3 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-
-
-
-
