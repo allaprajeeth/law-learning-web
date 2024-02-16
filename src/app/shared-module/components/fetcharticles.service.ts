@@ -6,7 +6,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Article, ArticleApiResponse } from './fetcharticle.model';
 import { LoggingService } from 'src/app/common/services/logging/logging.service';
 import { ApiService } from 'src/app/common/services/api/api.service';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 @Injectable({
   providedIn: 'root'
 })

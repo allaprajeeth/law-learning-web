@@ -6,7 +6,7 @@ import { Article } from '../article.model';
 import { FileSaverService } from 'ngx-filesaver';
 import { saveAs } from 'file-saver';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
  
  
 @Component({

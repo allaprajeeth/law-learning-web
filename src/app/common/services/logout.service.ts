@@ -1,7 +1,7 @@
 
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, catchError, map, tap } from 'rxjs';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 import { ApiService } from 'src/app/common/services/api/api.service';
 import { LoggingService } from 'src/app/common/services/logging/logging.service';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';

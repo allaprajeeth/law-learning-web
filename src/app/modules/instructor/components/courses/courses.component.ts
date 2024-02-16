@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 import { CourseService } from 'src/app/common/services/course.service';
 
 @Component({

@@ -5,7 +5,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Article } from './article.model';
 import { map } from 'rxjs/operators';
 import { saveAs } from 'file-saver';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 
 @Injectable({
   providedIn: 'root',

@@ -3,7 +3,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',

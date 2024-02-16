@@ -5,7 +5,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpResponse } from '../../models/response.model';
 import { Library } from '../../models/library.model';
-import { endPoints } from '../../api-layer/endpoints';
+import { endPoints } from '../../constants/endpoints';
 
 @Injectable({
   providedIn: 'root'

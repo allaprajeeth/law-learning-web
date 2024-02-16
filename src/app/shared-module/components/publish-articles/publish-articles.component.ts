@@ -6,7 +6,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 
 @Component({
   selector: 'app-publish-articles',

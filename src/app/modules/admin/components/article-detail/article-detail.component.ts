@@ -7,7 +7,7 @@ import { Article } from '../admin.model';
 import { FileSaverService } from 'ngx-filesaver';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 
 @Component({
   selector: 'app-article-detail',

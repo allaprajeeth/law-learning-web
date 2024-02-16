@@ -5,7 +5,7 @@ import { LoggingService } from 'src/app/common/services/logging/logging.service'
 import { NotificationService } from '../../../services/notification/notification.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
-import { endPoints } from 'src/app/common/api-layer/endpoints';
+import { endPoints } from 'src/app/common/constants/endpoints';
 import { Store } from '@ngrx/store';
 import * as AuthActions from '../store/auth.actions';
 import * as fromAuth from '../store/auth.reducer';
