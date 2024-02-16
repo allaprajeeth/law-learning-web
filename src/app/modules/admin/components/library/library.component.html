@@ -1,3 +1,28 @@
 <app-adminnav></app-adminnav>
 <!-- <app-file-upload (uploadedFiles)="handleUploadedFiles($event)"></app-file-upload> -->
-<app-library></app-library>
+<!-- <app-library></app-library> -->
+<h2 class="form-heading">Library Form</h2>
+
+<form *ngIf="!showSuccessMessage" (ngSubmit)="onSubmit()" #libraryForm="ngForm">
+  <mat-form-field>
+    <mat-label>Library Name</mat-label>
+    <input matInput name="libraryName" ngModel required>
+  </mat-form-field>
+
+  <div class="file-input-container">
+    <label for="fileInput" class="file-input-label">
+      Choose File
+    </label>
+    <input id="fileInput" type="file" name="libraryFile" (change)="onFileChange($event)" accept=".zip" required>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!libraryForm.valid">
+    Submit
+  </button>
+</form>
+
+<!-- Display success message and back button conditionally -->
+<div *ngIf="showSuccessMessage" class="success-message">
+  Library submitted successfully!
+  <button mat-button class="back-button" (click)="goBack()">Back</button>
+</div>
