@@ -1,19 +1,22 @@
-// course.model.ts
-export interface Course {
+import { BaseModel } from "./base.model";
+
+export class Course extends BaseModel<Course> {
+  public id!: number;
+  public type!: string;
+  public description!: string;
+  public title!: string;
+  public reviewStatus!: string;
+  public createdBy!: {
+    name: string;
     id: number;
-    type: string;
-    description: string;
-    title: string;
-    reviewStatus: string;
-    thumbnail: string;
-    createdBy: {
-      name: string;
-      id: number;
-    };
-    updatedDate: string;
-    createdDate: string;
-    difficultyLevel: string;
-    skillLevel: string; // Add this line
-    courseType: string; // Add this line
+  };
+  public thumbnail!: string;
+  public updatedDate!: string;
+  public createdDate!: string;
+  public difficultyLevel!: string;
+  public skillLevel!: string;
+  public courseType!: string;
+  constructor(model?: Course) {
+    super(model);
   }
-  
+}

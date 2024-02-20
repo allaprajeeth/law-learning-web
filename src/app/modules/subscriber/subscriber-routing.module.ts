@@ -32,7 +32,7 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
 const routes: Routes = [
   {
     path:"",
-    redirectTo: 'login',
+    redirectTo: 'homepage',
     pathMatch: 'full'
   },
   {

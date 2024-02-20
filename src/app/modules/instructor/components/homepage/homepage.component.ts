@@ -25,8 +25,6 @@ export class HomepageComponent implements OnInit {
     this.courseService.getCourses().subscribe(
       (response: any) => {
         this.courses = response.data.content;
-        console.log('Courses retrieved successfully:', this.courses);
-        // console.log('Created courseId:', createdCourseId);
       },
       (error) => {
         console.error('Error retrieving courses:', error);
@@ -35,10 +33,7 @@ export class HomepageComponent implements OnInit {
   }
 
   onEditCourse(courseId: number) {
-   
     this.router.navigate(['/instructor/courses', courseId]);
-    console.log('Editing course with ID:', courseId);
-    
   }
 }
 

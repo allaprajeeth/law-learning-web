@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute, Router } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { isNumber } from 'src/app/common/constants/utils';
+import { Course } from 'src/app/common/models/course.model';
 import { CourseService } from 'src/app/common/services/course.service';
 
 @Component({
@@ -11,28 +12,39 @@ import { CourseService } from 'src/app/common/services/course.service';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
-  courseForm: FormGroup;
+  courseForm!: FormGroup;
   formData: FormData;
-  currentCourseId: number | null;
+  courseId: number | undefined;
 
-  constructor(
-    private fb: FormBuilder, 
-    private router: Router, 
-    private httpClient: HttpClient,
-    private courseService: CourseService
-  ) {
+  constructor(private fb: FormBuilder, private router: Router, private courseService: CourseService, private route: ActivatedRoute) {
+    this.formData = new FormData();
+  }
+
+  ngOnInit() {
+    this.createCourseForm();
+    this.courseId = this.route.snapshot.params['id'];
+    console.log(typeof (this.courseId))
+    if (this.courseId && isNumber(Number(this.courseId))) {
+      this.loadCourseDetails(this.courseId);
+    }
+  }
+
+  private loadCourseDetails(courseId: number) {
+    this.courseService.getCourseDetails(courseId).subscribe((courseDetails) => {
+      this.courseForm.patchValue(courseDetails.data || {});
+    });
+  }
+
+  createCourseForm() {
     this.courseForm = this.fb.group({
       title: ['', Validators.required],
       description: ['', Validators.required],
-      skillLevel: ['', Validators.required],
-      courseType: ['', Validators.required],
+      difficultyLevel: ['', Validators.required],
+      type: ['', Validators.required],
       price: [null],
       language: ['English', Validators.required],
       courseFile: [null]
     });
-
-    this.formData = new FormData();
-    this.currentCourseId = null;
   }
 
   onFileUpload(event: any) {
@@ -46,60 +58,42 @@ export class CoursesComponent {
   }
 
   onSubmit() {
-    if (this.courseForm.valid) { 
-      
-      if (this.currentCourseId === null) { 
-
-      this.formData.set('course', new Blob([JSON.stringify({
-        title: this.courseForm.get('title')!.value,
-        description: this.courseForm.get('description')!.value,
-        level: this.courseForm.get('skillLevel')!.value,
-        type: this.courseForm.get('courseType')!.value
-      })], { type: 'application/json' }));
-
-
-
-      this.courseService.post<any>(endPoints.baseURL + '/secure/courses', this.formData).subscribe(
-        (response) => {
-          console.log('course form submitted successfully:', response);
-          this.router.navigate(['/instructor/upload']);
-        },
-        (error) => {
-          console.error('Error submitting course:', error);
-        }
-      );
-      }else{
-        this.loadCourseDetails(this.currentCourseId);
-        
-        this.courseService.post<any>(endPoints.baseURL + '/secure/courses/' + this.currentCourseId, this.formData).subscribe(
-          (response) => {
-            console.log('Course updated successfully:', response);
-            this.router.navigate(['/instructor/upload']);
-          },
-          (error) => {
-            console.error('Error updating course:', error);
-          }
-        );
+    if (this.courseForm.valid) {
+      if (this.courseId && isNumber(Number(this.courseId))) {
+        this.formData.set('course', new Blob([JSON.stringify({
+          title: this.courseForm.get('title')!.value,
+          description: this.courseForm.get('description')!.value,
+          level: this.courseForm.get('difficultyLevel')!.value,
+          type: this.courseForm.get('type')!.value
+        })], { type: 'application/json' }));
+        this.patchCourse();
+      } else {
+        this.postCourse();
       }
     }
   }
 
-  private loadCourseDetails(courseId: number) {
-   
-    this.courseService.getCourseDetails(courseId).subscribe((courseDetails) => {
-      this.courseForm.patchValue(courseDetails);
-     });
+  postCourse() {
+    this.courseService.post<any>(endPoints.baseURL + '/secure/courses/', this.formData).subscribe(
+      (response) => {
+        console.log('Course created successfully:', response);
+        this.router.navigate(['/instructor/upload']);
+      },
+      (error) => {
+        console.error('Error creating course:', error);
+      }
+    );
   }
 
-  onEditCourse(courseId: number) {
-  this.courseService.getCourseDetails(courseId).subscribe(
-    (courseDetails) => {
-      console.log('Course Details for ID ' + courseId + ':', courseDetails);
-    },
-    (error) => {
-      console.error('Error retrieving course details:', error);
-    }
-  );
-}
-
+  patchCourse() {
+    this.courseService.patch<Course>(endPoints.baseURL + '/secure/courses/' + this.courseId, this.formData).subscribe(
+      (response) => {
+        console.log('Course updated successfully:', response);
+        this.router.navigate(['/instructor/upload']);
+      },
+      (error) => {
+        console.error('Error updating course:', error);
+      }
+    );
+  }
 }

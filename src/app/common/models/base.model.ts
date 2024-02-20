@@ -1,6 +1,6 @@
 export abstract class BaseModel<T> {
     public data?: {
-      content?: T[];
+      content?: T[] | T;
     };
     public pageable?: {
       offset?: number;

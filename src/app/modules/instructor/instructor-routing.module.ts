@@ -34,7 +34,7 @@ import { CommentedCoursesInfoComponent } from './components/commented-courses-in
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'homepage',
     pathMatch: 'full',
   },
   {

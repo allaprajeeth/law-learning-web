@@ -24,7 +24,7 @@ import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/
 const routes: Routes = [
   {
     path:"",
-    redirectTo: 'login',
+    redirectTo: 'homepage',
     pathMatch: 'full'
   },
   {

@@ -20,7 +20,7 @@ import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetai
 const routes: Routes = [
   {
     path:"",
-    redirectTo: 'login',
+    redirectTo: 'homepage',
     pathMatch: 'full'
   },
   {
