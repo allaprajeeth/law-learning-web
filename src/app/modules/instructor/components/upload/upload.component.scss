@@ -206,13 +206,9 @@ margin-top: 5px;
 }
 
 .material-symbols-outlined {
-  // border: 1px solid black;
-  // border-radius: 50%;
-  // padding: 5px;
+  
   position: absolute;
   top: 65%;
-  /* right: 343px; */
-  /* transform: translateY(-50%); */
   color: green;
   left: 90px;
   font-weight: bolder;
@@ -222,11 +218,67 @@ margin-top: 5px;
 
 }
 
+
+
+.sub-btn{
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  margin: 0 auto;
+  
+  
+  &[disabled] {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  }
+  
+  // Enabled state styles
+  &:not([disabled]) {
+  background-color: #007791;
+  color: #fff;
+  
+  &:hover {
+    background-color: #007791; 
+  }
+  }
+  
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .submitAllMessage {
 margin: 20px 0 20px 20px;
 font-size: 18px;
 color:#007791
 }
+
+
+
+
+
+
+
+
 
 .submit-button{
 padding: 10px 20px;
@@ -235,9 +287,8 @@ cursor: pointer;
 border-radius: 5px;
 border: none;
 margin: 0 auto;
-// display: block;
 
-// Disabled state styles
+
 &[disabled] {
 background-color: #ccc;
 color: #666;

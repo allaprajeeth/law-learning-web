@@ -74,18 +74,32 @@
             </div>
 
             <div *ngIf="!subSection.submitted">
-              <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)"
+              <!-- <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)"
                 [style.background-color]="subSection.buttonColor" [disabled]="!subSection.isSaveEnabled">Save
                 <span class="right-click-icon" *ngIf="subSection.buttonColor">&#10003;</span>
               </button>
               <p class="success-msg" *ngIf="subSection.buttonColor">Above details saved successfully</p>
               <p class="button-description" *ngIf="!subSection.buttonColor">By clicking save, all your files related to
-                this subsection will be saved.</p>
-              <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)"
+                this subsection will be saved.</p> -->
+
+              <!-- <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)"
                 [disabled]="!subSection.isSubmitEnabled">Submit</button>
               <p class="button-description" *ngIf="subSection.isSubmitEnabled">By clicking submit, all your files
-                related to this subsection will be submitted to the website for review.</p>
+                related to this subsection will be submitted to the website for review.</p> -->
+
             </div>
+
+
+
+            <button type="button" class="sub-btn" (click)="submitSubSection(mainIndex, subIndex)"
+              [disabled]="!subSection.isSubmitEnabled">Submit</button>
+            <p class="button-description" *ngIf="subSection.isSubmitEnabled">By clicking submit, all your files
+              related to this subsection will be submitted to the website for review.</p>
+
+
+
+
+
 
             <div *ngIf="subSection.submitted && subSection.status === 'Under Review'" [ngClass]="'status-under-review'">
               <span>Status: {{subSection.status}}</span>
@@ -95,21 +109,34 @@
 
         <div *ngIf="!mainSection.submitted">
 
-          <button type="button" class="save-button sec-save-button" (click)="saveMainSection(mainIndex)"
+          <!-- <button type="button" class="save-button sec-save-button" (click)="saveMainSection(mainIndex)"
             [style.background-color]="mainSection.buttonColor" [disabled]="!mainSection.isSaveEnabled">
             Save
 
             <span class="right-click-icon" *ngIf="mainSection.buttonColor">&#10003;</span>
-          </button>
+          </button> -->
 
-
+<!-- 
           <p class="success-msg" *ngIf="mainSection.buttonColor">Above details saved successfully</p>
           <p class="button-description" *ngIf="!mainSection.buttonColor">By clicking save, all your files related to
-            this subsection will be saved.</p>
-          <button type="button" class="submit-button" (click)="submitMainSection(mainIndex)"
+            this subsection will be saved.</p> -->
+
+
+
+
+
+
+
+          <button type="button" class="sub-btn" (click)="submitMainSection(mainIndex)"
             [disabled]="!mainSection.isSubmitEnabled">Submit</button>
           <p class="button-description" *ngIf="mainSection.isSubmitEnabled">By clicking submit, all your files related
             to this section will be submitted to the website for review.</p>
+
+
+
+
+
+
         </div>
         <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'" [ngClass]="'status-under-review'">
           <span class="status">Status: {{mainSection.status}}</span>
@@ -135,33 +162,16 @@
       <div>
         <button routerLink="/instructor/quiztest" class="testbutton" [disabled]="hasTest !== 'yes'">Create a
           Test</button>
-
       </div>
-
-      
-
-      <div>
+      <!-- <div>
         <button type="button" class="submit-button" (click)="submitSections()"
           [disabled]="!anyMainSectionSubmitted">Submit All</button>
-      </div>
-
+      </div> -->
     </div>
     <br />
     <br />
-
-    <!-- <div *ngIf="submitAllMessage" class="success-message">
-      <p>{{ submitAllMessage }}</p>
-      <button type="button" (click)="goBack()">Go Back</button>
-    </div>
-      -->
   </div>
 </div>
-
-<!-- <div *ngIf="submitAllMessage" class="success-message">
-  <p>{{ submitAllMessage }}</p>
-  <button type="button" (click)="goBack()">Go Back</button>
-</div> -->
-
 <div *ngIf="!showForm && submitAllMessage" class="success-message">
   <p>{{ submitAllMessage }}</p>
   <button type="button" (click)="goBack()">Go Back</button>

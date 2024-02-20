@@ -229,21 +229,6 @@ export class UploadComponent implements OnInit {
     return false;
   }
 
-  // submitSections() {
-  //   if (this.hasSubmitEnabledSubSections()) {
-  //     // Additional logic for handling successful submission
-  //     this.submitAllMessage = 'All sections submitted Successfully and Under Review.';
-  //   } else {
-  //     // If no submit-enabled subsections, you might want to handle it accordingly.
-  //     // For now, let's set a message for demonstration purposes.
-  //     this.submitAllMessage = 'No sections to submit or submission is not enabled for any section.';
-  //   }
-  // }
-// // In the component class
-// showForm: boolean = true;
-
-// ...
-
 submitSections() {
   if (this.hasSubmitEnabledSubSections()) {
 
