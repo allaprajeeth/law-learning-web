@@ -26,6 +26,7 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { LibraryFormComponent } from './components/library-form/library-form.component';
 
 
 const routes: Routes = [
@@ -140,6 +141,12 @@ const routes: Routes = [
 {
   path: 'publish-articles/:id',
   component: AdminPostdetailComponent
+},
+{
+  
+    path:"libraryForm",
+    component:LibraryFormComponent
+  
 }
   
 ];
