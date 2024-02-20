@@ -63,7 +63,8 @@
       </div>
       
       <div class="button-container">
-        <button type="submit" [ngClass]="{'disabled-button': courseForm.invalid, 'enabled-button': !courseForm.invalid}">Submit</button>
+        <button type="submit" class="center-button" [ngClass]="{'disabled-button': courseForm.invalid, 'enabled-button': !courseForm.invalid}" [disabled]="courseForm.invalid">Submit</button>
+     
       </div>
     </form>
   </div>
