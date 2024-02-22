@@ -31,4 +31,11 @@ export class CourseService {
     return this.httpClient.get<BaseModel<Course>>(url);
   }
   
+  // Add a new method for patching sub-section
+patchSubSection<T>(courseId: string, sectionId: number, subSectionId: number, data: any): Observable<T> {
+  const url = `${endPoints.baseURL}/secure/courses/${courseId}/section/${sectionId}/sub-section`;
+  const headers = new HttpHeaders();
+  return this.httpClient.patch<T>(url, data, { headers });
+}
+
 }

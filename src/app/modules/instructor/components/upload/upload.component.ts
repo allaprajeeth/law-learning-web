@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { endPoints } from 'src/app/common/constants/endpoints';
 
 interface SubSection {
   title: string;
@@ -23,13 +24,16 @@ interface SubSection {
 }
 
 interface MainSection {
+
   courseId: any;
+
   id?: number;
   duration: { minutes: number; seconds: number };
   name: string;
   title: string;  // Add this line
   file?: File;
   description: string;
+  
   subSections: SubSection[];
   submitted: boolean;
   status: string;
@@ -47,6 +51,7 @@ interface MainSection {
 })
 export class UploadComponent implements OnInit {
   mainSections: MainSection[] = [];
+
   isDurationFetched: boolean = false;
   hasTest: string | null = null;
   submitAllMessage: string | null = null;
@@ -300,14 +305,37 @@ hasSubmitEnabledSubSectionsForMain(mainIndex: number): boolean {
   private hasAnyMainSectionSubmitted(): boolean {
     return this.mainSections.some(mainSection => mainSection.submitted);
   }
- 
-  submitSubSection(mainIndex: number, subIndex: number) {
+
+
+  submitSubSection(courseId: string, mainIndex: number, subIndex: number) {
     const subSection = this.mainSections[mainIndex].subSections[subIndex];
+  
+    if (courseId) {
+      const apiUrl = `${endPoints.baseURL}/secure/courses/${courseId}/section/${this.mainSections[mainIndex].id}/sub-section`;
+  
+      const subSectionData = {
+        title: subSection.title,
+        description: subSection.description,
+        // Add other properties as needed
+      };
+  
+      this.http.patch(apiUrl, subSectionData).subscribe(
+        (response) => {
+          console.log('Sub-section submitted and updated successfully:', response);
+          subSection.status = 'Under Review';
+          subSection.submitted = true;
+        },
+        (error) => {
+          console.error('Error updating sub-section:', error);
+        }
+      );
+    } else {
+      console.error('Course ID is undefined');
+    }
   
     subSection.submitted = true;
     subSection.status = 'Under Review';
     subSection.isFormSubmitted = true; // Set the property to true
-  
     this.isSubSectionSubmitEnabled = false;
   
     // Disable the "Add Sub Section" button after submitting the subsection
@@ -318,6 +346,51 @@ hasSubmitEnabledSubSectionsForMain(mainIndex: number): boolean {
   
     console.log('Sub-section submitted:', subSection);
   }
+  
+ 
+  // submitSubSection(courseId: string, sectionId: number,subIndex: number) {
+  //   // const subSection = this.mainSections[mainIndex].subSections[subIndex];
+  //   const subSection = this.mainSections[sectionId].subSections[subIndex];
+
+  //   if (courseId) {
+  //     const apiUrl = `${endPoints.baseURL}/secure/courses/${courseId}/section/${sectionId}/sub-section`;
+  
+  //     const subSectionData = {
+  //       title: subSection.title,
+  //       description: subSection.description,
+  //       course_id: this.courseId,
+  //       // section-id: this.sectionId  
+  //     };
+
+  //     this.http.patch(apiUrl, subSectionData).subscribe(
+  //       (response) => {
+  //         console.log('Sub-section submitted and updated successfully:', response);
+  //         subSection.status = 'Under Review';
+  //         subSection.submitted = true;
+  //       },
+  //       (error) => {
+  //         console.error('Error updating sub-section:', error);
+  //       }
+  //     );
+  //   } else {
+  //     console.error('Course ID is undefined');
+  //   }
+
+  
+  //   subSection.submitted = true;
+  //   subSection.status = 'Under Review';
+  //   subSection.isFormSubmitted = true; // Set the property to true
+  
+  //   this.isSubSectionSubmitEnabled = false;
+  
+  //   // Disable the "Add Sub Section" button after submitting the subsection
+  //   this.isAddSubSectionButtonDisabled[sectionId] = false;
+  
+  //   // Add logic to hide the form after submission
+  //   subSection.expanded = false;
+  
+  //   console.log('Sub-section submitted:', subSection);
+  // }
   
 
   saveSubSection(mainIndex: number, subIndex: number) {
