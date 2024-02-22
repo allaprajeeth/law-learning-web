@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 interface SubSection {
   title: string;
@@ -15,11 +17,17 @@ interface SubSection {
   isSaveEnabled: boolean;
   isSubmitEnabled: boolean;
   buttonColor: string;
+  expanded: boolean;
+  isFormSubmitted: boolean;
+
 }
 
 interface MainSection {
+  courseId: any;
+  id?: number;
   duration: { minutes: number; seconds: number };
   name: string;
+  title: string;  // Add this line
   file?: File;
   description: string;
   subSections: SubSection[];
@@ -30,6 +38,7 @@ interface MainSection {
   isSubmitEnabled: boolean;
   buttonColor: string;
 }
+
 
 @Component({
   selector: 'app-upload',
@@ -44,58 +53,139 @@ export class UploadComponent implements OnInit {
   anyMainSectionSubmitted: boolean = false; 
   allMainSectionsSubmitted: boolean = false;
 
+  isMainSectionSubmitEnabled: boolean = false;
+  isSubSectionSubmitEnabled: boolean = false;
+
+  
+
+  // Add these properties to your component class
+isAddMainSectionButtonDisabled: boolean = true;
+// isAddSubSectionButtonDisabled: boolean = true;
+isMainSectionTitleEntered: boolean[] = [];
+
+isAddSubSectionButtonDisabled: boolean[] = [];
+
+
+
+
   showForm: boolean = true;
+  courseId: string | null = null;
 
 
-  constructor() {}
+  constructor(private http: HttpClient,private route: ActivatedRoute) {
+    this.isAddSubSectionButtonDisabled = new Array(this.mainSections.length).fill(false);
+  }
+
+
 
   ngOnInit() {
-    this.addMainSection();
-    this.showForm = true; 
+    this.route.paramMap.subscribe(params => {
+      console.log('Route Params:', params.keys, params);
+      this.courseId = params.get('courseId');
+      console.log('Course ID:', this.courseId);
+  
+      // Move addMainSection inside the subscribe block
+      this.addMainSection();
+      this.showForm = true;
+      this.isMainSectionTitleEntered[0] = false;
+    });
+  
+    console.log('Initial Course ID:', this.courseId);
   }
-
   
   
-  addMainSection() {
-    const newMainSection: MainSection = {
-      name: `Section ${this.mainSections.length + 1}`,
-      description: '',
-      subSections: [],
-      submitted: false,
-      status: '',
-      duration: {
-        minutes: 0,
-        seconds: 0,
-      },
-      isNameEntered: false,
-      isSaveEnabled: false,
-      isSubmitEnabled: false,
-      buttonColor: '',
-    };
-    this.mainSections.push(newMainSection);
-    this.addSubSection(this.mainSections.length);
-  }
 
-  addSubSection(mainIndex: number) {
-    const newSubSection: SubSection = {
-      title: `Sub-Section ${mainIndex + 1}.${
-        this.mainSections[mainIndex].subSections.length + 1
-      }`,
-      description: '',
-      submitted: false,
-      status: '',
-      duration: {
-        minutes: 0,
-        seconds: 0,
-      },
-      isSubSectionNameEntered: false,
-      isVideoSelected: false,
-      isSubmitEnabled: false,
-      isSaveEnabled: false,
-      buttonColor: '',
-    };
-    this.mainSections[mainIndex].subSections.push(newSubSection);
-  }
+  
+  // ...
+
+addMainSection() {
+  const newMainSection: MainSection = {
+    title: `Section ${this.mainSections.length + 1}`,
+    description: '',
+    subSections: [],
+    submitted: false,
+    status: '',
+    duration: {
+      minutes: 0,
+      seconds: 0,
+    },
+    isNameEntered: false,
+    isSaveEnabled: false,
+    isSubmitEnabled: false,
+    buttonColor: '',
+    courseId: undefined,
+    name: ''
+  };
+
+  // Initialize isAddSubSectionButtonDisabled to true for the new main section
+  this.isAddSubSectionButtonDisabled.push(true);
+
+  // Add one default sub-section
+  const defaultSubSection: SubSection = {
+    title: `Sub-Section 1`,
+    description: '',
+    submitted: false,
+    status: '',
+    duration: {
+      minutes: 0,
+      seconds: 0,
+    },
+    isSubSectionNameEntered: false,
+    isVideoSelected: false,
+    isSubmitEnabled: false,
+    isSaveEnabled: false,
+    buttonColor: '',
+    expanded: false,
+    isFormSubmitted: false,
+  };
+
+  newMainSection.subSections.push(defaultSubSection);
+
+  this.mainSections.push(newMainSection);
+  this.isMainSectionSubmitEnabled = false;
+  this.isSubSectionSubmitEnabled = false;
+  
+
+  // Enable the "Add Sub Section" button for the first main section
+  // this.isAddSubSectionButtonDisabled = [!this.isMainSectionTitleEntered];
+
+  // Disable the "Add Main Section" button
+  this.isAddMainSectionButtonDisabled = true;
+}
+
+// ...
+
+    
+
+    addSubSection(mainIndex: number) {
+      const newSubSection: SubSection = {
+        title: `Sub-Section ${mainIndex + 1}.${this.mainSections[mainIndex].subSections.length + 1}`,
+        description: '',
+        submitted: false,
+        status: '',
+        duration: {
+          minutes: 0,
+          seconds: 0,
+        },
+        isSubSectionNameEntered: false,
+        isVideoSelected: false,
+        isSubmitEnabled: false,
+        isSaveEnabled: false,
+        buttonColor: '',
+        expanded: false,
+        isFormSubmitted: false,
+      };
+    
+      this.mainSections[mainIndex].subSections.push(newSubSection);
+    
+     // Enable the "Add Sub Section" button after adding a subsection
+    // Disable the "Add Sub Section" button after clicking it
+  this.isAddSubSectionButtonDisabled[mainIndex] = true;
+}
+
+hasSubmitEnabledSubSectionsForMain(mainIndex: number): boolean {
+  return this.mainSections[mainIndex].subSections.some(subSection => subSection.isSubmitEnabled);
+}
 
 
   removeMainSection(index: number) {
@@ -117,7 +207,7 @@ export class UploadComponent implements OnInit {
       });
     });
   }
-
+  
 
   onMainFileSelected(event: any, mainIndex: number, subIndex: number) {
     const file = event.target.files[0];
@@ -164,25 +254,71 @@ export class UploadComponent implements OnInit {
     console.log('Main section saved:', this.mainSections[mainIndex]);
   }
 
+  
   submitMainSection(mainIndex: number) {
+    const mainSection = this.mainSections[mainIndex];
+
+    if (this.courseId) {
+      const apiUrl = `http://192.168.1.42:8080/api/v1/secure/courses/${this.courseId}/section`;
+
+      const mainSectionData = {
+        title: mainSection.title,
+        description: mainSection.description,
+        course_id: this.courseId  
+      };
+
+      
+      this.http.patch(apiUrl, mainSectionData).subscribe(
+        (response) => {
+          console.log('Main section submitted and updated successfully:', response);
+          mainSection.status = 'Under Review';
+          mainSection.submitted = true;
+        },
+        (error) => {
+          console.error('Error updating main section:', error);
+        }
+      );
+    } else {
+      console.error('Course ID is undefined');
+    }
+
     this.mainSections[mainIndex].submitted = true;
     this.mainSections[mainIndex].status = 'Under Review';
     this.anyMainSectionSubmitted = this.hasAnyMainSectionSubmitted();
+    this.isMainSectionSubmitEnabled = false;
+
+    
+
+    // Enable the "Add Main Section" button
+  this.isAddMainSectionButtonDisabled = false;
+
+
     console.log('Main section submitted:', this.mainSections[mainIndex]);
   }
+  
+  
   private hasAnyMainSectionSubmitted(): boolean {
     return this.mainSections.some(mainSection => mainSection.submitted);
   }
  
-
   submitSubSection(mainIndex: number, subIndex: number) {
-    this.mainSections[mainIndex].subSections[subIndex].submitted = true;
-    this.mainSections[mainIndex].subSections[subIndex].status = 'Under Review';
-    console.log(
-      'Sub-section submitted:',
-      this.mainSections[mainIndex].subSections[subIndex]
-    );
+    const subSection = this.mainSections[mainIndex].subSections[subIndex];
+  
+    subSection.submitted = true;
+    subSection.status = 'Under Review';
+    subSection.isFormSubmitted = true; // Set the property to true
+  
+    this.isSubSectionSubmitEnabled = false;
+  
+    // Disable the "Add Sub Section" button after submitting the subsection
+    this.isAddSubSectionButtonDisabled[mainIndex] = false;
+  
+    // Add logic to hide the form after submission
+    subSection.expanded = false;
+  
+    console.log('Sub-section submitted:', subSection);
   }
+  
 
   saveSubSection(mainIndex: number, subIndex: number) {
     const subSection = this.mainSections[mainIndex].subSections[subIndex];
@@ -198,15 +334,23 @@ export class UploadComponent implements OnInit {
 
   onMainSectionNameEntered(mainIndex: number) {
     const mainSection = this.mainSections[mainIndex];
-   
-    mainSection.isNameEntered = mainSection.name.trim() !== '';
-
-    mainSection.isSubmitEnabled = mainSection.isNameEntered;
-
-    mainSection.isSaveEnabled = mainSection.isNameEntered;
-
+    const newTitle = mainSection.title.trim();
     
+    if (newTitle !== mainSection.name) {
+      mainSection.name = newTitle;
+      mainSection.isNameEntered = newTitle !== '';
+      mainSection.isSubmitEnabled = mainSection.isNameEntered;
+      mainSection.isSaveEnabled = mainSection.isNameEntered;
+    
+      // console.log('Main Section Title:', mainSection.name);
+
+      // Enable the "Add Sub Section" button when the title is entered
+    this.isMainSectionTitleEntered[mainIndex] = mainSection.isNameEntered;
+    }
   }
+  
+  
+  
   onSubSectionNameEntered(mainIndex: number, subIndex: number) {
     const subSection = this.mainSections[mainIndex].subSections[subIndex];
 
@@ -251,5 +395,10 @@ goBack() {
   // Clear the success message
   this.submitAllMessage = null;
 }
+
+toggleSubSection(mainIndex: number, subIndex: number) {
+  this.mainSections[mainIndex].subSections[subIndex].expanded = !this.mainSections[mainIndex].subSections[subIndex].expanded;
+}
+
 
 }

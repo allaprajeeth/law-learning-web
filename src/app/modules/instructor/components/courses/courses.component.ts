@@ -15,9 +15,11 @@ export class CoursesComponent {
   courseForm!: FormGroup;
   formData: FormData;
   courseId: number | undefined;
+ 
 
   constructor(private fb: FormBuilder, private router: Router, private courseService: CourseService, private route: ActivatedRoute) {
     this.formData = new FormData();
+    
   }
 
   ngOnInit() {
@@ -59,41 +61,66 @@ export class CoursesComponent {
 
   onSubmit() {
     if (this.courseForm.valid) {
+      this.formData.set('course', new Blob([JSON.stringify({
+        title: this.courseForm.get('title')!.value,
+        description: this.courseForm.get('description')!.value,
+        level: this.courseForm.get('difficultyLevel')!.value,
+        type: this.courseForm.get('type')!.value
+      })], { type: 'application/json' }));
+
       if (this.courseId && isNumber(Number(this.courseId))) {
-        this.formData.set('course', new Blob([JSON.stringify({
-          title: this.courseForm.get('title')!.value,
-          description: this.courseForm.get('description')!.value,
-          level: this.courseForm.get('difficultyLevel')!.value,
-          type: this.courseForm.get('type')!.value
-        })], { type: 'application/json' }));
         this.patchCourse();
       } else {
         this.postCourse();
       }
     }
   }
-
   postCourse() {
-    this.courseService.post<any>(endPoints.baseURL + '/secure/courses/', this.formData).subscribe(
+    this.courseService.post<any>(endPoints.baseURL + '/secure/courses', this.formData).subscribe(
       (response) => {
         console.log('Course created successfully:', response);
-        this.router.navigate(['/instructor/upload']);
+        const courseId = response.data?.id;
+        if (courseId !== undefined) {
+          this.router.navigate(['/instructor/upload', courseId]);
+        } else {
+          console.error('Error: Course id is undefined in the response.');
+        }
       },
       (error) => {
         console.error('Error creating course:', error);
       }
     );
   }
-
-  patchCourse() {
-    this.courseService.patch<Course>(endPoints.baseURL + '/secure/courses/' + this.courseId, this.formData).subscribe(
-      (response) => {
-        console.log('Course updated successfully:', response);
-        this.router.navigate(['/instructor/upload']);
-      },
-      (error) => {
-        console.error('Error updating course:', error);
+  
+ 
+patchCourse() {
+  this.courseService.patch<Course>(endPoints.baseURL + '/secure/courses/' + this.courseId, this.formData).subscribe(
+    (response) => {
+      console.log('Course updated successfully:', response);
+      const courseId = (response.data as Course)?.id;
+      console.log('Course ID:', courseId);
+      if (courseId !== undefined) {
+        this.router.navigate(['/instructor/upload', courseId]);
+      } else {
+        console.error('Error: Course id is undefined in the response.');
       }
-    );
-  }
+    },
+    (error) => {
+      console.error('Error updating course:', error);
+    }
+  );
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
