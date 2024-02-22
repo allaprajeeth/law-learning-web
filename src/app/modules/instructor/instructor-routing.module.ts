@@ -115,6 +115,11 @@ const routes: Routes = [
     component: UploadComponent,
   },
   {
+    path: 'upload/:courseId',
+    component: UploadComponent,
+  },
+  
+  {
     path: 'uploadstatus',
     component: UploadstatusComponent,
   },

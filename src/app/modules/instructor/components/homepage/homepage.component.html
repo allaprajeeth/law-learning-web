@@ -21,12 +21,14 @@
         <h4>{{ course.type | titlecase }}  |  {{ course.difficultyLevel | titlecase }}</h4>
         
         <div>
+          <!-- Pass course ID to onEditCourse method -->
           <button (click)="onEditCourse(course.id)" class="mycourses">Edit Course</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 <br/>
 <br/>
 

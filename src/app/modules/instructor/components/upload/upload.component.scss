@@ -2,12 +2,12 @@
 .main-container {
   background-color: #e0d9d9;
   height: auto;
-  
+}
+
 .container-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  // height: 100vh;
   background-color: #e0d9d9;
 }
 
@@ -26,63 +26,30 @@
   position: relative;
 }
 
-.textarea-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-weight: bold;
-}
-
 textarea {
   width: 89%;
-  padding: 10px; /* Adjust padding to create space for the label above the textarea */
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-top: 10px; /* Adjust margin to create space between label and textarea */
+  margin-top: 10px;
 }
 
-
-
-.heading{
+.heading {
   text-align: center;
   margin: 0 auto;
   display: block;
 }
-.message{
+
+.message {
   margin-top: 10px;
   text-align: center;
-  // direction: left;
   color: red;
 }
-
-// .message-wrapper {
-//   overflow: hidden;
-//   white-space: nowrap;
-// }
-
-// .message {
-//   display: inline-block;
-//   animation: moveMessage 10s linear infinite;
-//   color: red;
-//   // margin-left: 100px;
-//   backface-visibility: hidden;
-//   transform: translateZ(0); 
-// }
-
-// @keyframes moveMessage {
-//   0% {
-//     transform: translateX(100%);
-//   }
-//   100% {
-//     transform: translateX(-100%);
-//   }
-// }
-
 
 .duration-input {
   display: flex;
   gap: 10px;
-  
+
   input[type="number"] {
     width: 200px;
     padding: 10px;
@@ -90,19 +57,23 @@ textarea {
     border-radius: 5px;
   }
 }
+
 .button-description {
   margin-top: 5px;
   margin-left: 15px;
-  font-size: smaller; 
+  font-size: smaller;
 }
+
 .status-under-review {
   font-size: 18px;
-  color:#007791
+  color: #007791;
 }
-.success-msg{
+
+.success-msg {
   padding: 5px;
   color: rgb(3, 106, 3);
 }
+
 .main-section {
   position: relative;
   border: 1px solid #413e3e;
@@ -110,11 +81,12 @@ textarea {
   margin-bottom: 20px;
   border-radius: 10px;
 
-  .section-number{
+  .section-number {
     font-weight: bolder;
     font-size: larger;
+    margin-top: 25px 
   }
-  .required-field{
+  .required-field {
     color: red;
   }
 }
@@ -124,6 +96,7 @@ textarea {
   border: 1px solid #ccc;
   padding: 10px;
   margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 5px;
 }
 
@@ -139,227 +112,217 @@ textarea {
   margin: 2px 5px;
   border: none;
   font-size: 20px;
-  color:#fff;
+  color: #fff;
   cursor: pointer;
+}
 
+.expand-button {
+  position: absolute;
+  top: 6px;
+  right: 50px;
+  padding: 5px;
+  background-color: #282a28;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: #282a28;
+  }
 }
 
 #mainFile,
 #subFile {
   margin-top: 10px;
 }
+
 .add-section-button,
-.add-subsection-button{
-  background-color: #007791;
-  color: #fff;
+.add-subsection-button {
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
+  border: none;
+  // color: black;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-right: 10px; 
+  // background-color: #005e6b;
+  margin-right: 10px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: #ccc;
+    color: #666;
+  }
+
+  &:not([disabled]) {
+    background-color: #007791;
+    color: #fff;
+  }
 }
 
-/* Add hover effect */
-.add-section-button:hover,
-.add-subsection-button:hover,
-.remove-button:hover {
-  background-color: #005e6b;
-}
+// .add-section-button:hover,
+// .add-subsection-button:hover,
+// .remove-button:hover {
+//   background-color: #005e6b;
+// }
+
 .sub-section .form-group label {
   font-weight: bold;
 }
+
 .form-group label {
   font-weight: bold;
-  
 }
+
 .radio-group {
   display: flex;
   gap: 20px;
 }
+
 .save-button {
-padding: 10px 20px;
-font-size: 14px;
-cursor: pointer;
-border-radius: 5px;
-border: none;
-margin-top: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  margin-top: 5px;
 
-// Disabled state styles
-&[disabled] {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
-}
-
-// Enabled state styles
-&:not([disabled]) {
-  background-color: #007791;
-  color: #fff;
-
-  &:hover {
-    background-color: #007791; 
+  &[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
   }
-}
-.save-button {
+
+  &:not([disabled]) {
+    background-color: #007791;
+    color: #fff;
+    margin: 0 auto;
+    &:hover {
+      background-color: #007791;
+    }
+  }
   position: relative;
 }
 
 .material-symbols-outlined {
-  
   position: absolute;
   top: 65%;
   color: green;
   left: 90px;
   font-weight: bolder;
-
+}
+.submit-button{
+ margin-top: 10px;
 }
 
+.sub-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  // margin-top: 10px;
+  margin: 0 auto;
+  display: block;
+  // margin-top: 8px;
 
+  &[disabled] {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+  
+  }
+
+  &:not([disabled]) {
+    background-color: #007791;
+    color: #fff;
+    margin: 0 auto;
+    &:hover {
+      background-color: #007791;
+    }
+  }
 }
 
+.submitAllMessage {
+  margin: 20px 0 20px 20px;
+  font-size: 18px;
+  color: #007791;
+}
 
-
-.sub-btn{
+.submit-button {
   padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
   border: none;
   margin: 0 auto;
-  
-  
+  display: block;
+
   &[disabled] {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
   }
-  
-  // Enabled state styles
+
   &:not([disabled]) {
-  background-color: #007791;
-  color: #fff;
-  
-  &:hover {
-    background-color: #007791; 
+    background-color: #007791;
+    color: #fff;
+    &:hover {
+      background-color: #007791;
+    }
   }
-  }
-  
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.submitAllMessage {
-margin: 20px 0 20px 20px;
-font-size: 18px;
-color:#007791
 }
 
-
-
-
-
-
-
-
-
-.submit-button{
-padding: 10px 20px;
-font-size: 14px;
-cursor: pointer;
-border-radius: 5px;
-border: none;
-margin: 0 auto;
-
-
-&[disabled] {
-background-color: #ccc;
-color: #666;
-cursor: not-allowed;
-}
-
-// Enabled state styles
-&:not([disabled]) {
-background-color: #007791;
-color: #fff;
-
-&:hover {
-  background-color: #007791; 
-}
-}
-
-}
 .testbutton {
   border: none;
   margin-left: 15px;
   padding: 10px 20px;
   font-weight: bold;
 
-  // Styles for the enabled state
   &:not([disabled]) {
-    background-color: #282a28;  
-    color: #fff;  
-    cursor: pointer;  
+    background-color: #282a28;
+    color: #fff;
+    cursor: pointer;
   }
 
-  // Styles for the disabled state
   &:disabled {
-    background-color: #ccc;  
-    color: #666;  
-    cursor: not-allowed;  
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
   }
   padding: 10px;
   border: none;
   border-radius: 5px;
   margin-top: 10px;
-} 
 }
 
-
-
-/* Add these styles to your component's SCSS file */
 .success-message {
-background-color: #e0d9d9;
-color: black;
-padding: 70px;
-border-radius: 5px;
-text-align: center;
-margin: 70px;
-font-size: 16px;
+  background-color: #e0d9d9;
+  color: black;
+  padding: 70px;
+  border-radius: 5px;
+  text-align: center;
+  margin: 70px;
+  font-size: 16px;
 }
 
 .success-message button {
-background-color: #007791;
-color: white;
-border: none;
-border-radius: 5px;
-padding: 10px;
-text-align: center;
-text-decoration: none;
-display: inline-block;
-font-size: 16px;
-margin-top: 10px;
-cursor: pointer;
-
+  background-color: #007791;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
 }
-
-// }
-
-
