@@ -16,6 +16,9 @@ export class Course extends BaseModel<Course> {
   public difficultyLevel!: string;
   public skillLevel!: string;
   public courseType!: string;
+  public duration!: number;
+  public price!: number;
+  public viewCount!: number;
   constructor(model?: Course) {
     super(model);
   }

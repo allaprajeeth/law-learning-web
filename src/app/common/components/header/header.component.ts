@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
+import { Course } from '../../models/course.model';
+import { CoursesService } from '../../services/courses/courses.service';
+import { Router } from '@angular/router';
+import { HttpResponse } from '../../models/response.model';
+import { endPoints } from '../../constants/endpoints';
 
 @Component({
   selector: 'app-header',
@@ -8,159 +12,45 @@ import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
 })
 export class HeaderComponent implements OnInit {
 
-  // i: number = 0;
-  
-  filteredCourses: any[] = [];
-  coursePrice: number[] = [];
-  freeCoursesImages: string[] = [];
-  paidCoursesimages: string[] = [];
-  ratingValues: number[] = [];
-  freeCoursesAuthors: string[] = [];
-  freeCoursesHeadings: string[] = [];
-  freeCoursesText: string[] = [];
-  freeCoursesDurations: string[] = [];
-  myCourseSubscribers: string[] = [];
-  randomFutureDates: Date[] = [];
-
-  paidCoursesDurations: string[] = [];
-  paidCoursesSubscribers: string[] = [];
-  paidCoursesHeadings: string[] = [];
-  paidCoursesAuthors: string[] = [];
-  paidCoursesText: string[] = [];
-  selectedCategory: string | null = null;
-  selectedCourseType: string | null = null;
-  paidCoursesType: string[] = [];
-  paidCoursesLevel: string[] = [];
+  paidCourses: any[] = [];
+  freeCourses: Course[] = [];
+  s3BaseURL: string = endPoints.s3BaseURL;
+  selectedCategory: string = '';
+  selectedCourseType: string = '';
 
   title = 'my-first-app';
 
-  uploadedCoursesDurations: string[] = [];
-
-  NumberofSubscribers = ['11', '43', '64', '10', '55', '66'];
-
-  subscribersValues = ['10', '50', '100', '200', '500', '1000'];
-
-  private initializeFreeCoursesHeadings(): void {
-    COURSES_MOCK.forEach((course) => {
-      this.freeCoursesHeadings.push(course.courseTitle);
-    });
-    COURSES_MOCK.forEach((course) => {
-      this.freeCoursesAuthors.push(course.courseInstructor);
-    });
-    COURSES_MOCK.forEach((course) => {
-      this.freeCoursesText.push(`${course.courseLevel} | ${course.courseType}`);
-    });
-  }
-
-  private initializePaidCoursesHeadings(): void {
-    COURSES_MOCK.forEach((course) => {
-      this.paidCoursesHeadings.push(course.courseTitle);
-    });
-    COURSES_MOCK.forEach((course) => {
-      this.paidCoursesAuthors.push(course.courseInstructor);
-    });
-    COURSES_MOCK.forEach((course) => {
-      this.paidCoursesText.push(`${course.courseLevel} | ${course.courseType}`);
-    });
+  constructor(private router: Router, private coursesService: CoursesService) {
   }
 
   ngOnInit(): void {
     this.initializeFreeCoursesHeadings();
-    this.initializePaidCoursesHeadings();
-
-    for (let i = 0; i < 4; i++) {
-      const randomCourse = COURSES_MOCK[i];
-      const randomImageURL = `${randomCourse.courseThumbnail}?index=${i}`;
-      this.freeCoursesImages.push(randomImageURL);
-
-      const duration = `${randomCourse.courseDuration}`;
-      this.freeCoursesDurations.push(duration);
-
-      const randomSubscribersIndex = Math.floor(
-        Math.random() * this.subscribersValues.length
-      );
-      this.myCourseSubscribers.push(
-        this.subscribersValues[randomSubscribersIndex]
-      );
-    }
-
-    for (let l = 0; l < 12; l++) {
-      const randomCourse = COURSES_MOCK[l];
-      const randomImageURL = `${randomCourse.courseThumbnail}?index=${l}`;
-      this.paidCoursesimages.push(randomImageURL);
-
-      const randomPrices = `${randomCourse.coursePrice}`;
-      this.coursePrice.push(parseInt(randomPrices, 10));
-
-      const ratingValue = parseFloat(
-        `${randomCourse.reviewerRating}?index=${l}`
-      );
-
-      const fullStars = Math.floor(ratingValue);
-      const hasHalfStar = ratingValue % 1 !== 0;
-      let starsHtml = '';
-
-      for (let i = 0; i < fullStars; i++) {
-        starsHtml += '<i class="fas fa-star"></i>';
-      }
-
-      if (hasHalfStar) {
-        starsHtml += '<i class="fas fa-star-half-alt"></i>';
-      }
-
-      this.ratingValues.push(ratingValue);
-
-      const randomSubscribersIndex = Math.floor(
-        Math.random() * this.subscribersValues.length
-      );
-      this.paidCoursesSubscribers.push(
-        this.subscribersValues[randomSubscribersIndex]
-      );
-
-      const duration = `${randomCourse.courseDuration}`;
-      this.paidCoursesDurations.push(duration);
-
-      this.paidCoursesType.push(randomCourse.courseType);
-      this.paidCoursesLevel.push(randomCourse.courseLevel);
-    }
-  }
-  updateSelectedCourseType(courseType: string): void {
-    if (courseType === 'Clear Filters') {
-      this.selectedCategory = null;
-      this.selectedCourseType = null;
-      this.filteredCourses = [];
-    } else {
-      const [level, type] = courseType.split(' | ');
-      this.selectedCourseType = null;
-      if (level && type) {
-        this.selectedCategory = level;
-        this.selectedCourseType = type;
-        this.filteredCourses = this.paidCoursesimages
-          .map((image, index) => ({
-            image,
-            level: this.paidCoursesLevel[index],
-            type: this.paidCoursesType[index],
-            heading: this.paidCoursesHeadings[index],
-            author: this.paidCoursesAuthors[index],
-            text: this.paidCoursesText[index],
-            duration: this.paidCoursesDurations[index],
-            subscribers: this.paidCoursesSubscribers[index],
-            price: this.coursePrice[index],
-          }))
-          .filter(
-            (course) =>
-              (!this.selectedCategory ||
-                course.level === this.selectedCategory) &&
-              (!this.selectedCourseType ||
-                course.type === this.selectedCourseType)
-          );
-      } else {
-        this.filteredCourses = [];
-      }
-    }
+    this.initializePaidCoursesHeadings({}, true);
   }
 
-  formatWithLeadingZero(value: number): string {
-    return value < 10 ? `0${value}` : `${value}`;
+  private initializeFreeCoursesHeadings(): void {
+    this.coursesService.get({}, endPoints.search_courses).subscribe((response: HttpResponse<Course>) => {
+      for (var i in response.records) {
+        this.freeCourses.push(response.records[i]);
+      }
+    });
+  }
+
+  private initializePaidCoursesHeadings(params: any, reload: boolean): void {
+    this.coursesService.get(params, endPoints.search_courses).subscribe((response: HttpResponse<Course>) => {
+      if(reload)
+          this.paidCourses = [];
+      for (var i in response.records) {
+        this.paidCourses.push(response.records[i]);
+      }
+    });
+  }
+
+  updateSelectedCourseType(level: string, courseType: string): void {
+    this.initializePaidCoursesHeadings({'type': courseType, 'level': level}, true);
+  }
+
+  onImageError(event: any) {
+    event.target.src = 'assets/law.png';
   }
 }
