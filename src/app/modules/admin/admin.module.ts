@@ -45,6 +45,8 @@ import { CoursesHistoryComponent } from './components/courses-history/courses-hi
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { LibraryFormComponent } from './components/library-form/library-form.component';
+
 
 
 @NgModule({
@@ -77,8 +79,9 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
     CoursesHistoryComponent,
     AllProfilesComponent,
     ProfileDetailsComponent,
-    ArticleDetailComponent
-  
+    ArticleDetailComponent,
+    LibraryFormComponent,
+ 
    
   ],
   

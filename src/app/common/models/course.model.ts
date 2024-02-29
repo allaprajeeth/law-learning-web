@@ -1,7 +1,7 @@
 import { BaseModel } from "./base.model";
 
 interface Section {
-  id?: number; // Add an identifier for the section
+  id?: number; 
   duration: {
     minutes: number;
     seconds: number;
@@ -16,8 +16,8 @@ interface Section {
   isSaveEnabled: boolean;
   isSubmitEnabled: boolean;
   buttonColor: string;
-  showAddSubSectionInput?: boolean; // Add this property
-  newSubSectionTitle?: string; // Add this property
+  showAddSubSectionInput?: boolean; 
+  newSubSectionTitle?: string; 
 }
 
 interface SubSection {
@@ -44,7 +44,7 @@ interface SubSection {
   expanded: boolean;
   isFormSubmitted: boolean;
 }
-// import { BaseModel } from "./base.model";
+
 
 export class Course extends BaseModel<Course> {
   public id!: number;
@@ -62,8 +62,10 @@ export class Course extends BaseModel<Course> {
   public difficultyLevel!: string;
   public skillLevel!: string;
   public courseType!: string;
-  public sections?: any[]; // Add this property for sections
-
+  public sections?: any[];
+  public duration!: number;
+  public price!: number;
+  public viewCount!: number;
   constructor(model?: Course) {
     super(model);
   }

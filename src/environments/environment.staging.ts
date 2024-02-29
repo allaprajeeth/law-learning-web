@@ -13,6 +13,7 @@ export const environment = {
         forgotPhone: '/forgetPhone',
         libraries: '/libraries',
         auth: '/auth',
-        secure: '/secure'
+        secure: '/secure',
+        search_courses: '/search-courses'
     }
 };

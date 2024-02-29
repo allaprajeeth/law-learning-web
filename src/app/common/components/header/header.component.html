@@ -19,23 +19,21 @@
     </div>
   </div>
   <div class="image-grid">
-    <div *ngFor="let image of freeCoursesImages; let j = index" class="image-item">
+    <div *ngFor="let course of freeCourses; let j = index" class="image-item">
       <div class="imagesContainer">
-        <img [src]="image" width="300" height="200" class="img" alt="Random Image">
+        <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
         <div class="overlay">
           <a routerLink="/freecourse">
             <i class="fa fa-play-circle play-icon"></i>
           </a>
         </div>
-        <span class="duration">{{ freeCoursesDurations[j] }}</span>
+        <span class="duration">{{course.duration}}</span>
       </div>
       <div class="headingsContainer">
-        <h5>{{ freeCoursesHeadings[j] }}</h5>
-        <p>{{ freeCoursesAuthors[j] }}</p>
-        <h4>{{ freeCoursesText[j] }}</h4>
+        <h5>{{ course.title }}</h5>
+        <p>{{ course.createdBy.name }}</p>
+        <h4>{{ course.difficultyLevel}} | {{course.type }}</h4>
 
-
-        <!-- <span>{{ randomMyCourseValues[i] }}% complete</span> -->
         <div class="ratingscontainer1">
           <div class="ratingConatiner2">
             <span class="star">&#9733;</span>
@@ -61,14 +59,20 @@
           </div>
         </div>
         <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
-          <span>Number of Subscribers:{{ myCourseSubscribers[j] + '+'}}</span>
+          <span>Number of Subscribers:{{ course.viewCount}}</span>
           <!-- <p style="color: #d80303; font-weight: bolder;"> This Course Expires on: {{ randomFutureDates[i] | date: 'dd MMM
           yyyy' }}</p> -->
         </div>
       </div>
-      <!-- <div class="subscribers" style="font-weight: 410;"> -->
-      <!-- <span>Number of Views:{{ numberofviews[j] }}</span> -->
-      <!-- </div> -->
+      <div class="subscribers" style="font-weight: 410;">
+        <span>Number of Views:{{ course.viewCount }}</span>
+      </div>
+      <h5 class="price">
+        <span *ngIf="course.price >= 0">
+          <del>₹{{ course.price }}</del>
+          <span style="color: green; margin-left: 5px;" class="free">Free</span>
+        </span>
+      </h5>
     </div>
   </div>
 <!-- </div> -->
@@ -87,147 +91,88 @@
         <button mat-menu-item [matMenuTriggerFor]="beginner" class="mat-menu">Beginner</button>
         <button mat-menu-item [matMenuTriggerFor]="intermediate" class="mat-menu">Intermediate</button>
         <button mat-menu-item [matMenuTriggerFor]="expert" class="mat-menu">Expert</button>
-        <button mat-menu-item [matMenuTriggerFor]="student" class="mat-menu">Student</button>
-        <button mat-menu-item class="mat-menu" (click)="updateSelectedCourseType('Clear Filters')">Clear
+        <button mat-menu-item [matMenuTriggerFor]="student" class="mat-menu">All</button>
+        <button mat-menu-item class="mat-menu" (click)="updateSelectedCourseType('Clear Filters', '')">Clear
           Filters</button>
       </mat-menu>
     </mat-select>
   </mat-form-field>
   <mat-menu #beginner="matMenu">
-    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Beginner | Crash Course')">Crash
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Beginner', 'Crash Course')">Crash
       Course</button>
     <button mat-menu-item class="mat-menu-panel"
-      (click)="updateSelectedCourseType('Beginner | Detailed Course')">Detailed Course</button>
+      (click)="updateSelectedCourseType('Beginner', 'Detailed Course')">Detailed Course</button>
   </mat-menu>
   <mat-menu #intermediate="matMenu">
-    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Intermediate | Crash Course')">Crash
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Intermediate', 'Crash Course')">Crash
       Course</button>
     <button mat-menu-item class="mat-menu-panel"
-      (click)="updateSelectedCourseType('Intermediate | Detailed Course')">Detailed Course</button>
+      (click)="updateSelectedCourseType('Intermediate', 'Detailed Course')">Detailed Course</button>
   </mat-menu>
   <mat-menu #expert="matMenu">
-    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert | Crash Course')">Crash
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert', 'Crash Course')">Crash
       Course</button>
-    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert | Detailed Course')">Detailed
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert', 'Detailed Course')">Detailed
       Course</button>
   </mat-menu>
   <mat-menu #student="matMenu">
-    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Student | Crash Course')">Crash
+    <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('All', 'Crash Course')">Crash
       Course</button>
     <button mat-menu-item class="mat-menu-panel"
-      (click)="updateSelectedCourseType('Student | Detailed Course')">Detailed Course</button>
+      (click)="updateSelectedCourseType('All', 'Detailed Course')">Detailed Course</button>
   </mat-menu>
 </div>
 
-<ng-container *ngIf="!selectedCategory && !selectedCourseType">
-  <div class="image-grid">
-    <div *ngFor="let image of paidCoursesimages; let j = index" class="image-item">
-      <div class="imagesContainer">
-        <img [src]="image" width="300" height="200" class="img" alt="Random Image">
-        <div class="overlay">
-          <a routerLink="/overviewAvailable" [queryParams]="{ showRatingOfCourse: 'true' }">
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
-        </div>
-        <span class="duration">{{ paidCoursesDurations[j] }}</span>
+<div class="image-grid">
+  <div *ngFor="let course of paidCourses; let j = index" class="image-item">
+    <div class="imagesContainer">
+      <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
+      <div class="overlay">
+        <a routerLink="/overviewAvailable" [queryParams]="{ showRatingOfCourse: 'true' }">
+          <i class="fa fa-play-circle play-icon"></i>
+        </a>
       </div>
-      <div class="headingsContainer">
-        <h5>{{ paidCoursesHeadings[j] }}</h5>
-        <p>{{ paidCoursesAuthors[j] }}</p>
-        <h4>{{ paidCoursesText[j] }}</h4>
+      <span class="duration">{{ course.duration }}</span>
+    </div>
+    <div class="headingsContainer">
+      <h5>{{ course.title }}</h5>
+        <p>{{ course.createdBy.name }}</p>
+        <h4>{{ course.difficultyLevel}} | {{course.type }}</h4>
+    </div>
+    <div class="ratingscontainer1">
+      <div class="ratingConatiner2">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
       </div>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-      </div>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span>Reviewer Ratings</span>
-        </div>
-        <div class="ratingConatiner2">
-          <span>Subscribers Ratings</span>
-        </div>
-      </div>
-
-      <div class="subscribers" style="font-weight: 410;">
-        <span>Number of Subscribers: {{ paidCoursesSubscribers[j] + '+' }}</span>
-
-        <h5 class="price">
-          <span *ngIf="coursePrice[j] > 0">
-            <del>₹{{ coursePrice[j] }}</del>
-            <span style="color: green; margin-left: 5px;" class="free">Free</span>
-          </span>
-        </h5>
+      <div class="ratingConatiner2">
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9733;</span>
+        <span class="star">&#9734;</span>
       </div>
     </div>
-  </div>
-</ng-container>
+    <div class="ratingscontainer1">
+      <div class="ratingConatiner2">
+        <span>Reviewer Ratings</span>
+      </div>
+      <div class="ratingConatiner2">
+        <span>Subscribers Ratings</span>
+      </div>
+    </div>
 
-<div *ngIf="selectedCategory || selectedCourseType" class="filtered-container">
-  <div class="image-grid">
-    <div *ngFor="let course of (filteredCourses.length > 0 ? filteredCourses : paidCoursesimages); let j = index"
-      class="image-item">
-      <div class="imagesContainer">
-        <img [src]="course.image" width="300" height="200" class="img" alt="Random Image">
-        <div class="overlay">
-          <a routerLink="/overviewAvailable" [queryParams]="{ showRatingOfCourse: 'true' }">
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
-        </div>
-        <span class="duration">{{ course.duration }}</span>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ course.heading }}</h5>
-        <p>{{ course.author }}</p>
-        <h4>{{ course.text }}</h4>
-      </div>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-      </div>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span>Reviewer Ratings</span>
-        </div>
-        <div class="ratingConatiner2">
-          <span>Subscribers Ratings</span>
-        </div>
-      </div>
+    <div class="subscribers" style="font-weight: 410;">
+      <span>Number of Subscribers: {{ course.viewCount }}</span>
 
-      <div class="subscribers" style="font-weight: 410;">
-        <span>Number of Subscribers: {{ course.subscribers + '+' }}</span>
-
-        <h5 class="price">
-          <span *ngIf="course.price > 0">
-            <del>₹{{ course.price }}</del>
-            <span style="color: green; margin-left: 5px;" class="free">Free</span>
-          </span>
-        </h5>
-      </div>
+      <h5 class="price">
+        <span *ngIf="course.price >= 0">
+          <del>₹{{ course.price }}</del>
+          <span style="color: green; margin-left: 5px;" class="free">Free</span>
+        </span>
+      </h5>
     </div>
   </div>
 </div>
