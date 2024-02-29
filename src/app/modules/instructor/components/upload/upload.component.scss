@@ -18,6 +18,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 800px;
   margin-top: 20px;
+ 
 }
 
 .form-group {
@@ -74,22 +75,23 @@ textarea {
   color: rgb(3, 106, 3);
 }
 
-.main-section {
-  position: relative;
-  border: 1px solid #413e3e;
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 10px;
+// .main-section {
+//   position: relative;
+//   border: 1px solid #413e3e;
+//   padding: 10px;
+//   margin-bottom: 20px;
+//   border-radius: 10px;
 
   .section-number {
     font-weight: bolder;
     font-size: larger;
-    margin-top: 25px 
+    margin-top: 25px;
+    margin-bottom: 10px;
   }
   .required-field {
     color: red;
   }
-}
+// }
 
 .sub-section {
   position: relative;
@@ -192,7 +194,10 @@ textarea {
   cursor: pointer;
   border-radius: 5px;
   border: none;
-  margin-top: 5px;
+// margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &[disabled] {
     background-color: #ccc;

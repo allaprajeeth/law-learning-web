@@ -1,5 +1,6 @@
 export abstract class BaseModel<T> {
     public data?: {
+      sections: { content?: import("c:/Users/pushpalatha.s/Desktop/web learning/law-learning-web/src/app/common/models/course.model").Course | import("c:/Users/pushpalatha.s/Desktop/web learning/law-learning-web/src/app/common/models/course.model").Course[] | undefined; } | undefined;
       content?: T[] | T;
     };
     public pageable?: {

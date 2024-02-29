@@ -2,9 +2,403 @@
 <div class="main-container">
   <div class="container-wrapper" *ngIf="showForm">
     <div class="form-container">
+      <h2 class="heading">{{ mainSections.length > 1 ? 'Edit Section with Multiple Videos:' : 'Create a New Section with Multiple Videos:' }}</h2>
+      <p class="message">Enter the required fields to enable save and submit buttons</p>
+
+      <ng-container *ngFor="let mainSection of mainSections; let mainIndex = index">
+        <form [formGroup]="mainSectionFormGroup(mainIndex)" (ngSubmit)="submitMainSection(mainIndex)">
+
+          <div class="section-number">Section {{mainIndex + 1}}</div>
+          <button type="button" class="remove-button">×</button>
+
+          <div class="form-group">
+            <label for="title">Section Title <span class="required-field">**</span> : </label>
+            <input type="text" id="title" placeholder="section name" required formControlName="title">
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" placeholder="Enter description" formControlName="description" rows="4" required></textarea>
+          </div>
+
+          <div *ngIf="mainSection.showAddSubSectionInput">
+            <div class="form-group">
+              <label for="subTitle">Sub-section Title <span class="required-field">**</span> : </label>
+              <input type="text" id="subTitle" placeholder="Sub Section Title" formControlName="newSubSectionTitle">
+            </div>
+
+            <div class="form-group">
+              <label for="description">Description:</label>
+              <textarea id="description" placeholder="Enter description" formControlName="SubSectiondescription" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="videoFile">Video File:</label>
+              <input type="file" id="videoFile" formControlName="videoFile" />
+            </div>
+
+            <div class="form-group">
+              <label>Video Duration:</label>
+              <div class="duration-input">
+                <input type="number" id="minutes" name="minutes" placeholder="Minutes" formControlName="minutes" required>
+                <input type="number" id="sec" name="seconds" placeholder="Seconds" formControlName="seconds" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subFile">Upload Documents: </label>
+              <input type="file" id="subFile" formControlName="subFile">
+            </div>
+
+            <!-- <button type="button" (click)="addSubSection(mainIndex)" class="save-button">Save</button> -->
+            <button type="button" (click)="submitSubSection(mainIndex)" class="save-button">Submit</button>
+
+
+
+
+          </div>
+
+          <button type="button" class="add-subsection-button" (click)="toggleAddSubSection(mainIndex)">Add Sub Section</button>
+
+          <div class="submit-btn">
+            <button type="submit" class="sub-btn" [disabled]="mainSectionForms.at(mainIndex)?.invalid">Submit</button>
+          </div>
+
+          <div *ngIf="mainSection.submitted" class="success-message">
+            <p>Main Section {{ mainIndex + 1 }} submitted!</p>
+          </div>
+
+        </form>
+      </ng-container>
+
+      <!-- Add Main Section button inside the ngIf block -->
+      <button type="button" class="add-section-button" (click)="addMainSection()">Add Main Section</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="main-container">
+  <div class="container-wrapper" *ngIf="showForm">
+    <div class="form-container">
+      <div class="form-group">
+        <h2>{{ sectionId ? 'Edit Section with Multiple Videos:' : 'Create a New Section with Multiple Videos:' }}</h2>
+        <p class="message">Enter the required fields to enable save and submit buttons</p>
+      </div>
+
+      <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+
+      <div *ngFor="let mainSection of mainSections; let mainIndex = index" class="main-section">
+      
+        <div class="section-number">Section {{mainIndex + 1}}</div>
+        <button type="button" class="remove-button" (click)="removeMainSection(mainIndex)">×</button>
+        <br />
+
+        <div class="form-group">
+          <label for="mainName{{mainIndex}}">Section Title <span class="required-field">**</span> : </label>
+          <input type="text" id="mainName{{mainIndex}}" placeholder="section name" name="mainSectionNames[]" required
+            [(ngModel)]="mainSection.title" (input)="onMainSectionNameEntered(mainIndex)">
+        </div>
+        <div class="form-group">
+          <label for="description">Description:</label>
+          <textarea id="description" [(ngModel)]="mainSection.description" name="description" rows="4"
+            required></textarea>
+        </div>
+      
+        <div *ngFor="let subSection of mainSection.subSections; let subIndex = index">
+         
+          
+          <div class="section-number">{{ subSection.title }}</div>
+          <div class="sub-section">
+
+            <div class="form-group">
+              <label for="subName{{mainIndex}}_{{subIndex}}">Sub-Section Title<span class="required-field">**</span>
+                :</label>
+
+              <input type="text" id="subName{{mainIndex}}_{{subIndex}}" placeholder="subsection name"
+                name="subSectionNames[]" required (input)="onSubSectionNameEntered(mainIndex, subIndex)">
+            </div>
+
+
+
+
+            <button type="button" class="remove-button" (click)="removeSubSection(mainIndex, subIndex)">×</button>
+            <br />
+           
+            <button class="expand-button" (click)="toggleSubSection(mainIndex, subIndex)">
+              <span class="material-icons">
+                {{ subSection.expanded ? 'expand_less' : 'expand_more' }}
+              </span>
+            </button>
+      
+          <div *ngIf="subSection.expanded">
+          
+            <div class="form-group">
+              <label for="subDescription{{mainIndex}}_{{subIndex}}">Description:</label>
+              <textarea id="subDescription{{mainIndex}}_{{subIndex}}" [(ngModel)]="subSection.description"
+                name="description" rows="4" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="mainFile{{mainIndex}}_{{subIndex}}">Upload Video<span class="required-field">**</span> :
+              </label>
+              <input type="file" id="mainFile{{mainIndex}}_{{subIndex}}"
+                (change)="onMainFileSelected($event, mainIndex, subIndex)">
+            </div>
+
+            <div class="form-group">
+              <label>Video Duration:</label>
+              <div class="duration-input">
+                <input type="number" [(ngModel)]="subSection.duration.minutes" id="minutes" name="minutes"
+                  placeholder="Minutes" required [disabled]="isDurationFetched">
+
+                <input type="number" [(ngModel)]="subSection.duration.seconds" id="sec" name="seconds"
+                  placeholder="Seconds" required [disabled]="isDurationFetched">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="subFile{{mainIndex}}_{{subIndex}}">Upload Documents: </label>
+              <input type="file" id="subFile{{mainIndex}}_{{subIndex}}"
+                (change)="onSubFileSelected($event, mainIndex, subIndex)" accept="video/*">
+            </div>
+          
+
+
+
+
+
+
+            
+            <div class="submit-btn">
+              <button type="button" class="sub-btn" (click)="courseId ? submitSubSection(mainIndex, subIndex) : null"
+                [disabled]="!subSection.isSubmitEnabled">Submit</button>
+              <p class="button-description" *ngIf="mainSection.isSubmitEnabled">By clicking submit, all your files
+                related to this subsection will be submitted to the website for review.</p>
+            </div>
+          </div>
+
+          <div *ngIf="subSection.submitted && subSection.status === 'Under Review'" [ngClass]="'status-under-review'">
+            <span>Status: {{subSection.status}}</span>
+          </div>
+        </div>
+
+        <button type="button" class="add-subsection-button" (click)="addSubSection(mainIndex)"
+          [disabled]="isAddSubSectionButtonDisabled[mainIndex]">Add Subsection</button>
+
+        <div *ngIf="!mainSection.submitted">
+          <div class="submit-btn">
+            <button type="button" class="sub-btn" (click)="courseId ? submitMainSection(mainIndex) : null"
+              [disabled]="!mainSection.isSubmitEnabled">Submit</button>
+            <p class="button-description" *ngIf="mainSection.isSubmitEnabled">By clicking submit, all your files related
+              to this section will be submitted to the website for review.</p>
+          </div>
+        </div>
+
+        <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'" [ngClass]="'status-under-review'">
+          <span class="status">Status: {{mainSection.status}}</span>
+        </div>
+      </div>
+
+      <button type="button" class="add-section-button" (click)="addMainSection()"
+        [disabled]="isAddMainSectionButtonDisabled">Add Mainsection</button>
 
       <div class="form-group">
-        <h2 class="heading">Upload Sections with Multiple Videos:</h2>
+        <label>Does this course have any test?</label>
+        <div class="radio-group">
+          <input type="radio" id="yes" name="hasTest" value="yes" [(ngModel)]="hasTest">
+          <label for="yes" class="test">Yes</label>
+          <input type="radio" id="no" name="hasTest" value="no" [(ngModel)]="hasTest">
+          <label for="no" class="test">No</label>
+        </div>
+      </div>
+      <div>
+        <button routerLink="/instructor/quiztest" class="testbutton" [disabled]="hasTest !== 'yes'">Create a
+          Test</button>
+      </div>
+    </div>
+    <br />
+    <br />
+  </div>
+</div>
+<div *ngIf="!showForm && submitAllMessage" class="success-message">
+  <p>{{ submitAllMessage }}</p>
+  <button type="button" (click)="goBack()">Go Back</button>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <app-instructornav></app-instructornav>
+<div class="main-container">
+  <div class="container-wrapper" *ngIf="showForm"  enctype="multipart/form-data" >
+    <div class="form-container">
+
+      <div class="form-group">
+        <h2>{{ sectionId ? 'Edit Section with Multiple Videos:' : 'Create a New Section with Multiple Videos:' }}</h2>
+      
+     
 
         <p class="message">Enter the required fields to enable save and submit buttons</p>
       </div>
@@ -43,14 +437,7 @@
 
             <button type="button" class="remove-button" (click)="removeSubSection(mainIndex, subIndex)">×</button>
             <br />
-            <!--             
-            <button type="button" (click)="toggleSubSection(mainIndex, subIndex)">
-              <i class="material-icons">
-                {{ subSection.expanded ? 'expand_less' : 'expand_more' }}
-              </i>
-              {{ subSection.expanded ? 'Expand Less' : 'Expand More' }}
-            </button> -->
-
+           
             <button class="expand-button" (click)="toggleSubSection(mainIndex, subIndex)">
               <span class="material-icons">
                 {{ subSection.expanded ? 'expand_less' : 'expand_more' }}
@@ -90,24 +477,31 @@
               </div>
 
               <div *ngIf="!subSection.submitted">
-                <!-- <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)"
+
+
+
+
+                 <button type="button" class="save-button sec-save-button" (click)="saveSubSection(mainIndex, subIndex)"
                 [style.background-color]="subSection.buttonColor" [disabled]="!subSection.isSaveEnabled">Save
                 <span class="right-click-icon" *ngIf="subSection.buttonColor">&#10003;</span>
               </button>
               <p class="success-msg" *ngIf="subSection.buttonColor">Above details saved successfully</p>
               <p class="button-description" *ngIf="!subSection.buttonColor">By clicking save, all your files related to
-                this subsection will be saved.</p> -->
+                this subsection will be saved.</p>
 
-                <!-- <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)"
+                 <button type="button" class="submit-button" (click)="submitSubSection(mainIndex, subIndex)"
                 [disabled]="!subSection.isSubmitEnabled">Submit</button>
               <p class="button-description" *ngIf="subSection.isSubmitEnabled">By clicking submit, all your files
-                related to this subsection will be submitted to the website for review.</p> -->
+                related to this subsection will be submitted to the website for review.</p> 
+
+
+
 
               </div>
 
               <div class="submit-btn">
-                <button type="button" class="sub-btn" (click)="courseId ? submitSubSection(courseId, mainIndex, subIndex) : null"
-    [disabled]="!subSection.isSubmitEnabled">Submit</button>
+                <button type="button" class="sub-btn" (click)="courseId ? submitSubSection(mainIndex, subIndex) : null"
+                      [disabled]="!subSection.isSubmitEnabled">Submit</button>
 
 
                 <p class="button-description"  *ngIf="mainSection.isSubmitEnabled" >By clicking submit, all your files
@@ -127,37 +521,55 @@
 
         <div *ngIf="!mainSection.submitted">
 
-          <!-- <button type="button" class="save-button sec-save-button" (click)="saveMainSection(mainIndex)"
+
+
+
+
+
+
+           <button type="button" class="save-button sec-save-button" (click)="saveMainSection(mainIndex)"
             [style.background-color]="mainSection.buttonColor" [disabled]="!mainSection.isSaveEnabled">
             Save
 
             <span class="right-click-icon" *ngIf="mainSection.buttonColor">&#10003;</span>
-          </button> -->
+          </button> 
 
-          <!-- 
+           
           <p class="success-msg" *ngIf="mainSection.buttonColor">Above details saved successfully</p>
           <p class="button-description" *ngIf="!mainSection.buttonColor">By clicking save, all your files related to
-            this subsection will be saved.</p> -->
+            this subsection will be saved.</p> 
 
 
             
-            <!-- <div class="submit-btn">
+            <div class="submit-btn">
               <button type="button" class="sub-btn" (click)="submitSubSection(mainIndex, subIndex)"
                [disabled]="!subSection.isSubmitEnabled">Submit</button>
               <p class="button-description"  *ngIf="mainSection.isSubmitEnabled" >By clicking submit, all your files
                 related to this subsection will be submitted to the website for review.</p>
             </div>
-          </div> -->
+          </div>
+
+
+
+
+
+
+
+
+
+
           <div class="submit-btn">
-            <button type="button" class="sub-btn" (click)="submitMainSection(mainIndex)"
-              [disabled]="!mainSection.isSubmitEnabled">Submit</button>
-            <p class="button-description" *ngIf="mainSection.isSubmitEnabled">By clicking submit, all your files related
-              to this section will be submitted to the website for review.</p>
+            <button type="button" class="sub-btn" (click)="courseId ? submitMainSection(mainIndex) : null"
+            [disabled]="!mainSection.isSubmitEnabled">Submit</button>
+
+                <p class="button-description" *ngIf="mainSection.isSubmitEnabled">By clicking submit, all your files
+                   related to this section will be submitted to the website for review.</p>
+
           </div>
         </div>
         <br />
         
-        <!-- <button type="button" class="add-subsection-button" (click)="addSubSection(mainIndex)">Add Subsection</button> -->
+       
         
 
         <div *ngIf="mainSection.submitted && mainSection.status === 'Under Review'" [ngClass]="'status-under-review'">
@@ -185,10 +597,7 @@
         <button routerLink="/instructor/quiztest" class="testbutton" [disabled]="hasTest !== 'yes'">Create a
           Test</button>
       </div>
-      <!-- <div>
-        <button type="button" class="submit-button" (click)="submitSections()"
-          [disabled]="!anyMainSectionSubmitted">Submit All</button>
-      </div> -->
+     
     </div>
     <br />
     <br />
@@ -197,4 +606,4 @@
 <div *ngIf="!showForm && submitAllMessage" class="success-message">
   <p>{{ submitAllMessage }}</p>
   <button type="button" (click)="goBack()">Go Back</button>
-</div>
+</div> -->
