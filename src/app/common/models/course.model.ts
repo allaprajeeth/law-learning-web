@@ -1,4 +1,5 @@
 import { BaseModel } from "./base.model";
+import { Section } from "./section.model";
 
 export class Course extends BaseModel<Course> {
   public id!: number;
@@ -19,6 +20,7 @@ export class Course extends BaseModel<Course> {
   public duration!: number;
   public price!: number;
   public viewCount!: number;
+  public sections!: Section[];
   constructor(model?: Course) {
     super(model);
   }

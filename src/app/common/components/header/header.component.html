@@ -23,7 +23,7 @@
       <div class="imagesContainer">
         <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
         <div class="overlay">
-          <a routerLink="/freecourse">
+          <a (click)="showCourseContent(course.id)">
             <i class="fa fa-play-circle play-icon"></i>
           </a>
         </div>

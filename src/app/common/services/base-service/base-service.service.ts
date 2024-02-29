@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BaseModel } from '../../models/base.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { HttpResponse } from '../../models/response.model';
-import { Library } from '../../models/library.model';
-import { endPoints } from '../../constants/endpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +22,7 @@ export abstract class BaseService<T> {
     return this.httpClient
       .get<HttpResponse<T>>(`${this.apiUrl}` + _url, { params: params })
       .pipe(map((result) => {
+        console.log(result)
         return new this.tConstructor(result);
       }));
   }
@@ -40,10 +38,11 @@ export abstract class BaseService<T> {
     }));;
   }
 
-  public getById(id: string, params: any): Observable<HttpResponse<T>> {
+  public getById(_url: string, params: any): Observable<HttpResponse<T>> {
     return this.httpClient
-      .get<HttpResponse<T>>(`${this.apiUrl}` + endPoints.libraries + `/${id}`, { params: params })
+      .get<HttpResponse<T>>(`${this.apiUrl}` + _url, { params: params })
       .pipe(map((result) => {
+        console.log(result)
         return new this.tConstructor(result);
       }), catchError((error: any, caught: Observable<any>): Observable<any> => {
       console.error('There was an error!', error);

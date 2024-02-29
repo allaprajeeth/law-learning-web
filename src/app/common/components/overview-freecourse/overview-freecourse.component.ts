@@ -1,22 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Course } from '../../models/course.model';
 
 @Component({
   selector: 'app-overview-freecourse',
   templateUrl: './overview-freecourse.component.html',
   styleUrls: ['./overview-freecourse.component.scss']
 })
-export class OverviewFreecourseComponent {
+export class OverviewFreecourseComponent implements OnChanges {
+  @Input() course!: Course;
 
-  overviewFreeCourseHeading = "Introduction to Law: A Comprehensive Overview";
-  overviewFreeCourseDescription = "Law learning encompasses a diverse range of fascinating subjects and fields of study and ethics, and the legal systems that shape our societies.";
+  ngOnChanges(changes: SimpleChanges) {
+    for (let property in changes) {
+      if (property === 'course') {
+        this.course = changes[property].currentValue
+      } 
+  }
+  }
+
   subscriberRatings = 4.5;
   reviewerRatings = 4;
   subscribersCount = "(1234)";
   reviewersCount = "(22)";
   instructorName = "Edward Viaene";
-  instructorReviewsbySubscriber="75332"
-  instructorReviewsbyReviewer='5'
+  instructorReviewsbySubscriber = "75332"
+  instructorReviewsbyReviewer = '5'
   courseDuration = "2hr 3m";
   courseLastUpdated = "10/2023";
   courseDescription_1 = "From constitutional law, criminal law, and international law to environmental law, intellectual property law, and human rights law, there's a captivating world of legal knowledge to explore.";
@@ -41,12 +49,12 @@ export class OverviewFreecourseComponent {
 
 
 
-  showRatingOfCourse:boolean=false;
-  showFreeCourse=true;
+  showRatingOfCourse: boolean = false;
+  showFreeCourse = true;
   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
       this.showRatingOfCourse = params['showRatingOfCourse'] === 'true';
-      this.showFreeCourse=false;
+      this.showFreeCourse = false;
     });
   }
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
@@ -72,58 +80,58 @@ export class OverviewFreecourseComponent {
       },
     ],
   }));
-  availableCourse:boolean=false;
+  availableCourse: boolean = false;
   sectionInfo: boolean[][] = new Array(this.videoGroups.length)
-  .fill([])
-  .map(() => []);
- 
+    .fill([])
+    .map(() => []);
 
-toggleSectionInfo(i: number, j: number) {
-  this.sectionInfo[i][j] = !this.sectionInfo[i][j];
-}
+
+  toggleSectionInfo(i: number, j: number) {
+    this.sectionInfo[i][j] = !this.sectionInfo[i][j];
+  }
   instructor: {
     name: string;
     title: string;
     rating: number;
     bio: string;
   } = {
-    name: 'John Doe',
-    title: 'Web Development Instructor',
-    rating: 4.5,
-    bio: 'John Doe is a web development instructor with over 10 years of experience. He has a passion for teaching and helping others learn new skills. John is also a certified web developer and has a strong understanding of HTML, CSS, and JavaScript.'
-  };
-  
-  
+      name: 'John Doe',
+      title: 'Web Development Instructor',
+      rating: 4.5,
+      bio: 'John Doe is a web development instructor with over 10 years of experience. He has a passion for teaching and helping others learn new skills. John is also a certified web developer and has a strong understanding of HTML, CSS, and JavaScript.'
+    };
+
+
   showPopup: boolean = false;
- 
-  submittedReview:boolean=false;
+
+  submittedReview: boolean = false;
   showRating = false;
- 
+
   stars = [1, 2, 3, 4, 5];
   selected = 0;
   isMore: boolean = false; // Set this to true to show the popup initially
   userReview: string = '';
-  isratingEditable:boolean=true;
+  isratingEditable: boolean = true;
   leaveRatingOpen() {
     this.showRating = true;
   }
   leaveRatingClose() {
-    this.showRating = false;  
+    this.showRating = false;
   }
 
   updaterating(r: any) {
-    if(this.isratingEditable){
-    this.selected = r;
+    if (this.isratingEditable) {
+      this.selected = r;
     }
   }
   submitRating() {
     console.log('Selected Rating:', this.selected);
     console.log('User Review:', this.userReview);
-    this.isratingEditable=false;
+    this.isratingEditable = false;
     localStorage.setItem('userRating', this.selected.toString());
-    
+
     this.showRating = false;
-    this.submittedReview=true
+    this.submittedReview = true
   }
-  
+
 }

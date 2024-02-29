@@ -50,6 +50,10 @@ export class HeaderComponent implements OnInit {
     this.initializePaidCoursesHeadings({'type': courseType, 'level': level}, true);
   }
 
+  showCourseContent(id: number) {
+    this.router.navigate(['/freecourse'], { queryParams: {_id: id} });
+  }
+
   onImageError(event: any) {
     event.target.src = 'assets/law.png';
   }

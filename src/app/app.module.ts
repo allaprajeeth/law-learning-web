@@ -65,6 +65,7 @@ import { PhoneVerificationComponent } from './common/components/phone-verificati
 import { AuthEffects } from './common/components/login/store/auth.effects';
 import { authReducer } from './common/components/login/store/auth.reducer';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { DurationPipe } from './common/pipes/duration.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -96,6 +97,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     PdfViewerComponent,
     EmailVerificationComponent,
     PhoneVerificationComponent,
+    DurationPipe,
 
   ],
   imports: [
