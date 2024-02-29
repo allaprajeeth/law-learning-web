@@ -3,8 +3,19 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { isNumber } from 'src/app/common/constants/utils';
+import { BaseModel } from 'src/app/common/models/base.model';
 import { Course } from 'src/app/common/models/course.model';
 import { CourseService } from 'src/app/common/services/course.service';
+
+interface CourseDetails {
+  data: {
+    sections?: {
+      content?: Course | Course[] | undefined;
+    } | undefined;
+  } | undefined;
+}
+
+
 
 @Component({
   selector: 'app-courses',
@@ -15,17 +26,25 @@ export class CoursesComponent {
   courseForm!: FormGroup;
   formData: FormData;
   courseId: number | undefined;
- 
 
-  constructor(private fb: FormBuilder, private router: Router, private courseService: CourseService, private route: ActivatedRoute) {
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private courseService: CourseService,
+    private route: ActivatedRoute
+  ) {
     this.formData = new FormData();
-    
+    // Initialize the form
+    //  this.createCourseForm();
   }
 
   ngOnInit() {
+    // Create the form when the component is initialized
     this.createCourseForm();
+
     this.courseId = this.route.snapshot.params['id'];
-    console.log(typeof (this.courseId))
+    console.log(typeof this.courseId);
+
     if (this.courseId && isNumber(Number(this.courseId))) {
       this.loadCourseDetails(this.courseId);
     }
@@ -45,7 +64,7 @@ export class CoursesComponent {
       type: ['', Validators.required],
       price: [null],
       language: ['English', Validators.required],
-      courseFile: [null]
+      courseFile: [null],
     });
   }
 
@@ -58,26 +77,32 @@ export class CoursesComponent {
       }
     }
   }
-
-  onSubmit() {
+  onSave() {
     if (this.courseForm.valid) {
-      this.formData.set('course', new Blob([JSON.stringify({
-        title: this.courseForm.get('title')!.value,
-        description: this.courseForm.get('description')!.value,
-        level: this.courseForm.get('difficultyLevel')!.value,
-        type: this.courseForm.get('type')!.value
-      })], { type: 'application/json' }));
-
+      this.formData.set(
+        'course',
+        new Blob([JSON.stringify({
+          title: this.courseForm.get('title')!.value,
+          description: this.courseForm.get('description')!.value,
+          level: this.courseForm.get('difficultyLevel')!.value,
+          type: this.courseForm.get('type')!.value,
+        })], { type: 'application/json' })
+      );
+  
       if (this.courseId && isNumber(Number(this.courseId))) {
-        this.patchCourse();
+        // this.patchCourse();
+        this.updateCourse();
       } else {
         this.postCourse();
+        this.createCourse();
       }
     }
   }
+  
+  
   postCourse() {
     this.courseService.post<any>(endPoints.baseURL + '/secure/courses', this.formData).subscribe(
-      (response) => {
+      (response: any) => {
         console.log('Course created successfully:', response);
         const courseId = response.data?.id;
         if (courseId !== undefined) {
@@ -86,41 +111,65 @@ export class CoursesComponent {
           console.error('Error: Course id is undefined in the response.');
         }
       },
-      (error) => {
+      (error: any) => {
         console.error('Error creating course:', error);
       }
     );
   }
   
- 
-patchCourse() {
-  this.courseService.patch<Course>(endPoints.baseURL + '/secure/courses/' + this.courseId, this.formData).subscribe(
-    (response) => {
-      console.log('Course updated successfully:', response);
-      const courseId = (response.data as Course)?.id;
-      console.log('Course ID:', courseId);
-      if (courseId !== undefined) {
-        this.router.navigate(['/instructor/upload', courseId]);
-      } else {
-        console.error('Error: Course id is undefined in the response.');
-      }
-    },
-    (error) => {
-      console.error('Error updating course:', error);
-    }
+  // patchCourse() {
+  //   this.courseService.patch<Course>(endPoints.baseURL + '/secure/courses/' + this.courseId, this.formData).subscribe(
+  //     (response: any) => {
+  //       console.log('Course updated successfully:', response);
+  //       const courseId = (response.data as Course)?.id;
+  //       console.log('Course ID:', courseId);
+  //       // if (courseId !== undefined) {
+  //       //   this.router.navigate(['/instructor/upload', courseId]);
+  //       // } else {
+  //       //   console.error('Error: Course id is undefined in the response.');
+  //       // }
+  //     },
+  //     (error: any) => {
+  //       console.error('Error updating course:', error);
+  //     }
+  //   );
+  // }
+  
+
+  // Method to create a new course
+ createCourse() {
+  // Call the service to create a new course
+  this.courseService.createCourse(this.courseForm.value).subscribe(
+    
   );
 }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
+updateCourse() {
+  if (this.courseId && isNumber(Number(this.courseId))) {
+    this.courseService.updateCourse(this.courseId, this.courseForm.value).subscribe(
+      
+    );
+  }
+}
+
+onNext() {
+  if (this.courseId && isNumber(Number(this.courseId))) {
+    this.courseService.getCourseDetails(this.courseId).subscribe((courseDetails: BaseModel<Course>) => {
+      const details: CourseDetails = courseDetails as CourseDetails;
+      if (details && details.data && details.data.sections && details.data.sections.content) {
+        // Sections exist, navigate to existing upload form with details
+        this.router.navigate(['/instructor/upload', this.courseId]);
+      } else {
+        // Sections do not exist, navigate to new upload form
+        this.router.navigate(['/instructor/upload', this.courseId]);
+      }
+    });
+    
+  } else {
+    console.error('Invalid Course ID');
+    // this.router.navigate(['/instructor/upload']);
+  }
+}
+
+
 }

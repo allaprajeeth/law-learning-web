@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Course } from '../models/course.model';
 import { endPoints } from '../constants/endpoints';
 import { BaseModel } from '../models/base.model';
@@ -9,6 +9,8 @@ import { BaseModel } from '../models/base.model';
   providedIn: 'root'
 })
 export class CourseService {
+  createCourse: any;
+  
   constructor(private httpClient: HttpClient) {}
 
   post<T>(url: string, data: FormData): Observable<T> {
@@ -30,12 +32,17 @@ export class CourseService {
     const url = `${endPoints.baseURL}/secure/courses/${courseId}`;
     return this.httpClient.get<BaseModel<Course>>(url);
   }
-  
-  // Add a new method for patching sub-section
-patchSubSection<T>(courseId: string, sectionId: number, subSectionId: number, data: any): Observable<T> {
-  const url = `${endPoints.baseURL}/secure/courses/${courseId}/section/${sectionId}/sub-section`;
-  const headers = new HttpHeaders();
-  return this.httpClient.patch<T>(url, data, { headers });
-}
 
+
+  updateCourse(courseId: number, data: FormData): Observable<any> {
+    const url = `${endPoints.baseURL}/secure/courses/${courseId}/section`;
+    const headers = new HttpHeaders();
+    return this.httpClient.patch(url, data, { headers });
+  }
+
+  patchSubSection<T>(courseId: string, sectionId: number, subSectionId: number, data: any): Observable<T> {
+    const url = `${endPoints.baseURL}/secure/courses/${courseId}/section/${sectionId}/sub-section`;
+    const headers = new HttpHeaders();
+    return this.httpClient.patch<T>(url, data, { headers });
+  }
 }

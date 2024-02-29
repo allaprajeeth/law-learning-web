@@ -111,16 +111,16 @@ openModal() {
      this.loginService.loginClick(loginVerifyFormData).subscribe(
       ()=>{
         console.log(this.loginService.validationKey$.value)
-        this.loginValidation();
+        // this.loginValidation();
        
       }
      )
   }
    
-  loginValidation(): void {
-    const selectedCategoryValue = this.loginForm.get('selectedCategory')?.value;
-    console.log('Selected Category:', selectedCategoryValue);
-    let route: string = '';
+  // loginValidation(): void {
+  //   const selectedCategoryValue = this.loginForm.get('selectedCategory')?.value;
+  //   console.log('Selected Category:', selectedCategoryValue);
+  //   let route: string = '';
     // if (selectedCategoryValue === 'SUBSCRIBER') {
     //   route = 'subscriber/homepage';
     // } else if (selectedCategoryValue === 'INSTRUCTOR') {
@@ -135,7 +135,7 @@ openModal() {
     // this.router.navigate([route]);
  
     // Clear error messages and remove error border
-  }
+  // }
  
   onEmailOtpInput(event: any) {
     const input = event.target.value;
