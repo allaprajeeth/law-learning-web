@@ -1,5 +1,4 @@
 import { BaseModel } from "./base.model";
-import { Section } from "./section.model";
 
 interface Section {
   id?: number; 
@@ -63,7 +62,6 @@ export class Course extends BaseModel<Course> {
   public difficultyLevel!: string;
   public skillLevel!: string;
   public courseType!: string;
-  public sections?: any[];
   public duration!: number;
   public price!: number;
   public viewCount!: number;
