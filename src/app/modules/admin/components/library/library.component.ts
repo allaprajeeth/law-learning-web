@@ -8,7 +8,7 @@ import { IUploadedFile } from 'src/app/shared-module/components/file-upload/file
   styleUrls: ['./library.component.scss']
 })
 export class AdminLibraryComponent {
-  showSuccessMessage: boolean = false;
+ 
 
   // form: FormGroup = this.fb.group({});
   // uploadedFiles: Array<IUploadedFile> = []
@@ -28,18 +28,6 @@ export class AdminLibraryComponent {
   //   this.uploadedFiles.push(file);
   // }
 
-  onSubmit() {
-    this.showSuccessMessage = true;
-    console.log('Form submitted:');
-  }
-
-  onFileChange(event: any) {
-  
-    // const file = event.target.files[0];
-    // console.log('Selected file:', file);
-  }
-  goBack() {
-    this.showSuccessMessage = false;
-  }
+ 
   
 }

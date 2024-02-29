@@ -21,9 +21,9 @@ export abstract class BaseService<T> {
     this.options = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
   }
 
-  public get(params: any): Observable<HttpResponse<T>> {
+  public get(params: any, _url: string): Observable<HttpResponse<T>> {
     return this.httpClient
-      .get<HttpResponse<T>>(`${this.apiUrl}` + endPoints.libraries, { params: params })
+      .get<HttpResponse<T>>(`${this.apiUrl}` + _url, { params: params })
       .pipe(map((result) => {
         return new this.tConstructor(result);
       }));

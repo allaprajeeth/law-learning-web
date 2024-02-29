@@ -4,6 +4,7 @@ import { Library } from 'src/app/common/models/library.model';
 import { LibraryService } from 'src/app/common/services/library/library.service';
 import { HttpResponse } from 'src/app/common/models/response.model';
 import { Pagination } from 'src/app/common/models/pagination.model';
+import { endPoints } from 'src/app/common/constants/endpoints';
 
 @Component({
   selector: 'app-library',
@@ -23,7 +24,7 @@ export class LibraryComponent {
   }
 
   loadLibraries(params: any) {
-    this.libraryService.get(params).subscribe((response: HttpResponse<Library>) => {
+    this.libraryService.get(params, endPoints.libraries).subscribe((response: HttpResponse<Library>) => {
       for(var i in response.records){
         this.libraries.push(response.records[i]);
         this.pagination = new Pagination(response.pagination);
