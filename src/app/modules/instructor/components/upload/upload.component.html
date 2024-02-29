@@ -61,7 +61,7 @@
           <button type="button" class="add-subsection-button" (click)="toggleAddSubSection(mainIndex)">Add Sub Section</button>
 
           <div class="submit-btn">
-            <button type="submit" class="sub-btn" [disabled]="mainSectionForms.at(mainIndex)?.invalid">Submit</button>
+            <button type="submit" class="sub-btn" [disabled]="mainSectionForms.at(mainIndex).invalid">Submit</button>
           </div>
 
           <div *ngIf="mainSection.submitted" class="success-message">

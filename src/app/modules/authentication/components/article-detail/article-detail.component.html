@@ -10,7 +10,7 @@
       <!-- article-detail.component.html -->
 
 <button *ngIf="fileButtonVisible && article.files && article.files.length > 0"
-  (click)="openFile(article.files[0]?.url, article.files[0]?.fileName)">Open File</button>
+  (click)="openFile(article.files[0].url, article.files[0].fileName)">Open File</button>
 
 
         <p>{{ storedFileContent }}</p>

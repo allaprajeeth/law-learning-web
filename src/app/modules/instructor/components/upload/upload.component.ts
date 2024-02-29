@@ -323,8 +323,6 @@ export class UploadComponent implements  OnInit, AfterViewInit {
     }
   }
 
-  
-
   onMainSectionNameEntered(mainIndex: number) {
     const mainSection = this.mainSections[mainIndex];
     const newTitle = mainSection.title.trim();
