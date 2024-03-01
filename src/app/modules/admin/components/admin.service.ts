@@ -6,14 +6,19 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ArticleApiResponse, Article } from './admin.model';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AdminService {
+  getLibraryData() {
+    throw new Error('Method not implemented.');
+  }
   approvalResponse: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private domSanitizer: DomSanitizer) {}
 
   getApprovedArticles(): Observable<ArticleApiResponse> {
     return this.http.get<ArticleApiResponse>(`${endPoints.baseURL}/secure/articles/review`);
@@ -29,7 +34,7 @@ export class AdminService {
     );
   }
 
-  getFileContent(fileId: number | string): Observable<string> {
+  getFileContent(fileId: number | string): Observable<SafeResourceUrl> {
     const fileContentUrl = `${endPoints.baseURL}/files/${fileId}`;
     return this.http.get<string>(fileContentUrl).pipe(
       catchError((error) => {

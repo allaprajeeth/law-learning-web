@@ -57,7 +57,6 @@ import { AdvisorDetailsComponent } from './common/components/advisor-details/adv
 import { LogoutService } from './common/services/logout.service';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
-import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { CartEffects } from './modules/subscriber/components/course-card/state/cart.effects';
 import { EmailVerificationComponent } from './common/components/email-verification/email-verification.component';
@@ -93,7 +92,6 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     ForgotEmailComponent,
     AdvisorDetailsComponent,
     PostdetailComponent,
-    PdfViewerComponent,
     EmailVerificationComponent,
     PhoneVerificationComponent,
 

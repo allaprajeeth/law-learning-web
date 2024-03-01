@@ -1,17 +1,10 @@
-<div class="fixed-header">
-  <h1 class="knowledgeCentre">Library</h1>
-  <table border="1" class="pdftable">
-    <tbody>
-      <tr *ngFor="let library of libraries; let i = index" (click)="openFile(library)">
-        <td><mat-icon>picture_as_pdf</mat-icon></td>
-        <td target="blank" [title]="library.url">{{ library.title | uppercase }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <div id="loadMore">
-    <button mat-button *ngIf="apiLoading" [disabled]="apiLoading">
-      <mat-icon><mat-spinner diameter="20">
-        </mat-spinner></mat-icon>Loading</button>
-    <button mat-button *ngIf="!apiLoading" (click)="loadMore()">Load More</button>
-  </div>
-</div>
+<tbody>
+  <tr *ngFor="let library of libraries; let i = index">
+    <td><mat-icon>picture_as_pdf</mat-icon></td>
+    <td target="blank" [title]="library.url">{{ library.title | uppercase }}</td>
+    <td>
+      <button mat-button (click)="openFile(library)">Open File</button>
+      <div *ngIf="library.showFileContent">{{ library.fileContent }}</div>
+    </td>
+  </tr>
+</tbody>

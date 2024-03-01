@@ -7,8 +7,10 @@ export class Library extends BaseModel<Library> {
   public contentType!: string;
   public url!: string;
   public deleted!: boolean;
+  public showFileContent: boolean = false;  // Initialize with false
+  public fileContent: string = '';  // Initialize with an empty string
 
-    constructor(model?: Library) {
-      super(model);
-    }
+  constructor(model?: Library) {
+    super(model);
   }
+}
