@@ -26,7 +26,6 @@ import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgo
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
-import { PdfViewerComponent } from './common/components/pdf-viewer/pdf-viewer.component';
 import { SharedTCComponent } from './shared-module/components/shared-tc/shared-tc.component';
 import { roleGuard } from './common/guards/role-guard/role.guard';
 import { redirectGuard } from './common/guards/redirect-guard/redirect.guard';
@@ -100,17 +99,13 @@ const routes: Routes = [
     component:OverviewComponent
   },
   {
-    path: 'documents',
+    path: 'library',
     component:DocumentsComponent
   },
   {
     path:"instructor/editcourses",
     component:EditcoursesComponent
   },
-  
-    { path: 'pdf-viewer', 
-      component:PdfViewerComponent
-   },
   {
     path: 'videoplayer',
     component:VideoplayerComponent
