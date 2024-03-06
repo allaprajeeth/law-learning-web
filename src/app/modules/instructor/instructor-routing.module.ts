@@ -30,6 +30,7 @@ import { SubmissionCoursesInfoComponent } from './components/submission-courses-
 import { UnderReviewCoursesInfoComponent } from './components/under-review-courses-info/under-review-courses-info.component';
 import { ApprovedCoursesInfoComponent } from './components/approved-courses-info/approved-courses-info.component';
 import { CommentedCoursesInfoComponent } from './components/commented-courses-info/commented-courses-info.component';
+import { CourseWidgetComponent } from './components/course-widget/course-widget.component';
 
 const routes: Routes = [
   {
@@ -55,11 +56,11 @@ const routes: Routes = [
   },
   {
     path: 'courses',
-    component: CoursesComponent,
+    component: CourseWidgetComponent,
   },
   {
     path: 'courses/:id',
-    component: CoursesComponent,
+    component: CourseWidgetComponent,
   },
   // {
   //   path: 'instructor/editcourses',

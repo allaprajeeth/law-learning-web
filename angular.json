@@ -17,6 +17,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "core-js", "raf", "rgbcolor", "file-saver", "pdfjs-dist", "plyr", "html2canvas"
+            ],
             "outputPath": "dist/law-learning-web",
             "index": "src/index.html",
             "main": "src/main.ts",

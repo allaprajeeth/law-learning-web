@@ -38,7 +38,7 @@ export abstract class BaseService<T> {
     }));;
   }
 
-  public getById(_url: string, params: any): Observable<HttpResponse<T>> {
+  public getById(_url: string, params?: any): Observable<HttpResponse<T>> {
     return this.httpClient
       .get<HttpResponse<T>>(`${this.apiUrl}` + _url, { params: params })
       .pipe(map((result) => {
@@ -55,6 +55,18 @@ export abstract class BaseService<T> {
   public patch(url: string, body: T, options: HttpHeaders): Observable<HttpResponse<T>> {
     const headers = new HttpHeaders();
     return this.httpClient.patch<HttpResponse<T>>(`${this.apiUrl}` + url, body, this.options).pipe(map((result) => {
+      return new this.tConstructor(result);
+    }), catchError((error: any, caught: Observable<any>): Observable<any> => {
+      console.error('There was an error!', error);
+      // after handling error, return a new observable 
+      // that doesn't emit any values and completes
+      return of();
+    }));;
+  }
+
+  public patchWithAttachments(url: string, formData: FormData, options?: HttpHeaders): Observable<HttpResponse<T>> {
+    const headers = new HttpHeaders();
+    return this.httpClient.patch<HttpResponse<T>>(`${this.apiUrl}` + url, formData, this.options).pipe(map((result) => {
       return new this.tConstructor(result);
     }), catchError((error: any, caught: Observable<any>): Observable<any> => {
       console.error('There was an error!', error);

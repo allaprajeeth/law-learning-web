@@ -1,0 +1,199 @@
+.mat-mdc-card-title { 
+    font-size: 14px;
+}
+.material-icons.color_green { color: #007791; }
+.mat-mdc-card-header{
+    display: block;
+}
+.container-wrapper {
+    min-height: 80%;
+}
+.section-boarder {
+    //border: 1px solid red;
+    //padding: 2px;
+    margin: 10px;
+}
+.sub-section-boarder {
+    //border: 1px solid blue;
+    //padding: 2px;
+    width: 95%;
+    float: right;
+    margin: 10px;
+}
+.form-container {
+    padding: 20px;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-left: 30px;
+        margin-bottom: 15px;
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        small {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .skill {
+            font-weight: 400;
+        }
+
+        .input-with-symbol {
+            position: relative;
+        }
+
+        .currency-symbol {
+            position: absolute;
+            left: 10px;
+            /* Adjust the distance from the left */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #333;
+            /* Adjust the color */
+        }
+
+        /* Additional styling for the input field */
+        .input-with-symbol input {
+            padding-left: 30px;
+            /* Adjust to accommodate the symbol */
+        }
+
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select,
+        input[type="file"] {
+            width: 98%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        input[type="file"] {
+            border: none;
+            background-color: #ffffff;
+        }
+
+        .test {
+            font-weight: 400;
+        }
+        .input-with-symbol{
+            width: 98.5%;
+        }
+    }
+
+    .success-message {
+        color: green;
+        font-size: 16px;
+
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+
+        button {
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            border: none;
+            border-radius: 5px;
+
+            &.small-button {
+                padding: 3px 5px;
+                font-size: 12px;
+            }
+
+            &.enabled-button {
+                background-color: #007791;
+                color: #fff;
+            }
+
+            &.disabled-button {
+                background-color: #ccc;
+                color: #000;
+                cursor: not-allowed;
+            }
+
+            &:not(:last-child) {
+                margin-right: 10px;
+            }
+
+            svg {
+                margin-right: 5px; // Adjust margin based on your preference
+            }
+        }
+    }
+
+
+
+    .center-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: #007791;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        &:not(:disabled) {
+            &:hover {
+                background-color: 007791;
+            }
+        }
+    }
+
+    .center-button {
+        margin: 0 auto;
+        /* Center the button horizontally */
+        display: block;
+        /* Ensure it takes up the full width available */
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 20px;
+    }
+
+    .duration-input {
+        display: flex;
+        gap: 10px;
+    }
+
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+}
+
+.example-headers-align .mat-mdc-form-field+.mat-mdc-form-field {
+    margin-left: 8px;
+}
+.mat-expansion-panel-header{
+    font-weight: bold;
+}

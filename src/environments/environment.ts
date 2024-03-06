@@ -19,6 +19,7 @@ export const environment = {
         libraries: '/libraries',
         auth: '/auth',
         secure: '/secure',
-        search_courses: '/search-courses'
+        search_courses: '/search-courses',
+        course: '/courses'
     }
 };

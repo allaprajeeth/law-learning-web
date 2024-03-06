@@ -35,6 +35,10 @@ export class HomepageComponent implements OnInit {
   onEditCourse(courseId: number) {
     this.router.navigate(['/instructor/courses', courseId]);
   }
+
+  onImageError(event: any) {
+    event.target.src = 'assets/law.png';
+  }
 }
 
 

@@ -1,24 +1,25 @@
 import { BaseModel } from "./base.model";
+import { Section } from "./section.model";
 
-interface Section {
-  id?: number; 
-  duration: {
-    minutes: number;
-    seconds: number;
-  };
-  name: string;
-  title: string;
-  description: string;
-  subSections: SubSection[];
-  submitted: boolean;
-  status: string;
-  isNameEntered: boolean;
-  isSaveEnabled: boolean;
-  isSubmitEnabled: boolean;
-  buttonColor: string;
-  showAddSubSectionInput?: boolean; 
-  newSubSectionTitle?: string; 
-}
+// interface Section {
+//   id?: number; 
+//   duration: {
+//     minutes: number;
+//     seconds: number;
+//   };
+//   name: string;
+//   title: string;
+//   description: string;
+//   subSections: SubSection[];
+//   submitted: boolean;
+//   status: string;
+//   isNameEntered: boolean;
+//   isSaveEnabled: boolean;
+//   isSubmitEnabled: boolean;
+//   buttonColor: string;
+//   showAddSubSectionInput?: boolean; 
+//   newSubSectionTitle?: string; 
+// }
 
 interface SubSection {
   title: string;

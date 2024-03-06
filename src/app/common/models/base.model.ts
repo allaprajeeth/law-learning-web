@@ -2,7 +2,7 @@ import { Course } from "./course.model";
 
 export abstract class BaseModel<T> {
     public data?: {
-      sections: { content?: Course[] | undefined; } | undefined;
+      sections: { content?: T[] | undefined; } | undefined;
       content?: T[] | T;
     };
     public pageable?: {
