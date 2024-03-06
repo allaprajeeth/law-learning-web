@@ -34,3 +34,11 @@ export interface ArticleApiResponse {
   content: never[];
   articles: Article[];
 }
+export interface FileDetail {
+  id: number;
+  fileName: string;
+  url: string;
+  contentType: string;
+  createdDate: string;
+  // Add more properties as needed
+}
