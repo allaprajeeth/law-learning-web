@@ -8,6 +8,7 @@ import { PublicProfileComponent } from './components/public-profile/public-profi
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
 import { EditcoursesComponent } from './components/editcourses/editcourses.component';
 import { ArticleComponent } from './components/article/article.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
@@ -30,7 +31,6 @@ import { UnderReviewCoursesInfoComponent } from './components/under-review-cours
 import { ApprovedCoursesInfoComponent } from './components/approved-courses-info/approved-courses-info.component';
 import { CommentedCoursesInfoComponent } from './components/commented-courses-info/commented-courses-info.component';
 import { CourseWidgetComponent } from './components/course-widget/course-widget.component';
-import { AboutusComponent } from 'src/app/common/components/aboutus/aboutus.component';
 
 const routes: Routes = [
   {

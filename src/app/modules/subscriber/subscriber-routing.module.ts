@@ -16,6 +16,7 @@ import { SubscribernavComponent } from './components/subscribernav/subscribernav
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { SubarticleComponent } from './subarticle/subarticle.component';
 import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
@@ -27,7 +28,6 @@ import { StatusarticlepageComponent } from './components/statusarticlepage/statu
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
-import { AboutusComponent } from 'src/app/common/components/aboutus/aboutus.component';
 
 const routes: Routes = [
   {

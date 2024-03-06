@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { ContentManagerLibraryComponent } from './components/content-manager-library/content-manager-library.component';
 import { ArticleComponent } from './components/article/article.component';
@@ -15,7 +16,6 @@ import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
-import { AboutusComponent } from 'src/app/common/components/aboutus/aboutus.component';
 
 const routes: Routes = [
   {

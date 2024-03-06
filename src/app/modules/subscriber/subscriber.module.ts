@@ -35,6 +35,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { SubarticleComponent } from './subarticle/subarticle.component';
 import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CarouselModule } from 'primeng/carousel';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
@@ -78,6 +79,7 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     ArticleformComponent,
     SubarticleComponent,
     SubdocumentsComponent,
+    AboutusComponent,
     CheckoutComponent,
     SubmitmesgComponent,
     ContactusComponent,

@@ -28,6 +28,7 @@ import { SuccessDialogComponent } from './components/success-dialog/success-dial
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { InstructorSidenavComponent } from './components/instructor-sidenav/instructor-sidenav.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { TestpreviewComponent } from './components/testpreview/testpreview.component';
@@ -73,6 +74,7 @@ import {MatStepperModule} from '@angular/material/stepper';
     VideoplayerComponent,
     SuccessDialogComponent,
     InstructorSidenavComponent,
+    AboutusComponent,
     QuiztestComponent,
     UploadComponent,
     TestpreviewComponent,
