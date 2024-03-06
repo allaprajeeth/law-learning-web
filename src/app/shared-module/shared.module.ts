@@ -35,6 +35,8 @@ import { LogoutPopupComponent } from './components/logout-popup/logout-popup.com
 import { PublishArticlesComponent } from './components/publish-articles/publish-articles.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
+import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
  
@@ -59,6 +61,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
      LogoutPopupComponent,
      PublishArticlesComponent,
      FileUploadComponent,
+     ConfirmationAlertComponent,
     ],
 
   imports: [
@@ -66,6 +69,7 @@ import { FileUploadComponent } from './components/file-upload/file-upload.compon
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
     MatIconModule,

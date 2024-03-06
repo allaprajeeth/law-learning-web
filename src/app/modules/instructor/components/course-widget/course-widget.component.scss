@@ -1,18 +1,30 @@
-.mat-mdc-card-title { 
+.mat-mdc-card-title {
     font-size: 14px;
 }
-.material-icons.color_green { color: #007791; }
-.mat-mdc-card-header{
+
+.example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.material-icons.color_green {
+    color: #007791;
+}
+
+.mat-mdc-card-header {
     display: block;
 }
+
 .container-wrapper {
     min-height: 80%;
 }
+
 .section-boarder {
     //border: 1px solid red;
     //padding: 2px;
     margin: 10px;
 }
+
 .sub-section-boarder {
     //border: 1px solid blue;
     //padding: 2px;
@@ -20,6 +32,7 @@
     float: right;
     margin: 10px;
 }
+
 .form-container {
     padding: 20px;
 
@@ -92,7 +105,8 @@
         .test {
             font-weight: 400;
         }
-        .input-with-symbol{
+
+        .input-with-symbol {
             width: 98.5%;
         }
     }
@@ -194,6 +208,7 @@
 .example-headers-align .mat-mdc-form-field+.mat-mdc-form-field {
     margin-left: 8px;
 }
-.mat-expansion-panel-header{
+
+.mat-expansion-panel-header {
     font-weight: bold;
 }

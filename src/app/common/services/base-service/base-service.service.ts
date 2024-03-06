@@ -75,4 +75,8 @@ export abstract class BaseService<T> {
       return of();
     }));;
   }
+
+  public delete(_url: string, params?: any): Observable<any> {
+    return this.httpClient.delete(`${this.apiUrl}` + _url, { params: params });
+  }
 }

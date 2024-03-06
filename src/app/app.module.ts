@@ -85,8 +85,6 @@ import { DurationPipe } from './common/pipes/duration.pipe';
     FreecourseComponent,
     AboutusComponent,
     TermsandconComponent,
-    OverviewFreecourseComponent,  
-    OverviewFreecourseComponent,  
     OverviewFreecourseComponent,
     ContactusComponent,
     ForgotPhonenoComponent,

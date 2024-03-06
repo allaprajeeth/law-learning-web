@@ -85,103 +85,83 @@
                     </div>
                 </mat-step>
                 <mat-step [stepControl]="getSections">
-                    <ng-template matStepLabel>Sections</ng-template>
-                    <div formArrayName="sections">
+                    <ng-template matStepLabel>Course Content</ng-template>
+                    <mat-accordion formArrayName="sections" class="example-headers-align" multi>
                         <div *ngFor="let sectionForm of getSections.controls; index as i;" [formGroupName]="i"
                             class="section-boarder">
-                            <mat-card>
-                                <mat-card-header>
-                                    <mat-card-title>Section {{i + 1}}
-                                        <button type="button" (click)="removeSection(i)">
-                                            <mat-icon class="material-icons color_green">delete</mat-icon>
-                                        </button>
-                                    </mat-card-title>
-                                    <mat-card-subtitle>
-                                        <input type="hidden" id="id" name="id" formControlName="id">
-                                        <div class="form-group">
-                                            <label for="title">Section Title:</label>
-                                            <input matInput type="text" id="title" name="title" formControlName="title"
-                                                required>
-                                        </div>
+                            <mat-expansion-panel [expanded]="i == sectionStep"
+                                (opened)="setStepExpansionPanel(i, 'section')">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title> Section {{i + 1}} </mat-panel-title>
+                                    <mat-panel-description>
+                                        Description
+                                        <button mat-icon-button
+                                            (click)="removeSection(i, sectionForm.get('id')?.value, $event)"
+                                            color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                    </mat-panel-description>
+                                </mat-expansion-panel-header>
+                                <input type="hidden" id="id" name="id" formControlName="id">
+                                <div class="form-group">
+                                    <label for="title">Section Title:</label>
+                                    <input matInput type="text" id="title" name="title" formControlName="title"
+                                        required>
+                                </div>
 
-                                        <div class="form-group">
-                                            <label for="description">Section Description:</label>
-                                            <textarea id="description" name="description" formControlName="description"
-                                                rows="4" required></textarea>
-                                        </div>
-                                        <div formArrayName="subSections">
-                                            <div *ngFor="let subSectionForm of getSubSections(i).controls; index as j;"
-                                                [formGroupName]="j" class="sub-section-boarder">
-                                                <mat-card>
-                                                    <mat-card-header>
-                                                        <mat-card-title>Sub Section {{j + 1}}
-                                                            <button type="button" (click)="removeSubSection(i, j)">
-                                                                <mat-icon
-                                                                    class="material-icons color_green">delete</mat-icon>
-                                                            </button>
-                                                        </mat-card-title>
-                                                        <mat-card-subtitle>
-                                                            <input type="hidden" id="id" name="id" formControlName="id">
-                                                            <div class="form-group">
-                                                                <label for="title">Section Title:</label>
-                                                                <input matInput type="text" id="title" name="title"
-                                                                    formControlName="title" required>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="description">Section Description:</label>
-                                                                <textarea id="description" name="description"
-                                                                    formControlName="description" rows="4"
-                                                                    required></textarea>
-                                                            </div>
-                                                        </mat-card-subtitle>
-                                                    </mat-card-header>
-                                                </mat-card>
+                                <div class="form-group">
+                                    <label for="description">Section Description:</label>
+                                    <textarea id="description" name="description" formControlName="description" rows="4"
+                                        required></textarea>
+                                </div>
+                                <!-- //TODO - Add subSections -->
+                                <div formArrayName="subSections">
+                                    <div *ngFor="let subSectionForm of getSubSections(i).controls; index as j;"
+                                        [formGroupName]="j" class="sub-section-boarder">
+                                        <mat-expansion-panel [expanded]="j == subSectionStep"
+                                            (opened)="setStepExpansionPanel(j, 'sub_section')">
+                                            <mat-expansion-panel-header>
+                                                <mat-panel-title> Sub Section {{j + 1}} </mat-panel-title>
+                                                <mat-panel-description>
+                                                    Description
+                                                    <button mat-icon-button
+                                                        (click)="removeSubSection(i, j, sectionForm.get('id')?.value, subSectionForm.get('id')?.value, $event)"
+                                                        color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                                </mat-panel-description>
+                                            </mat-expansion-panel-header>
+                                            <input type="hidden" id="id" name="id" formControlName="id">
+                                            <div class="form-group">
+                                                <label for="title">Sub Section Title:</label>
+                                                <input matInput type="text" id="title" name="title"
+                                                    formControlName="title" required>
                                             </div>
-                                        </div>
-                                    </mat-card-subtitle>
-                                </mat-card-header>
-                                <mat-card-actions align="end" class="button-container">
+                                            <div class="form-group">
+                                                <label for="description">Sub Section Description:</label>
+                                                <textarea id="description" name="description"
+                                                    formControlName="description" rows="4" required></textarea>
+                                            </div>
+                                        </mat-expansion-panel>
+                                    </div>
+                                </div>
+                                <mat-action-row align="end" class="button-container">
                                     <button type="button" (click)="addSubSection(i)"
                                         class="small-button enabled-button">
                                         <mat-icon class="black-icon">add</mat-icon>Sub Section
                                     </button>
-                                </mat-card-actions>
-                            </mat-card>
-                            <br>
+                                </mat-action-row>
+                            </mat-expansion-panel>
                         </div>
-                    </div>
+                    </mat-accordion>
                     <div class="button-container">
                         <button type="button" (click)="addSection()" class="small-button enabled-button">
                             <mat-icon class="black-icon">add</mat-icon>Section
                         </button>
                     </div>
-                    <!-- <mat-accordion class="example-headers-align" formArrayName = "sectionsArray">
-                        <mat-expansion-panel *ngFor="let sectionForm of getSections.controls; index as i;" [expanded]="i==0" [formGroupName]="i"> 
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>{{ sectionForm.value.title ? sectionForm.value.title : 'Section '+i}}</mat-panel-title>
-                            </mat-expansion-panel-header>
-
-                            <div class="form-group">
-                                <label for="title">Section Title <span class="required-field">**</span> : </label>
-                                <input type="text" id="title" placeholder="section name" required
-                                    formControlName="title">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="description">Description:</label>
-                                <textarea id="description" placeholder="Enter description" formControlName="description"
-                                    rows="4" required></textarea>
-                            </div>
-                            <mat-action-row>
-                                <button mat-button color="primary" (click)="createSection()">Create Section</button>
-                            </mat-action-row>
-                        </mat-expansion-panel>
-                    </mat-accordion> -->
                     <div class="button-container">
                         <button type="button" (click)="onPrevious(stepper)" class="enabled-button">
                             <mat-icon class="black-icon">keyboard_arrow_left</mat-icon>Previous
                         </button>
-
+                        <button type="button" (click)="onSubmit()" class="enabled-button">
+                            Save
+                        </button>
                         <button type="submit"
                             [ngClass]="{'disabled-button': courseForm.invalid, 'enabled-button': !courseForm.invalid}"
                             [disabled]="courseForm.invalid" (click)="onNext(stepper)">
@@ -190,11 +170,23 @@
                     </div>
                 </mat-step>
                 <mat-step>
-                    <ng-template matStepLabel>Section Content</ng-template>
-                    <p>You are now done.</p>
+                    <ng-template matStepLabel>Course Preview</ng-template>
                     <div>
-                        <button mat-button matStepperPrevious>Back</button>
-                        <button mat-button (click)="stepper.reset()">Reset</button>
+                        <div class="course-info-container">
+                            <mat-tab-group>
+                                <mat-tab label="Overview">
+                                    <div class="tabs">
+                                    </div>
+                                </mat-tab>
+                                <mat-tab label="Watch Content">
+                                    <app-videoplayer></app-videoplayer>
+                                </mat-tab>
+                            </mat-tab-group>
+                        </div>
+                        <div>
+                            <button mat-button matStepperPrevious>Back</button>
+                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        </div>
                     </div>
                 </mat-step>
             </form>
