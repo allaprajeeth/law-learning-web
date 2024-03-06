@@ -4,7 +4,6 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { AdminLibraryComponent } from './components/library/library.component';
@@ -28,6 +27,7 @@ import { ProfileDetailsComponent } from './components/profile-details/profile-de
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
+import { AboutusComponent } from 'src/app/common/components/aboutus/aboutus.component';
 
 
 const routes: Routes = [

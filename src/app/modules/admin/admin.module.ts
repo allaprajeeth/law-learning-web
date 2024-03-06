@@ -18,7 +18,6 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ErrorHandlerService } from 'src/app/common/services/error-handler/error-handler.service';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
@@ -57,7 +56,6 @@ import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component
     AdminnavComponent,
     CourseInfoComponent,
     VideoplayerComponent,
-    AboutusComponent,
     NotificationComponent,
     TermsandcondiComponent,
     AdminLibraryComponent,
