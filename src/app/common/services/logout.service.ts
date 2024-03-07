@@ -7,6 +7,7 @@ import { LoggingService } from 'src/app/common/services/logging/logging.service'
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 import { LoginService } from '../components/login/services/login.service';
+import { UserDetailsService } from 'src/app/common/services/user-details/user-details.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,30 +16,28 @@ export class LogoutService {
 
   constructor(
     private apiService: ApiService,
-    private authTokenService: AuthTokenService,
     private loggingService: LoggingService,
-    private loginService:LoginService
+    private userDetailsService: UserDetailsService
+  
     
   ) { }
   
-email=''
+  name: string | undefined;
+  email: string | undefined;
+  phoneno: string | undefined;
+  jwtToken: string | null = null;
     
 logOutUser(): Observable<any> {
-  const token = localStorage.getItem('jwtToken');
-  const userDetails= localStorage.getItem('userDetails');
 
-  if (userDetails) { 
-    try {
-      const userDetail= JSON.parse(userDetails);
-      this.email = userDetail.email;
-    
-      
-    } catch (error) {
-      console.error('Error parsing user details:', error);
-    }
-  }
+  this.userDetailsService.getUserInfoFromLocalStorage();
+  this.name = this.userDetailsService.name;
+  this.email = this.userDetailsService.email;
+  this.phoneno = this.userDetailsService.phoneno;
+  this.jwtToken = this.userDetailsService.jwtToken;
+
+ 
   const logoutData={
-   token,
+   token:this.jwtToken,
    email:this.email
   }
     let url = endPoints.baseURL + endPoints.auth + endPoints.logout;
@@ -50,7 +49,6 @@ logOutUser(): Observable<any> {
       }),
       catchError((errorResponse: any) => {
         if (errorResponse instanceof HttpErrorResponse) {
-          // console.log("@@error", errorResponse);
           this.loggingService.log(errorResponse?.error?.error.message);
           console.log(errorResponse?.error?.error.message)
           
