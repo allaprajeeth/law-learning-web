@@ -1,10 +1,3 @@
-
-<div class="download"  >
-    <button mat-raised-button   (click)="downloadResource($event)" >
-    <a>Download
-        <mat-icon class="mat-icon-download">get_app</mat-icon>
-    </a>
-</button>
+<div *ngIf="pdfSrc">
+    <pdf-viewer [src]="pdfSrc" ></pdf-viewer>
 </div>
-
-<pdf-viewer [src]="pdfSrc"></pdf-viewer>

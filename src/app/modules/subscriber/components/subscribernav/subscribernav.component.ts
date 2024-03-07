@@ -64,18 +64,7 @@ export class SubscribernavComponent implements OnInit {
   }
 
   onLogout(): void {
-    this.sharedService.showLogoutAlert = true;
-    this.logoutService.logOutUser().subscribe(() => {
-      localStorage.removeItem('userDetails');
-      localStorage.removeItem('jwtToken');
-    });
-    this.router.navigate(['/header']);
-    setTimeout(() => {
-      this.sharedService.showLogoutAlert = false;
-    }, 5000);
-    
-
-
+    this.logoutService.logOutUser().subscribe(() => { });
     this.showLogoutPopup = false;
   }
 }

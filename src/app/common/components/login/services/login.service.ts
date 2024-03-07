@@ -24,11 +24,7 @@ export class LoginService {
     
   ) {}
 
-  setUserInfoInLocalStorage(email: string, name: string, phone: string) {
-    localStorage.setItem('loggedInUserEmail', email);
-    localStorage.setItem('loggedInUserName', name);
-    localStorage.setItem('loggedInUserPhone', phone);
-  }
+ 
 
   getAuthTokenService(): AuthTokenService {
     return this.authTokenService;
