@@ -8,7 +8,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { endPoints } from 'src/app/common/constants/endpoints';
-
+import { NotificationService } from '../../../../common/services/notification/notification.service'
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
@@ -35,7 +35,8 @@ export class ArticleDetailComponent implements OnInit {
     private router: Router,
     private adminService: AdminService,
     private fileSaverService: FileSaverService,
-    private http: HttpClient
+    private http: HttpClient,
+    private notificationService: NotificationService,
   ) {}
 
   ngOnInit(): void {
@@ -150,7 +151,6 @@ export class ArticleDetailComponent implements OnInit {
       this.approvalStatus = 'rejected';
       this.articleRejected = true;
       this.articleee = false;
-  
       const articleId = this.articleId;
   
       if (articleId) {
@@ -168,6 +168,7 @@ export class ArticleDetailComponent implements OnInit {
         this.http.patch(articleUrl, articleData, { headers }).subscribe(
           (response) => {
             console.log('Article rejection successful:', response);
+            this.notificationService.notify('Article rejection successful');
             this.adminService.setApprovalResponse(response);
           },
           (error) => {

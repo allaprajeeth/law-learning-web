@@ -7,7 +7,7 @@ import { FileSaverService } from 'ngx-filesaver';
 import { saveAs } from 'file-saver';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endPoints } from 'src/app/common/constants/endpoints';
- 
+import { NotificationService } from '../../../../common/services/notification/notification.service'
  
 @Component({
   selector: 'app-article-detail',
@@ -32,7 +32,8 @@ export class ArticleDetailComponent implements OnInit {
     private router: Router,
     private fileSaverService: FileSaverService,
     private cdr: ChangeDetectorRef,
-    private http: HttpClient
+    private http: HttpClient ,
+    private notificationService: NotificationService,
  
   ) {}
  
@@ -162,6 +163,8 @@ export class ArticleDetailComponent implements OnInit {
       this.http.patch(articleUrl, articleData, { headers }).subscribe(
         (response) => {
           console.log('Article approval successful:', response);
+          this.notificationService.notify('Article approved  successfully');
+          this.router.navigate(['/authentication/homepage']);
           this.articleService.setApprovalResponse(response);
         },
         (error) => {
@@ -207,6 +210,8 @@ export class ArticleDetailComponent implements OnInit {
         this.http.patch(articleUrl, articleData, { headers }).subscribe(
           (response) => {
             console.log('Article rejection successful:', response);
+            this.notificationService.notify('Article rejection successful');
+            this.router.navigate(['/authentication/homepage']);
             this.articleService.setApprovalResponse(response);
             this.articleee = false;
   
