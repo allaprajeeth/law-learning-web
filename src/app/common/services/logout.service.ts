@@ -24,18 +24,13 @@ export class LogoutService {
 email=''
     
 logOutUser(): Observable<any> {
-  // const email = this.loginService.loggedInUserEmail$
-  // const jwtToken =this.authTokenService.jwtToken$.value;
-  // console.log(email)email=''
   const token = localStorage.getItem('jwtToken');
   const userDetails= localStorage.getItem('userDetails');
-  const username = localStorage.getItem('loggedInUserName');
+
   if (userDetails) { 
     try {
       const userDetail= JSON.parse(userDetails);
-
-      // Check if the expected properties are present
-        this.email = userDetail.email;
+      this.email = userDetail.email;
     
       
     } catch (error) {
@@ -45,11 +40,8 @@ logOutUser(): Observable<any> {
   const logoutData={
    token,
    email:this.email
-  
-  
   }
     let url = endPoints.baseURL + endPoints.auth + endPoints.logout;
-
     return this.apiService.post(url, logoutData).pipe(
       tap((response: any) => {
         if (!!response ) {
@@ -61,7 +53,7 @@ logOutUser(): Observable<any> {
           // console.log("@@error", errorResponse);
           this.loggingService.log(errorResponse?.error?.error.message);
           console.log(errorResponse?.error?.error.message)
-          // this.notificationService.notify(errorResponse?.error?.error.message);
+          
         }
         return EMPTY;
       })

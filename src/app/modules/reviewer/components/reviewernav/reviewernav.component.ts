@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/common/components/login/services/login.service';
 import { PopupService } from 'src/popup.service';
+import { UserDetailsService } from 'src/app/common/services/user-details/user-details.service';
+import { LogoutService } from 'src/app/common/services/logout.service';
 
 @Component({
   selector: 'app-reviewernav',
@@ -10,13 +11,29 @@ import { PopupService } from 'src/popup.service';
 })
 export class ReviewernavComponent {
   showLogoutPopup = false;
-  name: string = '';
-  email="";
-  username="";
+  name: string | undefined;
+  email: string | undefined;
+  phoneno: string | undefined;
+  jwtToken: string | null = null;
+
 
   constructor(private router: Router, 
     private sharedService: PopupService,
-    private loginService:LoginService,) {}
+    private userDetailsService: UserDetailsService,
+    private logoutService:LogoutService,
+   ) {}
+
+   ngOnInit() {
+      
+    this.userDetailsService.getUserInfoFromLocalStorage();
+    this.name = this.userDetailsService.name;
+    this.email = this.userDetailsService.email;
+    this.phoneno = this.userDetailsService.phoneno;
+    this.jwtToken = this.userDetailsService.jwtToken;
+
+  }
+
+
 
   onUserCircleClick(event: Event) {
     event.preventDefault();
@@ -36,10 +53,19 @@ export class ReviewernavComponent {
 
   onLogout(): void {
     this.sharedService.showLogoutAlert = true;
+  
+    this.logoutService.logOutUser().subscribe(() => {
+      console.log('logged out successfully');
+  
+      localStorage.removeItem('jwtToken');
+      localStorage.removeItem('userDetails');
 
+    });
+  
     setTimeout(() => {
       this.sharedService.showLogoutAlert = false;
     }, 5000);
+  
     this.router.navigate(['/header']);
     this.showLogoutPopup = false;
   }

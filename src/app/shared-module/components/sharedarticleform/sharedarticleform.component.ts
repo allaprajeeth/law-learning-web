@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticleformService } from '../articleform.service';
 import { endPoints } from 'src/app/common/constants/endpoints';
-
+import { NotificationService } from '../../../common/services/notification/notification.service'
 @Component({
   selector: 'app-sharedarticleform',
   templateUrl: './sharedarticleform.component.html',
@@ -16,7 +16,8 @@ export class SharedarticleformComponent {
   
   constructor(private fb: FormBuilder, 
     private router: Router, 
-     private articleformService: ArticleformService
+     private articleformService: ArticleformService,
+     private notificationService: NotificationService,
      ) {
 
     this.articleForm = this.fb.group({
@@ -53,7 +54,10 @@ export class SharedarticleformComponent {
       this.articleformService.post<any>(endPoints.baseURL + '/secure/articles', this.formData).subscribe(
         (response) => {
           console.log('Article submitted successfully:', response);
-          this.router.navigate(['/subscriber/submitmesg']);
+          this.notificationService.notify('Article submitted successfully');
+          this.articleForm.reset();
+          // this.router.navigate(['/subscriber/submitmesg']);
+
         },
         (error) => {
           console.error('Error submitting article:', error);

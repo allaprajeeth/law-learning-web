@@ -1,9 +1,10 @@
-// adminnav.component.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ProfileService } from '../profile.service';
 import { SharedService } from 'src/app/shared-module/shared.service';
+import { UserDetailsService } from 'src/app/common/services/user-details/user-details.service';
+
 
 @Component({
   selector: 'app-adminnav',
@@ -13,41 +14,25 @@ import { SharedService } from 'src/app/shared-module/shared.service';
 export class AdminnavComponent implements OnInit {
   showLogoutPopup = false;
   auth: object | undefined;
-  name = "";
-  email = "";
-  username = "";
+  name: string | undefined;
+  email: string | undefined;
+  phoneno: string | undefined;
+  jwtToken: string | null = null;
 
   constructor(
     private router: Router,
-    private store: Store,
     private profileService: ProfileService,
     private sharedService: SharedService,
+    private userDetailsService: UserDetailsService
   ) {}
 
-  getUserInfoFromLocalStorage(): void {
-    const userDetailsString = localStorage.getItem('userDetails');
-    if (userDetailsString) { 
-      try {
-        const userDetails = JSON.parse(userDetailsString);
-        if (userDetails && userDetails.name && userDetails.email && userDetails.phone) {
-          this.name = userDetails.name;
-          this.email = userDetails.email;
-          this.username = userDetails.phone;
-          this.profileService.setUserName(this.name);
-          this.sharedService.setUserDetails(this.name, this.email, this.username);
-        } else {
-          console.error('Invalid user details format:', userDetails);
-        }
-      } catch (error) {
-        console.error('Error parsing user details:', error);
-      }
-    }
-  }
-
+  
   ngOnInit() {
-    this.getUserInfoFromLocalStorage();
-
-    // Subscribe to showLogoutAlert changes
+    this.userDetailsService.getUserInfoFromLocalStorage();
+      this.name = this.userDetailsService.name;
+      this.email = this.userDetailsService.email;
+      this.phoneno = this.userDetailsService.phoneno;
+      this.jwtToken = this.userDetailsService.jwtToken;
     this.sharedService.showLogoutAlert$.subscribe(value => {
       this.showLogoutPopup = value;
     });
@@ -65,4 +50,6 @@ export class AdminnavComponent implements OnInit {
   onClosePopup(): void {
     this.sharedService.setShowLogoutAlert(false);
   }
+
+  
 }
