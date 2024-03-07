@@ -16,7 +16,7 @@ export class LibraryComponent implements OnInit {
   libraries: Library[] = [];
   private pagination: Pagination = new Pagination();
   apiLoading = false;
-
+  pdfSrc:string | undefined 
   constructor(
     private router: Router,
     private libraryService: LibraryService,
@@ -25,6 +25,7 @@ export class LibraryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadLibraries(this.pagination.getPaginationRequest());
+    // this.pdfSrc="assets/Java.pdf"
   }
 
   loadLibraries(params: any) {
@@ -42,17 +43,8 @@ export class LibraryComponent implements OnInit {
   }
 
   openFile(library: Library): void {
-    // Fetch the file content from the server
-    this.libraryService.getFileContent(library.url).subscribe(
-      (fileContent: string) => {
-        // Update the library properties to show file content and store it
-        library.showFileContent = true;
-        library.fileContent = fileContent;
-      },
-      (error) => {
-        console.error('Error fetching file content:', error);
-      }
-    );
+    this.pdfSrc = endPoints.s3BaseURL + library.url;
+  
   }
   
 

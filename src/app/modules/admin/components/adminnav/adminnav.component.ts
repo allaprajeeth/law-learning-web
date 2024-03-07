@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { ProfileService } from '../profile.service';
 import { SharedService } from 'src/app/shared-module/shared.service';
 import { UserDetailsService } from 'src/app/common/services/user-details/user-details.service';
@@ -47,9 +46,12 @@ export class AdminnavComponent implements OnInit {
     this.sharedService.setShowLogoutAlert(true);
   }
   
+
+  
   onClosePopup(): void {
     this.sharedService.setShowLogoutAlert(false);
   }
+ 
 
   
 }

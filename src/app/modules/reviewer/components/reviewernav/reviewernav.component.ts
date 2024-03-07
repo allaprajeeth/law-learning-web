@@ -52,21 +52,7 @@ export class ReviewernavComponent {
   }
 
   onLogout(): void {
-    this.sharedService.showLogoutAlert = true;
-  
-    this.logoutService.logOutUser().subscribe(() => {
-      console.log('logged out successfully');
-  
-      localStorage.removeItem('jwtToken');
-      localStorage.removeItem('userDetails');
-
-    });
-  
-    setTimeout(() => {
-      this.sharedService.showLogoutAlert = false;
-    }, 5000);
-  
-    this.router.navigate(['/header']);
+    this.logoutService.logOutUser().subscribe(() => { });
     this.showLogoutPopup = false;
   }
 }
