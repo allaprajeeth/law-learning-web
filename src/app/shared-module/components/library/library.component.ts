@@ -7,6 +7,7 @@ import { Pagination } from 'src/app/common/models/pagination.model';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
 
+
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
@@ -53,5 +54,8 @@ export class LibraryComponent implements OnInit {
     this.pagination.page++;
     this.loadLibraries(this.pagination.getPaginationRequest());
     this.apiLoading = false;
+  }
+  remainingPdfs(){
+    this.pdfSrc=''
   }
 }
