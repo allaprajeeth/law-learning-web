@@ -168,3 +168,46 @@
     }
   }
 }
+
+.login-buttons button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 4px;
+  margin-left: 10px;
+  margin-right: 25px;
+  border: 2px solid black;
+}
+ 
+.login-buttons .signup-button {
+  background-color: black;
+  color: white;
+ 
+}
+
+.logout-container {
+  text-align: center;
+}
+ 
+.alert {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #acd2cc;
+  color: black;
+  text-align: left;
+  font-weight: bold;
+ 
+  &::before {
+    content: "\2714";
+    font-size: 24px;
+    text-align: left;
+    color: black;
+    margin-right: 10px;
+  }
+ 
+  &.show {
+    display: block;
+  }
+}
+ 
