@@ -4,11 +4,8 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
 import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { AdminLibraryComponent } from './components/library/library.component';
-import { ArticleComponent } from './components/article/article.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
@@ -26,10 +23,10 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
-import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
-
-
+import {DocumentsComponent} from './../../common/components/documents/documents.component'
+import {ArticleComponent} from './../../common/components/article/article.component'
+import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
 const routes: Routes = [
   {
     path:"",
@@ -54,12 +51,9 @@ const routes: Routes = [
   },
   {
     path:'library',
-    component:AdminLibraryComponent
+    component:DocumentsComponent
   },
-  {
-path:'library/:id',
-component:AdminLibraryComponent
-  },
+ 
   { path: 'pdf-viewer', 
       component:PdfViewerComponent
    },
@@ -153,7 +147,7 @@ component:AdminLibraryComponent
 {
   
     path:"libraryForm",
-    component:LibraryFormComponent
+    component:DocumentsComponent
   
 }
   

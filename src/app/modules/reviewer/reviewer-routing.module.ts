@@ -5,11 +5,8 @@ import { HeaderComponent } from 'src/app/common/components/header/header.compone
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { LibraryReviewerComponent } from './components/library-reviewer/library-reviewer.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
@@ -20,7 +17,9 @@ import { UploadStatusComponent } from './components/upload-status/upload-status.
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
-
+import {DocumentsComponent} from './../../common/components/documents/documents.component'
+import {ArticleComponent} from './../../common/components/article/article.component'
+import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
 const routes: Routes = [
   {
     path:"",
@@ -65,7 +64,7 @@ const routes: Routes = [
   },
   {
     path:'library',
-    component:LibraryReviewerComponent
+    component:DocumentsComponent
   },
   {
     path:"articleform",

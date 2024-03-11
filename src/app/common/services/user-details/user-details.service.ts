@@ -9,6 +9,7 @@ export class UserDetailsService {
   email: string | undefined;
   phoneno: string | undefined;
   jwtToken: string | null = null;
+  role :string | undefined;
 
   constructor() {}
 
@@ -24,6 +25,8 @@ export class UserDetailsService {
           this.name = userDetails.name;
           this.email = userDetails.email;
           this.phoneno = userDetails.phone;
+          this.role=userDetails.role
+          
         } else {
           console.error('Invalid user details format:', userDetails);
         }
