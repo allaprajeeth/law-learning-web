@@ -4,7 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Article } from './article.model';
 import { map } from 'rxjs/operators';
-import { saveAs } from 'file-saver';
 import { endPoints } from 'src/app/common/constants/endpoints';
 
 @Injectable({
@@ -32,7 +31,6 @@ export class ArticleService {
       })
     );
   }
-  
   getArticle(articleId: number): Observable<Article> {
     const articleUrl = `${this.apiUrl}/${articleId}`;
     return this.http.get<Article>(articleUrl);
@@ -41,29 +39,22 @@ export class ArticleService {
   getArticleFileUrl(articleId: number): string {
     return `${this.apiUrl}/${articleId}/file`;
   }
-
-
   setSelectedArticle(articleId: number): void {
-   
     this.selectedArticle = this.articles.find((article) => article.id === articleId);
-  
   }
 
   getSelectedArticle(): Article | undefined {
     return this.selectedArticle;
   }
-  // Inside your ArticleService
+  // Inside ArticleService
 getFileContent(fileUrl: string): Observable<string> {
   return this.http.get(fileUrl, { responseType: 'text' });
 }
-
 setApprovalResponse(response: any): void {
   this.approvalResponse = response;
 }
-
 getApprovalResponse(): any {
   return this.approvalResponse;
 }
-
 }
 
