@@ -1,21 +1,59 @@
 <div class="navbar_section">
-<nav class="navbar">
+  <nav class="navbar">
     <div class="navbar-container">
       <a routerLink="/" class="logo">5th Estate ADR</a>
       <div>
-      <ul class="nav-icons">
-        <li><a routerLink="/library" routerLinkActive="active" class="mycourses">Library</a></li>
-        <li><a routerLink="/article" routerLinkActive="active" class="mycourses">Publishing Corner</a></li>
-        <li><a routerLink="/aboutus" routerLinkActive="active" class="mycourses">About Us</a></li>
-      </ul>
-    </div>
-       <div class="login-buttons">
+        <ul class="nav-icons">
+          <ng-container *ngFor="let navItem of roleNavigationMap[userRole || '']">
+            <li>
+              <a [routerLink]="[navItem.route]" routerLinkActive="active" class="mycourses">
+                {{ navItem.name }}
+              </a>
+            </li>
+          </ng-container>
+          <li class="user-dropdown" *ngIf="isLoggedIn">
+            <div class="user-circle" (click)="onUserCircleClick($event)">
+              <span class="user-circle-text">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</span>
+            </div>
+            <ul class="user-menu">
+              <li class="profile-item">
+                <span>
+                  <div class="user-circle">
+                    <a routerLink="" class="user-circle-text" style="color: white">{{ name ?
+                      name.charAt(0).toUpperCase() : 'N' }}</a>
+                  </div>
+                </span>
+                <p>{{ email }}</p>
+              </li>
+              <li class="username-item">
+                <span>{{ name }}</span>
+                <span>{{ phone }}</span>
+              </li>
+              <hr>
+
+              <ng-container *ngFor="let menuItem of userMenuMap[userRole || '']">
+                <li>
+                  <a [routerLink]="[menuItem.route]" routerLinkActive="active" class="navbarContent"
+                  >
+                    {{menuItem.name }}
+                  </a>
+                </li>
+                
+              </ng-container>
+              <li class="navbarContent"><a (click)="onLogoutClick()">Logout</a></li>
+
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="login-buttons" *ngIf="!isLoggedIn">
         <button class="login-button" routerLink="/login">Login</button>
         <button class="login-button" (click)=openModal()>Register</button>
-        <!-- <button class="signup-button" routerLink="/signup">Sign Up</button> -->
-      </div> 
-    </div> 
-</nav>
+      </div>
+    </div>
+    <app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
+    </app-logout-popup>
+  </nav>
 </div>
 <div *ngIf="showLogoutAlert" class="logout-container">
   <div class="alert" id="successAlert">

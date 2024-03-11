@@ -7,8 +7,6 @@ import { NotificationComponent } from './components/notification/notification.co
 import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
 import { EditcoursesComponent } from './components/editcourses/editcourses.component';
-import { ArticleComponent } from './components/article/article.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
@@ -19,7 +17,6 @@ import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 // import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
-import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
@@ -31,7 +28,9 @@ import { UnderReviewCoursesInfoComponent } from './components/under-review-cours
 import { ApprovedCoursesInfoComponent } from './components/approved-courses-info/approved-courses-info.component';
 import { CommentedCoursesInfoComponent } from './components/commented-courses-info/commented-courses-info.component';
 import { CourseWidgetComponent } from './components/course-widget/course-widget.component';
-
+import {DocumentsComponent} from './../../common/components/documents/documents.component'
+import {ArticleComponent} from './../../common/components/article/article.component'
+import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
 const routes: Routes = [
   {
     path: '',
@@ -150,7 +149,7 @@ const routes: Routes = [
   },
   {
     path: 'library',
-    component: LibraryInstructorComponent,
+    component: DocumentsComponent
   },
   { 
     path: 'pdf-viewer', 

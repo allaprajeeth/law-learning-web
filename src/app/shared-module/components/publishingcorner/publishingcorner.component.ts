@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FetcharticlesService } from '../fetcharticles.service';
 import { ArticleApiResponse } from '../fetcharticle.model';
+import { UserDetailsService } from 'src/app/common/services/user-details/user-details.service';
 
 @Component({
   selector: 'app-publishingcorner',
@@ -14,16 +15,27 @@ export class PublishingcornerComponent implements OnInit {
   filteredArticles: ArticleApiResponse[] = [];
   searchTerm: string = '';
   isVisible: boolean = false;
+
+  userRole :string|undefined
+
   constructor(
     private fetcharticleService: FetcharticlesService,
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
+    private userDetailsService: UserDetailsService
   ) {}
 
   ngOnInit(): void {
     this.loadPublishArticles();
     this.checkRoute();
+
+   
+
+      this.userDetailsService.getUserInfoFromLocalStorage();
+      this.userRole = this.userDetailsService.role;
+      
+    
   }
 
   loadPublishArticles(): void {

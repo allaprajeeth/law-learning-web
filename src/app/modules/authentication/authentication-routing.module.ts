@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { ContentManagerLibraryComponent } from './components/content-manager-library/content-manager-library.component';
-import { ArticleComponent } from './components/article/article.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
@@ -16,7 +13,9 @@ import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
-
+import {DocumentsComponent} from './../../common/components/documents/documents.component'
+import {ArticleComponent} from './../../common/components/article/article.component'
+import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
 const routes: Routes = [
   {
     path:"",
@@ -45,7 +44,7 @@ const routes: Routes = [
   },
   {
     path:'library',
-    component:ContentManagerLibraryComponent
+    component:DocumentsComponent
   },
   {
    path:'article',
@@ -64,7 +63,7 @@ const routes: Routes = [
     component:AccountsecurityComponent
   },
   {
-    path:"notifications",
+    path:"notification",
     component: NotificationsComponent
   },
   {
