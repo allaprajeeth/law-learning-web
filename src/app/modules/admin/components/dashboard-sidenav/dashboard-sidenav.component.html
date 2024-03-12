@@ -8,8 +8,8 @@
         <a mat-list-item routerLink="/admin/all-profiles" (click)="toggleRoles()" routerLinkActive="active-link">
           <span class="icon-span">
             <mat-icon>group</mat-icon>
+            <span class="span">All Profiles</span>
           </span>
-          <span class="span">All Profiles</span>
           <span class="expand-icon">
             <mat-icon>{{ showRoles ? 'expand_less' : 'expand_more' }}</mat-icon>
           </span>
@@ -28,16 +28,19 @@
       </div>
       <div>
         <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active-link">
-          <span class="icon-span"><mat-icon>person</mat-icon>
+          <span class="icon-span">
+            <mat-icon>person</mat-icon>
+            <span class="span">create user</span>
           </span>
-          <span>create user</span>
         </a>
       </div>
       <div>
         <a mat-list-item routerLink="/admin/dash-notifications" (click)="toggleNotifications()"
           routerLinkActive="active-link">
-          <span class="icon-span"><mat-icon>notifications</mat-icon></span>
-          <span class="span">Notifications</span>
+          <span class="icon-span">
+            <mat-icon>notifications</mat-icon>
+            <span class="span">Notifications</span>
+          </span>
           <span class="expand-icon">
             <mat-icon>{{ showNotifications ? 'expand_less' : 'expand_more' }}</mat-icon>
           </span>

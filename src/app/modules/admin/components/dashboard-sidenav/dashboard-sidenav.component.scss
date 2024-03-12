@@ -21,7 +21,11 @@ mat-nav-list a {
   .icon-span {
     display: inline-flex;
     align-items: center;
+    width:150px;
     margin-right: 8px; /* Adjust margin as needed */
+    span.span {
+    margin:0px 0px 0px 10px;
+  }
   }
  
 }
