@@ -7,6 +7,7 @@ import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 import { UserModel } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { LogoutService } from '../../services/logout.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-firstnav',
   templateUrl: './firstnav.component.html',
@@ -20,7 +21,8 @@ export class FirstnavComponent {
   email: string | undefined;
   phone: string | undefined;
   showLogoutPopup = false;
-
+  
+  private userDetailsSubscription: Subscription | undefined;
   constructor(
     private sharedService: PopupService,
     public dialog: MatDialog,
@@ -31,13 +33,16 @@ export class FirstnavComponent {
   ) {}
 
   ngOnInit() {
-    this.isLoggedIn = this.authService.isLoggedIn();
+    
+    
+
     console.log(this.isLoggedIn);
-    this.userDetails = this.authService.getUserDetails();
-    this.userRole = this.userDetails?.role;
-    this.name = this.userDetails?.name;
-    this.email = this.userDetails?.email;
-    this.phone = this.userDetails?.phone;
+    this.userDetailsSubscription = this.authService.userDetails$.subscribe((userDetails: UserModel | null)  => {
+      this.userRole = userDetails?.role;
+      this.name = userDetails?.name;
+      this.email = userDetails?.email;
+      this.phone = userDetails?.phone;
+    });
     // this.cdr.detectChanges();
   }
 
