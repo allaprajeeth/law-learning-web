@@ -1,23 +1,20 @@
-
-
-
 <div class="heading">
   <h1>Articles to Review</h1>
 </div>
 <div class="container">
   <div class="article-list">
-  <div *ngFor="let article of approvedArticles">
-    <div class="article-item" (click)="navigateToArticleDetail(article.id)">
-      <mat-icon>description</mat-icon>
-    <h2 class="article-name">{{ article.title }}</h2>
-    <p>{{ article.createdDate | date:'mediumDate' }}</p>
-   <p class="author-name">{{ article.createdBy.name }}</p>
+    <div *ngFor="let article of approvedArticles">
+      <div class="article-item" (click)="navigateToArticleDetail(article.id)">
+        <mat-icon>description</mat-icon>
+        <h2 class="article-name">{{ article.title }}</h2>
+        <p>{{ article.createdDate | date:'mediumDate' }}</p>
+        <p class="author-name">{{ article.createdBy.name }}</p>
 
-    <!-- <p>{{ article.description }}</p> -->
-    <!-- Add more details as needed -->
+        <!-- <p>{{ article.description }}</p> -->
+        <!-- Add more details as needed -->
+      </div>
     </div>
   </div>
-</div>
 
 
 
@@ -31,8 +28,8 @@
 
 
 
-<div class="container">
-  <!-- <div class="heading">
+  <div class="container">
+    <!-- <div class="heading">
     <h1>Courses to Review</h1>
   </div>
   <div class="image-grid">
@@ -56,7 +53,7 @@
       </div>
     </div>
   </div> -->
-  <!-- <div class="heading">
+    <!-- <div class="heading">
     <h1>Reviewed Courses</h1>
   </div>
   <div class="image-grid">
@@ -90,13 +87,13 @@
       </div>
     </div>
   </div> -->
-  <br />
-  <br />
-  <div>
-  </div>
+    <br />
+    <br />
+    <div>
+    </div>
 
-  <div>
-    <!-- <div class="heading">
+    <div>
+      <!-- <div class="heading">
       <h1>Articles to Review</h1>
     </div>
     <div class="container">
@@ -119,5 +116,5 @@
 
 
 
-    
-  </div>
+
+    </div>
