@@ -26,21 +26,7 @@
       <div class="error-message" *ngIf="loginForm.get('phone')?.hasError('pattern') && loginForm.get('phone')?.touched">
         Invalid phone format. (10 digits required)
       </div>
-      <!-- <label for="category">Category:</label>
-      <select id="role" formControlName="selectedCategory" [disabled]="!isSendOtpsClicked">
-        <option value="SUBSCRIBER">Subscriber</option>
-        <option value="REVIEWER">Reviewer</option>
-        <option value="INSTRUCTOR">Instructor</option>
-        <option value="CONTENTMANAGER">Content Manager</option>
-        <option value="Admin">Admin</option>
-      </select> -->
-      <button
-        *ngIf="!isOtpVisible"
-        (click)="sendOtps()"
-        [disabled]="!isInputFilled" class="sendOtp"
-      >
-        Send OTPs
-      </button>
+      <button *ngIf="!isOtpVisible" (click)="sendOtps()" [disabled]="!isInputFilled" class="sendOtp"> Send OTPs</button>
 
       <div *ngIf="isOtpVisible">
         <label for="email_otp">Email OTP:</label>
@@ -73,7 +59,6 @@
         Login
       </button>
       <div class="no-account redirect" (click)="openModal()">
-      <!-- <div class="no-account redirect"  > -->
         No  Account register here
       </div>
       <div class="forgot redirect" routerLink="/forgotEmail">Forgot Email ?</div>
