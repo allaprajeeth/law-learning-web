@@ -27,7 +27,6 @@ import { LibraryComponent } from './components/library/library.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
 import { SharedarticleformComponent } from './components/sharedarticleform/sharedarticleform.component';
 import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
-import { PdfviewerComponent } from './components/pdfviewer/pdfviewer.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
@@ -55,7 +54,6 @@ import { MatDialogModule } from '@angular/material/dialog';
      SharedCertificateComponent,
      SharedarticleformComponent,
      SharedpostdetailsComponent,
-     PdfviewerComponent,
      SharedTCComponent,
      SharedNotificationComponent,
      LogoutPopupComponent,
@@ -104,7 +102,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     SharedCertificateComponent,
     SharedarticleformComponent,
     SharedpostdetailsComponent,
-    PdfviewerComponent,
     SharedTCComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,

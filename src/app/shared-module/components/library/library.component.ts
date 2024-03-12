@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { Router } from '@angular/router';
 import { Library } from 'src/app/common/models/library.model';
 import { LibraryService } from 'src/app/common/services/library/library.service';
@@ -6,7 +6,8 @@ import { HttpResponse } from 'src/app/common/models/response.model';
 import { Pagination } from 'src/app/common/models/pagination.model';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
-
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-library',
@@ -18,10 +19,12 @@ export class LibraryComponent implements OnInit {
   private pagination: Pagination = new Pagination();
   apiLoading = false;
   pdfSrc:string | undefined 
+  // sanitizer: any;
   constructor(
     private router: Router,
     private libraryService: LibraryService,
-    private http: HttpClient
+    private http: HttpClient,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +51,19 @@ export class LibraryComponent implements OnInit {
   
   }
   
+  downloadPdf(): void {
+    if (this.pdfSrc) {
+      // Use Angular's DomSanitizer to sanitize the URL
+      const sanitizedUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfSrc);
+
+      // Extract the URL from SafeResourceUrl
+      const url = this.sanitizer.sanitize(SecurityContext.URL, sanitizedUrl as string) || '';
+
+      // Trigger the download using the FileSaver library
+      // Note: Ensure you have installed the file-saver library via npm install file-saver
+      saveAs(url, 'downloaded_pdf.pdf');
+    }
+  }
 
   loadMore() {
     this.apiLoading = true;
@@ -58,4 +74,6 @@ export class LibraryComponent implements OnInit {
   remainingPdfs(){
     this.pdfSrc=''
   }
+
+  
 }

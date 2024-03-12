@@ -44,6 +44,7 @@ export class LoginService {
           this.loggingService.log(errorResponse?.error?.error.message);
           this.notificationService.notify(errorResponse?.error?.error.message);
         }
+        // this.isInputFilled = true;
         return EMPTY;
       })
     );

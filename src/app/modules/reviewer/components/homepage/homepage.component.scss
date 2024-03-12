@@ -1,6 +1,30 @@
-.heading {
-  padding: 30px 0 5px 0;
+.container {
+  margin: 0 auto;
+  max-width: 80vw;
+
+  .filter-section {
+    display: flex;
+  }
+
+  h1{
+    font-size: 19px;
+    padding: 10px;
+    // text-align: center;
+    font-weight: bold;
+  }
 }
+
+.heading {
+  padding:5px 0;
+  color: #007791;
+  
+}
+// h2{
+//   font-weight: bolder;
+// }
+// .heading {
+//   padding: 30px 0 5px 0;
+// }
 h1{
   font-weight: bolder;
   color: #007791;

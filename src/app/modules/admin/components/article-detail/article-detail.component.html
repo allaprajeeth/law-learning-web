@@ -28,7 +28,7 @@
 <div *ngIf="articleApproved" class="message-status">
   <div class="submission-status success">
     <i class="icon close-icon" (click)="goBack()">&#10006;</i>
-    <h3>Article Approved Successfully. It will be re-checked by Admin. Thank you.</h3>
+    <h3 class="approval-message">Article Approved Successfully.Thank you.</h3>
    
   </div>
 </div>
@@ -37,7 +37,7 @@
 <div *ngIf="articleRejected" class="message-status">
   <div class="submission-status rejection">
     <i class="icon close-icon" (click)="goBack()">&#10006;</i>
-    <h3>Article Rejected. Please review and make necessary changes.</h3>
+    <h3 class="rejection-message">Article Rejected. Please review and make necessary changes.</h3>
   </div>
 </div>
 

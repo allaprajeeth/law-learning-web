@@ -10,36 +10,36 @@
     <div class="flex-container">
       <div class="my-flex" style="width: 250px;">
         <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>Filter by Category</mat-label>
-         <mat-select  style="width: 100%" appearance="outline">
-    <mat-option value="all">All</mat-option>
-    <mat-option value="contentManager">Content Manager</mat-option>
-    <mat-option value="reviewer">Reviewer</mat-option>
-    <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
-  </mat-select>
-</mat-form-field>
+          <mat-label>Filter by Category</mat-label>
+          <mat-select style="width: 100%" appearance="outline">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="contentManager">Content Manager</mat-option>
+            <mat-option value="reviewer">Reviewer</mat-option>
+            <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-</div>
-</div>
+  </div>
 
-<h2 class="section-name">Publishing Corner(Articles)</h2>
-<div class="article-list">
-<div *ngFor="let article of approvedArticles">
-<div  class="article-item">
-<mat-icon>description</mat-icon>
-<h2 class="article-name" (click)="navigateToArticleDetail(article.id)">{{ article.title }}</h2>
-<p>{{ article.createdDate | date:'mediumDate' }}</p>
-<p class="author-name">{{ article.createdBy.name }}</p>
+  <h2 class="section-name">Publishing Corner(Articles)</h2>
+  <div class="article-list">
+    <div *ngFor="let article of approvedArticles">
+      <div class="article-item">
+        <mat-icon>description</mat-icon>
+        <h2 class="article-name" (click)="navigateToArticleDetail(article.id)">{{ article.title }}</h2>
+        <p>{{ article.createdDate | date:'mediumDate' }}</p>
+        <p class="author-name">{{ article.createdBy.name }}</p>
 
-<!-- <p>{{ article.description }}</p> -->
-<!-- Add other details as needed -->
-</div>
-</div>
-</div>
-
+        <!-- <p>{{ article.description }}</p> -->
+        <!-- Add other details as needed -->
+      </div>
+    </div>
+  </div>
 
 
-<!-- <div>
+
+  <!-- <div>
   <div class="container">
     <div class="filter-section">
       <div class="heading">
@@ -86,11 +86,11 @@
     </div>
   </div>
 </div> -->
-<br />
-<br />
+  <br />
+  <br />
 
 
-<!-- <br />
+  <!-- <br />
 <div>
   <h2 class="section-name">Library(Documents)</h2>
   <div class="container">
@@ -123,7 +123,7 @@
     <br/>
   </div>
 </div> -->
-<!-- <div>
+  <!-- <div>
 
   <h2 class="section-name">Publishing Corner(Articles)</h2>
   <div class="container">
@@ -182,8 +182,8 @@
 
 
 
-<!-- homepage.component.html -->
-<!-- <h2 class="section-name">Publishing Corner(Articles)</h2>
+  <!-- homepage.component.html -->
+  <!-- <h2 class="section-name">Publishing Corner(Articles)</h2>
 <div class="container">
   <div class="filter-section">
     <div class="heading">
@@ -193,8 +193,8 @@
       <div class="my-flex" style="width: 250px;">
         <mat-form-field appearance="outline" style="width: 100%;">
           <mat-label>Filter by Category</mat-label> -->
-          <!-- <mat-select [(value)]="selectedFilter" (selectionChange)="filterArticles()" style="width: 100%" -->
-          <!-- <mat-select [(value)]="selectedFilter" style="width: 100%" appearance="outline">
+  <!-- <mat-select [(value)]="selectedFilter" (selectionChange)="filterArticles()" style="width: 100%" -->
+  <!-- <mat-select [(value)]="selectedFilter" style="width: 100%" appearance="outline">
             <mat-option value="all">All</mat-option>
             <mat-option value="contentManager">Content Manager</mat-option>
             <mat-option value="reviewer">Reviewer</mat-option>
@@ -204,17 +204,3 @@
       </div>
     </div>
   </div> -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
