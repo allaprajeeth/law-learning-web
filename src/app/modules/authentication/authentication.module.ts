@@ -22,7 +22,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
@@ -41,7 +40,6 @@ import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetai
     CourseInfoComponent,
     VideoplayerComponent,
     TermsandcondiComponent,
-    ArticleformComponent,
     SidenavComponent,
     NotificationsComponent,
     PaymentsComponent,

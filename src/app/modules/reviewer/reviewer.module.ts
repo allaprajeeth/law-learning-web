@@ -24,7 +24,6 @@ import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -46,7 +45,6 @@ import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/
     ArticleComponent,
     CourseInfoComponent,
     TermsandcondiComponent,
-    ArticleformComponent,
     AccountsecurityComponent,
     SidenavComponent,
     NotificationsComponent,
