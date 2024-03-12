@@ -55,7 +55,6 @@ pdf-viewer {
  left:390px;
  top:-30px;
  padding-right: 50px;
- box-shadow: 4px 8px 71px 100px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
   
 }
 .remaining-pdf-button{
@@ -63,4 +62,12 @@ pdf-viewer {
   left: 80px;
   top:250px;
 }
+.pdf {
+  position: relative;
+}
 
+.download-pdf-button {
+  position: absolute;
+  top: 10px; 
+  right: 10px; 
+}

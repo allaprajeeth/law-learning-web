@@ -52,6 +52,7 @@ openModal() {
   }
   sendOtps() {
     this.sendOtpClick();
+    this.isInputFilled = false;
   }
   get email() {
     return this.loginForm.get('email');
@@ -116,26 +117,6 @@ openModal() {
       }
      )
   }
-   
-  // loginValidation(): void {
-  //   const selectedCategoryValue = this.loginForm.get('selectedCategory')?.value;
-  //   console.log('Selected Category:', selectedCategoryValue);
-  //   let route: string = '';
-    // if (selectedCategoryValue === 'SUBSCRIBER') {
-    //   route = 'subscriber/homepage';
-    // } else if (selectedCategoryValue === 'INSTRUCTOR') {
-    //   route = 'instructor/homepage';
-    // } else if (selectedCategoryValue === 'REVIEWER') {
-    //   route = 'reviewer/homepage';
-    // } else if (selectedCategoryValue === 'CONTENTMANAGER') {
-    //   route = 'authentication/homepage';
-    // } else if (selectedCategoryValue === 'Admin') {
-    //   route = 'admin/homepage';
-    // }
-    // this.router.navigate([route]);
- 
-    // Clear error messages and remove error border
-  // }
  
   onEmailOtpInput(event: any) {
     const input = event.target.value;

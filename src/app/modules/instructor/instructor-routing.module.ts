@@ -16,10 +16,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-// import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
-import { PdfviewerComponent } from 'src/app/shared-module/components/pdfviewer/pdfviewer.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { HistoryComponent } from './components/history/history.component';
 import { ApprovedCoursesOverviewComponent } from './components/approved-courses-overview/approved-courses-overview.component';
@@ -150,10 +148,6 @@ const routes: Routes = [
   {
     path: 'library',
     component: DocumentsComponent
-  },
-  { 
-    path: 'pdf-viewer', 
-    component: PdfviewerComponent 
   },
   {
     path: 'termsandconditions',

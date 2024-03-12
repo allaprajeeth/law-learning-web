@@ -23,7 +23,6 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
-import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
 import {DocumentsComponent} from './../../common/components/documents/documents.component'
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
@@ -54,9 +53,7 @@ const routes: Routes = [
     component:DocumentsComponent
   },
  
-  { path: 'pdf-viewer', 
-      component:PdfViewerComponent
-   },
+
    {
     path:'article',
     component:ArticleComponent

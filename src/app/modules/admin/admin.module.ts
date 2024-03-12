@@ -46,7 +46,7 @@ import { AllProfilesComponent } from './components/all-profiles/all-profiles.com
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
-import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
+
 
 
 
@@ -81,10 +81,7 @@ import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component
     AllProfilesComponent,
     ProfileDetailsComponent,
     ArticleDetailComponent,
-    LibraryFormComponent,
-    PdfViewerComponent,
- 
-   
+    LibraryFormComponent, 
   ],
   
   imports: [
