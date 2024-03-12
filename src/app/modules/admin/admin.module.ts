@@ -1,10 +1,8 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
-import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { FormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
@@ -25,7 +23,6 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { AdminLibraryComponent } from './components/library/library.component';
 import { ArticleComponent } from './components/article/article.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PhotoComponent } from './components/photo/photo.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
@@ -39,7 +36,6 @@ import { AdminPostdetailComponent } from './components/admin-postdetail/admin-po
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { DashboardSidenavComponent } from './components/dashboard-sidenav/dashboard-sidenav.component';
 import { DashboardNotificationsComponent } from './components/dashboard-notifications/dashboard-notifications.component';
-import { AuditReport2Component } from './components/audit-report2/audit-report2.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
@@ -52,9 +48,7 @@ import { LibraryFormComponent } from './components/library-form/library-form.com
 
 @NgModule({
   declarations: [
-    AdminLoginComponent,
     HomepageComponent,
-    AdminnavComponent,
     CourseInfoComponent,
     VideoplayerComponent,
     AboutusComponent,
@@ -62,7 +56,6 @@ import { LibraryFormComponent } from './components/library-form/library-form.com
     TermsandcondiComponent,
     AdminLibraryComponent,
     ArticleComponent,
-    ArticleformComponent,
     PhotoComponent,
     DeleteaccountComponent,
     ContactusComponent,
@@ -75,7 +68,6 @@ import { LibraryFormComponent } from './components/library-form/library-form.com
     AdminDashboardComponent,
     DashboardSidenavComponent,
     DashboardNotificationsComponent,
-    AuditReport2Component,
     ArticleHistoryComponent,
     CoursesHistoryComponent,
     AllProfilesComponent,
