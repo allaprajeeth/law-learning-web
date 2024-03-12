@@ -5,7 +5,6 @@ import { PageNotFoundComponent } from './common/components/page-not-found/page-n
 import { authGuard } from './common/guards/auth-guard/auth.guard';
 import { RegisterComponent } from './common/components/register/register.component';
 import { HeaderComponent } from './common/components/header/header.component';
-import { NavComponent } from './common/components/nav/nav.component';
 import { HomepageComponent } from './common/components/homepage/homepage.component';
 import { ArticleComponent } from './common/components/article/article.component';
 import { DocumentsComponent } from './common/components/documents/documents.component';
@@ -24,11 +23,11 @@ import { CheckoutComponent } from './modules/subscriber/components/checkout/chec
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { OverviewFreecourseComponent } from './common/components/overview-freecourse/overview-freecourse.component';
-import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { SharedTCComponent } from './shared-module/components/shared-tc/shared-tc.component';
 import { roleGuard } from './common/guards/role-guard/role.guard';
 import { redirectGuard } from './common/guards/redirect-guard/redirect.guard';
+import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 
 const routes: Routes = [
   {

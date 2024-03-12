@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { SubscriberRoutingModule } from './subscriber-routing.module';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { MainnavComponent } from './components/mainnav/mainnav.component';
 import { CartComponent } from './components/cart/cart.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
-import { SubscriptionsComponent } from './components/subscriptions/subscriptions.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,7 +22,6 @@ import { PhotoComponent } from './components/photo/photo.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
-import { SubscribernavComponent } from './components/subscribernav/subscribernav.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
@@ -33,9 +30,6 @@ import { CourseCardComponent } from './components/course-card/course-card.compon
 import { CoursesPageComponent } from 'src/app/common/components/courses-page/courses-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ArticleformComponent } from './components/articleform/articleform.component';
-import { SubarticleComponent } from './subarticle/subarticle.component';
-import { SubdocumentsComponent } from './subdocuments/subdocuments.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { CarouselModule } from 'primeng/carousel';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
@@ -61,15 +55,12 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
 @NgModule({
   declarations: [
     SidenavComponent, 
-    MainnavComponent,
     CartComponent,
     AccountsecurityComponent,
-    SubscriptionsComponent,
     PhotoComponent,
     NotificationsComponent,
     PaymentsComponent,
     DeleteAccountComponent,
-    SubscribernavComponent,
     HomepageComponent,
     EditEmailComponent,
     MyDirectiveDirective,
@@ -77,9 +68,6 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     CourseCardComponent,
     CoursesPageComponent,
     ArticleformComponent,
-    SubarticleComponent,
-    SubdocumentsComponent,
-    AboutusComponent,
     CheckoutComponent,
     SubmitmesgComponent,
     ContactusComponent,

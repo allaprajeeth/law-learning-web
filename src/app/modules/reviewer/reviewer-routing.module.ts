@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReviewerLoginComponent } from './components/reviewer-login/reviewer-login.component';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';

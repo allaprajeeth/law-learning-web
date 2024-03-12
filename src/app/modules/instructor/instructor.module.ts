@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { InstructorRoutingModule } from './instructor-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
-import { InstructornavComponent } from './components/instructornav/instructornav.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
@@ -27,12 +26,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SuccessDialogComponent } from './components/success-dialog/success-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { InstructorSidenavComponent } from './components/instructor-sidenav/instructor-sidenav.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { TestpreviewComponent } from './components/testpreview/testpreview.component';
-import { SubmitarticlemesgComponent } from './components/submitarticlemesg/submitarticlemesg.component';
 import { ArticleformComponent } from './components/articleform/articleform.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { InstructorService } from './components/instructor.service';
@@ -63,7 +59,6 @@ import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
-    InstructornavComponent,
     HomepageComponent,
     CoursesComponent,
     NotificationComponent,
@@ -73,12 +68,9 @@ import {MatStepperModule} from '@angular/material/stepper';
     ArticleComponent,
     VideoplayerComponent,
     SuccessDialogComponent,
-    InstructorSidenavComponent,
-    AboutusComponent,
     QuiztestComponent,
     UploadComponent,
     TestpreviewComponent,
-    SubmitarticlemesgComponent,
     ArticleformComponent,
     UploadstatusComponent,
     QuizsuccessmsgComponent,

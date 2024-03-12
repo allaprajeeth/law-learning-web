@@ -1,17 +1,13 @@
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NavComponent } from './common/components/nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SplashScreenComponent } from './common/components/splash-screen/splash-screen.component';
 import { HeaderComponent } from './common/components/header/header.component';
 import { SharedModule } from './shared-module/shared.module';
 import { DashboardComponent } from './common/components/dashboard/dashboard.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpInterceptorService } from './common/services/http-interceptor/http-interceptor.service';
-import { ErrorHandlerService } from './common/services/error-handler/error-handler.service';
-import { LoadingComponent } from './common/components/loading/loading.component';
 import {MatIconModule} from '@angular/material/icon';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -53,7 +49,6 @@ import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgo
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { LogoutService } from './common/services/logout.service';
 import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
@@ -63,14 +58,13 @@ import { EmailVerificationComponent } from './common/components/email-verificati
 import { PhoneVerificationComponent } from './common/components/phone-verification/phone-verification.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DurationPipe } from './common/pipes/duration.pipe';
+import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
+import { ErrorHandlerService } from './common/services/error-handler/error-handler.service';
 @NgModule({
   declarations: [
     AppComponent,
-    SplashScreenComponent,
     HeaderComponent,
     DashboardComponent,
-    LoadingComponent,
-    NavComponent,
     FirstnavComponent,
     RegisterComponent,
     HomepageComponent,

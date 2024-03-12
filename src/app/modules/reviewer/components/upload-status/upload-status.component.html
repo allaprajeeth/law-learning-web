@@ -1,7 +1,6 @@
-
 <mat-sidenav-container>
   <mat-sidenav #sideNav mode="side" opened>
-      <app-sidenav></app-sidenav>
+    <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
     <div class="container-wrapper">
@@ -18,7 +17,9 @@
           <tbody>
             <tr *ngFor="let course of courses">
               <td>{{ course.name }}</td>
-              <td><p [ngStyle]="getStatusStyles(course.status)">{{ course.status }}</p></td>
+              <td>
+                <p [ngStyle]="getStatusStyles(course.status)">{{ course.status }}</p>
+              </td>
               <td>{{ course.submissionDate }}</td>
             </tr>
           </tbody>
