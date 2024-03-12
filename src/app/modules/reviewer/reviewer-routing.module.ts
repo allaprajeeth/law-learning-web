@@ -6,7 +6,6 @@ import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo
 import { NotificationComponent } from './components/notification/notification.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
@@ -64,10 +63,6 @@ const routes: Routes = [
   {
     path:'library',
     component:DocumentsComponent
-  },
-  {
-    path:"articleform",
-    component:ArticleformComponent
   },
   {
     path:"profile",

@@ -14,6 +14,5 @@
 <div *ngIf="pdfSrc" class="pdf">
   <button mat-raised-button color="primary" (click)="remainingPdfs()" class="remaining-pdf-button">View Remaining PDF's</button>
   <button mat-raised-button color="accent" (click)="downloadPdf()" class="download-pdf-button">Download PDF</button>
-  <pdf-viewer class="boed" [src]="pdfSrc" [original-size]="false" [show-borders]="true" [stick-to-page]="true" 
- ></pdf-viewer>
+  <pdf-viewer class="boed" [src]="pdfSrc" [original-size]="false" [show-borders]="true" [stick-to-page]="true"></pdf-viewer>
 </div>

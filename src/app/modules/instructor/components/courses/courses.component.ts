@@ -116,26 +116,6 @@ export class CoursesComponent {
       }
     );
   }
-  
-  // patchCourse() {
-  //   this.courseService.patch<Course>(endPoints.baseURL + '/secure/courses/' + this.courseId, this.formData).subscribe(
-  //     (response: any) => {
-  //       console.log('Course updated successfully:', response);
-  //       const courseId = (response.data as Course)?.id;
-  //       console.log('Course ID:', courseId);
-  //       // if (courseId !== undefined) {
-  //       //   this.router.navigate(['/instructor/upload', courseId]);
-  //       // } else {
-  //       //   console.error('Error: Course id is undefined in the response.');
-  //       // }
-  //     },
-  //     (error: any) => {
-  //       console.error('Error updating course:', error);
-  //     }
-  //   );
-  // }
-  
-
   // Method to create a new course
  createCourse() {
   // Call the service to create a new course
@@ -143,7 +123,6 @@ export class CoursesComponent {
     
   );
 }
-
 updateCourse() {
   if (this.courseId && isNumber(Number(this.courseId))) {
     this.courseService.updateCourse(this.courseId, this.courseForm.value).subscribe(
@@ -167,7 +146,6 @@ onNext() {
     
   } else {
     console.error('Invalid Course ID');
-    // this.router.navigate(['/instructor/upload']);
   }
 }
 
