@@ -35,7 +35,6 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { HistoryComponent } from './components/history/history.component';
-import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -69,7 +68,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     DeleteAccountComponent,
     PaymentHistoryComponent,
     HistoryComponent,
-    LibraryInstructorComponent,
     InstructorpostdetailsComponent,
     SubmissionCoursesOverviewComponent,
     UnderReviewOverviewComponent,
