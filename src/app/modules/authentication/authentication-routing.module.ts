@@ -10,15 +10,12 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
 import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
-<<<<<<< Updated upstream
 import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
 import { AccountsecurityComponent } from 'src/app/common/components/accountsecurity/accountsecurity.component';
 import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
-=======
 import { CourseHistoryComponent } from './components/course-history/course-history.component';
->>>>>>> Stashed changes
 const routes: Routes = [
   {
     path:"",
@@ -73,10 +70,10 @@ const routes: Routes = [
     path:"contactus",
     component: SidenavContactusComponent
   },
-  {
-    path:"courses-history",
-    component:CourseHistoryComponent
-  },
+  // {
+  //   path:"courses-history",
+  //   component:CourseHistoryComponent
+  // },
   {
     path:"articleListHistory",
     component: ArticlelistHistoryComponent

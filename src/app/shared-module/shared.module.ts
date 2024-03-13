@@ -27,20 +27,16 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
-<<<<<<< Updated upstream
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
-=======
 import { SharedcourseHistoryComponent } from './components/sharedcourse-history/sharedcourse-history.component';
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 
->>>>>>> Stashed changes
 @NgModule({
   declarations: [
     FooterComponent,
     SharedoverviewComponent,
     PublishingcornerComponent,
-<<<<<<< Updated upstream
     SharednotificationsComponent,
     ShareddeleteAccountComponent,
     SharedCertificateComponent,
@@ -50,19 +46,19 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     FileUploadComponent,
     ConfirmationAlertComponent,
     SidenavComponent,
-  ],
-=======
-     SharedaboutusComponent,
-     SharedphotoComponent,
-     SharedaccountsecurityComponent,
+  
+
+    //  SharedaboutusComponent,
+    //  SharedphotoComponent,
+    //  SharedaccountsecurityComponent,
      SharednotificationsComponent,
-     SharedcontactusComponent,
+    //  SharedcontactusComponent,
      ShareddeleteAccountComponent,
-     LibraryComponent,
+    //  LibraryComponent,
      SharedCertificateComponent,
-     SharedarticleformComponent,
-     SharedpostdetailsComponent,
-     SharedTCComponent,
+    //  SharedarticleformComponent,
+    //  SharedpostdetailsComponent,
+    //  SharedTCComponent,
      SharedNotificationComponent,
      LogoutPopupComponent,
      PublishArticlesComponent,
@@ -71,7 +67,7 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
      SharedcourseHistoryComponent,
      SharedarticleHistoryComponent,
     ],
->>>>>>> Stashed changes
+
 
   imports: [
     CommonModule,
@@ -109,14 +105,10 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     SharedNotificationComponent,
     LogoutPopupComponent,
     FileUploadComponent,
-<<<<<<< Updated upstream
     SidenavComponent,
     RouterModule,
-  ],
-=======
     SharedcourseHistoryComponent,
   ]
 
->>>>>>> Stashed changes
 })
 export class SharedModule {}
