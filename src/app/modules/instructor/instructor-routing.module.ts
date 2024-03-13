@@ -4,20 +4,16 @@ import { HeaderComponent } from 'src/app/common/components/header/header.compone
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
 import { EditcoursesComponent } from './components/editcourses/editcourses.component';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { HistoryComponent } from './components/history/history.component';
 import { ApprovedCoursesOverviewComponent } from './components/approved-courses-overview/approved-courses-overview.component';
 import { SubmissionCoursesInfoComponent } from './components/submission-courses-info/submission-courses-info.component';
@@ -25,10 +21,14 @@ import { UnderReviewCoursesInfoComponent } from './components/under-review-cours
 import { ApprovedCoursesInfoComponent } from './components/approved-courses-info/approved-courses-info.component';
 import { CommentedCoursesInfoComponent } from './components/commented-courses-info/commented-courses-info.component';
 import { CourseWidgetComponent } from './components/course-widget/course-widget.component';
-import {DocumentsComponent} from './../../common/components/documents/documents.component'
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
 import { ArticleFormComponent } from 'src/app/common/components/article-form/article-form.component';
+import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
+import { AccountsecurityComponent } from 'src/app/common/components/accountsecurity/accountsecurity.component';
+import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
+import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
+import { LibraryComponent } from 'src/app/common/components/library/library.component';
 const routes: Routes = [
   {
     path: '',
@@ -49,7 +49,7 @@ const routes: Routes = [
   },
   {
     path: 'profile',
-    component: PublicProfileComponent,
+    component: ProfileComponent,
   },
   {
     path: 'courses',
@@ -135,7 +135,7 @@ const routes: Routes = [
   },
   {
     path: 'contactus',
-    component: ContactusComponent,
+    component: SidenavContactusComponent,
   },
   {
     path: 'delete-account',
@@ -147,11 +147,11 @@ const routes: Routes = [
   },
   {
     path: 'library',
-    component: DocumentsComponent
+    component: LibraryComponent
   },
   {
     path: 'termsandconditions',
-    component: TermsandcondiComponent,
+    component: SidenavtermsconditionsComponent
   },
   { 
     path: "articlehistory", 

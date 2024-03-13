@@ -1,0 +1,71 @@
+.pdftable {
+    overflow-y: hidden;
+  }
+  
+  h1 {
+    text-align: center;
+    margin: 10px;
+    margin-top: 30px;
+    font-size: 25px;
+    margin-bottom: 25px;
+    font-weight: 500;
+  }
+  
+  table{
+    width: 884px;
+    margin-left: 143px;
+  }
+  
+  td {
+    padding: 5px;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid rgb(222, 207, 207);
+   
+    cursor: pointer;
+  
+    &:hover {
+      color: rgb(0, 81, 139);
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+  
+  td:first-child {
+    color: rgb(207, 86, 86);
+  }
+  
+  td a mat-icon {
+    color: rgb(117, 115, 115);
+  }
+  
+  mat-icon[aria-hidden="true"] {
+    cursor: pointer;
+    padding: 10px;
+    font-size: 30px;
+  
+  }
+  pdf-viewer {
+   height: 800px;
+   width:720px;
+   position: relative;
+   left:390px;
+   top:-30px;
+   padding-right: 50px;
+    
+  }
+  .remaining-pdf-button{
+    position: relative;
+    left: 80px;
+    top:250px;
+  }
+  .pdf {
+    position: relative;
+  }
+  
+  .download-pdf-button {
+    position: absolute;
+    top: 10px; 
+    right: 10px; 
+  }
+  

@@ -23,14 +23,9 @@ import { NotificationComponent } from './components/notification/notification.co
 import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
-import { PhotoComponent } from './components/photo/photo.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -44,13 +39,8 @@ import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/
     NotificationComponent,
     ArticleComponent,
     CourseInfoComponent,
-    TermsandcondiComponent,
-    AccountsecurityComponent,
-    SidenavComponent,
     NotificationsComponent,
-    ContactusComponent,
     DeleteaccountComponent,
-    PhotoComponent,
     UploadStatusComponent,
     ArticleHistoryComponent,
     ArticleDetailComponent,

@@ -34,9 +34,6 @@ export class FirstnavComponent {
 
   ngOnInit() {
     
-    
-
-    console.log(this.isLoggedIn);
     this.userDetailsSubscription = this.authService.userDetails$.subscribe((userDetails: UserModel | null)  => {
       this.userRole = userDetails?.role;
       this.name = userDetails?.name;
@@ -156,7 +153,7 @@ export class FirstnavComponent {
      
     ],
     CONTENTMANAGER: [
-      { name: 'Profile', route: '/authentication/profile' },
+      { name: 'Profile ', route: '/authentication/profile' },
       { name: 'Account Security', route: '/authentication/acSecurity' },
       { name: 'Notification Settings', route: '/authentication/notifications' },
       { name: 'Courses History' },

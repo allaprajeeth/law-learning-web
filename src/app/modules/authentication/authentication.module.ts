@@ -21,14 +21,9 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from 'src/app/shared-module/shared.module';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
-import { PhotoComponent } from './components/photo/photo.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { FileSaverModule } from 'ngx-filesaver';
@@ -39,14 +34,9 @@ import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetai
     HomepageComponent,
     CourseInfoComponent,
     VideoplayerComponent,
-    TermsandcondiComponent,
-    SidenavComponent,
     NotificationsComponent,
     PaymentsComponent,
-    ContactusComponent,
     DeleteaccountComponent,
-    PhotoComponent,
-    AccountsecurityComponent,
     ArticlelistHistoryComponent,
     ArticleDetailComponent,
     CmPostdetailsComponent,

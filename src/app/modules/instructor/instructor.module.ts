@@ -14,7 +14,6 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { PublicProfileComponent } from './components/public-profile/public-profile.component';
 import { InstructorinfoComponent } from './components/instructorinfo/instructorinfo.component';
 import { EditcoursesComponent } from './components/editcourses/editcourses.component';
 import { ArticleComponent } from './components/article/article.component';
@@ -32,18 +31,13 @@ import { TestpreviewComponent } from './components/testpreview/testpreview.compo
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-// import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { HistoryComponent } from './components/history/history.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SubmissionCoursesOverviewComponent } from './components/submission-courses-overview/submission-courses-overview.component';
 import { UnderReviewOverviewComponent } from './components/under-review-overview/under-review-overview.component';
@@ -61,7 +55,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     HomepageComponent,
     CoursesComponent,
     NotificationComponent,
-    PublicProfileComponent,
     InstructorinfoComponent,
     EditcoursesComponent,
     ArticleComponent,
@@ -72,17 +65,12 @@ import {MatStepperModule} from '@angular/material/stepper';
     TestpreviewComponent,
     UploadstatusComponent,
     QuizsuccessmsgComponent,
-    SidenavComponent,
-    AccountsecurityComponent,
     NotificationsComponent,
-    ContactusComponent,
     DeleteAccountComponent,
     PaymentHistoryComponent,
-    // InstructorOverviewComponent,
     HistoryComponent,
     LibraryInstructorComponent,
     InstructorpostdetailsComponent,
-    TermsandcondiComponent,
     SubmissionCoursesOverviewComponent,
     UnderReviewOverviewComponent,
     ApprovedCoursesOverviewComponent,

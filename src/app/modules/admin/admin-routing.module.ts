@@ -3,12 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { PhotoComponent } from './components/photo/photo.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
@@ -19,9 +15,13 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
-import {DocumentsComponent} from './../../common/components/documents/documents.component'
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
+import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
+import { AccountsecurityComponent } from 'src/app/common/components/accountsecurity/accountsecurity.component';
+import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
+import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
+import { LibraryComponent } from 'src/app/common/components/library/library.component';
 const routes: Routes = [
   {
     path:"",
@@ -36,11 +36,6 @@ const routes: Routes = [
     path: 'courseInfo',
     component:CourseInfoComponent
   },
-  {
-    path:'library',
-    component:DocumentsComponent
-  },
- 
 
    {
     path:'article',
@@ -56,11 +51,11 @@ const routes: Routes = [
   },
   {
     path:'termsandconditions',
-    component:TermsandcondiComponent
+    component:SidenavtermsconditionsComponent
   },
   {
     path:"profile",
-    component: PhotoComponent
+    component: ProfileComponent 
   },
   {
     path:'acSecurity',
@@ -76,7 +71,7 @@ const routes: Routes = [
   },
   {
     path:"contactus",
-    component: ContactusComponent
+    component: SidenavContactusComponent
   },
   {
     path:"delete-account",
@@ -124,7 +119,7 @@ const routes: Routes = [
 {
   
     path:"libraryForm",
-    component:DocumentsComponent
+    component:LibraryComponent
   
 }
   

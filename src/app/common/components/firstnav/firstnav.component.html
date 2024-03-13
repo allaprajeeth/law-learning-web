@@ -11,7 +11,7 @@
               </a>
             </li>
           </ng-container>
-          <li class="user-dropdown" *ngIf="userRole" >
+          <li class="user-dropdown" *ngIf="userRole">
             <div class="user-circle" (click)="onUserCircleClick($event)">
               <span class="user-circle-text">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</span>
             </div>
@@ -33,12 +33,10 @@
 
               <ng-container *ngFor="let menuItem of userMenuMap[userRole || '']">
                 <li>
-                  <a [routerLink]="[menuItem.route]" routerLinkActive="active" class="navbarContent"
-                  >
+                  <a [routerLink]="[menuItem.route]" routerLinkActive="active" class="navbarContent">
                     {{menuItem.name }}
                   </a>
                 </li>
-                
               </ng-container>
               <li class="navbarContent"><a (click)="onLogoutClick()">Logout</a></li>
 

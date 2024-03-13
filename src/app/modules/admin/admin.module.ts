@@ -19,16 +19,11 @@ import { MatListModule } from '@angular/material/list';
 import { ErrorHandlerService } from 'src/app/common/services/error-handler/error-handler.service';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SharedModule } from 'src/app/shared-module/shared.module';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { ArticleComponent } from './components/article/article.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { PhotoComponent } from './components/photo/photo.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
@@ -40,25 +35,16 @@ import { AllProfilesComponent } from './components/all-profiles/all-profiles.com
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
-
-
-
-
 @NgModule({
   declarations: [
     HomepageComponent,
     CourseInfoComponent,
     VideoplayerComponent,
     NotificationComponent,
-    TermsandcondiComponent,
     ArticleComponent,
-    PhotoComponent,
     DeleteaccountComponent,
-    ContactusComponent,
     PaymentsComponent,
     NotificationsComponent,
-    SidenavComponent,
-    AccountsecurityComponent,
     AuditReportComponent,
     AdminPostdetailComponent,
     AdminDashboardComponent,
@@ -70,6 +56,7 @@ import { LibraryFormComponent } from './components/library-form/library-form.com
     ProfileDetailsComponent,
     ArticleDetailComponent,
     LibraryFormComponent, 
+
   ],
   
   imports: [
