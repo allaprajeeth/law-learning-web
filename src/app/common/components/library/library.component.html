@@ -1,0 +1,18 @@
+
+<table *ngIf="!pdfSrc" >
+    <tr *ngFor="let library of libraries; let i = index">
+      <td><mat-icon>picture_as_pdf</mat-icon></td>
+      <td target="blank" [title]="library.url">{{ library.title | uppercase }}</td>
+      <td>
+        <button mat-stroked-button color="primary" (click)="openFile(library)">Open File
+        </button>
+      </td>
+    </tr>
+  </table>
+  
+  
+  <div *ngIf="pdfSrc" class="pdf">
+    <button mat-raised-button color="primary" (click)="remainingPdfs()" class="remaining-pdf-button">View Remaining PDF's</button>
+    <button mat-raised-button color="accent" (click)="downloadPdf()" class="download-pdf-button">Download PDF</button>
+    <pdf-viewer class="boed" [src]="pdfSrc" [original-size]="false" [show-borders]="true" [stick-to-page]="true"></pdf-viewer>
+  </div>

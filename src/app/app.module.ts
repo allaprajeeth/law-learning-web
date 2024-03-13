@@ -25,7 +25,6 @@ import { HomepageComponent } from './common/components/homepage/homepage.compone
 import { FormsModule} from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './common/components/article/article.component';
-import { DocumentsComponent } from './common/components/documents/documents.component';
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
 import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
@@ -60,6 +59,12 @@ import { DurationPipe } from './common/pipes/duration.pipe';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { ErrorHandlerService } from './common/services/error-handler/error-handler.service';
 import { ArticleFormComponent } from './common/components/article-form/article-form.component';
+import { ProfileComponent } from './common/components/profile/profile.component';
+import { AccountsecurityComponent } from './common/components/accountsecurity/accountsecurity.component';
+import { SidenavContactusComponent } from './common/components/sidenav-contactus/sidenav-contactus.component';
+import { TermsconditionsComponent } from './common/components/termsconditions/termsconditions.component';
+import { SidenavtermsconditionsComponent } from './common/components/sidenavtermsconditions/sidenavtermsconditions.component';
+import { LibraryComponent } from './common/components/library/library.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,7 +73,6 @@ import { ArticleFormComponent } from './common/components/article-form/article-f
     RegisterComponent,
     HomepageComponent,
     ArticleComponent,
-    DocumentsComponent,
     VideoplayerComponent,
     OverviewComponent,
     LoginComponent,
@@ -86,6 +90,13 @@ import { ArticleFormComponent } from './common/components/article-form/article-f
     PhoneVerificationComponent,
     DurationPipe,
     ArticleFormComponent,
+    ProfileComponent,
+    AccountsecurityComponent,
+    SidenavContactusComponent,
+    TermsconditionsComponent,
+    SidenavtermsconditionsComponent,
+    LibraryComponent,
+    
 
 
   ],

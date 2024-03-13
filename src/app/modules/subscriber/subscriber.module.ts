@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { SubscriberRoutingModule } from './subscriber-routing.module';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { CartComponent } from './components/cart/cart.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -18,7 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { PhotoComponent } from './components/photo/photo.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
@@ -34,7 +31,6 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 import { VideoplayerSubscriberComponent } from './components/videoplayer-subscriber/videoplayer-subscriber.component';
@@ -45,7 +41,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { OverviewComponent } from './components/overview/overview.component';
 import { RatingsComponent } from './components/ratings/ratings.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
@@ -53,10 +48,7 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
 
 @NgModule({
   declarations: [
-    SidenavComponent, 
     CartComponent,
-    AccountsecurityComponent,
-    PhotoComponent,
     NotificationsComponent,
     PaymentsComponent,
     DeleteAccountComponent,
@@ -68,7 +60,6 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     CoursesPageComponent,
     CheckoutComponent,
     SubmitmesgComponent,
-    ContactusComponent,
     ArticleHistoryComponent,
     SuccessmesgComponent,
     VideoplayerSubscriberComponent,
@@ -76,7 +67,6 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     OverviewComponent,
     RatingsComponent,
     SubscriberpostdetailsComponent,
-    TermsandcondiComponent,
     StatusarticlepageComponent,
     UnderreviewarticleComponent,
     CommentedarticleComponent,

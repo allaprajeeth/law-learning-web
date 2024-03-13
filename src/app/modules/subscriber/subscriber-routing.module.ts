@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SidenavComponent } from './components/sidenav/sidenav.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
-import { PhotoComponent } from './components/photo/photo.component';
 import { CartComponent } from './components/cart/cart.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
@@ -11,20 +8,21 @@ import { DeleteAccountComponent } from './components/delete-account/delete-accou
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { SubscriberpostdetailsComponent } from './components/subscriberpostdetails/subscriberpostdetails.component';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { OverviewComponent } from './components/overview/overview.component';
-import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
 import { ArticleHistoryComponent } from './components/articleHistory/article-history.component';
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
-import { DocumentsComponent } from './../../common/components/documents/documents.component';
 import { ArticleComponent } from './../../common/components/article/article.component';
 import { AboutusComponent } from './../../common/components/aboutus/aboutus.component';
 import { ArticleFormComponent } from 'src/app/common/components/article-form/article-form.component';
+import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
+import { AccountsecurityComponent } from 'src/app/common/components/accountsecurity/accountsecurity.component';
+import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
+import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
+import { LibraryComponent } from 'src/app/common/components/library/library.component';
 const routes: Routes = [
   {
     path: '',
@@ -44,14 +42,8 @@ const routes: Routes = [
     component: AccountsecurityComponent,
   },
   {
-    path: 'sidenav',
-    component: SidenavComponent,
-  },
-
-
-  {
     path: 'profile',
-    component: PhotoComponent,
+    component: ProfileComponent,
   },
   {
     path: 'notifications',
@@ -63,7 +55,7 @@ const routes: Routes = [
   },
   {
     path: 'contactus',
-    component: ContactusComponent,
+    component:SidenavContactusComponent
   },
   {
     path: 'delete-account',
@@ -91,7 +83,7 @@ const routes: Routes = [
   // },
   {
     path: 'library',
-    component: DocumentsComponent,
+    component: LibraryComponent,
   },
   {
     path: 'aboutus',
@@ -111,7 +103,7 @@ const routes: Routes = [
   },
   {
     path: 'termsandconditions',
-    component: TermsandcondiComponent,
+    component: SidenavtermsconditionsComponent,
   },
   {
     path: 'overview',

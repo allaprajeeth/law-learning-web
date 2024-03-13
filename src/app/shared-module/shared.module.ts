@@ -7,25 +7,19 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PublishingcornerComponent } from './components/publishingcorner/publishingcorner.component';
 import { FormsModule } from '@angular/forms';
 import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
-import {  MatDividerModule } from '@angular/material/divider';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatIconModule} from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedaboutusComponent } from './components/sharedaboutus/sharedaboutus.component';
 import { CarouselModule } from 'primeng/carousel';
-import { SharedphotoComponent } from './components/sharedphoto/sharedphoto.component';
-import { SharedaccountsecurityComponent } from './components/sharedaccountsecurity/sharedaccountsecurity.component';
 import { SharednotificationsComponent } from './components/sharednotifications/sharednotifications.component';
-import { SharedcontactusComponent } from './components/sharedcontactus/sharedcontactus.component';
 import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
-import { LibraryComponent } from './components/library/library.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
 import { LogoutPopupComponent } from './components/logout-popup/logout-popup.component';
 import { PublishArticlesComponent } from './components/publish-articles/publish-articles.component';
@@ -33,28 +27,23 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
- 
   declarations: [
     FooterComponent,
-     SharedoverviewComponent, 
+    SharedoverviewComponent,
     PublishingcornerComponent,
-     SharedaboutusComponent,
-     SharedphotoComponent,
-     SharedaccountsecurityComponent,
-     SharednotificationsComponent,
-     SharedcontactusComponent,
-     ShareddeleteAccountComponent,
-     LibraryComponent,
-     SharedCertificateComponent,
-     SharedTCComponent,
-     SharedNotificationComponent,
-     LogoutPopupComponent,
-     PublishArticlesComponent,
-     FileUploadComponent,
-     ConfirmationAlertComponent,
-    ],
+    SharednotificationsComponent,
+    ShareddeleteAccountComponent,
+    SharedCertificateComponent,
+    SharedNotificationComponent,
+    LogoutPopupComponent,
+    PublishArticlesComponent,
+    FileUploadComponent,
+    ConfirmationAlertComponent,
+    SidenavComponent,
+  ],
 
   imports: [
     CommonModule,
@@ -73,7 +62,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatToolbarModule,
     ReactiveFormsModule,
     PdfViewerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    RouterModule,
   ],
   exports: [
     CommonModule,
@@ -85,19 +75,14 @@ import { MatDialogModule } from '@angular/material/dialog';
     PublishArticlesComponent,
     FormsModule,
     SharedoverviewComponent,
-    SharedaboutusComponent,
-    SharedphotoComponent,
-    SharedaccountsecurityComponent,
     SharednotificationsComponent,
-    SharedcontactusComponent,
     ShareddeleteAccountComponent,
-    LibraryComponent,
     SharedCertificateComponent,
-    SharedTCComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,
-    FileUploadComponent
-  ]
-
+    FileUploadComponent,
+    SidenavComponent,
+    RouterModule,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

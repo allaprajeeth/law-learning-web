@@ -1,0 +1,23 @@
+<div class="container-wrapper">
+    <div class="sidenav-container">
+      <div class="sidenav">
+        <div class="logo">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</div>
+        <ul class="nav-list">
+          <hr/>
+          <ng-container *ngFor="let menuItem of userMenuMap[userRole || '']">
+            <li>
+              <a [routerLink]="[menuItem.route]" routerLinkActive="active" class="navbarContent">
+                {{menuItem.name }}
+              </a>
+            </li>
+          </ng-container>
+          <hr/>
+          <li><a (click)="onLogoutClick()">Logout</a></li>
+          <li><a routerLink="/subscriber/delete-account" routerLinkActive="active" class="deleteAccount">Delete Account</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
+  </app-logout-popup>
+ 
