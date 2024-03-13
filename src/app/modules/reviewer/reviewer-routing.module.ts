@@ -85,7 +85,7 @@ const routes: Routes = [
     component: DeleteaccountComponent
   },
   {
-    path: 'uploadstatus',
+    path: 'courses-history',
     component: UploadStatusComponent,
   },
   { path: 'detail-articles/:id', 

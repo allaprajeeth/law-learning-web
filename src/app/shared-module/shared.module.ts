@@ -27,13 +27,20 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { ConfirmationAlertComponent } from './components/confirmation-alert/confirmation-alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
+<<<<<<< Updated upstream
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
+=======
+import { SharedcourseHistoryComponent } from './components/sharedcourse-history/sharedcourse-history.component';
+import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
+
+>>>>>>> Stashed changes
 @NgModule({
   declarations: [
     FooterComponent,
     SharedoverviewComponent,
     PublishingcornerComponent,
+<<<<<<< Updated upstream
     SharednotificationsComponent,
     ShareddeleteAccountComponent,
     SharedCertificateComponent,
@@ -44,6 +51,27 @@ import { RouterModule } from '@angular/router';
     ConfirmationAlertComponent,
     SidenavComponent,
   ],
+=======
+     SharedaboutusComponent,
+     SharedphotoComponent,
+     SharedaccountsecurityComponent,
+     SharednotificationsComponent,
+     SharedcontactusComponent,
+     ShareddeleteAccountComponent,
+     LibraryComponent,
+     SharedCertificateComponent,
+     SharedarticleformComponent,
+     SharedpostdetailsComponent,
+     SharedTCComponent,
+     SharedNotificationComponent,
+     LogoutPopupComponent,
+     PublishArticlesComponent,
+     FileUploadComponent,
+     ConfirmationAlertComponent,
+     SharedcourseHistoryComponent,
+     SharedarticleHistoryComponent,
+    ],
+>>>>>>> Stashed changes
 
   imports: [
     CommonModule,
@@ -81,8 +109,14 @@ import { RouterModule } from '@angular/router';
     SharedNotificationComponent,
     LogoutPopupComponent,
     FileUploadComponent,
+<<<<<<< Updated upstream
     SidenavComponent,
     RouterModule,
   ],
+=======
+    SharedcourseHistoryComponent,
+  ]
+
+>>>>>>> Stashed changes
 })
 export class SharedModule {}
