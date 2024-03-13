@@ -19,6 +19,7 @@
         <h2 class="article-name">{{ article.title }}</h2>
         <p class="description">Description: {{ article.subject }}</p>
         <p>{{ article.date }}</p>
+        <p >View Count: {{ article.viewCount }}</p>
       </div>
       <button (click)="navigateToArticleDetail(article.id)">Read more</button>
     </div>

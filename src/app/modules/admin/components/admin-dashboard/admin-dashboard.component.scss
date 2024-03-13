@@ -25,7 +25,8 @@
   .content {
     flex-grow: 1;
     padding: 20px;
-    height: 100%;
+   
+    overflow: hidden;
 
     h4 {
       color: #333;
@@ -35,14 +36,14 @@
 
 .login-container {
   max-width: 700px;
-  margin: 15px auto;
+  margin: 0px auto;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: white;
-  height: 420px;
+  height:auto;
 
   h2 {
     font-size: 24px;
@@ -91,6 +92,7 @@
   }
   .btn-text{
     color: #4c4b4b;
+    margin-top: 10px;
   }
 }
 
