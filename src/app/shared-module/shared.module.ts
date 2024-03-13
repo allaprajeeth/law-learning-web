@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BasePageComponent } from './components/base-page/base-page.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,8 +24,6 @@ import { SharedcontactusComponent } from './components/sharedcontactus/sharedcon
 import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
 import { LibraryComponent } from './components/library/library.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
-import { SharedarticleformComponent } from './components/sharedarticleform/sharedarticleform.component';
-import { SharedpostdetailsComponent } from './components/sharedpostdetails/sharedpostdetails.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SharedTCComponent } from './components/shared-tc/shared-tc.component';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
@@ -40,7 +37,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
  
   declarations: [
-    BasePageComponent,
     FooterComponent,
      SharedoverviewComponent, 
     PublishingcornerComponent,
@@ -52,8 +48,6 @@ import { MatDialogModule } from '@angular/material/dialog';
      ShareddeleteAccountComponent,
      LibraryComponent,
      SharedCertificateComponent,
-     SharedarticleformComponent,
-     SharedpostdetailsComponent,
      SharedTCComponent,
      SharedNotificationComponent,
      LogoutPopupComponent,
@@ -83,7 +77,6 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   exports: [
     CommonModule,
-    BasePageComponent,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
@@ -100,8 +93,6 @@ import { MatDialogModule } from '@angular/material/dialog';
     ShareddeleteAccountComponent,
     LibraryComponent,
     SharedCertificateComponent,
-    SharedarticleformComponent,
-    SharedpostdetailsComponent,
     SharedTCComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,

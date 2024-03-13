@@ -10,7 +10,6 @@ import { PaymentsComponent } from './components/payments/payments.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { SuccessmesgComponent } from './components/successmesg/successmesg.component';
@@ -25,6 +24,7 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
 import { DocumentsComponent } from './../../common/components/documents/documents.component';
 import { ArticleComponent } from './../../common/components/article/article.component';
 import { AboutusComponent } from './../../common/components/aboutus/aboutus.component';
+import { ArticleFormComponent } from 'src/app/common/components/article-form/article-form.component';
 const routes: Routes = [
   {
     path: '',
@@ -78,8 +78,8 @@ const routes: Routes = [
     component: NotificationComponent,
   },
   {
-    path: 'article-form',
-    component: ArticleformComponent,
+    path: 'articleform',
+    component: ArticleFormComponent,
   },
   {
     path: 'article',

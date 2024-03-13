@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ArticleformService } from '../articleform.service';
+import { ArticleformService } from '../../../shared-module/components/articleform.service'
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { NotificationService } from '../../../common/services/notification/notification.service'
-@Component({
-  selector: 'app-sharedarticleform',
-  templateUrl: './sharedarticleform.component.html',
-  styleUrls: ['./sharedarticleform.component.scss'],
-})
 
-export class SharedarticleformComponent {
+@Component({
+  selector: 'app-article-form',
+  templateUrl: './article-form.component.html',
+  styleUrls: ['./article-form.component.scss']
+})
+export class ArticleFormComponent {
+
   articleForm: FormGroup;
   formData: FormData;
   
@@ -71,3 +72,4 @@ export class SharedarticleformComponent {
     this.router.navigate(['/subscriber/submitmesg']);
   }
 }
+

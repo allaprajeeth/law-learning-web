@@ -29,7 +29,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { QuiztestComponent } from './components/quiztest/quiztest.component';
 import { UploadComponent } from './components/upload/upload.component';
 import { TestpreviewComponent } from './components/testpreview/testpreview.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
@@ -71,7 +70,6 @@ import {MatStepperModule} from '@angular/material/stepper';
     QuiztestComponent,
     UploadComponent,
     TestpreviewComponent,
-    ArticleformComponent,
     UploadstatusComponent,
     QuizsuccessmsgComponent,
     SidenavComponent,
