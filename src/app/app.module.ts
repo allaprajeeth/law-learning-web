@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './common/components/header/header.component';
 import { SharedModule } from './shared-module/shared.module';
-import { DashboardComponent } from './common/components/dashboard/dashboard.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpInterceptorService } from './common/services/http-interceptor/http-interceptor.service';
 import {MatIconModule} from '@angular/material/icon';
@@ -60,11 +59,11 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DurationPipe } from './common/pipes/duration.pipe';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { ErrorHandlerService } from './common/services/error-handler/error-handler.service';
+import { ArticleFormComponent } from './common/components/article-form/article-form.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    DashboardComponent,
     FirstnavComponent,
     RegisterComponent,
     HomepageComponent,
@@ -86,6 +85,8 @@ import { ErrorHandlerService } from './common/services/error-handler/error-handl
     EmailVerificationComponent,
     PhoneVerificationComponent,
     DurationPipe,
+    ArticleFormComponent,
+
 
   ],
   imports: [

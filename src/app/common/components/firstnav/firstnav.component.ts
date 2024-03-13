@@ -127,9 +127,9 @@ export class FirstnavComponent {
       { name: 'Profile', route: '/subscriber/profile' },
       { name: 'Account Security', route: '/subscriber/acSecurity' },
       { name: 'Notification Settings', route: '/subscriber/notifications' },
-      { name: 'My Publishings', route: '/subscriber/articleHistory' },
-      { name: 'Terms & Conditions', route: '/subscriber/termsandconditions' },
+      { name: 'My Publishings', route: '/subscriber/articleHistory' }, 
       { name: 'Contact Us', route: '/subscriber/contactus' },
+      { name: 'Terms & Conditions', route: '/subscriber/termsandconditions' },
     
       
     ],
@@ -139,8 +139,9 @@ export class FirstnavComponent {
       { name: 'Notification Settings', route: '/instructor/notifications' },
       { name: 'My Publishings', route: '/instructor/articlehistory' },
       { name: 'Courses Status', route: '/instructor/uploadstatus' },
-      { name: 'Terms & Conditions', route: '/instructor/contactus' },
       { name: 'Contact Us', route: '/instructor/termsandconditions' },
+      { name: 'Terms & Conditions', route: '/instructor/contactus' },
+      
       
     ],
     REVIEWER: [
@@ -149,8 +150,9 @@ export class FirstnavComponent {
       { name: 'Notification Settings', route: '/reviewer/notifications' },
       { name: 'Courses History', route: '/reviewer/uploadstatus' },
       { name: 'Article History', route: '/reviewer/articleHistory' },
-      { name: 'Terms & Conditions', route: '/reviewer/termsandconditions' },
       { name: 'Contact Us', route: '/reviewer/contactus' },
+      { name: 'Terms & Conditions', route: '/reviewer/termsandconditions' },
+      
      
     ],
     CONTENTMANAGER: [
@@ -159,8 +161,9 @@ export class FirstnavComponent {
       { name: 'Notification Settings', route: '/authentication/notifications' },
       { name: 'Courses History' },
       { name: 'ArticleHistory', route: '/authentication/articleListHistory' },
-      { name: 'Terms & Conditions', route: '/authentication/termsandconditions' },
       { name: 'Contact Us', route: '/authentication/contactus' },
+      { name: 'Terms & Conditions', route: '/authentication/termsandconditions' },
+      
       
     ],
     ADMIN: [
@@ -170,8 +173,8 @@ export class FirstnavComponent {
       { name: 'Library History' },
       { name: 'Courses History', route: '/admin/courses-history' },
       { name: 'Article History', route: '/admin/article-history' },
-      { name: 'Terms & Conditions', route: '/admin/termsandconditions' },
       { name: 'Contact Us', route: '/admin/contactus' },
+      { name: 'Terms & Conditions', route: '/admin/termsandconditions' },
       
     ],
   };

@@ -29,7 +29,6 @@ import { NotificationComponent } from './components/notification/notification.co
 import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CoursesPageComponent } from 'src/app/common/components/courses-page/courses-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { CarouselModule } from 'primeng/carousel';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { MatRadioModule } from '@angular/material/radio';
@@ -67,7 +66,6 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     NotificationComponent,
     CourseCardComponent,
     CoursesPageComponent,
-    ArticleformComponent,
     CheckoutComponent,
     SubmitmesgComponent,
     ContactusComponent,

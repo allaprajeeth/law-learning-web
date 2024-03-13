@@ -16,7 +16,6 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
 import { HistoryComponent } from './components/history/history.component';
@@ -29,6 +28,7 @@ import { CourseWidgetComponent } from './components/course-widget/course-widget.
 import {DocumentsComponent} from './../../common/components/documents/documents.component'
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
+import { ArticleFormComponent } from 'src/app/common/components/article-form/article-form.component';
 const routes: Routes = [
   {
     path: '',
@@ -77,7 +77,7 @@ const routes: Routes = [
   },
   {
     path: 'articleform',
-    component: ArticleformComponent,
+    component: ArticleFormComponent,
   },
   {
     path: 'submissioncoursesInfo',

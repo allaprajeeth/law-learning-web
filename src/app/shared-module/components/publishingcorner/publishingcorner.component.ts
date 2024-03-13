@@ -111,7 +111,7 @@ export class PublishingcornerComponent implements OnInit {
   
     if (currentUrl.includes('/subscriber/article')) {
       // If the current URL contains '/subscriber/article', navigate to '/subscriber/articleform'
-      this.router.navigateByUrl('/subscriber/article-form');
+      this.router.navigateByUrl('/subscriber/articleform');
     } else if (currentUrl.includes('instructor/article')){
       // Otherwise, navigate to a default destination or handle it based on your requirements
       // For example:
