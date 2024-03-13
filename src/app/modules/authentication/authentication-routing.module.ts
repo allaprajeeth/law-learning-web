@@ -70,10 +70,10 @@ const routes: Routes = [
     path:"contactus",
     component: SidenavContactusComponent
   },
-  // {
-  //   path:"courses-history",
-  //   component:CourseHistoryComponent
-  // },
+  {
+    path:"courses-history",
+    component:CourseHistoryComponent
+  },
   {
     path:"articleListHistory",
     component: ArticlelistHistoryComponent

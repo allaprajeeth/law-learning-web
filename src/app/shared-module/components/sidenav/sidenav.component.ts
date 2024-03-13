@@ -92,7 +92,7 @@ export class SidenavComponent {
       { name: 'Profile ', route: '/authentication/profile' },
       { name: 'Account Security', route: '/authentication/acSecurity' },
       { name: 'Notification Settings', route: '/authentication/notifications' },
-      { name: 'Courses History' },
+      { name: 'Courses History' , route: '/authentication/courses-history'},
       { name: 'ArticleHistory', route: '/authentication/articleListHistory' },
       { name: 'Contact Us', route: '/authentication/contactus' },
       {
