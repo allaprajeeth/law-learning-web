@@ -166,8 +166,8 @@ export class FirstnavComponent {
     ADMIN: [
       { name: 'Profile', route: '/admin/profile' },
       { name: 'Account Security', route: '/admin/acSecurity' },
-      { name: 'Notification Settings', route: '/admin/payments' },
-      { name: 'Library History' },
+      { name: 'Notification Settings', route: '/admin/notifications' },
+      { name: 'Library History', route: '/admin/library-history' },
       { name: 'Courses History', route: '/admin/courses-history' },
       { name: 'Article History', route: '/admin/article-history' },
       { name: 'Contact Us', route: '/admin/contactus' },

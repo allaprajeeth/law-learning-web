@@ -6,11 +6,9 @@
 <div class="main-container">
   <div class="sidenav">
     <app-dashboard-sidenav (roleSelected)="onRoleSelected($event)"></app-dashboard-sidenav>
-    <!-- <app-dashboard-sidenav></app-dashboard-sidenav> -->
   </div>
 
   <div class="profile-list">
-    <!-- Display All Profiles in a Single Line -->
     <div *ngFor="let profile of allProfiles" class="profile-item" routerLink="/admin/profile-details">
       <div class="profile-info">
         <div class="profile-placeholder">{{ getInitials(profile.username) }}</div>

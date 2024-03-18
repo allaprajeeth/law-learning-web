@@ -1,9 +1,6 @@
-<!-- sidenav.component.html -->
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened>
-    <!-- Your sidebar content goes here -->
     <mat-nav-list>
-
       <div>
         <a mat-list-item routerLink="/admin/all-profiles" (click)="toggleRoles()" routerLinkActive="active-link">
           <span class="icon-span">
@@ -21,10 +18,7 @@
           <li (click)="selectRole('reviewers')" routerLinkActive="active-link">Reviewers</li>
           <li (click)="selectRole('instructors')" routerLinkActive="active-link">Instructors</li>
           <li (click)="selectRole('content-managers')" routerLinkActive="active-link">Content Managers</li>
-
-          <!-- <li *ngFor="let role of profile.roles">{{ role }}</li> -->
         </ul>
-
       </div>
       <div>
         <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active-link">
@@ -45,7 +39,6 @@
             <mat-icon>{{ showNotifications ? 'expand_less' : 'expand_more' }}</mat-icon>
           </span>
         </a>
-
         <ul *ngIf="showNotifications">
           <li (click)="selectNotification('all')" routerLinkActive="active-link">all</li>
           <li (click)="selectNotification('comments')" routerLinkActive="active-link">comments</li>
@@ -65,7 +58,6 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- Your main content goes here -->
     <div class="content">
       <router-outlet></router-outlet>
     </div>
