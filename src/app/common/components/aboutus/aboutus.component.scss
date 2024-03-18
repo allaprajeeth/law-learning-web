@@ -1,4 +1,4 @@
- .container {
+.container {
     width:83%;
     margin: 0 auto;
     margin-top:40px;
@@ -41,8 +41,8 @@
   .carosol{
     width: 90%;
     margin: 0% 4%;
-}
-.teacher-profiles {
+  }
+  .teacher-profiles {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -85,4 +85,9 @@
     width: 130px;
     height: 130px;
     // float: left;
+  }
+  a{
+    cursor: pointer;
+    text-decoration: underline;
+    color:rgb(62, 5, 176)
   }

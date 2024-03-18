@@ -3,12 +3,12 @@
 </div>
 
 <div class="submit-button" *ngIf="isVisible" >
-  <button (click)="navigateToArticleForm()" [ngClass]="{'no-drop': matchesBaseUrl(), 'pointer' : !matchesBaseUrl()}">Submit Article</button>
+  <button (click)="navigateToArticleForm()" >Submit Article</button>
 </div>
 
 
 
-<div class="message"  *ngIf="isVisible && isArticleRoute()">
+<div class="message"  *ngIf="(isVisible && isArticleRoute()) && (userRole === undefined || userRole === null || userRole === '')">
   To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>to the website.
 </div>
 
@@ -19,6 +19,7 @@
         <h2 class="article-name">{{ article.title }}</h2>
         <p class="description">Description: {{ article.subject }}</p>
         <p>{{ article.date }}</p>
+        <p >View Count: {{ article.viewCount }}</p>
       </div>
       <button (click)="navigateToArticleDetail(article.id)">Read more</button>
     </div>

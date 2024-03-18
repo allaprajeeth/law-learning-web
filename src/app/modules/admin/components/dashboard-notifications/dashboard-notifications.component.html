@@ -1,15 +1,12 @@
-<app-adminnav></app-adminnav>
+
 <div class="heading">
   <h1>Notifications</h1>
 </div>
 <div class="main-container">
-
   <div class="sidenav">
     <app-dashboard-sidenav (notificationSelected)="onNotificationSelected($event)"></app-dashboard-sidenav>
   </div>
-
   <div class="content">
-
     <div class="notification-list">
       <ng-container *ngFor="let notification of filteredNotifications; let i = index">
         <div class="notification-item">
@@ -26,20 +23,12 @@
             </div>
           </div>
           <span class="date">{{ notification.notificationDate }}</span>
-
-            <mat-icon aria-label="Edit" class="Edit-icon" *ngIf="notification.type === 'comments'"(click)="onEditClick(i)">edit</mat-icon>
-            <!-- <mat-icon class="delete-icon" (click)="deleteNotification(i)">delete</mat-icon>             -->
-
-          <!-- <mat-icon aria-label="Edit"  (click)="onEditClick(i)">edit</mat-icon> -->
-
+          <mat-icon aria-label="Edit" class="Edit-icon" *ngIf="notification.type === 'comments'"(click)="onEditClick(i)">edit</mat-icon>
           <button *ngIf="editingIndex === i" (click)="onSaveClick(i)">Save</button>
-          <button *ngIf="editingIndex === i" (click)="onCancelClick()">Cancel</button>
-
-          
+          <button *ngIf="editingIndex === i" (click)="onCancelClick()">Cancel</button> 
         </div>
       </ng-container>
     </div>
-    
   </div>
 </div>
 <br />

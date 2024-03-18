@@ -26,9 +26,10 @@ export interface Article {
       subject: string;
       date: string;
       id: number;
-    data: any;
-    content: Article[];
-    articles: Article[];
+      data: any;
+      content: Article[];
+      articles: Article[];
+      viewCount?: number; // Add the viewCount property
   }
   
   

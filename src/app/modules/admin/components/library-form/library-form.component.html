@@ -1,9 +1,9 @@
-<app-adminnav></app-adminnav>
+
 <h2 class="form-heading">Library Form</h2>
 
 <form *ngIf="!showSuccessMessage" (ngSubmit)="onSubmit()" #libraryForm="ngForm">
   <mat-form-field>
-    <mat-label>Library Name</mat-label>
+    <mat-label>Document Name</mat-label>
     <input matInput name="libraryName" [(ngModel)]="title" required>
   </mat-form-field>
 

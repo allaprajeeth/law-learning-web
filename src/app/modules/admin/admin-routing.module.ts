@@ -1,48 +1,34 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminLoginComponent } from './components/admin-login/admin-login.component';
-import { AdminnavComponent } from './components/adminnav/adminnav.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { AdminLibraryComponent } from './components/library/library.component';
-import { ArticleComponent } from './components/article/article.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
-import { PhotoComponent } from './components/photo/photo.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { DashboardNotificationsComponent } from './components/dashboard-notifications/dashboard-notifications.component';
-import { AuditReport2Component } from './components/audit-report2/audit-report2.component';
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import {ArticleComponent} from './../../common/components/article/article.component'
+import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
+import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
+import { AccountsecurityComponent } from 'src/app/common/components/accountsecurity/accountsecurity.component';
+import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
+import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
+import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
-import { PdfViewerComponent } from './components/pdf-viewer/pdf-viewer.component';
-
-
+import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 const routes: Routes = [
   {
     path:"",
     redirectTo: 'homepage',
     pathMatch: 'full'
-  },
-  {
-    path:"login",
-    component: AdminLoginComponent
-  },
-  {
-    path:"adminnav",
-    component: AdminnavComponent
   },
   {
     path:"homepage",
@@ -52,17 +38,7 @@ const routes: Routes = [
     path: 'courseInfo',
     component:CourseInfoComponent
   },
-  {
-    path:'library',
-    component:AdminLibraryComponent
-  },
-  {
-path:'library/:id',
-component:AdminLibraryComponent
-  },
-  { path: 'pdf-viewer', 
-      component:PdfViewerComponent
-   },
+
    {
     path:'article',
     component:ArticleComponent
@@ -77,15 +53,11 @@ component:AdminLibraryComponent
   },
   {
     path:'termsandconditions',
-    component:TermsandcondiComponent
-  },
-  {
-    path:"articleform",
-    component:ArticleformComponent
+    component:SidenavtermsconditionsComponent
   },
   {
     path:"profile",
-    component: PhotoComponent
+    component: ProfileComponent 
   },
   {
     path:'acSecurity',
@@ -101,7 +73,7 @@ component:AdminLibraryComponent
   },
   {
     path:"contactus",
-    component: ContactusComponent
+    component: SidenavContactusComponent
   },
   {
     path:"delete-account",
@@ -110,10 +82,6 @@ component:AdminLibraryComponent
   {
     path:"audit-report",
     component: AuditReportComponent
-  },
-  {
-    path:"audit-report2",
-    component: AuditReport2Component
   },
   {
     path:"courses-history",
@@ -151,12 +119,17 @@ component:AdminLibraryComponent
   component: AdminPostdetailComponent
 },
 {
-  
     path:"libraryForm",
     component:LibraryFormComponent
-  
+},
+{
+ path:"library",
+ component:LibraryComponent 
+},
+{
+  path:"library-history",
+  component:LibraryHistoryComponent
 }
-  
 ];
 
 @NgModule({

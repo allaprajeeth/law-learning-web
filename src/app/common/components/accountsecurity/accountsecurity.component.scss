@@ -1,0 +1,52 @@
+.container {
+    padding: 20px 40px 20px 40px;
+    margin-bottom: 140px;
+    .sub {
+      width: 30%;
+      height: 600px;
+    }
+    .box {
+      background-color: white;
+      padding: 4px;
+    }
+
+    .contentBox {
+      background-color: white;
+      padding: 4px 0 4px 20px;
+      .emailContainer, .phoneContainer {
+        display: flex;
+        align-items: center;
+      }
+    }
+    #head {
+      text-align: center;
+    }
+    .editbtn {
+      background-color: black;
+      color: white;
+      padding: 6px;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 500;
+    }
+    h2, h3 {
+      font-size: 18px;
+    }
+    h2 {
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      width: 60%;
+      padding: 10px;
+    }
+    input[type="email"] {
+      width: 75%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  }
+  

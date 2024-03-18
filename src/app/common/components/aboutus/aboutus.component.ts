@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-aboutus',
@@ -6,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./aboutus.component.scss']
 })
 export class AboutusComponent {
+  
   teacherProfiles = [
     {
       photo: 'https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg',
@@ -82,10 +84,16 @@ export class AboutusComponent {
       title: 'History Teacher',
       description: 'Passionate about history and committed to making it engaging for students. I have taught history for 10+ years and believe that understanding the past is essential for shaping the future.'
     }
-    
-    
-    
-    
   ]
+  constructor(private router: Router) { }
+  navigateToAdvisorInfo() {
+    this.router.navigate(['/advisorInfo']); 
+  }
+  navigateToInstructorInfo() {
+    this.router.navigate(['/instructor/instructorinfo']); 
+  }
+
   
 }
+
+

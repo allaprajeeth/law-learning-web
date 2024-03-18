@@ -1,26 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ReviewerLoginComponent } from './components/reviewer-login/reviewer-login.component';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-import { AboutusComponent } from './components/aboutus/aboutus.component';
-import { TermsandcondiComponent } from './components/termsandcondi/termsandcondi.component';
-import { LibraryReviewerComponent } from './components/library-reviewer/library-reviewer.component';
-import { ArticleformComponent } from './components/articleform/articleform.component';
-import { AccountsecurityComponent } from './components/accountsecurity/accountsecurity.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
-import { PhotoComponent } from './components/photo/photo.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
-
+import {ArticleComponent} from './../../common/components/article/article.component'
+import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
+import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
+import { AccountsecurityComponent } from 'src/app/common/components/accountsecurity/accountsecurity.component';
+import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
+import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
+import { LibraryComponent } from 'src/app/common/components/library/library.component';
 const routes: Routes = [
   {
     path:"",
@@ -61,19 +58,15 @@ const routes: Routes = [
   },
   {
     path:'termsandconditions',
-    component:TermsandcondiComponent
+    component:SidenavtermsconditionsComponent
   },
   {
     path:'library',
-    component:LibraryReviewerComponent
-  },
-  {
-    path:"articleform",
-    component:ArticleformComponent
+    component:LibraryComponent
   },
   {
     path:"profile",
-    component: PhotoComponent
+    component: ProfileComponent
   },
   {
     path:'acSecurity',
@@ -85,14 +78,14 @@ const routes: Routes = [
   },
   {
     path:"contactus",
-    component: ContactusComponent
+    component: SidenavContactusComponent
   },
   {
     path:"delete-account",
     component: DeleteaccountComponent
   },
   {
-    path: 'uploadstatus',
+    path: 'courses-history',
     component: UploadStatusComponent,
   },
   { path: 'detail-articles/:id', 

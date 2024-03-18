@@ -1,15 +1,12 @@
-<!-- sidenav.component.html -->
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened>
-    <!-- Your sidebar content goes here -->
     <mat-nav-list>
-
       <div>
         <a mat-list-item routerLink="/admin/all-profiles" (click)="toggleRoles()" routerLinkActive="active-link">
           <span class="icon-span">
             <mat-icon>group</mat-icon>
+            <span class="span">All Profiles</span>
           </span>
-          <span class="span">All Profiles</span>
           <span class="expand-icon">
             <mat-icon>{{ showRoles ? 'expand_less' : 'expand_more' }}</mat-icon>
           </span>
@@ -21,28 +18,27 @@
           <li (click)="selectRole('reviewers')" routerLinkActive="active-link">Reviewers</li>
           <li (click)="selectRole('instructors')" routerLinkActive="active-link">Instructors</li>
           <li (click)="selectRole('content-managers')" routerLinkActive="active-link">Content Managers</li>
-
-          <!-- <li *ngFor="let role of profile.roles">{{ role }}</li> -->
         </ul>
-
       </div>
       <div>
         <a mat-list-item routerLink="/admin/dashboard" routerLinkActive="active-link">
-          <span class="icon-span"><mat-icon>person</mat-icon>
+          <span class="icon-span">
+            <mat-icon>person</mat-icon>
+            <span class="span">create user</span>
           </span>
-          <span>create user</span>
         </a>
       </div>
       <div>
         <a mat-list-item routerLink="/admin/dash-notifications" (click)="toggleNotifications()"
           routerLinkActive="active-link">
-          <span class="icon-span"><mat-icon>notifications</mat-icon></span>
-          <span class="span">Notifications</span>
+          <span class="icon-span">
+            <mat-icon>notifications</mat-icon>
+            <span class="span">Notifications</span>
+          </span>
           <span class="expand-icon">
             <mat-icon>{{ showNotifications ? 'expand_less' : 'expand_more' }}</mat-icon>
           </span>
         </a>
-
         <ul *ngIf="showNotifications">
           <li (click)="selectNotification('all')" routerLinkActive="active-link">all</li>
           <li (click)="selectNotification('comments')" routerLinkActive="active-link">comments</li>
@@ -53,13 +49,15 @@
       </div>
       <div>
         <a mat-list-item routerLink="/admin/libraryForm" routerLinkActive="active-link">
-          <span>Library Form</span>
+          <span class="icon-span">
+            <mat-icon>library_books</mat-icon>
+            <span  class="span">Library Form</span>
+          </span>
         </a>
       </div>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <!-- Your main content goes here -->
     <div class="content">
       <router-outlet></router-outlet>
     </div>

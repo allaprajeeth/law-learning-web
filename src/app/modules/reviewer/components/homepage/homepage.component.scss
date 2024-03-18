@@ -1,5 +1,17 @@
+.container {
+  margin: 0 auto;
+  max-width: 80vw;
+
+  h1{
+    font-size: 19px;
+    padding: 10px;
+    // text-align: center;
+    font-weight: bold;
+  }
+}
 .heading {
-  padding: 30px 0 5px 0;
+  padding:5px 0;
+  color: #007791;
 }
 h1{
   font-weight: bolder;

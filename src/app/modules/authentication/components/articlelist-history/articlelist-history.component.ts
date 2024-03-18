@@ -1,5 +1,3 @@
-// articlelist-history.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Article } from '../article.model';
@@ -11,34 +9,29 @@ import { Article } from '../article.model';
 })
 export class ArticlelistHistoryComponent implements OnInit {
   publishedArticles: Article[] = [];
+  articles: Article[] = []; 
 
   constructor(private articleService: ArticleService) { }
 
   ngOnInit() {
     this.loadArticles();
   }
-
   loadArticles() {
     this.articleService.getArticles().subscribe(
-      (response: any)  => {
-        // Use type assertion to tell TypeScript that you know the structure
-        this.publishedArticles = response.content;
+      (response: any) => {
+        console.log('Response:', response);
+        // Assign the array of articles directly to publishedArticles
+        this.publishedArticles = response;
+        console.log('publishedArticles', this.publishedArticles);
       },
-      error => console.error('Error fetching articles:', error)
+      (error) => {
+        console.error('Error fetching articles:', error);
+      }
     );
   }
   
-
-  // deleteArticle(articleId: number) {
-  //   this.articleService.deleteArticle(articleId).subscribe(
-  //     response => {
-  //       console.log('Article deleted successfully:', response);
-  //       // Reload the articles after deletion
-  //       this.loadArticles();
-  //     },
-  //     error => console.error('Error deleting article:', error)
-  //   );
-  // }
+  
+  
 
   getStatusStyles(status: string | undefined): any {
     switch (status) {

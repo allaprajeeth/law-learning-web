@@ -1,7 +1,7 @@
 // auth-token.service.ts
 
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserModel } from '../../models/user.model';
 
 @Injectable({
@@ -12,10 +12,13 @@ export class AuthTokenService {
   // Change the access modifier from private to public
   public jwtToken$ = new BehaviorSubject('');
 
+  private userDetailsSubject = new BehaviorSubject<UserModel | null>(null);
+  userDetails$: Observable<UserModel | null> = this.userDetailsSubject.asObservable();
+
   getCurrentToken(): string {
     return this.jwtToken$.value;
   }
-  constructor() { }
+  
 
   isLoggedIn() {
     // Get token from local storage
@@ -33,8 +36,9 @@ export class AuthTokenService {
 
   getUserDetails(): UserModel | null {
     const user = localStorage.getItem('userDetails');
-    if(!user) return null;
-    return Object.assign(new UserModel(), JSON.parse(user));
+    const userDetails = user ? Object.assign(new UserModel(), JSON.parse(user)) : null;
+    this.userDetailsSubject.next(userDetails); 
+    return userDetails;
   }
 
   hasAnyRole(roles: string[]): boolean {

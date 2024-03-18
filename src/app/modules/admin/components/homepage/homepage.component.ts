@@ -1,10 +1,7 @@
-// homepage.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { ArticleApiResponse, Article } from '../admin.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',

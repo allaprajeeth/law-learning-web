@@ -11,17 +11,14 @@ import { endPoints } from '../../constants/endpoints';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   paidCourses: any[] = [];
   freeCourses: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL;
   selectedCategory: string = '';
   selectedCourseType: string = '';
-
   title = 'my-first-app';
 
-  constructor(private router: Router, private coursesService: CoursesService) {
-  }
+  constructor(private router: Router, private coursesService: CoursesService) {}
 
   ngOnInit(): void {
     this.initializeFreeCoursesHeadings();
@@ -29,29 +26,35 @@ export class HeaderComponent implements OnInit {
   }
 
   private initializeFreeCoursesHeadings(): void {
-    this.coursesService.get({}, endPoints.search_courses).subscribe((response: HttpResponse<Course>) => {
-      for (var i in response.records) {
-        this.freeCourses.push(response.records[i]);
-      }
-    });
+    this.coursesService
+      .get({}, endPoints.search_courses)
+      .subscribe((response: HttpResponse<Course>) => {
+        for (var i in response.records) {
+          this.freeCourses.push(response.records[i]);
+        }
+      });
   }
 
   private initializePaidCoursesHeadings(params: any, reload: boolean): void {
-    this.coursesService.get(params, endPoints.search_courses).subscribe((response: HttpResponse<Course>) => {
-      if(reload)
-          this.paidCourses = [];
-      for (var i in response.records) {
-        this.paidCourses.push(response.records[i]);
-      }
-    });
+    this.coursesService
+      .get(params, endPoints.search_courses)
+      .subscribe((response: HttpResponse<Course>) => {
+        if (reload) this.paidCourses = [];
+        for (var i in response.records) {
+          this.paidCourses.push(response.records[i]);
+        }
+      });
   }
 
   updateSelectedCourseType(level: string, courseType: string): void {
-    this.initializePaidCoursesHeadings({'type': courseType, 'level': level}, true);
+    this.initializePaidCoursesHeadings(
+      { type: courseType, level: level },
+      true
+    );
   }
 
   showCourseContent(id: number) {
-    this.router.navigate(['/freecourse'], { queryParams: {_id: id} });
+    this.router.navigate(['/freecourse'], { queryParams: { _id: id } });
   }
 
   onImageError(event: any) {
