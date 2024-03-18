@@ -47,9 +47,19 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     ConfirmationAlertComponent,
     SidenavComponent,
      SharednotificationsComponent,
+    //  SharedcontactusComponent,
+     ShareddeleteAccountComponent,
+    //  LibraryComponent,
+     SharedCertificateComponent,
+    //  SharedarticleformComponent,
+    //  SharedpostdetailsComponent,
+    //  SharedTCComponent,
+
+     SharednotificationsComponent,
      ShareddeleteAccountComponent,
      SharedCertificateComponent,
     //  SharedpostdetailsComponent,
+
      SharedNotificationComponent,
      LogoutPopupComponent,
      PublishArticlesComponent,
@@ -58,6 +68,9 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
      SharedcourseHistoryComponent,
      SharedarticleHistoryComponent,
     ],
+
+
+
 
   imports: [
     CommonModule,
@@ -99,5 +112,6 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     RouterModule,
     SharedcourseHistoryComponent,
   ]
+
 })
 export class SharedModule {}
