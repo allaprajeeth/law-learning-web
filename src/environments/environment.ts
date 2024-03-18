@@ -7,7 +7,8 @@ export const environment = {
     production: false,
     staging: false,
     endpoints: {
-        baseURL: 'http://192.168.1.42:8080/api/v1',
+        baseURL: 'http://localhost:8080/api/v1',
+        secureBaseURL: 'http://localhost:8080/api/v1/secure',
         s3BaseURL: 'https://elearning-stagging.s3.ap-south-1.amazonaws.com/',
         signUp: '/signup',
         signUpComplete: '/signup/complete',

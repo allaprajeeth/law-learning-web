@@ -43,7 +43,6 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { ContactusComponent } from './components/contactus/contactus.component';
 import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
-// import { InstructorOverviewComponent } from './components/instructor-overview/instructor-overview.component';
 import { HistoryComponent } from './components/history/history.component';
 import { LibraryInstructorComponent } from './components/library-instructor/library-instructor.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
@@ -59,7 +58,8 @@ import { UnderReviewCoursesInfoComponent } from './components/under-review-cours
 import { CommentedCoursesInfoComponent } from './components/commented-courses-info/commented-courses-info.component';
 import { CommentedCoursesOverviewComponent } from './components/commented-courses-overview/commented-courses-overview.component';
 import { CourseWidgetComponent } from './components/course-widget/course-widget.component';
-import {MatStepperModule} from '@angular/material/stepper';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
@@ -126,7 +126,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     MatDialogModule,
     MatSidenavModule,
     MatCheckboxModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressBarModule
   ],
 
   exports: [

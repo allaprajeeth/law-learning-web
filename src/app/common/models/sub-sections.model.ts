@@ -1,4 +1,5 @@
 import { BaseModel } from "./base.model";
+import { FileInfo } from "./fileInfo.model";
 
 export class SubSection extends BaseModel<SubSection> {
   public id!: number;
@@ -6,6 +7,7 @@ export class SubSection extends BaseModel<SubSection> {
   public title!: string;
   public updatedDate!: string;
   public createdDate!: string;
+  public file!: FileInfo;
   constructor(model?: SubSection) {
     super(model);
   }

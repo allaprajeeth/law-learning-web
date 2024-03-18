@@ -138,6 +138,36 @@
                                                 <textarea id="description" name="description"
                                                     formControlName="description" rows="4" required></textarea>
                                             </div>
+                                        
+                                            <!-- TODO -->
+                                            <div class="row" *ngIf="course.sections[i].subSections[j].file">
+                                                <div class="col-8">
+                                                    <label class="btn btn-default p-0">
+                                                        <span>{{course.sections[i].subSections[j].file.fileName}}</span>
+                                                      </label>
+                                                </div>
+                                                <div class="col-4">
+                                                    <button class="small-button enabled-button" [disabled]="!currentFile" (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)">
+                                                        Upload
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <mat-progress-bar mode="determinate" value="{{progress}}" *ngIf="currentFile"></mat-progress-bar>
+                                            <mat-action-row align="end" class="button-container">
+                                                <button (click)="fileDocument.click()"
+                                                    class="small-button enabled-button">
+                                                    <mat-icon class="black-icon">add</mat-icon>Document
+                                                    <input #fileDocument type="file"
+                                                        (change)="onFileChanged('document', $event)"
+                                                        style="display:none;" />
+                                                </button>
+                                                <button (click)="fileVideo.click()" class="small-button enabled-button">
+                                                    <mat-icon class="black-icon">add</mat-icon>Video
+                                                    <input #fileVideo type="file"
+                                                        (change)="onFileChanged('video', $event)"
+                                                        style="display:none;" />
+                                                </button>
+                                            </mat-action-row>
                                         </mat-expansion-panel>
                                     </div>
                                 </div>

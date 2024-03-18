@@ -13,6 +13,8 @@ import { CoursesService } from 'src/app/common/services/courses/courses.service'
 import { SubSection } from 'src/app/common/models/sub-sections.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationAlertComponent } from 'src/app/shared-module/components/confirmation-alert/confirmation-alert.component';
+import { FileUploadService } from 'src/app/common/services/file-upload/file-upload.service';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 @Component({
 	selector: 'app-course-widget',
@@ -20,7 +22,7 @@ import { ConfirmationAlertComponent } from 'src/app/shared-module/components/con
 	styleUrls: ['./course-widget.component.scss']
 })
 export class CourseWidgetComponent {
-
+	
 	stepperOrientation: Observable<StepperOrientation>;
 	sectionStep: number = 0;
 	subSectionStep: number = -1;
@@ -31,8 +33,13 @@ export class CourseWidgetComponent {
 	processing: boolean = false;
 	course: Course = new Course;
 
+	// Resource upload
+	currentFile?: File;
+	progress: number = 0;
+
 	constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver,
-		private courseService: CoursesService, private route: ActivatedRoute, public dialog: MatDialog) {
+		private courseService: CoursesService, private route: ActivatedRoute, public dialog: MatDialog,
+		private fileUploadService: FileUploadService) {
 		this.stepperOrientation = breakpointObserver
 			.observe('(min-width: 800px)')
 			.pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
@@ -148,6 +155,7 @@ export class CourseWidgetComponent {
 		this.clearSubSectionForm(sectionIndex);
 		subSections.forEach(subSection => {
 			var sectionForm: FormGroup = this.newSubSectionForm();
+			console.log(subSection)
 			sectionForm.patchValue(subSection);
 			this.getSubSections(sectionIndex).push(sectionForm);
 		});
@@ -189,10 +197,10 @@ export class CourseWidgetComponent {
 
 	private loadCourseDetails(courseId: number) {
 		this.courseService.getById(endPoints.secure + endPoints.course + '/' + courseId).subscribe((courseDetails) => {
-			const course: Course = courseDetails.records[0];
-			this.courseForm.patchValue(course);
-			if (course && course.sections) {
-				this.patchSectionForm(course.sections);
+			this.course = courseDetails.records[0];
+			this.courseForm.patchValue(this.course);
+			if (this.course && this.course.sections) {
+				this.patchSectionForm(this.course.sections);
 			}
 		});
 	}
@@ -270,9 +278,9 @@ export class CourseWidgetComponent {
 				if(stepper && response.status === 200)
 					stepper.next();
 			  },
-			  error: (error: Error) => {
+			error: (error: Error) => {
 				this.processing = false;
-			  }
+			}
 		});
 	}
 
@@ -291,5 +299,36 @@ export class CourseWidgetComponent {
 		}
 		if (key === 'sub_section')
 			this.subSectionStep = index;
+	}
+
+	onFileChanged(resourceType: string, event: any) {
+		const file = event.target.files;
+		if(file && file.length > 0)
+			this.currentFile = file[0];
+	}
+
+	attachResource(resourceType: string, sectionId: number, subSectionId: number) {
+		if(this.currentFile) {
+			const data = {
+				resourceType: resourceType,
+				name: this.currentFile.name,
+				courseId: this.courseId,
+				sectionId: sectionId,
+				subSectionId: subSectionId
+			}
+			this.fileUploadService.upload('/courses/upload', this.currentFile, data).subscribe({
+				next: (response: any) => {
+					if (response.type === HttpEventType.UploadProgress) {
+						this.progress = Math.round((100 * response.loaded) / response.total);
+					  } else if (response instanceof HttpResponse) {
+						console.log(response.body.message);
+					  }
+				  },
+				error: (error: Error) => {
+					console.log(error);
+					this.progress = 0;
+				}
+			});
+		}
 	}
 }

@@ -1,7 +1,10 @@
 .mat-mdc-card-title {
-    font-size: 14px;
+    font-size: 12px;
 }
-
+.mat-expansion-panel-header {
+    border-radius: 0;
+    border-bottom: 2px solid #e0e0e0;
+}
 .example-headers-align .mat-expansion-panel-header-description {
     justify-content: space-between;
     align-items: center;
@@ -42,7 +45,7 @@
     }
 
     .form-group {
-        margin-left: 30px;
+        // margin-left: 30px;
         margin-bottom: 15px;
 
         label {
