@@ -2,71 +2,51 @@
   height: 100%;
   border-radius: 5px;
 }
-
 mat-sidenav {
   width: 240px;
-  // background-color: #333; 
 }
-
 mat-nav-list a {
   color: white;
-  // padding: 2px 2px 2px 2px; 
-  // margin: 2px 2px;
   margin: 17px 0px 10px 0px;
-
   &.active-link {
-    background-color: #c3c1c1; /* Add your desired background color here */
+    background-color: #e0d9d9; 
   }
-
   .icon-span {
     display: inline-flex;
     align-items: center;
     width:150px;
-    margin-right: 8px; /* Adjust margin as needed */
+    margin-right: 8px; 
     span.span {
     margin:0px 0px 0px 10px;
   }
   }
- 
 }
 .expand-icon {
-  margin-left: 20px; /* Push the icon to the right */
+  margin-left: 20px; 
 }
-
-
 mat-sidenav-content {
   padding: 20px;
 }
-
 .content {
   height: 100%;
   overflow-y: auto;
 }
-
 mat-nav-list ul {
   list-style: none;
-  // padding: 0;
   margin: 0;
   margin-left: 30px;
-  padding-left: 30px;
-
-  
+  padding-left: 30px;  
 }
-
 mat-nav-list li {
   padding: 8px 0;
   padding-left: 30px;
   cursor: pointer;
-  // color: #fff;
   transition: background-color 0.3s ease;
-
   &:hover {
-    background-color: #555;
-    // margin-left: 1px;
+    background-color: #e0d9d9;
     padding-left: 30px;
   }
-
   &.active {
-    background-color: #c3c1c1; /* Add your desired active background color */
+    background-color: #e0d9d9; 
   }
 }

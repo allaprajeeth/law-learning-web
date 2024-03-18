@@ -1,12 +1,9 @@
 <div class="notification-container">
-  <!-- <mat-toolbar> -->
     <span class="heading">Notifications</span>
-  <!-- </mat-toolbar> -->
-
   <div class="notification-list">
     <ng-container *ngFor="let notification of notifications; let i = index">
       <div class="notification-item" (click)="openNotification()">
-        <div class="circle" [style.backgroundColor]="getRandomColor()">
+        <div class="circle">
           {{ notification.icon }}
         </div>
         <div class="notification-content">

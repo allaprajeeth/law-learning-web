@@ -46,11 +46,6 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     FileUploadComponent,
     ConfirmationAlertComponent,
     SidenavComponent,
-  
-
-    //  SharedaboutusComponent,
-    //  SharedphotoComponent,
-    //  SharedaccountsecurityComponent,
      SharednotificationsComponent,
     //  SharedcontactusComponent,
      ShareddeleteAccountComponent,
@@ -59,6 +54,12 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     //  SharedarticleformComponent,
     //  SharedpostdetailsComponent,
     //  SharedTCComponent,
+
+     SharednotificationsComponent,
+     ShareddeleteAccountComponent,
+     SharedCertificateComponent,
+    //  SharedpostdetailsComponent,
+
      SharedNotificationComponent,
      LogoutPopupComponent,
      PublishArticlesComponent,
@@ -67,6 +68,8 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
      SharedcourseHistoryComponent,
      SharedarticleHistoryComponent,
     ],
+
+
 
 
   imports: [

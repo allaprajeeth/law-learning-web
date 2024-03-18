@@ -128,7 +128,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/cdk@16.2.2":
+"@angular/cdk@^16.2.2", "@angular/cdk@16.2.2":
   version "16.2.2"
   resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-16.2.2.tgz"
   integrity sha512-luUmeIFuEX4N3EOLhg1DM2hgsR+Is1Qd0a5xflbo30hZFnufppyzjaOvljNYUFtNTD9BaQRXaZDFA2cyTgfzZw==
@@ -203,7 +203,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/material@16.2.2":
+"@angular/material@^16.2.2":
   version "16.2.2"
   resolved "https://registry.npmjs.org/@angular/material/-/material-16.2.2.tgz"
   integrity sha512-0SaBPZsZ1jxq5yJeey+V2k7nq1Izw63fjxkyLx7rCcdowwwoBnG/dZsY97/5Qs2cZX0J+Z0iNpMYVJZd72GsvQ==

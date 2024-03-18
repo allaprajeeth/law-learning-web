@@ -22,6 +22,8 @@ import { AccountsecurityComponent } from 'src/app/common/components/accountsecur
 import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
+import { LibraryFormComponent } from './components/library-form/library-form.component';
+import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 const routes: Routes = [
   {
     path:"",
@@ -117,12 +119,17 @@ const routes: Routes = [
   component: AdminPostdetailComponent
 },
 {
-  
     path:"libraryForm",
-    component:LibraryComponent
-  
+    component:LibraryFormComponent
+},
+{
+ path:"library",
+ component:LibraryComponent 
+},
+{
+  path:"library-history",
+  component:LibraryHistoryComponent
 }
-  
 ];
 
 @NgModule({

@@ -1,5 +1,3 @@
-// subscriberpostdetails.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -78,7 +76,6 @@ export class SubscriberpostdetailsComponent implements OnInit{
   constructor(private route: ActivatedRoute,
     private fetcharticle:FetcharticlesService,
     private fetcharticleService: FetcharticlesService,
-  // private route: ActivatedRoute,
   private router: Router,
   public dialog: MatDialog
     ) {}

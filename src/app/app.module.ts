@@ -65,6 +65,7 @@ import { SidenavContactusComponent } from './common/components/sidenav-contactus
 import { TermsconditionsComponent } from './common/components/termsconditions/termsconditions.component';
 import { SidenavtermsconditionsComponent } from './common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from './common/components/library/library.component';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -116,6 +117,7 @@ import { LibraryComponent } from './common/components/library/library.component'
     MatSidenavModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatListModule,
     MatSelectModule,
     FormsModule,
     MatInputModule,

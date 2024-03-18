@@ -35,6 +35,7 @@ import { AllProfilesComponent } from './components/all-profiles/all-profiles.com
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
+import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 @NgModule({
   declarations: [
     HomepageComponent,
@@ -55,7 +56,8 @@ import { LibraryFormComponent } from './components/library-form/library-form.com
     AllProfilesComponent,
     ProfileDetailsComponent,
     ArticleDetailComponent,
-    LibraryFormComponent, 
+    LibraryFormComponent,
+    LibraryHistoryComponent, 
 
   ],
   
