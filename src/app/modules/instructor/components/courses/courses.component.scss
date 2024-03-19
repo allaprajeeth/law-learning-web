@@ -1,15 +1,15 @@
-.container-wrapper {
+.course-container-wrapper {
     
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #e0d9d9; /* Background color for the whole page */
+    background-color: #e0d9d9; 
   }
 .form-container {
-    width: 60%; /* Set your desired width for the centered box */
-    background-color: #ffffff; /* Background color for the centered box */
+    width: 60%; 
+    background-color: #ffffff; 
     padding: 20px;
-    border-radius: 10px; /* Optional: Adds rounded corners to the box */
+    border-radius: 10px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     margin-top: 30px;
     margin-bottom: 30px;
@@ -47,15 +47,15 @@
       
       .currency-symbol {
         position: absolute;
-        left: 10px; /* Adjust the distance from the left */
+        left: 10px; 
         top: 50%;
         transform: translateY(-50%);
-        color: #333; /* Adjust the color */
+        color: #333;
       }
       
-      /* Additional styling for the input field */
+      
       .input-with-symbol input {
-        padding-left: 30px; /* Adjust to accommodate the symbol */
+        padding-left: 30px; 
       }
       
   

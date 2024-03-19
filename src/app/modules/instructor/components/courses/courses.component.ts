@@ -148,6 +148,4 @@ onNext() {
     console.error('Invalid Course ID');
   }
 }
-
-
 }
