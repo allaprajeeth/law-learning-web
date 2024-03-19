@@ -1,0 +1,61 @@
+.container-wrapper {
+  height: auto;
+}
+
+.sidenav-container {
+  margin: 60px;
+  padding: 60px 70px;
+  text-align: center;
+}
+
+.article-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: medium;
+
+  th,
+  td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #e2e2e2;
+    font-weight: bolder;
+  }
+
+  tr {
+    &:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+  }
+
+  .articleHeading {
+    padding-right: 100px;
+  }
+  
+  .publishedDate {
+    padding-right: 20px;
+  }
+
+  .articleName {
+    padding-left: 50px;
+    text-align: left;
+  }
+}
+
+.publishedArticles {
+  color: green;
+  padding-bottom: 10px;
+}
+
+.underReviewArticles {
+  color: orange;
+  padding: 20px 0 10px 0;
+}
+
+ .commentedArticles {
+  color: red;
+  padding: 20px 0 10px 0;
+}

@@ -97,9 +97,6 @@ import { MatListModule } from '@angular/material/list';
     TermsconditionsComponent,
     SidenavtermsconditionsComponent,
     LibraryComponent,
-    
-
-
   ],
   imports: [
     CarouselModule,

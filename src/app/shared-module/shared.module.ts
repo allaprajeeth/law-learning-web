@@ -111,6 +111,7 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     SidenavComponent,
     RouterModule,
     SharedcourseHistoryComponent,
+    SharedarticleHistoryComponent,
   ]
 
 })
