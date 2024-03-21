@@ -83,7 +83,7 @@ export class SidenavComponent {
       { name: 'Profile', route: '/reviewer/profile' },
       { name: 'Account Security', route: '/reviewer/acSecurity' },
       { name: 'Notification Settings', route: '/reviewer/notifications' },
-      { name: 'Courses History', route: '/reviewer/uploadstatus' },
+      { name: 'Courses History', route: '/reviewer/courses-history' },
       { name: 'Article History', route: '/reviewer/articleHistory' },
       { name: 'Contact Us', route: '/reviewer/contactus' },
       { name: 'Terms & Conditions', route: '/reviewer/termsandconditions' },
@@ -93,7 +93,6 @@ export class SidenavComponent {
       { name: 'Account Security', route: '/authentication/acSecurity' },
       { name: 'Notification Settings', route: '/authentication/notifications' },
       { name: 'Courses History' , route: '/authentication/courses-history'},
-      { name: 'Courses History' ,  route: '/authentication/courses-history' },
       { name: 'ArticleHistory', route: '/authentication/articleListHistory' },
       { name: 'Contact Us', route: '/authentication/contactus' },
       {

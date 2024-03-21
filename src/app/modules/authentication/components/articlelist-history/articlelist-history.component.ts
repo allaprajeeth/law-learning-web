@@ -29,10 +29,6 @@ export class ArticlelistHistoryComponent implements OnInit {
       }
     );
   }
-  
-  
-  
-
   getStatusStyles(status: string | undefined): any {
     switch (status) {
       case 'Under Review':

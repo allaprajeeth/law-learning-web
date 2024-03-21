@@ -31,6 +31,7 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
+import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/
     ArticleHistoryComponent,
     ArticleDetailComponent,
     ReviewerPostdetailsComponent,
+    CoursesHistoryComponent,
   ],
   
   imports: [

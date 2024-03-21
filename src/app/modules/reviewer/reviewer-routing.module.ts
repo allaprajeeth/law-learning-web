@@ -18,6 +18,7 @@ import { AccountsecurityComponent } from 'src/app/common/components/accountsecur
 import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
+import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 const routes: Routes = [
   {
     path:"",
@@ -86,7 +87,7 @@ const routes: Routes = [
   },
   {
     path: 'courses-history',
-    component: UploadStatusComponent,
+    component: CoursesHistoryComponent,
   },
   { path: 'detail-articles/:id', 
   component: ArticleDetailComponent

@@ -1,48 +1,32 @@
 .container-wrapper {
-    
     display: flex;
     justify-content: center;
     align-items: center;
-     /* Set height to viewport height for full-screen appearance */
-    background-color: #e0d9d9; /* Background color for the whole page */
+    background-color: #e0d9d9; 
   }
 .form-container {
-    width: 60%; /* Set your desired width for the centered box */
-    background-color: #ffffff; /* Background color for the centered box */
+    width: 60%; 
+    background-color: #ffffff;
     padding: 20px;
-    border-radius: 10px; /* Optional: Adds rounded corners to the box */
+    border-radius: 10px; 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     margin-top: 30px;
     margin-bottom: 30px;
-    
-    // width: 60%;
-    // margin: 0 auto;
     padding: 20px;
-    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    // background-color: #f9f9f9;
-    // border-radius: 5px;
-  
     h2 {
       text-align: center;
       margin-bottom: 20px;
     }
-  
     .form-group {
        margin-left: 30px;
         margin-bottom: 15px;
-
-      
-      label {
-        
+      label { 
         display: block;
-        font-weight: bold;
-
+       font-weight: bold;
       }
-
       .skill{
         font-weight: 400;
       }
-  
       input[type="text"],
       input[type="number"],
       textarea,
@@ -53,19 +37,15 @@
         border: 1px solid #ccc;
         border-radius: 5px;
       }
-  
       textarea {
         resize: vertical;
       }
-  
       input[type="file"] {
         border: none;
         background-color: #ffffff;
       }
     }
-  
-    button {
-        
+    button {  
       background-color: #007791;
       color: #fff;
       border: none;
@@ -80,19 +60,16 @@
       }
     }
     .center-button {
-        margin: 0 auto; /* Center the button horizontally */
-        display: block; /* Ensure it takes up the full width available */
+        margin: 0 auto; 
+        display: block; 
     }
-
     .radio-group {
       display: flex;
       gap: 20px;
   }
-  
   .duration-input {
       display: flex;
       gap: 10px;
-  }
-    
+  } 
   }
   

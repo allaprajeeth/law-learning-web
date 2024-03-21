@@ -1,48 +1,46 @@
 .container-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 120vh;
-    background-color: #e0d9d9;
+  height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  // padding-bottom: 40px;
+}
+
+.sidenav-container {
+  padding: 20px 50px;
+  text-align: center;
+  // margin-top: 60px;
+}
+
+.coursesHeading {
+  text-align: center;
+}
+
+.course-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: medium;
+
+  th,
+  td {
+    padding: 20px;
+    text-align: center;
   }
-  
-  .container {
-    background-color: #ffffff;
-    margin: 20px 60px 20px 60px;
-    padding: 40px 80px 40px 80px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  th {
+    background-color: #e2e2e2;
+    font-weight: bolder;
   }
-  
-  .coursesHistory {
-      text-align: center;
-      font-weight: 500;
-      font-size: 24px;
+  tr {
+    &:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
   }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 15px;
-  
-    th,
-    td {
-      padding: 20px;
-      text-align: center;
-    }
-  
-    th {
-      background-color: #e7e7e7;
-    }
-  
-    tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-  
-    tr:hover {
-      background-color: #e5e5e5;
-    }
-  
+  .courseHeading {
+    padding-right: 100px;
   }
-  
+  .courseName {
+    padding-left: 50px;
+    text-align: left;
+  }
+}

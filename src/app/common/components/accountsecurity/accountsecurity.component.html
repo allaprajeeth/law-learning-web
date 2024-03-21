@@ -19,7 +19,7 @@
                                 <input type="text" id="currentEmail" formControlName="currentEmail"
                                     style="margin-left: 5px;" [disabled]="!isCurrentEmailEditable"
                                     placeholder="nuncsystems@gmail.com" [value]="accountForm.get('currentEmail')?.value"
-                                    [(ngModel)]="userEmail"> 
+                                    [(ngModel)]="userEmail">
                                 <button type="button" class="editbtn" (click)="editCurrentEmail()">
                                     <i class="material-icons">{{ isCurrentEmailEditable ? 'done' : 'edit' }}</i>
                                 </button>

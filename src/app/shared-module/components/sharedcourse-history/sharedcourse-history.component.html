@@ -1,24 +1,31 @@
 
-      <div class="container-wrapper">
-        <div class="container">
-          <h1 class="coursesHistory">Courses History</h1>
-          <table>
-            <thead>
-              <tr>
-                <th>Course Name</th>
-                <th>Approval Status</th>
-                <th>Date of Submission</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let course of courses">
-                <td>{{ course.name }}</td>
-                <td>
-                  <p [ngStyle]="getStatusStyles(course.status)">{{ course.status }}</p>
-                </td>
-                <td>{{ course.submissionDate }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+<mat-sidenav-container>
+  <mat-sidenav #sideNav mode="side" opened>
+      <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+<div class="container-wrapper">
+  <div class="sidenav-container">
+    <h1 class="coursesHeading">Courses History</h1>
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th class="courseHeading">Course Name</th>
+          <th>Approval Status</th>
+          <th>Date of Submission</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td class="courseName">{{ course.name }}</td>
+          <td>{{ course.submissionDate }}</td>
+          <td>
+            <p [ngStyle]="getStatusStyles(course.status)">{{ course.status }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</mat-sidenav-content>
+</mat-sidenav-container>
