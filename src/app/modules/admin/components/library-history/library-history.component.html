@@ -11,23 +11,14 @@
             <thead>
               <tr>
                 <th>Document Name</th>
-                <th class="hidden">Approvers</th>
-                <th>Status</th>
-                <!-- <th class="hidden">Approval Actions</th> -->
                 <th>Date of Submission</th>
-                <!-- <th class="hidden">Date and Time of Action</th> -->
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let library of libraries">
-                <td>{{ library.name }}</td>
-                <!-- <td class="hidden">{{ course.approver }}</td> -->
-                <td>
-                  <p [ngStyle]="getStatusStyles(library.status)">{{ library.status }}</p>
-                </td>
-                <!-- <td class="hidden">{{ course.actions }}</td> -->
-                <td>{{ library.submissionDate }}</td>
-                <!-- <td class="hidden">{{ course.actionDate }}</td> -->
+                <td>{{ library.title | uppercase }}</td>
+                <td class="date">{{ library.createdDate | date:'yyyy-MM-dd'  }}</td>
+               
               </tr>
             </tbody>
           </table>

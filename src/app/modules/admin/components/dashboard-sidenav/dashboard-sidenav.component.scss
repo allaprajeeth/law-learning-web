@@ -1,9 +1,12 @@
-.sidenav-container {
+.dashboard-sidenav-container {
   height: 100%;
   border-radius: 5px;
 }
 mat-sidenav {
   width: 240px;
+}
+div {
+  margin: 1px;
 }
 mat-nav-list a {
   color: white;
@@ -34,17 +37,17 @@ mat-sidenav-content {
 mat-nav-list ul {
   list-style: none;
   margin: 0;
-  margin-left: 30px;
-  padding-left: 30px;  
+  margin-left: 20px;
+  
 }
 mat-nav-list li {
   padding: 8px 0;
-  padding-left: 30px;
+  padding-left: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
   &:hover {
     background-color: #e0d9d9;
-    padding-left: 30px;
+   
   }
   &.active {
     background-color: #e0d9d9; 

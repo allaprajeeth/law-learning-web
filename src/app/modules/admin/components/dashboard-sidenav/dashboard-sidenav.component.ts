@@ -11,6 +11,7 @@ export class DashboardSidenavComponent {
 
   showRoles: boolean = false;
   showNotifications: boolean = false;
+  selectedRole: string | null = null
 
   toggleRoles(): void {
     this.showRoles = !this.showRoles;
@@ -21,7 +22,8 @@ export class DashboardSidenavComponent {
   }
 
   selectRole(role: string): void {
-    this.roleSelected.emit(role);
+    this.roleSelected.emit(role);  ;
+    this.selectedRole = role; 
     // this.showRoles = false; 
   }
 

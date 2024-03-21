@@ -9,6 +9,8 @@ export class Library extends BaseModel<Library> {
   public deleted!: boolean;
   public showFileContent: boolean = false;  // Initialize with false
   public fileContent: string = '';  // Initialize with an empty string
+  name: any;
+  createdDate: string | undefined;
 
   constructor(model?: Library) {
     super(model);

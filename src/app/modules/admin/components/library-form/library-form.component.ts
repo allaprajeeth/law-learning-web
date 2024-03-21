@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./library-form.component.scss']
 })
 export class LibraryFormComponent {
-
+  selectedRole: string = 'all';
   private apiUrl = endPoints.baseURL + '/secure/libraries';
   title :any;
   showSuccessMessage: boolean = false;
