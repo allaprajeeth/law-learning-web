@@ -8,6 +8,7 @@ import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { saveAs } from 'file-saver';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-library',
@@ -27,23 +28,11 @@ export class LibraryComponent {
   ) {}
 
   ngOnInit(): void {
-    this.loadLibraries(this.pagination.getPaginationRequest());
-    // this.pdfSrc="assets/Java.pdf"
+    this.libraryService.loadLibraries(this.pagination.getPaginationRequest());
+    this.libraries = this.libraryService.libraries;
   }
 
-  loadLibraries(params: any) {
-    this.libraryService.get(params, endPoints.libraries).subscribe(
-      (response: HttpResponse<Library>) => {
-        for (const record of response.records) {
-          // Add properties to control file content visibility and store file content
-          record.showFileContent = false;
-          record.fileContent = '';
-          this.libraries.push(record);
-        }
-        this.pagination = new Pagination(response.pagination);
-      }
-    );
-  }
+ 
 
   openFile(library: Library): void {
     this.pdfSrc = endPoints.s3BaseURL + library.url;
@@ -65,7 +54,7 @@ export class LibraryComponent {
   loadMore() {
     this.apiLoading = true;
     this.pagination.page++;
-    this.loadLibraries(this.pagination.getPaginationRequest());
+    this.libraryService.loadLibraries(this.pagination.getPaginationRequest());
     this.apiLoading = false;
   }
   remainingPdfs(){
