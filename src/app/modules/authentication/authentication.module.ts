@@ -29,6 +29,7 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
 import { FileSaverModule } from 'ngx-filesaver';
 import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
 import { CourseHistoryComponent } from './components/course-history/course-history.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { CourseHistoryComponent } from './components/course-history/course-histo
     ArticleDetailComponent,
     CmPostdetailsComponent,
     CourseHistoryComponent,
+    NotificationComponent,
   ],
   imports: [
     CommonModule,

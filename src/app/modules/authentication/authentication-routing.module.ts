@@ -16,6 +16,7 @@ import { SidenavContactusComponent } from 'src/app/common/components/sidenav-con
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { CourseHistoryComponent } from './components/course-history/course-history.component';
+import { NotificationComponent } from './components/notification/notification.component';
 const routes: Routes = [
   {
     path:"",
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path:"notifications",
     component: NotificationsComponent
+  },
+  {
+    path:"notification",
+    component: NotificationComponent
   },
   {
     path:"payments",
