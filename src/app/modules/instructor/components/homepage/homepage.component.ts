@@ -1,5 +1,3 @@
-// homepage.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
