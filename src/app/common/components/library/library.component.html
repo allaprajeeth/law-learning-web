@@ -9,6 +9,12 @@
         <button mat-stroked-button color="primary" (click)="openFile(library)">Open File
         </button>
       </td>
+      <td>
+         <button mat-stroked-button color="primary" *ngIf="isAdmin" (click)="DeleteFile(library.id)">Delete File
+        </button>
+      </td>
+
+    
     </tr>
   </table>
   <div *ngIf="pdfSrc" class="pdf">

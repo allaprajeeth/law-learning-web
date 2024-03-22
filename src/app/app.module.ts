@@ -66,6 +66,7 @@ import { TermsconditionsComponent } from './common/components/termsconditions/te
 import { SidenavtermsconditionsComponent } from './common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from './common/components/library/library.component';
 import { MatListModule } from '@angular/material/list';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +98,7 @@ import { MatListModule } from '@angular/material/list';
     TermsconditionsComponent,
     SidenavtermsconditionsComponent,
     LibraryComponent,
+    ConfirmationDialogComponent,
   ],
   imports: [
     CarouselModule,
