@@ -131,6 +131,7 @@ export class FirstnavComponent {
       
     ],
     INSTRUCTOR: [
+      {name:'Create your profile', route:'/instructor/create-profile' },
       { name: 'Profile', route: '/instructor/profile' },
       { name: 'Account Security', route: '/instructor/acSecurity' },
       { name: 'Notification Settings', route: '/instructor/notifications' },
@@ -176,7 +177,6 @@ export class FirstnavComponent {
     ],
   };
 
-  
   get showLogoutAlert(): boolean {
     return this.sharedService.showLogoutAlert;
   }

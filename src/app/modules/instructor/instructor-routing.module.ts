@@ -29,6 +29,7 @@ import { AccountsecurityComponent } from 'src/app/common/components/accountsecur
 import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
+import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 const routes: Routes = [
   {
     path: '',
@@ -124,6 +125,10 @@ const routes: Routes = [
   {
     path: 'publish-articles/:id',
     component: InstructorpostdetailsComponent,
+  },
+  {
+    path: 'create-profile',
+    component: CreateProfileComponent,
   },
   {
     path: 'acSecurity',

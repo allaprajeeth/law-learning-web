@@ -49,6 +49,7 @@ import { CommentedCoursesOverviewComponent } from './components/commented-course
 import { CourseWidgetComponent } from './components/course-widget/course-widget.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     CommentedCoursesInfoComponent,
     CommentedCoursesOverviewComponent,
     CourseWidgetComponent,
+    CreateProfileComponent,
   ],
 
   providers: [InstructorService],

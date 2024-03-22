@@ -71,6 +71,7 @@ export class SidenavComponent {
       { name: 'Terms & Conditions', route: '/subscriber/termsandconditions' },
     ],
     INSTRUCTOR: [
+      {name:'Create your profile', route:'/instructor/create-profile' },
       { name: 'Profile', route: '/instructor/profile' },
       { name: 'Account Security', route: '/instructor/acSecurity' },
       { name: 'Notification Settings', route: '/instructor/notifications' },

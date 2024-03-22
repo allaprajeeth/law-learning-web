@@ -77,10 +77,6 @@ const routes: Routes = [
     path: 'article',
     component: ArticleComponent,
   },
-  // {
-  //   path: 'post/:id',
-  //   component: SubscriberpostdetailsComponent
-  // },
   {
     path: 'library',
     component: LibraryComponent,
@@ -109,10 +105,6 @@ const routes: Routes = [
     path: 'overview',
     component: OverviewComponent,
   },
-  // {
-  //   path:'article-details',
-  //   component:StatusarticlepageComponent
-  //  },
   {
     path: 'under-review',
     component: UnderreviewarticleComponent,
@@ -121,17 +113,10 @@ const routes: Routes = [
     path: 'commented',
     component: CommentedarticleComponent,
   },
-  //  {
-  //   path:'published-articles',
-  //  },
   {
     path: 'articleHistory',
     component: ArticleHistoryComponent,
   },
-  //  {
-  //   path: 'article-details/:id',
-  //   component: StatusarticlepageComponent
-  //  },
   {
     path: 'publish-articles/:id',
     component: SubscriberpostdetailsComponent,

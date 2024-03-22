@@ -19,17 +19,8 @@ export class PublishArticlesComponent  implements OnInit{
   articleDetails: Article | null = null;
   loading = false;
   error: string | null = null;
-
-
   fileId: any;
-  // fileOpened: boolean = false;
   storedFileContent: string | undefined;
-  // articleApproved: boolean = false;
-  // articleRejected: boolean = false;
-  // approvalStatus: string = '';
-  // comment: string = '';
-  // commentError: boolean = false;
-  // articleee: boolean = false;
 
 
   constructor(
@@ -53,7 +44,6 @@ export class PublishArticlesComponent  implements OnInit{
       }
     });
   }
-  
   loadArticleDetails(): void {
     this.loading = true;
     this.error = null;
@@ -78,8 +68,6 @@ export class PublishArticlesComponent  implements OnInit{
       console.error('Article ID is null or undefined');
     }
   }
-  
-  
   openFile(fileUrl?: string, fileName?: string): void {
     this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
       .subscribe(
@@ -88,12 +76,6 @@ export class PublishArticlesComponent  implements OnInit{
           const blob = new Blob([data], { type: 'application/octet-stream' });
           const link = document.createElement('a');
           link.href = window.URL.createObjectURL(blob);
-          // Uncomment the following lines if you want to trigger a download
-          // link.download = 'downloaded-file'; 
-          // link.style.display = 'none';
-          // document.body.appendChild(link);
-          // link.click();
-          // document.body.removeChild(link);
         },
         (error) => {
           console.error('Error downloading file:', error);
