@@ -107,3 +107,37 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   margin: 20px 0px 45px;
 }
 
+/* .......article-history components.......*/
+
+.reviewstatus{
+  color: Blue;
+}
+.articlesHeading {
+  font-weight: 500;
+  padding-bottom: 10px;
+  font-size: 24px;
+  text-align: center;
+}
+.article-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: medium;
+
+  th,
+  td {
+    padding: 20px;
+   
+  }
+  th {
+    background-color: #e2e2e2;
+    font-weight: bolder;
+  }
+  tr {
+    &:hover {
+      cursor: pointer;
+      background-color: #f2f2f2;
+    }
+  }
+ 
+ 
+}

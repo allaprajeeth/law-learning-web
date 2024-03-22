@@ -9,6 +9,12 @@ export interface Article {
       name: string;
       id: number;
     };
+    reviewStatus: string;
+  updatedBy: {
+    name: string;
+    id: number;
+  };
+  updatedDate: string;
     createdDate: string;
     subject: string;
     files: {

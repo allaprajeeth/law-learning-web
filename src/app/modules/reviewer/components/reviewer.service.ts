@@ -13,10 +13,6 @@ export class ReviewerService {
 
   constructor(private http: HttpClient) {}
 
-  // getApprovedArticles(): Observable<ArticleApiResponse> {
-  //   return this.http.get<ArticleApiResponse>(`${this.apiUrl}/secure/articles/review`);
-  // }
-
   getApprovedArticles(): Observable<ArticleApiResponse> {
     return this.http.get<ArticleApiResponse>(`${endPoints.baseURL}/secure/articles/review`).pipe(
       catchError((error) => {
@@ -25,7 +21,7 @@ export class ReviewerService {
       })
     );
   }
-
+  
   getArticleDetails(articleId: number): Observable<Article> {
     const articleDetailsUrl = `${endPoints.baseURL}/articles/${articleId}`;
     return this.http.get<Article>(articleDetailsUrl).pipe(

@@ -10,9 +10,6 @@
         <h2 class="article-name">{{ (article.title.length > 40 ? article.title.slice(0, 40) + '...' : article.title) }}</h2>
         <p class="author-name">{{ article.createdBy.name }}</p>
         <p>{{ article.createdDate | date:'mediumDate' }}</p>
-
-        <!-- <p>{{ article.description }}</p> -->
-        <!-- Add more details as needed -->
       </div>
     </div>
   </div>
