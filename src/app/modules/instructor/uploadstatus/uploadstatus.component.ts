@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+import { CourseService } from 'src/app/common/services/course.service';
+import { Course } from 'src/app/common/models/course.model';
+import { endPoints } from 'src/app/common/constants/endpoints';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-uploadstatus',
@@ -7,58 +11,27 @@ import { Component } from '@angular/core';
 })
 
 export class UploadstatusComponent {
-  courses = [
-    {
-      name: 'Introduction to Law',
-      approver: 'Johnson',
-      status: 'Pending',
-      actions: 'Pending',
-      submissionDate: '2023-01-15 09:30 AM',
-      actionDate: '-',
-    },
+  
+  courses: Course[] = [];
+  s3BaseURl: string;
+  constructor(private courseService: CourseService, private router:Router) {
+    this.s3BaseURl = endPoints.s3BaseURL;
+  }
 
-    {
-      name: 'Professional Responsibility',
-      approver: 'John Davis',
-      status: 'Under-Review',
-      actions: 'Under-Review',
-      submissionDate: '2023-03-10 11:00 AM',
-      actionDate: '-',
-    },
-    {
-      name: 'Intellectual Property Law',
-      approver: 'Johnson',
-      status: 'Under-Review',
-      actions: 'Under-Review',
-      submissionDate: '2023-03-10 11:00 AM',
-      actionDate: '-',
-    },
-    {
-      name: 'Legal Research and Writing',
-      approver: 'John Smith',
-      status: 'Approved',
-      actions: 'Approved by Prof. Johnson',
-      submissionDate: '2023-02-02 02:45 PM',
-      actionDate: '2023-02-05 10:15 AM',
-    },
-    {
-      name: 'International Human Rights',
-      approver: 'John Smith',
-      status: 'Commented',
-      actions: 'Commented by John Smith',
-      submissionDate: '2023-04-05 03:20 PM',
-      actionDate: '2023-04-08 01:30 PM',
-    },
-    {
-      name: 'Environmental Law and Sustainable Development',
-      approver: 'Johnson',
-      status: 'Approved',
-      actions: 'Approved by Johnson',
-      submissionDate: '2023-05-20 05:45 PM',
-      actionDate: '2023-05-25 09:00 AM',
-    },
-  ];
+  ngOnInit() {
+    this.getCourses();
+  }
 
+  getCourses() {
+    this.courseService.getCourses().subscribe(
+      (response: any) => {
+        this.courses = response.data.content;
+      },
+      (error) => {
+        console.error('Error retrieving courses:', error);
+      }
+    );
+  }
   getStatusStyles(status: string): any {
     switch (status) {
       case 'Under-Review':
@@ -71,4 +44,5 @@ export class UploadstatusComponent {
         return {};
     }
   }
+  
 }

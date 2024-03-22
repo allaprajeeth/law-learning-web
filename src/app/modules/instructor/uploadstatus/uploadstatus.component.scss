@@ -2,18 +2,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 120vh;
+  height: auto;
   background-color: #e0d9d9;
 }
 
 .container {
   background-color: #ffffff;
-  margin: 20px 60px 20px 60px;
+  margin: 20px 40px 20px 60px;
   padding: 40px 80px 40px 80px;
   border-radius: 10px;
+  margin-top: 50px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
+.course-row-headings{
+  padding-left: 0px;
+  text-align: justify;
+}
 .coursesHistory {
   text-align: center;
   font-weight: 500;
@@ -23,13 +27,13 @@
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 0px;
   font-size: 15px;
 
   th,
   td {
     padding: 20px;
-    text-align: center;
+   
   }
 
   th {
@@ -43,8 +47,8 @@ table {
   tr:hover {
     background-color: #e5e5e5;
   }
-
-  .hidden {
-    display: none;
+  .date{
+    padding-left: 70px;
   }
+ 
 }
