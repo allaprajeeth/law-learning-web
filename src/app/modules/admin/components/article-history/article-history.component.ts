@@ -1,47 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AdminService } from '../admin.service';
+import { Article } from '../admin.model';
 
 @Component({
   selector: 'app-article-history',
   templateUrl: './article-history.component.html',
   styleUrls: ['./article-history.component.scss']
 })
-export class ArticleHistoryComponent {
-  publishedArticles = [
-    {
-      id: 1,
-      title: 'What Is Criminal Law',
-      submissionDate: '07-07-2023',
-      status: 'Approved',
-    },
-    {
-      id: 2,
-      title: 'Mastering Legal Research',
-      submissionDate: '15-07-2023',
-      status: 'Under Review',
-    },
-    {
-      title: 'Challenges in International Human Rights Law',
-      submissionDate: '11-09-2023',
-      status: 'Commented',
-    },
-    {
-  
-      title: 'Environmental Law and Sustainable Development',
-      submissionDate: '20-07-2023',
-      status: 'Under Review',
-    }
-  ];
+export class ArticleHistoryComponent implements OnInit{
+  approvedArticles: Article[] = [];
 
-  getStatusStyles(status: string): any {
-    switch (status) {
-      case 'Under Review':
-        return { color: 'Blue' };
-      case 'Commented':
-        return { color: 'red' };
-      case 'Approved':
-        return { color: 'green' };
-      default:
-        return {};
-    }
+  constructor(
+    private adminService: AdminService,
+  ) {}
+
+  ngOnInit(): void {
+    this.getApprovedArticles();
   }
+
+  getApprovedArticles(): void {
+    this.adminService.getApprovedArticles().subscribe(
+      (response) => {
+        this.approvedArticles = response.data.content || [];
+      },
+      (error) => {
+        console.error('Error fetching approved articles:', error);
+      }
+    );
+  }
+ 
 }

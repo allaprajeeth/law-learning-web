@@ -29,16 +29,16 @@ export class ArticlelistHistoryComponent implements OnInit {
       }
     );
   }
-  getStatusStyles(status: string | undefined): any {
-    switch (status) {
-      case 'Under Review':
-        return { color: 'Blue' };
-      case 'Commented':
-        return { color: 'red' };
-      case 'Approved':
-        return { color: 'green' };
-      default:
-        return {};
-    }
-  }
+  // getStatusStyles(status: string | undefined): any {
+  //   switch (status) {
+  //     case 'Under Review':
+  //       return { color: 'Blue' };
+  //     case 'Commented':
+  //       return { color: 'red' };
+  //     case 'Approved':
+  //       return { color: 'green' };
+  //     default:
+  //       return {};
+  //   }
+  // }
 }
