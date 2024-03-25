@@ -3,6 +3,7 @@ export interface Article {
   data: any;
   title: string;
   description: string;
+  reviewStatus:string;
   createdBy: {
     name: string;
     id: number;
@@ -15,6 +16,7 @@ export interface Article {
     url: string;
     contentType: string;
     createdDate: string;
+
   }[];
   // Add more properties as needed based on your API response
 }
