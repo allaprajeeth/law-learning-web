@@ -5,21 +5,23 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="container-wrapper">
-            <div class="container">
+            <div class="sidenav-container">
                 <h1 class="articlesHeading">Articles History</h1>
                 <table class="article-table">
                     <thead>
                         <tr>
                             <th class="articleHeading">Article Name</th>
-                            <th>Date of Submission</th>
-                            <th>Status</th>
+                            <th>Updated Date</th>
+                            <th>Review Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let article of publishedArticles" >
+                        <tr *ngFor="let article of approvedArticles" >
                             <td class="articleName" >{{ article.title }}</td>
-                            <td>{{ article.submissionDate }}</td>
-                            <td [ngStyle]="getStatusStyles(article.status)">{{ article.status }}</td>
+                            <td>{{ article.updatedDate | date:'mediumDate' }}</td>
+                            <td class="reviewstatus">{{ article.reviewStatus.toLowerCase()  }}</td>
+                            <!-- <td>{{ article.submissionDate }}</td> -->
+                            <!-- <td [ngStyle]="getStatusStyles(article.status)">{{ article.status }}</td> -->
                         </tr>
                     </tbody>
                 </table>

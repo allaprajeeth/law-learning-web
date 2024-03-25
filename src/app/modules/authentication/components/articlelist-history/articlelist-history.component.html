@@ -11,13 +11,16 @@
             <tr>
               <th class="articleHeading">Article Name</th>
               <th>Date of Submission</th>
-              <th>Status</th>
+              <th>Review Status</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let article of publishedArticles">
               <td class="article-name"> {{ article.title }}</td>
               <td>{{ article.createdDate | date:'mediumDate' }}</td>
+              <td class="reviewstatus">
+                {{ article.reviewStatus === 'SUBMITTED' ? 'Under Review' : article.reviewStatus }}
+              </td>
             </tr>
           </tbody>
         </table>

@@ -53,5 +53,7 @@ export class LibraryFormComponent {
 
   goBack() {
     this.showSuccessMessage = false;
+    this.title='';
+    this.selectedFileName="";
   }
 }
