@@ -113,7 +113,7 @@ checkEmailMatch() {
   }
   sendOtp() {
     const phone = this.phoneNumber?.value;
-    const type='sendphoneotp'
+    const type='SEND_PHONE_OTP'
     this.forgotEmailService.validationKey$.next('');
     const FormData = {
       type:type,
@@ -134,7 +134,7 @@ checkEmailMatch() {
   }
   verifyotp(){
     const phoneOtp = this.phoneOtp?.value;
-    const type='verifyphoneotp'
+    const type='VERIFY_PHONE_OTP'
      const FormData={
          type:type,
          phone_otp:phoneOtp,
@@ -152,7 +152,7 @@ checkEmailMatch() {
   }
   sendOtpEmail() {
     const newEmail= this.confirmEmail?.value;
-    const type='sendnewemailotp'
+    const type='SEND_NEW_EMAIL_OTP'
     this.forgotEmailService.validationKey$.next('');
     const FormData = {
       type:type,
@@ -167,7 +167,7 @@ checkEmailMatch() {
   verifyotpEmail(){
     const emailotp = this.emailOtp?.value;
     const phone=this.phoneNumber?.value
-    const type='verifynewemailotp'
+    const type='VERIFY_NEW_EMAIL_OTP'
      const FormData={
          type:type,
          phone:phone,

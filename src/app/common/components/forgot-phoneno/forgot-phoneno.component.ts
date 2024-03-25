@@ -98,7 +98,7 @@ export class ForgotPhonenoComponent {
   
   sendOtp() {
     const email = this.email?.value;
-    const type = 'sendemailotp';
+    const type = 'SEND_EMAIL_OTP';
     this.forgotPhoneService.validationKey$.next('');
     const FormData = {
       type: type,
@@ -114,7 +114,7 @@ export class ForgotPhonenoComponent {
   }
   verifyotp() {
     const emailOtp = this.emailOtp?.value;
-    const type = 'verifyemailotp';
+    const type = 'VERIFY_EMAIL_OTP';
     const FormData = {
       type: type,
       email_otp: emailOtp,
@@ -130,7 +130,7 @@ export class ForgotPhonenoComponent {
   }
   sendOtpPhone() {
     const phone = this.confirmPhone?.value;
-    const type = 'sendnewphoneotp';
+    const type = 'SEND_NEW_PHONE_OTP';
     this.forgotPhoneService.validationKey$.next('');
     const FormData = {
       type: type,
@@ -143,7 +143,7 @@ export class ForgotPhonenoComponent {
   verifyotpPhone() {
     const phoneotp = this.phoneOtp?.value;
     const email = this.email?.value;
-    const type = 'verifynewphoneotp';
+    const type = 'VERIFY_NEW_PHONE_OTP';
     const FormData = {
       type: type,
       email: email,
