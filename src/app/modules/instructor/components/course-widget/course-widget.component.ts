@@ -51,6 +51,7 @@ export class CourseWidgetComponent {
 		this.initCourseForm();
 		this.courseId = this.route.snapshot.params['id'];
 		if (this.courseId && isNumber(Number(this.courseId))) {
+			console.log('From ngOnInit');
 			this.loadCourseDetails(this.courseId);
 		}
 	}
@@ -117,18 +118,18 @@ export class CourseWidgetComponent {
 		});
 		dialogRef.afterClosed().subscribe((confirmed: boolean) => {
 			if (confirmed) {
-				if (id !== null) {
+				if (id !== null && id.toString.length > 0) {
 					this.deleteSection(id).subscribe({
 						next: (response: any) => {
 							if (response && response.status === 200)
-								this.getSections.removeAt(sectionIndex);
+							this.getSections.controls = this.getSections.controls.filter( (elem, i) => i !== sectionIndex);
 						},
 						error: (error: Error) => {
 							//TODO
 						}
 					});
 				} else {
-					this.getSections.removeAt(sectionIndex);
+					this.getSections.controls = this.getSections.controls.filter( (elem, i) => i !== sectionIndex);
 				}
 			}
 		});
@@ -155,7 +156,6 @@ export class CourseWidgetComponent {
 		this.clearSubSectionForm(sectionIndex);
 		subSections.forEach(subSection => {
 			var sectionForm: FormGroup = this.newSubSectionForm();
-			console.log(subSection)
 			sectionForm.patchValue(subSection);
 			this.getSubSections(sectionIndex).push(sectionForm);
 		});
@@ -174,18 +174,18 @@ export class CourseWidgetComponent {
 		});
 		dialogRef.afterClosed().subscribe((confirmed: boolean) => {
 			if (confirmed) {
-				if (id !== null) {
+				if (id !== null && id.toString.length > 0) {
 					this.deleteSubSection(sectionId, id).subscribe({
 						next: (response: any) => {
 							if (response && response.status === 200)
-							this.getSubSections(sectionIndex).removeAt(subSectionIndex);
+							this.getSubSections(sectionIndex).controls = this.getSubSections(sectionIndex).controls.filter( (elem, i) => i !== subSectionIndex);
 						},
 						error: (error: Error) => {
 							//TODO
 						}
 					});
 				} else {
-					this.getSubSections(sectionIndex).removeAt(subSectionIndex);
+					this.getSubSections(sectionIndex).controls = this.getSubSections(sectionIndex).controls.filter( (elem, i) => i !== subSectionIndex);
 				}
 			}
 		});
@@ -221,13 +221,9 @@ export class CourseWidgetComponent {
 			if (this.courseId && isNumber(Number(this.courseId))) {
 				//Update course record
 				this.patchCourse(stepper);
-				this.loadCourseDetails(this.courseId);
-				console.log(stepper)
-				//if(stepper && stepper._getStepLabelId)
 			} else {
 				//Create course record
-				if(this.courseId)
-					this.loadCourseDetails(this.courseId);
+				console.log('From create course record');
 				this.postCourse(stepper);
 			}
 		} else {
@@ -242,7 +238,7 @@ export class CourseWidgetComponent {
 		stepper.previous();
 	}
 
-	onSubmit() {
+	onSave() {
 		if (this.courseForm.valid) {
 			this.courseFormData.set('course', new Blob([JSON.stringify(this.courseForm.value)], { type: 'application/json' }));
 			if (this.courseId && isNumber(Number(this.courseId))) {
@@ -277,6 +273,8 @@ export class CourseWidgetComponent {
 				this.processing = false;
 				if(stepper && response.status === 200)
 					stepper.next();
+				else if(response.status === 200 && this.courseId)
+					this.loadCourseDetails(this.courseId);
 			  },
 			error: (error: Error) => {
 				this.processing = false;
@@ -285,6 +283,7 @@ export class CourseWidgetComponent {
 	}
 
 	deleteSection(id: number) {
+		console.log(this.getSections);
 		return this.courseService.delete('/secure/courses/' + this.courseId + '/section/' + id);
 	}
 
@@ -330,5 +329,28 @@ export class CourseWidgetComponent {
 				}
 			});
 		}
+	}
+
+	removeResource(subSectionId: number, fileId: number) {
+		this.fileUploadService.delete('/secure/courses/' + this.courseId, this.courseFormData).subscribe({
+			next: (response: any) => {
+				this.processing = false;
+				if(stepper && response.status === 200)
+					stepper.next();
+				else if(response.status === 200 && this.courseId)
+					this.loadCourseDetails(this.courseId);
+			  },
+			error: (error: Error) => {
+				this.processing = false;
+			}
+		});
+	}
+
+	showFileUpload(subSection: SubSection) {
+		return subSection && subSection.id && !subSection.file;
+	}
+
+	isFileExists(subSection: SubSection) {
+		return subSection && subSection.id && subSection.file;
 	}
 }

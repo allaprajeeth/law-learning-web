@@ -2,13 +2,19 @@ import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { endPoints } from '../../constants/endpoints';
+import { FileInfo } from '../../models/fileInfo.model';
+import { BaseService } from '../base-service/base-service.service';
+import { HttpResponse } from '../../models/response.model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class FileUploadService {
+export class FileUploadService extends BaseService<FileInfo>{
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { 
+        const baseUrl = endPoints.baseURL;
+        super(http, HttpResponse<FileInfo>, baseUrl);
+    }
     upload(url: string, file: File, data?: any): Observable<HttpEvent<any>> {
         const formData: FormData = new FormData();
         formData.append('file', file);

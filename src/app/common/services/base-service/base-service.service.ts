@@ -22,7 +22,6 @@ export abstract class BaseService<T> {
     return this.httpClient
       .get<HttpResponse<T>>(`${this.apiUrl}` + _url, { params: params })
       .pipe(map((result) => {
-        console.log(result)
         return new this.tConstructor(result);
       }));
   }
@@ -42,7 +41,6 @@ export abstract class BaseService<T> {
     return this.httpClient
       .get<HttpResponse<T>>(`${this.apiUrl}` + _url, { params: params })
       .pipe(map((result) => {
-        console.log(result)
         return new this.tConstructor(result);
       }), catchError((error: any, caught: Observable<any>): Observable<any> => {
       console.error('There was an error!', error);

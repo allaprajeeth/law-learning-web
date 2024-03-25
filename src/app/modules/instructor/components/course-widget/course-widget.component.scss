@@ -185,3 +185,34 @@
 .mat-expansion-panel-header {
     font-weight: bold;
 }
+::ng-deep .mat-expansion-panel-body {
+    padding: 10px 24px 16px !important;
+}
+.video-details {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(255, 252, 252, 0.1)
+   
+  }
+  .details-row {
+    display: flex;
+    align-items: center;
+  }
+  .details-values{
+    border: 0.5px solid rgb(200, 198, 198);
+    padding :4px 0px;
+    border-left: none;
+    border-right: none;
+  }
+ 
+  .detail-heading {
+    font-weight: bold;
+  }
+ 
+  .file-name {
+    width:350px;
+  }
+  .file-desc{
+    width:150px
+  }
