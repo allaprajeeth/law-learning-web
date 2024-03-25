@@ -335,10 +335,10 @@ export class CourseWidgetComponent {
 		this.fileUploadService.delete('/secure/courses/' + this.courseId, this.courseFormData).subscribe({
 			next: (response: any) => {
 				this.processing = false;
-				if(stepper && response.status === 200)
-					stepper.next();
-				else if(response.status === 200 && this.courseId)
-					this.loadCourseDetails(this.courseId);
+				// if(stepper && response.status === 200)
+				// 	stepper.next();
+				// else if(response.status === 200 && this.courseId)
+				// 	this.loadCourseDetails(this.courseId);
 			  },
 			error: (error: Error) => {
 				this.processing = false;
