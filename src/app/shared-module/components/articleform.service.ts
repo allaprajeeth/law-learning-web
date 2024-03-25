@@ -13,10 +13,15 @@ export class ArticleformService {
   post<T>(url: string, data: FormData): Observable<T> {
     const headers = new HttpHeaders();
     //headers.set('Content-Type', 'multipart/form-data'); // Set the appropriate Content-Type header
-
     return this.httpClient.post<T>(url, data, { headers });
   }
- 
+
+   get<T>(url: string): Observable<T> {
+    const headers = new HttpHeaders(); 
+    return this.httpClient.get<T>(url, { headers });
+  }
+
+
   // post<T>(url: string, data: FormData): Observable<T> {
   //   return this.http.post<T>(url, data);
 

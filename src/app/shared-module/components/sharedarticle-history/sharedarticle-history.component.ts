@@ -1,84 +1,49 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { endPoints } from 'src/app/common/constants/endpoints';
+import { ArticleformService } from '../articleform.service';
+import { NotificationService } from '../../../common/services/notification/notification.service'
+import { Article } from '../fetcharticle.model';
 @Component({
   selector: 'app-sharedarticle-history',
   templateUrl: './sharedarticle-history.component.html',
   styleUrls: ['./sharedarticle-history.component.scss']
 })
 export class SharedarticleHistoryComponent {
+  userArticles: Article[] = [];
+  constructor(private router: Router,
+    private articleformService: ArticleformService,
+    ) {}
 
-  constructor(private router: Router) {}
-
-  publishedArticles = [
-    {
-      id: 1,
-      title: 'What Is Criminal Law',
-      submissionDate: '07-07-2023',
-      publishedDate: '10-08-2023',
-    },
-    {
-      id: 2,
-      title: 'Mastering Legal Research',
-      submissionDate: '15-07-2023',
-      publishedDate: '17-08-2023',
-    },
-    {
-      id: 3,
-      title: 'Challenges in International Human Rights Law',
-      submissionDate: '11-09-2023',
-      publishedDate: '18-09-2023',
-    },
-    {
-      id: 4,
-      title: 'Environmental Law and Sustainable Development',
-      submissionDate: '20-07-2023',
-      publishedDate: '28-09-2023',
+    ngOnInit(){
+      this.getUserAricles();
     }
-  ];
 
-  underReviewArticles = [
-    {
-      id: 5,
-      name: 'Pragmatic Family Law',
-      submissionDate: '14-09-2023',
-    },
-    {
-      id: 6,
-      name: 'Landmark Cases in Criminal Law',
-      submissionDate: '03-07-2023',
-    },
-    {
-      id: 7,
-      name: 'Privacy Laws in the Digital Age',
-      submissionDate: '21-07-2023',
-    },
-    {
-      id: 8,
-      name: 'The Evolution of Constitutional Law',
-      submissionDate: '29-10-2023',
-    }
-  ];
 
-  commentedArticles = [
-    {
-      id: 9,
-      name: 'The Common Law ',
-      submissionDate: '19-10-2023',
-    },
-    {
-      id: 10,
-      name: 'Comparative Legal Systems around the World',
-      submissionDate: '09-08-2023',
-    },
-    {
-      id: 11,
-      name: 'Legal Ethics in the Legal Profession',
-      submissionDate: '26-09-2023',
-    },
-    {
-      id: 12,
-      name: 'Legal Implications of Artificial Intelligence',
-      submissionDate: '27-10-2023',
+  getUserAricles(){
+  this.articleformService.get<any>(endPoints.baseURL + '/secure/articles').subscribe(
+      (response) => {
+        this.userArticles =response.data.content || [];
+        console.log(this.userArticles)
+      },
+      (error) => {
+        console.error('Error submitting article:', error);
+      }
+  )
+    
     }
-  ];
-}
+ 
+    getArticleStatus(reviewStatus: string): string {
+      if (reviewStatus === 'SUBMITTED') {
+        return 'Submitted';
+      } else if (reviewStatus.includes('ADMIN_ACCEPTED')) {
+        return 'Accepted';
+      } else if (reviewStatus.includes('ADMIN_REJECTED')) {
+        return 'Rejected';
+      } else {
+        return 'Under Review';
+      }
+    }
+    
+    
+  }

@@ -5,56 +5,28 @@
     <mat-sidenav-content>
         <div class="container-wrapper">
             <div class="sidenav-container">
-                <h1 class="publishedArticles">Published Articles</h1>
+                <h1 class="publishedArticles">Article's Status</h1>
                 
                 <table class="article-table">
                     <thead>
                         <tr>
                             <th class="articleHeading">Article Name</th>
                             <th>Date of Submission</th>
-                            <th class="publishedDate">Published Date</th>
+                            <th class="publishedDate">Article Status</th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <tr *ngFor="let article of publishedArticles" routerLink="/subscriber/article-details">
+                        <tr *ngFor="let article of userArticles" >
                             <td class="articleName" >{{ article.title }}</td>
-                            <td>{{ article.submissionDate }}</td>
-                            <td>{{ article.publishedDate }}</td>
+                            <td>{{ article.createdDate | date:'yyyy-MM-dd' }}</td>
+                            <td>{{ getArticleStatus(article.reviewStatus) }}</td>
+
                         </tr>
                     </tbody>
                 </table>
 
-                <h1 class="underReviewArticles">Articles Under Review</h1>
-                <table class="article-table">
-                    <thead>
-                        <tr>
-                            <th class="articleHeading">Article Name</th>
-                            <th>Date of Submission</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let article of underReviewArticles" >
-                            <td class="articleName" routerLink="/subscriber/under-review">{{ article.name }}</td>
-                            <td>{{ article.submissionDate }}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h1 class="commentedArticles">Commented Articles</h1>
-                <table class="article-table">
-                    <thead>
-                        <tr>
-                            <th class="articleHeading">Article Name</th>
-                            <th>Date of Submission</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let article of commentedArticles" routerLink="/subscriber/commented">
-                            <td class="articleName">{{ article.name }}</td>
-                            <td>{{ article.submissionDate }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+         
             </div>
         </div>
     </mat-sidenav-content>
