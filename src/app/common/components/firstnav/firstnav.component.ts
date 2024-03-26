@@ -40,7 +40,6 @@ export class FirstnavComponent {
       this.email = userDetails?.email;
       this.phone = userDetails?.phone;
     });
-    // this.cdr.detectChanges();
   }
 
   get getRole(): string {

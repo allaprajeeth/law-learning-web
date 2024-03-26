@@ -7,6 +7,6 @@ export class UserModel {
     public status!: string;
     public createdDate!: string;
     public updatedDate!: string;
-
+    public imageURL!: string;
     constructor() {}
 }

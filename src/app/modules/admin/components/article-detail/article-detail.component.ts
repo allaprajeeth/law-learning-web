@@ -154,7 +154,7 @@ export class ArticleDetailComponent implements OnInit {
       const articleId = this.articleId;
   
       if (articleId) {
-        const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+        const articleUrl = endPoints.baseURL +`/secure/articles/review/${articleId}`;
   
         const articleData = {
           status: 'REJECTED',
@@ -186,15 +186,15 @@ export class ArticleDetailComponent implements OnInit {
       this.commentError = true;
     } else {
       this.commentError = false;
-      this.approvalStatus = 'resubmitted';
+      this.approvalStatus = 'resubmit';
   
       const articleId = this.articleId;
   
       if (articleId) {
-        const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+        const articleUrl = endPoints.baseURL +`/secure/articles/review/${articleId}`;
   
         const articleData = {
-          status: 'RESUBMITTED',
+          status: 'RESUBMIT',
           summary: this.comment,
         };
   

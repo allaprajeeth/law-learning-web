@@ -13,37 +13,38 @@ export class SharedarticleHistoryComponent {
   userArticles: Article[] = [];
   constructor(private router: Router,
     private articleformService: ArticleformService,
-    ) {}
+  ) { }
 
-    ngOnInit(){
-      this.getUserAricles();
-    }
+  ngOnInit() {
+    this.getUserAricles();
+  }
 
 
-  getUserAricles(){
-  this.articleformService.get<any>(endPoints.baseURL + '/secure/articles').subscribe(
+  getUserAricles() {
+    this.articleformService.get<any>(endPoints.baseURL + '/secure/articles').subscribe(
       (response) => {
-        this.userArticles =response.data.content || [];
+        this.userArticles = response.data.content || [];
         console.log(this.userArticles)
       },
       (error) => {
         console.error('Error submitting article:', error);
       }
-  )
-    
-    }
- 
-    getArticleStatus(reviewStatus: string): string {
-      if (reviewStatus === 'SUBMITTED') {
-        return 'Submitted';
-      } else if (reviewStatus.includes('ADMIN_ACCEPTED')) {
-        return 'Accepted';
-      } else if (reviewStatus.includes('ADMIN_REJECTED')) {
-        return 'Rejected';
-      } else {
-        return 'Under Review';
-      }
-    }
-    
-    
+    )
+
   }
+  getArticleStatus(reviewStatus: string): string {
+    if (reviewStatus === 'SUBMITTED') {
+      return 'Submitted';
+    } else if (reviewStatus.includes('ADMIN_ACCEPTED')) {
+      return 'Accepted';
+    } else if (reviewStatus.includes('ADMIN_REJECTED')) {
+      return 'Rejected';
+    } else if (reviewStatus.includes('ADMIN_RESUBMITTED')) {
+      return 'Re-Submitted';
+    } else {
+      return 'Under Review';
+    }
+  }
+
+
+}
