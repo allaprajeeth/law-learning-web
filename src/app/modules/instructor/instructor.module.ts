@@ -81,6 +81,7 @@ import { CreateProfileComponent } from './components/create-profile/create-profi
     CommentedCoursesOverviewComponent,
     CourseWidgetComponent,
     CreateProfileComponent,
+  
   ],
 
   providers: [InstructorService],

@@ -8,6 +8,7 @@ export class SubSection extends BaseModel<SubSection> {
   public updatedDate!: string;
   public createdDate!: string;
   public file!: FileInfo;
+  public duration!:number; 
   constructor(model?: SubSection) {
     super(model);
   }

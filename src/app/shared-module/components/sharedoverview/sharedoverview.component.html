@@ -1,55 +1,32 @@
 <div class="heading">
-  <h1>{{ overviewHeading }}</h1>
-  <p class="first-paragraph">{{ overviewDescription }}</p>
-  <p>Instructor : {{ instructorName }}</p>
-  <p>Course Duration : {{ courseDuration }}</p>
+  <h1>{{course.title }}</h1>
+  <p class="first-paragraph">{{ course.description }}</p>
+  <p>Instructor : {{ course.createdBy.name }}</p>
+  <p>Course Type : {{course.type}}</p>
+  <p>Skill Level :{{course.difficultyLevel}}</p>
+  <!-- <p>Course Duration : {{ course.courseDuration }}</p> -->
   <p class="icon">
     <span class="material-icons updated"> report_gmailerrorred </span>Last
-    updated: {{ lastUpdatedText }}
+    updated: {{ course.updatedDate }}
   </p>
   <p class="icon">
     <span class="material-icons language"> language </span>English
   </p>
 </div>
-
-<div class="courseDescription">
-  <h2>What you'll Learn</h2>
-  <p>
-    <span class="material-icons"> check </span> &nbsp;&nbsp;
-    {{ courseDescriptionText_1 }}
-  </p>
-  <p>
-    <span class="material-icons"> check </span> &nbsp;&nbsp;
-    {{ courseDescriptionText_2 }}
-  </p>
-  <p>
-    <span class="material-icons"> check </span> &nbsp;&nbsp;
-    {{ courseDescriptionText_3 }}
-  </p>
-  <p>
-    <span class="material-icons"> check </span> &nbsp;&nbsp;
-    {{ courseDescriptionText_4 }}
-  </p>
-  <p>
-    <span class="material-icons"> check </span> &nbsp;&nbsp;
-    {{ courseDescriptionText_5 }}
-  </p>
-</div>
-
 <div class="courseFeatures">
   <h2>This course includes:</h2>
   <div class="grid-container">
     <div class="grid-item">
-      <span><mat-icon>videocam</mat-icon> {{ courseFeaturesVideoDuration }} hours on-demand video</span>
-    </div>
-
-    <div class="grid-item">
-      <span><mat-icon>download</mat-icon> {{ courseFeaturesDownloadable }} downloadable resource</span>
+      <span><mat-icon>videocam</mat-icon> hours on-demand video</span>
     </div>
     <div class="grid-item">
-      <span><span class="material-icons">emoji_events</span> Certificate of completion</span>
+      <span><mat-icon>download</mat-icon> Downloadable Resource's</span>
+    </div>
+    <div class="grid-item">
+      <span><span class="material-icons">emoji_events</span>Certificate of Completion</span>
     </div>
   </div>
+
   <mat-card class="side-bar">
     <div class="container">
       <mat-card-title class="title">
@@ -58,114 +35,45 @@
     </div>
 
     <div class="sectionsInfo">
-      {{ courseSections }} Sections &nbsp;• {{ courseLectures }} lectures &nbsp;• {{ totalCourseDuration }} Total Length
+      {{ course.sections.length }} Sections &nbsp;• {{ numberOfSubsections}} lectures &nbsp;• {{ getTotalDurationOfSubsections() }}Total Length
     </div>
     <mat-divider></mat-divider>
     <mat-accordion class="sidebar-content">
-      <mat-expansion-panel *ngFor="let videoGroup of videoGroups; let i = index" #myExpansionPanel>
+      <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="panelTitle">{{ videoGroup?.panelTitle }}</div>
-            <div class="section-info">{{ courseSectionLectures }} lectures &nbsp;&nbsp; {{ courseSectionDuration }} min
+            <div class="panelTitle">Section{{i+1}} : {{ section.title }}</div>
+            <div class="section-info">{{ section.subSections.length}} lectures &nbsp;&nbsp; min
             </div>
           </mat-panel-title>
-
         </mat-expansion-panel-header>
+
         <div style="border: 1px solid rgb(237 228 228); padding: 10px; margin-bottom: 15px;">
           <h3 style="color: blue;" class="sectionDesc">Description</h3>
-          <p>{{ descriptionText }}</p>
+          <p>{{ section.description}}</p>
         </div>
         <div class="video-group">
-          <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
-            <div class="video-item">
-              <div class="titleDesc">
-                <div class="titlehead">
-                  <div>
-                    <mat-icon class="custom-icon mat-icon-small">ondemand_video</mat-icon>
+          <ng-container *ngFor="let subSection of section.subSections; let j = index">
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <div class="titlehead">
+                    <!-- <div>Sub Section{{j+1}} : </div> -->
+                    <div class="videos-title">{{ subSection?.title }}</div>
+                    <div style="color: rgb(122, 119, 119)" class="subsection-duration">
+                      {{  subSection.duration}}min
+                    </div>
                   </div>
-                  <div class="videos-title" (click)="toggleSectionInfo(i, j)">
-                    {{ video?.title }}
-                  </div>
-                </div>
-                <div class="c">
-                  <div style="color: rgb(122, 119, 119)">
-                    {{ video?.time }}
-                  </div>
-                </div>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="video-item">
+                <p *ngIf="subSection" class="sectionInfo">{{ subSection.description }}</p>
               </div>
-            </div>
-            <p *ngIf="sectionInfo[i][j]" class="sectionInfo">{{ sectionInfoText }}</p>
+              <mat-divider></mat-divider>
+            </mat-expansion-panel>
           </ng-container>
-
         </div>
-
       </mat-expansion-panel>
     </mat-accordion>
+
   </mat-card>
-  <div class="container1">
-    <div class="container2">
-      <h2 class="heading1">Instructor</h2>
-      <h2 class="author" routerLink="/instructor/instructorinfo">{{ instructorName }}</h2>
-      <p class="text">{{ instructorDesignation }}</p>
-      <div class="iconsContainer">
-        <img class="avatar"
-          src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
-          alt="Instructor Image">
-        <div class="icons">
-          <div class="icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge"
-              class="reviews-badge">
-            <p>{{ instructorReviewsbySubscriber }} Reviews by Subscribers </p>
-          </div>
-          <div class="icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge"
-              class="reviews-badge">
-            <p>{{ instructorReviewsbyReviewer}} Reviews by Reviewers </p>
-          </div>
-          <div class="icon">
-            <img src="https://cdn-icons-png.flaticon.com/512/1435/1435715.png" alt="Reviews Badge"
-              class="reviews-badge">
-            <p>{{ instructorReviews }} Reviews</p>
-          </div>
-          <div class="icon">
-            <mat-icon>people</mat-icon>
-            <p>{{ instructorStudents }} Subscribers</p>
-          </div>
-          <div class="icon">
-            <mat-icon>play_circle_outline</mat-icon>
-            <p>{{ instructorCourses }} Courses</p>
-          </div>
-        </div>
-      </div><br>
-      <p class="instructorDescription">{{ instructorDescription }}</p>
-    </div>
-
-    <div class="leave-rating" *ngIf="!submittedReview">
-      <h1 style="color:blue">Leave Your Rating Here</h1>
-      <hr>
-      <br>
-      <button (click)="leaveRatingOpen()" class="giverating" *ngIf="!submittedReview">
-        Give Rating
-      </button>
-    </div>
-
-    <div class="overlay" *ngIf="showRating">
-      <div class="contentt">
-        <div class="close" (click)="leaveRatingClose()">&times;</div>
-        <h1>How would you rate this course?</h1>
-        <ng-container *ngFor="let i of stars">
-          <mat-icon (mouseenter)="updaterating(i)" [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }"
-            class="staricon">
-            star
-          </mat-icon>
-        </ng-container>
-        <div class="review">
-          <textarea id="review" [(ngModel)]="userReview" name="userReview" rows="3" cols="36" placeholder="Comments"
-            class="mat-input custom-textarea"></textarea>
-        </div>
-        <button class="custom-button" (click)="submitRating()">Submit </button>
-      </div>
-    </div>
-  </div>
-</div>
-

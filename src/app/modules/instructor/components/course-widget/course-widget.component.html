@@ -241,10 +241,11 @@
                             <mat-tab-group>
                                 <mat-tab label="Overview">
                                     <div class="tabs">
+                                       <app-sharedoverview [course] = "course"></app-sharedoverview>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Watch Content">
-                                    <app-videoplayer></app-videoplayer>
+                                    <app-videoplayer [course] = "course"></app-videoplayer>
                                 </mat-tab>
                             </mat-tab-group>
                         </div>

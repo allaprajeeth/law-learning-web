@@ -1,5 +1,6 @@
 import { BaseModel } from "./base.model";
 import { Section } from "./section.model";
+import { SubSection } from './sub-sections.model';
 
 // interface Section {
 //   id?: number; 
@@ -21,30 +22,30 @@ import { Section } from "./section.model";
 //   newSubSectionTitle?: string; 
 // }
 
-interface SubSection {
-  title: string;
-  videoFile?: File;
-  videoDuration: {
-    minutes: number;
-    seconds: number;
-  };
-  videoFileName: string;
-  file?: File;
-  description: string;
-  submitted: boolean;
-  status: string;
-  duration: {
-    minutes: number;
-    seconds: number;
-  };
-  isSubSectionNameEntered: boolean;
-  isVideoSelected: boolean;
-  isSaveEnabled: boolean;
-  isSubmitEnabled: boolean;
-  buttonColor: string;
-  expanded: boolean;
-  isFormSubmitted: boolean;
-}
+// interface SubSection {
+//   title: string;
+//   videoFile?: File;
+//   videoDuration: {
+//     minutes: number;
+//     seconds: number;
+//   };
+//   videoFileName: string;
+//   file?: File;
+//   description: string;
+//   submitted: boolean;
+//   status: string;
+//   duration: {
+//     minutes: number;
+//     seconds: number;
+//   };
+//   isSubSectionNameEntered: boolean;
+//   isVideoSelected: boolean;
+//   isSaveEnabled: boolean;
+//   isSubmitEnabled: boolean;
+//   buttonColor: string;
+//   expanded: boolean;
+//   isFormSubmitted: boolean;
+// }
 
 
 export class Course extends BaseModel<Course> {
@@ -67,6 +68,8 @@ export class Course extends BaseModel<Course> {
   public price!: number;
   public viewCount!: number;
   public sections!: Section[];
+  public SubSections!:SubSection[]
+
   constructor(model?: Course) {
     super(model);
   }
