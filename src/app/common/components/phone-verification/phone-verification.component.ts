@@ -5,6 +5,10 @@ import {
   MatSnackBar,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+import { UserDetailsService } from '../../services/user-details/user-details.service';
+import { ForgotEmailService } from '../forgot-email/services/forgot-email.service';
+import { ForgotPhoneService } from '../forgot-phoneno/Services/forgot-phone.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-phone-verification',
@@ -24,13 +28,18 @@ export class PhoneVerificationComponent {
   updatePhoneMode = false;
   updatePhoneForm: FormGroup;
   isCurrentEmailEditable = false;
-
+  userMobile: string = ''; // Added userMobile property
   constructor(
     public dialogRef: MatDialogRef<PhoneVerificationComponent>,
     private fb: FormBuilder,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private userDetailsService: UserDetailsService,
+    private forgotPhoneService:ForgotPhoneService,
+    private router: Router,
+   
   ) {
     this.initializeForm();
+    this.getUserInfo();
     this.phoneOtpForm = this.fb.group({
       phoneOtp: ['', [Validators.required]],
     });
@@ -50,16 +59,52 @@ export class PhoneVerificationComponent {
       emailOtp: ['', [Validators.required, Validators.pattern('[0-9]{6}')]],
     });
   }
-
+  get emailOtp() {
+    return this.accountForm.get('emailOtp');
+  }
   sendOtp() {
     this.showOtpInput = true;
-  }
-
-  verifyAndUpdate() {
-    this.snackBar.open('Phone Number updated successfully!', 'Close', {
-      duration: 3000,
-      verticalPosition: 'top' as MatSnackBarVerticalPosition,
+    // const email = this.email?.value;
+    const userEmail = this.userDetailsService.email;
+    const type = 'SEND_EMAIL_OTP';
+    this.forgotPhoneService.validationKey$.next('');
+    const FormData = {
+      type: type,
+      email: userEmail,
+    };
+    this.forgotPhoneService.sendOtp(FormData).subscribe(() => {
+      // if (!this.detailsEntered) {
+      //   this.detailsEntered = true;
+      // } else if (this.email && this.phone) {
+      //   this.detailsEntered = true;
+      // }
     });
+  }
+  getUserInfo() {
+ 
+    const userEmail = this.userDetailsService.email;
+    this.accountForm.controls['currentEmail'].setValue(userEmail); 
+
+    
+  }
+  verifyAndUpdate() {
+    const phoneotp = this.phoneOtp?.value;
+    // const email = this.email?.value;
+    const userEmail = this.userDetailsService.email;
+    const type = 'VERIFY_NEW_PHONE_OTP';
+    const FormData = {
+      type: type,
+      email: userEmail,
+      phone_otp: phoneotp,
+      validation_key: this.forgotPhoneService.validationKey$.value,
+    };
+    this.forgotPhoneService.verifyotpPhone(FormData).subscribe(() => {
+      this.router.navigate(['/login']);
+    });
+    // this.snackBar.open('Phone Number updated successfully!', 'Close', {
+    //   duration: 3000,
+    //   verticalPosition: 'top' as MatSnackBarVerticalPosition,
+    // });
     this.dialogRef.close();
   }
 
@@ -105,9 +150,22 @@ export class PhoneVerificationComponent {
       }
     }
   }   
-
+  get confirmPhone() {
+    return this.updatePhoneForm.get('confirmPhone');
+  }
   sendOtpPhone() {
     this.updatePhoneMode = true;
+
+    const phone = this.confirmPhone?.value;
+    const type = 'SEND_NEW_PHONE_OTP';
+    this.forgotPhoneService.validationKey$.next('');
+    const FormData = {
+      type: type,
+      newPhone: phone,
+    };
+    this.forgotPhoneService.sendOtpPhone(FormData).subscribe(() => {
+      this.updatePhoneMode = true;
+    });
   }
 
   get phoneNumber() {
@@ -123,6 +181,21 @@ export class PhoneVerificationComponent {
     this.otpVerified = true;
     this.showContainer1 = false;
     this.showContainer2 = true;
+
+    const emailOtp = this.emailOtp?.value;
+    const type = 'VERIFY_EMAIL_OTP';
+    const FormData = {
+      type: type,
+      email_otp: emailOtp,
+      validation_key: this.forgotPhoneService.validationKey$.value,
+    };
+    this.forgotPhoneService.verifyotp(FormData).subscribe(() => {
+      // const otpInputString = String(this.emailOTPInput);
+      // this.otpVerified = true;
+      // this.showVerifyButton = false;
+      // this.showContainer1 = false;
+      // this.showContainer2 = true;
+    });
   }
 
   closeDialog() {
