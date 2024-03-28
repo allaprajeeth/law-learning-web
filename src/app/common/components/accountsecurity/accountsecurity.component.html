@@ -18,8 +18,8 @@
                                 <label for="currentEmail">Current Email :</label>&nbsp;
                                 <input type="text" id="currentEmail" formControlName="currentEmail"
                                     style="margin-left: 5px;" [disabled]="!isCurrentEmailEditable"
-                                    placeholder="nuncsystems@gmail.com" [value]="accountForm.get('currentEmail')?.value"
-                                    [(ngModel)]="userEmail">
+                                    placeholder="nuncsystems@gmail.com" 
+                                    >
                                 <button type="button" class="editbtn" (click)="editCurrentEmail()">
                                     <i class="material-icons">{{ isCurrentEmailEditable ? 'done' : 'edit' }}</i>
                                 </button>
@@ -27,8 +27,8 @@
                             <p class="phoneContainer">
                                 <label for="currentPhone">Current Phone :</label>&nbsp;
                                 <input type="text" id="currentPhone" formControlName="currentPhone"
-                                    [disabled]="!isCurrentPhoneEditable" placeholder="0987654321" [value]="userPhone"
-                                    [(ngModel)]="userPhone">
+                                    [disabled]="!isCurrentPhoneEditable" placeholder="0987654321" 
+                                    >
                                 <button type="button" class="editbtn" (click)="editCurrentPhone()">
                                     <i class="material-icons">{{ isCurrentPhoneEditable ? 'done' : 'edit' }}</i>
                                 </button>

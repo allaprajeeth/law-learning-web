@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EmailVerificationComponent } from 'src/app/common/components/email-verification/email-verification.component';
 import { PhoneVerificationComponent } from 'src/app/common/components/phone-verification/phone-verification.component';
 import { SharedService } from 'src/app/shared-module/shared.service';
+import { UserDetailsService } from '../../services/user-details/user-details.service';
 
 @Component({
   selector: 'app-accountsecurity',
@@ -23,14 +24,18 @@ export class AccountsecurityComponent {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private sharedService: SharedService,
+    private userDetailsService:UserDetailsService
   ) {
     this.initializeForm();
   }
 
   initializeForm() {
+    this.userDetailsService.getUserInfoFromLocalStorage();
+    const userEmail = this.userDetailsService.email;
+    const userMobile = this.userDetailsService.phoneno;
     this.accountForm = this.fb.group({
-      currentEmail: [{ value: 'nuncsystems@gmail.com', disabled: true }, Validators.required],
-      currentPhone: [{ value: '0987654321', disabled: true }, Validators.required],
+      currentEmail: [{ value: userEmail, disabled: true }, Validators.required],
+      currentPhone: [{ value: userMobile, disabled: true }, Validators.required],
       newEmail: [''],
       newPhone: [''],
       emailOtp: [''],
@@ -39,12 +44,13 @@ export class AccountsecurityComponent {
   }
 
   ngOnInit() {
-    this.sharedService.getUserDetails().subscribe(userDetails => {
-      if (userDetails) {
-        this.userEmail = userDetails.email;
-        this.userPhone = userDetails.phone;
-      }
-    });
+    // this.sharedService.getUserDetails().subscribe(userDetails => {
+    //   if (userDetails) {
+    //     this.userEmail = userDetails.email;
+    //     this.userPhone = userDetails.phone;
+    //   }
+    // });
+    this.initializeForm();
   }
 
   openVerificationModal(changeType: 'phone' | 'email') {
