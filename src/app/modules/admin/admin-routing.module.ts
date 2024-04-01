@@ -24,6 +24,9 @@ import { SidenavtermsconditionsComponent } from 'src/app/common/components/siden
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
+import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
+import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
+import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 const routes: Routes = [
   {
     path:"",
@@ -129,7 +132,19 @@ const routes: Routes = [
 {
   path:"library-history",
   component:LibraryHistoryComponent
-}
+},
+{
+ path :"advisorprofileForm",
+ component:AdvisorProfilesFormComponent
+},
+{
+  path:'advisorInfo/:id',
+  component:AdvisorDetailsComponent
+},
+  {
+    path: 'instructorinfo/:id',
+    component: InstructorinfoComponent,
+  },
 ];
 
 @NgModule({

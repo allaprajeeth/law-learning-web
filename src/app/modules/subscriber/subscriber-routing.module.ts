@@ -23,6 +23,8 @@ import { AccountsecurityComponent } from 'src/app/common/components/accountsecur
 import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
+import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
+import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 const routes: Routes = [
   {
     path: '',
@@ -121,10 +123,14 @@ const routes: Routes = [
     path: 'publish-articles/:id',
     component: SubscriberpostdetailsComponent,
   },
-  //  {
-  //   path:'statusarticlepage',
-  //   component:StatusarticlepageComponent
-  //  },
+  {
+    path:'advisorInfo/:id',
+    component:AdvisorDetailsComponent
+  },
+    {
+      path: 'instructorinfo/:id',
+      component: InstructorinfoComponent,
+    },
 ];
 
 @NgModule({

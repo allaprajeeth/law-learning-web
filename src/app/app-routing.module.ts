@@ -27,6 +27,7 @@ import { redirectGuard } from './common/guards/redirect-guard/redirect.guard';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { TermsconditionsComponent } from './common/components/termsconditions/termsconditions.component';
 import { LibraryComponent } from './common/components/library/library.component';
+import { InstructorinfoComponent } from './modules/instructor/components/instructorinfo/instructorinfo.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -148,9 +149,14 @@ const routes: Routes = [
     component:ForgotPhonenoComponent
   },
   {
-    path:'advisorInfo',
+    path:'advisorInfo/:id',
     component:AdvisorDetailsComponent
   },
+  {
+      path: 'instructorinfo/:id',
+      component: InstructorinfoComponent,
+  },
+  
   {
     path:'forgotEmail',
     component:ForgotEmailComponent
