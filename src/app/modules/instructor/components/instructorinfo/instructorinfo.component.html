@@ -2,34 +2,33 @@
     <div class="heading1">
         <div>
             <h3>INSTRUCTOR</h3>
-            <h1>John Smith</h1>
-            <h3>Business Planning Expert</h3>
+            <h1>{{instructorProfiles[0].name }}</h1>
+            <h3>{{ instructorProfiles[0].jobTitle }}</h3>
         </div>
         <div class="icons">
             <div class="icon ">
                 <mat-icon>star</mat-icon>
-                <p>{{ instructorRating }}  Rating by Subscribers({{instructorReviewsbySubscriber}})</p>
+                <p>{{instructorProfiles[0]. rating }} Rating by Subscribers({{instructorProfiles[0].ratings_count}})</p>
             </div>
             <div class="icon ">
                 <mat-icon>star</mat-icon>
-                <p>{{ instructorRating }} Rating by Reviewers</p>
+                <p>{{instructorProfiles[0]. rating }} Rating by Reviewers</p>
             </div>
             <div class="icon">
-              <mat-icon>people</mat-icon>
-              <p>2,342,416 Subscribers</p>
+                <mat-icon>people</mat-icon>
+                <p>{{instructorProfiles[0].subscriber_count }} Subscribers</p>
             </div>
             <div class="icon">
-              <mat-icon>play_circle_outline</mat-icon>
-              <p>7 Courses</p>
+                <mat-icon>play_circle_outline</mat-icon>
+                <p>{{instructorProfiles[0].course_count}}</p>
             </div>
-          </div>
+        </div>
     </div>
 
     <div class="profile">
         <img class="avatar"
             src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
             alt="Instructor Image">
-
 
     </div>
 
@@ -39,9 +38,7 @@
 
 <div class="description">
     <h1>About me</h1>
-    <ng-container *ngFor="let para of description; let i = index">
-        <p >{{ para }}</p>
-    </ng-container>
+    <p>{{ instructorProfiles[0].about}}</p>
 </div>
 <div>
     <div class="container">

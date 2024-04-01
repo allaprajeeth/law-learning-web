@@ -17,6 +17,8 @@ import { SidenavtermsconditionsComponent } from 'src/app/common/components/siden
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { CourseHistoryComponent } from './components/course-history/course-history.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
+import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 const routes: Routes = [
   {
     path:"",
@@ -94,7 +96,14 @@ const routes: Routes = [
     path:"delete-account",
     component: DeleteaccountComponent
   },
-
+  {
+    path:'advisorInfo/:id',
+    component:AdvisorDetailsComponent
+  },
+    {
+      path: 'instructorinfo/:id',
+      component: InstructorinfoComponent,
+    },
 ];
 
 @NgModule({

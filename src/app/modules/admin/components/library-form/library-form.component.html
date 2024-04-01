@@ -1,7 +1,4 @@
-
-
 <h2 class="form-heading">Library Form</h2>
-
 <form *ngIf="!showSuccessMessage" (ngSubmit)="onSubmit()" #libraryForm="ngForm">
   <mat-form-field>
     <mat-label>Document Name</mat-label>
@@ -12,8 +9,8 @@
     <label for="fileInput" class="file-input-label">Choose File</label>
     <input id="fileInput" type="file" name="libraryFile" (change)="onFileChange($event)" required>
     <div *ngIf="selectedFileName">{{ selectedFileName }}</div>
-</div>
- 
+  </div>
+
 
   <button mat-raised-button color="primary" type="submit" [disabled]="!libraryForm.valid">
     Submit

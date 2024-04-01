@@ -28,7 +28,6 @@ h1{
 .studentsflex{
     display: flex;
     
-    
 }
 .students1{
     padding-right: 10px;
@@ -36,20 +35,18 @@ h1{
 }
 .profile {
     display: flex;
-    align-items: center; /* Center content vertically within the profile div */
+    align-items: center; 
 }
 .avatar {
-    width: 250px; /* Set the desired width for the image */
-    height: auto; /* Maintain aspect ratio */
-    // margin-right: 150px; /* Add spacing between image and dot */
+    width: 250px; 
+    height: auto;
 }
 
 }
 .description{
     padding: 15px 100px;
     margin: 10px 90px;
-    // margin-top: 10px;
-    // margin: 80px;
+
 
     a{
         cursor: pointer;

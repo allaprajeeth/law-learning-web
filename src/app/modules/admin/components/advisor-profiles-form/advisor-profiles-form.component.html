@@ -1,0 +1,40 @@
+<div class="heading">
+    <h1>Advisor Profile Form</h1>
+</div>
+<div class="advisor-profile-container">  
+    <div class="sidenav">
+        <app-dashboard-sidenav></app-dashboard-sidenav>
+    </div>
+    <div class="form-content">
+       <h2>Create Advisor Profile Form's here </h2>
+        <div>
+            <div *ngIf="userForm" class="form-container">
+                <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+                    <div class="wrapper">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Job Title</mat-label>
+                            <input matInput formControlName="role" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-field">
+                        <mat-form-field appearance="outline">
+                            <mat-label>About Advisor</mat-label>
+                            <textarea matInput formControlName="about"></textarea>
+                        </mat-form-field>
+                    </div>
+                    <div class="button-container">
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="!userForm.controls['submitEnabled']?.value">Submit</button>
+                    </div>
+                    <p>Please fill the above details to enable the button</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

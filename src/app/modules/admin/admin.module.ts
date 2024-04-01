@@ -36,6 +36,8 @@ import { ProfileDetailsComponent } from './components/profile-details/profile-de
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
+import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
+import { MatRadioModule } from '@angular/material/radio';
 @NgModule({
   declarations: [
     HomepageComponent,
@@ -57,12 +59,14 @@ import { LibraryHistoryComponent } from './components/library-history/library-hi
     ProfileDetailsComponent,
     ArticleDetailComponent,
     LibraryFormComponent,
-    LibraryHistoryComponent, 
+    LibraryHistoryComponent,
+    AdvisorProfilesFormComponent, 
 
   ],
   
   imports: [
     CommonModule,
+    MatRadioModule,
     SharedModule,
     AdminRoutingModule,
     ReactiveFormsModule,

@@ -2,8 +2,8 @@
   <div class="heading1">
     <div>
       <h2>Advisor</h2>
-      <h1>kelvin Smith</h1>
-      <h3>Business Planning Expert</h3>
+      <h1>{{ advisorProfiles[0].name }}</h1>
+      <h3>{{ advisorProfiles[0].jobTitle }}</h3>
     </div>
   </div>
   <div class="profile">
@@ -13,9 +13,7 @@
 </div>
 <div class="description">
   <h1>About me</h1>
-  <ng-container *ngFor="let para of description; let i = index">
-    <p>{{ para }}</p>
-  </ng-container>
+    <p>{{ advisorProfiles[0].about }}</p>
 </div>
 <br>
 <br>

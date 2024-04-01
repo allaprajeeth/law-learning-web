@@ -1,39 +1,39 @@
 <mat-sidenav-container>
-    <mat-sidenav #sideNav mode="side" opened>
-        <app-sidenav></app-sidenav>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <div class="container-wrapper">
-            <div class="sidenav-container">
-                <div class="heading">
-                    <h1>Create your profile</h1>
-                </div>
-<div *ngIf="userForm" class="form-container">
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-      <div class="wrapper">
-        <mat-form-field appearance="outline">
-          <mat-label>Name</mat-label>
-          <input matInput formControlName="name">
-        </mat-form-field>  
-      </div>
-      <div class="form-field">
-        <mat-form-field appearance="outline">
-          <mat-label>Role</mat-label>
-          <input matInput formControlName="role" required>
-        </mat-form-field>
-      </div>
-      <div class="form-field">
-        <mat-form-field appearance="outline">
-          <mat-label>About You</mat-label>
-          <textarea matInput formControlName="about"></textarea>
-        </mat-form-field>
-      </div>
-      <div class="button-container">
-        <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.controls['submitEnabled']?.value">Submit</button>
-      </div>
-      <p>please fill the above details to enable the button</p>
-    </form>
-  </div>
-            </div>
+  <mat-sidenav #sideNav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container-wrapper">
+      <div class="sidenav-container">
+        <div class="heading">
+          <h1>Create your profile</h1>
         </div>
-  
+        <div *ngIf="userForm" class="form-container">
+          <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+            <div class="wrapper">
+              <mat-form-field appearance="outline">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+            </div>
+            <div class="form-field">
+              <mat-form-field appearance="outline">
+                <mat-label>Role</mat-label>
+                <input matInput formControlName="role" required>
+              </mat-form-field>
+            </div>
+            <div class="form-field">
+              <mat-form-field appearance="outline">
+                <mat-label>About You</mat-label>
+                <textarea matInput formControlName="about"></textarea>
+              </mat-form-field>
+            </div>
+            <div class="button-container">
+              <button mat-raised-button color="primary" type="submit"
+                [disabled]="!userForm.controls['submitEnabled']?.value">Submit</button>
+            </div>
+            <p>Please fill the above details to enable the button</p>
+          </form>
+        </div>
+      </div>
+    </div>

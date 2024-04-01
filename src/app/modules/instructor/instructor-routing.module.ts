@@ -30,6 +30,7 @@ import { SidenavContactusComponent } from 'src/app/common/components/sidenav-con
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
+import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 const routes: Routes = [
   {
     path: '',
@@ -65,9 +66,13 @@ const routes: Routes = [
     component: NotificationComponent,
   },
   {
-    path: 'instructorinfo',
-    component: InstructorinfoComponent,
+    path:'advisorInfo/:id',
+    component:AdvisorDetailsComponent
   },
+    {
+      path: 'instructorinfo/:id',
+      component: InstructorinfoComponent,
+    },
   {
     path: 'article',
     component: ArticleComponent,
