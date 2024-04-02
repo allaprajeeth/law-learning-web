@@ -59,7 +59,7 @@ export class AdvicerimageComponent {
     const formData = new FormData();
     formData.append('file', this.selectedFile);
 
-    this.http.post<any>(endPoints.secureBaseURL + '/advisor/profile/upload/${id}', formData)
+    this.http.post<any>(endPoints.secureBaseURL + '/advisor/profile/upload/1', formData)
       .subscribe(
         (response: any) => {
           this.imageUrl = endPoints.s3BaseURL + response.data.imageURL + '?random=' + Math.random();
