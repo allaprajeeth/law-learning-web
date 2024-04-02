@@ -24,6 +24,7 @@ import { SidenavtermsconditionsComponent } from 'src/app/common/components/siden
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
+import { AdvicerimageComponent } from './components/advicerimage/advicerimage.component';
 const routes: Routes = [
   {
     path:"",
@@ -129,6 +130,10 @@ const routes: Routes = [
 {
   path:"library-history",
   component:LibraryHistoryComponent
+},
+{
+  path:"advicer-image",
+  component:AdvicerimageComponent
 }
 ];
 

@@ -18,8 +18,8 @@
       </div>
       <div class="form-field">
         <mat-form-field appearance="outline">
-          <mat-label>Role</mat-label>
-          <input matInput formControlName="role" required>
+          <mat-label>Job Title</mat-label>
+          <input matInput formControlName="jobTitle" required>
         </mat-form-field>
       </div>
       <div class="form-field">
@@ -31,7 +31,9 @@
       <div class="button-container">
         <button mat-raised-button color="primary" type="submit" [disabled]="!userForm.controls['submitEnabled']?.value">Submit</button>
       </div>
-      <p>please fill the above details to enable the button</p>
+      <!-- <p>please fill the above details to enable the button</p> -->
+      <!-- Validation message -->
+  <p *ngIf="!userForm.valid">Please fill in all required fields.</p>
     </form>
   </div>
             </div>

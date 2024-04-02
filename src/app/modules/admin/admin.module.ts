@@ -36,6 +36,8 @@ import { ProfileDetailsComponent } from './components/profile-details/profile-de
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
+import { AdvicerimageComponent } from './components/advicerimage/advicerimage.component';
+
 @NgModule({
   declarations: [
     HomepageComponent,
@@ -57,7 +59,9 @@ import { LibraryHistoryComponent } from './components/library-history/library-hi
     ProfileDetailsComponent,
     ArticleDetailComponent,
     LibraryFormComponent,
-    LibraryHistoryComponent, 
+    LibraryHistoryComponent,
+    AdvicerimageComponent,
+    
 
   ],
   
