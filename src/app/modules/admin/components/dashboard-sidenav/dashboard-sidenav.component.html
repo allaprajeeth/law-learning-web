@@ -40,11 +40,11 @@
           </span>
         </a>
         <ul *ngIf="showNotifications">
-          <li (click)="selectNotification('all')" routerLinkActive="active-link">all</li>
-          <li (click)="selectNotification('comments')" routerLinkActive="active-link">comments</li>
-          <li (click)="selectNotification('joined')" routerLinkActive="active-link">joined</li>
-          <li (click)="selectNotification('courses')" routerLinkActive="active-link">courses</li>
-          <li (click)="selectNotification('articles')" routerLinkActive="active-link">articles</li>
+          <li (click)="selectNotification('all')" routerLinkActive="active-link">All</li>
+          <li (click)="selectNotification('comments')" routerLinkActive="active-link">Comments</li>
+          <li (click)="selectNotification('joined')" routerLinkActive="active-link">Joined</li>
+          <li (click)="selectNotification('courses')" routerLinkActive="active-link">Courses</li>
+          <li (click)="selectNotification('articles')" routerLinkActive="active-link">Articles</li>
         </ul>
       </div>
       <div>
@@ -64,13 +64,9 @@
           </span>
         </a>
       </div>
+      <div  routerLink="/admin/advisorprofileForm" routerLinkActive="active-link" class="form" style="font-size: 16px;">Advisor Profile Form</div>
+
     </mat-nav-list>
   </mat-sidenav>
 
-  <!-- <mat-sidenav-content>
-  <mat-sidenav-content>
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content> -->
 </mat-sidenav-container>

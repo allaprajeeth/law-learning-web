@@ -33,7 +33,6 @@ export class LibraryFormComponent {
       const formData = new FormData();
       formData.append('title', this.title);
       formData.append('file', this.selectedFile);
-
       // Send the form data to the backend
       this.http.post(this.apiUrl, formData)
         .subscribe(

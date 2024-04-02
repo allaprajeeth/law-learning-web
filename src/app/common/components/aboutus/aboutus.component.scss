@@ -41,6 +41,7 @@
   .carosol{
     width: 90%;
     margin: 0% 4%;
+    font-size: 24px !important;
   }
   .teacher-profiles {
     display: flex;
@@ -50,26 +51,26 @@
    
   }
   .teacher-profile {
-   
     width: 290px;
-    height:315px;
+    height:auto;
     margin: 3px;
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
     padding: 20px;
     padding-top: 10px;
     border: 1px solid grey;
     border-radius: 8px;
   }
-  .teacher-profile h2 {
-    font-size: 1.2rem;
-    font-weight: bold;
+  .text-center{
+    text-align: center;
+    justify-content: center;
   }
+  
   .teacher-profile h3 {
     font-size: 1rem;
-    color: #888;
-    margin: 5px 0;
+  }
+  .teacher-profile h2 {
+    
   }
   .teacher-profile p {
     font-size: 0.9rem;
@@ -84,10 +85,27 @@
   .avatar {
     width: 130px;
     height: 130px;
+    margin-left: 71px;
+
+   
     // float: left;
   }
   a{
     cursor: pointer;
     text-decoration: underline;
     color:rgb(62, 5, 176)
+  }
+  .profile-about {
+    text-align: justify;
+    display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4; /* Change this value to limit the number of lines */
+  line-height: 1.5; /* Adjust line height as needed */
+  max-height: calc(1.5 * 4); 
+  
+  }
+  .profile-title{
+    font-weight: 900;
   }

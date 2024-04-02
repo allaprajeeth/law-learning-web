@@ -37,6 +37,8 @@ import { ArticleDetailComponent } from './components/article-detail/article-deta
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 import { AdvicerimageComponent } from './components/advicerimage/advicerimage.component';
+import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -61,12 +63,13 @@ import { AdvicerimageComponent } from './components/advicerimage/advicerimage.co
     LibraryFormComponent,
     LibraryHistoryComponent,
     AdvicerimageComponent,
-    
+    AdvisorProfilesFormComponent, 
 
   ],
   
   imports: [
     CommonModule,
+    MatRadioModule,
     SharedModule,
     AdminRoutingModule,
     ReactiveFormsModule,

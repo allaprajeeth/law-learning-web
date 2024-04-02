@@ -28,25 +28,29 @@
     <p-carousel [value]="advisorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
       <ng-template let-profile pTemplate="item">
         <div class="teacher-profile">
-          <img class="avatar" [src]="profile.photo" alt="Teacher Photo">
-          <h2><a (click)="navigateToAdvisorInfo()">{{ profile.name }}</a></h2>
-          <h3>{{ profile.title }}</h3>
-          <p>{{ profile.description }}</p>
+          <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
+          <h2 class="text-center"><a (click)="  navigateToAdvisorInfo(profile.id)">{{ profile.name }}</a></h2>
+          <h3 class="text-center profile-title">{{ profile.jobTitle}}</h3>
+          <p class="profile-about">{{ profile.about }}</p>
         </div>
       </ng-template>
     </p-carousel>
   </div>
+
+  
   
   <h1>Instructor Profiles</h1>
-  
   <div class="carosol">
-    <p-carousel [value]="teacherProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
+    <p-carousel [value]="instructorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
       <ng-template let-profile pTemplate="item">
         <div class="teacher-profile">
-          <img class="avatar" [src]="profile.photo" alt="Teacher Photo">
-          <h2><a (click)="navigateToInstructorInfo()">{{ profile.name }}</a></h2>
-          <h3>{{ profile.title }}</h3>
-          <p>{{ profile.description }}</p>
+          <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
+          <h2 class="text-center"><a (click)="navigateToInstructorInfo(profile.id)">{{ profile.name }}</a></h2>
+          <h3 class="text-center profile-title">{{ profile.jobTitle}}</h3>
+          <p class="profile-about">{{ profile.about }}</p>
+          <p><b>Number of Courses  :</b> {{ profile.course_count }}</p>
+          <p><b>Number Subscribers :</b> {{ profile.subscriber_count }}</p>
+          <p><b>Ratings:</b> {{profile.rating}}({{profile.ratings_count}})</p>
         </div>
       </ng-template>
     </p-carousel>
