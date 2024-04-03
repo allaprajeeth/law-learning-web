@@ -1,9 +1,10 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { InstructorProfile } from 'src/app/common/models/instructor.model';
 import { Course } from 'src/app/common/models/course.model';
+import { CourseService } from 'src/app/common/services/course.service';
 interface Categories {
   viewValue: string;
 }
@@ -42,9 +43,10 @@ export class InstructorinfoComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient
-    // private searchService: SearchServiceService
-  ) {}
+    private http: HttpClient ,
+    private courseService: CourseService, private router:Router
+
+  ) {  this.s3BaseURl = endPoints.s3BaseURL;}
 
   availableCoursesHeadings: string[] = [
     "Introduction to Criminal Law",
@@ -108,7 +110,10 @@ uploadedCoursesText: string[] = [
   myCourseSubscribers: string[] = [];
   
   instructorId :number |undefined
+  s3BaseURl: string;
+ 
   ngOnInit(): void {
+   
     this.route.paramMap.subscribe(paramMap => {
       const params = paramMap.get('id');
       this.instructorId = +params!;
@@ -118,7 +123,7 @@ uploadedCoursesText: string[] = [
       }
     });
 
-    
+   
 
     for (let i = 0; i < 4; i++) {
       const randomImageURL = `https://picsum.photos/300/200?random=${i}`;
@@ -194,7 +199,11 @@ uploadedCoursesText: string[] = [
     });
   }
 
-  // "http://localhost:8080/api/v1/instructor/14/courses?number=0&size=20&sort=id,DESC"
+  
+  onImageError(event: any) {
+    event.target.src = 'assets/law.png';
+  }
+
 
 }
 

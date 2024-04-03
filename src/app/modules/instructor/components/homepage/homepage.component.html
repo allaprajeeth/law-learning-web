@@ -6,7 +6,6 @@
       <p class="create-course"><a routerLink="/instructor/courses" class="mycourses">Create a Course</a></p>
     </div>
     <p class="comment">Create a course, upload your files and submit to the website</p>
-
     <div class="course-grid">
       <div *ngFor="let course of courses" class="course-item">
         <div class="imagesContainer">
@@ -15,7 +14,6 @@
             <i class="fa fa-play-circle play-icon"></i>
           </div>
         </div>
-
         <h2>{{ course.title }}</h2>
         <p> {{ course.createdBy.name }}</p>
         <h4>{{ course.type | titlecase }}  |  {{ course.difficultyLevel | titlecase }}</h4>
