@@ -36,8 +36,10 @@ import { ProfileDetailsComponent } from './components/profile-details/profile-de
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
+import { AdvicerimageComponent } from './components/advicerimage/advicerimage.component';
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
 import { MatRadioModule } from '@angular/material/radio';
+
 @NgModule({
   declarations: [
     HomepageComponent,
@@ -60,6 +62,7 @@ import { MatRadioModule } from '@angular/material/radio';
     ArticleDetailComponent,
     LibraryFormComponent,
     LibraryHistoryComponent,
+    AdvicerimageComponent,
     AdvisorProfilesFormComponent, 
 
   ],
