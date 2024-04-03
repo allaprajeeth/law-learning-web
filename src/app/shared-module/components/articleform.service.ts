@@ -1,7 +1,7 @@
-// articleform.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams ,  HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -9,25 +9,30 @@ import { Observable } from 'rxjs';
 export class ArticleformService {
   constructor(private httpClient: HttpClient) {}
 
-
   post<T>(url: string, data: FormData): Observable<T> {
-    const headers = new HttpHeaders();
-    //headers.set('Content-Type', 'multipart/form-data'); // Set the appropriate Content-Type header
-    return this.httpClient.post<T>(url, data, { headers });
+    return this.httpClient.post<T>(url, data, { headers: this.defaultHeaders }).pipe(
+      catchError(this.handleError)
+    );
   }
 
-   get<T>(url: string): Observable<T> {
-    const headers = new HttpHeaders(); 
-    return this.httpClient.get<T>(url, { headers });
+  get<T>(url: string): Observable<T> {
+    return this.httpClient.get<T>(url, { headers: this.defaultHeaders }).pipe(
+      catchError(this.handleError)
+    );
   }
 
+  private defaultHeaders = new HttpHeaders();
 
-  // post<T>(url: string, data: FormData): Observable<T> {
-  //   return this.http.post<T>(url, data);
-
-  // }
-
-  // post<T>(url: string, body: any | undefined, params?: HttpParams | {}): Observable<T> {
-  //   return this.httpClient.post<T>(url, body, { params });
-  // }
+  private handleError(error: HttpErrorResponse): Observable<never> {
+    let errorMessage = 'An error occurred';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+    }
+    console.error(errorMessage);
+    return throwError(errorMessage);
+  }
 }

@@ -31,6 +31,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 import { SharedcourseHistoryComponent } from './components/sharedcourse-history/sharedcourse-history.component';
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
+import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
      ConfirmationAlertComponent,
      SharedcourseHistoryComponent,
      SharedarticleHistoryComponent,
+     UploadedarticlesstatusComponent,
     ],
 
 
@@ -112,6 +114,7 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
     RouterModule,
     SharedcourseHistoryComponent,
     SharedarticleHistoryComponent,
+    UploadedarticlesstatusComponent
   ]
 
 })

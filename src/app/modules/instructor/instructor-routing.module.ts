@@ -31,6 +31,8 @@ import { SidenavtermsconditionsComponent } from 'src/app/common/components/siden
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
+import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
+// import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 const routes: Routes = [
   {
     path: '',
@@ -158,6 +160,10 @@ const routes: Routes = [
   {
     path: 'termsandconditions',
     component: SidenavtermsconditionsComponent
+  },
+  {
+    path: 'uploadedarticle/:id',
+    component: UploadedarticlesComponent,
   },
   { 
     path: "articlehistory", 

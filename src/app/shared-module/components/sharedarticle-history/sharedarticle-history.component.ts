@@ -1,50 +1,76 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { ArticleformService } from '../articleform.service';
-import { NotificationService } from '../../../common/services/notification/notification.service'
 import { Article } from '../fetcharticle.model';
+import { PdfService } from 'src/app/sharedService.service';
+
 @Component({
   selector: 'app-sharedarticle-history',
   templateUrl: './sharedarticle-history.component.html',
   styleUrls: ['./sharedarticle-history.component.scss']
 })
-export class SharedarticleHistoryComponent {
+export class SharedarticleHistoryComponent implements OnInit {
   userArticles: Article[] = [];
-  constructor(private router: Router,
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     private articleformService: ArticleformService,
+    private pdfService: PdfService
   ) { }
 
   ngOnInit() {
-    this.getUserAricles();
+    this.getUserArticles();
   }
 
-
-  getUserAricles() {
+  getUserArticles() {
     this.articleformService.get<any>(endPoints.baseURL + '/secure/articles').subscribe(
       (response) => {
         this.userArticles = response.data.content || [];
-        console.log(this.userArticles)
+        console.log(this.userArticles);
       },
       (error) => {
         console.error('Error submitting article:', error);
       }
-    )
-
+    );
   }
-  getArticleStatus(reviewStatus: string): string {
-    if (reviewStatus === 'SUBMITTED') {
-      return 'Submitted';
-    } else if (reviewStatus.includes('ADMIN_ACCEPTED')) {
-      return 'Accepted';
-    } else if (reviewStatus.includes('ADMIN_REJECTED')) {
-      return 'Rejected';
-    } else if (reviewStatus.includes('ADMIN_RESUBMITTED')) {
-      return 'Re-Submitted';
-    } else {
-      return 'Under Review';
+
+  openArticle(articleId: number) {
+    let currentUrl = this.router.url;
+    let routePrefix = '';
+
+    if (currentUrl.includes('subscriber')) {
+      routePrefix = 'subscriber';
+    } else if (currentUrl.includes('instructor')) {
+      routePrefix = 'instructor';
     }
+
+    this.router.navigate([`${routePrefix}/uploadedarticle`, articleId]);
   }
 
+  getArticleStatus(reviewStatus: string): string {
+    return this.pdfService.getArticleStatus(reviewStatus);
+  }
 
+  getStatusStyles(reviewStatus: string): any {
+    let color = '';
+    switch (reviewStatus) {
+      case 'SUBMITTED':
+        color = 'black';
+        break;
+      case 'ADMIN_ACCEPTED':
+        color = 'green';
+        break;
+      case 'ADMIN_REJECTED':
+        color = 'red';
+        break;
+      case 'ADMIN_RESUBMIT':
+        color = '#eb7117';
+        break;
+      default:
+        color = 'blue';
+    }
+    return { 'color': color };
+  }
 }

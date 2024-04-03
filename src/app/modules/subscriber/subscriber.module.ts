@@ -44,6 +44,7 @@ import { SubscriberpostdetailsComponent } from './components/subscriberpostdetai
 import { StatusarticlepageComponent } from './components/statusarticlepage/statusarticlepage.component';
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
+import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     StatusarticlepageComponent,
     UnderreviewarticleComponent,
     CommentedarticleComponent,
+    UploadedarticlesComponent,
   
    
   ],

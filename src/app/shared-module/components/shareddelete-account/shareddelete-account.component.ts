@@ -74,7 +74,6 @@ showOtpFields(): void {
       }
     }, 1000); // 1 second in milliseconds
   }
-
   formatTime(seconds: number): string {
     const hours = Math.floor(seconds / 3600);
     const remainingSeconds = seconds % 3600;

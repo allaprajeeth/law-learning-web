@@ -50,6 +50,7 @@ import { CourseWidgetComponent } from './components/course-widget/course-widget.
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
+import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +82,7 @@ import { CreateProfileComponent } from './components/create-profile/create-profi
     CommentedCoursesOverviewComponent,
     CourseWidgetComponent,
     CreateProfileComponent,
+    UploadedarticlesComponent,
   
   ],
 

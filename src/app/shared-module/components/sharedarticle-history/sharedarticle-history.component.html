@@ -5,8 +5,7 @@
     <mat-sidenav-content>
         <div class="container-wrapper">
             <div class="sidenav-container">
-                <h1 class="publishedArticles">Article's Status</h1>
-                
+                <h1 class="publishedArticles">Article's Status</h1> 
                 <table class="article-table">
                     <thead>
                         <tr>
@@ -15,18 +14,14 @@
                             <th class="publishedDate">Article Status</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        <tr *ngFor="let article of userArticles" >
+                        <tr *ngFor="let article of userArticles" (click)="openArticle(article.id)">
                             <td class="articleName" >{{ article.title }}</td>
                             <td>{{ article.createdDate | date:'yyyy-MM-dd' }}</td>
-                            <td>{{ getArticleStatus(article.reviewStatus) }}</td>
-
+                            <td  [ngStyle]="getStatusStyles(article.reviewStatus)">{{ getArticleStatus(article.reviewStatus) }}</td>
                         </tr>
                     </tbody>
                 </table>
-
-         
             </div>
         </div>
     </mat-sidenav-content>

@@ -31,6 +31,12 @@
   </div>
 </div>
 
+<div *ngIf="resubmitMessage" class="message-status">
+  <div class="submission-status resubmit">
+    <i class="icon close-icon" (click)="goBack()">&#10006;</i>
+    <h3 class="success-message">Article Resubmitted Successfully. Thank you.</h3>
+  </div>
+</div>
 
 <div *ngIf="articleRejected" class="message-status">
   <div class="submission-status rejection">

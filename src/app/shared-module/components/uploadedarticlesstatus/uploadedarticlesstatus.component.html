@@ -1,0 +1,19 @@
+<div class="article">
+    <div *ngIf="article">
+        <h2>{{ article.data.title }}</h2>
+        <p><strong>Description:</strong> {{ article.data.description }}</p>
+        <p><strong>Review Status:</strong> {{ getArticleStatus(article.data.reviewStatus) }}
+        <p><strong>Created Date:</strong> {{ article.data.createdDate | date:'yyyy-MM-dd' }}</p>
+        <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p>
+      </div>
+    </div>
+    <div>
+      <button (click)="goBack()">Go Back</button>
+    </div>
+    <br>
+    <br>
+    
+    <div *ngIf="!article">
+        <p>Loading article...</p>
+    </div>
+    

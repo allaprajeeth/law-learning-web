@@ -1,4 +1,3 @@
-// article-detail.component.ts
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from '../article.service';

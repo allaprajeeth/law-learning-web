@@ -29,6 +29,7 @@ export class ArticleDetailComponent implements OnInit {
   commentError: boolean = false;
   articleee: boolean = false;
   fileButtonVisible: boolean = true;  
+  resubmitMessage: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -84,7 +85,7 @@ export class ArticleDetailComponent implements OnInit {
           const blob = new Blob([data], { type: 'application/octet-stream' });
           const link = document.createElement('a');
           link.href = window.URL.createObjectURL(blob);
-          link.download = 'downloaded-file'; // Specify the file name
+          link.download = 'downloaded-file'; // file name
           link.style.display = 'none';
           document.body.appendChild(link);
           link.click();
@@ -187,6 +188,9 @@ export class ArticleDetailComponent implements OnInit {
     } else {
       this.commentError = false;
       this.approvalStatus = 'resubmit';
+      this.articleRejected = false;
+      this.articleApproved = false;
+      this.resubmitMessage = true;
   
       const articleId = this.articleId;
   

@@ -4,15 +4,9 @@
     <div *ngIf="article">
       <h2>{{ article.title }}</h2>
       <p>{{ article.description }}</p>
-       
-      <!-- article-detail.component.html -->
-
 <button *ngIf="fileButtonVisible && article.files && article.files.length > 0"
   (click)="openFile(article.files[0].url, article.files[0].fileName)">Open File</button>
-
-
         <p>{{ storedFileContent }}</p>
-       
         <div class="comments"  *ngIf="article.files && article.files.length > 0" >
           <label for="">comments:</label>
           <textarea placeholder="Type your comment here..." [(ngModel)]="comment"></textarea>
@@ -20,10 +14,7 @@
             *Comment is mandatory. Please enter some text.
           </div>
         </div>
-     
   </div>
-  
-  
   <div *ngIf="articleApproved" class="message-status">
     <div class="submission-status success">
       <i class="icon close-icon" (click)="goBack()">&#10006;</i>

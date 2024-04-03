@@ -39,14 +39,14 @@
      background-color: #fff;
      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         margin-top: 10px;
-        white-space: pre-line; /* Preserve line breaks */
+        white-space: pre-line; 
         font-size: 14px;
         color: #333;
       }
       .button-container {
         display: flex;
-        justify-content: center; /* Center the buttons horizontally */
-        align-items: center; /* Center the buttons vertically */
+        justify-content: center; 
+        align-items: center;
      
         button {
           padding: 10px 20px;
@@ -59,12 +59,12 @@
         }
      
         .approve-button {
-          background-color: #4caf50; /* Green */
+          background-color: #4caf50; 
           color: white;
         }
      
         .reject-button {
-          background-color: #f44336; /* Red */
+          background-color: #f44336; 
           color: white;
         }
         .resubmit-button {
@@ -73,40 +73,48 @@
         }
       }
 
-//       .approval-message,
-//   .rejection-message {
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     background-color: #dff0d8;
-//     padding: 40px;
-//     margin: auto;
-//     font-size: 16px;
-//     text-align: center;
-    
-//   }
-
-
-
-
-
       .goBack-button {
-        background-color: #007791; // Set your desired background color
-        color: #fff; // Set your desired text color
+        background-color: #007791; 
+        color: #fff;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         font-size: 16px;
-        margin: 20px; // Add margin to separate the button from the content
-    
-        // Center the button horizontally
+        margin: 20px; 
         display: block;
         margin-left: auto;
         margin-right: auto;
     
-        // Add hover effect
+       
         &:hover {
-          background-color: #007791; // Set your desired hover background color
+          background-color: #007791; 
         }
       }
+      .submission-status.success {
+        background-color: #d4edda; 
+        color: #155724; 
+      }
+      
+      .submission-status.rejection {
+        background-color: #f8d7da; 
+        color: #721c24; 
+      }
+      
+      .approval-message,
+      .rejection-message {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 20px; 
+        margin: auto;
+        font-size: 16px;
+        text-align: center;
+      }
+      
+      .icon {
+        cursor: pointer;
+        font-size: 24px;
+        margin-left: 10px;
+      }
+      
