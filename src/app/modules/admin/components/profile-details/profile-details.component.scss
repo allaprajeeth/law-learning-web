@@ -17,7 +17,6 @@
 
     .profile-section {
         margin-bottom: 15px;
-
         label {
             display: inline-block;
             width: 150px;
@@ -68,3 +67,9 @@
     // margin-right: auto; 
   }
 }
+#previewImage {
+    max-width: 200px;
+    max-height: 100px;
+    margin-bottom: 5px;
+  }
+ 

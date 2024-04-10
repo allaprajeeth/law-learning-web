@@ -1,6 +1,10 @@
 // all-profiles.component.ts
 
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { endPoints } from 'src/app/common/constants/endpoints';
+import { AdvisorProfile } from 'src/app/common/models/instructor.model';
 
 @Component({
   selector: 'app-all-profiles',
@@ -10,7 +14,10 @@ import { Component, OnInit } from '@angular/core';
 export class AllProfilesComponent implements OnInit {
 
   selectedRole: string = 'all';
-
+  advisorId:number | undefined;
+  constructor(private http: HttpClient,
+    private router: Router) { }
+  advisorProfiles:AdvisorProfile[] = [];
   
 
 
@@ -41,8 +48,6 @@ export class AllProfilesComponent implements OnInit {
 
   allProfiles: any[] = [];
 
-  constructor() { }
-
   ngOnInit(): void {
     // Combine all profiles into a single array
     this.allProfiles = [
@@ -51,6 +56,10 @@ export class AllProfilesComponent implements OnInit {
       ...this.reviewerProfiles,
       ...this.contentManagerProfiles,
     ];
+
+   
+     
+  
   }
 
   onRoleSelected(role: string): void {
@@ -65,6 +74,8 @@ export class AllProfilesComponent implements OnInit {
         ...this.instructorProfiles,
         ...this.reviewerProfiles,
         ...this.contentManagerProfiles,
+          this.fetchAdvisorProfiles(),
+       ...this.advisorProfiles 
       ];
     } else {
       // Filter profiles based on the selected role
@@ -81,7 +92,11 @@ export class AllProfilesComponent implements OnInit {
         case 'content-managers':
           this.allProfiles = this.contentManagerProfiles;
           break;
-        default:
+        case 'advisors':
+          this.fetchAdvisorProfiles()
+          this.allProfiles=this.advisorProfiles ;
+          break;
+          default:
           break;
       }
     }
@@ -105,5 +120,22 @@ export class AllProfilesComponent implements OnInit {
         return {};
     }
   }
+
+  fetchAdvisorProfiles(): void {
+    const baseUrl = endPoints.baseURL;
+    const apiUrl =baseUrl+ `/advisor/profiles`;
+    const params = new HttpParams()
+      .set('search', '')
+      .set('number', '0')
+      .set('size', '20')
+      .set('sort', 'id,DESC');
+    this.http.get<any>(apiUrl, { params }).subscribe(response => {
+      this.advisorProfiles = response.data.content;
+    });
+  }
+
+ navigateToAdvisorProfiles(advisorId: any):void{
+  this.router.navigate(["/admin/profile-details",advisorId]);
+ }
   
 }
