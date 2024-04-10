@@ -1,14 +1,13 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-
 @Component({
   selector: 'app-dashboard-sidenav',
   templateUrl: './dashboard-sidenav.component.html',
   styleUrls: ['./dashboard-sidenav.component.scss']
 })
 export class DashboardSidenavComponent {
+
   @Output() roleSelected = new EventEmitter<string>();
   @Output() notificationSelected = new EventEmitter<string>();
-
   showRoles: boolean = false;
   showNotifications: boolean = false;
   selectedRole: string | null = null
@@ -32,5 +31,7 @@ export class DashboardSidenavComponent {
     this.notificationSelected.emit(notification);
     // Add any specific logic for handling notification selection
   }
+
+  
 
 }
