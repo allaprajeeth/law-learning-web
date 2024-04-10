@@ -143,10 +143,10 @@ const routes: Routes = [
 
   path: 'instructorinfo/:id',
   component: InstructorinfoComponent,
-}
+},{
 
   path:'advisorInfo/:id',
-  component:AdvisorDetailsComponent
+  component:AdvisorDetailsComponent,
 },
 {
     path: 'instructorinfo/:id',
