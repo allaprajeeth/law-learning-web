@@ -25,7 +25,9 @@ import { LibraryComponent } from 'src/app/common/components/library/library.comp
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
+
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
+
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 const routes: Routes = [
   {
@@ -138,6 +140,11 @@ const routes: Routes = [
  component:AdvisorProfilesFormComponent 
 },
 {
+
+  path: 'instructorinfo/:id',
+  component: InstructorinfoComponent,
+}
+
   path:'advisorInfo/:id',
   component:AdvisorDetailsComponent
 },
@@ -145,6 +152,7 @@ const routes: Routes = [
     path: 'instructorinfo/:id',
     component: InstructorinfoComponent,
 },
+
 ];
 
 @NgModule({

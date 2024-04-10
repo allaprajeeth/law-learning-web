@@ -23,6 +23,7 @@ export class LibraryComponent {
   isAdmin: boolean = false;
   private pagination: Pagination = new Pagination();
   apiLoading = false;
+  selectedLibraryTitle:string | null = null;
   pdfSrc:string | undefined 
   constructor(
     private router: Router,
@@ -48,7 +49,7 @@ export class LibraryComponent {
 
   openFile(library: Library): void {
     this.pdfSrc = endPoints.s3BaseURL + library.url;
-  
+    this.selectedLibraryTitle = library.title; // Set selectedLibraryTitle
   }
  
   DeleteFile(libraryId: number): void {
