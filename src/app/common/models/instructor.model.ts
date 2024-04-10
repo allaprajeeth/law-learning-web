@@ -15,4 +15,5 @@ export interface AdvisorProfile{
   name:string;
   about:string;
   jobTitle:string;
+  imageURL:string
 }
