@@ -78,6 +78,11 @@ const routes: Routes = [
     path: 'articleform',
     component: ArticleFormComponent,
   },
+  
+  {
+    path: 'articleform/:id',
+    component: ArticleFormComponent,
+  },
   {
     path: 'article',
     component: ArticleComponent,

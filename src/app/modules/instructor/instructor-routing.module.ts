@@ -84,6 +84,10 @@ const routes: Routes = [
     component: ArticleFormComponent,
   },
   {
+    path: 'articleform/:id',
+    component: ArticleFormComponent,
+  },
+  {
     path: 'submissioncoursesInfo',
     component: SubmissionCoursesInfoComponent,
   },

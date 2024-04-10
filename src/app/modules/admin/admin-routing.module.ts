@@ -26,6 +26,7 @@ import { LibraryFormComponent } from './components/library-form/library-form.com
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 import { AdvicerimageComponent } from './components/advicerimage/advicerimage.component';
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
+import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 const routes: Routes = [
   {
     path:"",
@@ -139,6 +140,10 @@ const routes: Routes = [
 {
  path:"advisorprofileForm",
  component:AdvisorProfilesFormComponent 
+},
+{
+  path: 'instructorinfo/:id',
+  component: InstructorinfoComponent,
 }
 ];
 
