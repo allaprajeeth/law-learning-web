@@ -6,8 +6,45 @@
       <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p>
     </div>
   </div>
+
+  <div class="container" >
+    <h2 class="courseRatingsHeading">Article Reviews</h2>
+    <div class="courseRatingContainer">
+        <div class="courseRating">
+            <div class="alignment">
+                <h2>{{ courseReviewerHeading_1 }}</h2>
+                    <div class="rating">
+                        <span *ngFor="let star of stars" class="star" [style.color]="star <= dynamicRating ? 'gold' : '#ccc'">&#9733;</span>
+                    </div>
+            </div>
+            <p class="courseRatingText">{{ courseReviewerText_1 }}</p>
+        </div>
+    </div>
+    <br>
+    <div>
+    <button  mat-raised-button color="primary" (click)=" giveRating()" style="margin-bottom: 10px;" class="give-rating" *ngIf="isSubscriber">Give Your Rating</button>
+    <div class="contentt" *ngIf="giverating">
+        <div class="close" (click)="leaveRatingClose()">&times;</div>
+        <h1 style="margin-bottom: 0px;">Rate this Article</h1>
+        <ng-container *ngFor="let i of stars">
+            <mat-icon (mouseenter)="updaterating(i)" 
+                [ngClass]="{ active: i <= selected ,disabled: !isratingEditable }" class="staricon">
+                star
+            </mat-icon>
+        </ng-container>
+        <div class="review">
+            <textarea id="review" [(ngModel)]="userReview" name="userReview" rows="3" cols="36" placeholder="Comments"
+                class="mat-input custom-textarea"></textarea>
+        </div>
+        <br>
+        <button mat-raised-button color="primary" class="custom-button" (click)="submitRating()">Submit </button>
+    </div>
+</div>
+</div>
   <div>
     <button (click)="goBack()">Go Back</button>
   </div>
+
+
   <br/>
   <br/>

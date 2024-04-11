@@ -8,37 +8,30 @@
     <app-dashboard-sidenav (roleSelected)="onRoleSelected($event)"></app-dashboard-sidenav>
   </div>
 
-  <div class="profile-list">
-    <div *ngFor="let profile of allProfiles" class="profile-item" routerLink="/admin/profile-details">
-      <div class="profile-info">
-        <div class="profile-placeholder">{{ getInitials(profile.username) }}</div>
-        <div class="profile-details">
-          <div class="profile-details-left">
-            <h3>{{ profile.username }}</h3>
-            <p>{{ profile.role }}</p>
-          </div>
-          <div class="profile-details-right">
-            <p [ngStyle]="getStatusStyles(profile.status)">{{ profile.status }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <table class="profile-table" *ngIf="selectedRole !== 'ADVISORS'">
+  <tbody>
+    <tr *ngFor="let profile of allProfiles" class="profile-item" (click)="navigateToAllProfiles(profile.id)" >
+      <td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
+      <td>
+        <h3>{{ profile.name }}</h3>
+      </td>
+      <td>{{ profile.role }}</td>
+      <td [ngStyle]="getStatusStyles(profile.status)">{{ profile.status }}</td>
+    </tr>
+  </tbody>
+</table>
 
-  <div class="profile-list" *ngIf="advisorProfiles">
-    <div *ngFor="let profile of advisorProfiles" class="profile-item" (click)="navigateToAdvisorProfiles(profile.id)">
-      <div class="profile-info">
-        <div class="profile-placeholder">{{ getInitials(profile. name) }}</div>
-        <div class="profile-details">
-          <div class="profile-details-left">
-            <h3>{{ profile.name }}</h3>
-            <p>{{ profile. jobTitle}}</p>
-          </div>
-          <div class="profile-details-right">
-            <p >Edit Profile</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<table class="profile-table" *ngIf="selectedRole === 'ADVISORS'">
+  <tbody>
+    <tr *ngFor="let profile of advisorProfiles" class="profile-item" (click)="navigateToAdvisorProfiles(profile.id)">
+      <td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
+      <td>
+        <h3>{{ profile.name }}</h3>
+      </td>
+      <td>{{ profile.jobTitle}}</td>
+      <td ><button mat-raised-button color="primary"> Edit Profile</button></td>
+    </tr>
+  </tbody>
+</table>
 </div>

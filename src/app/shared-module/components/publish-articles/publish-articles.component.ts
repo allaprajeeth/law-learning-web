@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 
 @Component({
   selector: 'app-publish-articles',
@@ -21,6 +22,7 @@ export class PublishArticlesComponent  implements OnInit{
   error: string | null = null;
   fileId: any;
   storedFileContent: string | undefined;
+  isSubscriber: boolean;
 
 
   constructor(
@@ -30,8 +32,14 @@ export class PublishArticlesComponent  implements OnInit{
     private fileSaverService: FileSaverService,
     private http: HttpClient,
     public dialog: MatDialog,
-    private location: Location
-  ) {}
+    private location: Location,
+    private authService: AuthTokenService,
+  ) {
+    this.dynamicRating = 3; 
+    this.stars = Array(5).fill(0).map((_, i) => i + 1);
+    const userDetails = this.authService.getUserDetails();
+    this.isSubscriber= userDetails?.role === 'SUBSCRIBER';
+  }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.articleId = +params['id'] || null;
@@ -98,6 +106,44 @@ export class PublishArticlesComponent  implements OnInit{
   goBack() {
     this.location.back();
   }
+
+  courseReviewerHeading_1 = "David Wilson";
+  courseReviewerText_1 = "The Law Learning course provided a comprehensive overview of legal principles and their practical applications. The content was well-structured, and the instructors were highly knowledgeable.";
+  stars: number[] | undefined;
+  giverating:boolean=false;
+  submittedReview:boolean=false;
+  showRating = false;
+  selected = 0;
+  userReview: string = '';
+  isratingEditable:boolean=true;
+  dynamicRating: number;
+ 
+  updaterating(r: any) {
+    if(this.isratingEditable){
+    this.selected = r;
+    }
+  }
+  submitRating() {
+    console.log('Selected Rating:', this.selected);
+    console.log('User Review:', this.userReview);
+    this.ratingClicked()
+    this.showRating = false;
+    this.submittedReview=true
+  }
+  getStarArray(): number[] {
+    return Array.from({ length: 5 }, (_, i) => i);
+  }
+  ratingClicked(){
+   this.isratingEditable=false;
+  }
+  giveRating(){
+    this.giverating=true;
+  }
+  leaveRatingClose() {
+    this.giverating = false;  
+  }
+
+  
 }
 
 

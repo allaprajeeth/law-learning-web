@@ -8,6 +8,7 @@ export interface InstructorProfile {
     reviews_count: number;
     jobTitle:string;
     about:string;
+    imageURL:string
   }
   
 export interface AdvisorProfile{
@@ -16,4 +17,17 @@ export interface AdvisorProfile{
   about:string;
   jobTitle:string;
   imageURL:string
+}
+
+export interface UserProfile {
+  id: 15;
+  name: string;
+  email:string;
+  phone: string;
+  role: string;
+  status: string;
+  createdDate: string;
+  updatedDate: string;
+  phoneVerified: string;
+  mailVerified: string;
 }
