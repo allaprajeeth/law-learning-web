@@ -36,7 +36,7 @@ export class SharedarticleHistoryComponent implements OnInit {
     );
   }
 
-  openArticle(articleId: number) {
+  openArticle(article: any) {
     let currentUrl = this.router.url;
     let routePrefix = '';
 
@@ -45,8 +45,20 @@ export class SharedarticleHistoryComponent implements OnInit {
     } else if (currentUrl.includes('instructor')) {
       routePrefix = 'instructor';
     }
+    const { id, reviewStatus } = article; // Extract id and reviewStatus from article object
 
-    this.router.navigate([`${routePrefix}/uploadedarticle`, articleId]);
+    if (routePrefix === 'subscriber' && reviewStatus === 'ADMIN_RESUBMIT') {
+     this.router.navigate([`${routePrefix}/articleform`, id]); // Redirect for instructor
+  
+     
+    }  else if (routePrefix === 'instructor' && reviewStatus === 'ADMIN_RESUBMIT') {
+      this.router.navigate([`${routePrefix}/articleform`, id]); // Redirect for instructor
+    }
+    else {
+      this.router.navigate([`${routePrefix}/uploadedarticle`, id]);
+    }
+   
+    
   }
 
   getArticleStatus(reviewStatus: string): string {

@@ -15,7 +15,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let article of userArticles" (click)="openArticle(article.id)">
+                        <tr *ngFor="let article of userArticles" (click)="openArticle(article)">
                             <td class="articleName" >{{ article.title }}</td>
                             <td>{{ article.createdDate | date:'yyyy-MM-dd' }}</td>
                             <td  [ngStyle]="getStatusStyles(article.reviewStatus)">{{ getArticleStatus(article.reviewStatus) }}</td>
