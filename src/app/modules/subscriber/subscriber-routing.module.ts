@@ -27,6 +27,7 @@ import { LibraryComponent } from 'src/app/common/components/library/library.comp
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
+import { RevertDeleteComponent } from './components/revert-delete/revert-delete.component';
 
 const routes: Routes = [
   {
@@ -126,6 +127,10 @@ const routes: Routes = [
   {
     path: 'articleHistory',
     component: ArticleHistoryComponent,
+  },
+  {
+    path: 'revert-delete',
+    component:RevertDeleteComponent,
   },
   {
     path: 'publish-articles/:id',

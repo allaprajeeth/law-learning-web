@@ -45,6 +45,7 @@ import { StatusarticlepageComponent } from './components/statusarticlepage/statu
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
+import { RevertDeleteComponent } from './components/revert-delete/revert-delete.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { UploadedarticlesComponent } from './components/uploadedarticles/uploade
     UnderreviewarticleComponent,
     CommentedarticleComponent,
     UploadedarticlesComponent,
+    RevertDeleteComponent,
   
    
   ],
@@ -101,6 +103,8 @@ import { UploadedarticlesComponent } from './components/uploadedarticles/uploade
     MatDividerModule,
     MatExpansionModule,
     MatTabsModule,
-  ]
+  ],
+
+
 })
 export class SubscriberModule { }

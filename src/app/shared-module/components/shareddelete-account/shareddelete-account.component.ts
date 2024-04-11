@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { PdfService } from 'src/app/sharedService.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-shareddelete-account',
@@ -12,104 +13,108 @@ import { PdfService } from 'src/app/sharedService.service';
 })
 export class ShareddeleteAccountComponent {
   loginForm: FormGroup;
-  constructor(private router: Router,private http: HttpClient,private snackBar: MatSnackBar ,private formBuilder: FormBuilder
-    ,private deleteTimeService:PdfService){
+  isOtpVisible: boolean = false;
+  validationKey: string = '';
+  isDeleted: boolean = false;
+  userDetails: any;
+
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private snackBar: MatSnackBar,
+    private formBuilder: FormBuilder,
+    private deleteTimeService: PdfService
+  ) {
     this.loginForm = this.formBuilder.group({
-       emailOtp: [ '',[Validators.required,Validators.pattern('^[0-9]*$'),],],
-       phoneOtp: ['', [Validators.required,Validators.pattern('^[0-9]*$'),]],
+      emailOtp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      phoneOtp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
   }
-  ngOnInit() {
-    const storedCountdown = this.deleteTimeService.getCountdownValue();
 
-    if (storedCountdown !== null &&  this.isDeleteAccountClicked == false) {
-      this.countdown = storedCountdown;
-      this.isDeleteCountdownVisible = true;
-      this.startCountdown();
-    }
-  }
-  countdownInterval: any;
-  isSendOtpsClicked: boolean = true;
-  isOtpVisible: boolean = true;
-  isLoginVisible: boolean = false;
-  isDeleteAccountClicked:boolean=false;
-  isdeleteClicked:boolean=false;
-  sendOtps(){
-    this.showOtpFields();
-    //this.isSendOtpsClicked=false;
-  }
-  closeButton(){
-    this.isDeleteAccountClicked =false;
-    this.isOtpVisible=false
-  }
-  closeAccount(){
-    this.isDeleteAccountClicked=true;
-      this.snackBar.open(" OTP's sent to register Email Id and Phone Id ", 'Close', {
-        duration: 3000, 
-        verticalPosition: 'top',
-      });
-  }
-  countdown: number = 72 * 60 * 60;
-showOtpFields(): void {
-    this.isOtpVisible = true;
-    this.isLoginVisible = true;
-  }
-  delete(){
-    this.isOtpVisible=false;
-    this.isDeleteCountdownVisible = true;
-    this.deleteTimeService.setCountdownValue(this.countdown);
-    this.startCountdown();
-  }
-  isDeleteCountdownVisible: boolean = false;
-  startCountdown() {
-     this.countdownInterval = setInterval(() => {
-      this.countdown = this.deleteTimeService.getCountdownValue() || 0;
-      this.countdown--; // Decrease countdown by 1 second
+  closeAccountInit() {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-      if (this.countdown <= 0) {
-        clearInterval(this.countdownInterval);
-        this.deleteAccount();
-      } else {
-        this.deleteTimeService.setCountdownValue(this.countdown);
+    const requestBody = {
+      type: 'SEND_OTP'
+    };
+
+    this.http.delete(`${environment.endpoints.secureBaseURL}/profile`, { headers, body: requestBody }).subscribe(
+      (response: any) => {
+        console.log('Account deletion initiation successful');
+        if (response.data && response.data.validation_key) {
+          this.validationKey = response.data.validation_key;
+          this.deleteTimeService.validationKey = response.data.validation_key;
+          
+        }
+        this.isOtpVisible = true;
+      },
+      error => {
+        console.error('Error initiating account deletion:', error);
       }
-    }, 1000); // 1 second in milliseconds
+    );
   }
-  formatTime(seconds: number): string {
-    const hours = Math.floor(seconds / 3600);
-    const remainingSeconds = seconds % 3600;
-    const minutes = Math.floor(remainingSeconds / 60);
-    const remainingSecs = remainingSeconds % 60;
-    return `${this.padZero(hours)}:${this.padZero(minutes)}:${this.padZero(remainingSecs)}`;
-  }
-  deleteAccount() {
-    this.snackBar.open('Your account has been permanently deleted', 'Close', {
-      duration: 3000,
-      verticalPosition: 'top',
-    });
 
+  closeAccount() {
+    const headers = new HttpHeaders().set('Content-Type', 'application/json');
+    
+    const requestBody = {
+      type: 'VERIFY_OTP',
+      validation_key: this.deleteTimeService.validationKey,
+      email_otp: this.loginForm.get('emailOtp')?.value || '',
+      phone_otp: this.loginForm.get('phoneOtp')?.value || ''
+    };
+    
+    // Verifying OTP and delaying fetching user details
+    this.http.delete(`${environment.endpoints.secureBaseURL}/profile`, { headers, body: requestBody }).subscribe(
+      () => {
+        console.log('Account deletion successful');
+        // Delay fetching user details and status by 10 seconds
+        setTimeout(() => {
+          // Fetching user details after 10 seconds delay
+          this.http.get(`${environment.endpoints.secureBaseURL}/profile`).subscribe(
+            (response: any) => {
+              console.log('User details:', response);
+              this.userDetails = response;
+              console.log('Details of user:', this.userDetails);
+              
+              // Log the status to verify if it's correct
+              console.log('User status:', this.userDetails.data.status);
+              
+              if (this.userDetails.data.status === 'INACTIVE') {
+                console.log('Status is inactive. Navigating...');
+                // Navigate to the revert-delete component
+                this.router.navigate(['/subscriber/revert-delete'],
+                {
+                  state: {
+                    validationKey: this.validationKey,
+                    emailOtp: this.loginForm.get('emailOtp')?.value || '',
+                    phoneOtp: this.loginForm.get('phoneOtp')?.value || ''
+                  }
+                });
+                
+              } else {
+                console.log('Status is active.');
+                // Set isDeleted flag to true
+                this.deleteTimeService.isDeleted = true;
+              }
+            },
+            error => {
+              console.error('Error fetching user details:', error);
+            }
+          );
+        }, 10000); // 10 seconds delay
+      },
+      error => {
+        console.error('Error deleting account:', error);
+      }
+    );
+  }
+  cancelDeletion() {
+    this.loginForm.reset();
+    this.isOtpVisible = false;
+  }
+  revertDelete() {
+    this.isDeleted = false;
     this.router.navigate(['/homepage']);
   }
-  padZero(value: number): string {
-    return value < 10 ? `0${value}` : `${value}`;
-  }
-onEmailOtpInput(event: any) {
-  const input = event.target.value;
-  const digitsOnly = input.replace(/\D/g, '');
-  const truncatedValue = digitsOnly.slice(0, 6);
-  this.loginForm.get('emailOtp')!.setValue(truncatedValue, { emitEvent: false });
-}
-onPhoneOtpInput(event: any) {
-  const input = event.target.value;
-  const digitsOnly = input.replace(/\D/g, '');
-  const truncatedValue = digitsOnly.slice(0, 6);
-  this.loginForm.get('phoneOtp')!.setValue(truncatedValue, { emitEvent: false });
-}
-revertDelete() {
-  clearInterval(this.countdownInterval);
-  this.isOtpVisible = true;
-  this.isDeleteAccountClicked = false;
-  this.isDeleteCountdownVisible = false;
-  this.countdown = 72 * 60 * 60; 
-  this.deleteTimeService.clearCountdownValue()
-}
 }
