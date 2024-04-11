@@ -7,8 +7,13 @@
     </div>
   </div>
   <div class="profile">
+    <div *ngIf="advisorProfiles[0].imageURL">
+      <img [src]= "s3BaseURl + advisorProfiles[0].imageURL" id="previewImage">
+    </div>
+    <div *ngIf="!advisorProfiles[0].imageURL">
     <img class="avatar" src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
       alt="Instructor Image">
+      </div>
   </div>
 </div>
 <div class="description">

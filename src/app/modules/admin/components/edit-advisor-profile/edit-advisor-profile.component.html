@@ -1,0 +1,31 @@
+<div class="profile-container">
+    <h2>Advisor Profile</h2>
+    <div class="profile-section">
+      <label>Name</label>
+      <span>{{ advisorProfiles[0].name }}</span>
+    </div>
+    <div class="profile-section">
+      <label>Job Title :</label>
+      <span>{{ advisorProfiles[0].jobTitle }}</span>
+    </div>
+    <div class="profile-section">
+      <label>About</label>
+      <span>{{ advisorProfiles[0].about }}</span>
+    </div>
+    <div class="profile-section">
+      <div *ngIf="advisorProfiles[0].imageURL">
+        <img [src]= "s3BaseURL + advisorProfiles[0].imageURL" id="previewImage">
+      </div>
+      <div class="upload-btn-wrapper" *ngIf="!advisorProfiles[0].imageURL">
+        <img [src]= "imageUrl" id="previewImage">
+        <br>
+        <label for="imageInput" class="custom-file-input">Upload Image</label>
+        <input type="file" id="imageInput" accept="image/*" (change)="onFileSelected($event)">
+        <br>
+        <br>
+        <button id="saveButton" (click)="onSave()">Save Image</button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <hr />

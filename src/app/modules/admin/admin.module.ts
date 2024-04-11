@@ -38,6 +38,7 @@ import { LibraryFormComponent } from './components/library-form/library-form.com
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/edit-advisor-profile.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { MatRadioModule } from '@angular/material/radio';
     ArticleDetailComponent,
     LibraryFormComponent,
     LibraryHistoryComponent,
-    AdvisorProfilesFormComponent, 
+    AdvisorProfilesFormComponent,
+    EditAdvisorProfileComponent, 
 
   ],
   

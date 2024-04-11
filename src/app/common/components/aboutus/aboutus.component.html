@@ -28,7 +28,12 @@
     <p-carousel [value]="advisorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
       <ng-template let-profile pTemplate="item">
         <div class="teacher-profile">
-          <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
+          <div *ngIf="profile.imageURL">
+            <img [src]= "s3BaseURL + profile.imageURL" id="previewImage">
+          </div>
+          <div *ngIf="!profile.imageURL">
+            <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
+          </div>
           <h2 class="text-center"><a (click)="  navigateToAdvisorInfo(profile.id)">{{ profile.name }}</a></h2>
           <h3 class="text-center profile-title">{{ profile.jobTitle}}</h3>
           <p class="profile-about">{{ profile.about }}</p>
@@ -44,7 +49,12 @@
     <p-carousel [value]="instructorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
       <ng-template let-profile pTemplate="item">
         <div class="teacher-profile">
-          <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
+          <div *ngIf="profile.imageURL">
+            <img [src]= "s3BaseURL + profile.imageURL" id="previewImage">
+          </div>
+          <div *ngIf="!profile.imageURL">
+            <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
+          </div>
           <h2 class="text-center"><a (click)="navigateToInstructorInfo(profile.id)">{{ profile.name }}</a></h2>
           <h3 class="text-center profile-title">{{ profile.jobTitle}}</h3>
           <p class="profile-about">{{ profile.about }}</p>

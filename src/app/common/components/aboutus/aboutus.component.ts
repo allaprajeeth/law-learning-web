@@ -12,7 +12,7 @@ import { endPoints } from '../../constants/endpoints';
 export class AboutusComponent {
   
 
-
+  s3BaseURL='https://elearning-stagging.s3.ap-south-1.amazonaws.com/'
   photo='https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg'
   
   constructor(private router: Router,private http: HttpClient) { }

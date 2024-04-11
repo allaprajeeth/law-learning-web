@@ -5,6 +5,8 @@ import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { Location } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { endPoints } from 'src/app/common/constants/endpoints';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -21,10 +23,13 @@ export class AdminDashboardComponent implements OnInit {
   email: string = '';
   phoneNumber: string = '';
   selectedRole: string = 'instructor';
-
   menuItems: RouteInfo[];
 
-  constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private formBuilder: FormBuilder, private location: Location) {
+  constructor(private matIconRegistry: MatIconRegistry, 
+    private domSanitizer: DomSanitizer, 
+    private formBuilder: FormBuilder,
+     private location: Location,
+     private http: HttpClient) {
     // Register Material Icons
     this.matIconRegistry.addSvgIcon(
       'dashboard',
@@ -34,37 +39,43 @@ export class AdminDashboardComponent implements OnInit {
       'person',
       this.domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/person.svg')
     );
-
-    // Initialize menuItems
     this.menuItems = [
       { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: '' },
       { path: '/admin/all-profiles', title: 'User Profile', icon: 'person', class: '' },
-      // Add more menu items
+    
     ];
 
-    // // Initialize the form with validators
-    // this.myForm = this.formBuilder.group({
-    //   username: ['', Validators.required],
-    //   email: ['', [Validators.required, Validators.email]],
-    //   phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-    //   selectedRole: ['instructor', Validators.required]
-    // });
+
   }
   initializeForm() {
     this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
+      name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
-      selectedRole: ['instructor', Validators.required]
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      role: ['INSTRUCTOR', Validators.required],
+      jobTitle:['', Validators.required],
+      status:['', Validators.required],
+      about:['', Validators.required],
+
     });
   }
 
   submit() {
-    // Implement your login logic here
-    this.showMessageStatus = true;
-    this.showcredentialStatus = false;
+    const baseUrl = endPoints.secureBaseURL;
+        const apiUrl = baseUrl + `/admin/user-profile`;
+    if (this.loginForm.valid) {
+      const formData = this.loginForm.value;
+      this.http.post<any>(apiUrl, formData).subscribe(response => {
+        this.showMessageStatus = true;
+        this.showcredentialStatus = false;
     console.log('Form values:', this.loginForm.value);
+        console.log('Form submitted successfully!', response);
+      }, error => {
+        console.error('Error submitting form:', error);
+      });
+    }
   }
+  
   ngOnInit() {
     this.initializeForm();
   }
@@ -88,16 +99,10 @@ export class AdminDashboardComponent implements OnInit {
     location.reload(); 
   }
 
-  // send() {
-  //   // Implement your login logic here
-  //   // console.log('Login clicked');
-  //   // console.log('Username:', this.username);
-  //   // console.log('Email:', this.email);
-  //   // console.log('Phone Number:', this.phoneNumber);
-  // }
+
 }
 
-// Define the RouteInfo interface
+
 interface RouteInfo {
   path: string;
   title: string;

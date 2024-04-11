@@ -14,11 +14,11 @@
         </a>
         <ul *ngIf="showRoles">
           <li (click)="selectRole('all')" routerLinkActive="active-link">All</li>
-          <li (click)="selectRole('subscribers')" routerLinkActive="active-link">Subscribers</li>
-          <li (click)="selectRole('reviewers')" routerLinkActive="active-link">Reviewers</li>
-          <li (click)="selectRole('instructors')" routerLinkActive="active-link">Instructors</li>
-          <li (click)="selectRole('content-managers')" routerLinkActive="active-link">Content Managers</li>
-          <li (click)="selectRole('advisors')" routerLinkActive="active-link" >Advisors</li>
+          <li (click)="selectRole('SUBSCRIBER')" routerLinkActive="active-link">Subscribers</li>
+          <li (click)="selectRole('REVIEWER')" routerLinkActive="active-link">Reviewers</li>
+          <li (click)="selectRole('INSTRUCTOR')" routerLinkActive="active-link">Instructors</li>
+          <li (click)="selectRole('CONTENTMANAGER')" routerLinkActive="active-link">Content Managers</li>
+          <li (click)="selectRole('ADVISORS')" routerLinkActive="active-link" >Advisors</li>
         </ul>
       </div>
       <div>

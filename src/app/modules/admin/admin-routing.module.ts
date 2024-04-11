@@ -27,6 +27,7 @@ import { LibraryHistoryComponent } from './components/library-history/library-hi
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
+import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/edit-advisor-profile.component';
 const routes: Routes = [
   {
     path:"",
@@ -145,6 +146,10 @@ const routes: Routes = [
     path: 'instructorinfo/:id',
     component: InstructorinfoComponent,
 },
+{
+  path:"editadvisor/:id",
+  component:EditAdvisorProfileComponent
+}
 ];
 
 @NgModule({

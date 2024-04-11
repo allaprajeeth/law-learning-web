@@ -23,3 +23,54 @@
       background-color: #007791; 
     }
   }
+
+  .container{
+    margin-left: 4%;
+  }
+  .rating {
+    unicode-bidi: bidi-override;
+   
+  }
+  .star {
+    color: #ccc;
+    font-size: 1.5rem;
+  }
+  .filled {
+    color: gold;
+  }
+  .contentt{
+    width:325px;
+    margin-top: 20px;
+    border:1px solid grey;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+    
+  }
+  .close{
+    display: flex;
+    flex-direction: row-reverse;
+    font-size: 24px;
+   
+  }
+  .staricon {
+    font-size: 30px;
+    padding: 14px;
+  }
+  .staricon:hover {
+    color: orange
+  }
+  .active {
+    color:  orange;
+  }
+  .staricon.disabled {
+    pointer-events: none; 
+    cursor: not-allowed; 
+  }
+  .custom-button{
+   margin-left: 30%;
+  
+  }
+  .give-rating{
+    margin-left: 0px;
+  }
+  

@@ -11,32 +11,52 @@
   <div class="content">
     <div class="login-container">
       <h2>Create login credentials for Reviewer, Content Manager, Instructor, and other Admins.</h2>
-
       <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="left-right">
+        <div class="left">
         <div class="input-group">
-        <div><label for="username" style="color: red;">*</label>Username:</div>  
-          <input type="text" id="username" formControlName="username" required />
+        <div><label for="username" style="color: red;">*</label>User Name</div>  
+          <input type="text" id="username" formControlName="name" required />
         </div>
 
         <div class="input-group">
-          <div> <label for="email" style="color: red;">*</label>Email:</div>
+          <div> <label for="email" style="color: red;">*</label>Email</div>
           <input type="email" id="email" formControlName="email" required />
         </div>
 
         <div class="input-group">
-          <div><label for="phoneNumber" style="color: red;">*</label>Phone Number:</div>
-          <input type="tel" id="phoneNumber" formControlName="phoneNumber" required />
+          <div><label for="phoneNumber" style="color: red;">*</label>Phone Number</div>
+          <input type="tel" id="phoneNumber" formControlName="phone" required />
+        </div>
+        <div class="input-group">
+          <label for="role">Role</label>
+          <select id="role" formControlName="role" required>
+            <option value="INSTRUCTOR">Instructor</option>
+            <option value="CONTENTMANAGER">Content Manager</option>
+            <option value="REVIEWER">Reviewer</option>
+            <option value="ADMIN">Admin</option>
+            <option value="SUBSCRIBER">Subscriber</option>
+          </select>
+        </div>
+      </div>
+      <div class="right">
+        <div class="input-group">
+          <div><label for="status" style="color: red;">*</label>Job Tite</div>
+          <input type="text" id="status" formControlName="jobTitle" required />
         </div>
 
         <div class="input-group">
-          <label for="role">Role:</label>
-          <select id="role" formControlName="selectedRole" required>
-            <option value="instructor">Instructor</option>
-            <option value="content-manager">Content Manager</option>
-            <option value="reviewer">Reviewer</option>
-            <option value="admin">Admin</option>
-          </select>
+          <div><label for="status" style="color: red;">*</label>Status</div>
+          <input type="text" id="status" formControlName="status" required />
         </div>
+       
+        
+        <div class="input-group">
+          <div><label for="about" style="color: red;">*</label>About</div>
+          <input type="text" id="status" formControlName="about" required />
+        </div>
+      </div>
+    </div>
         <button [disabled]="!loginForm.valid" type="submit" (click)="submit">Submit</button>
       </form>
       <p class="btn-text">Please fill above all details to enable the button.</p>
@@ -45,10 +65,11 @@
 </div>
 
 
+
 <div  *ngIf="showMessageStatus" class="message-status">
   <div class="submission-status">
     <span class="close-icon" (click)="closePage()">&#10006;</span>
-    <h3>Credentials submitted successfully. Please wait for some time; you will be notified.</h3>
+    <h3>Credentials submitted successfully. Please wait for some time you will be notified.</h3>
     <button class="close-button" (click)="closePage()">Close</button>
   </div>
 </div>

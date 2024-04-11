@@ -15,92 +15,58 @@ export class AllProfilesComponent implements OnInit {
 
   selectedRole: string = 'all';
   advisorId:number | undefined;
+  advisorProfiles:AdvisorProfile[] = [];
+  allProfiles: any[] = [];
   constructor(private http: HttpClient,
     private router: Router) { }
-  advisorProfiles:AdvisorProfile[] = [];
-  
-
-
-  subscriberProfiles: any[] = [
-    { username: 'Pushpa', role: 'Subscriber', status: 'Active' },
-    { username: 'Vani', role: 'Subscriber', status: 'Inactive' },
-    { username: 'Lokesh', role: 'Subscriber', status: 'Blocked' },
-    // Add more subscriber profiles
-  ];
-
-  instructorProfiles: any[] = [
-    { username: 'John', role: 'Instructor', status: 'Active' },
-    { username: 'Davis', role: 'Instructor', status: 'Inactive' },
-    // Add more instructor profiles
-  ];
-
-  reviewerProfiles: any[] = [
-    { username: 'Wilson', role: 'Reviewer', status: 'Active' },
-    { username: 'Smith', role: 'Reviewer', status: 'Inactive' },
-    // Add more reviewer profiles
-  ];
-
-  contentManagerProfiles: any[] = [
-    { username: 'Johnson', role: 'Content-manager', status: 'Active' },
-    // { username: 'sarah', role: 'Content-manager', status: 'Inactive' },
-    // Add more content manager profiles
-  ];
-
-  allProfiles: any[] = [];
 
   ngOnInit(): void {
-    // Combine all profiles into a single array
-    this.allProfiles = [
-      ...this.subscriberProfiles,
-      ...this.instructorProfiles,
-      ...this.reviewerProfiles,
-      ...this.contentManagerProfiles,
-    ];
+      this.selectedRole ="all";
+      this.filterProfiles()
 
-   
-     
-  
   }
 
   onRoleSelected(role: string): void {
     this.selectedRole = role;
-    this.filterProfiles();
-  }
-  filterProfiles(): void {
-    if (this.selectedRole === 'all') {
-      // If 'all' is selected, show all profiles
-      this.allProfiles = [
-        ...this.subscriberProfiles,
-        ...this.instructorProfiles,
-        ...this.reviewerProfiles,
-        ...this.contentManagerProfiles,
-          this.fetchAdvisorProfiles(),
-       ...this.advisorProfiles 
-      ];
-    } else {
-      // Filter profiles based on the selected role
-      switch (this.selectedRole) {
-        case 'subscribers':
-          this.allProfiles = this.subscriberProfiles;
-          break;
-        case 'reviewers':
-          this.allProfiles = this.reviewerProfiles;
-          break;
-        case 'instructors':
-          this.allProfiles = this.instructorProfiles;
-          break;
-        case 'content-managers':
-          this.allProfiles = this.contentManagerProfiles;
-          break;
-        case 'advisors':
-          this.fetchAdvisorProfiles()
-          this.allProfiles=this.advisorProfiles ;
-          break;
-          default:
-          break;
-      }
+   
+    if(this.selectedRole === 'ADVISORS'){
+      this.allProfiles =[]
+      this.fetchAdvisorProfiles()
+    }
+    else{
+      this.filterProfiles();
     }
   }
+
+  filterProfiles(): void {
+        const baseUrl = endPoints.secureBaseURL;
+        const apiUrl = baseUrl + `/admin/user-profile/getAll`;
+        let params = new HttpParams()
+          .set('number', '0')
+          .set('size', '20')
+          .set('sort', 'id,DESC');
+        if (this.selectedRole  === 'SUBSCRIBER') {
+          params = params.set('search', 'SUBSCRIBER');
+        } else if (this.selectedRole  === 'ADMIN') {
+          params = params.set('search', 'ADMIN');
+        } else if (this.selectedRole  === 'CONTENTMANAGER') {
+          params = params.set('search', 'CONTENTMANAGER');
+        } else if (this.selectedRole  === 'INSTRUCTOR') {
+          params = params.set('search', 'INSTRUCTOR');
+        }
+        else if (this.selectedRole  === 'REVIEWER'){
+          params = params.set('search', 'REVIEWER');
+        }
+        else {
+
+        }
+
+        this.http.get<any>(apiUrl, { params }).subscribe(response => {
+          this.allProfiles = response.data.content;
+          console.log(this.allProfiles);
+        });
+    }
+  
 
   getInitials(username: string): string {
     // Logic to extract initials from the username, e.g., "John Doe" => "JD"
@@ -135,7 +101,10 @@ export class AllProfilesComponent implements OnInit {
   }
 
  navigateToAdvisorProfiles(advisorId: any):void{
-  this.router.navigate(["/admin/profile-details",advisorId]);
+  this.router.navigate(["/admin/editadvisor",advisorId]);
+ }
+ navigateToAllProfiles(userId:any) {
+  this.router.navigate(["/admin/profile-details",userId]);
  }
   
 }

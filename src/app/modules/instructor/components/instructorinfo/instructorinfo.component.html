@@ -26,9 +26,12 @@
     </div>
 
     <div class="profile">
-        <img class="avatar"
-            src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
-            alt="Instructor Image">
+        <div *ngIf="instructorProfiles[0].imageURL">
+            <img [src]= "s3BaseURl + instructorProfiles[0].imageURL" id="previewImage">
+          </div>
+          <div *ngIf="!instructorProfiles[0].imageURL">
+            <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
+          </div>
     </div>
 </div>
 
