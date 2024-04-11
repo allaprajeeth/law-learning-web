@@ -32,7 +32,7 @@ import { RouterModule } from '@angular/router';
 import { SharedcourseHistoryComponent } from './components/sharedcourse-history/sharedcourse-history.component';
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
-
+import { SharedrevertDeleteComponent } from './components/sharedrevert-delete/sharedrevert-delete.component';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -48,19 +48,11 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
     ConfirmationAlertComponent,
     SidenavComponent,
      SharednotificationsComponent,
-    //  SharedcontactusComponent,
      ShareddeleteAccountComponent,
-    //  LibraryComponent,
      SharedCertificateComponent,
-    //  SharedarticleformComponent,
-    //  SharedpostdetailsComponent,
-    //  SharedTCComponent,
-
      SharednotificationsComponent,
      ShareddeleteAccountComponent,
      SharedCertificateComponent,
-    //  SharedpostdetailsComponent,
-
      SharedNotificationComponent,
      LogoutPopupComponent,
      PublishArticlesComponent,
@@ -69,6 +61,7 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
      SharedcourseHistoryComponent,
      SharedarticleHistoryComponent,
      UploadedarticlesstatusComponent,
+     SharedrevertDeleteComponent
     ],
 
 
@@ -114,7 +107,8 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
     RouterModule,
     SharedcourseHistoryComponent,
     SharedarticleHistoryComponent,
-    UploadedarticlesstatusComponent
+    UploadedarticlesstatusComponent,
+    SharedrevertDeleteComponent
   ]
 
 })

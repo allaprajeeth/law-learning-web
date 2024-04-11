@@ -29,6 +29,8 @@ import { TermsconditionsComponent } from './common/components/termsconditions/te
 import { LibraryComponent } from './common/components/library/library.component';
 import { InstructorinfoComponent } from './modules/instructor/components/instructorinfo/instructorinfo.component';
 import { SharedarticleHistoryComponent } from './shared-module/components/sharedarticle-history/sharedarticle-history.component';
+import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
+
 const routes: Routes = [
   {
     path: 'admin',
@@ -157,7 +159,10 @@ const routes: Routes = [
       path: 'instructorinfo/:id',
       component: InstructorinfoComponent,
   },
-  
+  {
+    path:'revert-delete',
+    component:RevertDeleteComponent
+  },
   {
     path:'forgotEmail',
     component:ForgotEmailComponent
