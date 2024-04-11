@@ -43,7 +43,7 @@ export class ShareddeleteAccountComponent {
         console.log('Account deletion initiation successful');
         if (response.data && response.data.validation_key) {
           this.validationKey = response.data.validation_key;
-          this.deleteTimeService.validationKey = response.data.validation_key;
+          // this.deleteTimeService.validationKey = response.data.validation_key;
           
         }
         this.isOtpVisible = true;
@@ -59,7 +59,7 @@ export class ShareddeleteAccountComponent {
     
     const requestBody = {
       type: 'VERIFY_OTP',
-      validation_key: this.deleteTimeService.validationKey,
+      validation_key: this.validationKey,
       email_otp: this.loginForm.get('emailOtp')?.value || '',
       phone_otp: this.loginForm.get('phoneOtp')?.value || ''
     };
@@ -95,7 +95,7 @@ export class ShareddeleteAccountComponent {
               } else {
                 console.log('Status is active.');
                 // Set isDeleted flag to true
-                this.deleteTimeService.isDeleted = true;
+                this.isDeleted = true;
               }
             },
             error => {
