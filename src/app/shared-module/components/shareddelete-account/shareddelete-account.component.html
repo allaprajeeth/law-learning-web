@@ -57,7 +57,6 @@
                   *ngIf="loginForm.get('phoneOtp')?.hasError('pattern') && loginForm.get('phoneOtp')?.touched">
                   Phone OTP must consist of digits only.
                 </div>
-                <!-- Delete Button after OTP Verification -->
                 <button mat-raised-button [disabled]="loginForm.invalid" (click)="closeAccount()">Delete</button>
               </div>
             </form>
@@ -67,14 +66,3 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!-- <app-revert-delete *ngIf="showRevertDelete"></app-revert-delete> -->
-
-
-<!-- Revert Delete Section (Overlay) -->
-<!-- <div class="overlay" *ngIf="isDeleted">
-  <div class="revert-wrapper">
-    <p>Your account will be deleted permanently after the below time.</p>
-    <button class="revert-button" (click)="revertDelete()">Revert Delete</button>
-  </div>
-</div> -->

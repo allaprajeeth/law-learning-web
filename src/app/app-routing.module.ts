@@ -28,8 +28,12 @@ import { AdvisorDetailsComponent } from './common/components/advisor-details/adv
 import { TermsconditionsComponent } from './common/components/termsconditions/termsconditions.component';
 import { LibraryComponent } from './common/components/library/library.component';
 import { InstructorinfoComponent } from './modules/instructor/components/instructorinfo/instructorinfo.component';
+
 import { SharedarticleHistoryComponent } from './shared-module/components/sharedarticle-history/sharedarticle-history.component';
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
+
+
+
 
 const routes: Routes = [
   {

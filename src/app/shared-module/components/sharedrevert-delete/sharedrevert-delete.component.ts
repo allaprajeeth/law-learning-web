@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,7 @@ import { Subscription, interval } from 'rxjs';
   templateUrl: './sharedrevert-delete.component.html',
   styleUrls: ['./sharedrevert-delete.component.scss']
 })
-export class SharedrevertDeleteComponent implements OnInit {
+export class SharedrevertDeleteComponent implements OnInit, OnDestroy {
   validationKey: string = '';
   emailOtp: string = '';
   phoneOtp: string = '';
@@ -21,7 +21,7 @@ export class SharedrevertDeleteComponent implements OnInit {
   userEmail: string = '';
   userPhone: string = '';
   // remainingTime: number = 0;
-  remainingTime: string = '';
+  remainingTime: string = '72 hours';
   countdownSubscription: Subscription | undefined;
 
 
@@ -40,20 +40,40 @@ export class SharedrevertDeleteComponent implements OnInit {
       this.userEmail = params['email']; 
       this.userPhone = params['phone']; 
     });
-    // Start the countdown
-    this.startCountdown();
+    // Call the API to fetch the profile data
+  this.fetchProfileData();
   }
 
-  startCountdown() {
-    // Set the deletion time to 72 hours from now
-    const deletionTime = new Date();
-    deletionTime.setHours(deletionTime.getHours() + 72);
+  ngOnDestroy(): void {
+    // Unsubscribe from the countdown observable to prevent memory leaks
+    this.countdownSubscription?.unsubscribe();
+  }
+  fetchProfileData() {
+    // Make an HTTP request to fetch the profile data
+    this.http.get<any>(`${environment.endpoints.secureBaseURL}/profile`).subscribe(
+      (response) => {
+        // Extract the updated date from the response
+        const updatedDate = new Date(response.data.updatedDate);
+        
+        // Calculate the remaining time based on the updated date
+        this.calculateRemainingTime(updatedDate);
+      },
+      (error) => {
+        console.error('Error fetching profile data:', error);
+        // Handle error response if needed
+      }
+    );
+  }
 
+  calculateRemainingTime(updatedDate: Date) {
+    // Set the deletion time to 72 hours from the updated date
+    const deletionTime = new Date(updatedDate.getTime() + (72 * 60 * 60 * 1000));
+  
     // Update the remaining time every second
     this.countdownSubscription = interval(1000).subscribe(() => {
       const currentTime = new Date();
       const difference = deletionTime.getTime() - currentTime.getTime();
-
+  
       if (difference <= 0) {
         // If time's up, clear the subscription and set remaining time to 0
         this.remainingTime = '0 hours 0 minutes 0 seconds';
@@ -63,16 +83,12 @@ export class SharedrevertDeleteComponent implements OnInit {
         const hours = Math.floor(difference / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        
         // Format the remaining time
-        this.remainingTime = `${hours}:${minutes}:${seconds}`;
+        this.remainingTime = `${hours}:${minutes}:${seconds} hours`;
       }
     });
   }
-  ngOnDestroy(): void {
-    // Unsubscribe from the countdown observable to prevent memory leaks
-    this.countdownSubscription?.unsubscribe();
-  }
-  
   showOtpInputs() {
     this.sendOtpRequest(); 
     this.showOtpFields = true;
