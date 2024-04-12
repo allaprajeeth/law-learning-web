@@ -34,30 +34,30 @@
           <!-- OTP Verification Section -->
           <div *ngIf="isOtpVisible" class="login-box">
             <div class="close-button" (click)="cancelDeletion()">X</div>
-            <form [formGroup]="loginForm">
+            <form [formGroup]="loginForm!">
               <div *ngIf="isOtpVisible">Enter OTPs</div>
               <div *ngIf="isOtpVisible">
                 <label for="emailOtp">Email OTP:</label>
                 <input type="text" id="emailOtp" formControlName="emailOtp" required [attr.autocomplete]="'off'">
                 <div class="error-message"
-                  *ngIf="loginForm.get('emailOtp')?.hasError('required') && loginForm.get('emailOtp')?.touched">
+                  *ngIf="loginForm?.get('emailOtp')?.hasError('required') && loginForm?.get('emailOtp')?.touched">
                   Email OTP is required.
                 </div>
                 <div class="error-message"
-                  *ngIf="loginForm.get('emailOtp')?.hasError('pattern') && loginForm.get('emailOtp')?.touched">
+                  *ngIf="loginForm?.get('emailOtp')?.hasError('pattern') && loginForm?.get('emailOtp')?.touched">
                   Email OTP must consist of digits only.
                 </div>
                 <label for="phoneOtp">Phone OTP:</label>
                 <input type="text" id="phoneOtp" formControlName="phoneOtp" required [attr.autocomplete]="'off'">
                 <div class="error-message"
-                  *ngIf="loginForm.get('phoneOtp')?.hasError('required') && loginForm.get('phoneOtp')?.touched">
+                  *ngIf="loginForm?.get('phoneOtp')?.hasError('required') && loginForm?.get('phoneOtp')?.touched">
                   Phone OTP is required.
                 </div>
                 <div class="error-message"
-                  *ngIf="loginForm.get('phoneOtp')?.hasError('pattern') && loginForm.get('phoneOtp')?.touched">
+                  *ngIf="loginForm?.get('phoneOtp')?.hasError('pattern') && loginForm?.get('phoneOtp')?.touched">
                   Phone OTP must consist of digits only.
                 </div>
-                <button mat-raised-button [disabled]="loginForm.invalid" (click)="closeAccount()">Delete</button>
+                <button mat-raised-button [disabled]="loginForm?.invalid" (click)="closeAccount()">Delete</button>
               </div>
             </form>
           </div>

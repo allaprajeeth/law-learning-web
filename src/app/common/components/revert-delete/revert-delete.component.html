@@ -1,2 +1,27 @@
-<h1>revert-delete component</h1>
+<div class="overlay" *ngIf="isDeleted">
+    <div class="revert-wrapper">
+      <div *ngIf="!showOtpFields">
+      <p>Your account will be deleted permanently with in 72 hours</p>
+      <button class="revert-button" (click)="showOtpInputs()">Revert Delete</button>
+      <h3>{{ remainingTime }} hours</h3>
+    </div>
+      <div *ngIf="showOtpFields">
+        <div>
+          <label for="emailOtp">Email OTP:</label>
+          <input type="text" id="emailOtp" [(ngModel)]="emailOtp">
+        </div>
+        <div>
+          <label for="phoneOtp">Phone OTP:</label>
+          <input type="text" id="phoneOtp" [(ngModel)]="phoneOtp">
+        </div>
+        <button class="restore-button" (click)="restoreAccount()">Restore</button>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+    
+    
+  
   

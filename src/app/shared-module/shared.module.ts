@@ -17,7 +17,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import { SharednotificationsComponent } from './components/sharednotifications/sharednotifications.component';
-import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
@@ -32,14 +31,12 @@ import { RouterModule } from '@angular/router';
 import { SharedcourseHistoryComponent } from './components/sharedcourse-history/sharedcourse-history.component';
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
-import { SharedrevertDeleteComponent } from './components/sharedrevert-delete/sharedrevert-delete.component';
 @NgModule({
   declarations: [
     FooterComponent,
     SharedoverviewComponent,
     PublishingcornerComponent,
     SharednotificationsComponent,
-    ShareddeleteAccountComponent,
     SharedCertificateComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,
@@ -48,10 +45,8 @@ import { SharedrevertDeleteComponent } from './components/sharedrevert-delete/sh
     ConfirmationAlertComponent,
     SidenavComponent,
      SharednotificationsComponent,
-     ShareddeleteAccountComponent,
      SharedCertificateComponent,
      SharednotificationsComponent,
-     ShareddeleteAccountComponent,
      SharedCertificateComponent,
      SharedNotificationComponent,
      LogoutPopupComponent,
@@ -61,7 +56,6 @@ import { SharedrevertDeleteComponent } from './components/sharedrevert-delete/sh
      SharedcourseHistoryComponent,
      SharedarticleHistoryComponent,
      UploadedarticlesstatusComponent,
-     SharedrevertDeleteComponent
     ],
 
 
@@ -98,7 +92,6 @@ import { SharedrevertDeleteComponent } from './components/sharedrevert-delete/sh
     FormsModule,
     SharedoverviewComponent,
     SharednotificationsComponent,
-    ShareddeleteAccountComponent,
     SharedCertificateComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,
@@ -108,7 +101,7 @@ import { SharedrevertDeleteComponent } from './components/sharedrevert-delete/sh
     SharedcourseHistoryComponent,
     SharedarticleHistoryComponent,
     UploadedarticlesstatusComponent,
-    SharedrevertDeleteComponent
+
   ]
 
 })

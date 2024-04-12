@@ -32,7 +32,6 @@ import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { HistoryComponent } from './components/history/history.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
@@ -68,7 +67,6 @@ import { UploadedarticlesComponent } from './components/uploadedarticles/uploade
     UploadstatusComponent,
     QuizsuccessmsgComponent,
     NotificationsComponent,
-    DeleteAccountComponent,
     PaymentHistoryComponent,
     HistoryComponent,
     InstructorpostdetailsComponent,

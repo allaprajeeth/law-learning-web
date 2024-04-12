@@ -18,7 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
@@ -45,7 +44,7 @@ import { StatusarticlepageComponent } from './components/statusarticlepage/statu
 import { UnderreviewarticleComponent } from './components/underreviewarticle/underreviewarticle.component';
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
-import { RevertDeleteComponent } from './components/revert-delete/revert-delete.component';
+
 
 
 @NgModule({
@@ -53,7 +52,6 @@ import { RevertDeleteComponent } from './components/revert-delete/revert-delete.
     CartComponent,
     NotificationsComponent,
     PaymentsComponent,
-    DeleteAccountComponent,
     HomepageComponent,
     EditEmailComponent,
     MyDirectiveDirective,
@@ -73,7 +71,7 @@ import { RevertDeleteComponent } from './components/revert-delete/revert-delete.
     UnderreviewarticleComponent,
     CommentedarticleComponent,
     UploadedarticlesComponent,
-    RevertDeleteComponent,
+
   
    
   ],

@@ -21,7 +21,6 @@ import { NotificationComponent } from './components/notification/notification.co
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { ArticleComponent } from './components/article/article.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
@@ -47,7 +46,6 @@ import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/e
     VideoplayerComponent,
     NotificationComponent,
     ArticleComponent,
-    DeleteaccountComponent,
     PaymentsComponent,
     NotificationsComponent,
     AuditReportComponent,

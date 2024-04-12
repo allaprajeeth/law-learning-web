@@ -23,7 +23,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { FileSaverModule } from 'ngx-filesaver';
@@ -38,7 +37,6 @@ import { NotificationComponent } from './components/notification/notification.co
     VideoplayerComponent,
     NotificationsComponent,
     PaymentsComponent,
-    DeleteaccountComponent,
     ArticlelistHistoryComponent,
     ArticleDetailComponent,
     CmPostdetailsComponent,

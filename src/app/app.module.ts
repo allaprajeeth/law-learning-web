@@ -68,6 +68,7 @@ import { LibraryComponent } from './common/components/library/library.component'
 import { MatListModule } from '@angular/material/list';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
+import { DeleteAccountComponent } from './common/components/delete-account/delete-account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,6 +102,7 @@ import { RevertDeleteComponent } from './common/components/revert-delete/revert-
     LibraryComponent,
     ConfirmationDialogComponent,
     RevertDeleteComponent,
+    DeleteAccountComponent,
   ],
   imports: [
     CarouselModule,

@@ -25,7 +25,6 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { SharedModule } from 'src/app/shared-module/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -41,7 +40,6 @@ import { CoursesHistoryComponent } from './components/courses-history/courses-hi
     ArticleComponent,
     CourseInfoComponent,
     NotificationsComponent,
-    DeleteaccountComponent,
     UploadStatusComponent,
     ArticleHistoryComponent,
     ArticleDetailComponent,

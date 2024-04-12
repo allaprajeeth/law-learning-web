@@ -4,7 +4,6 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { DeleteaccountComponent } from './components/deleteaccount/deleteaccount.component';
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
@@ -19,6 +18,9 @@ import { CourseHistoryComponent } from './components/course-history/course-histo
 import { NotificationComponent } from './components/notification/notification.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
+import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
+import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
+
 const routes: Routes = [
   {
     path:"",
@@ -78,6 +80,14 @@ const routes: Routes = [
     component: SidenavContactusComponent
   },
   {
+   path:'delete-account',
+   component:DeleteAccountComponent 
+  },
+  {
+    path:'revert-delete',
+    component:RevertDeleteComponent
+  },
+  {
     path:"courses-history",
     component:CourseHistoryComponent
   },
@@ -92,10 +102,6 @@ const routes: Routes = [
   path: 'publish-articles/:id',
   component: CmPostdetailsComponent
 },
-  {
-    path:"delete-account",
-    component: DeleteaccountComponent
-  },
   {
     path:'advisorInfo/:id',
     component:AdvisorDetailsComponent
