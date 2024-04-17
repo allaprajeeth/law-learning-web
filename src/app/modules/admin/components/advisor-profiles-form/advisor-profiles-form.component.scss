@@ -2,7 +2,6 @@
 .form-container {
     max-width: 400px;
     margin: 50px auto; 
-    // padding: 20px; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,20 +27,12 @@ mat-form-field{
     width:100%;
     display: flex;
     height:100vh;
-    // gap:170px;
     .sidenav {
         width: 240px;
         padding: 20px;
         padding-left: 50px;
         height: 80%; 
       }
-      // .form-content{
-      //   width:600px;
-      //   height:500px;
-      //   margin-top: 25px;
-      //   padding: 20px;
-      //   background-color: white;
-      // }
       .form-content{
         margin-top: 25px;
         padding: 20px;
