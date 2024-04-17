@@ -1,21 +1,25 @@
 <div class="notification-container">
-    <span class="heading">Notifications</span>
-  <div class="notification-list">
-    <ng-container *ngFor="let notification of notifications; let i = index">
-      <div class="notification-item" (click)="openNotification()">
-        <div class="circle">
-          {{ notification.icon }}
-        </div>
-        <div class="notification-content">
-          <div class="notification-heading" [class.no-font-weight]="notificationOpened">
-            {{ notification.heading }}
-          </div>
-          <div class="notification-message">{{ notification.message }}</div>
-        </div>
-        <span class="date">{{ notification.notificationDate }}</span>
-        <mat-icon class="delete-icon" (click)="deleteNotification(i)">delete</mat-icon>
+  <span class="heading">Notifications</span>
+<div class="notification-list">
+  <ng-container *ngFor="let notification of notifications; let i = index">
+    <div class="notification-item" (click)="openNotification(notification)">
+      <div class="circle">
+        <!-- {{ notification.icon }} -->
       </div>
-    </ng-container>
-  </div>
+      <div class="notification-content">
+        <div class="notification-heading" [class.no-font-weight]="notificationOpened">
+          <!-- {{ notification.heading }} -->
+        </div>
+        <div class="notification-message">
+          {{ notification.message }}
+        </div>
+      </div>
+      <span class="date">
+        {{ notification.createdDate | date:'yyyy-MM-dd' }}
+      </span>
+      <mat-icon class="delete-icon" (click)="deleteNotification(notification.id)">delete</mat-icon>
+    </div>
+  </ng-container>
+</div>
 </div>
 

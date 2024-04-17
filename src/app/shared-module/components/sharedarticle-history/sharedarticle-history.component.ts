@@ -85,4 +85,14 @@ export class SharedarticleHistoryComponent implements OnInit {
     }
     return { 'color': color };
   }
+  
+  navigateToArticleForm(): void {
+    const currentUrl = this.router.url;
+
+    if (currentUrl.includes('/subscriber/article')) {
+      this.router.navigateByUrl('/subscriber/articleform');
+    } else if (currentUrl.includes('instructor/article')) {
+      this.router.navigateByUrl('/instructor/articleform');
+    }
+  }
 }

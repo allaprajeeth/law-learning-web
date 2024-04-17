@@ -67,6 +67,7 @@ import { SidenavtermsconditionsComponent } from './common/components/sidenavterm
 import { LibraryComponent } from './common/components/library/library.component';
 import { MatListModule } from '@angular/material/list';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { LibraryByIdComponent } from './common/components/library-by-id/library-by-id.component';
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
 import { DeleteAccountComponent } from './common/components/delete-account/delete-account.component';
 @NgModule({
@@ -101,6 +102,7 @@ import { DeleteAccountComponent } from './common/components/delete-account/delet
     SidenavtermsconditionsComponent,
     LibraryComponent,
     ConfirmationDialogComponent,
+    LibraryByIdComponent,
     RevertDeleteComponent,
     DeleteAccountComponent,
   ],

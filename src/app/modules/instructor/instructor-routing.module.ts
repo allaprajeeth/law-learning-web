@@ -31,6 +31,8 @@ import { LibraryComponent } from 'src/app/common/components/library/library.comp
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
+// import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 
@@ -178,6 +180,10 @@ component:DeleteAccountComponent
     path: "articlehistory", 
     component: HistoryComponent 
   },
+  {
+    path:'libraries/:id',
+    component:LibraryByIdComponent
+  }
   
 ];
 

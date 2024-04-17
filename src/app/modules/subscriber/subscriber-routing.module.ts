@@ -25,6 +25,7 @@ import { LibraryComponent } from 'src/app/common/components/library/library.comp
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 
@@ -151,6 +152,10 @@ const routes: Routes = [
     path: 'uploadedarticle/:id',
     component: UploadedarticlesComponent,
   },
+  {
+    path:'libraries/:id',
+    component:LibraryByIdComponent
+  }
 
   //  {
   //   path:'statusarticlepage',

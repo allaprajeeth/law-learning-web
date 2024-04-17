@@ -24,11 +24,10 @@ import { LibraryComponent } from 'src/app/common/components/library/library.comp
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
-
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
-
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/edit-advisor-profile.component';
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 const routes: Routes = [
@@ -161,6 +160,10 @@ const routes: Routes = [
 {
   path:"editadvisor/:id",
   component:EditAdvisorProfileComponent
+},
+{
+  path:'libraries/:id',
+  component:LibraryByIdComponent
 }
 
 ];
