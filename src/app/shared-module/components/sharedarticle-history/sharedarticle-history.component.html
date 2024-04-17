@@ -5,27 +5,35 @@
     <mat-sidenav-content>
         <div class="container-wrapper">
             <div class="sidenav-container">
-                <h1 class="publishedArticles">Article's Status</h1> 
-                <table class="article-table">
-                    <thead>
-                        <tr>
-                            <th class="articleHeading">Article Name</th>
-                            <th>Date of Submission</th>
-                            <th class="publishedDate">Article Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let article of userArticles" (click)="openArticle(article)">
-                            <td class="articleName" >{{ article.title }}</td>
-                            <td>{{ article.createdDate | date:'yyyy-MM-dd' }}</td>
-                            <td  [ngStyle]="getStatusStyles(article.reviewStatus)">{{ getArticleStatus(article.reviewStatus) }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <ng-container *ngIf="userArticles.length > 0; else emptyArticles">
+                    <h1 class="publishedArticles">My Publishings</h1> 
+                    <hr />
+                    <table class="article-table">
+                        <thead>
+                            <tr>
+                                <th class="articleHeading">Article Name</th>
+                                <th>Date of Submission</th>
+                                <th class="publishedDate">Article Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let article of userArticles" (click)="openArticle(article)">
+                                <td class="articleName">{{ article.title }}</td>
+                                <td>{{ article.createdDate | date:'yyyy-MM-dd' }}</td>
+                                <td [ngStyle]="getStatusStyles(article.reviewStatus)">{{ getArticleStatus(article.reviewStatus) }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </ng-container>
+                <ng-template #emptyArticles>
+                    <div class="empty-message">
+                        <h1 class="publishedArticles">My Publishings</h1> 
+                        <hr />
+                        <h3>You haven't submitted any articles yet. Please submit an article to check its status from the list.</h3>
+                        <button mat-raised-button color="primary" (click)="navigateToArticleForm()">Submit Article</button>
+                    </div>
+                </ng-template>
             </div>
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-

@@ -23,11 +23,10 @@ import { AccountsecurityComponent } from 'src/app/common/components/accountsecur
 import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
 import { SidenavtermsconditionsComponent } from 'src/app/common/components/sidenavtermsconditions/sidenavtermsconditions.component';
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
-
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
-
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 const routes: Routes = [
   {
     path: '',
@@ -143,6 +142,10 @@ const routes: Routes = [
     path: 'uploadedarticle/:id',
     component: UploadedarticlesComponent,
   },
+  {
+    path:'libraries/:id',
+    component:LibraryByIdComponent
+  }
 
   //  {
   //   path:'statusarticlepage',

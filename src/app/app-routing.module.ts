@@ -29,6 +29,7 @@ import { TermsconditionsComponent } from './common/components/termsconditions/te
 import { LibraryComponent } from './common/components/library/library.component';
 import { InstructorinfoComponent } from './modules/instructor/components/instructorinfo/instructorinfo.component';
 import { SharedarticleHistoryComponent } from './shared-module/components/sharedarticle-history/sharedarticle-history.component';
+import { LibraryByIdComponent } from './common/components/library-by-id/library-by-id.component';
 const routes: Routes = [
   {
     path: 'admin',
@@ -156,6 +157,10 @@ const routes: Routes = [
   {
       path: 'instructorinfo/:id',
       component: InstructorinfoComponent,
+  },
+  {
+    path:'libraries/:id',
+    component:LibraryByIdComponent
   },
   
   {

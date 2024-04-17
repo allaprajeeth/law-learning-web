@@ -13,12 +13,10 @@
          <button mat-stroked-button color="primary" *ngIf="isAdmin" (click)="DeleteFile(library.id)">Delete File
         </button>
       </td>
-
-    
     </tr>
   </table>
-  <div *ngIf="pdfSrc" class="pdf">
+  <!-- <div *ngIf="pdfSrc" class="pdf">
     <button mat-raised-button color="primary" (click)="remainingPdfs()" class="remaining-pdf-button"><mat-icon>arrow_back</mat-icon> </button>
     <button mat-raised-button color="accent" (click)="downloadPdf()" class="download-pdf-button" title="Download PDF"><mat-icon>download</mat-icon></button>
     <pdf-viewer class="boed" [src]="pdfSrc" [original-size]="false" [show-borders]="true" [stick-to-page]="true"></pdf-viewer>
-  </div>
+  </div> -->

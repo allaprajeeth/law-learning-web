@@ -5,7 +5,7 @@ export class Library extends BaseModel<Library> {
   public title!: string;
   public fileName!: string;
   public contentType!: string;
-  public url!: string;
+   url: string | undefined;
   public deleted!: boolean;
   public showFileContent: boolean = false;  // Initialize with false
   public fileContent: string = '';  // Initialize with an empty string

@@ -19,6 +19,7 @@ import { CourseHistoryComponent } from './components/course-history/course-histo
 import { NotificationComponent } from './components/notification/notification.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 const routes: Routes = [
   {
     path:"",
@@ -104,6 +105,10 @@ const routes: Routes = [
       path: 'instructorinfo/:id',
       component: InstructorinfoComponent,
     },
+    {
+      path:'libraries/:id',
+      component:LibraryByIdComponent
+    }
 ];
 
 @NgModule({

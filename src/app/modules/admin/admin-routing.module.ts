@@ -30,6 +30,7 @@ import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-detai
 
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/edit-advisor-profile.component';
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 const routes: Routes = [
   {
     path:"",
@@ -156,6 +157,10 @@ const routes: Routes = [
 {
   path:"editadvisor/:id",
   component:EditAdvisorProfileComponent
+},
+{
+  path:'libraries/:id',
+  component:LibraryByIdComponent
 }
 
 ];

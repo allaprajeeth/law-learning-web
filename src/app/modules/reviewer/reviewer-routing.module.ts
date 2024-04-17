@@ -21,6 +21,7 @@ import { LibraryComponent } from 'src/app/common/components/library/library.comp
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 const routes: Routes = [
   {
     path:"",
@@ -102,10 +103,14 @@ const routes: Routes = [
     path:'advisorInfo/:id',
     component:AdvisorDetailsComponent
   },
-    {
+  {
       path: 'instructorinfo/:id',
       component: InstructorinfoComponent,
-    },
+  },
+  {
+    path:'libraries/:id',
+    component:LibraryByIdComponent
+  }
 
 ];
 

@@ -32,6 +32,7 @@ import { LibraryComponent } from 'src/app/common/components/library/library.comp
 import { CreateProfileComponent } from './components/create-profile/create-profile.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
+import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 // import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 const routes: Routes = [
   {
@@ -173,6 +174,10 @@ const routes: Routes = [
     path: "articlehistory", 
     component: HistoryComponent 
   },
+  {
+    path:'libraries/:id',
+    component:LibraryByIdComponent
+  }
   
 ];
 

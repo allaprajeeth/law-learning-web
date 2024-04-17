@@ -1,12 +1,14 @@
 <mat-sidenav-container>
   <mat-sidenav #sideNav mode="side" opened>
-      <app-sidenav></app-sidenav>
+    <app-sidenav></app-sidenav>
   </mat-sidenav>
   <mat-sidenav-content>
-   <div class="container-wrapper">
-        <div class="container">
-          <h1 class="coursesHistory">Course's Status</h1>
-          <table>
+    <div class="container-wrapper">
+      <div class="container">
+        <ng-container *ngIf="courses.length > 0; else emptyCourses">
+          <h1 class="coursesHistory" *ngIf="courses.length > 0">Course's Status</h1>
+          <hr/>
+          <table *ngIf="courses.length > 0">
             <thead>
               <tr class="course-row-headings">
                 <th>Course Name</th>
@@ -18,14 +20,20 @@
               <tr *ngFor="let course of courses">
                 <td>{{ course.title }}</td>
                 <td>
-                <p [ngStyle]="getStatusStyles(course.reviewStatus)">{{ course.reviewStatus }}</p>
-               </td>
-               <td>{{ course.createdDate  | date:'yyyy-MM-dd'}}</td>
-
+                  <p [ngStyle]="getStatusStyles(course.reviewStatus)">{{ course.reviewStatus }}</p>
+                </td>
+                <td>{{ course.createdDate | date:'yyyy-MM-dd'}}</td>
               </tr>
             </tbody>
           </table>
-        </div>
+        </ng-container>
+
+        <ng-template #emptyCourses>
+          <h1 class="coursesHistory">Course's Status</h1>
+          <hr />
+          <h3>You haven't submitted any courses yet. Please submit a Course to check its status from the list.</h3>
+        </ng-template>
+    </div>
       </div>
   </mat-sidenav-content>
 </mat-sidenav-container>

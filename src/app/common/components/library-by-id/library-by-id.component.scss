@@ -1,0 +1,30 @@
+pdf-viewer {
+   height: 800px;
+   width:800px;
+   margin:0 auto;
+   padding-right: 20px;
+    
+  }
+  .remaining-pdf-button{
+    position: relative;
+    color:#2A9AF3!important;
+    background-color:white !important;
+    left: 80px;
+    top:-40px;
+    border-radius: 20px;
+  }
+  .pdf {
+    position: relative; 
+    top:100px; 
+  }
+  
+  .download-pdf-button { 
+    color:#2A9AF3!important;
+    background-color:white !important;
+    position: absolute;
+    top: -40px;
+    right: 80px; 
+    // height: 50px;
+    border-radius: 20px; 
+  }
+  

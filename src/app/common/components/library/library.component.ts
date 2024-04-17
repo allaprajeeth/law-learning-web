@@ -1,14 +1,9 @@
-import { Component, OnInit, SecurityContext } from '@angular/core';
+import { Component} from '@angular/core';
 import { Router } from '@angular/router';
 import { Library } from 'src/app/common/models/library.model';
 import { LibraryService } from 'src/app/common/services/library/library.service';
-import { HttpResponse } from 'src/app/common/models/response.model';
 import { Pagination } from 'src/app/common/models/pagination.model';
-import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { saveAs } from 'file-saver';
-import { LoadingService } from '../../services/loading/loading.service';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
@@ -25,19 +20,19 @@ export class LibraryComponent {
   apiLoading = false;
   selectedLibraryTitle:string | null = null;
   pdfSrc:string | undefined 
+  role:string |undefined
   constructor(
     private router: Router,
     private libraryService: LibraryService,
     private http: HttpClient,
-    private sanitizer: DomSanitizer,
     private authService: AuthTokenService,
     private dialog: MatDialog
 
    
   ) {
-    // const userRole = localStorage.getItem('role');
      const userDetails = this.authService.getUserDetails();
-    this.isAdmin = userDetails?.role === 'ADMIN';
+     this.isAdmin = userDetails?.role === 'ADMIN';
+      this.role = userDetails?.role 
   }
 
   ngOnInit(): void {
@@ -45,12 +40,32 @@ export class LibraryComponent {
     this.libraries = this.libraryService.libraries;
   }
 
- 
+  openFile(library:any): void {
+    let routePrefix = '';
+    switch (this.role) {
+      case 'SUBSCRIBER':
+        routePrefix = `/subscriber/libraries`;
+        break;
+      case 'INSTRUCTOR':
+        routePrefix = `/instructor/libraries`
+        break;
+      case 'ADMIN':
+        routePrefix = `/admin/libraries`;
+        break;
+      case 'REVIEWER':
+        routePrefix = `/reviewer/libraries`;
+        break;
+      case 'CONTENTMANAGER':
+        routePrefix = `/authentication/libraries`;
+        break;
+      default:
+        routePrefix = `/libraries`;
+    }
+    this.router.navigate([routePrefix, library.id]);
 
-  openFile(library: Library): void {
-    this.pdfSrc = endPoints.s3BaseURL + library.url;
-    this.selectedLibraryTitle = library.title; // Set selectedLibraryTitle
   }
+   
+   
  
   DeleteFile(libraryId: number): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
@@ -74,26 +89,13 @@ export class LibraryComponent {
       }
     });}
    
-  downloadPdf(): void {
-    if (this.pdfSrc) {
-      // Use Angular's DomSanitizer to sanitize the URL
-      const sanitizedUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfSrc);
-
-      // Extract the URL from SafeResourceUrl
-      const url = this.sanitizer.sanitize(SecurityContext.URL, sanitizedUrl as string) || '';
-
-      // Trigger the download using the FileSaver library
-      saveAs(url, 'downloaded_pdf.pdf');
-    }
-  }
+ 
   loadMore() {
     this.apiLoading = true;
     this.pagination.page++;
     this.libraryService.loadLibraries(this.pagination.getPaginationRequest());
     this.apiLoading = false;
   }
-  remainingPdfs(){
-    this.pdfSrc=''
-  }
+ 
 }
 
