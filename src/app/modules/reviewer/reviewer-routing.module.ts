@@ -113,7 +113,7 @@ const routes: Routes = [
   {
     path:'libraries/:id',
     component:LibraryByIdComponent
-  }
+  },
   {
     path: 'instructorinfo/:id',
     component: InstructorinfoComponent,
