@@ -17,7 +17,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
 import { SharednotificationsComponent } from './components/sharednotifications/sharednotifications.component';
-import { ShareddeleteAccountComponent } from './components/shareddelete-account/shareddelete-account.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
@@ -32,14 +31,12 @@ import { RouterModule } from '@angular/router';
 import { SharedcourseHistoryComponent } from './components/sharedcourse-history/sharedcourse-history.component';
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
-
 @NgModule({
   declarations: [
     FooterComponent,
     SharedoverviewComponent,
     PublishingcornerComponent,
     SharednotificationsComponent,
-    ShareddeleteAccountComponent,
     SharedCertificateComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,
@@ -48,19 +45,9 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
     ConfirmationAlertComponent,
     SidenavComponent,
      SharednotificationsComponent,
-    //  SharedcontactusComponent,
-     ShareddeleteAccountComponent,
-    //  LibraryComponent,
      SharedCertificateComponent,
-    //  SharedarticleformComponent,
-    //  SharedpostdetailsComponent,
-    //  SharedTCComponent,
-
      SharednotificationsComponent,
-     ShareddeleteAccountComponent,
      SharedCertificateComponent,
-    //  SharedpostdetailsComponent,
-
      SharedNotificationComponent,
      LogoutPopupComponent,
      PublishArticlesComponent,
@@ -105,7 +92,6 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
     FormsModule,
     SharedoverviewComponent,
     SharednotificationsComponent,
-    ShareddeleteAccountComponent,
     SharedCertificateComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,
@@ -114,7 +100,8 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
     RouterModule,
     SharedcourseHistoryComponent,
     SharedarticleHistoryComponent,
-    UploadedarticlesstatusComponent
+    UploadedarticlesstatusComponent,
+
   ]
 
 })

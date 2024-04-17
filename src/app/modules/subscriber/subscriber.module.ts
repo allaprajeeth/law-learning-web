@@ -18,7 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
@@ -47,12 +46,12 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 
 
+
 @NgModule({
   declarations: [
     CartComponent,
     NotificationsComponent,
     PaymentsComponent,
-    DeleteAccountComponent,
     HomepageComponent,
     EditEmailComponent,
     MyDirectiveDirective,
@@ -72,6 +71,7 @@ import { UploadedarticlesComponent } from './components/uploadedarticles/uploade
     UnderreviewarticleComponent,
     CommentedarticleComponent,
     UploadedarticlesComponent,
+
   
    
   ],
@@ -101,6 +101,8 @@ import { UploadedarticlesComponent } from './components/uploadedarticles/uploade
     MatDividerModule,
     MatExpansionModule,
     MatTabsModule,
-  ]
+  ],
+
+
 })
 export class SubscriberModule { }

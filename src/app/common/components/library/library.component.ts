@@ -4,6 +4,8 @@ import { Library } from 'src/app/common/models/library.model';
 import { LibraryService } from 'src/app/common/services/library/library.service';
 import { Pagination } from 'src/app/common/models/pagination.model';
 import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { saveAs } from 'file-saver';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';

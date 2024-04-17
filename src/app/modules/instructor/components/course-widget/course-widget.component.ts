@@ -62,6 +62,7 @@ export class CourseWidgetComponent {
 			id: [''],
 			title: ['', Validators.required],
 			description: ['', Validators.required],
+			instituteName: ['', Validators.required],
 			difficultyLevel: ['', Validators.required],
 			type: ['', Validators.required],
 			price: [null],

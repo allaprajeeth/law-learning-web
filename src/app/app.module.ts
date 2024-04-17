@@ -68,6 +68,8 @@ import { LibraryComponent } from './common/components/library/library.component'
 import { MatListModule } from '@angular/material/list';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { LibraryByIdComponent } from './common/components/library-by-id/library-by-id.component';
+import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
+import { DeleteAccountComponent } from './common/components/delete-account/delete-account.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -101,6 +103,8 @@ import { LibraryByIdComponent } from './common/components/library-by-id/library-
     LibraryComponent,
     ConfirmationDialogComponent,
     LibraryByIdComponent,
+    RevertDeleteComponent,
+    DeleteAccountComponent,
   ],
   imports: [
     CarouselModule,
@@ -141,6 +145,9 @@ import { LibraryByIdComponent } from './common/components/library-by-id/library-
       [
       CartEffects]
       ),],
+      exports: [
+     RevertDeleteComponent
+      ],
   
   providers: [PopupService,
    LogoutService,

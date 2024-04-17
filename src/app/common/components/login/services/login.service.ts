@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -55,47 +56,45 @@ export class LoginService {
       tap((response: any) => {
         if (!!response) {
           localStorage.setItem('jwtToken', response.data.jwt_token);
-          localStorage.setItem(
-            'userDetails',
-            JSON.stringify(response.data.user)
-          );
-          const userDetailsObject=localStorage.getItem("userDetails")
-         console.log("user details " , userDetailsObject)
-          this.notificationService.notify(`Login Successfull`);
-
-          const role: string = response.data.user.role;
-
-          switch (role) {
-            case 'CONTENTMANAGER':
-              this.router.navigate(['authentication/homepage']);
-              // console.log('User Role:', role);
-              break;
-
-            case 'ADMIN':
-              this.router.navigate(['admin/homepage']);
-              console.log('User Role:', role);
-              break;
-
-            case 'INSTRUCTOR':
-              this.router.navigate(['instructor/homepage']);
-              console.log('User Role:', role);
-              break;
-
-            case 'SUBSCRIBER':
-              this.router.navigate(['subscriber/homepage']);
-              console.log('User Role:', role);
-              break;
-
-            case 'REVIEWER':
-              this.router.navigate(['reviewer/homepage']);
-              console.log('User Role:', role);
-              break;
-
-            // Add more cases for other roles as needed
-
-            default:
-              break;
-          }
+          localStorage.setItem('userDetails', JSON.stringify(response.data.user));
+          const userDetailsObject = localStorage.getItem("userDetails");
+          console.log("user details ", userDetailsObject);
+          // this.notificationService.notify(`Login Successful`);
+  
+          // Make additional API request to fetch user details
+          let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
+          this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
+            console.log("Status of user", profileResponse?.data?.status); 
+            const status: string = profileResponse?.data?.status;
+            if (status === 'ACTIVE') {
+              this.notificationService.notify(`Login Successful`);
+              // If status is active, navigate based on user role
+              const role: string = response.data.user.role;
+              switch (role) {
+                case 'CONTENTMANAGER':
+                  this.router.navigate(['authentication/homepage']);
+                  break;
+                case 'ADMIN':
+                  this.router.navigate(['admin/homepage']);
+                  break;
+                case 'INSTRUCTOR':
+                  this.router.navigate(['instructor/homepage']);
+                  break;
+                case 'SUBSCRIBER':
+                  this.router.navigate(['subscriber/homepage']);
+                  break;
+                case 'REVIEWER':
+                  this.router.navigate(['reviewer/homepage']);
+                  break;
+                // Add more cases for other roles as needed
+                default:
+                  break;
+              }
+            } else if (status === 'INACTIVE') {
+              // If status is inactive, navigate to the revert-delete route
+              this.router.navigate(['/subscriber/revert-delete']);
+            }
+          });
         }
       }),
       catchError((errorResponse: any) => {
@@ -107,4 +106,5 @@ export class LoginService {
       })
     );
   }
+  
 }

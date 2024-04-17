@@ -4,7 +4,6 @@ import { HeaderComponent } from 'src/app/common/components/header/header.compone
 import { CartComponent } from './components/cart/cart.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { SubmitmesgComponent } from './components/submitmesg/submitmesg.component';
@@ -27,6 +26,9 @@ import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-detai
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
+import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
+import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -61,9 +63,13 @@ const routes: Routes = [
     path: 'contactus',
     component:SidenavContactusComponent
   },
+  // {
+  //   path: 'delete-account',
+  //   component: DeleteAccountComponent,
+  // },
   {
     path: 'delete-account',
-    component: DeleteAccountComponent,
+      component: DeleteAccountComponent,
   },
   {
     path: 'cart',
@@ -125,6 +131,10 @@ const routes: Routes = [
   {
     path: 'articleHistory',
     component: ArticleHistoryComponent,
+  },
+  {
+    path: 'revert-delete',
+    component:RevertDeleteComponent,
   },
   {
     path: 'publish-articles/:id',

@@ -2,17 +2,6 @@
   <div class="form-container">
     <h2>{{ courseId ? 'Edit Course' : 'Create a New Course' }}</h2>
     <form [formGroup]="courseForm" (submit)="onSave()">
-      <!-- <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" formControlName="title" required>
-      </div>
-
-      <div class="form-group">
-        <label for="description">Course Description:</label>
-        <textarea id="description" name="description" formControlName="description" rows="4" required></textarea>
-        <small>Enter 4 to 5 learning points (separated by new lines)</small>
-      </div> -->
-      
       <div class="form-group">
         <label>Skill Level:</label>
         <div class="radio-group">

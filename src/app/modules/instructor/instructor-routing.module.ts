@@ -11,7 +11,6 @@ import { UploadComponent } from './components/upload/upload.component';
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
-import { DeleteAccountComponent } from './components/delete-account/delete-account.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
 import { HistoryComponent } from './components/history/history.component';
@@ -34,6 +33,9 @@ import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-detai
 import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 // import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
+import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
+import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -151,8 +153,12 @@ const routes: Routes = [
     component: SidenavContactusComponent,
   },
   {
-    path: 'delete-account',
-    component: DeleteAccountComponent,
+    path: 'revert-delete',
+    component: RevertDeleteComponent,
+  },
+  {
+path:'delete-account',
+component:DeleteAccountComponent
   },
   {
     path: 'payment-history',

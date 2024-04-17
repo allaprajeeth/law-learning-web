@@ -13,7 +13,9 @@
           </ng-container>
           <hr/>
           <li><a (click)="onLogoutClick()">Logout</a></li>
-          <li><a routerLink="/subscriber/delete-account" routerLinkActive="active" class="deleteAccount">Delete Account</a></li>
+          <!-- <li><a routerLink="/subscriber/delete-account" routerLinkActive="active" class="deleteAccount">Delete Account</a></li> -->
+          <li><a (click)="onDeleteAccountClick()" routerLinkActive="active" class="deleteAccount">Delete Account</a></li>
+          
         </ul>
       </div>
     </div>

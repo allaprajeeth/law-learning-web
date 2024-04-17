@@ -1,0 +1,68 @@
+<mat-sidenav-container>
+  <mat-sidenav #sideNav mode="side" opened>
+    <app-sidenav></app-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container-wrapper">
+      <div class="container">
+        <div class="main-container">
+          <div class="main-box">
+            <div class="smallbox">
+              <h1>Delete Account</h1>
+              <p>Delete your account permanently</p>
+            </div>
+            <div class="line-2"></div>
+            <br />
+            <p class="para">
+              <strong class="warning">Warning:</strong> If you close your
+              account, you will be unsubscribed from all your courses, and will
+              lose access forever.
+            </p>
+            <p class="para">
+              After deleting your account, your published articles will remain
+              accessible. If you wish to remove your published articles, please
+              send an email to the administrator at abcd.123@gmail.com.
+            </p>
+            <!-- Delete Account Button -->
+            <div class="button-box">
+              <button (click)="closeAccountInit()">Delete Account</button>
+            </div>
+            <p id="statusMessage"></p>
+          </div>
+          <br />
+
+          <!-- OTP Verification Section -->
+          <div *ngIf="isOtpVisible" class="login-box">
+            <div class="close-button" (click)="cancelDeletion()">X</div>
+            <form [formGroup]="loginForm!">
+              <div *ngIf="isOtpVisible">Enter OTPs</div>
+              <div *ngIf="isOtpVisible">
+                <label for="emailOtp">Email OTP:</label>
+                <input type="text" id="emailOtp" formControlName="emailOtp" required [attr.autocomplete]="'off'">
+                <div class="error-message"
+                  *ngIf="loginForm?.get('emailOtp')?.hasError('required') && loginForm?.get('emailOtp')?.touched">
+                  Email OTP is required.
+                </div>
+                <div class="error-message"
+                  *ngIf="loginForm?.get('emailOtp')?.hasError('pattern') && loginForm?.get('emailOtp')?.touched">
+                  Email OTP must consist of digits only.
+                </div>
+                <label for="phoneOtp">Phone OTP:</label>
+                <input type="text" id="phoneOtp" formControlName="phoneOtp" required [attr.autocomplete]="'off'">
+                <div class="error-message"
+                  *ngIf="loginForm?.get('phoneOtp')?.hasError('required') && loginForm?.get('phoneOtp')?.touched">
+                  Phone OTP is required.
+                </div>
+                <div class="error-message"
+                  *ngIf="loginForm?.get('phoneOtp')?.hasError('pattern') && loginForm?.get('phoneOtp')?.touched">
+                  Phone OTP must consist of digits only.
+                </div>
+                <button mat-raised-button [disabled]="loginForm?.invalid" (click)="closeAccount()">Delete</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
