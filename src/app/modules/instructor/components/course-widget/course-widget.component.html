@@ -255,9 +255,13 @@
                                 </mat-tab>
                             </mat-tab-group>
                         </div>
-                        <div>
-                            <button mat-button matStepperPrevious>Back</button>
-                            <button mat-button (click)="stepper.reset()">Reset</button>
+                        <div class="button-container">
+                            <button type="button" (click)="onPrevious(stepper)" class="enabled-button">
+                                <mat-icon class="black-icon">keyboard_arrow_left</mat-icon>Previous
+                            </button>
+                            <button type="button" (click)="onSubmit()" class="enabled-button">
+                                Submit
+                            </button>
                         </div>
                     </div>
                 </mat-step>

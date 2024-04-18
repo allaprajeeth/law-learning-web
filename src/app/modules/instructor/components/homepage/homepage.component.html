@@ -14,7 +14,7 @@
             <i class="fa fa-play-circle play-icon"></i>
           </div>
         </div>
-        <h2>{{ course.title }}</h2>
+        <h3><b>{{ course.title | slice:0:50 }}{{ course.title.length > 50 ? '...' : '' }}</b></h3>
         <p> {{ course.createdBy.name }}</p>
         <h4>{{ course.type | titlecase }}  |  {{ course.difficultyLevel | titlecase }}</h4>
         

@@ -73,7 +73,7 @@ export class CourseWidgetComponent {
 			price: [null],
 			language: ['English', Validators.required],
 			courseFile: [null],
-			
+			submitted: [false],
 			sections: this._formBuilder.array([])
 		});
 	}
@@ -300,8 +300,7 @@ export class CourseWidgetComponent {
     });
 	}
 
-	patchCourse(stepper?: MatStepper) {
-    //   this.courseFormData.set('institutionId', this.courseForm.value.institutionId);
+	patchCourse(stepper?: MatStepper, submit?: boolean) {
 		this.courseService.patchWithAttachments('/secure/courses/' + this.courseId, this.courseFormData).subscribe({
 			next: (response: any) => {
 				this.processing = false;
@@ -387,5 +386,30 @@ export class CourseWidgetComponent {
 
 	isFileExists(subSection: SubSection) {
 		return subSection && subSection.id && subSection.file;
+	}
+
+	onSubmit() {
+		const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
+			data: {
+				message: 'Are you sure want to submit the form for the review?',
+				buttonText: {
+					ok: 'Submit',
+					cancel: 'Cancel'
+				}
+			}
+		});
+		dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+			if (confirmed) {
+				if (this.courseForm.valid) {
+					this.courseForm.patchValue({
+						submitted: true
+					  });
+					this.courseFormData.set('course', new Blob([JSON.stringify(this.courseForm.value)], { type: 'application/json' }));
+					if (this.courseId && isNumber(Number(this.courseId))) {
+						this.patchCourse();
+					}
+				}
+			}
+		});
 	}
 }
