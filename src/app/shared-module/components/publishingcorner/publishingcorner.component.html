@@ -9,15 +9,16 @@
   To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>to the website.
 </div>
 <div class="post-box">
-  <div class="blog-box" *ngFor="let article of filteredArticles">
+  <div class="blog-box" *ngFor="let article of filteredArticles" (click)="navigateToArticleDetail(article.id)">
     <div class="article-item">
       <div>
         <h2 class="article-name">{{ article.title }}</h2>
         <p class="description">Description: {{ article.subject }}</p>
         <p>{{ article.date }}</p>
         <p>View Count: {{ article.viewCount }}</p>
+        <p>Author: {{ article.author }}</p>
       </div>
-      <button (click)="navigateToArticleDetail(article.id)" class="article-button">Read more</button>
+      <!-- <button (click)="navigateToArticleDetail(article.id)" class="article-button">Read more</button> -->
     </div>
   </div>
 </div>
