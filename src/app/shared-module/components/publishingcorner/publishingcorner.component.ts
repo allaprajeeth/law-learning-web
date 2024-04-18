@@ -66,6 +66,9 @@ export class PublishingcornerComponent implements OnInit {
     ||
     (article.author && article.author.toLowerCase().includes(this.searchTerm.toLowerCase()))
 
+    ||
+    (article.author && article.author.toLowerCase().includes(this.searchTerm.toLowerCase()))
+
     );
   }
   navigateToArticleDetail(articleId: number): void {
@@ -105,22 +108,8 @@ export class PublishingcornerComponent implements OnInit {
       this.router.navigate(['/login']);
     }
   }
-  // matchesBaseUrl(): any {
-  //   return this.router.url === '/article';
-  // }
-  deleteArticle(articleId:number){
-    const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl +`/articles/${articleId }`;
-    this.http.delete(apiUrl).subscribe(
-      () => {
-        console.log('Article deleted successfully');
-      },
-      (error) => {
-        console.error('Error deleting library:', error);
-      }
-    );
-
-
+  matchesBaseUrl(): any {
+    return this.router.url === '/article';
   }
 }
 

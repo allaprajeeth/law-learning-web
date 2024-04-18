@@ -6,11 +6,11 @@
       <p>Author: {{ articleDetails.data.author }}</p>
       <p>ViewCount: {{ articleDetails.data.viewCount }}</p>
       <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p>
-
+<!-- 
         <h2>{{ articleDetails.data.title }}</h2>
         <p>Description: {{ articleDetails.data.description }}</p>
         <p>ViewCount: {{ articleDetails.data.viewCount }}</p>
-        <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p>
+        <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p> -->
 
     </div>
 </div>
@@ -65,7 +65,7 @@
             <br>
             <button mat-raised-button color="primary" class="custom-button" (click)="saveChanges()">Save
                 Changes</button>
-        </div>
+        </div> 
     </div>
 </div>
 <br>
