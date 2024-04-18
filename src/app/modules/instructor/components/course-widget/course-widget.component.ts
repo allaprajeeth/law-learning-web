@@ -298,7 +298,7 @@ export class CourseWidgetComponent {
 	}
 
 	patchCourse(stepper?: MatStepper) {
-      this.courseFormData.set('institutionId', this.courseForm.value.institutionId);
+    //   this.courseFormData.set('institutionId', this.courseForm.value.institutionId);
 		this.courseService.patchWithAttachments('/secure/courses/' + this.courseId, this.courseFormData).subscribe({
 			next: (response: any) => {
 				this.processing = false;
