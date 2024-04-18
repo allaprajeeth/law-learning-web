@@ -1,9 +1,9 @@
-<div class="heading">
-  <!-- <h1>{{course.title }}</h1> -->
-  <!-- <p class="first-paragraph">{{ course.description }}</p> -->
-  <!-- <p>Instructor : {{ course.createdBy.name }}</p> -->
-  <!-- <p>Course Type : {{course.type}}</p> -->
-  <!-- <p>Skill Level :{{course.difficultyLevel}}</p> -->
+<div class="heading" *ngIf="course">
+  <h1>{{course.title }}</h1>
+  <p class="first-paragraph">{{ course.description }}</p>
+  <p>Instructor : {{ course?.createdBy?.name }}</p>
+  <p>Course Type : {{course.type}}</p>
+  <p>Skill Level :{{course.difficultyLevel}}</p>
   <!-- <p>Course Duration : {{ course.courseDuration }}</p> -->
   <!-- <p class="icon">
     <span class="material-icons updated"> report_gmailerrorred </span>Last
@@ -33,18 +33,17 @@
         <div class="title-text">Course Content</div>
       </mat-card-title>
     </div>
-
-    <!-- <div class="sectionsInfo">
-      {{ course.sections.length }} Sections &nbsp;• {{ numberOfSubsections}} lectures &nbsp;• {{ getTotalDurationOfSubsections() }}Total Length
-    </div> -->
+    <div class="sectionsInfo" *ngIf="course">
+      {{ course.sections?.length }} Sections &nbsp;• {{ numberOfSubsections}} lectures &nbsp;• Total Length
+    </div>
     <mat-divider></mat-divider>
-    <mat-accordion class="sidebar-content">
+    <mat-accordion class="sidebar-content" *ngIf="course">
       <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <!-- <div class="panelTitle">Section{{i+1}} : {{ section.title }}</div> -->
-            <!-- <div class="section-info">{{ section.subSections.length}} lectures &nbsp;&nbsp; min -->
-            <!-- </div> -->
+            <div class="panelTitle">Section{{i+1}} : {{ section.title }}</div>
+            <div class="section-info">{{ section.subSections?.length}} lectures &nbsp;&nbsp; min
+            </div>
           </mat-panel-title>
         </mat-expansion-panel-header>
 

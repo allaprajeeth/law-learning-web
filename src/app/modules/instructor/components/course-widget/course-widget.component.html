@@ -252,7 +252,7 @@
                             <mat-tab-group>
                                 <mat-tab label="Overview">
                                     <div class="tabs">
-                                       <app-sharedoverview [course] = "course"></app-sharedoverview>
+                                       <app-sharedoverview [course] = "course" *ngIf="course"></app-sharedoverview>
                                     </div>
                                 </mat-tab>
                                 <mat-tab label="Watch Content">
