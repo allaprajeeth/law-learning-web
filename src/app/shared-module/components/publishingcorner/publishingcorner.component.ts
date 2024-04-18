@@ -36,7 +36,7 @@ export class PublishingcornerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPublishArticles();
-    // this.checkRoute();
+    this.checkRoute();
     const userDetails = this.authService.getUserDetails();
     this.role = userDetails?.role 
     this.isAdmin = userDetails?.role === 'ADMIN';
