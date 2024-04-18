@@ -39,6 +39,11 @@ export class FirstnavComponent {
   }
 
   ngOnInit() {
+    const userDetails = this.authService.getUserDetails();
+     this.userRole = userDetails?.role 
+       this.name = userDetails?.name;
+      this.email = userDetails?.email;
+      this.phone = userDetails?.phone;
     
   }
 

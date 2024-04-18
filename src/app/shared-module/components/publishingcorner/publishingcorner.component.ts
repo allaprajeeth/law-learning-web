@@ -36,7 +36,7 @@ export class PublishingcornerComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadPublishArticles();
-    this.checkRoute();
+    // this.checkRoute();
     const userDetails = this.authService.getUserDetails();
     this.role = userDetails?.role 
     this.isAdmin = userDetails?.role === 'ADMIN';
@@ -56,9 +56,9 @@ export class PublishingcornerComponent implements OnInit {
     const firstPathSegment = this.router.url.split('/')[1];
     this.isVisible = ['subscriber', 'instructor', 'article'].includes(firstPathSegment);
   }
-  isArticleRoute(): boolean {
-    return this.router.url === '/article';
-  }
+  // isArticleRoute(): boolean {
+  //   return this.router.url === '/article';
+  // }
 
   searchArticles(): void {
     this.filteredArticles = this.articles.filter((article) =>
