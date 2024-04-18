@@ -5,6 +5,7 @@ export class SubSection extends BaseModel<SubSection> {
   public id!: number;
   public description!: string;
   public title!: string;
+  public institution!: number;
   public updatedDate!: string;
   public createdDate!: string;
   public file!: FileInfo;

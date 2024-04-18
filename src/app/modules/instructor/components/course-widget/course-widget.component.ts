@@ -32,6 +32,8 @@ export class CourseWidgetComponent {
 	courseId: number | undefined;
 	processing: boolean = false;
 	course: Course = new Course;
+	institutions: any[] = [];
+	selectedInstitution: number | null = null;
 
 	// Resource upload
 	currentFile?: File;
@@ -54,23 +56,45 @@ export class CourseWidgetComponent {
 			console.log('From ngOnInit');
 			this.loadCourseDetails(this.courseId);
 		}
+		this.loadInstitutions();
+
 	}
 
-	// Course form
 	initCourseForm() {
 		this.courseForm = this._formBuilder.group({
 			id: [''],
 			title: ['', Validators.required],
 			description: ['', Validators.required],
-			instituteName: ['', Validators.required],
+			institution: ['', Validators.required], 
 			difficultyLevel: ['', Validators.required],
 			type: ['', Validators.required],
 			price: [null],
 			language: ['English', Validators.required],
 			courseFile: [null],
+			
 			sections: this._formBuilder.array([])
 		});
 	}
+	
+
+	loadInstitutions() {
+		this.courseService.getInstitutions().subscribe(
+		  (response: any) => {
+			if (Array.isArray(response.data)) {
+			  this.institutions = response.data;
+			  console.log('Institute data:', this.institutions);
+			} else {
+			  console.error('Expected an array, but got:', response);
+			  this.institutions = [];
+			}
+		  },
+		  (error) => {
+			console.error('Error fetching institutions:', error);
+		  }
+		);
+	}
+	
+	
 
 	// Sections form
 	patchSectionForm(sections: Section[]) {
@@ -198,12 +222,13 @@ export class CourseWidgetComponent {
 
 	private loadCourseDetails(courseId: number) {
 		this.courseService.getById(endPoints.secure + endPoints.course + '/' + courseId).subscribe((courseDetails) => {
-			this.course = courseDetails.records[0];
-			this.courseForm.patchValue(this.course);
-			if (this.course && this.course.sections) {
-				this.patchSectionForm(this.course.sections);
-			}
-		});
+        this.course = courseDetails.records[0];
+        // this.courseForm.patchValue({ course: this.course }); 
+		this.courseForm.patchValue(this.course);
+		if (this.course && this.course.sections) {
+            this.patchSectionForm(this.course.sections);
+        }
+    });
 	}
 
 	onFileUpload(event: any) {
@@ -220,18 +245,18 @@ export class CourseWidgetComponent {
 		if (this.courseForm.valid) {
 			this.courseFormData.set('course', new Blob([JSON.stringify(this.courseForm.value)], { type: 'application/json' }));
 			if (this.courseId && isNumber(Number(this.courseId))) {
-				//Update course record
+				// Update course record
 				this.patchCourse(stepper);
 			} else {
-				//Create course record
-				console.log('From create course record');
-				this.postCourse(stepper);
-			}
-		} else {
-			console.log(this.courseForm);
-			console.log(this.courseForm.valid);
-		}
-	}
+				 // Create course record
+				 console.log('From create course record');
+				 this.postCourse(stepper);
+			 }
+		 } else {
+			 console.log(this.courseForm);
+			 console.log(this.courseForm.valid);
+		 }
+	 }
 
 	onPrevious(stepper: MatStepper) {
 		if(this.courseId)
@@ -249,26 +274,31 @@ export class CourseWidgetComponent {
 		}
 	}
 
-	postCourse(stepper?:MatStepper) {
+
+
+
+	postCourse(stepper?: MatStepper) {
 		this.processing = true;
 		this.courseService.post('/secure/courses', this.courseFormData).subscribe({
 			next: (response: any) => {
 				this.processing = false;
 				if (response.status === 200) {
 					this.courseId = response.records[0]?.id;
-					if(stepper)
+					if (stepper)
 						stepper.next();
 				} else {
-					console.error('Error: Course id is undefined in the response.');
-				}
-			}, error: (error: Error) => {
-				console.error('Error creating course:', error);
-				this.processing = false;
-			}
-		});
+
+					 console.error('Error: Course id is undefined in the response.');
+            }
+        }, error: (error: Error) => {
+            console.error('Error creating course:', error);
+            this.processing = false;
+        }
+    });
 	}
 
 	patchCourse(stepper?: MatStepper) {
+      this.courseFormData.set('institutionId', this.courseForm.value.institutionId);
 		this.courseService.patchWithAttachments('/secure/courses/' + this.courseId, this.courseFormData).subscribe({
 			next: (response: any) => {
 				this.processing = false;

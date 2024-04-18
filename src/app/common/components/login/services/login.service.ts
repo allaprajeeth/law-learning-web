@@ -93,6 +93,8 @@ export class LoginService {
             } else if (status === 'INACTIVE') {
               // If status is inactive, navigate to the revert-delete route
               this.router.navigate(['/subscriber/revert-delete']);
+            } else if (status === 'ARCHIVED'){
+              this.router.navigate(['/register']);
             }
           });
         }

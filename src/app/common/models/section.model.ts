@@ -5,6 +5,7 @@ export class Section extends BaseModel<Section> {
   public id!: number;
   public description!: string;
   public title!: string;
+  public institution!: number;
   public updatedDate!: string;
   public createdDate!: string;
   public subSections!: SubSection[];

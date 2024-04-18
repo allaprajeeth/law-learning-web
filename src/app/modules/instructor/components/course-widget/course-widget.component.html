@@ -18,9 +18,15 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="instituteName">Institute Name:</label>
-                        <input type="text" id="instituteName" name="instituteName" formControlName="instituteName">
+                        <label for="institutionDropdown">Select Institution:</label>
+                        <select id="institutionDropdown" formControlName="institution">
+                            <option *ngFor="let institution of institutions" [value]="institution.id">{{ institution.name }}</option>
+                        </select>
                     </div>
+                    
+
+
+                      
 
                     <div class="form-group">
                         <label>Skill Level:</label>

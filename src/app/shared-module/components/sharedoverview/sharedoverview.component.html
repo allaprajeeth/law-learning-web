@@ -1,14 +1,14 @@
 <div class="heading">
-  <h1>{{course.title }}</h1>
-  <p class="first-paragraph">{{ course.description }}</p>
-  <p>Instructor : {{ course.createdBy.name }}</p>
-  <p>Course Type : {{course.type}}</p>
-  <p>Skill Level :{{course.difficultyLevel}}</p>
+  <!-- <h1>{{course.title }}</h1> -->
+  <!-- <p class="first-paragraph">{{ course.description }}</p> -->
+  <!-- <p>Instructor : {{ course.createdBy.name }}</p> -->
+  <!-- <p>Course Type : {{course.type}}</p> -->
+  <!-- <p>Skill Level :{{course.difficultyLevel}}</p> -->
   <!-- <p>Course Duration : {{ course.courseDuration }}</p> -->
-  <p class="icon">
+  <!-- <p class="icon">
     <span class="material-icons updated"> report_gmailerrorred </span>Last
     updated: {{ course.updatedDate }}
-  </p>
+  </p> -->
   <p class="icon">
     <span class="material-icons language"> language </span>English
   </p>
@@ -34,23 +34,23 @@
       </mat-card-title>
     </div>
 
-    <div class="sectionsInfo">
+    <!-- <div class="sectionsInfo">
       {{ course.sections.length }} Sections &nbsp;• {{ numberOfSubsections}} lectures &nbsp;• {{ getTotalDurationOfSubsections() }}Total Length
-    </div>
+    </div> -->
     <mat-divider></mat-divider>
     <mat-accordion class="sidebar-content">
       <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <div class="panelTitle">Section{{i+1}} : {{ section.title }}</div>
-            <div class="section-info">{{ section.subSections.length}} lectures &nbsp;&nbsp; min
-            </div>
+            <!-- <div class="panelTitle">Section{{i+1}} : {{ section.title }}</div> -->
+            <!-- <div class="section-info">{{ section.subSections.length}} lectures &nbsp;&nbsp; min -->
+            <!-- </div> -->
           </mat-panel-title>
         </mat-expansion-panel-header>
 
         <div style="border: 1px solid rgb(237 228 228); padding: 10px; margin-bottom: 15px;">
           <h3 style="color: blue;" class="sectionDesc">Description</h3>
-          <p>{{ section.description}}</p>
+          <!-- <p>{{ section.description}}</p> -->
         </div>
         <div class="video-group">
           <ng-container *ngFor="let subSection of section.subSections; let j = index">
@@ -59,15 +59,15 @@
                 <mat-panel-title>
                   <div class="titlehead">
                     <!-- <div>Sub Section{{j+1}} : </div> -->
-                    <div class="videos-title">{{ subSection?.title }}</div>
+                    <!-- <div class="videos-title">{{ subSection?.title }}</div>
                     <div style="color: rgb(122, 119, 119)" class="subsection-duration">
                       {{  subSection.duration}}min
-                    </div>
+                    </div> -->
                   </div>
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <div class="video-item">
-                <p *ngIf="subSection" class="sectionInfo">{{ subSection.description }}</p>
+                <!-- <p *ngIf="subSection" class="sectionInfo">{{ subSection.description }}</p> -->
               </div>
               <mat-divider></mat-divider>
             </mat-expansion-panel>

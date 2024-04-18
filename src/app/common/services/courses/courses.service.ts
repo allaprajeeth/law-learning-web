@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { endPoints } from '../../constants/endpoints';
 import { BaseService } from '../base-service/base-service.service';
 import { Course } from '../../models/course.model';
@@ -11,6 +12,7 @@ import { COURSES_MOCK } from 'src/app/common/mocks/courses.mock';
   providedIn: 'root'
 })
 export class CoursesService extends BaseService<Course>{
+  baseUrl = endPoints.baseURL;
 
   constructor(private http: HttpClient) {
     const baseUrl = endPoints.baseURL;
@@ -19,5 +21,9 @@ export class CoursesService extends BaseService<Course>{
 
   getCourses() {
     return of(COURSES_MOCK);
+  }
+  getInstitutions(): Observable<any> {
+    const url = `${this.baseUrl}/secure/courses/institutions`;
+    return this.http.get<any>(url);
   }
 }
