@@ -33,7 +33,6 @@ export class CourseWidgetComponent {
 	processing: boolean = false;
 	course: Course = new Course;
 	institutions: any[] = [];
-	selectedInstitution: number | null = null;
 
 	// Resource upload
 	currentFile?: File;
@@ -65,7 +64,10 @@ export class CourseWidgetComponent {
 			id: [''],
 			title: ['', Validators.required],
 			description: ['', Validators.required],
-			institution: ['', Validators.required], 
+			institution: this._formBuilder.group({
+				id: [''],
+				name: ['', Validators.required]
+			}),
 			difficultyLevel: ['', Validators.required],
 			type: ['', Validators.required],
 			price: [null],
@@ -224,10 +226,6 @@ export class CourseWidgetComponent {
 		this.courseService.getById(endPoints.secure + endPoints.course + '/' + courseId).subscribe((courseDetails) => {
 			this.course = courseDetails.records[0];
 			this.courseForm.patchValue(this.course);
-	
-			if (this.course && this.course.institution && this.course.institution.id) {
-				this.selectedInstitution = this.course.institution.id;
-			}
 			
 			if (this.course && this.course.sections) {
 				this.patchSectionForm(this.course.sections);
