@@ -77,4 +77,6 @@ export class Course extends BaseModel<Course> {
   constructor(model?: Course) {
     super(model);
   }
+
+  
 }

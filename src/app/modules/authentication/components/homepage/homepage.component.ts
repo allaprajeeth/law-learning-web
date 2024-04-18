@@ -3,9 +3,20 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../article.service';
 import { Article } from '../article.model';
+import { CourseService } from 'src/app/common/services/course.service';
+import { Course } from 'src/app/common/models/course.model';
+
+
 interface Categories {
   viewValue: string;
 }
+interface ApiResponse {
+  data: {
+    content: Course[];
+  };
+  status: number;
+}
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -32,7 +43,8 @@ export class HomepageComponent implements OnInit{
 
   //articles
   
-  articles: Article[] = []; 
+  articles: Article[] = [];
+  courses!: Course[]; 
   
   j: number = 0; 
 
@@ -162,14 +174,41 @@ export class HomepageComponent implements OnInit{
     }
 
     // this.loadArticles();
+    this.loadCourses();
 
   }
+  loadCourses(): void {
+    const number = 0; // Or any number you want
+    const size = 1; // Or any size you want
+  
+    this.courseService.getReviewCourses(number, size)
+      .subscribe(
+        (response: ApiResponse) => {
+          if (response && response.data && response.data.content) {
+            this.courses = response.data.content;
+            console.log('Courses:', this.courses); // Log the courses data
+          } else {
+            console.error('Invalid response format:', response);
+          }
+        },
+        (error) => {
+          console.error('Error fetching courses:', error);
+        }
+      );
+  }
+  
+  
+  
+  
+  
+
   formatWithLeadingZero(value: number): string {
     return value < 10 ? `0${value}` : `${value}`;
   }
 
   constructor(private route: ActivatedRoute, 
     private articleService: ArticleService, 
+    private courseService: CourseService,
     private router: Router) { }
 
   loadArticles() {
