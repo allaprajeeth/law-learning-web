@@ -179,7 +179,7 @@ export class HomepageComponent implements OnInit{
   }
   loadCourses(): void {
     const number = 0; // Or any number you want
-    const size = 1; // Or any size you want
+    const size = 20; // Or any size you want
   
     this.courseService.getReviewCourses(number, size)
       .subscribe(
