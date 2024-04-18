@@ -222,14 +222,19 @@ export class CourseWidgetComponent {
 
 	private loadCourseDetails(courseId: number) {
 		this.courseService.getById(endPoints.secure + endPoints.course + '/' + courseId).subscribe((courseDetails) => {
-        this.course = courseDetails.records[0];
-        // this.courseForm.patchValue({ course: this.course }); 
-		this.courseForm.patchValue(this.course);
-		if (this.course && this.course.sections) {
-            this.patchSectionForm(this.course.sections);
-        }
-    });
+			this.course = courseDetails.records[0];
+			this.courseForm.patchValue(this.course);
+	
+			if (this.course && this.course.institution && this.course.institution.id) {
+				this.selectedInstitution = this.course.institution.id;
+			}
+			
+			if (this.course && this.course.sections) {
+				this.patchSectionForm(this.course.sections);
+			}
+		});
 	}
+	
 
 	onFileUpload(event: any) {
 		const files = event.target.files;

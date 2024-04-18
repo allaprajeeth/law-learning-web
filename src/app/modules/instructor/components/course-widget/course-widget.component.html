@@ -19,7 +19,7 @@
 
                     <div class="form-group">
                         <label for="institutionDropdown">Select Institution:</label>
-                        <select id="institutionDropdown" formControlName="institution">
+                        <select id="institutionDropdown" formControlName="institution" [(ngModel)]="selectedInstitution">
                             <option *ngFor="let institution of institutions" [value]="institution.id">{{ institution.name }}</option>
                         </select>
                     </div>
