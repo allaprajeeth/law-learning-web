@@ -9,8 +9,8 @@
           Invalid email address
         </mat-error>
       </mat-form-field>
-      <div class="button-container">
-        <button mat-raised-button color="primary" type="submit" [disabled]="forgotPhoneForm.get('email')?.value.length <10" (click)="sendOTP()">
+      <div class="button-container" *ngIf="sendotpButton">
+        <button mat-raised-button color="primary" type="submit" [disabled]="forgotPhoneForm.get('email')?.value.length <10" (click)="sendOTP()" >
           Send OTP
         </button>
       </div>
@@ -35,13 +35,13 @@
       <mat-form-field appearance="outline">
         <mat-label>Enter New Phone Number</mat-label>
         <input matInput type="tel" formControlName="phone" name="phone" required pattern="[0-9]{10}" maxlength="10"
-          [attr.autocomplete]="'off'">
+          [attr.autocomplete]="'off'" >
       </mat-form-field>
 
       <mat-form-field appearance="outline">
         <mat-label>Confirm New Phone Number</mat-label>
         <input matInput type="tel" formControlName="confirmPhone" name="confirmPhone" required pattern="[0-9]{10}"
-          (input)="checkPhoneMatch()" [attr.autocomplete]="'off'" maxlength="10">
+          (input)="checkPhoneMatch()" [attr.autocomplete]="'off'" maxlength="10" >
       </mat-form-field>
       <mat-error *ngIf="updatePhoneForm.get('phone')?.value !=updatePhoneForm.get('confirmPhone')?.value && updatePhoneForm.get('confirmPhone')?.touched">
         New Phone number should match

@@ -59,9 +59,7 @@ export class LoginService {
           localStorage.setItem('userDetails', JSON.stringify(response.data.user));
           const userDetailsObject = localStorage.getItem("userDetails");
           console.log("user details ", userDetailsObject);
-          // this.notificationService.notify(`Login Successful`);
-  
-          // Make additional API request to fetch user details
+          
           let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
           this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
             console.log("Status of user", profileResponse?.data?.status); 

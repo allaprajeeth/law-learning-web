@@ -21,7 +21,7 @@ export class FirstnavComponent {
   email: string | undefined;
   phone: string | undefined;
   showLogoutPopup = false;
-  
+  role:string |undefined
   private userDetailsSubscription: Subscription | undefined;
   constructor(
     private sharedService: PopupService,
@@ -30,16 +30,16 @@ export class FirstnavComponent {
     private cdr: ChangeDetectorRef,
     private router: Router,
     private logoutService: LogoutService
-  ) {}
+  ) {
+    const userDetails = this.authService.getUserDetails();
+     this.userRole = userDetails?.role 
+       this.name = userDetails?.name;
+      this.email = userDetails?.email;
+      this.phone = userDetails?.phone;
+  }
 
   ngOnInit() {
     
-    this.userDetailsSubscription = this.authService.userDetails$.subscribe((userDetails: UserModel | null)  => {
-      this.userRole = userDetails?.role;
-      this.name = userDetails?.name;
-      this.email = userDetails?.email;
-      this.phone = userDetails?.phone;
-    });
   }
 
   get getRole(): string {

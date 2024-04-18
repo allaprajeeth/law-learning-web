@@ -85,7 +85,7 @@ export class ArticleFormComponent {
         (response) => {
           console.log('Article submitted successfully:', response);
           this.notificationService.notify('Article submitted successfully');
-          this.articleForm.reset();
+          // this.articleForm.reset();
           // this.router.navigate(['/subscriber/submitmesg']);
         },
         (error) => {

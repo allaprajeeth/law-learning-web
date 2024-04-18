@@ -97,9 +97,9 @@ export class PublishingcornerComponent implements OnInit {
       this.router.navigateByUrl('/instructor/articleform');
     }
   }
-  matchesBaseUrl(): any {
-    return this.router.url === '/article';
-  }
+  // matchesBaseUrl(): any {
+  //   return this.router.url === '/article';
+  // }
   deleteArticle(articleId:number){
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl +`/articles/${articleId }`;
