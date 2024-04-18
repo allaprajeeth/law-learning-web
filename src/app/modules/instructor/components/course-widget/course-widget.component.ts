@@ -33,7 +33,6 @@ export class CourseWidgetComponent {
 	processing: boolean = false;
 	course: Course = new Course;
 	institutions: any[] = [];
-	selectedInstitution: number | null = null;
 
 	// Resource upload
 	currentFile?: File;
@@ -65,13 +64,16 @@ export class CourseWidgetComponent {
 			id: [''],
 			title: ['', Validators.required],
 			description: ['', Validators.required],
-			institution: ['', Validators.required], 
+			institution: this._formBuilder.group({
+				id: [''],
+				name: ['', Validators.required]
+			}),
 			difficultyLevel: ['', Validators.required],
 			type: ['', Validators.required],
 			price: [null],
 			language: ['English', Validators.required],
 			courseFile: [null],
-			
+			submitted: [false],
 			sections: this._formBuilder.array([])
 		});
 	}
@@ -222,14 +224,15 @@ export class CourseWidgetComponent {
 
 	private loadCourseDetails(courseId: number) {
 		this.courseService.getById(endPoints.secure + endPoints.course + '/' + courseId).subscribe((courseDetails) => {
-        this.course = courseDetails.records[0];
-        // this.courseForm.patchValue({ course: this.course }); 
-		this.courseForm.patchValue(this.course);
-		if (this.course && this.course.sections) {
-            this.patchSectionForm(this.course.sections);
-        }
-    });
+			this.course = courseDetails.records[0];
+			this.courseForm.patchValue(this.course);
+			
+			if (this.course && this.course.sections) {
+				this.patchSectionForm(this.course.sections);
+			}
+		});
 	}
+	
 
 	onFileUpload(event: any) {
 		const files = event.target.files;
@@ -297,8 +300,7 @@ export class CourseWidgetComponent {
     });
 	}
 
-	patchCourse(stepper?: MatStepper) {
-      this.courseFormData.set('institutionId', this.courseForm.value.institutionId);
+	patchCourse(stepper?: MatStepper, submit?: boolean) {
 		this.courseService.patchWithAttachments('/secure/courses/' + this.courseId, this.courseFormData).subscribe({
 			next: (response: any) => {
 				this.processing = false;
@@ -384,5 +386,30 @@ export class CourseWidgetComponent {
 
 	isFileExists(subSection: SubSection) {
 		return subSection && subSection.id && subSection.file;
+	}
+
+	onSubmit() {
+		const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
+			data: {
+				message: 'Are you sure want to submit the form for the review?',
+				buttonText: {
+					ok: 'Submit',
+					cancel: 'Cancel'
+				}
+			}
+		});
+		dialogRef.afterClosed().subscribe((confirmed: boolean) => {
+			if (confirmed) {
+				if (this.courseForm.valid) {
+					this.courseForm.patchValue({
+						submitted: true
+					  });
+					this.courseFormData.set('course', new Blob([JSON.stringify(this.courseForm.value)], { type: 'application/json' }));
+					if (this.courseId && isNumber(Number(this.courseId))) {
+						this.patchCourse();
+					}
+				}
+			}
+		});
 	}
 }

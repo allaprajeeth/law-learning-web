@@ -1,82 +1,104 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Article } from '../fetcharticle.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FetcharticlesService } from '../fetcharticles.service';
-import { FileSaverService } from 'ngx-filesaver';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { Location } from '@angular/common';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
+import { Ratings } from 'src/app/common/models/rating.model';
 
 @Component({
   selector: 'app-publish-articles',
   templateUrl: './publish-articles.component.html',
   styleUrls: ['./publish-articles.component.scss']
 })
-export class PublishArticlesComponent  implements OnInit{
+export class PublishArticlesComponent  {
 
- articleId: number | null = null;
+  articleId : number | undefined;
   articleDetails: Article | null = null;
   loading = false;
   error: string | null = null;
   fileId: any;
   storedFileContent: string | undefined;
   isSubscriber: boolean;
-
-
+  stars: number[] | undefined;
+  cangiverating:boolean=false;
+  selectedRating = 0;
+  userComments: string = '';
+  isratingEditable:boolean=true;
+  reviews:Ratings[] = [];
+  editGivenReviews =false
+  editUserArtcileId:number|undefined
+  emailId: string | undefined 
+  isreviewGiven:boolean|undefined
+  isReviewsAvailable:boolean|undefined
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private fetcharticle: FetcharticlesService,
-    private fileSaverService: FileSaverService,
     private http: HttpClient,
     public dialog: MatDialog,
     private location: Location,
     private authService: AuthTokenService,
   ) {
-    this.dynamicRating = 3; 
     this.stars = Array(5).fill(0).map((_, i) => i + 1);
     const userDetails = this.authService.getUserDetails();
+    if (userDetails ) {
+    this.emailId= userDetails.email
+    console.log(this.emailId)
+    }
     this.isSubscriber= userDetails?.role === 'SUBSCRIBER';
+    this.route.paramMap.subscribe(paramMap => {
+      const params = paramMap.get('id');
+      this.articleId  = +params!;
+    }
+    )
   }
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.articleId = +params['id'] || null;
-  
       if (this.articleId !== null) {
         console.log('Article ID:', this.articleId);
         this.loadArticleDetails();
+        this.getReviewRating()
       } else {
         console.error('Article ID is null or undefined');
       }
-    });
+    
   }
-  loadArticleDetails(): void {
-    this.loading = true;
-    this.error = null;
-  
-    if (this.articleId !== null) {
-      this.fetcharticle.getArticleDetails(this.articleId).subscribe(
-        (response) => {
-          this.articleDetails = response || null;
-          console.log('Article Details:', this.articleDetails);
-  
-          // Move the openFile call here
-          this.openFile(this.articleDetails?.data.files[0]?.url, this.articleDetails?.data.files[0]?.fileName);
-        },
-        (error) => {
-          console.error('Error fetching article details:', error);
-          this.error = 'Failed to fetch article details. Please try again later.';
-        }
-      ).add(() => {
-        this.loading = false;
-      });
-    } else {
-      console.error('Article ID is null or undefined');
+  goBack() {
+    this.location.back();
+  }
+  selectRating(r: any) {
+    if(this.isratingEditable){
+    this.selectedRating = r;
     }
   }
-  openFile(fileUrl?: string, fileName?: string): void {
+  submitReview() {
+    if (this.articleId !== undefined) {
+    this.submitReviewRating(this.articleId,this.selectedRating,this.userComments)
+    this.ratingClicked()
+    }
+  }
+  getStarArray(): number[] {
+    return Array.from({ length: 5 }, (_, i) => i);
+  }
+  ratingClicked(){
+   this.isratingEditable=false;
+  }
+  giveReview(){
+    this.cangiverating=true;
+  }
+  leaveRatingClose() {
+    this.cangiverating = false;
+    this.editGivenReviews=false  
+  }
+  editUserReview(review:any){
+    this.editGivenReviews=true
+    this.selectedRating = review.rating;
+    this.userComments = review.comments;
+    this.editUserArtcileId=review.id
+   }
+   openFile(fileUrl?: string, fileName?: string): void {
     this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
       .subscribe(
         (data: string) => {
@@ -90,58 +112,86 @@ export class PublishArticlesComponent  implements OnInit{
         }
       );
   }
-
-  fetchFileContent(fileUrl?: string): void {
-    this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
-      .subscribe(
-        (data: string) => {
-          this.storedFileContent = data;
+  loadArticleDetails(): void {
+    this.loading = true;
+    this.error = null;
+    if (this.articleId !== undefined) {
+      this.fetcharticle.getArticleDetails(this.articleId).subscribe(
+        (response) => {
+          this.articleDetails = response || null;
+          this.openFile(this.articleDetails?.data.files[0]?.url, this.articleDetails?.data.files[0]?.fileName);
         },
         (error) => {
-          console.error('Error fetching file content:', error);
+          console.error('Error fetching article details:', error);
         }
-      );
-  }
-
-  goBack() {
-    this.location.back();
-  }
-
-  courseReviewerHeading_1 = "David Wilson";
-  courseReviewerText_1 = "The Law Learning course provided a comprehensive overview of legal principles and their practical applications. The content was well-structured, and the instructors were highly knowledgeable.";
-  stars: number[] | undefined;
-  giverating:boolean=false;
-  submittedReview:boolean=false;
-  showRating = false;
-  selected = 0;
-  userReview: string = '';
-  isratingEditable:boolean=true;
-  dynamicRating: number;
- 
-  updaterating(r: any) {
-    if(this.isratingEditable){
-    this.selected = r;
+      ).add(() => {
+        this.loading = false;
+      });
+    } else {
+      console.error('Article ID is null or undefined');
     }
   }
-  submitRating() {
-    console.log('Selected Rating:', this.selected);
-    console.log('User Review:', this.userReview);
-    this.ratingClicked()
-    this.showRating = false;
-    this.submittedReview=true
+  submitReviewRating(articleId: number, rating: number, review: string) {
+    const body = {
+      rating: rating,
+      comments: review
+    };
+    const baseUrl = endPoints.secureBaseURL;
+    const apiUrl =baseUrl +`/reviews/articles/${articleId}` 
+  
+    this.http.post(apiUrl,body).subscribe(
+      () => {
+        console.log('Rating given successfully');
+        this.cangiverating = false;
+        
+      },
+      (error) => {
+        console.error('Error deleting rating:', error);
+      }
+    );
+
   }
-  getStarArray(): number[] {
-    return Array.from({ length: 5 }, (_, i) => i);
+  getReviewRating() {
+    const baseUrl = endPoints.secureBaseURL;
+    const apiUrl = baseUrl + `/reviews/articles/${this.articleId}`;
+    this.http.get(apiUrl).subscribe(
+      (response: any) => {
+        this.reviews = response.data?.content;
+        if (this.reviews && this.reviews.length > 0) {
+        this.reviews.forEach(review => {
+          review.editRating = review.user.email === this.emailId;
+          this.isreviewGiven=true
+          this.isReviewsAvailable= true
+        });
+      }else {
+        this.isReviewsAvailable= false
+      }
+    },
+      (error) => {
+        console.error('Error loading reviews:', error);
+      }
+    );
   }
-  ratingClicked(){
-   this.isratingEditable=false;
+
+  saveChanges(){
+    const baseUrl = endPoints.secureBaseURL;
+    const apiUrl = baseUrl + `/reviews/articles/${this.articleId }`;
+    const body = {
+      rating : this.selectedRating,
+      comments : this.userComments
+      
+    };
+    this.http.patch(apiUrl,body).subscribe(
+      () => {
+        this.editGivenReviews=false
+      },
+      (error) => {
+        console.error('Error deleting rating:', error);
+      }
+    );
+    
   }
-  giveRating(){
-    this.giverating=true;
-  }
-  leaveRatingClose() {
-    this.giverating = false;  
-  }
+  
 
   
 }

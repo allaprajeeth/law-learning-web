@@ -5,7 +5,7 @@
   <button (click)="navigateToArticleForm()">Submit Article</button>
 </div>
 <div class="message"
-  *ngIf="(isVisible && isArticleRoute()) && (userRole === undefined || userRole === null || userRole === '')">
+  *ngIf="(isVisible && isArticleRoute()) && (role=== undefined || role === null || role === '')">
   To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>to the website.
 </div>
 <div class="post-box">
@@ -18,7 +18,12 @@
         <p>View Count: {{ article.viewCount }}</p>
         <p>Author: {{ article.author }}</p>
       </div>
+
       <!-- <button (click)="navigateToArticleDetail(article.id)" class="article-button">Read more</button> -->
+
+      <button (click)="navigateToArticleDetail(article.id)" class="article-button">Read more</button>
+      <button (click)="deleteArticle(article.id)" style="margin: 19px;" *ngIf="isAdmin">Delete Article</button>
+
     </div>
   </div>
 </div>
