@@ -20,6 +20,9 @@ export class PublishingcornerComponent implements OnInit {
   isVisible: boolean = false;
   isAdmin: boolean = false;
 
+
+  userRole: string | undefined
+
   role:string | undefined;
 
   constructor(
@@ -60,6 +63,9 @@ export class PublishingcornerComponent implements OnInit {
   searchArticles(): void {
     this.filteredArticles = this.articles.filter((article) =>
       article.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    ||
+    (article.author && article.author.toLowerCase().includes(this.searchTerm.toLowerCase()))
+
     );
   }
   navigateToArticleDetail(articleId: number): void {
@@ -95,6 +101,8 @@ export class PublishingcornerComponent implements OnInit {
       this.router.navigateByUrl('/subscriber/articleform');
     } else if (currentUrl.includes('instructor/article')) {
       this.router.navigateByUrl('/instructor/articleform');
+    }else{
+      this.router.navigate(['/login']);
     }
   }
   matchesBaseUrl(): any {
