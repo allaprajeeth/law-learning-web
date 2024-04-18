@@ -54,7 +54,7 @@ export class Course extends BaseModel<Course> {
   public description!: string;
   public title!: string;
   public institution!: {
-    id: 2,
+    id: number,
     name: string
 };
   public reviewStatus!: string;
