@@ -19,23 +19,18 @@ export class SharedoverviewComponent {
     private route: ActivatedRoute
   ) {}
 
-  ngOnChanges() {
+  ngOnInit(): void {
     if (this.course && this.course.sections) {
       this.numberOfSubsections = this.course.sections.reduce((acc, section) => {
         return acc + (section.subSections ? section.subSections.length : 0);
       }, 0);
     }
-  }
+    
+  } 
+    
+  
 
  
-  getTotalDurationOfSubsections(): number {
-    let totalDuration = 0;
-    this.course.sections.forEach(section => {
-      section.subSections.forEach(subSection => {
-        totalDuration += subSection.duration;
-      });
-    });
-    return totalDuration;
-  }
+ 
  
 }

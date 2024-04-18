@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Course } from '../models/course.model';
 import { endPoints } from '../constants/endpoints';
 import { BaseModel } from '../models/base.model';
@@ -44,5 +45,12 @@ export class CourseService {
     const url = `${endPoints.baseURL}/secure/courses/${courseId}/section/${sectionId}/sub-section`;
     const headers = new HttpHeaders();
     return this.httpClient.patch<T>(url, data, { headers });
+  }
+
+  /*------------ course review process ---------------- */
+
+  getReviewCourses(number: number, size: number): Observable<any> {
+    const url = `${endPoints.baseURL}/secure/courses/review?number=${number}&size=${size}&sort=createdDate,DESC`;
+    return this.httpClient.get(url);
   }
 }

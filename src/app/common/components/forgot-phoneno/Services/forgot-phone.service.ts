@@ -32,7 +32,7 @@ export class ForgotPhoneService {
       catchError((errorResponse: any) => {
         if (errorResponse instanceof HttpErrorResponse) {
           //this.loggingService.log(errorResponse?.error?.error.message);
-          this.notificationService.notify(errorResponse?.error?.error.message);
+          this.notificationService.notify("Invalid Email");
         }
         return EMPTY;
       })
@@ -50,7 +50,7 @@ export class ForgotPhoneService {
       catchError((errorResponse: any) => {
         if (errorResponse instanceof HttpErrorResponse) {
           this.loggingService.log(errorResponse?.error?.error.message);
-          this.notificationService.notify(errorResponse?.error?.error.message);
+          this.notificationService.notify("Invalid OTP");
         }
         return EMPTY;
       })
@@ -80,13 +80,13 @@ export class ForgotPhoneService {
     return this.apiService.post(url, data).pipe(
       tap((response: any) => {
         if (!!response && !!response?.message) {
-          this.notificationService.notify('Your Details Successfully Updated. Login with new  credentials.');
+          this.notificationService.notify('Your Details have been Successfully Updated, Please Login with your new credentials.');
         }
       }),
       catchError((errorResponse: any) => {
         if (errorResponse instanceof HttpErrorResponse) {
           this.loggingService.log(errorResponse?.error?.error.message);
-          this.notificationService.notify(errorResponse?.error?.error.message);
+          this.notificationService.notify("Invalid OTP");
         }
         return EMPTY;
       })

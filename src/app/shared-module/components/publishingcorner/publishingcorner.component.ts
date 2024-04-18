@@ -4,6 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FetcharticlesService } from '../fetcharticles.service';
 import { ArticleApiResponse } from '../fetcharticle.model';
 import { UserDetailsService } from 'src/app/common/services/user-details/user-details.service';
+import { endPoints } from 'src/app/common/constants/endpoints';
+import { HttpClient } from '@angular/common/http';
+import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 
 @Component({
   selector: 'app-publishingcorner',
@@ -15,21 +18,28 @@ export class PublishingcornerComponent implements OnInit {
   filteredArticles: ArticleApiResponse[] = [];
   searchTerm: string = '';
   isVisible: boolean = false;
+  isAdmin: boolean = false;
+
 
   userRole: string | undefined
+
+  role:string | undefined;
+
   constructor(
     private fetcharticleService: FetcharticlesService,
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
-    private userDetailsService: UserDetailsService
+    private http: HttpClient,
+    private authService: AuthTokenService
   ) { }
 
   ngOnInit(): void {
     this.loadPublishArticles();
     this.checkRoute();
-    this.userDetailsService.getUserInfoFromLocalStorage();
-    this.userRole = this.userDetailsService.role;
+    const userDetails = this.authService.getUserDetails();
+    this.role = userDetails?.role 
+    this.isAdmin = userDetails?.role === 'ADMIN';
   }
   loadPublishArticles(): void {
     this.fetcharticleService.loadPublishArticles().subscribe(
@@ -46,13 +56,16 @@ export class PublishingcornerComponent implements OnInit {
     const firstPathSegment = this.router.url.split('/')[1];
     this.isVisible = ['subscriber', 'instructor', 'article'].includes(firstPathSegment);
   }
-  isArticleRoute(): boolean {
-    return this.router.url === '/article';
-  }
+  // isArticleRoute(): boolean {
+  //   return this.router.url === '/article';
+  // }
 
   searchArticles(): void {
     this.filteredArticles = this.articles.filter((article) =>
       article.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+    ||
+    (article.author && article.author.toLowerCase().includes(this.searchTerm.toLowerCase()))
+
     ||
     (article.author && article.author.toLowerCase().includes(this.searchTerm.toLowerCase()))
 

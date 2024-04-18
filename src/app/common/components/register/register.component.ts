@@ -97,6 +97,11 @@ export class RegisterComponent {
     this.registrationService.sendOtpSignup(signUpFormData).subscribe(
       ()=>{
         this.showOtpFields()
+        this.registerForm.controls['phone'].disable();
+        this.registerForm.controls['name'].disable();
+        this.registerForm.controls['email'].disable();
+       
+
       }
     )
  

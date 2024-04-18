@@ -124,6 +124,9 @@ checkEmailMatch() {
       () => {
         if (!this.detailsEntered) {
           this.detailsEntered = true;
+          this.updateEmailForm.controls['email'].disable();
+          this.updateEmailForm.controls['confirmEmail'].disable();
+          
         } else if (this.email && this.phone) {
           this.detailsEntered = true;
         }

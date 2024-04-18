@@ -8,6 +8,7 @@ import { UserModel } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { LogoutService } from '../../services/logout.service';
 import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-firstnav',
   templateUrl: './firstnav.component.html',
@@ -21,7 +22,7 @@ export class FirstnavComponent {
   email: string | undefined;
   phone: string | undefined;
   showLogoutPopup = false;
-  
+ 
   private userDetailsSubscription: Subscription | undefined;
   constructor(
     private sharedService: PopupService,
@@ -31,9 +32,9 @@ export class FirstnavComponent {
     private router: Router,
     private logoutService: LogoutService
   ) {}
-
+ 
   ngOnInit() {
-    
+   
     this.userDetailsSubscription = this.authService.userDetails$.subscribe((userDetails: UserModel | null)  => {
       this.userRole = userDetails?.role;
       this.name = userDetails?.name;
@@ -41,7 +42,7 @@ export class FirstnavComponent {
       this.phone = userDetails?.phone;
     });
   }
-
+ 
   get getRole(): string {
     if (this.userDetails) {
       return this.userDetails.role;
@@ -54,10 +55,10 @@ export class FirstnavComponent {
       height: '600px',
     });
   }
-
+ 
   onUserCircleClick(event: Event) {
     event.preventDefault();
-
+ 
     const profileRouteMap: { [key: string]: string } = {
       ADMIN: '/admin/profile',
       CONTENTMANAGER: '/cm/profile',
@@ -65,14 +66,14 @@ export class FirstnavComponent {
       REVIEWER: '/reviewer/profile',
       SUBSCRIBER: '/subscriber/profile',
     };
-
+ 
     const profileRoute = profileRouteMap[this.userRole || ''];
-
+ 
     if (profileRoute) {
       this.router.navigate([profileRoute]);
     }
   }
-
+ 
   roleNavigationMap: { [key: string]: RoleNavigationMap[] } = {
     SUBSCRIBER: [
       { name: 'Homepage', route: '/subscriber/homepage' },
@@ -117,17 +118,17 @@ export class FirstnavComponent {
       { name: 'About Us', route: '/aboutus' },
     ],
   };
-
+ 
   userMenuMap: { [key: string]: UserMenuMap[] } = {
     SUBSCRIBER: [
       { name: 'Profile', route: '/subscriber/profile' },
       { name: 'Account Security', route: '/subscriber/acSecurity' },
       { name: 'Notification Settings', route: '/subscriber/notifications' },
-      { name: 'My Publishings', route: '/subscriber/articleHistory' }, 
+      { name: 'My Publishings', route: '/subscriber/articleHistory' },
       { name: 'Contact Us', route: '/subscriber/contactus' },
       { name: 'Terms & Conditions', route: '/subscriber/termsandconditions' },
-    
-      
+   
+     
     ],
     INSTRUCTOR: [
       {name:'Create your profile', route:'/instructor/create-profile' },
@@ -138,8 +139,8 @@ export class FirstnavComponent {
       { name: 'Courses Status', route: '/instructor/uploadstatus' },
       { name: 'Contact Us', route: '/instructor/termsandconditions' },
       { name: 'Terms & Conditions', route: '/instructor/contactus' },
-      
-      
+     
+     
     ],
     REVIEWER: [
       { name: 'Profile', route: '/reviewer/profile' },
@@ -149,7 +150,7 @@ export class FirstnavComponent {
       { name: 'Article History', route: '/reviewer/articleHistory' },
       { name: 'Contact Us', route: '/reviewer/contactus' },
       { name: 'Terms & Conditions', route: '/reviewer/termsandconditions' },
-      
+     
      
     ],
     CONTENTMANAGER: [
@@ -160,8 +161,8 @@ export class FirstnavComponent {
       { name: 'ArticleHistory', route: '/authentication/articleListHistory' },
       { name: 'Contact Us', route: '/authentication/contactus' },
       { name: 'Terms & Conditions', route: '/authentication/termsandconditions' },
-      
-      
+     
+     
     ],
     ADMIN: [
       { name: 'Profile', route: '/admin/profile' },
@@ -172,28 +173,28 @@ export class FirstnavComponent {
       { name: 'Article History', route: '/admin/article-history' },
       { name: 'Contact Us', route: '/admin/contactus' },
       { name: 'Terms & Conditions', route: '/admin/termsandconditions' },
-      
+     
     ],
   };
-
+ 
   get showLogoutAlert(): boolean {
     return this.sharedService.showLogoutAlert;
   }
-
+ 
   onLogoutClick(): void {
     this.showLogoutPopup = true;
   }
-
+ 
   onClosePopup(): void {
     this.showLogoutPopup = false;
   }
-
+ 
   onLogout(): void {
     this.logoutService.logOutUser().subscribe(() => {});
     this.showLogoutPopup = false;
   }
 }
-
+ 
 export interface RoleNavigationMap {
   name: string;
   route: string;

@@ -22,6 +22,8 @@ export class ForgotPhonenoComponent {
   phoneOtpForm: FormGroup;
   forgotPhoneForm: FormGroup;
   updatePhoneForm: FormGroup;
+  sendotpButton =true
+  phoneotpSent=true
 
   constructor(
     private formBuilder: FormBuilder,
@@ -107,8 +109,11 @@ export class ForgotPhonenoComponent {
     this.forgotPhoneService.sendOtp(FormData).subscribe(() => {
       if (!this.detailsEntered) {
         this.detailsEntered = true;
+        this.sendotpButton=false
+
       } else if (this.email && this.phone) {
         this.detailsEntered = true;
+        this.sendotpButton=false
       }
     });
   }
@@ -138,6 +143,10 @@ export class ForgotPhonenoComponent {
     };
     this.forgotPhoneService.sendOtpPhone(FormData).subscribe(() => {
       this.updatePhoneMode = true;
+      this.phoneotpSent = true; 
+      this.updatePhoneForm.controls['phone'].disable();
+      this.updatePhoneForm.controls['confirmPhone'].disable();
+
     });
   }
   verifyotpPhone() {

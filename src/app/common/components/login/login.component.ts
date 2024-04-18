@@ -80,6 +80,9 @@ openModal() {
     this.loginService.sendOtpClick(loginRequestFormData).subscribe(
       ()=>{
         this.showOtpFields()
+        
+        this.loginForm.controls['phone'].disable();
+        this.loginForm.controls['email'].disable();
       }
     )
    
