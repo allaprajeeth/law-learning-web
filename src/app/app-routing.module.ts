@@ -67,7 +67,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    //canActivate: [redirectGuard],
+    canActivate: [redirectGuard],
     component: HeaderComponent
   },
   {

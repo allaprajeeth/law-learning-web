@@ -4,6 +4,7 @@ import { CoursesService } from '../../services/courses/courses.service';
 import { Router } from '@angular/router';
 import { HttpResponse } from '../../models/response.model';
 import { endPoints } from '../../constants/endpoints';
+import { CourseSearch } from '../../models/course-search.model';
 
 @Component({
   selector: 'app-header',
@@ -21,13 +22,13 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private coursesService: CoursesService) {}
 
   ngOnInit(): void {
-    this.initializeFreeCoursesHeadings();
-    this.initializePaidCoursesHeadings({}, true);
+    this.initializeFreeCoursesHeadings({ isPublic: true });
+    this.initializePaidCoursesHeadings({ isPublic: false }, true);
   }
 
-  private initializeFreeCoursesHeadings(): void {
+  private initializeFreeCoursesHeadings(search: CourseSearch): void {
     this.coursesService
-      .get({}, endPoints.search_courses)
+      .get(search, endPoints.search_courses)
       .subscribe((response: HttpResponse<Course>) => {
         for (var i in response.records) {
           this.freeCourses.push(response.records[i]);
@@ -35,9 +36,9 @@ export class HeaderComponent implements OnInit {
       });
   }
 
-  private initializePaidCoursesHeadings(params: any, reload: boolean): void {
+  private initializePaidCoursesHeadings(search: CourseSearch, reload: boolean): void {
     this.coursesService
-      .get(params, endPoints.search_courses)
+      .get(search, endPoints.search_courses)
       .subscribe((response: HttpResponse<Course>) => {
         if (reload) this.paidCourses = [];
         for (var i in response.records) {
