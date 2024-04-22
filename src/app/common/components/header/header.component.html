@@ -26,7 +26,7 @@
             <i class="fa fa-play-circle play-icon"></i>
           </a>
         </div>
-        <span class="duration">{{course.duration}}</span>
+        <span class="duration">{{course.duration | duration: 's':'hhmmss'}}</span>
       </div>
       <div class="headingsContainer">
         <h5>{{ course.title }}</h5>
@@ -131,7 +131,7 @@
           <i class="fa fa-play-circle play-icon"></i>
         </a>
       </div>
-      <span class="duration">{{ course.duration }}</span>
+      <span class="duration">{{ course.duration | duration: 's':'hhmmss' }}</span>
     </div>
     <div class="headingsContainer">
       <h5>{{ course.title }}</h5>

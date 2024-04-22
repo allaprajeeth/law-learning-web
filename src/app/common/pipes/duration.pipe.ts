@@ -11,6 +11,8 @@ export class DurationPipe implements PipeTransform {
     let minutes: any;
     let hours: any;
 
+    if(!value || value === 0)
+      return `00:00:00`;
     if (args[0] === 'ms' && args[1] === 'hhmmss') {
       seconds = Math.floor((value / 1000) % 60);
       minutes = Math.floor(((value / (1000 * 60)) % 60));
