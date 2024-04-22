@@ -111,6 +111,19 @@ export class PublishingcornerComponent implements OnInit {
   matchesBaseUrl(): any {
     return this.router.url === '/article';
   }
+  deleteArticle(articleId:number){
+    const baseUrl = endPoints.secureBaseURL;
+    const apiUrl = baseUrl +`/articles/${articleId }`;
+    this.http.delete(apiUrl).subscribe(
+      () => {
+        console.log('Article deleted successfully');
+      },
+      (error) => {
+        console.error('Error deleting library:', error);
+      }
+    );
+  }
+
 }
 
 
