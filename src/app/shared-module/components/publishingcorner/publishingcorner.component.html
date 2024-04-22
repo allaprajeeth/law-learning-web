@@ -19,11 +19,11 @@
         <p>Author: {{ article.author }}</p>
     
       </div>
-
-
+       
       <!-- <button (click)="navigateToArticleDetail(article.id)" class="article-button">Read more</button> -->
-      <!-- <button (click)="deleteArticle(article.id)" style="margin: 19px;" *ngIf="isAdmin">Delete Article</button> -->
+     
 
     </div>
+    <button (click)="deleteArticle(article.id)" *ngIf="isAdmin">Delete Article</button>
   </div>
 </div>

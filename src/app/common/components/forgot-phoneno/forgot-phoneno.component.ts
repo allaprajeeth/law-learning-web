@@ -110,6 +110,7 @@ export class ForgotPhonenoComponent {
       if (!this.detailsEntered) {
         this.detailsEntered = true;
         this.sendotpButton=false
+        this.forgotPhoneForm.controls['email'].disable();
 
       } else if (this.email && this.phone) {
         this.detailsEntered = true;

@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { Course } from '../models/course.model';
 import { endPoints } from '../constants/endpoints';
 import { BaseModel } from '../models/base.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -53,4 +54,14 @@ export class CourseService {
     const url = `${endPoints.baseURL}/secure/courses/review?number=${number}&size=${size}&sort=createdDate,DESC`;
     return this.httpClient.get(url);
   }
+
+  getThumbnailUrl(thumbnailPath: string): string {
+    return `${environment.endpoints.secureBaseURL}/${thumbnailPath}`;
+  }
+
+  getCourseById(courseId: number): Observable<Course> {
+    const url = `${endPoints.baseURL}/secure/courses/${courseId}`;
+    return this.httpClient.get<Course>(url);
+  }
+  
 }

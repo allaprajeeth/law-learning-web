@@ -124,8 +124,9 @@ checkEmailMatch() {
       () => {
         if (!this.detailsEntered) {
           this.detailsEntered = true;
-          this.updateEmailForm.controls['email'].disable();
-          this.updateEmailForm.controls['confirmEmail'].disable();
+          
+          this.forgotEmailForm.controls['phoneNumber'].disable();
+          
           
         } else if (this.email && this.phone) {
           this.detailsEntered = true;
@@ -164,6 +165,8 @@ checkEmailMatch() {
     this.forgotEmailService.sendOtpEmail(FormData).subscribe(
       ()=>{
         this.updateEmailMode = true;
+        this.updateEmailForm.controls['email'].disable();
+        this.updateEmailForm.controls['confirmEmail'].disable();
       }
     )
   }

@@ -1,109 +1,44 @@
-
 <div class="container">
   <div class="heading">
     <h1>Courses to Review</h1>
-
-    <!-- courses.component.html -->
-
-<div *ngIf="courses && courses.length">
-  <ul>
-    <li *ngFor="let course of courses">
-      <h3>{{ course.title }}</h3>
-      <p>{{ course.description }}</p>
-      <p>Created Date: {{ course.createdDate }}</p>
-      <p>Institution: {{ course.institution?.name }}</p>
-      <!-- Add more fields as needed -->
-    </li>
-  </ul>
-</div>
-<div *ngIf="!courses || courses.length === 0">
-  <p>No courses available.</p>
-</div>
-
-    
-    
-    
-  
-  
-  
-  
-  <!-- <div class="image-grid">
-    <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
-      <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <a routerLink="/authentication/courseInfo">
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
-        </div>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ reviewheadings[i] }}</h5>
-        <p>{{reviewAuthors[i]}}</p>
-        <h4>{{reviewText[i]}}</h4>
-      </div>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-
-
-
-  <div class="heading">
-    <h1>Reviewed Courses</h1>
   </div>
-  <!-- <div class="image-grid">
-    <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
-      <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <a routerLink="/authentication/courseInfo">
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
+  <div *ngIf="courses && courses.length">
+    <ul>
+      <li *ngFor="let course of courses">
+        <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
+          <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" width="300" height="200"
+            alt="Random Image" (error)="onImageError($event)">
+            <div class="duration">{{course.duration}}</div>
+          <div class="overlay">
+            <a>
+              <i class="fa fa-play-circle play-icon"></i>
+            </a>
+          </div>
+          <span class="duration">{{course.duration}}</span>
         </div>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ reviewedheadings[i] }}</h5>
-        <p>{{reviewedAuthors[i]}}</p>
-        <h4>{{reviewedText[i]}}</h4>
-      </div>
-      <div class="status-bar">
-        <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
-      </div>
-      <span>{{ randomMyCourseValues[i] }}%complete</span>
-      <div class="container1">
-        <div class="Conatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-        <div class="Conatiner2">
-          <span>Reviewer Ratings</span>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <br />
-  <br />
-  <div>
+        <h2>{{ course.title }}</h2>
+        <p>{{ course.difficultyLevel}} / {{ course.type }}</p>
+        <!-- <p>{{ course.description }}</p> -->
+        <!-- <p>Created Date: {{ course.createdDate }}</p> -->
+        <!-- <p>Institution: {{ course.institution?.name }}</p> -->
+      </li>
+    </ul>
   </div>
-
+  <div *ngIf="!courses || courses.length === 0">
+    <p>No courses available.</p>
+  </div>
 
   <div>
     <div class="heading" *ngIf="articles && articles.length > 0; else noArticles">
       <h1>Articles to Review</h1>
       <div class="container">
         <div class="article-list">
-          
+
           <div class="article-item" *ngFor="let article of articles">
             <mat-icon>description</mat-icon>
             <div (click)="navigateToArticleDetail(article.id)">
-              <h2 class="article-name">{{ (article.title.length > 30 ? article.title.slice(0, 30) + '...' : article.title) }}</h2>
+              <h2 class="article-name">{{ (article.title.length > 30 ? article.title.slice(0, 30) + '...' :
+                article.title) }}</h2>
               <p class="author-name">{{ article.createdBy.name }}</p>
               <p>{{ article.createdDate | date:'mediumDate' }}</p>
             </div>
@@ -114,6 +49,6 @@
     <ng-template #noArticles>
       <p>No articles available.</p>
     </ng-template>
+    
   </div>
 </div>
- 
