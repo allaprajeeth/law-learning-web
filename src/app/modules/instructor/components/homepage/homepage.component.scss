@@ -40,10 +40,6 @@
       }
     }
   }
-  img {
-    height: 200px;
-    width: 270px;
-  }
   .course-grid {
     display: flex;
     flex-wrap: wrap;
@@ -357,4 +353,12 @@
     margin-top: 20px;
     grid-template-columns: repeat(2, 1fr);
   }
+}
+.imagesContainer img {
+  width: 100%;
+  /* Set the image width to 100% of the parent's width */
+  height: 100%;
+  /* Set the image height to 100% of the parent's height */
+  object-fit: cover;
+  /* Optional: maintain aspect ratio and cover the entire parent */
 }

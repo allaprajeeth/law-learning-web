@@ -90,11 +90,6 @@ const routes: Routes = [
 
   },
   {
-    path: 'header',
-    canActivate: [redirectGuard],
-    component:HeaderComponent
-  },
-  {
     path: 'article',
     component:ArticleComponent
   },
@@ -129,10 +124,6 @@ const routes: Routes = [
   {
     path:'aboutus',
     component:AboutusComponent
-  },
-  {
-    path: 'footer',
-    component: FooterComponent
   },
   {
     path: 'termsandcon',

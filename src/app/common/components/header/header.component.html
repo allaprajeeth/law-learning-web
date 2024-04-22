@@ -20,7 +20,7 @@
   <div class="image-grid">
     <div *ngFor="let course of freeCourses; let j = index" class="image-item">
       <div class="imagesContainer">
-        <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
+        <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" alt="Random Image" (error)="onImageError($event)">
         <div class="overlay">
           <a (click)="showCourseContent(course.id)">
             <i class="fa fa-play-circle play-icon"></i>
@@ -125,7 +125,7 @@
 <div class="image-grid">
   <div *ngFor="let course of paidCourses; let j = index" class="image-item">
     <div class="imagesContainer">
-      <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
+      <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" alt="Random Image" (error)="onImageError($event)">
       <div class="overlay">
         <a routerLink="/overviewAvailable" [queryParams]="{ showRatingOfCourse: 'true' }">
           <i class="fa fa-play-circle play-icon"></i>

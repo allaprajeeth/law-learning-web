@@ -42,7 +42,7 @@ export class LogoutService {
          
           localStorage.removeItem('userDetails');
           localStorage.removeItem('jwtToken');
-          this.router.navigate(['/header']);
+          this.router.navigate(['/']);
           this.sharedService.showLogoutAlert = true;
           setTimeout(() => {
             this.sharedService.showLogoutAlert = false;

@@ -62,6 +62,7 @@ export class HttpInterceptorService implements HttpInterceptor {
   private handleUnauthorizedError(error: HttpErrorResponse): Observable<HttpEvent<any>> {
     // Clear authentication token or perform other actions as needed
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('userDetails');
     this.router.navigate(['/login']);
     return throwError(error);
   }

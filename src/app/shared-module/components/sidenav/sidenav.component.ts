@@ -57,7 +57,7 @@ export class SidenavComponent {
     setTimeout(() => {
       this.sharedService.showLogoutAlert = false;
     }, 5000);
-    this.router.navigate(['/header']);
+    this.router.navigate(['/']);
     this.showLogoutPopup = false;
   }
 

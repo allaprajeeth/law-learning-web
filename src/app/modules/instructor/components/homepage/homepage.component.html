@@ -9,7 +9,7 @@
     <div class="course-grid">
       <div *ngFor="let course of courses" class="course-item">
         <div class="imagesContainer">
-          <img [src]="course.thumbnail ? s3BaseURl + course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
+          <img [src]="course.thumbnail ? s3BaseURl + course.thumbnail : course.thumbnail" alt="Random Image" (error)="onImageError($event)">
           <div class="overlay">
             <i class="fa fa-play-circle play-icon"></i>
           </div>
