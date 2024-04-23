@@ -5,6 +5,8 @@ import * as Plyr from 'plyr';
 import { Course } from 'src/app/common/models/course.model';
 import { PdfService } from 'src/app/sharedService.service';
 import { Section } from '../../../../common/models/section.model';
+import { NgModel } from '@angular/forms';
+import { CourseService } from 'src/app/common/services/course.service';
  
 @Component({
   selector: 'app-videoplayer',
@@ -41,7 +43,8 @@ export class VideoplayerComponent {
     private renderer: Renderer2,
     private el: ElementRef,
     private testService: PdfService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private courseService: CourseService
   ) {
     this.testService.setIsTestAvailable(true);
     this.isTestAvailable = this.testService.isTestAvailable;
@@ -156,6 +159,51 @@ export class VideoplayerComponent {
   openExpansionPanel(sectionIndex: number) {
     this.expansionPanels.forEach((panel) => panel.close());
     this.expansionPanels.toArray()[sectionIndex].open();
+  }
+
+  approveVideo(subSection: any) {
+    const courseId = this.course.id;
+    const videoInfo = {
+      title: subSection.title,
+      status: 'APPROVED'
+    };
+    this.courseService.sendReview(courseId, videoInfo).subscribe(
+      response => {
+        console.log('Video approved:', response);
+        // Update UI or do additional actions
+      },
+      error => {
+        console.error('Error approving video:', error);
+      }
+    );
+  }
+  
+  
+  toggleCommentBox(subSection: any) {
+    subSection.showCommentBox = !subSection.showCommentBox;
+    subSection.comment = ''; 
+  }
+
+  sendComment(subSection: any) {
+    if (subSection.comment) {
+      const courseId = this.course.id;
+      const videoInfo = {
+        title: subSection.title,
+        comment: subSection.comment,
+        status: 'REJECTED'
+      };
+      this.courseService.sendReview(courseId, videoInfo).subscribe(
+        response => {
+          console.log('Comment sent:', response);
+          // Update UI or do additional actions
+        },
+        error => {
+          console.error('Error sending comment:', error);
+        }
+      );
+
+      subSection.showCommentBox = false;
+    }
   }
 }
  

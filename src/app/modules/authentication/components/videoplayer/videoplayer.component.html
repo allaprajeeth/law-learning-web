@@ -35,6 +35,7 @@
           </mat-expansion-panel-header>
           <div class="video-group">
             <ng-container *ngFor="let subSection of section.subSections; let j = index">
+             
               <div class="video-item" [class.playing-video-title]="isVideoPlaying(i, j)">
                 <div>
                   <div class="videos-title" (click)="playVideo(i, j)"><mat-icon
@@ -42,16 +43,27 @@
                   <div class="time-duration" style="color: rgb(122, 119, 119)">
                     {{ subSection ?.duration }} min
                   </div>
+                 
+                  <!-- Approve and Reject Buttons -->
                 </div>
               </div>
-              
+        <div class="approve-reject-buttons">
+          <button mat-button color="primary" (click)="approveVideo(subSection)">
+            Approve
+          </button>
+          <button mat-button color="warn" (click)="toggleCommentBox(subSection)">
+            Reject
+          </button>
+        </div>
+                
+        <div *ngIf="subSection.showCommentBox" class="comment-box">
+          <textarea matInput placeholder="Enter your comment..." [(ngModel)]="subSection.comment"></textarea>
+          <button mat-button color="primary" (click)="sendComment(subSection)">Send</button>
+        </div>  
+             
             </ng-container>
           </div>
         </mat-expansion-panel>
-        <!-- <div class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">End of Course</div> -->
-        <!-- <div *ngIf="isTestAvailable &&  !isFreeCourseRoute" class="title-text"
-          style="margin: 8px;margin-left:28px;padding: 2px">Attend test (Complete 80% of the course to attend the test)
-        </div> -->
       </mat-accordion>
     </mat-card>
     <!-- video player container -->
