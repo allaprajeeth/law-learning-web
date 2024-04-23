@@ -1,14 +1,17 @@
 
-import { Component, ElementRef, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, Input, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { MatExpansionPanel } from '@angular/material/expansion';
 import * as Plyr from 'plyr';
 import { PdfService } from 'src/app/sharedService.service';
+import { CourseService } from 'src/app/common/services/course.service';
 @Component({
   selector: 'app-videoplayer',
   templateUrl: './videoplayer.component.html',
   styleUrls: ['./videoplayer.component.scss']
 })
 export class VideoplayerComponent {
+  @Input() course: any;
+  
   isTestAvailable:boolean;
   nextVideoInfo: { sectionIndex: number; videoIndex: number } | undefined;
   @ViewChildren(MatExpansionPanel) expansionPanels!: QueryList<MatExpansionPanel>;
@@ -17,6 +20,7 @@ export class VideoplayerComponent {
   sidebarVisible = true;
   currentVideoIndex: number = 0;
   currentSectionIndex: number = 0;
+  currentsubSectionIndex: number = 0;
   currentVideoTime: number = 0;
   autoplayVideo: boolean = false;
   showNextButton: boolean = false;
@@ -56,7 +60,11 @@ export class VideoplayerComponent {
     ],
   }));
   currentVideoSource: string = this.videoGroups[this.currentVideoIndex].videos[0].url;
-  constructor(private renderer: Renderer2, private el: ElementRef ,private testService:PdfService) {
+  constructor(
+    private renderer: Renderer2, 
+    private el: ElementRef ,
+    private testService:PdfService,
+    private courseService: CourseService) {
     this.testService.setIsTestAvailable(true);
     this.isTestAvailable = this.testService.isTestAvailable; 
   }
@@ -115,7 +123,7 @@ export class VideoplayerComponent {
 
     if (savedVideo) {
       const { sectionIndex, videoIndex, duration } = JSON.parse(savedVideo);
-      this.playVideo(sectionIndex, videoIndex, duration);
+      this.playVideo(sectionIndex, videoIndex);
     } else {
       this.playVideo(this.currentSectionIndex, this.currentVideoIndex);
     }
@@ -252,42 +260,95 @@ export class VideoplayerComponent {
       this.currentVideoIndex = 0;
     }
     
-   this.playVideo(this.currentSectionIndex, this.currentVideoIndex,this.player?.duration);
+   this.playVideo(this.currentSectionIndex, this.currentVideoIndex);
   }
 
-  playVideo(sectionIndex: number, videoIndex: number, duration: number = 0) {
-    const video = this.videoGroups[sectionIndex].videos[videoIndex];
-    const videoUrl = video.url;
+  playVideo(sectionIndex: number, subSectionIndex: number) {
+    const section = this.course.sections[sectionIndex];
+    const subSection = section.subSections[subSectionIndex];
+    const videoUrl =
+      'https://elearning-stagging.s3.ap-south-1.amazonaws.com/' +
+      subSection.file.url;
     this.currentSectionIndex = sectionIndex;
-    this.currentVideoIndex = videoIndex;
-    this.duration=duration;
-    this.nextVideoInfo = {
-      sectionIndex: sectionIndex,
-      videoIndex: (videoIndex + 1 < this.videoGroups[sectionIndex].videos.length) ? (videoIndex + 1) : 0
-    };
+    this.currentsubSectionIndex = subSectionIndex;
+    console.log(videoUrl);
     if (this.player) {
-      if (this.player) {
-        this.player.source = {
-          type: 'video',
-          sources: [{
+      this.player.source = {
+        type: 'video',
+        sources: [
+          {
             src: videoUrl,
             type: 'video/mp4',
-          }],
-        };
-        this.player.play();
-       
-      } else {
-        console.error('Plyr source is not properly initialized.');
+          },
+        ],
+      };
+      const playPromise = this.player.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then((_) => {
+            console.log('Video playback started successfully');
+          })
+          .catch((error) => {
+            console.error('Failed to start playback:', error);
+          });
       }
     } else {
       console.error('Plyr player is not properly initialized.');
     }
-    this.openExpansionPanel(sectionIndex);
   }
-
+ 
   openExpansionPanel(sectionIndex: number) {
     this.expansionPanels.forEach((panel) => panel.close());
     this.expansionPanels.toArray()[sectionIndex].open();
   }
+
+  approveVideo(subSection: any) {
+    const courseId = this.course.id;
+    const videoInfo = {
+      title: subSection.title,
+      status: 'APPROVED'
+    };
+    this.courseService.sendReview(courseId, videoInfo).subscribe(
+      response => {
+        console.log('Video approved:', response);
+        // Update UI or do additional actions
+      },
+      error => {
+        console.error('Error approving video:', error);
+      }
+    );
+  }
+  
+  
+  toggleCommentBox(subSection: any) {
+    subSection.showCommentBox = !subSection.showCommentBox;
+    if (!subSection.comment) {
+      subSection.comment = '';
+    }
+  }
+
+  sendComment(subSection: any) {
+    if (subSection.comment) {
+      const courseId = this.course.id;
+      const videoInfo = {
+        title: subSection.title,
+        comment: subSection.comment,
+        status: 'REJECTED'
+      };
+      
+      this.courseService.sendReview(courseId, videoInfo).subscribe(
+        response => {
+          console.log('Comment sent:', response);
+          // Update UI or do additional actions
+        },
+        error => {
+          console.error('Error sending comment:', error);
+        }
+      );
+  
+      subSection.showCommentBox = false;
+    }
+  }
+  
  
 }

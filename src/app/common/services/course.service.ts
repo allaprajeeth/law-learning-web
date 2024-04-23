@@ -63,5 +63,15 @@ export class CourseService {
     const url = `${endPoints.baseURL}/secure/courses/${courseId}`;
     return this.httpClient.get<Course>(url);
   }
+
+  sendReview(courseId: string, videoInfo: any): Observable<any> {
+    const url = `${endPoints.baseURL}/secure/courses/review/${courseId}`;
+    
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.httpClient.patch(url, videoInfo, { headers: headers });
+  }
   
 }

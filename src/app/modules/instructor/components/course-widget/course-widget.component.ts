@@ -65,15 +65,15 @@ export class CourseWidgetComponent {
 			title: ['', Validators.required],
 			description: ['', Validators.required],
 			institution: this._formBuilder.group({
-				id: [''],
-				name: ['', Validators.required]
+				id: ['', Validators.required],
+				name: ['']
 			}),
 			difficultyLevel: ['', Validators.required],
 			type: ['', Validators.required],
 			price: [null],
 			language: ['English', Validators.required],
 			courseFile: [null],
-			// submitted: [false],
+			submitted: [false],
 			sections: this._formBuilder.array([])
 		});
 	}
@@ -245,6 +245,7 @@ export class CourseWidgetComponent {
 	}
 
 	onNext(stepper: MatStepper) {
+		console.log(this.courseForm);
 		if (this.courseForm.valid) {
 			this.courseFormData.set('course', new Blob([JSON.stringify(this.courseForm.value)], { type: 'application/json' }));
 			if (this.courseId && isNumber(Number(this.courseId))) {
@@ -404,6 +405,8 @@ export class CourseWidgetComponent {
 					this.courseForm.patchValue({
 						submitted: true
 					  });
+					console.log(this.courseForm) 
+					console.log(this.courseForm.value)  
 					this.courseFormData.set('course', new Blob([JSON.stringify(this.courseForm.value)], { type: 'application/json' }));
 					if (this.courseId && isNumber(Number(this.courseId))) {
 						this.patchCourse();
