@@ -1,5 +1,39 @@
+<div class="main-container-admin">
+  <div class="filter-section">
+    <div class="heading">
+      <h2>Articles To Review</h2>
+    </div>
+    <!-- <div class="flex-container">
+      <div class="my-flex" style="width: 250px;">
+        <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Filter by Category</mat-label>
+          <mat-select style="width: 100%" appearance="outline">
+            <mat-option value="all">All</mat-option>
+            <mat-option value="contentManager">Content Manager</mat-option>
+            <mat-option value="reviewer">Reviewer</mat-option>
+            <mat-option value="uploadedArticles">Uploaded Articles</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div> -->
+  </div>
+
+</div>
+<div class="post-box">
+  <div class="blog-box"  *ngFor="let article of approvedArticles">
+    <div class="article-item" (click)="navigateToArticleDetail(article.id)">
+      <div>
+        <h2 class="article-name" >{{ (article.title.length > 40 ? article.title.slice(0, 40) + '...' : article.title) }}</h2>
+        <p class="description">Description: {{ article.description}}</p>
+        <p>{{ article.createdDate | date:'mediumDate' }}</p>
+        <p class="author-name">Author : {{ article.createdBy.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="container">
-<div class="heading">
+<!-- <div class="heading">
   <h1>Articles to Review</h1>
 </div>
 
@@ -12,7 +46,7 @@
         <p>{{ article.createdDate | date:'mediumDate' }}</p>
       </div>
     </div>
-  </div>
+  </div> -->
 
 
 

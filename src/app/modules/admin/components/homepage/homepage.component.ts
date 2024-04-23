@@ -10,7 +10,7 @@ import { ArticleApiResponse, Article } from '../admin.model';
 })
 export class HomepageComponent implements OnInit {
   approvedArticles: Article[] = [];
-
+  allArticles: any[] = [];
   constructor(
     private adminService: AdminService,
     private router: Router
@@ -19,6 +19,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.getApprovedArticles();
   }
+  
 
   getApprovedArticles(): void {
     this.adminService.getApprovedArticles().subscribe(
@@ -30,7 +31,19 @@ export class HomepageComponent implements OnInit {
       }
     );
   }
-
+  filterByCategory(category: string) {
+    if (category === 'contentManager') {
+      this.approvedArticles = this.approvedArticles.filter(article => {
+        return (
+          article.reviewStatus == 'CONTENT_MANAGER_REJECTED' ||
+          article.reviewStatus === 'CONTENT_MANAGER_ACCEPT'
+        );
+      });
+  
+    } else {
+      this.approvedArticles = this.approvedArticles;
+    }
+  }  
   navigateToArticleDetail(articleId: number): void {
     // Find the selected article by its id
     const selectedArticle = this.approvedArticles.find(article => article.id === articleId);

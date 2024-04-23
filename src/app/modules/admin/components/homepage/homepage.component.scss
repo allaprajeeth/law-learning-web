@@ -24,7 +24,9 @@
 .main-container-admin{
  
   margin: 10px 90px 0px 90px;
- 
+ .heading{
+  margin: auto 0;
+ }
   .filter-section{
     display: flex;
     justify-content: space-between;

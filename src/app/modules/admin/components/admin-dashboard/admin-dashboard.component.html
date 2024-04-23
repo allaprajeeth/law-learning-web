@@ -59,7 +59,7 @@
     </div>
         <button [disabled]="!loginForm.valid" type="submit" (click)="submit">Submit</button>
       </form>
-      <p class="btn-text">Please fill above all details to enable the button.</p>
+      <p class="btn-text">Please fill valid details in all the fields to enable the Submit button.</p>
     </div>
   </div>
 </div>
@@ -69,7 +69,7 @@
 <div  *ngIf="showMessageStatus" class="message-status">
   <div class="submission-status">
     <span class="close-icon" (click)="closePage()">&#10006;</span>
-    <h3>Credentials submitted successfully. Please wait for some time you will be notified.</h3>
+    <h3>User Created Successfully!</h3>
     <button class="close-button" (click)="closePage()">Close</button>
   </div>
 </div>
