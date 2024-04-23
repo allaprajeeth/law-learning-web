@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/common/models/course.model';
+import { CourseService } from 'src/app/common/services/course.service';
+import { CourseReview } from 'src/app/common/models/coursesreview.model';
+import { Section } from 'src/app/common/models/section.model';
+import { SubSection } from 'src/app/common/models/sub-sections.model';
 
 @Component({
   selector: 'app-course-info',
@@ -10,16 +14,37 @@ import { Course } from 'src/app/common/models/course.model';
 export class CourseInfoComponent implements OnInit {
 
   course: Course | null = null;
+  isLoading: boolean = true;
+  errorMessage: string | null = null;
 
   constructor(private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private courseService: CourseService
   ) { }
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation && navigation.extras && navigation.extras.state) {
-      this.course = navigation.extras.state['course'];
-    }
+    // Get course ID from route parameters
+    const courseId = this.route.snapshot.params['id'];
+    
+    this.courseService.getCourseById(courseId).subscribe(
+      (response) => {
+        console.log('Course Response:', response);
+        if (response && response.data) {
+          this.course = response.data as Course; 
+          this.isLoading = false;
+        } else {
+          this.errorMessage = 'Invalid response format';
+        }
+      },
+      (error) => {
+        this.errorMessage = 'Error fetching course details';
+        console.error(this.errorMessage, error);
+        this.isLoading = false;
+      }
+    );
   }
+  
+  
 }
+
 

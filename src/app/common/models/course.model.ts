@@ -80,3 +80,5 @@ export class Course extends BaseModel<Course> {
 
   
 }
+
+

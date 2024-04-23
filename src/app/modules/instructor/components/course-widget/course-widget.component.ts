@@ -73,7 +73,7 @@ export class CourseWidgetComponent {
 			price: [null],
 			language: ['English', Validators.required],
 			courseFile: [null],
-			submitted: [false],
+			// submitted: [false],
 			sections: this._formBuilder.array([])
 		});
 	}
