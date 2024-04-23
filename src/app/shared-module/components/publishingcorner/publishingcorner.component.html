@@ -4,10 +4,10 @@
 <div class="submit-button" *ngIf="isVisible">
   <button (click)="navigateToArticleForm()">Submit Article</button>
 </div>
-<!-- <div class="message"
+<div class="message"
   *ngIf="(isVisible && isArticleRoute()) && (role=== undefined || role === null || role === '')">
-  To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>to the website.
-</div> -->
+  To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>
+</div>
 <div class="post-box">
   <div class="blog-box" *ngFor="let article of filteredArticles" (click)="navigateToArticleDetail(article.id)">
     <div class="article-item">

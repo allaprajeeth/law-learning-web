@@ -45,7 +45,7 @@ export class PdfService {
       return 'Submitted';
     } else if (reviewStatus.includes('ADMIN_ACCEPTED')) {
       if (reviewStatus === 'ADMIN_ACCEPTED') {
-        return 'Accepted';
+        return 'Published';
       } else {
         return 'Under Review';
       }
