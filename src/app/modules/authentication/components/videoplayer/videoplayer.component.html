@@ -1,100 +1,68 @@
+<div class="progress-info">
+  <div style="color:blue;font-size: 24px;"> Course Progress </div>
+  <br>
+  <div class="total-progress">
+    Total Progress:{{courseProgress}}%
+  </div>
+  <div class="completed-videos">
+    Numbers of Videos Completed
+  </div>
+  <div>Total Watched Time: </div>
+</div>
 <ng-container>
-    <div   id="showVideo" class="video-info-total">
-      <!-- side bar video expansion panel  -->
-      <mat-card
-        class="side-bar"
-        [style.display]="sidebarVisible ? 'block' : 'none'"
-      >
-        <div class="container">
-          <mat-card-title class="title">
-            <div class="title-text" style="margin-left: 20px">Course Content</div>
-            <div class="close-button" (click)="toggleSidebar()">
-              <mat-icon>close</mat-icon>
-            </div>
-          </mat-card-title>
-        </div>
-        <mat-divider></mat-divider>
-        <mat-accordion class="sidebar-content">
-          <mat-expansion-panel
-            *ngFor="let videoGroup of videoGroups; let i = index" #myExpansionPanel
-            [attr.id]="'expansion-panel-' + i"
-            >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <div >
-                  <div class="title-text">{{ videoGroup?.panelTitle }}</div>
-                  <div class="section-info">1/3 | 12min</div>
-                </div>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="video-group">
-              <ng-container *ngFor="let video of videoGroup?.videos; let j = index">
-                  <div class="video-item" [class.playing-video-title]="isVideoPlaying(i, j)" >
-                    <div class="box">
-                      <input
-                        type="checkbox"
-                        [(ngModel)]="video.selected"
-                        class="checkbox-input"
-                      />
-                    </div>
-                    <div  >
-                      <div class="videos-title"  (click)="playVideo(i, j)" >{{ video?.title }}</div>
-                      <div class="c">
-                        <mat-icon class="custom-icon mat-icon-small">ondemand_video</mat-icon>
-                        <div style="color: rgb(122, 119, 119)">
-                          {{ video?.time }}
-                        </div>
-                      </div>
-                    </div> 
-            </div>
-            <ng-container *ngFor="let resource of resourceData">
-              <div class="resources" *ngIf="resource.title === video.title" >
-                <!-- <span ><b>Resources </b></span> -->
-                <div class="documents">
-                  <span class="documentspdf"><a href="assets/Java.pdf"  target="_blank"><mat-icon style="height:16px;margin-top: 2px;font-size: medium;">download</mat-icon><b> LawLang.pdf</b></a></span>
-                  <span class="documentspdf"><a href="assets/Java.pdf"  target="_blank"><mat-icon style="height:16px;margin-top: 2px;font-size: medium;">download</mat-icon><b> Intro to Law.pdf</b></a></span>
+  <div id="showVideo" class="video-info-total">
+    <!-- side bar video expansion panel  -->
+    <mat-card class="side-bar" [style.display]="sidebarVisible ? 'block' : 'none'">
+      <div class="container">
+        <mat-card-title class="title">
+          <div class="title-text" style="margin-left: 20px">Course Content</div>
+          <div class="close-button" (click)="toggleSidebar()">
+            <mat-icon>close</mat-icon>
+          </div>
+        </mat-card-title>
+      </div>
+      <mat-divider></mat-divider>
+      <mat-accordion class="sidebar-content">
+        <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel
+          [attr.id]="'expansion-panel-' + i">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <div>
+                <div class="title-text">{{ section.title }}</div>
+                <!-- <div class="section-info">{{ subsection.title }}</div> -->
+              </div>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="video-group">
+            <ng-container *ngFor="let subSection of section.subSections; let j = index">
+              <div class="video-item" [class.playing-video-title]="isVideoPlaying(i, j)">
+                <div>
+                  <div class="videos-title" (click)="playVideo(i, j)"><mat-icon
+                      class="custom-icon mat-icon-small">videocam</mat-icon>{{ subSection ?.title }}</div>
+                  <div class="time-duration" style="color: rgb(122, 119, 119)">
+                    {{ subSection ?.duration }} min
+                  </div>
                 </div>
               </div>
+              
             </ng-container>
-            </ng-container>
-            </div>
-          </mat-expansion-panel>
-          
-              <div class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">End of Course</div>
-              <div *ngIf="isTestAvailable" class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">Attend  the test</div>
-            
-        </mat-accordion>
-  </mat-card>
-      <!-- video player container -->
-      <div>
-        <div #videocontainer class="video-container video-container-sidebar">
-          <video
-            playsinline
-            controls
-            id="player"
-            [src]="currentVideoSource"
-            type="video/mp4"
-            [autoplay]="autoplayVideo"
-          >
-            <track
-              kind="captions"
-              label="English captions"
-              src="/path/to/captions.vtt"
-              srclang="en"
-              default
-            />
-          </video>
-          <div *ngIf="showNextButton && nextVideoInfo" class="video-overlay"></div> 
-          <div *ngIf="showNextButton" (click)="playNextVideo()" class="next-button" >
-            <div>Up Next</div><br>
-            <h1>{{ nextVideoInfo && videoGroups[nextVideoInfo.sectionIndex]?.videos[nextVideoInfo.videoIndex]?.title }}</h1>
-           
-            <div><mat-icon  class="large-icon">play_circle_outline</mat-icon></div>
           </div>
-          <div [style.display]="!sidebarVisible ? 'block' : 'none'">
-            <button class="open-sidebar" (click)="openSidebar()">CourseContent</button>
-          </div>
-        </div>
+        </mat-expansion-panel>
+        <!-- <div class="title-text" style="margin: 8px;margin-left:28px;padding: 2px">End of Course</div> -->
+        <!-- <div *ngIf="isTestAvailable &&  !isFreeCourseRoute" class="title-text"
+          style="margin: 8px;margin-left:28px;padding: 2px">Attend test (Complete 80% of the course to attend the test)
+        </div> -->
+      </mat-accordion>
+    </mat-card>
+    <!-- video player container -->
+    <div #videocontainer class="video-container video-container-sidebar">
+      <video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
+      </video>
+   
+      <div [style.display]="!sidebarVisible ? 'block' : 'none'">
+        <button class="open-sidebar" (click)="openSidebar()">CourseContent</button>
       </div>
+    </div>
+
   </div>
 </ng-container>

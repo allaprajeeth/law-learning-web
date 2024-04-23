@@ -1,11 +1,32 @@
-<div *ngIf="course">
+<!-- <div *ngIf="course">
   <h1>{{ course.title }}</h1>
-  <!-- <img [src]="getThumbnailUrl(course.thumbnail)" alt="{{ course.title }}" width="300" height="200" (error)="onImageError($event)"> -->
-  <p>Duration: {{ course.duration }}</p>
-  <p>Difficulty Level: {{ course.difficultyLevel }}</p>
-  <p>Type: {{ course.type }}</p>
-  
+  <p>Description: {{ course.description }}</p>
+</div> -->
+
+<ng-template matStepLabel>Course Preview</ng-template>
+<div>
+    <div class="course-info-container">
+        <mat-tab-group>
+            <mat-tab label="Overview">
+                <div class="tabs">
+                   <app-sharedoverview [course] = "course" *ngIf="course"></app-sharedoverview>
+                </div>
+            </mat-tab>
+            <mat-tab label="Watch Content">
+                <app-videoplayer [course] = "course"></app-videoplayer>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+    <!-- <div class="button-container"> -->
+        <!-- <button type="button" (click)="onPrevious(stepper)" class="enabled-button">
+            <mat-icon class="black-icon">keyboard_arrow_left</mat-icon>Previous
+        </button> -->
+        <!-- <button type="button" (click)="onSubmit()" class="enabled-button">
+            Submit
+        </button> -->
+    <!-- </div> -->
 </div>
+
 
 
 
