@@ -5,6 +5,8 @@ import { ArticleformService } from '../../../shared-module/components/articlefor
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { NotificationService } from '../../../common/services/notification/notification.service'
 import { Article } from 'src/app/shared-module/components/fetcharticle.model';
+import { AuthTokenService } from '../../services/auth-token/auth-token.service';
+import { UserModel } from '../../models/user.model';
 
 @Component({
   selector: 'app-article-form',
@@ -14,15 +16,18 @@ import { Article } from 'src/app/shared-module/components/fetcharticle.model';
 export class ArticleFormComponent {
   userArticles: Article | undefined;
   matchedArticle: any;
+  userDetailsSubscription: any;
+  name: string | undefined;
 ;
   articleForm: FormGroup;
   formData: FormData;
-
+  userDetails: any; 
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private articleformService: ArticleformService,
     private notificationService: NotificationService,
+    private authService: AuthTokenService
   ) {
     this.articleForm = this.fb.group({
       name: ['', Validators.required],
@@ -34,6 +39,14 @@ export class ArticleFormComponent {
   }
   ngOnInit() {
     this.getUserArticles();
+    // const userDetails = this.userService.getUserDetails();
+    // console.log("qwertyu",userDetails); // Do something with userDetails
+    this.userDetailsSubscription = this.authService.userDetails$.subscribe(
+      (userDetails: UserModel | null) => {      
+        this.name = userDetails?.name;
+      }
+    );
+    
   }
   onFileUpload(event: any) {
     console.log(event.target.files);
