@@ -3,6 +3,8 @@
     <h1>Courses to Review</h1>
   </div>
   <div *ngIf="courses && courses.length">
+  <div class="courses">
+  
     <ul>
       <li *ngFor="let course of courses">
         <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
@@ -23,10 +25,11 @@
         <!-- <p>Institution: {{ course.institution?.name }}</p> -->
       </li>
     </ul>
-  </div>
+  
   <div *ngIf="!courses || courses.length === 0">
     <p>No courses available.</p>
   </div>
+</div>
 
   <div>
     <div class="heading" *ngIf="articles && articles.length > 0; else noArticles">

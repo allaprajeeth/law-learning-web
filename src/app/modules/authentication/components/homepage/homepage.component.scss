@@ -236,3 +236,10 @@ p{
     }
   }
 }
+.courses ul{
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 40px;
+  height: 400px;
+}

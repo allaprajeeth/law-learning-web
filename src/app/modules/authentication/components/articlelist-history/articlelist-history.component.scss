@@ -1,6 +1,14 @@
 .sidenav-container {
-    margin-top: 20px;
     padding: 10px 40px;
-    margin-bottom: 20px;
+   margin:20px auto;
   }
-  
+  mat-sidenav-content {
+    background-color: #e0d9d9;
+    margin-left: 300px!important;
+}
+.article-name{
+width: 400px;
+}
+.articleHeading{
+ text-align: left;
+}
