@@ -2,7 +2,7 @@
 <div class="main-container-admin">
   <div class="filter-section">
     <div class="heading">
-      <h2>Articles To Review</h2>
+      <h1>Articles To Review</h1>
     </div>
     <!-- <div class="flex-container">
       <div class="my-flex" style="width: 250px;">
@@ -34,12 +34,15 @@
 
 
 <div class="container">
-  <div class="filter-section">
+  <!-- <div class="main-container-admin"> -->
 
-    <div class="heading">
-      <h1>Courses to Review</h1>
+    <div class="filter-section">
+  
+      <div class="heading">
+        <h1 style="margin-left: -40px;">Courses to Review</h1>
+      </div>
     </div>
-  </div>
+  <!-- </div> -->
     <div *ngIf="courses && courses.length">
       <ul>
         <li *ngFor="let course of courses">
@@ -67,21 +70,8 @@
     </div>
   
 
-
-<!-- <div class="heading">
-  <h1>Articles to Review</h1>
 </div>
 
-  <div class="article-list">
-    <div *ngFor="let article of approvedArticles">
-      <div class="article-item" (click)="navigateToArticleDetail(article.id)">
-        <mat-icon>description</mat-icon>
-        <h2 class="article-name">{{ (article.title.length > 40 ? article.title.slice(0, 40) + '...' : article.title) }}</h2>
-        <p class="author-name">{{ article.createdBy.name }}</p>
-        <p>{{ article.createdDate | date:'mediumDate' }}</p>
-      </div>
-    </div>
-  </div> -->
 
 
 
@@ -95,93 +85,3 @@
 
 
 
-  <div class="container">
-    <!-- <div class="heading">
-    <h1>Courses to Review</h1>
-  </div>
-  <div class="image-grid">
-    <div *ngFor="let image of mycoursesimages; let i = index" class="image-item">
-      <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <a routerLink="/reviewer/courseInfo">
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
-        </div>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ reviewheadings[i] }}</h5>
-        <p>{{reviewAuthors[i]}}</p>
-        <h4>{{reviewText[i]}}</h4>
-      </div>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2" (mouseenter)="isHovered[j] = true" (mouseleave)="isHovered[j] = false">
-        </div>
-      </div>
-    </div>
-  </div> -->
-    <!-- <div class="heading">
-    <h1>Reviewed Courses</h1>
-  </div>
-  <div class="image-grid">
-    <div *ngFor="let image of rejectedimages; let i = index" class="image-item">
-      <div class="imagesContainer">
-        <img [src]="image" class="img" alt="Random Image">
-        <div class="overlay">
-          <i class="fa fa-play-circle play-icon"></i>
-        </div>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ reviewedheadings[i] }}</h5>
-        <p>{{reviewedAuthors[i]}}</p>
-        <h4>{{reviewedText[i]}}</h4>
-      </div>
-      <div class="status-bar">
-        <div class="status-fill" [style.width.%]="randomRejectedValues[i]"></div>
-      </div>
-      <span>{{ randomMyCourseValues[i] }}%complete</span>
-      <div class="container1">
-        <div class="Conatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
-        </div>
-        <div class="Conatiner2">
-          <span>Reviewer Ratings</span>
-        </div>
-      </div>
-    </div>
-  </div> -->
-    <br />
-    <br />
-    <div>
-    </div>
-
-    <div>
-      <!-- <div class="heading">
-      <h1>Articles to Review</h1>
-    </div>
-    <div class="container">
-      <div class="article-list">
-        <div *ngFor="let article of allArticles; let i = index">
-          <div class="article-item">
-            <mat-icon>description</mat-icon>
-            <div>{{ article.name }}</div>
-            
-          </div>
-        </div>
-
-      </div>
-
-      <br />
-      <br />
-      <br />
-      <br />
-    </div> -->
-
-
-
-
-    </div>
