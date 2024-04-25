@@ -6,6 +6,7 @@ import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { PdfService } from 'src/app/sharedService.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-uploadedarticlesstatus',
@@ -15,17 +16,24 @@ import { PdfService } from 'src/app/sharedService.service';
 export class UploadedarticlesstatusComponent  implements OnInit{
   article: Article | undefined;
   storedFileContent: string | undefined;
+  articleId :number | undefined
+  officeViewerSrc: SafeResourceUrl | string | undefined;
+  fileOpened: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleformService,
     private http: HttpClient,
     private location: Location,
-    private pdfService: PdfService
+    private pdfService: PdfService,
+    private sanitizer: DomSanitizer,
   ) { }
 
   ngOnInit(): void {
     this.getArticle();
+   
+     
+    
   }
 
   getArticle(): void {
@@ -52,15 +60,17 @@ export class UploadedarticlesstatusComponent  implements OnInit{
   }
 
   openFile(fileUrl?: string, fileName?: string): void {
-    this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
-      .subscribe(
-        (data: string) => {
-          this.storedFileContent = data;
-        },
-        (error) => {
-          console.error('Error downloading file:', error);
-        }
-      );
+    if (fileUrl) {
+      const downloadUrl =  endPoints.s3BaseURL + fileUrl;
+      console.log(fileUrl)
+  
+        const officeViewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(downloadUrl)}`;
+        const safeUrl: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(officeViewerUrl);
+        this.officeViewerSrc = safeUrl;
+        this.fileOpened = true;
+    } else {
+        console.error('File URL is undefined.');
+    }
   }
   
   goBack() {

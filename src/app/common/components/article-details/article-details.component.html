@@ -14,13 +14,10 @@
       <i class="icon close-icon" (click)="goBack()">&#10006;</i>
       <h3>You have requested for Re-submission of the article, a notification containing the details of re-submission will be sent to the author.</h3>
     </div>
-
   </div>
-
- 
-
 </div>
-<div class="article">
+
+<div class="article" *ngIf="!articleApproved || !rejectArticle || !resubmitMessage">
   <div class="hh" *ngIf="articleee">
     <div *ngIf="article">
       <button (click)="downloadFile(article.files[0].url,article.files[0].fileName)" mat-raised-button color="primary" class="download-button">Download Article</button>

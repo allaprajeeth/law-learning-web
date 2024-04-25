@@ -4,7 +4,7 @@
         <p><strong>Description:</strong> {{ article.data.description }}</p>
         <p><strong>Review Status:</strong> {{ getArticleStatus(article.data.reviewStatus) }}
         <p><strong>Created Date:</strong> {{ article.data.createdDate | date:'yyyy-MM-dd' }}</p>
-        <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p>
+        <iframe *ngIf="fileOpened" [src]="officeViewerSrc" width="70%" height="700px" style="margin:0px 200px ;"></iframe>
       </div>
     </div>
     <div>

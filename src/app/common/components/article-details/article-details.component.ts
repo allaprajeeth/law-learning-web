@@ -113,12 +113,7 @@ openFile(fileUrl?: string, fileName?: string): void {
       console.error('File URL is undefined.');
   }
 }
- 
-  ngOnDestroy(): void {
-    // Clear article details from local storage when leaving the component
-    localStorage.removeItem('articleDetails');
-  }
- 
+
  
   goBack(): void {
     this.router.navigate(['/authentication/homepage']);
@@ -229,7 +224,7 @@ openFile(fileUrl?: string, fileName?: string): void {
       this.approvalStatus = 'resubmit';
       this.articleRejected = false;
       this.articleApproved = false;
-      
+    
   
       const articleId = this.articleId;
   
