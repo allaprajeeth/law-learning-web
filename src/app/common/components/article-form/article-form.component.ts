@@ -18,7 +18,7 @@ export class ArticleFormComponent {
   matchedArticle: any;
   userDetailsSubscription: any;
   name: string | undefined;
-;
+  displayform= true;
   articleForm: FormGroup;
   formData: FormData;
   userDetails: any; 
@@ -97,8 +97,8 @@ export class ArticleFormComponent {
       this.articleformService.post<any>(endPoints.baseURL + '/secure/articles', this.formData).subscribe(
         (response) => {
           console.log('Article submitted successfully:', response);
-          this.notificationService.notify('Article submitted successfully');
-          // this.articleForm.reset();
+          this.displayform=false
+        
           // this.router.navigate(['/subscriber/submitmesg']);
         },
         (error) => {
@@ -109,6 +109,11 @@ export class ArticleFormComponent {
   }
   navigateToSuccessMessage() {
     this.router.navigate(['/subscriber/submitmesg']);
+  }
+  closeMessage(): void {
+    this.displayform=true;
+    this.articleForm.reset();
+
   }
 }
 
