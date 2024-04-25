@@ -8,7 +8,6 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
-import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
@@ -23,6 +22,7 @@ import { InstructorinfoComponent } from '../instructor/components/instructorinfo
 import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
+import { ArticleDetailsComponent } from 'src/app/common/components/article-details/article-details.component';
 
 const routes: Routes = [
   {
@@ -96,7 +96,7 @@ const routes: Routes = [
   },
   { 
     path: 'detail-articles/:id', 
-    component: ArticleDetailComponent
+    component: ArticleDetailsComponent
   },
   {
     path:"articleHistory",

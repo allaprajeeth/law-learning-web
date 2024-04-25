@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
-import { Article } from '../article.model';
+import { Article } from '../../../../common/models/article.model';
 
 @Component({
   selector: 'app-articlelist-history',

@@ -32,7 +32,7 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
-import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
@@ -57,7 +57,6 @@ import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/e
     CoursesHistoryComponent,
     AllProfilesComponent,
     ProfileDetailsComponent,
-    ArticleDetailComponent,
     LibraryFormComponent,
     LibraryHistoryComponent,
     AdvisorProfilesFormComponent,

@@ -28,7 +28,6 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 
@@ -42,7 +41,6 @@ import { CoursesHistoryComponent } from './components/courses-history/courses-hi
     NotificationsComponent,
     UploadStatusComponent,
     ArticleHistoryComponent,
-    ArticleDetailComponent,
     ReviewerPostdetailsComponent,
     CoursesHistoryComponent,
   ],

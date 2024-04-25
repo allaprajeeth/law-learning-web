@@ -1,0 +1,55 @@
+<div *ngIf="articleRejected" class="message-status">
+  <div class="submission-status rejection">
+    <i class="icon close-icon" (click)="goBack()">&#10006;</i>
+    <h3>You have rejected the article, a notification containing the details of rejection will be sent to the author.</h3>
+  </div>
+  <div *ngIf="articleApproved" class="message-status">
+    <div class="submission-status success">
+      <i class="icon close-icon" (click)="goBack()">&#10006;</i>
+      <h3>You have approved the article, it is sent to the Reviewer for further review.</h3>
+    </div>
+  </div>
+  <div *ngIf="resubmitMessage">
+    <div class="submission-status success">
+      <i class="icon close-icon" (click)="goBack()">&#10006;</i>
+      <h3>You have requested for Re-submission of the article, a notification containing the details of re-submission will be sent to the author.</h3>
+    </div>
+
+  </div>
+
+ 
+
+</div>
+<div class="article">
+  <div class="hh" *ngIf="articleee">
+    <div *ngIf="article">
+      <button (click)="downloadFile(article.files[0].url,article.files[0].fileName)" mat-raised-button color="primary" class="download-button">Download Article</button>
+      <h2>{{ article.title }}</h2>
+      <p>{{ article.description }}</p>
+      <iframe *ngIf="fileOpened" [src]="officeViewerSrc" width="70%" height="700px" style="margin:0px 200px ;"></iframe>
+
+      <div class="comments" *ngIf="article.files && article.files.length > 0">
+        <label for="">comments:</label>
+        <textarea placeholder="Type your comment here..." [(ngModel)]="comment"></textarea>
+        <div *ngIf="commentError" class="error-message">
+          *Comments are mandatory to either reject or request resubmission of the article.
+        </div>
+      </div>
+      <div  class="button-container">
+        <button class="approve-button" (click)="approveArticle()">Approve</button>
+        <button class="reject-button" (click)="rejectArticle()">Reject</button>
+        <button class="resubmit-button" (click)="resubmitArticle()" *ngIf="isAdmin">Re-submit</button>
+      </div>
+    </div>
+    
+
+    <br />
+    <button (click)="goBack()" class="goBack-button">Go Back</button>
+  </div>
+
+  <br />
+  <br />
+  <br />
+  <div>
+
+  </div>

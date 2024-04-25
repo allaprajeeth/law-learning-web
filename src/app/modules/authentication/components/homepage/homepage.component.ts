@@ -2,14 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../article.service';
-import { Article } from '../article.model';
+import { Article } from '../../../../common/models/article.model';
 import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
 import { MatDialog } from '@angular/material/dialog';
 import { endPoints } from 'src/app/common/constants/endpoints';
-
-
-
 interface Categories {
   viewValue: string;
 }
@@ -28,24 +25,12 @@ interface ApiResponse {
 export class HomepageComponent implements OnInit{
 
   title = 'my-first-app';
-  // categories: Categories[] = [
-  //   { viewValue: 'Beginner' },
-  //   { viewValue: 'Intermediate' },
-  //   { viewValue: 'Expert' },
-  //   { viewValue: 'Student' },
-  // ];
-
   rejectedimages:string[]=[];
   mycoursesimages: string[] = [];
   availablecoursesimages: string[] = [];
-
   subscribersValues = ["10", "50", "100", "200", "500", "1000"];
-
   uploadedCoursesDurations: string[] = [];
-  availableCoursesDurations: string[] = [];
-
-  //articles
-  
+  availableCoursesDurations: string[] = []
   articles: Article[] = [];
   courses!: Course[];
   s3BaseURL: string = endPoints.s3BaseURL; 
@@ -57,6 +42,12 @@ export class HomepageComponent implements OnInit{
   randomMyCourseValues: number[] = [];
   randomRejectedValues:number[]=[];
   myCourseSubscribers: string[] = [];
+  constructor(private route: ActivatedRoute, 
+    private articleService: ArticleService, 
+    private courseService: CourseService,
+    private dialog: MatDialog,
+    private router: Router) { }
+
   
   ngOnInit(): void {
 
@@ -106,9 +97,6 @@ export class HomepageComponent implements OnInit{
       }
     );
   }
-  
-  
-
 
   onImageError(event: any) {
     event.target.src = 'assets/law.png';
@@ -118,11 +106,6 @@ export class HomepageComponent implements OnInit{
     return value < 10 ? `0${value}` : `${value}`;
   }
 
-  constructor(private route: ActivatedRoute, 
-    private articleService: ArticleService, 
-    private courseService: CourseService,
-    private dialog: MatDialog,
-    private router: Router) { }
 
   loadArticles() {
     this.articleService.getArticles().subscribe(

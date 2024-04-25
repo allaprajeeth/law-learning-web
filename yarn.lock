@@ -2146,6 +2146,11 @@
     "@material/theme" "15.0.0-canary.bc9ae6c9c.0"
     tslib "^2.1.0"
 
+"@microsoft/office-js@^1.1.93":
+  version "1.1.93"
+  resolved "https://registry.npmjs.org/@microsoft/office-js/-/office-js-1.1.93.tgz"
+  integrity sha512-78dF27gGALW9SO03xUuaCyxSAjRigeiH1WEjX3Zbw5tccE69E5L/cYMUh2H0CBHDdYS8sNSZv/YZU4SO3xH1nA==
+
 "@ngrx/effects@^16.3.0":
   version "16.3.0"
   resolved "https://registry.npmjs.org/@ngrx/effects/-/effects-16.3.0.tgz"
@@ -2453,6 +2458,11 @@
   integrity sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==
   dependencies:
     undici-types "~5.26.4"
+
+"@types/office-js@^1.0.383":
+  version "1.0.383"
+  resolved "https://registry.npmjs.org/@types/office-js/-/office-js-1.0.383.tgz"
+  integrity sha512-6f9yErjIyHe0W+kjaIr8GhD5G+CrN+BZmNbTrdzRuCpiRGqwCSpKq74WWmLw++xNTKWk4bZcfESiwQUcOgnmOQ==
 
 "@types/pdfkit@*":
   version "0.13.3"

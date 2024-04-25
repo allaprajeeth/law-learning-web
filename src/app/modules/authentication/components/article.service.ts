@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { Article } from './article.model';
+import { Article } from '../../../common/models/article.model';
 import { map } from 'rxjs/operators';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +17,14 @@ export class ArticleService {
   private selectedArticle: Article | undefined;
   setItem: any;
   private approvalResponse: any;
+  officeViewerSrc: SafeResourceUrl | string | undefined;
+  
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) {
+   
+  }
 
   getArticles(): Observable<Article[]> {
     return this.http.get<any>(this.apiUrl).pipe(
@@ -47,14 +55,22 @@ export class ArticleService {
     return this.selectedArticle;
   }
   // Inside ArticleService
-getFileContent(fileUrl: string): Observable<string> {
-  return this.http.get(fileUrl, { responseType: 'text' });
-}
+  getFileContent(fileId: number | string): Observable<string> {
+    const fileContentUrl = `${endPoints.baseURL}/files/${fileId}`;
+    return this.http.get<string>(fileContentUrl).pipe(
+      catchError((error) => {
+        console.error('Error fetching file content:', error);
+        return throwError(error);
+      })
+    );
+  }
 setApprovalResponse(response: any): void {
   this.approvalResponse = response;
 }
 getApprovalResponse(): any {
   return this.approvalResponse;
 }
+
+
 }
 
