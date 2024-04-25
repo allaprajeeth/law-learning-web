@@ -31,7 +31,7 @@
   </div>
 </div>
 
-  <div>
+  <!-- <div>
     <div class="heading" *ngIf="articles && articles.length > 0; else noArticles">
       <h1>Articles to Review</h1>
       <div class="container">
@@ -53,5 +53,27 @@
       <p>No articles available.</p>
     </ng-template>
     
+  </div> -->
+</div>
+
+<div class="main-container-admin">
+  <div class="filter-section">
+    <div class="heading">
+      <h1>Articles To Review</h1>
+    </div>
+  </div>
+
+</div>
+<div class="post-box">
+  <div class="blog-box" *ngFor="let article of articles">
+    <div class="article-item" (click)="navigateToArticleDetail(article.id)">
+      <div>
+        <h2 class="article-name">{{ (article.title.length > 50 ? article.title.slice(0, 50) + '...' : article.title) }}
+        </h2>
+        <p class="description">Description: {{ article.description}}</p>
+        <p>{{ article.createdDate | date:'mediumDate' }}</p>
+        <p class="author-name">Author : {{ article.createdBy.name }}</p>
+      </div>
+    </div>
   </div>
 </div>
