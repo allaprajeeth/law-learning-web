@@ -31,29 +31,7 @@
   </div>
 </div>
 
-  <!-- <div>
-    <div class="heading" *ngIf="articles && articles.length > 0; else noArticles">
-      <h1>Articles to Review</h1>
-      <div class="container">
-        <div class="article-list">
-
-          <div class="article-item" *ngFor="let article of articles">
-            <mat-icon>description</mat-icon>
-            <div (click)="navigateToArticleDetail(article.id)">
-              <h2 class="article-name">{{ (article.title.length > 30 ? article.title.slice(0, 30) + '...' :
-                article.title) }}</h2>
-              <p class="author-name">{{ article.createdBy.name }}</p>
-              <p>{{ article.createdDate | date:'mediumDate' }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <ng-template #noArticles>
-      <p>No articles available.</p>
-    </ng-template>
-    
-  </div> -->
+ 
 </div>
 
 <div class="main-container-admin">

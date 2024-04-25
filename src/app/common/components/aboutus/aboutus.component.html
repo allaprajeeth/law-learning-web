@@ -27,7 +27,7 @@
   <div class="carosol">
     <p-carousel [value]="advisorProfiles" [numVisible]="3" [numScroll]="3" [circular]="true">
       <ng-template let-profile pTemplate="item">
-        <div class="teacher-profile">
+        <div class="teacher-profile Advisor" >
           <div *ngIf="profile.imageURL">
             <img [src]= "s3BaseURL + profile.imageURL" id="previewImage">
           </div>
