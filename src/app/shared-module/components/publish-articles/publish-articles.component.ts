@@ -180,24 +180,7 @@ export class PublishArticlesComponent  {
     );
   }
 
-  saveChanges(){
-    const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl + `/reviews/articles/${this.articleId }`;
-    const body = {
-      rating : this.selectedRating,
-      comments : this.userComments
-      
-    };
-    this.http.patch(apiUrl,body).subscribe(
-      () => {
-        this.editGivenReviews=false
-      },
-      (error) => {
-        console.error('Error deleting rating:', error);
-      }
-    );
-    
-  }
+ 
   
 
   

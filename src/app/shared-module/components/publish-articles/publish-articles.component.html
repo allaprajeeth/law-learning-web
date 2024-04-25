@@ -1,12 +1,23 @@
 <div class="article">
     <div *ngIf="articleDetails">
-
-      <h2>{{ articleDetails.data.title }}</h2>
-      <p>Description: {{ articleDetails.data.description }}</p>
-      <p>Author: {{ articleDetails.data.author }}</p>
-      <p>ViewCount: {{ articleDetails.data.viewCount }}</p>
+      <div class="article-details">
+        <label for="" class="article-label">Title of the Article :</label>
+        <p>{{ articleDetails.data.title }}</p>
+      </div>
+      <div class="article-details">
+        <label for="" class="article-label">Description :</label>
+        <p>{{articleDetails.data.description }}</p>
+      </div>
+      <div class="article-details">
+        <label for="" class="article-label">Author :</label>
+        <p> {{articleDetails.data.createdBy.name}}</p>
+      </div>
+      <div class="article-details" style="margin-bottom: 20px;">
+        <label for="" class="article-label">View Count</label>
+        <p>{{ articleDetails.data.viewCount}}</p>
+      </div>
       <!-- <p *ngIf="storedFileContent" class="file-content">{{ storedFileContent }}</p> -->
-      <iframe *ngIf="fileOpened" [src]="officeViewerSrc" width="70%" height="600px" style="margin:0px 200px ;"></iframe>
+      <iframe *ngIf="fileOpened" [src]="officeViewerSrc" width="100%" height="600px" ></iframe>
 
     </div>
 </div>
@@ -15,8 +26,7 @@
     <div class="courseRatingContainer">
         <div class="courseRating" *ngFor="let review of reviews">
             <div class="alignment">
-                <h2>{{ review.user.name }} <span *ngIf="review.editRating"
-                        (click)="editUserReview(review)"><mat-icon>edit</mat-icon></span></h2>
+                <h2>{{ review.user.name }} </h2>
                 <div class="rating">
                     <span *ngFor="let star of stars" class="star"
                         [style.color]="star <= review.rating ? 'gold' : '#ccc'">&#9733;</span>
@@ -26,7 +36,7 @@
         </div>
     </div>
     <br>
-    <div>
+    <div class="give-rating-container">
         <button mat-raised-button color="primary" (click)="giveReview()"   style="margin-bottom: 10px;"
             class="give-rating" *ngIf="isSubscriber && !(isreviewGiven)">Give Your Rating</button>
         <div class="contentt" *ngIf="cangiverating">
@@ -45,23 +55,6 @@
             <br>
             <button mat-raised-button color="primary" class="custom-button" (click)="submitReview()">Submit </button>
         </div>
-        <div class="contentt" *ngIf="editGivenReviews">
-            <div class="close" (click)="leaveRatingClose()">&times;</div>
-            <h1 style="margin-bottom: 0px;">Edit your Ratings</h1>
-            <ng-container *ngFor="let i of stars">
-                <mat-icon (mouseenter)="selectRating(i)"
-                    [ngClass]="{ active: i <= selectedRating ,disabled: !isratingEditable }" class="staricon">
-                    star
-                </mat-icon>
-            </ng-container>
-            <div class="review">
-                <textarea id="review" [(ngModel)]="userComments" name="userReview" rows="3" cols="36"
-                    placeholder="Comments" class="mat-input custom-textarea"></textarea>
-            </div>
-            <br>
-            <button mat-raised-button color="primary" class="custom-button" (click)="saveChanges()">Save
-                Changes</button>
-        </div> 
     </div>
 </div>
 <br>

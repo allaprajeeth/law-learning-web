@@ -1,5 +1,5 @@
 .article{
-    margin:30px;
+    margin:30px 110px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -73,4 +73,17 @@
   .give-rating{
     margin-left: 0px;
   }
+  .article-details{
+    display: flex;
+    .article-label{
+      color: rgb(21, 21, 164);
+      width:150px;
+      font-weight: 600;
+      margin-left: 5px;
+    }
+   } 
   
+  
+  .give-rating-container{
+    margin-left:57px ;
+  }
