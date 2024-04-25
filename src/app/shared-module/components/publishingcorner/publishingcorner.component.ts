@@ -7,6 +7,7 @@ import { UserDetailsService } from 'src/app/common/services/user-details/user-de
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
+import { NotificationService } from 'src/app/common/services/notification/notification.service';
 
 @Component({
   selector: 'app-publishingcorner',
@@ -19,19 +20,18 @@ export class PublishingcornerComponent implements OnInit {
   searchTerm: string = '';
   isVisible: boolean = false;
   isAdmin: boolean = false;
-
-
   userRole: string | undefined
-
   role:string | undefined;
-
+  deletePopup =false
+  articleToDeleteId : number |undefined
   constructor(
     private fetcharticleService: FetcharticlesService,
     private route: ActivatedRoute,
     private router: Router,
     public dialog: MatDialog,
     private http: HttpClient,
-    private authService: AuthTokenService
+    private authService: AuthTokenService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
@@ -111,18 +111,33 @@ export class PublishingcornerComponent implements OnInit {
   matchesBaseUrl(): any {
     return this.router.url === '/article';
   }
-  deleteArticle(articleId:number){
+ 
+
+  deleteArticlePopup(articleId:number) {
+    this.deletePopup = true;
+    this.articleToDeleteId = articleId;
+  }
+  
+  confirmDelete(articleId:number) {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl +`/articles/${articleId }`;
     this.http.delete(apiUrl).subscribe(
       () => {
         console.log('Article deleted successfully');
+        this.notificationService.notify(`Article deleted successfully`);
+        
       },
       (error) => {
         console.error('Error deleting library:', error);
       }
     );
+    this.closeDeletePopup();
   }
+  
+  closeDeletePopup() {
+    this.deletePopup = false;
+  }
+  
 
 }
 

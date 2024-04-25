@@ -1,5 +1,5 @@
 .article{
-    margin:30px;
+  margin:30px 110px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -8,7 +8,7 @@
   }
   .download-button{
     position: relative;
-    left:1000px
+    left:910px
   }
   .button-container {
       display: flex;
@@ -71,7 +71,7 @@
     }
    
   .rejection-message {
-    background-color: #f2dede; /* Red background for rejection, you can customize */
+    background-color: hsl(0, 43%, 91%); /* Red background for rejection, you can customize */
   }
   .error-message{
    
@@ -80,6 +80,7 @@
   }
   .comments{
     display: table-caption;
+    
     margin-top: 30px;
     label{
        font-size: 15px;
@@ -95,6 +96,7 @@
     padding: 20px;
     margin: 60px;
     border-radius: 8px;
+    font-size: 24px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
@@ -111,3 +113,29 @@
     }
     
   }
+  // .review-status{
+  //   font-weight: bold;
+  // }
+  .comments-label{
+    color: red;
+    font-weight: 800;
+  }
+  .article-labels{
+    color: blue;
+   
+  }
+  span{
+    width:150px;
+    
+  }
+ .article-details{
+  display: flex;
+  .article-label{
+    color: rgb(21, 21, 164);
+    width:150px;
+    font-weight: 600;
+    margin-left: 5px;
+  }
+ } 
+
+  

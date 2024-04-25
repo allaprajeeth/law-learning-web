@@ -11,14 +11,24 @@
 <div class="post-box">
   <div class="blog-box" *ngFor="let article of filteredArticles" >
     <div class="article-item">
-      <div>
-        <h2 class="article-name" (click)="navigateToArticleDetail(article.id)">{{ article.title }}</h2>
+      <div (click)="navigateToArticleDetail(article.id)">
+        <h2 class="article-name" >{{ article.title }}</h2>
         <p class="description">Description: {{ article.subject }}</p>
         <p>{{ article.date }}</p>
         <p>View Count: {{ article.viewCount }}</p>
         <p>Author: {{ article.author }}</p>
       </div>
+      <button (click)="deleteArticlePopup(article.id)" *ngIf="isAdmin">Delete Article</button>
+      <div class="delete-popup" *ngIf="deletePopup && article.id === articleToDeleteId">
+        <div class="popup-content">
+          <span class="close" (click)="closeDeletePopup()">X</span>
+          <p>Are you sure you want to delete the Article</p>
+          <div class="buttons">
+            <button class="btn-ok" (click)="confirmDelete(article.id)">OK</button>
+            <button class="btn-close" (click)="closeDeletePopup()">Cancel</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <button (click)="deleteArticle(article.id)" *ngIf="isAdmin">Delete Article</button>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<div class="article-form" >
+<div class="article-form"  *ngIf="displayform; else messageSection">
     <h2>Article Form</h2>
     <form [formGroup]="articleForm" (submit)="onSubmit()">
       <label for="name">Title of the Article:</label>
@@ -18,4 +18,14 @@
       </div>
     </form>   
   </div>
+
+  <ng-template #messageSection>
+    <div class="message-status"  >
+      <div class="submission-status">
+        <i class="icon close-icon" (click)="closeMessage()">&#10006;</i>
+        <h3>You have successfully submitted your article, it will be reviewed and published sequentially. You can check the status of your article in the My Publishings page within profile section.</h3>
+      </div>
+    </div>
+  </ng-template>
+  
    

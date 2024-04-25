@@ -1,52 +1,59 @@
-<div *ngIf="articleRejected" class="message-status">
-  <div class="submission-status rejection">
-    <i class="icon close-icon" (click)="goBack()">&#10006;</i>
-    <h3>You have rejected the article, a notification containing the details of rejection will be sent to the author.</h3>
-  </div>
-  <div *ngIf="articleApproved" class="message-status">
-    <div class="submission-status success">
-      <i class="icon close-icon" (click)="goBack()">&#10006;</i>
-      <h3>You have approved the article, it is sent to the Reviewer for further review.</h3>
-    </div>
-  </div>
-  <div *ngIf="resubmitMessage">
-    <div class="submission-status success">
-      <i class="icon close-icon" (click)="goBack()">&#10006;</i>
-      <h3>You have requested for Re-submission of the article, a notification containing the details of re-submission will be sent to the author.</h3>
-    </div>
+<div class="message-status" *ngIf="message; else articleSection">
+  <div class="submission-status">
+    <i class="icon close-icon" (click)="closeMessage()">&#10006;</i>
+    <h3>{{ message }}</h3>
   </div>
 </div>
 
-<div class="article" *ngIf="!articleApproved || !rejectArticle || !resubmitMessage">
-  <div class="hh" *ngIf="articleee">
-    <div *ngIf="article">
-      <button (click)="downloadFile(article.files[0].url,article.files[0].fileName)" mat-raised-button color="primary" class="download-button">Download Article</button>
-      <h2>{{ article.title }}</h2>
-      <p>{{ article.description }}</p>
-      <iframe *ngIf="fileOpened" [src]="officeViewerSrc" width="70%" height="700px" style="margin:0px 200px ;"></iframe>
+<ng-template #articleSection>
+  <div class="article" *ngIf="!articleApproved || !rejectArticle || !resubmitMessage">
+    <div class="hh" *ngIf="articleee">
+      <div *ngIf="article">
+        <button (click)="downloadFile(article.files[0].url,article.files[0].fileName)" mat-raised-button color="primary"
+          class="download-button">Download Article</button>
+          <div class="article-details">
+            <label for="" class="article-label">Title of the Article :</label>
+            <p>{{ article.title }}</p>
+          </div>
+          <div class="article-details">
+            <label for="" class="article-label">Description :</label>
+            <p>{{ article.description }}</p>
+          </div>
+          <div class="article-details">
+            <label for="" class="article-label">Author :</label>
+            <p> {{article.createdBy.name}}</p>
+          </div>
+          <div class="article-details" style="margin-bottom: 20px;">
+            <label for="" class="article-label">Review Status:</label>
+            <p>{{ article.reviewStatus }}</p>
+          </div>
+        
 
-      <div class="comments" *ngIf="article.files && article.files.length > 0">
-        <label for="">comments:</label>
-        <textarea placeholder="Type your comment here..." [(ngModel)]="comment"></textarea>
+
+        <iframe *ngIf="fileOpened" [src]="officeViewerSrc" width=100% height="700px"
+        style="border:none;"></iframe>
+
+        <div class="comments" *ngIf="article.files && article.files.length > 0">
+          <label for="" class="comments-label">Comments:</label>
+          <textarea placeholder="Type your comment here..." [(ngModel)]="comment" rows="4" cols="120"
+            class="comments-textarea"></textarea>
+        </div>
         <div *ngIf="commentError" class="error-message">
           *Comments are mandatory to either reject or request resubmission of the article.
         </div>
+        <div class="button-container">
+          <button class="approve-button" (click)="approveArticle()">Approve</button>
+          <button class="reject-button" (click)="rejectArticle()">Reject</button>
+          <button class="resubmit-button" (click)="resubmitArticle()" *ngIf="isAdmin">Re-submit</button>
+        </div>
       </div>
-      <div  class="button-container">
-        <button class="approve-button" (click)="approveArticle()">Approve</button>
-        <button class="reject-button" (click)="rejectArticle()">Reject</button>
-        <button class="resubmit-button" (click)="resubmitArticle()" *ngIf="isAdmin">Re-submit</button>
-      </div>
+      <br />
+      <button (click)="goBack()" class="goBack-button">Go Back</button>
     </div>
-    
-
-    <br />
-    <button (click)="goBack()" class="goBack-button">Go Back</button>
   </div>
+</ng-template>
 
-  <br />
-  <br />
-  <br />
-  <div>
 
-  </div>
+<br />
+<br />
+<br />

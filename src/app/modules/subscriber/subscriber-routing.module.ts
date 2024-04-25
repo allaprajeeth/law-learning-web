@@ -24,10 +24,10 @@ import { SidenavtermsconditionsComponent } from 'src/app/common/components/siden
 import { LibraryComponent } from 'src/app/common/components/library/library.component';
 import { AdvisorDetailsComponent } from 'src/app/common/components/advisor-details/advisor-details.component';
 import { InstructorinfoComponent } from '../instructor/components/instructorinfo/instructorinfo.component';
-import { UploadedarticlesComponent } from './components/uploadedarticles/uploadedarticles.component';
 import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
+import { UploadedarticlesstatusComponent } from 'src/app/shared-module/components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 
 const routes: Routes = [
   {
@@ -63,10 +63,6 @@ const routes: Routes = [
     path: 'contactus',
     component:SidenavContactusComponent
   },
-  // {
-  //   path: 'delete-account',
-  //   component: DeleteAccountComponent,
-  // },
   {
     path: 'delete-account',
       component: DeleteAccountComponent,
@@ -150,17 +146,12 @@ const routes: Routes = [
     },
 {
     path: 'uploadedarticle/:id',
-    component: UploadedarticlesComponent,
+    component: UploadedarticlesstatusComponent,
   },
   {
     path:'libraries/:id',
     component:LibraryByIdComponent
   }
-
-  //  {
-  //   path:'statusarticlepage',
-  //   component:StatusarticlepageComponent
-  //  },
 ];
 
 @NgModule({
