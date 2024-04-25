@@ -5,7 +5,7 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
-import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { ArticleDetailsComponent } from 'src/app/common/components/article-details/article-details.component';
 import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
@@ -97,7 +97,7 @@ const routes: Routes = [
     component: ArticlelistHistoryComponent
   },
   { path: 'detail-articles/:id', 
-  component: ArticleDetailComponent 
+  component: ArticleDetailsComponent
 },
 {
   path: 'publish-articles/:id',

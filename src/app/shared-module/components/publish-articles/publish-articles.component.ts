@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 import { Ratings } from 'src/app/common/models/rating.model';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-publish-articles',
@@ -34,6 +35,8 @@ export class PublishArticlesComponent  {
   emailId: string | undefined 
   isreviewGiven:boolean|undefined
   isReviewsAvailable:boolean|undefined
+  officeViewerSrc: SafeResourceUrl | string | undefined;
+  fileOpened: boolean = false;
   constructor(
     private route: ActivatedRoute,
     private fetcharticle: FetcharticlesService,
@@ -41,6 +44,7 @@ export class PublishArticlesComponent  {
     public dialog: MatDialog,
     private location: Location,
     private authService: AuthTokenService,
+    private sanitizer: DomSanitizer
   ) {
     this.stars = Array(5).fill(0).map((_, i) => i + 1);
     const userDetails = this.authService.getUserDetails();
@@ -98,20 +102,23 @@ export class PublishArticlesComponent  {
     this.userComments = review.comments;
     this.editUserArtcileId=review.id
    }
-   openFile(fileUrl?: string, fileName?: string): void {
-    this.http.get(endPoints.baseURL + `/downloadFile?path=${fileUrl}`, { responseType: 'text' })
-      .subscribe(
-        (data: string) => {
-          this.storedFileContent = data;
-          const blob = new Blob([data], { type: 'application/octet-stream' });
-          const link = document.createElement('a');
-          link.href = window.URL.createObjectURL(blob);
-        },
-        (error) => {
-          console.error('Error downloading file:', error);
-        }
-      );
+   openFile(fileUrl?: string): void {
+    if (fileUrl) {
+      const downloadUrl = endPoints.s3BaseURL + fileUrl;
+      console.log(fileUrl);
+
+      const officeViewerUrl = `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(
+        downloadUrl
+      )}`;
+      const safeUrl: SafeResourceUrl =
+        this.sanitizer.bypassSecurityTrustResourceUrl(officeViewerUrl);
+      this.officeViewerSrc = safeUrl;
+      this.fileOpened = true;
+    } else {
+      console.error('File URL is undefined.');
+    }
   }
+
   loadArticleDetails(): void {
     this.loading = true;
     this.error = null;
@@ -119,7 +126,7 @@ export class PublishArticlesComponent  {
       this.fetcharticle.getArticleDetails(this.articleId).subscribe(
         (response) => {
           this.articleDetails = response || null;
-          this.openFile(this.articleDetails?.data.files[0]?.url, this.articleDetails?.data.files[0]?.fileName);
+          this.openFile(this.articleDetails?.data.files[0]?.url);
         },
         (error) => {
           console.error('Error fetching article details:', error);

@@ -70,6 +70,7 @@ import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-
 import { LibraryByIdComponent } from './common/components/library-by-id/library-by-id.component';
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
 import { DeleteAccountComponent } from './common/components/delete-account/delete-account.component';
+import { ArticleDetailsComponent } from './common/components/article-details/article-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -105,6 +106,7 @@ import { DeleteAccountComponent } from './common/components/delete-account/delet
     LibraryByIdComponent,
     RevertDeleteComponent,
     DeleteAccountComponent,
+    ArticleDetailsComponent,
   ],
   imports: [
     CarouselModule,

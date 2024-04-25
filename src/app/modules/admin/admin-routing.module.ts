@@ -13,7 +13,7 @@ import { CoursesHistoryComponent } from './components/courses-history/courses-hi
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
 import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
-import { ArticleDetailComponent } from './components/article-detail/article-detail.component';
+import { ArticleDetailsComponent } from 'src/app/common/components/article-details/article-details.component';
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
 import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
@@ -122,7 +122,7 @@ const routes: Routes = [
     component:DashboardNotificationsComponent
   },
   { path: 'detail-articles/:id', 
-  component: ArticleDetailComponent
+  component: ArticleDetailsComponent
 },
 {
   path: 'publish-articles/:id',
