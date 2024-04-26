@@ -163,20 +163,45 @@ export class VideoplayerComponent {
 
   approveVideo(subSection: any) {
     const courseId = this.course.id;
+    const subsectionId = subSection.id;
+    let sectionId: number | null = null;
+  
+    for (const section of this.course.sections) {
+      const foundSubSection = section.subSections.find((sub: { id: any; }) => sub.id === subsectionId);
+      if (foundSubSection) {
+        sectionId = section.id;
+        break;
+      }
+    }
+    if (sectionId === null) {
+      // console.error('SectionId:', subsectionId);
+      return;
+    }
+    console.log('sectionId:', sectionId);
+    console.log('subsectionId:', subsectionId);
+  
     const videoInfo = {
-      title: subSection.title,
-      status: 'APPROVED'
+      sectionId: sectionId,
+      subSections: [{
+        subSectionId: subsectionId,
+        status: 'APPROVED',
+        summary: ''  
+      }]
     };
+    
     this.courseService.sendReview(courseId, videoInfo).subscribe(
       response => {
         console.log('Video approved:', response);
-        // Update UI or do additional actions
       },
       error => {
         console.error('Error approving video:', error);
       }
     );
   }
+  
+  
+  
+  
   
   
   toggleCommentBox(subSection: any) {
@@ -187,23 +212,59 @@ export class VideoplayerComponent {
   sendComment(subSection: any) {
     if (subSection.comment) {
       const courseId = this.course.id;
-      const videoInfo = {
-        title: subSection.title,
-        comment: subSection.comment,
-        status: 'REJECTED'
-      };
+      const subsectionId = subSection.id;
+
+      // Find the section containing the subSection
+  let sectionId: number | null = null;
+
+  for (const section of this.course.sections) {
+    const foundSubSection = section.subSections.find((sub: { id: any; }) => sub.id === subsectionId);
+
+    if (foundSubSection) {
+      sectionId = section.id;
+      break;
+    }
+  }
+
+  if (sectionId === null) {
+    console.error('SectionId not found for subsectionId:', subsectionId);
+    return;
+  }
+
+  console.log('sectionId:', sectionId);
+  console.log('subsectionId:', subsectionId);
+
+      // const videoInfo = {
+      //   sectionId: subSection.sectionId,  
+      //   subSectionId: subSection.id,
+      //   status: 'REJECTED',
+      //   summary: subSection.comment  
+      // };
+      // Create a new payload containing only the rejected sub-section
+  const videoInfo = {
+    // courseId: courseId,
+    sections: {
+      sectionId: sectionId,
+      subSections: [{
+        subSectionId: subsectionId,
+        status: 'REJECTED',
+        summary: subSection.comment  
+      }]
+    }
+  };
+      
       this.courseService.sendReview(courseId, videoInfo).subscribe(
         response => {
           console.log('Comment sent:', response);
-          // Update UI or do additional actions
         },
         error => {
           console.error('Error sending comment:', error);
         }
       );
-
+  
       subSection.showCommentBox = false;
     }
   }
+  
 }
  

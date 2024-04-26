@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output  } from '@angular/core';
 import { PopupService } from 'src/popup.service';
 import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -38,11 +38,14 @@ export class FirstnavComponent {
     this.userDetailsSubscription = this.authService.userDetails$.subscribe((userDetails: UserModel | null)  => {
       this.userRole = userDetails?.role;
       this.name = userDetails?.name;
+      console.log('Name:', this.name);
       this.email = userDetails?.email;
       this.phone = userDetails?.phone;
+      this.nameChange.emit(this.name);
     });
   }
- 
+  @Output() nameChange = new EventEmitter<string>();
+
   get getRole(): string {
     if (this.userDetails) {
       return this.userDetails.role;

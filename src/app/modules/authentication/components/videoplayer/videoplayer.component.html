@@ -23,7 +23,7 @@
       </div>
       <mat-divider></mat-divider>
       <mat-accordion class="sidebar-content">
-        <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel
+        <mat-expansion-panel *ngFor="let section of course?.sections; let i = index" #myExpansionPanel
           [attr.id]="'expansion-panel-' + i">
           <mat-expansion-panel-header>
             <mat-panel-title>

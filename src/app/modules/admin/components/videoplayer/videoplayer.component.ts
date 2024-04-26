@@ -264,7 +264,7 @@ export class VideoplayerComponent {
   }
 
   playVideo(sectionIndex: number, subSectionIndex: number) {
-    const section = this.course.sections[sectionIndex];
+    const section = this.course?.sections[sectionIndex];
     const subSection = section.subSections[subSectionIndex];
     const videoUrl =
       'https://elearning-stagging.s3.ap-south-1.amazonaws.com/' +

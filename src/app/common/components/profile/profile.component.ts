@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 import { UserModel } from '../../models/user.model';
@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   selectedFileName: string | null = null;
   userDetailsSubscription: any;
   name: string | undefined;
+  @Input() displayName: string | undefined;
+ 
   constructor(private http: HttpClient, private authTokenService: AuthTokenService) { }
  
 
@@ -27,6 +29,7 @@ export class ProfileComponent implements OnInit {
     const user = this.authTokenService.getUserDetails();
     if (user)
       this.imageUrl = user.imageURL ? endPoints.s3BaseURL + user.imageURL : user.imageURL;
+    console.log('DisplayName in ProfileComponent:', this.displayName);
   }
   onFileSelected(event: any): void {
  
