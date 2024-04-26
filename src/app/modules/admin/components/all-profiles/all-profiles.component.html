@@ -31,6 +31,13 @@
 
 <table class="profile-table" *ngIf="selectedRole === 'ADVISORS'">
   <tbody>
+    <tr class="profile-item">
+      <th></th>
+      <th class="align">Username</th>
+      <th style="font-size: large;">Profile</th>
+      <th style="font-size: large;">Status</th>
+      <!-- class="align" -->
+    </tr>
     <tr *ngFor="let profile of advisorProfiles" class="profile-item" (click)="navigateToAdvisorProfiles(profile.id)">
       <td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
       <td>

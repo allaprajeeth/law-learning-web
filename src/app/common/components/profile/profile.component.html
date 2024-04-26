@@ -14,6 +14,7 @@
                 </div>
                 <hr />
                 <div class="image-box">
+                    <h3 [(ngModel)]="name" readonly>Profile name:  {{name | titlecase }}</h3>
                     <h2>Image preview</h2>
                     <img  *ngIf="imageUrl" [src]="imageUrl" alt="Image Preview" id="previewImage">
                     <p>{{ imageUrl }}</p>    
