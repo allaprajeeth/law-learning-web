@@ -19,6 +19,7 @@ interface ApiResponse {
 })
 export class HomepageComponent implements OnInit {
   approvedArticles: Article[] = [];
+
   allArticles: any[] = [];
   courses!: Course[];
   s3BaseURL: string = endPoints.s3BaseURL; 
