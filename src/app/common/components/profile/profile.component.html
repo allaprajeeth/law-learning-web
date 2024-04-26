@@ -12,16 +12,17 @@
                         <mat-slide-toggle><span class="text">Make my profile public</span></mat-slide-toggle>
                     </div>
                 </div>
+                <!-- <div>{{ displayName }}</div> -->
                 <hr />
                 <div class="image-box">
-                    <h2>Image preview</h2>
+                    <h2>{{ displayName }}</h2>
                     <img  *ngIf="imageUrl" [src]="imageUrl" alt="Image Preview" id="previewImage">
                     <p>{{ imageUrl }}</p>    
                     <div class="upload-btn-wrapper">
                         <h3>Upload Image</h3>
                         <label for="imageInput" class="custom-file-input">Choose File</label>
                         <input type="file" id="imageInput" accept="image/*" (change)="onFileSelected($event)">
-                        <p>{{ selectedFileName }}</p>
+                        <!-- <p>{{ selectedFileName }}</p> -->
                     </div>
                 </div>
                 <br />

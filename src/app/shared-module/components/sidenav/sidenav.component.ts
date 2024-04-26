@@ -69,7 +69,6 @@ export class SidenavComponent {
       { name: 'My Publishings', route: '/subscriber/articleHistory' },
       { name: 'Contact Us', route: '/subscriber/contactus' },
       { name: 'Terms & Conditions', route: '/subscriber/termsandconditions' },
-      { name: 'Deleting-account', route: '/subscriber/deleting-account' },
     ],
     INSTRUCTOR: [
       {name:'Create your profile', route:'/instructor/create-profile' },
@@ -80,7 +79,6 @@ export class SidenavComponent {
       { name: 'Courses Status', route: '/instructor/uploadstatus' },
       { name: 'Contact Us', route: '/instructor/termsandconditions' },
       { name: 'Terms & Conditions', route: '/instructor/contactus' },
-      { name: 'Deleting-account', route: '/instructor/deleting-account' },
     ],
     REVIEWER: [
       { name: 'Profile', route: '/reviewer/profile' },
@@ -90,7 +88,6 @@ export class SidenavComponent {
       { name: 'Article History', route: '/reviewer/articleHistory' },
       { name: 'Contact Us', route: '/reviewer/contactus' },
       { name: 'Terms & Conditions', route: '/reviewer/termsandconditions' },
-      { name: 'Deleting-account', route: '/reviewer/deleting-account' },
     ],
     CONTENTMANAGER: [
       { name: 'Profile ', route: '/authentication/profile' },
@@ -103,7 +100,6 @@ export class SidenavComponent {
         name: 'Terms & Conditions',
         route: '/authentication/termsandconditions',
       },
-      { name: 'Deleting-account', route: '/authentication/deleting-account' },
     ],
     ADMIN: [
       { name: 'Profile', route: '/admin/profile' },
@@ -114,7 +110,6 @@ export class SidenavComponent {
       { name: 'Article History', route: '/admin/article-history' },
       { name: 'Contact Us', route: '/admin/contactus' },
       { name: 'Terms & Conditions', route: '/admin/termsandconditions' },
-      { name: 'Deleting-account', route: '/admin/deleting-account' },
     ],
   };
 
