@@ -226,6 +226,22 @@
                             <mat-icon class="black-icon">add</mat-icon>Section
                         </button>
                     </div>
+                    <div class="form-group">
+                        <label>Does this course have test ?</label>
+                        <div class="radio-group">
+                            <input type="radio" id="test_yes" name="test" value="yes"
+                            formControlName="test">
+                            <label for="test_yes" class="skill">Yes</label>
+
+                            <input type="radio" id="test_no" name="test" value="no"
+                            formControlName="test">
+                            <label for="test_no" class="skill">No</label>  
+                        </div>
+                    </div>
+                    <div *ngIf="courseForm.get('test')?.value === 'yes'">
+                        <app-quiztest></app-quiztest>
+                    </div>
+                      
                     <div class="button-container">
                         <button type="button" (click)="onPrevious(stepper)" class="enabled-button">
                             <mat-icon class="black-icon">keyboard_arrow_left</mat-icon>Previous

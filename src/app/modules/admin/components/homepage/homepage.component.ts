@@ -19,8 +19,7 @@ interface ApiResponse {
 })
 export class HomepageComponent implements OnInit {
   approvedArticles: Article[] = [];
-
-  allArticles: any[] = [];
+  allArticles:  Article[] = [];
   courses!: Course[];
   s3BaseURL: string = endPoints.s3BaseURL; 
 
@@ -42,6 +41,7 @@ export class HomepageComponent implements OnInit {
     this.adminService.getApprovedArticles().subscribe(
       (response) => {
         this.approvedArticles = response.data.content || [];
+        this.allArticles = response.data.content || [];
       },
       (error) => {
         console.error('Error fetching approved articles:', error);
@@ -50,15 +50,30 @@ export class HomepageComponent implements OnInit {
   }
   filterByCategory(category: string) {
     if (category === 'contentManager') {
-      this.approvedArticles = this.approvedArticles.filter(article => {
+      
+      this.approvedArticles = this.allArticles.filter(article => {
         return (
           article.reviewStatus == 'CONTENT_MANAGER_REJECTED' ||
-          article.reviewStatus === 'CONTENT_MANAGER_ACCEPT'
+          article.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'
         );
       });
+      console.log("articles from content manager",this.approvedArticles.length)
   
-    } else {
+    }
+    else if(category ==="reviewer") {
+      console.log(category)
       this.approvedArticles = this.approvedArticles;
+      this.approvedArticles = this.allArticles.filter(article => {
+        return (
+          article.reviewStatus == 'REVIEWER_REJECTED' ||
+          article.reviewStatus === 'REVIEWER_ACCEPTED'
+        );
+      });
+      console.log("articles from reviewer ",this.approvedArticles.length)
+    }
+    else {
+      console.log(category)
+      this.approvedArticles = this.allArticles;
     }
   }  
   navigateToArticleDetail(articleId: number): void {

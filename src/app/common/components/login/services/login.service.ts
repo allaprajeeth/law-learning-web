@@ -43,7 +43,13 @@ export class LoginService {
       catchError((errorResponse: any) => {
         if (errorResponse instanceof HttpErrorResponse) {
           this.loggingService.log(errorResponse?.error?.error.message);
-          this.notificationService.notify(errorResponse?.error?.error.message);
+          if(errorResponse?.error?.error.message == "User not found."){
+            this.notificationService.notify("Invalid Credentials");
+          }
+          else{
+            this.notificationService.notify(errorResponse?.error?.error.message);
+          }
+          
         }
         return EMPTY;
       })
@@ -100,7 +106,7 @@ export class LoginService {
       catchError((errorResponse: any) => {
         if (errorResponse instanceof HttpErrorResponse) {
           this.loggingService.log(errorResponse?.error?.error.message);
-          this.notificationService.notify(errorResponse?.error?.error.message);
+          this.notificationService.notify("Invalid OTP");
         }
         return EMPTY;
       })

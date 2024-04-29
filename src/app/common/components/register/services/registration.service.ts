@@ -53,7 +53,7 @@ export class RegistrationService {
         if (errorResponse instanceof HttpErrorResponse) {
           // console.log("@@error", errorResponse);
           this.loggingService.log(errorResponse?.error?.error.message);
-          this.notificationService.notify(errorResponse?.error?.error.message);
+          this.notificationService.notify("Invalid OTP");
              
         }
         return EMPTY;
