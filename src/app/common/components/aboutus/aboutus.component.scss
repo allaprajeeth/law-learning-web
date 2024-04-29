@@ -64,13 +64,15 @@
     margin-left: 6%;
   }
   .avatar {
-    width: 130px;
-    height: 130px;
+    // width: 130px;
+    // height: 130px;
     // margin-left: 71px;
-
+    width: 100px;
+    height: 100px;
     display: flex;
     margin:0 auto;
     // float: left;
+    object-fit: cover;
   }
   a{
     cursor: pointer;
@@ -92,11 +94,12 @@
     font-weight: 900;
   }
   #previewImage {
-    max-width: 200px;
-    max-height: 100px;
+    width: 100px;
+    height: 100px;
     // margin-left: 79px;
     display: flex;
     margin:0 auto;
+    object-fit: cover;
   }
   .Advisor{
 height: 310px;

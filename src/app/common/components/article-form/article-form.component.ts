@@ -39,8 +39,6 @@ export class ArticleFormComponent {
   }
   ngOnInit() {
     this.getUserArticles();
-    // const userDetails = this.userService.getUserDetails();
-    // console.log("qwertyu",userDetails); // Do something with userDetails
     this.userDetailsSubscription = this.authService.userDetails$.subscribe(
       (userDetails: UserModel | null) => {      
         this.name = userDetails?.name;
