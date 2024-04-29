@@ -13,17 +13,24 @@ export class ProfileComponent implements OnInit {
   selectedFile: File | null = null;
   imageUrl: string | null = null;
   selectedFileName: string | null = null;
+  userDetailsSubscription: any;
+  name: string | undefined;
   @Input() displayName: string | undefined;
  
   constructor(private http: HttpClient, private authTokenService: AuthTokenService) { }
  
+
   ngOnInit(): void {
+    this.userDetailsSubscription = this.authTokenService.userDetails$.subscribe(
+      (userDetails: UserModel | null) => {      
+        this.name = userDetails?.name;
+      }
+    );
     const user = this.authTokenService.getUserDetails();
     if (user)
       this.imageUrl = user.imageURL ? endPoints.s3BaseURL + user.imageURL : user.imageURL;
     console.log('DisplayName in ProfileComponent:', this.displayName);
   }
- 
   onFileSelected(event: any): void {
  
     if (event.target.files && event.target.files.length > 0) {

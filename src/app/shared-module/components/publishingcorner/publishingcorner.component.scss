@@ -72,12 +72,12 @@
     top: 80px;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
 
-    // &:hover {
-    //   box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
-    //   transform: scale(1.05);
-    //   backface-visibility: hidden;
-    //   cursor: pointer;
-    // }
+    &:hover {
+      // box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
+      // transform: scale(1.05);
+      // backface-visibility: hidden;
+      cursor: pointer;
+    }
 
     .date {
       position: absolute;

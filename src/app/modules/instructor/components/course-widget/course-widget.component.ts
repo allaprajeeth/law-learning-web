@@ -39,6 +39,8 @@ export class CourseWidgetComponent {
 	currentFile?: File;
 	progress: number = 0;
 
+	test: string | undefined;
+
 	constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver,
 		private courseService: CoursesService, private route: ActivatedRoute,private snackBar: MatSnackBar ,public dialog: MatDialog,
 		private fileUploadService: FileUploadService) {
@@ -75,7 +77,8 @@ export class CourseWidgetComponent {
 			language: ['English', Validators.required],
 			courseFile: [null],
 			submitted: [false],
-			sections: this._formBuilder.array([])
+			sections: this._formBuilder.array([]),
+			test: [''] 
 		});
 	}
 	
