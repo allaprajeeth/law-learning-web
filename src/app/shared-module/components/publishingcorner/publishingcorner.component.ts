@@ -124,6 +124,7 @@ export class PublishingcornerComponent implements OnInit {
     this.http.delete(apiUrl).subscribe(
       () => {
         console.log('Article deleted successfully');
+        this.filteredArticles = this.filteredArticles.filter(article => article.id !== articleId);
         this.notificationService.notify(`Article deleted successfully`);
         
       },
