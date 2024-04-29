@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationAlertComponent } from 'src/app/shared-module/components/confirmation-alert/confirmation-alert.component';
 import { FileUploadService } from 'src/app/common/services/file-upload/file-upload.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
 	selector: 'app-course-widget',
@@ -41,7 +42,7 @@ export class CourseWidgetComponent {
 	test: string | undefined;
 
 	constructor(private _formBuilder: FormBuilder, breakpointObserver: BreakpointObserver,
-		private courseService: CoursesService, private route: ActivatedRoute, public dialog: MatDialog,
+		private courseService: CoursesService, private route: ActivatedRoute,private snackBar: MatSnackBar ,public dialog: MatDialog,
 		private fileUploadService: FileUploadService) {
 		this.stepperOrientation = breakpointObserver
 			.observe('(min-width: 800px)')
@@ -414,6 +415,12 @@ export class CourseWidgetComponent {
 					if (this.courseId && isNumber(Number(this.courseId))) {
 						this.patchCourse();
 					}
+					// Show snackbar message
+					this.snackBar.open('Submitted successfully', 'Close', {
+						duration: 5000,
+						verticalPosition: 'top'
+
+					  });
 				}
 			}
 		});

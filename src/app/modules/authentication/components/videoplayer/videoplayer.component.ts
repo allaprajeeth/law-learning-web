@@ -7,6 +7,11 @@ import { PdfService } from 'src/app/sharedService.service';
 import { Section } from '../../../../common/models/section.model';
 import { NgModel } from '@angular/forms';
 import { CourseService } from 'src/app/common/services/course.service';
+import { SubSection } from 'src/app/common/models/sub-sections.model';
+import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
+import { UserRole } from 'src/app/common/enums/role.enums';
+import { ReviewStatus } from 'src/app/common/enums/status.enums';
+import { MatSnackBar } from '@angular/material/snack-bar';
  
 @Component({
   selector: 'app-videoplayer',
@@ -44,7 +49,9 @@ export class VideoplayerComponent {
     private el: ElementRef,
     private testService: PdfService,
     private route: ActivatedRoute,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private authService: AuthTokenService,
+    private snackBar: MatSnackBar
   ) {
     this.testService.setIsTestAvailable(true);
     this.isTestAvailable = this.testService.isTestAvailable;
@@ -161,47 +168,48 @@ export class VideoplayerComponent {
     this.expansionPanels.toArray()[sectionIndex].open();
   }
 
-  approveVideo(subSection: any) {
+  showSubsciptionApprovalSection(subSection: SubSection) {
+    const role = this.authService.getUserRole();
+    let roleEnum: UserRole = UserRole[role as keyof typeof UserRole];
+    if(roleEnum === UserRole.CONTENTMANAGER) {
+      let statusEnum: ReviewStatus = ReviewStatus[subSection.reviewStatus as keyof typeof ReviewStatus];
+      return statusEnum === ReviewStatus.SUBMITTED;
+    } else if(roleEnum === UserRole.ADMIN) {
+      let statusEnum: ReviewStatus = ReviewStatus[subSection.reviewStatus as keyof typeof ReviewStatus];
+      return statusEnum === ReviewStatus.CONTENT_MANAGER_ACCEPTED 
+            || statusEnum === ReviewStatus.CONTENT_MANAGER_REJECTED
+            || statusEnum === ReviewStatus.REVIEWER_ACCEPTED
+            || statusEnum === ReviewStatus.REVIEWER_REJECTED
+            || statusEnum === ReviewStatus.REVIEWER_RESUBMIT;
+    } else if(roleEnum === UserRole.REVIEWER) {
+      let statusEnum: ReviewStatus = ReviewStatus[subSection.reviewStatus as keyof typeof ReviewStatus];
+      return statusEnum === ReviewStatus.CM_ADMIN_ACCEPTED;
+    }
+    return false;
+  }
+
+  approveVideo(section: Section, subSection: SubSection, status: string) {
     const courseId = this.course.id;
-    const subsectionId = subSection.id;
-    let sectionId: number | null = null;
   
-    for (const section of this.course.sections) {
-      const foundSubSection = section.subSections.find((sub: { id: any; }) => sub.id === subsectionId);
-      if (foundSubSection) {
-        sectionId = section.id;
-        break;
-      }
-    }
-    if (sectionId === null) {
-      // console.error('SectionId:', subsectionId);
-      return;
-    }
-    console.log('sectionId:', sectionId);
-    console.log('subsectionId:', subsectionId);
-  
-    const videoInfo = {
-      sectionId: sectionId,
-      subSections: [{
-        subSectionId: subsectionId,
-        status: 'APPROVED',
-        summary: ''  
-      }]
+    const body = {
+      sectionId: section.id,
+      subSectionId: subSection.id,
+      status: status,
+      summary: ''
     };
     
-    this.courseService.sendReview(courseId, videoInfo).subscribe(
+    this.courseService.sendReview(courseId, body).subscribe(
       response => {
         console.log('Video approved:', response);
+        this.showSuccessPopup('Course Video approved successfully.');
       },
       error => {
         console.error('Error approving video:', error);
       }
     );
+    subSection.reviewStatus = status;
+    console.log('status',status )
   }
-  
-  
-  
-  
   
   
   toggleCommentBox(subSection: any) {
@@ -209,61 +217,42 @@ export class VideoplayerComponent {
     subSection.comment = ''; 
   }
 
-  sendComment(subSection: any) {
-    if (subSection.comment) {
-      const courseId = this.course.id;
-      const subsectionId = subSection.id;
-
-      // Find the section containing the subSection
-  let sectionId: number | null = null;
-
-  for (const section of this.course.sections) {
-    const foundSubSection = section.subSections.find((sub: { id: any; }) => sub.id === subsectionId);
-
-    if (foundSubSection) {
-      sectionId = section.id;
-      break;
-    }
-  }
-
-  if (sectionId === null) {
-    console.error('SectionId not found for subsectionId:', subsectionId);
-    return;
-  }
-
-  console.log('sectionId:', sectionId);
-  console.log('subsectionId:', subsectionId);
-
-      // const videoInfo = {
-      //   sectionId: subSection.sectionId,  
-      //   subSectionId: subSection.id,
-      //   status: 'REJECTED',
-      //   summary: subSection.comment  
-      // };
-      // Create a new payload containing only the rejected sub-section
-  const videoInfo = {
-    // courseId: courseId,
-    sections: {
-      sectionId: sectionId,
-      subSections: [{
-        subSectionId: subsectionId,
-        status: 'REJECTED',
-        summary: subSection.comment  
-      }]
-    }
-  };
-      
-      this.courseService.sendReview(courseId, videoInfo).subscribe(
-        response => {
-          console.log('Comment sent:', response);
-        },
-        error => {
-          console.error('Error sending comment:', error);
-        }
-      );
+  rejectVideo(section: Section, subSection: SubSection, status: string, rejectionComment: string) {
+    const courseId = this.course.id;
   
-      subSection.showCommentBox = false;
-    }
+    const body = {
+      sectionId: section.id,
+      subSectionId: subSection.id,
+      status: status,
+      summary: rejectionComment 
+    };
+  
+    this.courseService.sendReview(courseId, body).subscribe(
+      response => {
+        console.log('Video rejected:', response);
+        this.showRejectPopup('Course Video rejected successfully.');
+      },
+      error => {
+        console.error('Error rejecting video:', error);
+      }
+    );
+  }
+  
+
+  showSuccessPopup(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000, 
+      verticalPosition: 'top',
+      panelClass: ['success-snackbar'] 
+    });
+  }
+  
+  showRejectPopup(message: string) {
+    this.snackBar.open(message, 'Close', {
+      duration: 3000, 
+      verticalPosition: 'top',
+      panelClass: ['reject-snackbar'] 
+    });
   }
   
 }

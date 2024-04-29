@@ -38,7 +38,7 @@ export class FirstnavComponent {
     this.userDetailsSubscription = this.authService.userDetails$.subscribe((userDetails: UserModel | null)  => {
       this.userRole = userDetails?.role;
       this.name = userDetails?.name;
-      console.log('Name:', this.name);
+      // console.log('Name:', this.name);
       this.email = userDetails?.email;
       this.phone = userDetails?.phone;
       this.nameChange.emit(this.name);

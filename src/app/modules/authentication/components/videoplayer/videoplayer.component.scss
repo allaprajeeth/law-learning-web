@@ -98,12 +98,31 @@
   }
   .video-item {
     display: flex;
-    margin-top: 8px;
-    width:120%
+    justify-content: space-between;
+    align-items: center;
   }
-  .c {
+  
+  .videos-title-and-status {
     display: flex;
+    align-items: center;
   }
+  
+  .videos-title {
+    margin-right: 40px; 
+  }
+  
+  .status {
+    margin-left: 40px;
+    margin-top: 20px;
+  }
+  .approved {
+    color: green;
+  }
+  
+  .rejected {
+    color: red;
+  }
+  
   .resource_icon {
     font-size: 16px;
   }

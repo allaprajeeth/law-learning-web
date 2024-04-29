@@ -31,7 +31,7 @@ export class ArticleFormComponent {
   ) {
     this.articleForm = this.fb.group({
       name: ['', Validators.required],
-      articleName: ['', Validators.required],
+      articleName: [''],
       description: ['', Validators.required],
       file: [null, Validators.required]
     });

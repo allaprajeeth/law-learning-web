@@ -41,6 +41,14 @@ export class AuthTokenService {
     return userDetails;
   }
 
+  getUserRole(): string {
+    const user = this.getUserDetails();
+    if(user && user.role) {
+      return user.role;
+    }
+    return '';
+  }
+
   hasAnyRole(roles: string[]): boolean {
     if(this.isLoggedIn()) {
       const user: UserModel|null = this.getUserDetails();
