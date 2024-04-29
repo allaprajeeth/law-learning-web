@@ -18,11 +18,12 @@
                     <h2>{{ displayName }}</h2>
                     <h3 [(ngModel)]="name" readonly>Profile name:  {{name | titlecase }}</h3>
                     <h2>Image preview</h2>
+                     <h2>{{ user?.name }}</h2> 
                     <img  *ngIf="imageUrl" [src]="imageUrl" alt="Image Preview" id="previewImage">
-                    <p>{{ imageUrl }}</p>    
+                    <!-- <p>{{ imageUrl }}</p>     -->
                     <div class="upload-btn-wrapper">
-                        <h3>Upload Image</h3>
-                        <label for="imageInput" class="custom-file-input">Choose File</label>
+                        <!-- <h3>Upload Image</h3> -->
+                        <label for="imageInput" class="custom-file-input">Choose Profile</label>
                         <input type="file" id="imageInput" accept="image/*" (change)="onFileSelected($event)">
                         <!-- <p>{{ selectedFileName }}</p> -->
                     </div>

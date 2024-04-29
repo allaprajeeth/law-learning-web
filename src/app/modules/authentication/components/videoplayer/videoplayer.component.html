@@ -35,32 +35,40 @@
           </mat-expansion-panel-header>
           <div class="video-group">
             <ng-container *ngFor="let subSection of section.subSections; let j = index">
-             
+
               <div class="video-item" [class.playing-video-title]="isVideoPlaying(i, j)">
-                <div>
-                  <div class="videos-title" (click)="playVideo(i, j)"><mat-icon
-                      class="custom-icon mat-icon-small">videocam</mat-icon>{{ subSection ?.title }}</div>
+                <div class="video-info">
+                  <div class="videos-title-and-status">
+                    <div class="videos-title" (click)="playVideo(i, j)">
+                      <mat-icon class="custom-icon mat-icon-small">videocam</mat-icon>{{ subSection ?.title }}
+                    </div>
+                    <div class="status" *ngIf="subSection.reviewStatus !== 'SUBMITTED'">
+                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'" class="approved">Approved</span>
+                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED'" class="rejected">Rejected</span>
+                    </div>
+                  </div>
                   <div class="time-duration" style="color: rgb(122, 119, 119)">
                     {{ subSection ?.duration }} min
                   </div>
-                 
                   <!-- Approve and Reject Buttons -->
                 </div>
               </div>
-        <div class="approve-reject-buttons">
-          <button mat-button color="primary" (click)="approveVideo(subSection)">
-            Approve
-          </button>
-          <button mat-button color="warn" (click)="toggleCommentBox(subSection)">
-            Reject
-          </button>
-        </div>
-                
-        <div *ngIf="subSection.showCommentBox" class="comment-box">
-          <textarea matInput placeholder="Enter your comment..." [(ngModel)]="subSection.comment"></textarea>
-          <button mat-button color="primary" (click)="sendComment(subSection)">Send</button>
-        </div>  
-             
+              
+              
+              <div *ngIf="showSubsciptionApprovalSection(subSection)" class="approve-reject-buttons">
+                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'APPROVED')">
+                  Approve
+                </button>
+                <button mat-button color="warn" (click)="toggleCommentBox(subSection)">
+                  Reject
+                </button>
+              </div>
+
+              <div *ngIf="subSection.showCommentBox" class="comment-box">
+                <textarea matInput placeholder="Enter your comment..." [(ngModel)]="subSection.rejectionComment"></textarea>
+                <button mat-button color="primary" (click)="rejectVideo(section, subSection, 'REJECTED', subSection.rejectionComment)">Send</button>
+              </div>
+
             </ng-container>
           </div>
         </mat-expansion-panel>
@@ -70,7 +78,7 @@
     <div #videocontainer class="video-container video-container-sidebar">
       <video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
       </video>
-   
+
       <div [style.display]="!sidebarVisible ? 'block' : 'none'">
         <button class="open-sidebar" (click)="openSidebar()">CourseContent</button>
       </div>
