@@ -2,34 +2,34 @@
     <div class="heading1">
         <div>
             <h3>INSTRUCTOR</h3>
-            <h1>{{instructorProfiles[0].name }}</h1>
-            <h3>{{ instructorProfiles[0].jobTitle }}</h3>
+            <h1>{{instructorProfiles[0]?.name }}</h1>
+            <h3>{{ instructorProfiles[0]?.jobTitle }}</h3>
         </div>
         <div class="icons">
             <div class="icon ">
                 <mat-icon>star</mat-icon>
-                <p>{{instructorProfiles[0]. rating }} Rating by Subscribers({{instructorProfiles[0].ratings_count}})</p>
+                <p>{{instructorProfiles[0]?. rating }} Rating by Subscribers({{instructorProfiles[0]?.ratings_count}})</p>
             </div>
             <div class="icon ">
                 <mat-icon>star</mat-icon>
-                <p>{{instructorProfiles[0]. rating }} Rating by Reviewers</p>
+                <p>{{instructorProfiles[0]?. rating }} Rating by Reviewers</p>
             </div>
             <div class="icon">
                 <mat-icon>people</mat-icon>
-                <p>{{instructorProfiles[0].subscriber_count }} Subscribers</p>
+                <p>{{instructorProfiles[0]?.subscriber_count }} Subscribers</p>
             </div>
             <div class="icon">
                 <mat-icon>play_circle_outline</mat-icon>
-                <p>{{instructorProfiles[0].course_count}}</p>
+                <p>{{instructorProfiles[0]?.course_count}}</p>
             </div>
         </div>
     </div>
 
     <div class="profile">
-        <div *ngIf="instructorProfiles[0].imageURL">
-            <img [src]= "s3BaseURl + instructorProfiles[0].imageURL" id="previewImage">
+        <div *ngIf="instructorProfiles[0]?.imageURL">
+            <img [src]= "s3BaseURl + instructorProfiles[0]?.imageURL" id="previewImage">
           </div>
-          <div *ngIf="!instructorProfiles[0].imageURL">
+          <div *ngIf="!instructorProfiles[0]?.imageURL">
             <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
           </div>
     </div>
@@ -37,7 +37,7 @@
 
 <div class="description">
     <h1>About me</h1>
-    <p>{{ instructorProfiles[0].about}}</p>
+    <p>{{ instructorProfiles[0]?.about}}</p>
 </div>
 <div>
     <div class="container">

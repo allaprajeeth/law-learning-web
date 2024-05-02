@@ -2,15 +2,15 @@
   <div class="heading1">
     <div>
       <h2>Advisor</h2>
-      <h1>{{ advisorProfiles[0].name }}</h1>
-      <h3>{{ advisorProfiles[0].jobTitle }}</h3>
+      <h1>{{ advisorProfiles[0]?.name }}</h1>
+      <h3>{{ advisorProfiles[0]?.jobTitle }}</h3>
     </div>
   </div>
   <div class="profile">
-    <div *ngIf="advisorProfiles[0].imageURL">
+    <div *ngIf="advisorProfiles[0]?.imageURL">
       <img [src]= "s3BaseURl + advisorProfiles[0].imageURL" id="previewImage">
     </div>
-    <div *ngIf="!advisorProfiles[0].imageURL">
+    <div *ngIf="!advisorProfiles[0]?.imageURL">
     <img class="avatar" src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
       alt="Instructor Image">
       </div>
@@ -18,7 +18,7 @@
 </div>
 <div class="description">
   <h1>About me</h1>
-    <p>{{ advisorProfiles[0].about }}</p>
+    <p>{{ advisorProfiles[0]?.about }}</p>
 </div>
 <br>
 <br>
