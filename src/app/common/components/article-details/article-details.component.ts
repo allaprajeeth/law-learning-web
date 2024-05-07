@@ -69,8 +69,9 @@ export class ArticleDetailsComponent {
   }
 
   downloadFile(fileUrl?: string, fileName?: string): void {
+    const baseUrl = endPoints.baseURL;
     this.http
-      .get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, {
+      .get(`${baseUrl}/downloadFile?path=${fileUrl}`, {
         responseType: 'blob',
       })
       .subscribe(
@@ -93,8 +94,9 @@ export class ArticleDetailsComponent {
   }
 
   fetchFileContent(fileUrl?: string): void {
+    const baseUrl = endPoints.baseURL;
     this.http
-      .get(`http://192.168.1.42:8080/api/v1/downloadFile?path=${fileUrl}`, {
+    .get(`${baseUrl}/downloadFile?path=${fileUrl}`, {
         responseType: 'text',
       })
       .subscribe(
@@ -181,7 +183,8 @@ export class ArticleDetailsComponent {
       this.articleee = false;
       const articleId = this.article?.id;
       if (articleId) {
-        const articleUrl = `http://192.168.1.42:8080/api/v1/secure/articles/review/${articleId}`;
+        const baseUrl = endPoints.secureBaseURL;
+        const articleUrl = `${baseUrl}/secure/articles/review/${articleId}`;
         const articleData = {
           status: 'REJECTED',
           summary: this.comment,
