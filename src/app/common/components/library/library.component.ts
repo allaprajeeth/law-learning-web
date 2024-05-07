@@ -9,7 +9,8 @@ import { saveAs } from 'file-saver';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
-
+import { endPoints } from '../../constants/endpoints';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
@@ -28,7 +29,8 @@ export class LibraryComponent {
     private libraryService: LibraryService,
     private http: HttpClient,
     private authService: AuthTokenService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
 
    
   ) {
@@ -66,22 +68,22 @@ export class LibraryComponent {
     this.router.navigate([routePrefix, library.id]);
 
   }
-   
-   
- 
   DeleteFile(libraryId: number): void {
     const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
       width: '450px',
-      // data: { fileId: libraryId }
     });
   
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const apiUrl = `http://202.53.86.12:8080/api/v1/secure/libraries/${libraryId}`;
+        const baseUrl = endPoints.secureBaseURL;
+        const apiUrl = baseUrl + `/libraries/${libraryId}`;
   
         this.http.delete(apiUrl).subscribe(
           () => {
-            console.log('Library deleted successfully');
+            this.snackBar.open('Library deleted successfully', 'Close', {
+              duration: 3000, 
+              verticalPosition: 'top'
+            });
             this.libraries = this.libraries.filter(library => library.id !== libraryId);
           },
           (error) => {
@@ -89,9 +91,8 @@ export class LibraryComponent {
           }
         );
       }
-    });}
-   
- 
+    });
+  }
   loadMore() {
     this.apiLoading = true;
     this.pagination.page++;

@@ -1,4 +1,4 @@
-<h2 class="form-heading">Library Form</h2>
+<h2 class="form-heading">Upload Library Document</h2>
 <form *ngIf="!showSuccessMessage" (ngSubmit)="onSubmit()" #libraryForm="ngForm">
   <mat-form-field>
     <mat-label>Document Name</mat-label>
@@ -10,14 +10,11 @@
     <input id="fileInput" type="file" name="libraryFile" (change)="onFileChange($event)" required>
     <div *ngIf="selectedFileName">{{ selectedFileName }}</div>
   </div>
-
-
   <button mat-raised-button color="primary" type="submit" [disabled]="!libraryForm.valid">
     Submit
   </button>
 </form>
 
-<!-- Display success message and back button conditionally -->
 <div *ngIf="showSuccessMessage" class="success-message">
   Library submitted successfully!
   <button mat-button class="back-button" (click)="goBack()">Back</button>

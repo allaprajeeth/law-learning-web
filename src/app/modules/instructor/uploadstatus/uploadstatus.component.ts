@@ -11,17 +11,14 @@ import { Router } from '@angular/router';
 })
 
 export class UploadstatusComponent {
-  
   courses: Course[] = [];
   s3BaseURl: string;
   constructor(private courseService: CourseService, private router:Router) {
     this.s3BaseURl = endPoints.s3BaseURL;
   }
-
   ngOnInit() {
     this.getCourses();
   }
-
   getCourses() {
     this.courseService.getCourses().subscribe(
       (response: any) => {

@@ -9,6 +9,9 @@
   To submit your article, please <span class="login" (click)="navigateToLogin()">Login </span>
 </div>
 <div class="post-box">
+  <div *ngIf="filteredArticles.length === 0 && searchTerm !== ''" class="no-articles">
+    No articles found.
+  </div>
   <div class="blog-box" *ngFor="let article of filteredArticles" >
     <div class="article-item">
       <div (click)="navigateToArticleDetail(article.id)">

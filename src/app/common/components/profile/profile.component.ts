@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 import { UserModel } from '../../models/user.model';
 import { endPoints } from '../../constants/endpoints';
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -30,19 +29,7 @@ export class ProfileComponent implements OnInit {
     const user = this.authTokenService.getUserDetails();
     if (user)
       this.imageUrl = user.imageURL ? endPoints.s3BaseURL + user.imageURL : user.imageURL;
-    console.log('DisplayName in ProfileComponent:', this.displayName);
   }
-
-
-  // constructor(private http: HttpClient, private authTokenService: AuthTokenService) { }
-
-  // ngOnInit(): void {
-  //   this.user = this.authTokenService.getUserDetails();
-  //   if (this.user)
-  //     this.imageUrl = this.user.imageURL ? endPoints.s3BaseURL + this.user.imageURL : this.user.imageURL;
-  // }
-
-
   onFileSelected(event: any): void {
     if (event.target.files && event.target.files.length > 0) {
       this.selectedFile = event.target.files[0];
@@ -57,13 +44,11 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
-
   onSave(): void {
     if (!this.selectedFile) {
       console.error('No file selected');
       return;
     }
-
     const formData = new FormData();
     formData.append('file', this.selectedFile);
 
