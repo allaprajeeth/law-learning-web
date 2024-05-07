@@ -75,7 +75,6 @@ export class PublishingcornerComponent implements OnInit {
     console.log('Selected Article ID:', articleId);
     const currentUrl = this.router.url;
 
-    // Determine the route prefix based on the current URL
     let routePrefix = '';
     if (currentUrl.includes('/admin/article')) {
       routePrefix = '/admin/publish-articles';
@@ -91,7 +90,6 @@ export class PublishingcornerComponent implements OnInit {
     else {
       routePrefix = '/publish-articles'
     }
-    // Navigate using the dynamically constructed route
     this.router.navigate([routePrefix, articleId]);
   }
   navigateToLogin(): void {
@@ -112,12 +110,10 @@ export class PublishingcornerComponent implements OnInit {
     return this.router.url === '/article';
   }
  
-
   deleteArticlePopup(articleId:number) {
     this.deletePopup = true;
     this.articleToDeleteId = articleId;
   }
-  
   confirmDelete(articleId:number) {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl +`/articles/${articleId }`;
@@ -125,8 +121,7 @@ export class PublishingcornerComponent implements OnInit {
       () => {
         console.log('Article deleted successfully');
         this.filteredArticles = this.filteredArticles.filter(article => article.id !== articleId);
-        this.notificationService.notify(`Article deleted successfully`);
-        
+        this.notificationService.notify(`Article deleted successfully`);   
       },
       (error) => {
         console.error('Error deleting library:', error);
@@ -134,12 +129,9 @@ export class PublishingcornerComponent implements OnInit {
     );
     this.closeDeletePopup();
   }
-  
   closeDeletePopup() {
     this.deletePopup = false;
   }
-  
-
 }
 
 

@@ -48,12 +48,11 @@
                 <div class="resources" *ngIf="resource.title === subSection.title">
                   <div class="documents">
                     <span class="documentspdf"><a href="assets/Java.pdf" target="_blank"><mat-icon
-                          style="height:16px;margin-top: 2px;font-size: medium;">download</mat-icon><b>
+                          style="height:16px;margin-top:2px;font-size: medium;">download</mat-icon><b>
                           LawLang.pdf</b></a></span>
                     <span class="documentspdf"><a href="assets/Java.pdf" target="_blank"><mat-icon
-                          style="height:16px;margin-top: 2px;font-size: medium;">download</mat-icon><b> Intro to
-                          Law.pdf</b></a></span>
-                  </div>
+                          style="height:16px;margin-top:2px;font-size:medium;">download</mat-icon><b> 
+                            Intro to Law.pdf</b></a></span></div>
                 </div>
               </ng-container> -->
             </ng-container>
@@ -65,29 +64,18 @@
         </div>
       </mat-accordion>
     </mat-card>
-    <!-- video player container -->
+   
     <div #videocontainer class="video-container video-container-sidebar">
       <video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
       </video>
-      <!-- <div *ngIf="showNextButton" class="video-overlay">
-        
-      </div>
-      <div *ngIf="showNextButton" (click)="playNextVideo()" class="video-overlay">
-        <div class="next-button">
-          <mat-icon class=" large-icon">play_circle_outline</mat-icon>
-          Up Next
-          
-        
-        </div>
-       
-        <div></div>
-      </div> -->
-     
-   
       <div [style.display]="!sidebarVisible ? 'block' : 'none'">
         <button class="open-sidebar" (click)="openSidebar()">CourseContent</button>
       </div>
     </div>
-
   </div>
 </ng-container>
+<br/>
+<br/>
+<div>
+<mat-slide-toggle color="Green"> <b>Publish this Course</b></mat-slide-toggle>
+</div>

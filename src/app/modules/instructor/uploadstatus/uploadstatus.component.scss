@@ -5,7 +5,6 @@
   height: auto;
   background-color: #e0d9d9;
 }
-
 .container {
   background-color: #ffffff;
   margin: 20px 40px 20px 60px;
@@ -23,32 +22,25 @@
   font-weight: 500;
   font-size: 24px;
 }
-
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 0px;
   font-size: 15px;
-
   th,
   td {
-    padding: 20px;
-   
+    padding: 20px;  
   }
-
   th {
     background-color: #e7e7e7;
   }
-
   tr:nth-child(even) {
     background-color: #f9f9f9;
   }
-
   tr:hover {
     background-color: #e5e5e5;
   }
   .date{
     padding-left: 70px;
   }
- 
 }

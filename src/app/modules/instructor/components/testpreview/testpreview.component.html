@@ -3,7 +3,6 @@
   <div mat-dialog-content>
     <div *ngFor="let question of data">
       <p>Question {{ question.questionNumber }}: {{ question.enteredQuestion }}</p>
-
       <!-- Display "Choices" only for 'multiple-choice' questions -->
       <ng-container *ngIf="question.questionType === 'multiple-choice'">
         <p>Choices:</p>
@@ -12,12 +11,10 @@
         </ul>
         <p style="font-weight: bolder;">Correct Answer: {{ question.correctAnswer }}</p>
       </ng-container>
-
       <!-- Display "Question Score" for all question types -->
       <p *ngIf="question.questionScore !== undefined && question.questionScore !== null">
         Question Score: {{ question.questionScore }}
       </p>
-
       <hr />
     </div>
   </div>
