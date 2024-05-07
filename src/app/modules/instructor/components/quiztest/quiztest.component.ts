@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TestpreviewComponent } from '../testpreview/testpreview.component';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { endPoints } from 'src/app/common/constants/endpoints';
+import { Course } from 'src/app/common/models/course.model';
+import { Quiz } from 'src/app/common/models/quiz.model';
 
 export class AdditionalForm {
   enteredQuestion: string = '';
@@ -8,13 +12,18 @@ export class AdditionalForm {
   questionScore: string = '';
   selectchoice: string[] = [];
   quizName: string = '';
-  questionType: string = '';
+  questionType: string | undefined;
   timePeriod: number = 0;
   choice: number = 1;
   questionNumber: number = 1;
   expanded: boolean = true;
   correctAnswerControl: any;
   enteredChoice: string = '';
+  options: Option[] = [];
+}
+export interface Option {
+  id: number;
+  option: string;
 }
 
 @Component({
@@ -37,11 +46,28 @@ export class QuiztestComponent {
   numberOfForms: number = 0;
   formsArray: number[] = [];
   additionalForms: AdditionalForm[] = [new AdditionalForm()];
- constructor( public dialog: MatDialog) {}
 
- hasQuestions(): boolean {
-    return this.additionalForms.some(form => form.enteredQuestion.trim() !== '');
-}
+  @Input()  courseId: number | undefined;
+
+  // @Input() course: Course = new Course();
+
+  hasTest:boolean | undefined;
+  quizData :Quiz | undefined 
+
+  constructor(public dialog: MatDialog, private http: HttpClient) {}
+
+  ngOnInit(): void {
+    this.getQuiz()
+    console.log( )
+    
+    // console.log('quiz data ' + this.quizData);
+  }
+
+  hasQuestions(): boolean {
+    return this.additionalForms.some(
+      (form) => form.enteredQuestion.trim() !== ''
+    );
+  }
   closeQuiz() {
     console.log('Quiz closed!');
   }
@@ -68,14 +94,13 @@ export class QuiztestComponent {
       // Ensure at least one choice matches the correct answer
       this.validateCorrectAnswer(form);
     }
-    // No need for an else block if you don't want to handle the duplicate case
   }
 
   validateCorrectAnswer(form: AdditionalForm) {
     const hasMatchingChoice = form.selectchoice.some(
       (choice) => choice === form.correctAnswer
     );
-    // If no matching choice and the correct answer control is dirty or touched, set the correct answer to the first choice
+
     if (
       !hasMatchingChoice &&
       (form.correctAnswerControl?.touched ||
@@ -142,22 +167,48 @@ export class QuiztestComponent {
       return (
         this.quizName.trim() !== '' &&
         this.timePeriod > 0 &&
-        this.additionalForms.every(
-          (form) => form.enteredQuestion.trim() !== ''
-        )
+        this.additionalForms.every((form) => form.enteredQuestion.trim() !== '')
       );
     }
-  
-    return false; // Default to false if the question type is not recognized
+
+    return false;
   }
 
+  submitTest() {
+    const quizData = {
+      // id:this.courseId ,
+      name: this.quizName,
+      quizType: 'MULTIPLE_CHOICE',
+      time: this.timePeriod,
+      questions: this.additionalForms.map((form) => ({
+        question: form.enteredQuestion,
+        options: form.selectchoice.map((option, index) => ({
+          id: index + 1,
+          option: option,
+        })),
+        answer: form.correctAnswer,
+      })),
+    };
 
-  submitTest() {}
+    if (quizData) {
+      const baseUrl = endPoints.secureBaseURL;
+      const apiUrl = baseUrl + `/course/${this.courseId}/quiz`;
+      this.http.post<any>(apiUrl, quizData).subscribe(
+        (response) => {
+          console.log(response);
+          
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    } else {
+      console.error('Quiz data is undefined');
+    }
+  }
   previewQuestions() {
     console.log('Additional Forms:', this.additionalForms);
-
-    this.additionalForms[0].questionType = this.questionType
-
+    this.additionalForms[0].questionType = this.questionType;
     const aggregatedData = this.additionalForms.map((form, index) => ({
       questionNumber: index + 1,
       enteredQuestion: form.enteredQuestion,
@@ -192,4 +243,20 @@ export class QuiztestComponent {
       currentChoice.trim() !== ''
     );
   }
+ 
+  getQuiz() {
+    const baseUrl = endPoints.secureBaseURL;
+    const apiUrl = baseUrl + `/course/${this.courseId}/quiz`;
+    this.http.get<any>(apiUrl).subscribe((response) => {
+      if (response.data && response.data.length > 0 && response.data[0].questions && response.data[0].questions.length > 0) {
+			this.hasTest = true;
+		  }
+      this.quizData = response.data[0];
+      console.log(this.quizData)
+      
+    
+    });
+  }
+
+ 
 }
