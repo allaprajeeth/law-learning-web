@@ -1,6 +1,4 @@
-
-
-<div class="main-container">
+<div class="main-container" *ngIf="!hasTest">
     <h2>Create a Test</h2>
     <p *ngIf="!questionType || questionType.trim() === ''" class="message">Please select the question type to get test questions
         form</p>
@@ -131,11 +129,27 @@
         <div class="test-button">
             <!-- <p class="required-message" *ngIf="!isValid()">Enter the required fields to enable the submit button</p> -->
             <button class="test-submit-button"  (click)="submitTest()"
-                routerLink="/instructor/quizsuccessmsg">Submit</button>
+                >Submit</button>
             <br />
         </div>
     </div>
 </div>
+    <div *ngIf="quizData" class="quiz-container" >
+        <h2>{{ quizData.name }} Quiz</h2>
+        <div *ngFor="let question of quizData.questions; let i = index">
+          <div class="question">
+            <p class="question-heading">Question {{ i + 1 }} : {{ question.question }}</p>
+            <ul class="options-list">
+              <li class="option" *ngFor="let option of question.options; let j = index">
+                <label>
+                  Option {{ j + 1 }} : {{ option.option }}
+                </label>
+              </li>
+            </ul>
+            <p class="correct-answer">Correct Answer : {{ question.answer }}</p>
+          </div>
+        </div>
+      </div>
 <br />
 <br />
 <br />
