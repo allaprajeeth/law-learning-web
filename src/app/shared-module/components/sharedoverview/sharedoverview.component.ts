@@ -24,13 +24,9 @@ export class SharedoverviewComponent {
       this.numberOfSubsections = this.course.sections.reduce((acc, section) => {
         return acc + (section.subSections ? section.subSections.length : 0);
       }, 0);
-    }
-    
+    }  
   } 
-    
-  
-
- 
- 
- 
+  isSubmitted(subsection: any): boolean {
+    return subsection.reviewStatus === 'SUBMITTED';
+  }  
 }

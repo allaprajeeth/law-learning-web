@@ -53,7 +53,7 @@
         </div>
         <div class="video-group">
           <ng-container *ngFor="let subSection of section.subSections; let j = index">
-            <mat-expansion-panel>
+            <mat-expansion-panel *ngIf="!isSubmitted(subSection)">
               <mat-expansion-panel-header>
                 <mat-panel-title>
                   <div class="titlehead">
