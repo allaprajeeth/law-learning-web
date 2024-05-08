@@ -18,7 +18,8 @@ export interface Article {
     createdDate: string;
 
   }[];
-  // Add more properties as needed based on your API response
+  deleted: boolean;
+  
 }
 
  
