@@ -18,7 +18,7 @@
           </div>
           <span class="duration">{{course.duration}}</span>
         </div>
-        <h2>{{ course.title }}</h2>
+        <h2>{{ truncateTitle(course.title, 5) }}</h2>
         <p>{{ course.difficultyLevel}} / {{ course.type }}</p>
         <!-- <p>{{ course.description }}</p> -->
         <!-- <p>Created Date: {{ course.createdDate }}</p> -->
