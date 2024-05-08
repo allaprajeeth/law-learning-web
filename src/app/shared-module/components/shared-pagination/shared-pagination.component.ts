@@ -13,16 +13,21 @@ import {
 })
 export class SharedPaginationComponent {
 
-  @Input() currentPage: number = 1;
+  @Input() currentPage: number = 0;
   // Total records count
   @Input() totalRecordsCount: number = 0;
   // Total pages
-  totalPages: number = 0;
+  @Input()  totalPages: number = 0;
 
   constructor() {}
 
   // Response data
   @Output() pageChange = new EventEmitter<number>();
+
+  ngOnInit(): void {
+    
+    
+  }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
@@ -32,7 +37,7 @@ export class SharedPaginationComponent {
   }
 
   previousPage() {
-    if (this.currentPage > 1) {
+    if (this.currentPage > 0) {
       this.currentPage--;
       this.emitPageChange();
     }
@@ -46,7 +51,9 @@ export class SharedPaginationComponent {
   }
 
   emitPageChange() {
+    console.log(this.currentPage)
     this.pageChange.emit(this.currentPage);
+    
   }
 
   getPageNumbers() {

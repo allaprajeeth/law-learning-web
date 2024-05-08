@@ -27,7 +27,7 @@
     </tr>
   </tbody>
 </table>
-<!-- <app-shared-pagination [currentPage]="currentPage" [totalRecordsCount]="pagination.totalPages" (pageChange)="onPageChange($event)"></app-shared-pagination> -->
+
 
 <table class="profile-table" *ngIf="selectedRole === 'ADVISORS'">
   <tbody>
@@ -50,3 +50,4 @@
 </table>
 
 </div>
+<app-shared-pagination [currentPage]="pagination.page" [totalPages]="pagination.totalPages" (pageChange)="onPageChange($event)"></app-shared-pagination>

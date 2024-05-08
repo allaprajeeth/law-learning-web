@@ -8,70 +8,66 @@ import { Pagination } from 'src/app/common/models/pagination.model';
 @Component({
   selector: 'app-all-profiles',
   templateUrl: './all-profiles.component.html',
-  styleUrls: ['./all-profiles.component.scss']
+  styleUrls: ['./all-profiles.component.scss'],
 })
 export class AllProfilesComponent implements OnInit {
-
   selectedRole: string = 'all';
-  advisorId:number | undefined;
-  advisorProfiles:AdvisorProfile[] = [];
+  advisorId: number | undefined;
+  advisorProfiles: AdvisorProfile[] = [];
   allProfiles: any[] = [];
+
   pagination: Pagination = new Pagination();
-  constructor(private http: HttpClient,
-    private router: Router) { }
+  params: any = {};
+  constructor(private http: HttpClient, private router: Router) {
+    this.pagination = new Pagination();
+  }
 
   ngOnInit(): void {
-      this.selectedRole ="all";
-      this.filterProfiles(this.pagination.getPaginationRequest())
-
+    this.selectedRole = 'all';
+    this.params = {
+      pagination: this.pagination.getPaginationRequest(),
+    };
+    this.filterProfiles(this.params);
   }
 
   onRoleSelected(role: string): void {
     this.selectedRole = role;
-   
-    if(this.selectedRole === 'ADVISORS'){
-      this.allProfiles =[]
-      this.fetchAdvisorProfiles()
-    }
-    else{
-      this.filterProfiles(this.pagination.getPaginationRequest());
+
+    if (this.selectedRole === 'ADVISORS') {
+      this.allProfiles = [];
+      this.fetchAdvisorProfiles();
+    } else {
+      this.filterProfiles(this.params);
     }
   }
 
   filterProfiles(params: any): void {
-        const baseUrl = endPoints.secureBaseURL;
-        const apiUrl = baseUrl + `/admin/user-profile/getAll`;
-        // let params = new HttpParams()
-        //   .set('number', '0')
-        //   .set('size', '20')
-        //   .set('sort', 'id,DESC');
-        if (this.selectedRole  === 'SUBSCRIBER') {
-          params = params.set('search', 'SUBSCRIBER');
-        } else if (this.selectedRole  === 'ADMIN') {
-          params = params.set('search', 'ADMIN');
-        } else if (this.selectedRole  === 'CONTENTMANAGER') {
-          params = params.set('search', 'CONTENTMANAGER');
-        } else if (this.selectedRole  === 'INSTRUCTOR') {
-          params = params.set('search', 'INSTRUCTOR');
-        }
-        else if (this.selectedRole  === 'REVIEWER'){
-          params = params.set('search', 'REVIEWER');
-        }
-        else {
+    const baseUrl = endPoints.secureBaseURL;
+    const apiUrl = baseUrl + `/admin/user-profile/getAll`;
 
-        }
-
-        this.http.get<any>(apiUrl, { params }).subscribe(response => {
-          this.allProfiles = response.data.content;
-          this.pagination = new Pagination(response.pagination);
-          console.log(this.allProfiles);
-        });
+    if (this.selectedRole !== 'all') {
+      this.params.search = this.selectedRole;
     }
-  
+    else if(this.selectedRole === 'all'){
+      this.params = {
+        pagination: this.pagination.getPaginationRequest(),
+      };
+    }
+   
+
+    this.http.get<any>(apiUrl, { params }).subscribe((response) => {
+      this.allProfiles = response.data.content;
+      this.pagination = new Pagination(response.data);
+      console.log(this.allProfiles);
+      console.log(this.pagination);
+    });
+  }
 
   getInitials(username: string): string {
-    // Logic to extract initials from the username, e.g., "John Doe" => "JD"
-    const initials = username.split(' ').map(word => word[0]).join('');
+    const initials = username
+      .split(' ')
+      .map((word) => word[0])
+      .join('');
     return initials.toUpperCase();
   }
 
@@ -90,26 +86,27 @@ export class AllProfilesComponent implements OnInit {
 
   fetchAdvisorProfiles(): void {
     const baseUrl = endPoints.baseURL;
-    const apiUrl =baseUrl+ `/advisor/profiles`;
+    const apiUrl = baseUrl + `/advisor/profiles`;
     const params = new HttpParams()
       .set('search', '')
       .set('number', '0')
       .set('size', '20')
       .set('sort', 'id,DESC');
-    this.http.get<any>(apiUrl, { params }).subscribe(response => {
+    this.http.get<any>(apiUrl, { params }).subscribe((response) => {
       this.advisorProfiles = response.data.content;
     });
   }
 
- navigateToAdvisorProfiles(advisorId: any):void{
-  this.router.navigate(["/admin/editadvisor",advisorId]);
- }
- navigateToAllProfiles(userId:any) {
-  this.router.navigate(["/admin/profile-details",userId]);
- }
+  navigateToAdvisorProfiles(advisorId: any): void {
+    this.router.navigate(['/admin/editadvisor', advisorId]);
+  }
+  navigateToAllProfiles(userId: any) {
+    this.router.navigate(['/admin/profile-details', userId]);
+  }
 
- onPageChange(event:any){
-  
- }
-  
+  onPageChange(page: number) {
+    console.log(page);
+    this.pagination.page =page
+    this.filterProfiles(this.pagination)
+  }
 }

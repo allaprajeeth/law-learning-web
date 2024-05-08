@@ -75,7 +75,7 @@ export class AdvisorProfilesFormComponent {
       about ,
       enabled:true
     }
-    const apiUrl = endPoints.baseURL + '/secure/advisor';
+    const apiUrl = endPoints.secureBaseURL + '/secure/advisor';
       this.http.post(apiUrl , formData)
         .subscribe(
           (response) => {
