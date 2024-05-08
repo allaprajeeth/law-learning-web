@@ -1,7 +1,7 @@
 <div class="message-status" *ngIf="message; else articleSection">
   <div class="submission-status">
     <i class="icon close-icon" (click)="closeMessage()">&#10006;</i>
-    <h3>{{ message }}</h3>
+    <h3 [ngClass]="{'approve-message': approvalStatus === 'approved', 'reject-message': approvalStatus === 'rejected'}">{{ message }}</h3>
   </div>
 </div>
 <ng-template #articleSection>
