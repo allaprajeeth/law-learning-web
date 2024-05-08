@@ -184,7 +184,7 @@ export class ArticleDetailsComponent {
       const articleId = this.article?.id;
       if (articleId) {
         const baseUrl = endPoints.secureBaseURL;
-        const articleUrl = `${baseUrl}/secure/articles/review/${articleId}`;
+        const articleUrl = `${baseUrl}/articles/review/${articleId}`;
         const articleData = {
           status: 'REJECTED',
           summary: this.comment,
