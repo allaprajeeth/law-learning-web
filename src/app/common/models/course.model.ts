@@ -71,6 +71,7 @@ export class Course extends BaseModel<Course> {
   public duration!: number;
   public price!: number;
   public viewCount!: number;
+  public submitted!: boolean;
   public sections!: Section[];
   public SubSections!:SubSection[]
 
