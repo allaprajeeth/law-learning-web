@@ -61,11 +61,18 @@ export class SharedarticleHistoryComponent implements OnInit {
     
   }
 
-  getArticleStatus(reviewStatus: string): string {
+  getArticleStatus(reviewStatus: string, deleted: boolean): string {
+    if (deleted) {
+      return "Deleted";
+  } else {
     return this.pdfService.getArticleStatus(reviewStatus);
   }
+}
 
-  getStatusStyles(reviewStatus: string): any {
+  getStatusStyles(reviewStatus: string, deleted: boolean): any {
+    if (deleted) {
+      return { 'color': 'black' };
+  } else {
     let color = '';
     switch (reviewStatus) {
       case 'SUBMITTED':
@@ -85,6 +92,7 @@ export class SharedarticleHistoryComponent implements OnInit {
     }
     return { 'color': color };
   }
+} 
   
   navigateToArticleForm(): void {
     const currentUrl = this.router.url;

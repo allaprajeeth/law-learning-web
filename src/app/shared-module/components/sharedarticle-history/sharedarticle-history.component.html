@@ -20,7 +20,11 @@
                             <tr *ngFor="let article of userArticles" (click)="openArticle(article)">
                                 <td class="articleName">{{ article.title }}</td>
                                 <td>{{ article.createdDate | date:'yyyy-MM-dd' }}</td>
-                                <td [ngStyle]="getStatusStyles(article.reviewStatus)">{{ getArticleStatus(article.reviewStatus) }}</td>
+                                <td [ngStyle]="getStatusStyles(article.reviewStatus, article.deleted)">
+                                    {{ getArticleStatus(article.reviewStatus, article.deleted) }}
+                                </td>
+                                
+                                
                             </tr>
                         </tbody>
                     </table>
