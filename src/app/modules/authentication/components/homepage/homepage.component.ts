@@ -7,14 +7,28 @@ import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
 import { MatDialog } from '@angular/material/dialog';
 import { endPoints } from 'src/app/common/constants/endpoints';
-interface Categories {
-  viewValue: string;
-}
+import { Pipe, PipeTransform, NgModule } from '@angular/core';
+
 interface ApiResponse {
   data: {
     content: Course[];
   };
   status: number;
+}
+
+@Pipe({
+  name: 'truncateWords'
+})
+export class TruncateWordsPipe implements PipeTransform {
+  transform(value: string, limit: number = 3, completeWords: boolean = false, ellipsis: string = '...'): string {
+    if (!value) return '';
+    let words = value.split(' ');
+    if (words.length <= limit) return value;
+    if (completeWords) {
+      limit = words.slice(0, limit).join(' ').length;
+    }
+    return words.slice(0, limit).join(' ') + ellipsis;
+  }
 }
 
 @Component({
@@ -121,6 +135,12 @@ export class HomepageComponent implements OnInit{
     this.articleService.setSelectedArticle(articleId);
     this.router.navigate(['/authentication/detail-articles', articleId]);
   }
- 
-  
+  truncateTitle(title: string, limit: number): string {
+    const words = title.split(' ');
+    if (words.length > limit) {
+      return words.slice(0, limit).join(' ') + '...'; // Add '...' after the truncated words
+    } else {
+      return title;
+    }
+  }
 }
