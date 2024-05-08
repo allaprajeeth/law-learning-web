@@ -31,6 +31,7 @@ import { RouterModule } from '@angular/router';
 import { SharedcourseHistoryComponent } from './components/sharedcourse-history/sharedcourse-history.component';
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
+import { SharedPaginationComponent } from './components/shared-pagination/shared-pagination.component';
 @NgModule({
   declarations: [
     FooterComponent,
@@ -56,6 +57,7 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
      SharedcourseHistoryComponent,
      SharedarticleHistoryComponent,
      UploadedarticlesstatusComponent,
+     SharedPaginationComponent,
     ],
 
 
@@ -101,6 +103,7 @@ import { UploadedarticlesstatusComponent } from './components/uploadedarticlesst
     SharedcourseHistoryComponent,
     SharedarticleHistoryComponent,
     UploadedarticlesstatusComponent,
+    SharedPaginationComponent,
 
   ]
 

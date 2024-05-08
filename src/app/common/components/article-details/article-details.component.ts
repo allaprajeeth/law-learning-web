@@ -252,6 +252,8 @@ export class ArticleDetailsComponent {
           (response) => {
             console.log('Article re-submission successful:', response);
             this.resubmitMessage = true;
+            this.message =
+            'You have resumitted the article, a notification containing the details of resubmit will be sent to the author.';
             this.adminService.setApprovalResponse(response);
           },
           (error) => {

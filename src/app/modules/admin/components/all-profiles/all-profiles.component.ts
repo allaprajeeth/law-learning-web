@@ -1,10 +1,9 @@
-// all-profiles.component.ts
-
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { AdvisorProfile } from 'src/app/common/models/instructor.model';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 @Component({
   selector: 'app-all-profiles',
@@ -17,12 +16,13 @@ export class AllProfilesComponent implements OnInit {
   advisorId:number | undefined;
   advisorProfiles:AdvisorProfile[] = [];
   allProfiles: any[] = [];
+  pagination: Pagination = new Pagination();
   constructor(private http: HttpClient,
     private router: Router) { }
 
   ngOnInit(): void {
       this.selectedRole ="all";
-      this.filterProfiles()
+      this.filterProfiles(this.pagination.getPaginationRequest())
 
   }
 
@@ -34,17 +34,17 @@ export class AllProfilesComponent implements OnInit {
       this.fetchAdvisorProfiles()
     }
     else{
-      this.filterProfiles();
+      this.filterProfiles(this.pagination.getPaginationRequest());
     }
   }
 
-  filterProfiles(): void {
+  filterProfiles(params: any): void {
         const baseUrl = endPoints.secureBaseURL;
         const apiUrl = baseUrl + `/admin/user-profile/getAll`;
-        let params = new HttpParams()
-          .set('number', '0')
-          .set('size', '20')
-          .set('sort', 'id,DESC');
+        // let params = new HttpParams()
+        //   .set('number', '0')
+        //   .set('size', '20')
+        //   .set('sort', 'id,DESC');
         if (this.selectedRole  === 'SUBSCRIBER') {
           params = params.set('search', 'SUBSCRIBER');
         } else if (this.selectedRole  === 'ADMIN') {
@@ -63,6 +63,7 @@ export class AllProfilesComponent implements OnInit {
 
         this.http.get<any>(apiUrl, { params }).subscribe(response => {
           this.allProfiles = response.data.content;
+          this.pagination = new Pagination(response.pagination);
           console.log(this.allProfiles);
         });
     }
@@ -105,6 +106,10 @@ export class AllProfilesComponent implements OnInit {
  }
  navigateToAllProfiles(userId:any) {
   this.router.navigate(["/admin/profile-details",userId]);
+ }
+
+ onPageChange(event:any){
+  
  }
   
 }
