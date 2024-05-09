@@ -69,7 +69,9 @@
                         <label>Language:</label>
                         <input type="text" id="language" name="language" value="English" disabled>
                     </div>
-
+                    <div *ngIf="thumbnail">
+                        <img [src]="thumbnail" alt="Thumbnail Preview" class="thumbnail-image">
+                    </div>
                     <div class="form-group">
                         <label for="courseFile">Choose Thumbnail Image (Optional):</label>
                         <input type="file" id="courseFile" formControlName="courseFile" (change)="onFileUpload($event)">
@@ -148,38 +150,42 @@
                                         
                                             <!-- TODO -->
                                             <div *ngIf="isFileExists(course.sections[i].subSections[j])" class="video-details">
-                                                <div class="details-row">
-                                                    <p class="detail-heading file-name">File Name:</p>
-                                                    <p class="detail-heading file-desc">File Type:</p>
-                                                    <p class="detail-heading file-desc">Status</p>
-                                                    <p class="detail-heading file-desc">Actions</p>
+                                                <div class="details-row"  style="display: flex; width: 100%;">
+                                                    <p class="detail-heading file-name" style="flex: 25%;">File Name:</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">File Type:</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">Status</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">Actions</p>
                                                 </div>
-                                                <div class="details-row details-values">
-                                                    <p class="detail-value file-name">{{ course.sections[i].subSections[j].file.fileName }}</p>
-                                                    <p class="detail-value file-desc">{{ course.sections[i].subSections[j].file.contentType }}</p>
-                                                    <p class="detail-value file-desc">Uploaded</p>
-                                                    <button mat-icon-button
-                                                    (click)="removeResource(course.sections[i].subSections[j].id, course.sections[i].subSections[j].file.id)"
-                                                    color="warn"><mat-icon>delete_circle</mat-icon></button>
-                                                    <button mat-icon-button
-                                                    (click)="removeResource(course.sections[i].subSections[j].id, course.sections[i].subSections[j].file.id)"
-                                                    color="primary"><mat-icon>edit_circle</mat-icon></button>
+                                                <div class="details-row details-values"  style="display: flex; width: 100%;">
+                                                    <p class="detail-value file-name" style="flex: 25%;">{{ course.sections[i].subSections[j].file.fileName }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%;">{{ course.sections[i].subSections[j].file.contentType }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%;">Uploaded</p>
+                                                    <div class="detail-value file-name" style="flex: 25%; ">
+                                                        <button mat-icon-button
+                                                        (click)="removeResource(course.sections[i].id, course.sections[i].subSections[j].id, course.sections[i].subSections[j].file.id)"
+                                                        color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                                        <button mat-icon-button
+                                                        (click)="editResource(course.sections[i].id, course.sections[i].subSections[j].id, course.sections[i].subSections[j].file.id)"
+                                                        color="primary"><mat-icon>edit_circle</mat-icon></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div *ngIf="currentFile" class="video-details">
-                                                <div class="details-row">
-                                                    <p class="detail-heading file-name">File Name:</p>
-                                                    <p class="detail-heading file-desc">File Type:</p>
-                                                    <p class="detail-heading file-desc">Status</p>
-                                                    <p class="detail-heading file-desc">Actions</p>
+                                                <div class="details-row" style="display: flex; width: 100%;">
+                                                    <p class="detail-heading file-name" style="flex: 25%;">File Name:</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">File Type:</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">Status</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">Actions</p>
                                                 </div>
-                                                <div class="details-row details-values">
-                                                    <p class="detail-value file-name">{{ currentFile.name }}</p>
-                                                    <p class="detail-value file-desc">{{ currentFile.type }}</p>
-                                                    <mat-progress-bar mode="determinate" value="{{progress}}" *ngIf="currentFile" class="detail-value file-desc"></mat-progress-bar>
-                                                    <button mat-icon-button
-                                                    (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)"
-                                                    color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                                <div class="details-row details-values" style="display: flex; width: 100%;">
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentFile.name }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentFile.type }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; " *ngIf="progress === 100">Uploaded</p>
+                                                    <mat-progress-bar mode="determinate" value="{{progress}}" *ngIf="currentFile && progress !== 100" style="flex: 25%;" class="detail-value file-desc"></mat-progress-bar>
+                                                    <div class="detail-value file-name" style="flex: 25%; ">
+                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn" *ngIf="currentFile && progress !== 100"><mat-icon>upload_circle</mat-icon></button>
+                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- <div class="row" *ngIf="course.sections[i].subSections[j].file">

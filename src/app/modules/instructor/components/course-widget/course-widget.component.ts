@@ -23,6 +23,7 @@ import { FileUploadService } from 'src/app/common/services/file-upload/file-uplo
 import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Quiz } from 'src/app/common/models/quiz.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-course-widget',
@@ -30,6 +31,9 @@ import { Quiz } from 'src/app/common/models/quiz.model';
   styleUrls: ['./course-widget.component.scss'],
 })
 export class CourseWidgetComponent {
+editResource(arg0: number,arg1: number,arg2: number) {
+throw new Error('Method not implemented.');
+}
   stepperOrientation: Observable<StepperOrientation>;
   sectionStep: number = 0;
   subSectionStep: number = -1;
@@ -47,7 +51,8 @@ export class CourseWidgetComponent {
 
   test: string | undefined;
   hasTest: boolean = false;
-  quizData : Quiz | undefined 
+  quizData : Quiz | undefined;
+  thumbnail: any;
   constructor(
     private _formBuilder: FormBuilder,
     breakpointObserver: BreakpointObserver,
@@ -67,14 +72,12 @@ export class CourseWidgetComponent {
   ngOnInit() {
     // Create the course form when the component is initialized
     this.initCourseForm();
+    this.loadInstitutions();
     this.courseId = this.route.snapshot.params['id'];
     if (this.courseId && isNumber(Number(this.courseId))) {
-      console.log('From ngOnInit');
       this.loadCourseDetails(this.courseId);
     }
-    this.loadInstitutions();
-	this.getQuiz();
-
+    this.getQuiz();
   }
 
   initCourseForm() {
@@ -258,6 +261,9 @@ export class CourseWidgetComponent {
       .getById(endPoints.secure + endPoints.course + '/' + courseId)
       .subscribe((courseDetails) => {
         this.course = courseDetails.records[0];
+        if(this.course.thumbnail) {
+          this.thumbnail = endPoints.s3BaseURL + this.course.thumbnail;
+        }
         this.courseForm.patchValue(this.course);
 
         if (this.course && this.course.sections) {
@@ -271,6 +277,11 @@ export class CourseWidgetComponent {
     if (files !== null && files.length > 0) {
       const file: File | null = files[0];
       if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.thumbnail = reader.result; // set image URL
+        };
+        reader.readAsDataURL(file);
         this.courseFormData.append('file', file);
       }
     }
@@ -423,19 +434,21 @@ export class CourseWidgetComponent {
     }
   }
 
-  removeResource(subSectionId: number, fileId: number) {
+  removeResource(sectionId: number, subSectionId: number, fileId: number) {
+    let fileUploadBean = {
+      id: fileId,
+      courseId: this.course.id,
+      sectionId: sectionId,
+      subSectionId: subSectionId
+    };
     this.fileUploadService
-      .delete('/secure/courses/' + this.courseId, this.courseFormData)
+      .remove('/courses/upload/remove', fileUploadBean)
       .subscribe({
         next: (response: any) => {
-          this.processing = false;
-          // if(stepper && response.status === 200)
-          // 	stepper.next();
-          // else if(response.status === 200 && this.courseId)
-          // 	this.loadCourseDetails(this.courseId);
+          console.log(response);
         },
         error: (error: Error) => {
-          this.processing = false;
+          
         },
       });
   }

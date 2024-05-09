@@ -29,4 +29,8 @@ export class FileUploadService extends BaseService<FileInfo>{
     getFiles(url: string): Observable<any> {
         return this.http.get(`${endPoints.secureBaseURL + url}`);
     }
+
+    remove<T>(url: string, data: any): Observable<T> {
+        return this.http.post<T>(endPoints.secureBaseURL + url, data);
+    }
 }
