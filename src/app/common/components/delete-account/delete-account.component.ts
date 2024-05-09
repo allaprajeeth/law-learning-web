@@ -116,7 +116,7 @@ export class DeleteAccountComponent {
               console.error('Error fetching user details:', error);
             }
           );
-        }, 5000); 
+        }, 2000); 
       },
       error => {
         console.error('Error deleting account:', error);

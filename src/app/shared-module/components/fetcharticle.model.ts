@@ -32,8 +32,9 @@ export interface Article {
       data: any;
       content: Article[];
       articles: Article[];
-      viewCount?: number; // Add the viewCount property
+      viewCount?: number; 
       author?: string;
+      rating?: number;
   }
   
   

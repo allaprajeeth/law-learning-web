@@ -196,4 +196,22 @@
       }
     }
   }
+  /* Add this to your component's .scss file or global styles */
+
+.star-rating {
+  font-size: 20px;
+}
+
+.star-rating span {
+  color: #fdd835; /* Change color as needed */
+}
+
+.star-rating span.filled {
+  color: #fdd835; /* Change color for filled stars */
+}
+
+.star-rating span.half-filled:before {
+  content: '\00bd'; /* Use half-filled star icon */
+}
+
 }
