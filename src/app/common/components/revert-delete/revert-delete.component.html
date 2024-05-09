@@ -3,7 +3,7 @@
       <div *ngIf="!showOtpFields">
       <p>Your account will be deleted permanently with in 72 hours</p>
       <button class="revert-button" (click)="showOtpInputs()">Revert Delete</button>
-      <h3>{{ remainingTime }} hours</h3>
+      <h3>{{ remainingTime }}</h3>
     </div>
       <div *ngIf="showOtpFields">
         <div>
