@@ -1,3 +1,4 @@
+import { Pagination } from '../../../common/models/pagination.model';
 import {
   Component,
   EventEmitter,
@@ -44,7 +45,7 @@ export class SharedPaginationComponent {
   }
 
   setPage(pageNumber: number) {
-    if (pageNumber >= 1 && pageNumber <= this.totalPages) {
+    if (pageNumber >= 0 && pageNumber <= this.totalPages) {
       this.currentPage = pageNumber;
       this.emitPageChange();
     }
@@ -52,6 +53,7 @@ export class SharedPaginationComponent {
 
   emitPageChange() {
     console.log(this.currentPage)
+    
     this.pageChange.emit(this.currentPage);
     
   }
