@@ -105,7 +105,7 @@ export class AllProfilesComponent implements OnInit {
   }
 
   onPageChange(page: number) {
-    console.log(page);
+    console.log("latest from all" + " " +page);
     this.pagination.page =page
     this.filterProfiles(this.pagination)
   }
