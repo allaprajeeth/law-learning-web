@@ -1,7 +1,9 @@
 <div class="navbar_section">
   <nav class="navbar">
     <div class="navbar-container">
-      <a routerLink="/" class="logo">5th Estate ADR</a>
+      <a routerLink="/" class="logo" [class.adjusted-margin]="roleNavigationMap[userRole || ''] && roleNavigationMap[userRole || ''][0]?.adjustLogoMargin">5th Estate ADR</a>
+
+
       <div>
         <ul class="nav-icons">
           <ng-container *ngFor="let navItem of roleNavigationMap[userRole || '']">
@@ -12,9 +14,10 @@
             </li>
           </ng-container>
           <li class="user-dropdown" *ngIf="userRole">
-            <div class="user-circle" (click)="onUserCircleClick($event)">
+            <div class="user-circle" [ngClass]="{'margin-left-for-cm': userRole === 'CONTENTMANAGER' || userRole === 'REVIEWER'}" (click)="onUserCircleClick($event)">
               <span class="user-circle-text">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</span>
             </div>
+            
             <ul class="user-menu">
               <li class="profile-item">
                 <span>

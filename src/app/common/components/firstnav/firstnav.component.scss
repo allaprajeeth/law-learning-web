@@ -22,6 +22,10 @@
       color: #333;
       margin-right: 10px; 
     }
+    .adjusted-margin {
+      margin-right: 100px;
+    }
+    
     
     .login-buttons {
       button {
@@ -107,7 +111,10 @@
       border-radius: 50%;
       background-color: #007791
     }
-
+    .margin-left-for-cm {
+      margin-left: 70px; 
+    }
+    
     .user-circle-text {
       color: white;
       text-decoration: none;

@@ -76,10 +76,12 @@ export class FirstnavComponent {
       this.router.navigate([profileRoute]);
     }
   }
- 
-  roleNavigationMap: { [key: string]: RoleNavigationMap[] } = {
+  roleNavigationMap: { [key: string]: { name: string; route: string; adjustLogoMargin?: boolean }[] } = {
+
+
+  // roleNavigationMap: { [key: string]: RoleNavigationMap[] } = {
     SUBSCRIBER: [
-      { name: 'Homepage', route: '/subscriber/homepage' },
+      { name: 'My-homepage', route: '/subscriber/homepage' },
       { name: 'Library', route: '/subscriber/library' },
       { name: 'Publishing Corner', route: '/subscriber/article' },
       { name: 'About Us', route: '/subscriber/aboutus' },
@@ -87,7 +89,7 @@ export class FirstnavComponent {
       { name: 'Cart', route: '/subscriber/cart' },
     ],
     ADMIN: [
-      { name: 'Homepage', route: '/admin/homepage' },
+      { name: 'Admin-homepage', route: '/admin/homepage' },
       { name: 'Library', route: '/admin/library' },
       { name: 'Publishing Corner', route: '/admin/article' },
       { name: 'About Us', route: '/admin/aboutus' },
@@ -95,24 +97,24 @@ export class FirstnavComponent {
       { name: 'Dashboard', route: '/admin/dashboard' },
     ],
     CONTENTMANAGER: [
-      { name: 'Homepage', route: '/authentication/homepage' },
-      { name: 'Library', route: '/authentication/library' },
-      { name: 'Publishing Corner', route: '/authentication/article' },
-      { name: 'About Us', route: '/authentication/aboutus' },
+      { name: 'Content-manager-homepage', route: '/authentication/homepage', adjustLogoMargin: true },
+      // { name: 'Library', route: '/authentication/library' },
+      // { name: 'Publishing Corner', route: '/authentication/article' },
+      // { name: 'About Us', route: '/authentication/aboutus' },
       { name: 'Notifications', route: '/authentication/notification' },
     ],
     INSTRUCTOR: [
-      { name: 'Homepage', route: '/instructor/homepage' },
+      { name: 'My-homepage', route: '/instructor/homepage' },
       { name: 'Library', route: '/instructor/library' },
       { name: 'Publishing Corner', route: '/instructor/article' },
       { name: 'About Us', route: '/instructor/aboutus' },
       { name: 'Notifications', route: '/instructor/notification' },
     ],
     REVIEWER: [
-      { name: 'Homepage', route: '/reviewer/homepage' },
-      { name: 'Library', route: '/reviewer/library' },
-      { name: 'Publishing Corner', route: '/reviewer/article' },
-      { name: 'About Us', route: '/reviewer/aboutus' },
+      { name: 'Reviewer-homepage', route: '/reviewer/homepage', adjustLogoMargin: true },
+      // { name: 'Library', route: '/reviewer/library' },
+      // { name: 'Publishing Corner', route: '/reviewer/article' },
+      // { name: 'About Us', route: '/reviewer/aboutus' },
       { name: 'Notifications', route: '/reviewer/notification' },
     ],
     '': [
