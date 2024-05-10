@@ -42,7 +42,7 @@ export class PdfService {
 /* --- for my publishings and uploadedarticles to show review status --- */
   getArticleStatus(reviewStatus: string): string {
     if (reviewStatus === 'SUBMITTED') {
-      return 'Submitted';
+      return 'Under Review';
     } else if (reviewStatus.includes('ADMIN_ACCEPTED')) {
       if (reviewStatus === 'ADMIN_ACCEPTED') {
         return 'Published';
@@ -50,7 +50,7 @@ export class PdfService {
         return 'Under Review';
       }
     } else if (reviewStatus.includes('ADMIN_REJECTED')) {
-      return 'Rejected';
+      return 'Commented';
     } else if (reviewStatus.includes('ADMIN_RESUBMIT')) {
       return 'Re-Submit';
     } else {

@@ -16,7 +16,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
@@ -49,7 +48,6 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
 @NgModule({
   declarations: [
     CartComponent,
-    NotificationsComponent,
     PaymentsComponent,
     HomepageComponent,
     EditEmailComponent,

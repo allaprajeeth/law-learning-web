@@ -274,7 +274,7 @@ export class ReviewervideoComponent {
         if (currentVideo) {
           const panelTitle = currentSection.panelTitle;
           const videoTitle = currentVideo.title;
-          const rejectionMessage = `Video in Panel "${panelTitle}" with Title "${videoTitle}" has been rejected.`;
+          const rejectionMessage = `Video in Panel "${panelTitle}" with Title "${videoTitle}" has been commented.`;
           // this.notificationService.sendNotification(rejectionMessage);
         }
       }

@@ -23,6 +23,12 @@ export class UploadstatusComponent {
     this.courseService.getCourses().subscribe(
       (response: any) => {
         this.courses = response.data.content;
+        this.courses.forEach((course) => {
+          if (course.reviewStatus === 'SUBMITTED') {
+            course.reviewStatus = 'Under Review'; 
+          }
+        });
+
       },
       (error) => {
         console.error('Error retrieving courses:', error);

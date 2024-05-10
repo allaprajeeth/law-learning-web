@@ -29,6 +29,7 @@ export class RegisterComponent {
   otpsFilled: boolean = false;
   isAcceptButtonClicked = false;
   registerForm: FormGroup;
+  isRegistrationCompleted = false
   constructor(
     public dialog: MatDialog,
     private formBuilder: FormBuilder,
@@ -118,7 +119,7 @@ export class RegisterComponent {
  
   }
   signUppage() {
-    this.router.navigate(['/login']);
+   
     const phoneOtp = this.phoneOtp?.value;
     const emailOtp = this.emailOtp?.value;
      const signUpCompleteFormData={
@@ -128,17 +129,13 @@ export class RegisterComponent {
      }
      this.registrationService.signUppage(signUpCompleteFormData).subscribe(
       ()=>{
-       
-          this.router.navigate(['/login']);
+          this.isRegistrationCompleted= true
+          // this.router.navigate(['/login']);
        
       }
      )
   }
- 
- 
- 
- 
- 
+
   onEmailOtpInput(event: any) {
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');

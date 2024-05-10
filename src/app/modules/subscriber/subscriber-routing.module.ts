@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { CartComponent } from './components/cart/cart.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotificationComponent } from './components/notification/notification.component';
@@ -50,10 +49,6 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-  },
-  {
-    path: 'notifications',
-    component: NotificationsComponent,
   },
   {
     path: 'payments',

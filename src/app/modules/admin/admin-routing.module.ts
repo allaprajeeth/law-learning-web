@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { NotificationComponent } from './components/notification/notification.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
@@ -68,10 +67,6 @@ const routes: Routes = [
   {
     path:'acSecurity',
     component:AccountsecurityComponent
-  },
-  {
-    path:"notifications",
-    component: NotificationsComponent
   },
   {
     path:"payments",
