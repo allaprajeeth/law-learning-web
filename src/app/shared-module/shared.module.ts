@@ -16,7 +16,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CarouselModule } from 'primeng/carousel';
-import { SharednotificationsComponent } from './components/sharednotifications/sharednotifications.component';
 import { SharedCertificateComponent } from './components/shared-certificate/shared-certificate.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { SharedNotificationComponent } from './components/shared-notification/shared-notification.component';
@@ -37,7 +36,6 @@ import { SharedPaginationComponent } from './components/shared-pagination/shared
     FooterComponent,
     SharedoverviewComponent,
     PublishingcornerComponent,
-    SharednotificationsComponent,
     SharedCertificateComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,
@@ -45,10 +43,6 @@ import { SharedPaginationComponent } from './components/shared-pagination/shared
     FileUploadComponent,
     ConfirmationAlertComponent,
     SidenavComponent,
-     SharednotificationsComponent,
-     SharedCertificateComponent,
-     SharednotificationsComponent,
-     SharedCertificateComponent,
      SharedNotificationComponent,
      LogoutPopupComponent,
      PublishArticlesComponent,
@@ -93,7 +87,6 @@ import { SharedPaginationComponent } from './components/shared-pagination/shared
     PublishArticlesComponent,
     FormsModule,
     SharedoverviewComponent,
-    SharednotificationsComponent,
     SharedCertificateComponent,
     SharedNotificationComponent,
     LogoutPopupComponent,

@@ -22,7 +22,6 @@ import { SharedModule } from 'src/app/shared-module/shared.module';
 import { ArticleComponent } from './components/article/article.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { PaymentsComponent } from './components/payments/payments.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { AuditReportComponent } from './components/audit-report/audit-report.component';
 import { AdminPostdetailComponent } from './components/admin-postdetail/admin-postdetail.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
@@ -47,7 +46,6 @@ import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/e
     NotificationComponent,
     ArticleComponent,
     PaymentsComponent,
-    NotificationsComponent,
     AuditReportComponent,
     AdminPostdetailComponent,
     AdminDashboardComponent,

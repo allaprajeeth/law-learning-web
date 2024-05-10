@@ -21,7 +21,6 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from 'src/app/shared-module/shared.module';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentsComponent } from './components/payments/payments.component';
 import { ArticlelistHistoryComponent } from './components/articlelist-history/articlelist-history.component';
 import { FileSaverModule } from 'ngx-filesaver';
@@ -34,7 +33,6 @@ import { NotificationComponent } from './components/notification/notification.co
     HomepageComponent,
     CourseInfoComponent,
     VideoplayerComponent,
-    NotificationsComponent,
     PaymentsComponent,
     ArticlelistHistoryComponent,
     CmPostdetailsComponent,

@@ -5,7 +5,6 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
@@ -78,10 +77,7 @@ const routes: Routes = [
     path:'acSecurity',
     component:AccountsecurityComponent
   },
-  {
-    path:"notifications",
-    component: NotificationsComponent
-  },
+
   {
     path:"contactus",
     component: SidenavContactusComponent

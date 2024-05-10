@@ -31,7 +31,6 @@ import { TestpreviewComponent } from './components/testpreview/testpreview.compo
 import { UploadstatusComponent } from './uploadstatus/uploadstatus.component';
 import { InstructorService } from './components/instructor.service';
 import { QuizsuccessmsgComponent } from './components/quizsuccessmsg/quizsuccessmsg.component';
-import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PaymentHistoryComponent } from './components/payment-history/payment-history.component';
 import { HistoryComponent } from './components/history/history.component';
 import { InstructorpostdetailsComponent } from './components/instructorpostdetails/instructorpostdetails.component';
@@ -65,7 +64,6 @@ import { CreateProfileComponent } from './components/create-profile/create-profi
     TestpreviewComponent,
     UploadstatusComponent,
     QuizsuccessmsgComponent,
-    NotificationsComponent,
     PaymentHistoryComponent,
     HistoryComponent,
     InstructorpostdetailsComponent,

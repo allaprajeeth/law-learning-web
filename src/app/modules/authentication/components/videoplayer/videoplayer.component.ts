@@ -229,8 +229,8 @@ export class VideoplayerComponent {
   
     this.courseService.sendReview(courseId, body).subscribe(
       response => {
-        console.log('Video rejected:', response);
-        this.showRejectPopup('Course Video rejected successfully.');
+        console.log('Video commented:', response);
+        this.showRejectPopup('Course Video commented successfully.');
       },
       error => {
         console.error('Error rejecting video:', error);

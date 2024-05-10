@@ -198,13 +198,13 @@ export class ArticleDetailsComponent {
             console.log('Article rejection successful:', response);
             if (this.role === 'ADMIN') {
               this.message =
-                'You have rejected the article, a notification containing the details of rejection will be sent to the author.';
+                'You have commented the article, a notification containing the details of rejection will be sent to the author.';
             } else if (this.role === 'CONTENTMANAGER') {
               this.message =
-                'You have rejected the article, it will be sent to the Admin for further review.';
+                'You have commented the article, it will be sent to the Admin for further review.';
             } else {
               this.message =
-                'You have rejected the article, it will be sent to the Admin for further review.';
+                'You have commented the article, it will be sent to the Admin for further review.';
             }
             this.articleRejected = true;
 
@@ -212,7 +212,7 @@ export class ArticleDetailsComponent {
             this.articleee = false;
           },
           (error) => {
-            console.error('Error rejecting article:', error);
+            console.error('Error commenting article:', error);
           }
         );
       } else {

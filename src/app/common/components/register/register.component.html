@@ -1,178 +1,112 @@
-<div class="page-container">
+<div class="page-container" *ngIf="!isRegistrationCompleted">
   <div class="carousel-container">
-    <img [src]="images[currentIndex]" alt="Image"  width="600" height="380"/>
+    <img [src]="images[currentIndex]" alt="Image" width="600" height="380" />
   </div>
   <div class="container">
     <div class="login-box">
       <h2>Register</h2>
       <form [formGroup]="registerForm">
         <label for="name">Name:</label>
-        <input
-          type="text"
-          id="name"
-          formControlName="name"
-          (input)="checkInput()"
-        />
-        <div
-          class="error-message"
-          *ngIf="
+        <input type="text" id="name" formControlName="name" (input)="checkInput()" />
+        <div class="error-message" *ngIf="
             registerForm.get('name')?.hasError('required') &&
             registerForm.get('name')?.touched
-          "
-        >
+          ">
           Name is required.
         </div>
         <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          (input)="checkInput()"
-        />
-        <div
-          class="error-message"
-          *ngIf="
+        <input type="email" id="email" formControlName="email" (input)="checkInput()" />
+        <div class="error-message" *ngIf="
             registerForm.get('email')?.hasError('required') &&
             registerForm.get('email')?.touched
-          "
-        >
+          ">
           Email is required.
         </div>
-        <div
-          class="error-message"
-          *ngIf="
+        <div class="error-message" *ngIf="
             registerForm.get('email')?.hasError('pattern') &&
             registerForm.get('email')?.touched
-          "
-        >
+          ">
           Invalid email format.
         </div>
 
         <label for="phone">Phone:</label>
-        <input
-          type="tel"
-          id="phone"
-          formControlName="phone"
-          (input)="handlePhoneInput($event)" 
-        />
-        <div
-          class="error-message"
-          *ngIf="
+        <input type="tel" id="phone" formControlName="phone" (input)="handlePhoneInput($event)" />
+        <div class="error-message" *ngIf="
             registerForm.get('phone')?.hasError('required') &&
             registerForm.get('phone')?.touched
-          "
-        >
+          ">
           Phone is required.
         </div>
-        <div
-          class="error-message"
-          *ngIf="
+        <div class="error-message" *ngIf="
             registerForm.get('phone')?.hasError('pattern') &&
             registerForm.get('phone')?.touched
-          "
-        >
+          ">
           Invalid phone format. (10 digits required)
         </div>
-
-
-        <!-- <label for="category">Category:</label>
-        <select
-          id="role"
-          formControlName="selectedCategory"
-          [disabled]="!isSendOtpsClicked">
-          <option value="SUBSCRIBER">SUBSCRIBER</option>
-          <option value="REVIEWER">REVIEWER</option>
-          <option value="INSTRUCTOR">INSTRUCTOR</option>
-          <option value="CONTENTMANAGER">CONTENTMANAGER</option>
-          <option value="Admin">Admin</option>
-        </select> -->
-
-
-        <button *ngIf="!isOtpVisible"
-          (click)="sendOtps()"
-          [disabled]="!isInputFilled "
-        >
+        <button *ngIf="!isOtpVisible" (click)="sendOtps()" [disabled]="!isInputFilled ">
           Send OTPs
         </button>
         <div *ngIf="isOtpVisible">
           <label for="emailOtp">Email OTP:</label>
-          <input
-            type="text"
-            id="emailOtp"
-            formControlName="email_otp"
-            required
-            [attr.autocomplete]="'off'"
-            (input)="onEmailOtpInput($event)"
-
-          />
-          <div
-            class="error-message"
-            *ngIf="
+          <input type="text" id="emailOtp" formControlName="email_otp" required [attr.autocomplete]="'off'"
+            (input)="onEmailOtpInput($event)" />
+          <div class="error-message" *ngIf="
               registerForm.get('email_otp')?.hasError('required') &&
               registerForm.get('email_otp')?.touched
-            "
-          >
+            ">
             Email OTP is required.
           </div>
-          <div class="error-message" *ngIf="registerForm.get('email_otp')?.hasError('pattern') && registerForm.get('email_otp')?.touched">
+          <div class="error-message"
+            *ngIf="registerForm.get('email_otp')?.hasError('pattern') && registerForm.get('email_otp')?.touched">
             Email OTP must consist of digits only.
           </div>
-  
-          <label for="phoneOtp">Phone OTP:</label>
-          <input
-            type="text"
-            id="phoneOtp"
-            formControlName="phone_otp"
-            required
-            [attr.autocomplete]="'off'"
-            (input)="onPhoneOtpInput($event)"
 
-          />
-          <div
-            class="error-message"
-            *ngIf="
+          <label for="phoneOtp">Phone OTP:</label>
+          <input type="text" id="phoneOtp" formControlName="phone_otp" required [attr.autocomplete]="'off'"
+            (input)="onPhoneOtpInput($event)" />
+          <div class="error-message" *ngIf="
               registerForm.get('phone_otp')?.hasError('required') &&
               registerForm.get('phone_otp')?.touched
-            "
-          >
+            ">
             Phone OTP is required.
           </div>
-          <div
-            class="error-message"
-            *ngIf="
+          <div class="error-message" *ngIf="
               registerForm.get('phone_otp')?.hasError('pattern') &&
               registerForm.get('phone_otp')?.touched
-            "
-          >
-         Phone OTP must consist of digits only.
+            ">
+            Phone OTP must consist of digits only.
           </div>
         </div>
 
-        <button
-          *ngIf="isLoginVisible"
+        <button *ngIf="isLoginVisible"
           [disabled]="registerForm.get('email_otp')?.value.length !== 6 || registerForm.get('phone_otp')?.value.length !== 6 || !registerForm.valid"
           [ngStyle]="{
             'background-color': registerForm.get('email_otp')?.value.length == 6 && registerForm.get('phone_otp')?.value.length == 6 && registerForm.valid ? 'blue' : 'gray',
             color: registerForm.get('email_otp')?.value.length == 6 && registerForm.get('phone_otp')?.value.length == 6 && registerForm.valid ? 'white' : 'black'
-          }"
-          (click)="signupVerify()"
-          
-        >
+          }" (click)="signupVerify()">
           Register
         </button>
-       <br/>
-       <br/>
-       <div class="acceptTerms" >
-        <div>By registering,you agree to our </div>
-        <div (click)="openModal()" class="termsandcon">Terms & Condtions</div>
-      
-      </div>
-        <div class="have-account">
-          Already have account ? 
-          <span class="redirect"  routerLink="/login">Log In</span>
+        <br />
+        <br />
+        <div class="acceptTerms">
+          <div>By registering,you agree to our </div>
+          <div (click)="openModal()" class="termsandcon">Terms & Condtions</div>
+
         </div>
-        <br/>
-    </form>
+        <div class="have-account">
+          Already have account ?
+          <span class="redirect" routerLink="/login">Log In</span>
+        </div>
+        <br />
+      </form>
+    </div>
   </div>
 </div>
 
+<div class="message-status" *ngIf="isRegistrationCompleted">
+  <div class="submission-status">
+    <h3> Registration successful please login to continue </h3>
+    <br>
+    <button routerLink="/login" class="login-button" mat-raised-button color="primary">Login</button>
+  </div>
+</div>

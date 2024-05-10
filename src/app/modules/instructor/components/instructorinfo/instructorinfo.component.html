@@ -8,7 +8,8 @@
         <div class="icons">
             <div class="icon ">
                 <mat-icon>star</mat-icon>
-                <p>{{instructorProfiles[0]?. rating }} Rating by Subscribers({{instructorProfiles[0]?.ratings_count}})</p>
+                <p>{{instructorProfiles[0]?. rating }} Rating by Subscribers({{instructorProfiles[0]?.ratings_count}})
+                </p>
             </div>
             <div class="icon ">
                 <mat-icon>star</mat-icon>
@@ -20,18 +21,18 @@
             </div>
             <div class="icon">
                 <mat-icon>play_circle_outline</mat-icon>
-                <p>{{instructorProfiles[0]?.course_count}}</p>
+                <p>{{instructorProfiles[0]?.course_count}} Courses</p>
             </div>
         </div>
     </div>
 
     <div class="profile">
         <div *ngIf="instructorProfiles[0]?.imageURL">
-            <img [src]= "s3BaseURl + instructorProfiles[0]?.imageURL" id="previewImage">
-          </div>
-          <div *ngIf="!instructorProfiles[0]?.imageURL">
+            <img [src]="s3BaseURl + instructorProfiles[0]?.imageURL" id="previewImage">
+        </div>
+        <div *ngIf="!instructorProfiles[0]?.imageURL">
             <img class="avatar text-center" [src]="photo" alt="Teacher Photo">
-          </div>
+        </div>
     </div>
 </div>
 
@@ -46,19 +47,20 @@
         </div>
         <div class="course-grid">
             <div *ngFor="let course of instructorCourses" class="course-item">
-              <div class="imagesContainer">
-                <img [src]="course.thumbnail ? s3BaseURl + course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
-                <div class="overlay">
-                  <i class="fa fa-play-circle play-icon"></i>
+                <div class="imagesContainer">
+                    <img [src]="course.thumbnail ? s3BaseURl + course.thumbnail : course.thumbnail" width="300"
+                        height="200" alt="Random Image" (error)="onImageError($event)">
+                    <div class="overlay">
+                        <i class="fa fa-play-circle play-icon"></i>
+                    </div>
                 </div>
-              </div>
-              <h2>{{ course.title }}</h2>
-              <p> {{ course.createdBy.name }}</p>
-              <h4>{{ course.type | titlecase }}  |  {{ course.difficultyLevel | titlecase }}</h4>
-              
-             
+                <h2>{{ course.title }}</h2>
+                <p> {{ course.createdBy.name }}</p>
+                <h4>{{ course.type | titlecase }} | {{ course.difficultyLevel | titlecase }}</h4>
+
+
             </div>
-          </div>
+        </div>
 
 
     </div>

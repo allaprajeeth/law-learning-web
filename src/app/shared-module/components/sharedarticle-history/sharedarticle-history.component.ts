@@ -76,7 +76,7 @@ export class SharedarticleHistoryComponent implements OnInit {
     let color = '';
     switch (reviewStatus) {
       case 'SUBMITTED':
-        color = 'black';
+        color = 'blue';
         break;
       case 'ADMIN_ACCEPTED':
         color = 'green';
