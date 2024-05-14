@@ -30,6 +30,7 @@ export interface Article {
       date: string;
       id: number;
       data: any;
+      createdDate:any;
       content: Article[];
       articles: Article[];
       viewCount?: number; 

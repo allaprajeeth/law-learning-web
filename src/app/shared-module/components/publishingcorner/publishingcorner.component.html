@@ -18,8 +18,10 @@
         <h2 class="article-name" >{{ article.title }}</h2>
         <p class="description">Description: {{ article.subject }}</p>
         <p>{{ article.date }}</p>
+      
         <p>View Count: {{ article.viewCount }}</p>
         <p>Author: {{ article.author }}</p>
+        <p>Date of Publishing: {{ article.createdDate | date: 'MMM dd , y' }}</p>
       </div>
       <button (click)="deleteArticlePopup(article.id)" *ngIf="isAdmin">Delete Article</button>
       <div class="delete-popup" *ngIf="deletePopup && article.id === articleToDeleteId">

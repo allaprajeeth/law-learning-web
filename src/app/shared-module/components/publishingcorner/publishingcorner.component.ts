@@ -8,7 +8,7 @@ import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 import { NotificationService } from 'src/app/common/services/notification/notification.service';
-
+// import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-publishingcorner',
   templateUrl: './publishingcorner.component.html',
@@ -31,7 +31,8 @@ export class PublishingcornerComponent implements OnInit {
     public dialog: MatDialog,
     private http: HttpClient,
     private authService: AuthTokenService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    // private datePipe: DatePipe
   ) { }
 
   ngOnInit(): void {

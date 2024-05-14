@@ -12,6 +12,10 @@
         <label for="" class="article-label">Author :</label>
         <p> {{articleDetails.data.createdBy.name}}</p>
       </div>
+      <div class="article-details">
+        <label for="" class="article-label">Date of Publishing :</label>
+        <p> {{articleDetails.data.createdDate | date: 'MMM dd , y'}}</p>
+      </div>
       <div class="article-details" style="margin-bottom: 20px;">
         <label for="" class="article-label">View Count</label>
         <p>{{ articleDetails.data.viewCount}}</p>
