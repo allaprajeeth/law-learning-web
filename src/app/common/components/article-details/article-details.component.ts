@@ -172,6 +172,7 @@ export class ArticleDetailsComponent {
     } else {
       console.error('Article ID is undefined.');
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   rejectArticle(): void {
@@ -219,6 +220,7 @@ export class ArticleDetailsComponent {
         console.error('Article ID is undefined.');
       }
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   closeMessage(): void {
@@ -264,5 +266,6 @@ export class ArticleDetailsComponent {
         console.error('Article ID is undefined.');
       }
     }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
