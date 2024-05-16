@@ -5,5 +5,7 @@ export interface Notifications {
     type: string,
     read: boolean,
     createdDate:string
-    message:string
+    message:string ,
+    description:string,
+    title :string
 }

@@ -3,6 +3,7 @@ import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { Notifications } from 'src/app/common/models/notification.model';
+import { Pagination } from 'src/app/common/models/pagination.model';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 
 interface Notification {
@@ -19,21 +20,26 @@ interface Notification {
 })
 export class SharedNotificationComponent implements OnInit {
   notificationOpened: boolean = false;
-
   notifications: Notifications[] = [];
   role:string | undefined;
+  pagination: Pagination = new Pagination();
+  params: any = {};
   constructor(private cdr: ChangeDetectorRef,
      private router: Router,
      private http: HttpClient,
      private authService: AuthTokenService,) {
-
       const userDetails = this.authService.getUserDetails();
       this.role = userDetails?.role 
+      this.pagination = new Pagination();
      }
 
   ngOnInit() {
     this.cdr.detectChanges();
-    this.fetchNotifications()
+   
+    this.params = {
+      pagination: this.pagination.getPaginationRequest(),
+    };
+    this.fetchNotifications(this.params)
   }
 
   deleteNotification(id:number) {
@@ -42,6 +48,7 @@ export class SharedNotificationComponent implements OnInit {
     this.http.delete(apiUrl).subscribe(
       () => {
         console.log('notification deleted successfully');
+        this.notifications = this.notifications.filter(notification => notification.id !== id);
       },
       (error) => {
         console.error('Error deleting library:', error);
@@ -51,48 +58,51 @@ export class SharedNotificationComponent implements OnInit {
   }
  
  
-  fetchNotifications(): void {
+  fetchNotifications(params:any): void {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl + `/profile/notifications`;
-    const params = new HttpParams()
-      .set('number', '0')
-      .set('size', '20')
-      .set('sort', 'id,DESC');
+    // params = new HttpParams()
+      // .set('number', '0')
+      // .set('size', '40')
+      // .set('sort', 'id,DESC');
+      this.params = {
+        pagination: this.pagination.getPaginationRequest(),
+      };
     this.http.get<any>(apiUrl, { params }).subscribe(response => {
       const notifications: Notifications[] = response.data.content; 
-      notifications.forEach(notification => {
-        let message = '';
-        if (notification.type === 'CREATED') {
-          switch (notification.sourceType) {
-            case 'COURSE':
-              message = 'New Course added';
-              break;
-            case 'ARTICLE':
-              message = 'New Article added';
-              break;
-            case 'LIBRARY':
-              message = 'New Document added to the library';
-              break;
-            default:
-              message = 'New Content added';
-          }
-        } else if (notification.type === 'UPDATED') {
-          switch (notification.sourceType) {
-            case 'COURSE':
-              message = 'Course updated';
-              break;
-            case 'ARTICLE':
-              message = 'Article updated';
-              break;
-            case 'LIBRARY':
-              message = 'Document updated in the library';
-              break;
-            default:
-              message = 'Content updated';
-          }
-        }
-        notification.message = message; 
-      });
+      // notifications.forEach(notification => {
+      //   let message = '';
+      //   if (notification.type === 'CREATED') {
+      //     switch (notification.sourceType) {
+      //       case 'COURSE':
+      //         message = 'New Course added';
+      //         break;
+      //       case 'ARTICLE':
+      //         message = 'New Article added';
+      //         break;
+      //       case 'LIBRARY':
+      //         message = 'New Document added to the library';
+      //         break;
+      //       default:
+      //         message = 'New Content added';
+      //     }
+      //   } else if (notification.type === 'UPDATED') {
+      //     switch (notification.sourceType) {
+      //       case 'COURSE':
+      //         message = 'Course updated';
+      //         break;
+      //       case 'ARTICLE':
+      //         message = 'Article updated';
+      //         break;
+      //       case 'LIBRARY':
+      //         message = 'Document updated in the library';
+      //         break;
+      //       default:
+      //         message = 'Content updated';
+      //     }
+      //   }
+      //   notification.message = message; 
+      // });
       this.notifications = notifications;
     });
   }
@@ -154,6 +164,12 @@ export class SharedNotificationComponent implements OnInit {
       }
     );
 
+  }
+
+  onPageChange(page: number) {
+    console.log("latest from all" + " " +page);
+    this.pagination.page =page
+    this.fetchNotifications(this.pagination)
   }
 
 }
