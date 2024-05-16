@@ -148,16 +148,17 @@ export class ArticleDetailsComponent {
           console.log('Article approval successful:', response);
           // this.notificationService.notify('Article approved  successfully');
           if (this.role === 'ADMIN') {
-            if (this.reviewStatus === 'CONTENT_MANAGER_ACCEPTED') {
+            if (this.reviewStatus === 'CONTENT_MANAGER_REJECTED') {
               this.message =
                 ' You have approved the article, it will be sent to the Reviewer for further review.';
-            } else {
+            } 
+            else {
               this.message =
-                'You have approved the article, it will be sent to the Reviewer for further review.';
+                'You have approved the article, it will be published sequentially.';
             }
           } else if (this.role === 'CONTENTMANAGER') {
             this.message =
-              'You have approved the article, it will be sent to the Admin for further review.';
+              'You have approved the article, it will be sent to the Reviewer for further review.';
           } else {
             this.message =
               'You have approved the article, it will be sent to the Admin for further review.';

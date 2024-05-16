@@ -61,10 +61,10 @@
       <div>
         <h2 class="article-name">{{ (article.title.length > 50 ? article.title.slice(0, 50) + '...' : article.title) }}</h2>
         <p class="description">Description: {{ article.description}}</p>
+
+        <p> Submitted Date : {{ article.files[0]?.createdDate | date:'mediumDate' }}</p>
         <p class="author-name">Author : {{ article.createdBy.name }}</p>
-        <p>Created Date :  {{ article.files[0]?.createdDate | date:'mediumDate' }}</p>
-        
-      </div>
+           </div>
       </div>
     </div>
   </div>

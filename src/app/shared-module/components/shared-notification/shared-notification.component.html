@@ -2,16 +2,16 @@
   <span class="heading">Notifications</span>
 <div class="notification-list">
   <ng-container *ngFor="let notification of notifications; let i = index">
-    <div class="notification-item" (click)="openNotification(notification)">
+    <div class="notification-item">
       <div class="circle">
         <!-- {{ notification.icon }} -->
       </div>
-      <div class="notification-content">
+      <div class="notification-content"  (click)="openNotification(notification)">
         <div class="notification-heading" [class.no-font-weight]="notificationOpened">
-          <!-- {{ notification.heading }} -->
+          {{ notification.title}}
         </div>
         <div class="notification-message">
-          {{ notification.message }}
+          {{ notification.description }}
         </div>
       </div>
       <span class="date">
@@ -19,7 +19,9 @@
       </span>
       <mat-icon class="delete-icon" (click)="deleteNotification(notification.id)">delete</mat-icon>
     </div>
+   
   </ng-container>
 </div>
 </div>
+<app-shared-pagination [currentPage]="pagination.page" [totalPages]="pagination.totalPages" (pageChange)="onPageChange($event)"></app-shared-pagination>
 
