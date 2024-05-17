@@ -2,7 +2,6 @@ import { ChangeDetectorRef, Component, OnInit, EventEmitter, Output  } from '@an
 import { PopupService } from 'src/popup.service';
 import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
 import { MatDialog } from '@angular/material/dialog';
-import { UserDetailsService } from '../../services/user-details/user-details.service';
 import { AuthTokenService } from '../../services/auth-token/auth-token.service';
 import { UserModel } from '../../models/user.model';
 import { Router } from '@angular/router';

@@ -29,7 +29,7 @@ export class ArticleDetailsComponent {
   officeViewerSrc: SafeResourceUrl | string | undefined;
   resubmitMessage: boolean = false;
   articleId: number | undefined;
-  isAdmin: boolean = false;
+  isContentManager: boolean = false;
   role: string | undefined;
   message: string | undefined;
   reviewStatus: string | undefined;
@@ -45,7 +45,7 @@ export class ArticleDetailsComponent {
     private authService: AuthTokenService
   ) {
     const userDetails = this.authService.getUserDetails();
-    this.isAdmin = userDetails?.role === 'ADMIN';
+    this.isContentManager = userDetails?.role === 'CONTENTMANAGER';
     this.role = userDetails?.role;
   }
 

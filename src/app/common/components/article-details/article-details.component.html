@@ -41,7 +41,7 @@
         <div class="button-container">
           <button class="approve-button" (click)="approveArticle()">Approve</button>
           <button class="reject-button" (click)="rejectArticle()">Reject</button>
-          <button class="resubmit-button" (click)="resubmitArticle()" *ngIf="isAdmin">Re-submit</button>
+          <button class="resubmit-button" (click)="resubmitArticle()" *ngIf="!isContentManager">Re-Submit</button>
         </div>
       </div>
       <br />
