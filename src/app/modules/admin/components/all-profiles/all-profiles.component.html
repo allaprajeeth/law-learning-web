@@ -17,7 +17,7 @@
       <th style="font-size: large;">Status</th>
       <!-- class="align" -->
     </tr>
-    <tr *ngFor="let profile of allProfiles" class="profile-item" (click)="navigateToAllProfiles(profile.id)" >
+    <tr *ngFor="let profile of allProfiles" class="profile-item" (click)="openProfileModal(profile.id)" >
       <td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
       <td>
         <h3>{{ profile.name }}</h3>

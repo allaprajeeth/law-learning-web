@@ -11,7 +11,6 @@ import { DashboardNotificationsComponent } from './components/dashboard-notifica
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
-import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
 import { ArticleDetailsComponent } from 'src/app/common/components/article-details/article-details.component';
 import {ArticleComponent} from './../../common/components/article/article.component'
 import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
@@ -95,10 +94,6 @@ const routes: Routes = [
   {
     path:"all-profiles",
     component: AllProfilesComponent
-  },
-  {
-    path:"profile-details/:id",
-    component: ProfileDetailsComponent
   },
   {
     path:"article-history",

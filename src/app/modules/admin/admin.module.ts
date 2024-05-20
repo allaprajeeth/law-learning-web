@@ -30,8 +30,6 @@ import { DashboardNotificationsComponent } from './components/dashboard-notifica
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
 import { AllProfilesComponent } from './components/all-profiles/all-profiles.component';
-import { ProfileDetailsComponent } from './components/profile-details/profile-details.component';
-
 import { LibraryFormComponent } from './components/library-form/library-form.component';
 import { LibraryHistoryComponent } from './components/library-history/library-history.component';
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
@@ -54,7 +52,6 @@ import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/e
     ArticleHistoryComponent,
     CoursesHistoryComponent,
     AllProfilesComponent,
-    ProfileDetailsComponent,
     LibraryFormComponent,
     LibraryHistoryComponent,
     AdvisorProfilesFormComponent,
