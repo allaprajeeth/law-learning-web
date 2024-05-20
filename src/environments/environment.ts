@@ -24,6 +24,7 @@ export const environment = {
         auth: '/auth',
         secure: '/secure',
         search_courses: '/search-courses',
-        course: '/courses'
+        course: '/courses',
+        unReadNotificationCount: '/profile/notifications/unread/count'
     }
 };
