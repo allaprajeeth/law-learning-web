@@ -77,3 +77,15 @@
     </mat-accordion>
 
   </mat-card>
+  <!-- Your existing template content here -->
+<div class="comment-box">
+  <textarea placeholder="Add your comment here..." [(ngModel)]="rejectComment"></textarea>
+</div>
+
+<div class="approve-reject-buttons">
+  <button class="approve-button" (click)="approve()">Approve</button>
+  <button class="reject-button" (click)="reject()">Reject</button>
+</div>
+
+
+  </div>

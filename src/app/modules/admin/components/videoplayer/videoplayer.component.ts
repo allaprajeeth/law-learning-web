@@ -31,6 +31,7 @@ export class VideoplayerComponent {
   courseProgress: number = 0;
   currentPlayingVideoIndex: number = -1;
   documents:boolean=false;
+  isCoursePublished: boolean = false;
   duration: number | undefined;
   showDocs(){
     this.documents=!this.documents;

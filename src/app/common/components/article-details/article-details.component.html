@@ -12,26 +12,26 @@
         <button (click)="downloadFile(article.files[0].url,article.files[0].fileName)" mat-raised-button color="primary"
           class="download-button">Download Article</button>
           <div class="article-details">
-            <label for="" class="article-label">Title of the Article :</label>
+            <label for="" class="article-label">Title of the Article </label>
             <p>{{ article.title }}</p>
           </div>
           <div class="article-details">
-            <label for="" class="article-label">Description :</label>
+            <label for="" class="article-label">Description </label>
             <p>{{ article.description }}</p>
           </div>
           <div class="article-details">
-            <label for="" class="article-label">Author :</label>
+            <label for="" class="article-label">Author </label>
             <p> {{article.createdBy.name}}</p>
           </div>
           <div class="article-details" style="margin-bottom: 20px;">
-            <label for="" class="article-label">Review Status:</label>
+            <label for="" class="article-label">Review Status</label>
             <p>{{ article.reviewStatus }}</p>
           </div>
         <iframe *ngIf="fileOpened" [src]="officeViewerSrc" width=100% height="700px"
         style="border:none;"></iframe>
 
         <div class="comments" *ngIf="article.files && article.files.length > 0">
-          <label for="" class="comments-label">Comments:</label>
+          <label for="" class="comments-label">Comments</label>
           <textarea placeholder="Type your comment here..." [(ngModel)]="comment" rows="4" cols="120"
             class="comments-textarea"></textarea>
         </div>
@@ -41,7 +41,7 @@
         <div class="button-container">
           <button class="approve-button" (click)="approveArticle()">Approve</button>
           <button class="reject-button" (click)="rejectArticle()">Reject</button>
-          <button class="resubmit-button" (click)="resubmitArticle()" *ngIf="isAdmin">Re-submit</button>
+          <button class="resubmit-button" (click)="resubmitArticle()" *ngIf="!isContentManager">Re-Submit</button>
         </div>
       </div>
       <br />
