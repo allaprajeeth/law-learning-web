@@ -14,6 +14,8 @@ export class SharedoverviewComponent {
   @Input() course: Course = new Course;
   courseId: number | undefined;
    numberOfSubsections = 0;
+   rejectComment: string = '';
+
   constructor(
     private courseService: CoursesService,
     private route: ActivatedRoute
@@ -29,4 +31,15 @@ export class SharedoverviewComponent {
   isSubmitted(subsection: any): boolean {
     return subsection.reviewStatus === 'SUBMITTED';
   }  
+
+  approve() {
+    // Logic for approving the course
+  }
+
+  reject() {
+    if (!this.rejectComment.trim()) {
+      alert('Please add a comment before rejecting.');
+      return; // Don't proceed if comment is not provided
+    }
+  }
 }
