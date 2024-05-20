@@ -10,6 +10,7 @@
             <li>
               <a [routerLink]="[navItem.route]" routerLinkActive="active" class="mycourses">
                 {{ navItem.name }}
+                <span *ngIf="navItem.route.includes('notification') && unreadNotificationCount >= 0" class="custom_badge">{{ unreadNotificationCount }}</span>
               </a>
             </li>
           </ng-container>

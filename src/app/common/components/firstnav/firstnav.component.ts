@@ -8,6 +8,7 @@ import { UserModel } from '../../models/user.model';
 import { Router } from '@angular/router';
 import { LogoutService } from '../../services/logout.service';
 import { Subscription } from 'rxjs';
+import { NotificationService } from '../../services/notification/notification.service';
 
 @Component({
   selector: 'app-firstnav',
@@ -22,7 +23,7 @@ export class FirstnavComponent {
   email: string | undefined;
   phone: string | undefined;
   showLogoutPopup = false;
- 
+  unreadNotificationCount: number = 0;
   private userDetailsSubscription: Subscription | undefined;
   constructor(
     private sharedService: PopupService,
@@ -30,7 +31,8 @@ export class FirstnavComponent {
     private authService: AuthTokenService,
     private cdr: ChangeDetectorRef,
     private router: Router,
-    private logoutService: LogoutService
+    private logoutService: LogoutService,
+	private notificationService: NotificationService
   ) {}
  
   ngOnInit() {
@@ -43,6 +45,11 @@ export class FirstnavComponent {
       this.phone = userDetails?.phone;
       this.nameChange.emit(this.name);
     });
+	if(this.userDetailsSubscription) {
+		this.notificationService.unreadMessageCount$.subscribe(count => {
+			this.unreadNotificationCount = count;
+		});
+	}
   }
   @Output() nameChange = new EventEmitter<string>();
 
