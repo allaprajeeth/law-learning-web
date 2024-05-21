@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
+import { interval, takeWhile } from 'rxjs';
  
 @Component({
   selector: 'app-login',
@@ -32,7 +33,14 @@ openModal() {
       email_otp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       phone_otp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
+    this.startOtpTimer();
+
   }
+  // loginForm: FormGroup;
+  isOtpVisibles = true;
+  otpValidDuration = 130; 
+  timer: any;
+  timerSubscription: any;
   isSendOtpsClicked: boolean = true;
   images: string[] = ['assets/5th Estate ADR 1.png'];
   currentIndex: number = 0;
@@ -44,7 +52,31 @@ openModal() {
   isOtpVisible: boolean = false;
   isLoginVisible: boolean = false;
   disableCategorySelect: boolean = false;
- 
+  startOtpTimer() {
+    this.timer = this.otpValidDuration;
+    this.timerSubscription = interval(1000).pipe(
+      takeWhile(() => this.timer > 0)
+    ).subscribe(() => {
+      this.timer--;
+      if (this.timer <= 0) {
+        this.isOtpVisibles = false;
+        this. isLoginVisible= false;
+        
+        this.timerSubscription.unsubscribe();
+      }
+    });
+  }
+
+  reloadPage(): void {
+    // this.router.navigateByUrl('/login', { skipLocationChange: true }).then(() => {
+      window.location.reload();
+    // });
+  }
+  get formattedTimer(): string {
+    const minutes: number = Math.floor(this.timer / 60);
+    const seconds: number = this.timer % 60;
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+  }
   checkInput(): void {
     this.isInputFilled =
       (!!this.loginForm.get('email')?.value ?? false) &&
