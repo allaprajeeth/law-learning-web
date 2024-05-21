@@ -2,7 +2,7 @@
     <div class="form-container">
         <mat-stepper linear #stepper [orientation]="(stepperOrientation | async)!">
             <form [formGroup]="courseForm" class="form-group">
-                <mat-step [stepControl]="courseForm">
+                <mat-step [stepControl]="courseForm" customId="course">
                     <ng-template matStepLabel>Basic Course Details</ng-template>
                     <input type="hidden" id="id" name="id" formControlName="id">
                     <div class="form-group">
@@ -91,7 +91,7 @@
                         </button>
                     </div>
                 </mat-step>
-                <mat-step [stepControl]="getSections">
+                <mat-step [stepControl]="getSections"  customId="sections">
                     <ng-template matStepLabel>Course Content</ng-template>
                     <mat-accordion formArrayName="sections" class="example-headers-align" multi>
                         <div *ngFor="let sectionForm of getSections.controls; index as i;" [formGroupName]="i"
@@ -248,30 +248,11 @@
                         </button>
                     </div>
                 </mat-step>
-                <mat-step>
+                <mat-step customId="quiz">
                     <ng-template matStepLabel>Quiz </ng-template>
-                    <div *ngIf="!hasTest">
-                        <div class="form-group">
-                            <label>Does this course have test ?</label>
-                            <div class="radio-group">
-                                <input type="radio" id="test_yes" name="test" value="yes"
-                                formControlName="test">
-                                <label for="test_yes" class="skill">Yes</label>
-    
-                                <input type="radio" id="test_no" name="test" value="no"
-                                formControlName="test">
-                                <label for="test_no" class="skill">No</label>  
-                            </div>
-                        </div>
-                        <div *ngIf="courseForm.get('test')?.value === 'yes'">
-                            <app-quiztest [courseId] ="courseId"></app-quiztest>
-                        </div>
-                    </div>
-                    <div *ngIf="hasTest">
-                        <app-quiztest [courseId] ="courseId"></app-quiztest>
-                    </div>
+                    <app-quiztest *ngIf="showQuiz" [courseId] ="courseId"></app-quiztest>
                 </mat-step>
-                <mat-step>
+                <mat-step customId="overview">
                     <ng-template matStepLabel>Course Preview</ng-template>
                     <div>
                         <div class="course-info-container">

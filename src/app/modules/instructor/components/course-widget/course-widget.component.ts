@@ -20,10 +20,9 @@ import { SubSection } from 'src/app/common/models/sub-sections.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationAlertComponent } from 'src/app/shared-module/components/confirmation-alert/confirmation-alert.component';
 import { FileUploadService } from 'src/app/common/services/file-upload/file-upload.service';
-import { HttpClient, HttpEventType, HttpResponse } from '@angular/common/http';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Quiz } from 'src/app/common/models/quiz.model';
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-course-widget',
@@ -31,16 +30,13 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./course-widget.component.scss'],
 })
 export class CourseWidgetComponent {
-editResource(arg0: number,arg1: number,arg2: number) {
-throw new Error('Method not implemented.');
-}
   stepperOrientation: Observable<StepperOrientation>;
   sectionStep: number = 0;
   subSectionStep: number = -1;
   // Couse form
   courseFormData: FormData;
   courseForm!: FormGroup;
-  courseId: number | undefined;
+  courseId: number;
   processing: boolean = false;
   course: Course = new Course();
   institutions: any[] = [];
@@ -49,9 +45,7 @@ throw new Error('Method not implemented.');
   currentFile?: File;
   progress: number = 0;
 
-  test: string | undefined;
-  hasTest: boolean = false;
-  quizData : Quiz | undefined;
+  showQuiz: boolean = false;
   thumbnail: any;
   constructor(
     private _formBuilder: FormBuilder,
@@ -60,24 +54,22 @@ throw new Error('Method not implemented.');
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private fileUploadService: FileUploadService ,
-	private http: HttpClient
+    private fileUploadService: FileUploadService
   ) {
     this.stepperOrientation = breakpointObserver
       .observe('(min-width: 800px)')
       .pipe(map(({ matches }) => (matches ? 'horizontal' : 'vertical')));
     this.courseFormData = new FormData();
+    this.courseId = this.route.snapshot.params['id'];
   }
 
   ngOnInit() {
     // Create the course form when the component is initialized
     this.initCourseForm();
     this.loadInstitutions();
-    this.courseId = this.route.snapshot.params['id'];
     if (this.courseId && isNumber(Number(this.courseId))) {
       this.loadCourseDetails(this.courseId);
     }
-    this.getQuiz();
   }
 
   initCourseForm() {
@@ -96,7 +88,6 @@ throw new Error('Method not implemented.');
       courseFile: [null],
       submitted: [false],
       sections: this._formBuilder.array([]),
-      test: [''],
     });
   }
 
@@ -288,8 +279,11 @@ throw new Error('Method not implemented.');
   }
 
   onNext(stepper: MatStepper) {
-    console.log(this.courseForm);
-    if (this.courseForm.valid) {
+    const selectedStepIndex = stepper.selectedIndex;
+    if(selectedStepIndex === 1) {
+      this.showQuiz = true;
+      stepper.next();
+    } else if (this.courseForm.valid) {
       this.courseFormData.set(
         'course',
         new Blob([JSON.stringify(this.courseForm.value)], {
@@ -453,6 +447,10 @@ throw new Error('Method not implemented.');
       });
   }
 
+  editResource(arg0: number,arg1: number,arg2: number) {
+    //TODO - Edit resorce.
+  }
+
   showFileUpload(subSection: SubSection) {
     return subSection && subSection.id && !subSection.file;
   }
@@ -495,19 +493,6 @@ throw new Error('Method not implemented.');
           });
         }
       }
-    });
-  }
-
-  getQuiz() {
-    const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl + `/course/${this.courseId}/quiz`;
-    this.http.get<any>(apiUrl).subscribe((response) => {
-
-        if (response.data && response.data.length > 0 && response.data[0].questions && response.data[0].questions.length > 0) {
-			this.hasTest = true;
-		  }
-      this.quizData = response.data;
-     
     });
   }
 }

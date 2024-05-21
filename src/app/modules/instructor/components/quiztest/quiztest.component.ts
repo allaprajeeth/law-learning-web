@@ -5,6 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { Course } from 'src/app/common/models/course.model';
 import { Quiz } from 'src/app/common/models/quiz.model';
+import { QuizService } from 'src/app/common/services/quiz/quiz.service';
 
 export class AdditionalForm {
   enteredQuestion: string = '';
@@ -47,20 +48,17 @@ export class QuiztestComponent {
   formsArray: number[] = [];
   additionalForms: AdditionalForm[] = [new AdditionalForm()];
 
-  @Input()  courseId: number | undefined;
+  @Input()  courseId!: number;
 
   // @Input() course: Course = new Course();
 
   hasTest:boolean | undefined;
   quizData :Quiz | undefined 
 
-  constructor(public dialog: MatDialog, private http: HttpClient) {}
+  constructor(public dialog: MatDialog, private http: HttpClient, private quizService: QuizService) {}
 
   ngOnInit(): void {
-    this.getQuiz()
-    console.log( )
-    
-    // console.log('quiz data ' + this.quizData);
+    this.getQuiz(this.courseId);
   }
 
   hasQuestions(): boolean {
@@ -183,7 +181,7 @@ export class QuiztestComponent {
       questions: this.additionalForms.map((form) => ({
         question: form.enteredQuestion,
         options: form.selectchoice.map((option, index) => ({
-          id: index + 1,
+          //id: index + 1,
           option: option,
         })),
         answer: form.correctAnswer,
@@ -244,19 +242,18 @@ export class QuiztestComponent {
     );
   }
  
-  getQuiz() {
-    const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl + `/course/${this.courseId}/quiz`;
-    this.http.get<any>(apiUrl).subscribe((response) => {
-      if (response.data && response.data.length > 0 && response.data[0].questions && response.data[0].questions.length > 0) {
-			this.hasTest = true;
-		  }
-      this.quizData = response.data[0];
-      console.log(this.quizData)
-      
-    
-    });
+  getQuiz(courseId: number) {
+    this.quizService.getQuiz(courseId).subscribe(
+      (response: any) => {
+        if (response.data && response.data.length > 0 && response.data[0].questions && response.data[0].questions.length > 0) {
+          this.hasTest = true;
+        }
+        this.quizData = response.data[0];
+      }
+    );
   }
 
- 
+  updateHasTest(value: boolean) {
+    this.hasTest = value;
+  }
 }

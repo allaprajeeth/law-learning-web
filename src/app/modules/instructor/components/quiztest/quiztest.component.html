@@ -1,6 +1,19 @@
-<div class="main-container" *ngIf="!hasTest">
+<div *ngIf="!hasTest && !quizData">
+    <div class="form-group">
+        <label>Does this course have test ?</label>
+        <div class="radio-group">
+            <input type="radio" id="test_yes" name="test" (click)="updateHasTest(true)">
+            <label for="test_yes" class="skill">Yes</label>
+
+            <input type="radio" id="test_no" name="test" (click)="updateHasTest(false)">
+            <label for="test_no" class="skill">No</label>
+        </div>
+    </div>
+</div>
+<div class="main-container" *ngIf="hasTest && !quizData">
     <h2>Create a Test</h2>
-    <p *ngIf="!questionType || questionType.trim() === ''" class="message">Please select the question type to get test questions
+    <p *ngIf="!questionType || questionType.trim() === ''" class="message">Please select the question type to get test
+        questions
         form</p>
     <div class="quiz-container">
         <div class="quiz-header">
@@ -10,7 +23,7 @@
             </div>
             <div class="input-group">
                 <label for="questionType">Select Question Type:</label>
-                <select id="questionType" [(ngModel)]="questionType" [disabled]="hasQuestions()" >
+                <select id="questionType" [(ngModel)]="questionType" [disabled]="hasQuestions()">
                     <option value="multiple-choice">Multiple Choice</option>
                     <option value="short-answer">Short Answer</option>
                 </select>
@@ -87,10 +100,6 @@
             <br />
         </div>
     </div>
-
-
-
-
     <div class="main-additional-form" *ngIf="questionType === 'short-answer'">
         <div class="additional-form-container" *ngFor="let form of additionalForms; let i = index">
             <div class="additional-form">
@@ -128,28 +137,24 @@
         </div>
         <div class="test-button">
             <!-- <p class="required-message" *ngIf="!isValid()">Enter the required fields to enable the submit button</p> -->
-            <button class="test-submit-button"  (click)="submitTest()"
-                >Submit</button>
+            <button class="test-submit-button" (click)="submitTest()">Submit</button>
             <br />
         </div>
     </div>
 </div>
-    <div *ngIf="quizData" class="quiz-container" >
-        <h2>{{ quizData.name }} Quiz</h2>
-        <div *ngFor="let question of quizData.questions; let i = index">
-          <div class="question">
+<div *ngIf="hasTest && quizData" class="quiz-container">
+    <h2>{{ quizData.name }} Quiz</h2>
+    <div *ngFor="let question of quizData.questions; let i = index">
+        <div class="question">
             <p class="question-heading">Question {{ i + 1 }} : {{ question.question }}</p>
             <ul class="options-list">
-              <li class="option" *ngFor="let option of question.options; let j = index">
-                <label>
-                  Option {{ j + 1 }} : {{ option.option }}
-                </label>
-              </li>
+                <li class="option" *ngFor="let option of question.options; let j = index">
+                    <label>
+                        Option {{ j + 1 }} : {{ option.option }}
+                    </label>
+                </li>
             </ul>
             <p class="correct-answer">Correct Answer : {{ question.answer }}</p>
-          </div>
         </div>
-      </div>
-<br />
-<br />
-<br />
+    </div>
+</div>

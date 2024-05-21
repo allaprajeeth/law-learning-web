@@ -131,25 +131,16 @@ openModal() {
    
   }
    loginClick() {
-    const email = this.email?.value;
-    const phone = this.phone?.value;
     const phoneOtp = this.phoneOtp?.value;
     const emailOtp = this.emailOtp?.value;
  
      const loginVerifyFormData={
-         email:email,
-         phone:phone,
          phone_otp:phoneOtp,
          email_otp:emailOtp,
          validation_key :this.loginService.validationKey$.value,
-         
      }
      this.loginService.loginClick(loginVerifyFormData).subscribe(
-      ()=>{
-        console.log(this.loginService.validationKey$.value)
-        // this.loginValidation();
-       
-      }
+      ()=>{}
      )
   }
  
