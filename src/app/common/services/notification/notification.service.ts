@@ -11,19 +11,9 @@ export class NotificationService {
 
 	private unreadMessageCountSubject = new BehaviorSubject<number>(0);
 	unreadMessageCount$: Observable<number> = this.unreadMessageCountSubject.asObservable();
-	private intervalSubscription: Subscription;
+	private intervalSubscription: Subscription | null = null;
 	constructor(private matSnackBar: MatSnackBar, private http: HttpClient) {
-		this.intervalSubscription = timer(0, 300000).pipe(
-			switchMap(() => this.fetchUnreadMessageCount()),
-			catchError(error => {
-			  console.error('Error fetching unread message count:', error);
-			  return of(0);
-			}),
-			// Ensure TypeScript correctly infers the type of the emitted value
-			map(count => typeof count === 'number' ? count : 0) // Convert unknown to number
-		  ).subscribe(count => {
-			this.unreadMessageCountSubject.next(count);
-		  });
+		
 	}
 	private fetchUnreadMessageCount(): Observable<number> {
 		// Simulate fetching unread message count from API
@@ -35,6 +25,23 @@ export class NotificationService {
 				return Number(response.data);
 			})
 		);
+	}
+
+	startTimer() {
+		if(this.intervalSubscription) {
+			return;
+		}
+		this.intervalSubscription = timer(0, 300000).pipe(
+			switchMap(() => this.fetchUnreadMessageCount()),
+			catchError(error => {
+			  console.error('Error fetching unread message count:', error);
+			  return of(0);
+			}),
+			// Ensure TypeScript correctly infers the type of the emitted value
+			map(count => typeof count === 'number' ? count : 0) // Convert unknown to number
+		  ).subscribe(count => {
+			this.unreadMessageCountSubject.next(count);
+		  });
 	}
 
 	stopTimer() {

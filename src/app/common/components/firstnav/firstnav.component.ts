@@ -43,12 +43,13 @@ export class FirstnavComponent {
       this.email = userDetails?.email;
       this.phone = userDetails?.phone;
       this.nameChange.emit(this.name);
+      if(userDetails) {
+        this.notificationService.startTimer();
+        this.notificationService.unreadMessageCount$.subscribe(count => {
+          this.unreadNotificationCount = count;
+        });
+      }
     });
-	if(this.userDetailsSubscription) {
-		this.notificationService.unreadMessageCount$.subscribe(count => {
-			this.unreadNotificationCount = count;
-		});
-	}
   }
   @Output() nameChange = new EventEmitter<string>();
 
