@@ -8,7 +8,8 @@ import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-
+import { DeleteAccountDialogComponent } from '../delete-account-dialog/delete-account-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 @Injectable({
   providedIn: 'root',
 })
@@ -16,12 +17,14 @@ export class LoginService {
   validationKey$: BehaviorSubject<string> = new BehaviorSubject('');
   loggedInUserEmail$: BehaviorSubject<string> = new BehaviorSubject('');
 
+
   constructor(
     private apiService: ApiService,
     public authTokenService: AuthTokenService,
     private loggingService: LoggingService,
     private notificationService: NotificationService,
     private router: Router,
+    private dialog: MatDialog
     
   ) {}
 
@@ -64,12 +67,21 @@ export class LoginService {
           localStorage.setItem('jwtToken', response.data.jwt_token);
           localStorage.setItem('userDetails', JSON.stringify(response.data.user));
           const userDetailsObject = localStorage.getItem("userDetails");
-          console.log("user details ", userDetailsObject);
-          
-          let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
-          this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
-            console.log("Status of user", profileResponse?.data?.status); 
-            const status: string = profileResponse?.data?.status;
+          // console.log("user details ", userDetailsObject);
+         
+          // let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
+          // this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
+          //   console.log("Status of user", profileResponse?.data?.status); 
+          //   const status: string = profileResponse?.data?.status;
+          if (userDetailsObject) {
+            const userDetailsObjects = JSON.parse(userDetailsObject);
+            console.log("user details ", userDetailsObjects);
+            
+            // Check if the user status is ARCHIVED
+            if (userDetailsObjects.status === "ARCHIVED") {
+              this.dialog.open(DeleteAccountDialogComponent);
+            }
+          }
             if (status === 'ACTIVE') {
               this.notificationService.notify(`Login Successful`);
               // If status is active, navigate based on user role
@@ -99,7 +111,7 @@ export class LoginService {
             } else if (status === 'ARCHIVED'){
               this.router.navigate(['/register']);
             }
-          });
+          // });
         }
       }),
       catchError((errorResponse: any) => {

@@ -71,6 +71,7 @@ import { LibraryByIdComponent } from './common/components/library-by-id/library-
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
 import { DeleteAccountComponent } from './common/components/delete-account/delete-account.component';
 import { ArticleDetailsComponent } from './common/components/article-details/article-details.component';
+import { DeleteAccountDialogComponent } from './common/components/login/delete-account-dialog/delete-account-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,6 +108,7 @@ import { ArticleDetailsComponent } from './common/components/article-details/art
     RevertDeleteComponent,
     DeleteAccountComponent,
     ArticleDetailsComponent,
+    DeleteAccountDialogComponent,
   ],
   imports: [
     CarouselModule,
