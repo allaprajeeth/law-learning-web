@@ -67,21 +67,24 @@ export class LoginService {
           localStorage.setItem('jwtToken', response.data.jwt_token);
           localStorage.setItem('userDetails', JSON.stringify(response.data.user));
           const userDetailsObject = localStorage.getItem("userDetails");
-          // console.log("user details ", userDetailsObject);
+          console.log("user details ", userDetailsObject);
          
-          // let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
-          // this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
-          //   console.log("Status of user", profileResponse?.data?.status); 
-          //   const status: string = profileResponse?.data?.status;
-          if (userDetailsObject) {
-            const userDetailsObjects = JSON.parse(userDetailsObject);
-            console.log("user details ", userDetailsObjects);
+          let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
+          this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
+            console.log("Status of user", profileResponse?.data?.status); 
+            const status: string = profileResponse?.data?.status;
+
+          // if (userDetailsObject) {
+          //   const userDetailsObjects = JSON.parse(userDetailsObject);
+          //   console.log("user details ", userDetailsObjects);
             
             // Check if the user status is ARCHIVED
-            if (userDetailsObjects.status === "ARCHIVED") {
-              this.dialog.open(DeleteAccountDialogComponent);
-            }
-          }
+           
+            // if (userDetailsObjects.status === "ARCHIVED") {
+            //   this.dialog.open(DeleteAccountDialogComponent);
+            // }
+
+          // }
             if (status === 'ACTIVE') {
               this.notificationService.notify(`Login Successful`);
               // If status is active, navigate based on user role
@@ -111,7 +114,7 @@ export class LoginService {
             } else if (status === 'ARCHIVED'){
               this.router.navigate(['/register']);
             }
-          // });
+          });
         }
       }),
       catchError((errorResponse: any) => {
