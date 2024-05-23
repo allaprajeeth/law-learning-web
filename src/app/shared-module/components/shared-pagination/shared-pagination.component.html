@@ -1,3 +1,4 @@
-<mat-paginator [length]="totalRecordsCount" 
-    (page)="handlePageEvent($event)" [pageSizeOptions]="pageSizeOptions" aria-label="Select page">
+<mat-paginator #paginator [length]="totalRecordsCount" 
+    (page)="handlePageEvent($event)" [pageSizeOptions]="pageSizeOptions" aria-label="Select page" 
+    showFirstLastButtons>
 </mat-paginator>

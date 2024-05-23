@@ -17,14 +17,9 @@ import {
 })
 export class SharedPaginationComponent {
 
-  @Input()
-  currentPage!: number;
   // Total records count
   @Input()
   totalRecordsCount!: number;
-  // Total pages
-  @Input()
-  totalPages!: number;
 
   pageSizeOptions: Array<number> = [10, 20, 50];
 

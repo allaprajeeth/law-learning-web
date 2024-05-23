@@ -121,7 +121,8 @@ export class SharedNotificationComponent implements OnInit {
   }
 
   onPageChange(pagination: Pagination) {
-    this.pagination = pagination;
+    this.pagination.page  = pagination.page;
+    this.pagination.size  = pagination.size;
     this.fetchNotifications()
   }
 

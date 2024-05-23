@@ -27,8 +27,8 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="4" style="padding:0;"><app-shared-pagination [currentPage]="pagination.page" [totalPages]="pagination.totalPages" [totalRecordsCount]="pagination.totalElements"
-					(pageChange)="onPageChange($event)"></app-shared-pagination></td>
+				<td colspan="4" style="padding:0;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
+					(pageChange)="onPageChange($event, false)"></app-shared-pagination></td>
 			</tr>
 		</tfoot>
 	</table>
@@ -53,8 +53,8 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="4" style="padding:0;"><app-shared-pagination [currentPage]="pagination.page" [totalPages]="pagination.totalPages" [totalRecordsCount]="pagination.totalElements"
-					(pageChange)="onPageChange($event)"></app-shared-pagination></td>
+				<td colspan="4" style="padding:0;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
+					(pageChange)="onPageChange($event, true)"></app-shared-pagination></td>
 			</tr>
 		</tfoot>
 	</table>

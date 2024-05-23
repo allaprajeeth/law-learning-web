@@ -66,8 +66,6 @@ export class AllProfilesComponent implements OnInit {
     this.http.get<any>(apiUrl, { params: queryParams }).subscribe((response) => {
       this.allProfiles = response.data.content;
       this.pagination = new Pagination(response.data);
-      console.log(this.allProfiles);
-      console.log(this.pagination);
     });
   }
 
@@ -95,13 +93,14 @@ export class AllProfilesComponent implements OnInit {
   fetchAdvisorProfiles(): void {
     const baseUrl = endPoints.baseURL;
     const apiUrl = baseUrl + `/advisor/profiles`;
-    const params = new HttpParams()
-      .set('search', '')
-      .set('number', '0')
-      .set('size', '20')
-      .set('sort', 'id,DESC');
-    this.http.get<any>(apiUrl, { params }).subscribe((response) => {
+    // Get pagination parameters from the pagination object
+    const paginationParams = this.pagination.getPaginationRequest();
+
+    // Merge pagination parameters with other params if any
+    const queryParams = { ...paginationParams };
+    this.http.get<any>(apiUrl, { params: queryParams }).subscribe((response) => {
       this.advisorProfiles = response.data.content;
+      this.pagination = new Pagination(response.data);
     });
   }
 
@@ -112,9 +111,13 @@ export class AllProfilesComponent implements OnInit {
     this.router.navigate(['/admin/profile-details', userId]);
   }
 
-  onPageChange(pagination: Pagination) {
-    this.pagination  = pagination;
-    this.filterProfiles(this.params);
+  onPageChange(pagination: Pagination, isAdvisors: boolean) {
+    this.pagination.page  = pagination.page;
+    this.pagination.size  = pagination.size;
+    if(isAdvisors)
+      this.fetchAdvisorProfiles();
+    else
+      this.filterProfiles(this.params);
   }
 
   openProfileModal(profileId: string): void {
