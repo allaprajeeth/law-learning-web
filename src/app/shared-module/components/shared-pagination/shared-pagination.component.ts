@@ -1,65 +1,53 @@
+import { PageEvent } from '@angular/material/paginator';
 import { Pagination } from '../../../common/models/pagination.model';
 import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   Input,
   Output,
-  SimpleChange,
 } from '@angular/core';
 
 @Component({
   selector: 'app-shared-pagination',
   templateUrl: './shared-pagination.component.html',
-  styleUrls: ['./shared-pagination.component.scss']
+  styleUrls: ['./shared-pagination.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SharedPaginationComponent {
 
-  @Input() currentPage: number = 0;
+  @Input()
+  currentPage!: number;
   // Total records count
-  @Input() totalRecordsCount: number = 0;
+  @Input()
+  totalRecordsCount!: number;
   // Total pages
-  @Input()  totalPages: number = 0;
+  @Input()
+  totalPages!: number;
 
-  constructor() {}
+  pageSizeOptions: Array<number> = [10, 20, 50];
+
+  pagination: Pagination;
+
+  constructor(private cdr: ChangeDetectorRef) {
+    this.pagination = new Pagination();
+  }
 
   // Response data
-  @Output() pageChange = new EventEmitter<number>();
+  @Output() pageChange = new EventEmitter<Pagination>();
 
-  ngOnInit(): void {
-    
-    
+  ngOnInit(): void {}
+
+  // Manually trigger change detection when needed
+  triggerChangeDetection() {
+    this.cdr.detectChanges();
   }
 
-  nextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-      this.emitPageChange();
-    }
-  }
-
-  previousPage() {
-    if (this.currentPage > 0) {
-      this.currentPage--;
-      this.emitPageChange();
-    }
-  }
-
-  setPage(pageNumber: number) {
-    if (pageNumber >= 0 && pageNumber <= this.totalPages) {
-      this.currentPage = pageNumber;
-      this.emitPageChange();
-    }
-  }
-
-  emitPageChange() {
-    console.log(this.currentPage)
-    
-    this.pageChange.emit(this.currentPage);
-    
-  }
-
-  getPageNumbers() {
-    return Array.from({ length: this.totalPages }, (_, i) => i++);
+  handlePageEvent(e: PageEvent) {
+    this.pagination.page = e.pageIndex;
+    this.pagination.size = e.pageSize;
+    this.pageChange.emit(this.pagination);
   }
 }
 

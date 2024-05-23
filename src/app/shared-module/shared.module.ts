@@ -31,6 +31,8 @@ import { SharedcourseHistoryComponent } from './components/sharedcourse-history/
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 import { SharedPaginationComponent } from './components/shared-pagination/shared-pagination.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 @NgModule({
   declarations: [
     FooterComponent,
@@ -43,16 +45,16 @@ import { SharedPaginationComponent } from './components/shared-pagination/shared
     FileUploadComponent,
     ConfirmationAlertComponent,
     SidenavComponent,
-     SharedNotificationComponent,
-     LogoutPopupComponent,
-     PublishArticlesComponent,
-     FileUploadComponent,
-     ConfirmationAlertComponent,
-     SharedcourseHistoryComponent,
-     SharedarticleHistoryComponent,
-     UploadedarticlesstatusComponent,
-     SharedPaginationComponent,
-    ],
+    SharedNotificationComponent,
+    LogoutPopupComponent,
+    PublishArticlesComponent,
+    FileUploadComponent,
+    ConfirmationAlertComponent,
+    SharedcourseHistoryComponent,
+    SharedarticleHistoryComponent,
+    UploadedarticlesstatusComponent,
+    SharedPaginationComponent,
+  ],
 
 
 
@@ -76,6 +78,7 @@ import { SharedPaginationComponent } from './components/shared-pagination/shared
     PdfViewerModule,
     MatProgressSpinnerModule,
     RouterModule,
+    MatPaginatorModule
   ],
   exports: [
     CommonModule,
@@ -101,4 +104,4 @@ import { SharedPaginationComponent } from './components/shared-pagination/shared
   ]
 
 })
-export class SharedModule {}
+export class SharedModule { }
