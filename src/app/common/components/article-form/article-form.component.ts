@@ -22,6 +22,7 @@ export class ArticleFormComponent {
   articleForm: FormGroup;
   formData: FormData;
   userDetails: any; 
+  isClicked = false;
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -84,6 +85,7 @@ export class ArticleFormComponent {
   }
   onSubmit() {
     if (this.articleForm.valid) {
+      this.isClicked = true;
       // Add individual fields to the 'articleBean' parameter
       this.formData.set('articleBean', new Blob([JSON.stringify({
         title: this.articleForm.get('name')!.value,
@@ -98,6 +100,9 @@ export class ArticleFormComponent {
           this.displayform=false
         
           // this.router.navigate(['/subscriber/submitmesg']);
+          setTimeout(() => {
+            this.isClicked = false;
+          }, 2000);
         },
         (error) => {
           console.error('Error submitting article:', error);

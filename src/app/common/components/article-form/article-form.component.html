@@ -15,7 +15,7 @@
       {{ matchedArticle?.files && matchedArticle.files.length > 0 ? matchedArticle.files[0].url : '' }}
       <br /><br />
       <div class="button-container">
-        <button type="submit" [ngClass]="{'disabled-button': articleForm.invalid, 'enabled-button': !articleForm.invalid}">Submit</button>
+        <button type="submit" [ngClass]="{'disabled-button': articleForm.invalid, 'enabled-button': !articleForm.invalid}" [disabled]="articleForm.invalid || isClicked">Submit</button>
       </div>
     </form>   
   </div>
