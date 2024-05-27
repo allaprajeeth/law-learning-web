@@ -51,7 +51,7 @@
         <div *ngIf="!isOtpVisibles" class="timer-text">
           <p>Your OTPs have expired. Please request new OTPs.</p>
         </div>
-        <button *ngIf="!isOtpVisibles" class="login-button"  (click)="reloadPage()">Back to Login</button>
+        <button *ngIf="!isOtpVisibles" class="login-button"  (click)="sendOtps()">Resend OTP</button>
       </div>
 
       <button *ngIf="isLoginVisible" 

@@ -36,7 +36,7 @@ export class LoginComponent {
   }
   // loginForm: FormGroup;
   isOtpVisibles = true;
-  otpValidDuration = 600;
+  otpValidDuration = 60;
   timer: any;
   timerSubscription: any;
   isSendOtpsClicked: boolean = true;
@@ -83,6 +83,7 @@ export class LoginComponent {
   sendOtps() {
     this.sendOtpClick();
     this.isInputFilled = false;
+    this.isOtpVisibles=true;
   }
   get email() {
     return this.loginForm.get('email');
