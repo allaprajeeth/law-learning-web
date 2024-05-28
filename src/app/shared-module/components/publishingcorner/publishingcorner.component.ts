@@ -8,6 +8,7 @@ import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient } from '@angular/common/http';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 import { NotificationService } from 'src/app/common/services/notification/notification.service';
+import { Pagination } from 'src/app/common/models/pagination.model';
 // import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-publishingcorner',
@@ -24,6 +25,8 @@ export class PublishingcornerComponent implements OnInit {
   role:string | undefined;
   deletePopup =false
   articleToDeleteId : number |undefined
+  pagination: Pagination = new Pagination();
+  
   constructor(
     private fetcharticleService: FetcharticlesService,
     private route: ActivatedRoute,
@@ -33,7 +36,9 @@ export class PublishingcornerComponent implements OnInit {
     private authService: AuthTokenService,
     private notificationService: NotificationService,
     // private datePipe: DatePipe
-  ) { }
+  ) { 
+    
+  }
 
   ngOnInit(): void {
     this.loadPublishArticles();
@@ -43,11 +48,13 @@ export class PublishingcornerComponent implements OnInit {
     this.isAdmin = userDetails?.role === 'ADMIN';
   }
   loadPublishArticles(): void {
-    this.fetcharticleService.loadPublishArticles().subscribe(
+    this.fetcharticleService.loadPublishArticles(this.searchTerm ,this.pagination.page ,this.pagination.size).subscribe(
       (response: any) => {
         this.articles = response.data.content || [];
         this.filteredArticles = [...this.articles];
-        console.log(this.articles);
+        this.pagination = response.data ;
+        // this.totalElements=response.data.totalElements
+        
       },
       (error) => {
       }
@@ -132,6 +139,13 @@ export class PublishingcornerComponent implements OnInit {
   }
   closeDeletePopup() {
     this.deletePopup = false;
+  }
+
+  onPageChange(pagination: Pagination) {
+    this.pagination.page  = pagination.page;
+    this.pagination.size  = pagination.size;
+    this.loadPublishArticles()
+    
   }
 }
 

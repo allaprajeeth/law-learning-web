@@ -29,3 +29,6 @@
     </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
+  (pageChange)="onPageChange($event)"></app-shared-pagination>
+</div>

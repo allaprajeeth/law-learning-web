@@ -6,67 +6,28 @@
     <h1>My Courses</h1>
   </div>
   <div class="image-grid">
-      <div *ngFor="let course of myCourses;let i = index" class="image-item" routerLink="/subscriber/courseinfo">
-        <div class="imagesContainer">
-          <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : 'assets/law.png'" width="300" height="200" class="img" alt="Course Image">
-          <div class="overlay">
-            <a>
-              <i class="fa fa-play-circle play-icon"></i>
-            </a>
-          </div>
-          <span class="duration">{{ course.duration }}</span>
+    <div *ngFor="let course of myCourses;let i = index" class="image-item" routerLink="/subscriber/courseinfo">
+      <div class="imagesContainer">
+        <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : 'assets/law.png'" width="300" height="200"
+          class="img" alt="Course Image">
+        <div class="overlay">
+          <a>
+            <i class="fa fa-play-circle play-icon"></i>
+          </a>
         </div>
-        <div class="headingsContainer">
-          <h5>{{ course.title }}</h5>
-          <p>{{ course.createdBy.name }}</p>
-          <h4>{{ course.difficultyLevel }} | {{course.type}}</h4>
-        </div>
-        <div class="status-bar">
-          <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
-        </div>
-
-        <span>{{ randomMyCourseValues[i] }}% complete</span>
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-        </div>
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span>Reviewer Ratings</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span>Subscribers Ratings</span>
-          </div>
-        </div>
-        <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
-          <span>Number of Subscribers:{{ course.viewCount }}</span>
-          <p style="color: #d80303; font-weight: bolder;"> This Course Expires on: {{ randomFutureDates[i] | date: 'dd
-            MMM
-            yyyy' }}</p>
-        </div>
+        <span class="duration">{{ course.duration }}</span>
+      </div>
+      <div class="headingsContainer">
+        <h5>{{ course.title }}</h5>
+        <p>{{ course.createdBy.name }}</p>
+        <h4>{{ course.difficultyLevel }} | {{course.type}}</h4>
       </div>
     </div>
-  
-
-
+  </div>
 
   <div class="heading">
     <h1>Available Courses</h1>
   </div>
-
-
   <ng-container>
     <div class="image-grid">
       <div *ngFor="let course of avialableCourses" class="image-item">
@@ -118,13 +79,13 @@
           </h5>
           <button *ngIf="!isCourseInCart(course.id)" mat-raised-button color="primary"
             (click)="addToCart(course.id)">Add to Cart</button>
-          <button *ngIf="isCourseInCart(course.id)" mat-raised-button color="primary" routerLink="/cart">Go to
+          <button *ngIf="isCourseInCart(course.id)" mat-raised-button color="warn" routerLink="/cart">Go to
             Cart</button>
         </div>
       </div>
     </div>
+    <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
+      (pageChange)="onPageChange($event)"></app-shared-pagination>
+    </div>
   </ng-container>
-
-
-
 </div>

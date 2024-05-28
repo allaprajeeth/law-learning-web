@@ -95,7 +95,7 @@ export class SharedNotificationComponent implements OnInit {
         this.navigateToRoute(notification, 'publish-articles');
         break;
       case 'COURSE':
-        //change routing here after completion of piblish courses
+        //change routing here after completion of publish courses
         this.navigateToRoute(notification, 'publish-courses');
         break;
       case 'LIBRARY':

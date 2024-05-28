@@ -7,6 +7,7 @@ export class Pagination implements IPagination {
   size: number = 10;
   page: number = 0;
   empty!: boolean;
+
   constructor(json?: any) {
     if (json) {
       Object.assign(this, json);
@@ -14,7 +15,7 @@ export class Pagination implements IPagination {
   }
 
   public getPaginationRequest(): any {
-    return { page: this.page, size: this.size};
+    return { page: this.page, size: this.size };
   }
 }
 
