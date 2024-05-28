@@ -23,10 +23,7 @@ export interface Article {
   title: string;
 
   fileContent?: string | undefined;
-  
   data: any;
- 
-
   createdBy: {
     name: string;
     id: number;
