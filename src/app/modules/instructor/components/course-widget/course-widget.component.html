@@ -253,6 +253,7 @@
                     <app-quiztest *ngIf="showQuiz" [courseId] ="courseId"></app-quiztest>
                 </mat-step>
                 <mat-step customId="overview">
+
                     <ng-template matStepLabel>Course Preview</ng-template>
                     <div>
                         <div class="course-info-container">
@@ -276,6 +277,7 @@
                             </button>
                         </div>
                     </div>
+                    
                 </mat-step>  
             </form>
         </mat-stepper>

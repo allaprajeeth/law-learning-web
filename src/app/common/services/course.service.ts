@@ -6,6 +6,10 @@ import { Course } from '../models/course.model';
 import { endPoints } from '../constants/endpoints';
 import { BaseModel } from '../models/base.model';
 import { environment } from 'src/environments/environment';
+import { AuthTokenService } from './auth-token/auth-token.service';
+import { UserRole } from '../enums/role.enums';
+import { ReviewStatus } from '../enums/status.enums';
+import { SubSection } from '../models/sub-sections.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +17,9 @@ import { environment } from 'src/environments/environment';
 export class CourseService {
   createCourse: any;
   
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+    private authService: AuthTokenService
+  ) {}
 
   post<T>(url: string, data: FormData): Observable<T> {
     const headers = new HttpHeaders();
@@ -49,6 +55,25 @@ export class CourseService {
   }
 
   /*------------ course review process ---------------- */
+
+  showSubsciptionApprovalSection(subSection: SubSection): boolean {
+    const role = this.authService.getUserRole();
+    let roleEnum: UserRole = UserRole[role as keyof typeof UserRole];
+    let statusEnum: ReviewStatus = ReviewStatus[subSection.reviewStatus as keyof typeof ReviewStatus];
+    
+    if (roleEnum === UserRole.CONTENTMANAGER) {
+      return statusEnum === ReviewStatus.SUBMITTED;
+    } else if (roleEnum === UserRole.ADMIN) {
+      return statusEnum === ReviewStatus.CONTENT_MANAGER_REJECTED
+            || statusEnum === ReviewStatus.REVIEWER_ACCEPTED
+            || statusEnum === ReviewStatus.REVIEWER_REJECTED
+            || statusEnum === ReviewStatus.REVIEWER_RESUBMIT;
+    } else if (roleEnum === UserRole.REVIEWER) {
+      return statusEnum === ReviewStatus.CONTENT_MANAGER_ACCEPTED 
+             || statusEnum === ReviewStatus.CM_ADMIN_ACCEPTED;
+    }
+    return false;
+  }
 
   getReviewCourses(number: number, size: number): Observable<any> {
     const url = `${endPoints.baseURL}/secure/courses/review?number=${number}&size=${size}&sort=createdDate,DESC`;

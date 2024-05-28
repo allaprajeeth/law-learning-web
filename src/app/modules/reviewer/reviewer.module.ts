@@ -18,7 +18,6 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { ArticleComponent } from './components/article/article.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
@@ -29,11 +28,11 @@ import { ArticleHistoryComponent } from './components/article-history/article-hi
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
 import { CoursesHistoryComponent } from './components/courses-history/courses-history.component';
+import { VideoplayerComponent } from './components/videoplayer/videoplayer.component';
 
 @NgModule({
   declarations: [
     HomepageComponent,
-    ReviewervideoComponent,
     NotificationComponent,
     ArticleComponent,
     CourseInfoComponent,
@@ -41,6 +40,7 @@ import { CoursesHistoryComponent } from './components/courses-history/courses-hi
     ArticleHistoryComponent,
     ReviewerPostdetailsComponent,
     CoursesHistoryComponent,
+    VideoplayerComponent,
   ],
   
   imports: [

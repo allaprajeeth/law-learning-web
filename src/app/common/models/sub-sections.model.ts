@@ -11,6 +11,8 @@ export class SubSection extends BaseModel<SubSection> {
   public file!: FileInfo;
   public duration!:number; 
   public reviewStatus!: string;
+  showCommentBox?: boolean;
+  rejectionComment?: string;
   constructor(model?: SubSection) {
     super(model);
   }
