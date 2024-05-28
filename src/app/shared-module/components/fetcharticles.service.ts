@@ -41,14 +41,13 @@ export class FetcharticlesService {
 
 
 
-  loadPublishArticles(search: string = '', number: number = 0, size: number = 20, sort: string = 'title,DESC'): Observable<any> {
+  loadPublishArticles(search: string = '', number: number, size: number , sort: string = 'title,DESC'): Observable<any> {
     let url = endPoints.baseURL + `/articles?search=${search}&number=${number}&size=${size}&sort=${sort}`;
-  
     return this.apiService.get(url).pipe(
       tap((response: any) => {
         if (!!response) {
           console.log(response.data);
-          return response.data.content
+          return response.data
         }
       }),
       catchError((errorResponse: any) => {

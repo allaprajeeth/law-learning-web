@@ -4,6 +4,8 @@ import { endPoints } from 'src/app/common/constants/endpoints';
 import { ArticleformService } from '../articleform.service';
 import { Article } from '../fetcharticle.model';
 import { PdfService } from 'src/app/sharedService.service';
+import { HttpClient } from '@angular/common/http';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 @Component({
   selector: 'app-sharedarticle-history',
@@ -12,12 +14,14 @@ import { PdfService } from 'src/app/sharedService.service';
 })
 export class SharedarticleHistoryComponent implements OnInit {
   userArticles: Article[] = [];
+  pagination: Pagination = new Pagination();
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private articleformService: ArticleformService,
-    private pdfService: PdfService
+    private pdfService: PdfService,
+    private http:HttpClient
   ) { }
 
   ngOnInit() {
@@ -25,15 +29,15 @@ export class SharedarticleHistoryComponent implements OnInit {
   }
 
   getUserArticles() {
-    this.articleformService.get<any>(endPoints.baseURL + '/secure/articles').subscribe(
-      (response) => {
-        this.userArticles = response.data.content || [];
-        console.log(this.userArticles);
-      },
-      (error) => {
-        console.error('Error submitting article:', error);
-      }
-    );
+    const paginationParams = this.pagination.getPaginationRequest();
+    const queryParams = { ...paginationParams };
+    const apiUrl=endPoints.secureBaseURL + "/articles"
+    this.http.get<any>(apiUrl, { params: queryParams }).subscribe(response => {
+      const userArticles: Article[] = response.data.content;
+      this.pagination = new Pagination(response.data);
+      this.userArticles= userArticles;
+    })
+    
   }
 
   openArticle(article: any) {
@@ -102,5 +106,11 @@ export class SharedarticleHistoryComponent implements OnInit {
     } else if (currentUrl.includes('instructor/article')) {
       this.router.navigateByUrl('/instructor/articleform');
     }
+  }
+  
+  onPageChange(pagination: Pagination) {
+    this.pagination.page  = pagination.page;
+    this.pagination.size  = pagination.size;
+    this.getUserArticles()
   }
 }

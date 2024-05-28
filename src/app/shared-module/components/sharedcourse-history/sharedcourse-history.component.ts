@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 @Component({
   selector: 'app-sharedcourse-history',
@@ -9,7 +10,7 @@ import { Course } from 'src/app/common/models/course.model';
 })
 export class SharedcourseHistoryComponent implements OnInit {
   courses: Course[] = [];
-
+  pagination: Pagination = new Pagination();
   constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
@@ -18,11 +19,12 @@ export class SharedcourseHistoryComponent implements OnInit {
 
   loadReviewCourses(): void {
     const number = 0; 
-    const size = 20;
+    const size = 10;
 
     this.courseService.getReviewCourses(number, size).subscribe(
       (response: any) => {
         this.courses = response.data.content;
+        this.pagination=response.data
       },
       (error) => {
         console.error('Error fetching review courses:', error);
@@ -41,5 +43,12 @@ export class SharedcourseHistoryComponent implements OnInit {
       default:
         return {};
     }
+  }
+
+  onPageChange(pagination: Pagination) {
+    this.pagination.page  = pagination.page;
+    this.pagination.size  = pagination.size;
+    this.loadReviewCourses()
+    
   }
 }
