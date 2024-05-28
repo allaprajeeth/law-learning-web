@@ -6,13 +6,6 @@ import { Notifications } from 'src/app/common/models/notification.model';
 import { Pagination } from 'src/app/common/models/pagination.model';
 import { AuthTokenService } from 'src/app/common/services/auth-token/auth-token.service';
 
-interface Notification {
-  heading: string;
-  message: string;
-  icon: string;
-  notificationDate: string;
-}
-
 @Component({
   selector: 'app-shared-notification',
   templateUrl: './shared-notification.component.html',
@@ -21,28 +14,23 @@ interface Notification {
 export class SharedNotificationComponent implements OnInit {
   notificationOpened: boolean = false;
   notifications: Notifications[] = [];
-  role:string | undefined;
+  role: string | undefined;
   pagination: Pagination = new Pagination();
-  params: any = {};
   constructor(private cdr: ChangeDetectorRef,
-     private router: Router,
-     private http: HttpClient,
-     private authService: AuthTokenService,) {
-      const userDetails = this.authService.getUserDetails();
-      this.role = userDetails?.role 
-      this.pagination = new Pagination();
-     }
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthTokenService,) {
+    const userDetails = this.authService.getUserDetails();
+    this.role = userDetails?.role
+    this.pagination = new Pagination();
+  }
 
   ngOnInit() {
     this.cdr.detectChanges();
-   
-    this.params = {
-      pagination: this.pagination.getPaginationRequest(),
-    };
-    this.fetchNotifications(this.params)
+    this.fetchNotifications();
   }
 
-  deleteNotification(id:number) {
+  deleteNotification(id: number) {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl + `/profile/notifications/${id}`;
     this.http.delete(apiUrl).subscribe(
@@ -56,20 +44,18 @@ export class SharedNotificationComponent implements OnInit {
     );
     this.cdr.detectChanges();
   }
- 
- 
-  fetchNotifications(params:any): void {
+
+
+  fetchNotifications(): void {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl + `/profile/notifications`;
-    // params = new HttpParams()
-      // .set('number', '0')
-      // .set('size', '40')
-      // .set('sort', 'id,DESC');
-      this.params = {
-        pagination: this.pagination.getPaginationRequest(),
-      };
-    this.http.get<any>(apiUrl, { params }).subscribe(response => {
-      const notifications: Notifications[] = response.data.content; 
+    // Get pagination parameters from the pagination object
+    const paginationParams = this.pagination.getPaginationRequest();
+
+    // Merge pagination parameters with other params if any
+    const queryParams = { ...paginationParams };
+    this.http.get<any>(apiUrl, { params: queryParams }).subscribe(response => {
+      const notifications: Notifications[] = response.data.content;
       this.pagination = new Pagination(response.data);
       this.notifications = notifications;
     });
@@ -96,14 +82,14 @@ export class SharedNotificationComponent implements OnInit {
       default:
         route = `/${routePrefix}/${notification.sourceType.toLowerCase()}/${notification.sourceId}`;
     }
-  
+
     this.router.navigateByUrl(route);
   }
 
   openNotification(notification: Notifications): void {
     this.setreadnotification(notification.id)
     this.notificationOpened = true;
-  
+
     switch (notification.sourceType) {
       case 'ARTICLE':
         this.navigateToRoute(notification, 'publish-articles');
@@ -120,25 +106,24 @@ export class SharedNotificationComponent implements OnInit {
     }
   }
 
-  setreadnotification(id:number): void {
+  setreadnotification(id: number): void {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl + `/profile/notifications/${id}`;
-    this.http.post(apiUrl,id).subscribe(
+    this.http.post(apiUrl, id).subscribe(
       () => {
         console.log('Notifications read successfully');
       },
       (error) => {
-        console.error('Error reading notifications:', error);
+        console.error('Error deleting library:', error);
       }
     );
 
   }
 
-  onPageChange(page: number) {
-    console.log("latest from all" + " " +page);
-    this.pagination.page =page
-    this.fetchNotifications(this.pagination)
+  onPageChange(pagination: Pagination) {
+    this.pagination.page  = pagination.page;
+    this.pagination.size  = pagination.size;
+    this.fetchNotifications()
   }
 
 }
-
