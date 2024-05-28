@@ -6,125 +6,83 @@
     <h1>My Courses</h1>
   </div>
   <div class="image-grid">
-    <div *ngFor="let image of mycoursesimages; let i = index" class="image-item" routerLink="/subscriber/courseinfo">
-      <div class="imagesContainer">
-        <img [src]="image" width="300" height="200" class="img" alt="Random Image">
-        <div class="overlay">
-          <a>
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
+      <div *ngFor="let course of myCourses;let i = index" class="image-item" routerLink="/subscriber/courseinfo">
+        <div class="imagesContainer">
+          <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : 'assets/law.png'" width="300" height="200" class="img" alt="Course Image">
+          <div class="overlay">
+            <a>
+              <i class="fa fa-play-circle play-icon"></i>
+            </a>
+          </div>
+          <span class="duration">{{ course.duration }}</span>
         </div>
-        <span class="duration">{{ myCoursesDurations[i] }}</span>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ myCoursesHeadings[i] }}</h5>
-        <p>{{ myCoursesAuthors[i] }}</p>
-        <h4>{{ myCoursesText[i] }}</h4>
-      </div>
-      <div class="status-bar">
-        <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
-      </div>
-      
-      <span>{{ randomMyCourseValues[i] }}% complete</span>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
+        <div class="headingsContainer">
+          <h5>{{ course.title }}</h5>
+          <p>{{ course.createdBy.name }}</p>
+          <h4>{{ course.difficultyLevel }} | {{course.type}}</h4>
         </div>
-        <div class="ratingConatiner2">
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9733;</span>
-          <span class="star">&#9734;</span>
+        <div class="status-bar">
+          <div class="status-fill" [style.width.%]="randomMyCourseValues[i]"></div>
         </div>
-      </div>
-      <div class="ratingscontainer1">
-        <div class="ratingConatiner2">
-          <span>Reviewer Ratings</span>
+
+        <span>{{ randomMyCourseValues[i] }}% complete</span>
+        <div class="ratingscontainer1">
+          <div class="ratingConatiner2">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+          </div>
+          <div class="ratingConatiner2">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+          </div>
         </div>
-        <div class="ratingConatiner2">
-          <span>Subscribers Ratings</span>
+        <div class="ratingscontainer1">
+          <div class="ratingConatiner2">
+            <span>Reviewer Ratings</span>
+          </div>
+          <div class="ratingConatiner2">
+            <span>Subscribers Ratings</span>
+          </div>
         </div>
-      </div>
-      <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
-        <span>Number of Subscribers:{{ myCourseSubscribers[i] }}</span>
-        <p style="color: #d80303; font-weight: bolder;"> This Course Expires on: {{ randomFutureDates[i] | date: 'dd MMM
-          yyyy' }}</p>
+        <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
+          <span>Number of Subscribers:{{ course.viewCount }}</span>
+          <p style="color: #d80303; font-weight: bolder;"> This Course Expires on: {{ randomFutureDates[i] | date: 'dd
+            MMM
+            yyyy' }}</p>
+        </div>
       </div>
     </div>
-  </div>
+  
 
 
 
   <div class="heading">
     <h1>Available Courses</h1>
   </div>
-  <div class="my-flex">
-    <mat-form-field appearance="outline" id="filters" class="custom-width">
-      <mat-label>{{ selectedCategory ? selectedCategory + ' | ' + selectedCourseType : 'Filters' }}</mat-label>
-      <mat-select [matMenuTriggerFor]="filters">
-        <mat-menu #filters="matMenu" yPosition="below">
-          <button mat-menu-item [matMenuTriggerFor]="beginner" class="mat-menu">Beginner</button>
-          <button mat-menu-item [matMenuTriggerFor]="intermediate" class="mat-menu">Intermediate</button>
-          <button mat-menu-item [matMenuTriggerFor]="expert" class="mat-menu">Expert</button>
-          <button mat-menu-item [matMenuTriggerFor]="student" class="mat-menu">Student</button>
-          <button mat-menu-item class="mat-menu" (click)="updateSelectedCourseType('Clear Filters')">Clear Filters</button>
-        </mat-menu>
-      </mat-select>
-    </mat-form-field>
-    <mat-menu #beginner="matMenu">
-      <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Beginner | Crash Course')">Crash
-        Course</button>
-      <button mat-menu-item class="mat-menu-panel"
-        (click)="updateSelectedCourseType('Beginner | Detailed Course')">Detailed Course</button>
-    </mat-menu>
-    <mat-menu #intermediate="matMenu">
-      <button mat-menu-item class="mat-menu-panel"
-        (click)="updateSelectedCourseType('Intermediate | Crash Course')">Crash Course</button>
-      <button mat-menu-item class="mat-menu-panel"
-        (click)="updateSelectedCourseType('Intermediate | Detailed Course')">Detailed Course</button>
-    </mat-menu>
-    <mat-menu #expert="matMenu">
-      <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Expert | Crash Course')">Crash
-        Course</button>
-      <button mat-menu-item class="mat-menu-panel"
-        (click)="updateSelectedCourseType('Expert | Detailed Course')">Detailed Course</button>
-    </mat-menu>
-    <mat-menu #student="matMenu">
-      <button mat-menu-item class="mat-menu-panel" (click)="updateSelectedCourseType('Student | Crash Course')">Crash
-        Course</button>
-      <button mat-menu-item class="mat-menu-panel"
-        (click)="updateSelectedCourseType('Student | Detailed Course')">Detailed Course</button>
-    </mat-menu>
-  </div>
 
-  <ng-container *ngIf="!selectedCategory && !selectedCourseType">
+
+  <ng-container>
     <div class="image-grid">
-      <div *ngFor="let image of availableCoursesimages; index as availableCourses;" class="image-item"
-        (mouseover)="openMyMenu($event, availableCourses)" (mouseleave)="closeMyMenu(availableCourses)">
+      <div *ngFor="let course of avialableCourses" class="image-item">
         <div class="imagesContainer">
-          <img [src]="image" width="300" height="200" class="img" alt="Random Image">
+          <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : 'assets/law.png'" width="300" height="200"
+            alt="Random Image" (error)="onImageError($event)">
           <div class="overlay">
             <a routerLink="/subscriber/overview" [queryParams]="{ showDiv: 'true' }">
               <i class="fa fa-play-circle play-icon"></i>
             </a>
           </div>
-          <app-course-card *ngIf="showCard[availableCourses]"
-            [product]="{ id: availableCourses, image: image, heading: availableCoursesHeadings[availableCourses], coursesText: availableCoursesText[availableCourses], duration: availableCoursesDurations[availableCourses], price: coursePrice[availableCourses]}"
-            [heading]="availableCoursesHeadings[availableCourses]" [content]="courseContent[availableCourses]"
-            [style]="tooltipPosition" class="course-card-component">
-          </app-course-card>
-
-          <span class="duration">{{ availableCoursesDurations[availableCourses] }}</span>
+          <span class="duration">{{ course.duration }}</span>
         </div>
         <div class="headingsContainer">
-          <h5>{{ availableCoursesHeadings[availableCourses] }}</h5>
-          <p>{{ availableCoursesAuthors[availableCourses] }}</p>
-          <h4>{{ availableCoursesText[availableCourses] }}</h4>
+          <h5>{{course.title}}</h5>
+          <p>{{ course.createdBy.name }}</p>
         </div>
         <div class="ratingscontainer1">
           <div class="ratingConatiner2">
@@ -151,76 +109,22 @@
           </div>
         </div>
         <div class="subscribers" style="font-weight: 410;">
-          <span>Number of Subscribers: {{ availableCourseSubscribers[availableCourses] + '+' }}</span>
-
+          <span>Number of Subscribers: {{ course.viewCount + '+' }}</span>
           <h5 class="price">
-            <span *ngIf="coursePrice[availableCourses] > 0">
-              <del>₹{{ coursePrice[availableCourses] }}</del>
+            <span>
+              <del>₹{{ course.price }}</del>
               <span style="color: green; margin-left: 5px;" class="free">Free</span>
             </span>
           </h5>
+          <button *ngIf="!isCourseInCart(course.id)" mat-raised-button color="primary"
+            (click)="addToCart(course.id)">Add to Cart</button>
+          <button *ngIf="isCourseInCart(course.id)" mat-raised-button color="primary" routerLink="/cart">Go to
+            Cart</button>
         </div>
       </div>
     </div>
   </ng-container>
 
-  <div *ngIf="selectedCategory || selectedCourseType" class="filtered-container">
-    <div class="image-grid">
-      <div *ngFor="let course of filteredCourses; let filteredIndex = index" class="image-item"
-        (mouseover)="openMyMenu($event, filteredIndex, true)" (mouseleave)="closeMyMenu(filteredIndex)">
-        <div class="imagesContainer">
-          <img [src]="course.image" width="300" height="200" class="img" alt="Filtered Image">
-          <div class="overlay">
-            <a routerLink="/subscriber/overview" [queryParams]="{ showDiv: 'true' }">
-              <i class="fa fa-play-circle play-icon"></i>
-            </a>
-          </div>
-          <app-course-card *ngIf="showCard[filteredIndex]"
-            [product]="{ id: filteredIndex, image: course.image, heading: course.heading, coursesText: course.text, duration: course.duration, price: course.price }"
-            [heading]="course.heading" [content]="courseContent[filteredIndex]" [style]="course.tooltipPosition"
-            class="course-card-component">
-          </app-course-card>
-          <span class="duration">{{ course.duration }}</span>
-        </div>
-        <div class="headingsContainer">
-          <h5>{{ course.heading }}</h5>
-          <p>{{ course.author }}</p>
-          <h4>{{ course.text }}</h4>
-        </div>
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-        </div>
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span>Reviewer Ratings</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span>Subscribers Ratings</span>
-          </div>
-        </div>
-        <div class="subscribers" style="font-weight: 410;">
-          <span>Number of Subscribers: {{ course.subscribers + '+' }}</span>
-          <h5 class="price">
-            <span *ngIf="course.price > 0">
-              <del>₹{{ course.price }}</del>
-              <span style="color: green; margin-left: 5px;" class="free">Free</span>
-            </span>
-          </h5>
-        </div>
-      </div>
-    </div>
-  </div>
+
+
 </div>

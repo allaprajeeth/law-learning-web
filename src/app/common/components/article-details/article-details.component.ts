@@ -154,7 +154,7 @@ export class ArticleDetailsComponent {
             } 
             else {
               this.message =
-                'You have approved the article, it will be published sequentially.';
+                'You have approved the article, it will be published in the Publishing Corner';
             }
           } else if (this.role === 'CONTENTMANAGER') {
             this.message =
@@ -200,7 +200,7 @@ export class ArticleDetailsComponent {
             console.log('Article rejection successful:', response);
             if (this.role === 'ADMIN') {
               this.message =
-                'You have commented the article, a notification containing the details of rejection will be sent to the author.';
+                'You have commented the article, a notification containing the related details will be sent to the author.';
             } else if (this.role === 'CONTENTMANAGER') {
               this.message =
                 'You have commented the article, it will be sent to the Admin for further review.';
@@ -253,10 +253,16 @@ export class ArticleDetailsComponent {
 
         this.http.patch(articleUrl, articleData, { headers }).subscribe(
           (response) => {
-            console.log('Article re-submission successful:', response);
             this.resubmitMessage = true;
-            this.message =
-            'You have resumitted the article, a notification containing the details of resubmit will be sent to the author.';
+            if (this.role === 'ADMIN') {
+                this.message =
+                  'You have requested for re-submission of the article, a notification containing the related details will be sent to the author.';
+              } 
+            else{
+              this.message =
+              'You have requested for re-submission of the article, a notification containing the related details will be sent to the Admin.';
+            }
+           
             this.adminService.setApprovalResponse(response);
           },
           (error) => {

@@ -74,9 +74,11 @@ body {
   .ratingConatiner {
     display: flex;
     align-items: center;
+
     .starNumber {
       padding: 0 10px 0 0;
     }
+
     .star {
       color: gold;
       font-size: 20px;
@@ -204,3 +206,9 @@ body {
   }
 }
 
+.popup-message {
+  position: absolute;
+  top: 90px;
+  font-size: 20px;
+  
+}

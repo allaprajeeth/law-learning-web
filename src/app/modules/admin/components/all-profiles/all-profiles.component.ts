@@ -19,8 +19,8 @@ export class AllProfilesComponent implements OnInit {
   advisorId: number | undefined;
   advisorProfiles: AdvisorProfile[] = [];
   allProfiles: any[] = [];
-
   pagination: Pagination = new Pagination();
+  pageSize: number = 9;
   params: any = {};
   constructor(
     private http: HttpClient,
@@ -64,8 +64,6 @@ export class AllProfilesComponent implements OnInit {
     this.http.get<any>(apiUrl, { params }).subscribe((response) => {
       this.allProfiles = response.data.content;
       this.pagination = new Pagination(response.data);
-      console.log(this.allProfiles);
-      console.log(this.pagination);
     });
   }
 
@@ -123,7 +121,7 @@ export class AllProfilesComponent implements OnInit {
     const modalContent = `
       <div class="modal-content">
        
-        <div class="profile-container">
+  <div class="profile-container">
   <h2>User Profile</h2>
   <div class="profile-section">
     <label>Name:</label>
@@ -168,10 +166,11 @@ export class AllProfilesComponent implements OnInit {
 @Component({
   selector: 'app-profile-modal',
   template: `
-   <button mat-icon-button class="close-button" (click)="closeModal()">
-       X
-      </button> 
-  <div [innerHTML]="data.content"></div> `,
+    <button mat-icon-button class="close-button" (click)="closeModal()">
+      X
+    </button>
+    <div [innerHTML]="data.content"></div>
+  `,
   styles: [
     `
       ::ng-deep .modal-content {
@@ -183,14 +182,13 @@ export class AllProfilesComponent implements OnInit {
         .profile-section {
           margin-bottom: 10px;
         }
-       
       }
       .close-button {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background :  none
-    }
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+      }
     `,
   ],
 })

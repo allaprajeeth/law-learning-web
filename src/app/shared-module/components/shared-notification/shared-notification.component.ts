@@ -70,39 +70,7 @@ export class SharedNotificationComponent implements OnInit {
       };
     this.http.get<any>(apiUrl, { params }).subscribe(response => {
       const notifications: Notifications[] = response.data.content; 
-      // notifications.forEach(notification => {
-      //   let message = '';
-      //   if (notification.type === 'CREATED') {
-      //     switch (notification.sourceType) {
-      //       case 'COURSE':
-      //         message = 'New Course added';
-      //         break;
-      //       case 'ARTICLE':
-      //         message = 'New Article added';
-      //         break;
-      //       case 'LIBRARY':
-      //         message = 'New Document added to the library';
-      //         break;
-      //       default:
-      //         message = 'New Content added';
-      //     }
-      //   } else if (notification.type === 'UPDATED') {
-      //     switch (notification.sourceType) {
-      //       case 'COURSE':
-      //         message = 'Course updated';
-      //         break;
-      //       case 'ARTICLE':
-      //         message = 'Article updated';
-      //         break;
-      //       case 'LIBRARY':
-      //         message = 'Document updated in the library';
-      //         break;
-      //       default:
-      //         message = 'Content updated';
-      //     }
-      //   }
-      //   notification.message = message; 
-      // });
+      this.pagination = new Pagination(response.data);
       this.notifications = notifications;
     });
   }
@@ -160,7 +128,7 @@ export class SharedNotificationComponent implements OnInit {
         console.log('Notifications read successfully');
       },
       (error) => {
-        console.error('Error deleting library:', error);
+        console.error('Error reading notifications:', error);
       }
     );
 
