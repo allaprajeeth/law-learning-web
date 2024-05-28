@@ -12,7 +12,7 @@ export class DeleteAccountDialogComponent {
   constructor(public dialogRef: MatDialogRef<DeleteAccountDialogComponent>,    private router: Router) {}
 
   onCancelClick(): void {
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
 
   onOkClick(): void {

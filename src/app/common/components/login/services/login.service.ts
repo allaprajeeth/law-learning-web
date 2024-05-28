@@ -69,23 +69,19 @@ export class LoginService {
           const userDetailsObject = localStorage.getItem("userDetails");
           console.log("user details ", userDetailsObject);
          
-          let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
-          this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
-            console.log("Status of user", profileResponse?.data?.status); 
-            const status: string = profileResponse?.data?.status;
-
-          // if (userDetailsObject) {
-          //   const userDetailsObjects = JSON.parse(userDetailsObject);
-          //   console.log("user details ", userDetailsObjects);
-            
+          // let profileUrl = `${environment.endpoints.secureBaseURL}/profile`;
+          // this.apiService.get(profileUrl).subscribe((profileResponse: any) => {
+          //   console.log("Status of user", profileResponse?.data?.status);
+          //   const status: string = profileResponse?.data?.status; 
+          if (userDetailsObject) {
+            const userDetailsObjects = JSON.parse(userDetailsObject);
+            console.log("user details ", userDetailsObjects);           
             // Check if the user status is ARCHIVED
-           
             // if (userDetailsObjects.status === "ARCHIVED") {
             //   this.dialog.open(DeleteAccountDialogComponent);
             // }
-
           // }
-            if (status === 'ACTIVE') {
+            if (userDetailsObjects.status === 'ACTIVE') {
               this.notificationService.notify(`Login Successful`);
               // If status is active, navigate based on user role
               const role: string = response.data.user.role;
@@ -109,12 +105,13 @@ export class LoginService {
                 default:
                   break;
               }
-            } else if (status === 'INACTIVE') {
+            } else if (userDetailsObjects.status === 'INACTIVE') {
               this.router.navigate(['/subscriber/revert-delete']);
-            } else if (status === 'ARCHIVED'){
-              this.router.navigate(['/register']);
+            } else if (userDetailsObjects.status === 'ARCHIVED'){
+              this.dialog.open(DeleteAccountDialogComponent);
             }
-          });
+          // });
+          }
         }
       }),
       catchError((errorResponse: any) => {

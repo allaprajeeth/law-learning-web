@@ -14,7 +14,7 @@ export class Pagination implements IPagination {
   }
 
   public getPaginationRequest(): any {
-    return { page: this.page, size: this.size, totalPages: this.totalPages };
+    return { page: this.page, size: this.size};
   }
 }
 

@@ -20,7 +20,6 @@ export class AllProfilesComponent implements OnInit {
   advisorProfiles: AdvisorProfile[] = [];
   allProfiles: any[] = [];
   pagination: Pagination = new Pagination();
-  pageSize: number = 9;
   params: any = {};
   constructor(
     private http: HttpClient,
@@ -32,9 +31,6 @@ export class AllProfilesComponent implements OnInit {
 
   ngOnInit(): void {
     this.selectedRole = 'all';
-    this.params = {
-      pagination: this.pagination.getPaginationRequest(),
-    };
     this.filterProfiles(this.params);
   }
 
@@ -53,15 +49,20 @@ export class AllProfilesComponent implements OnInit {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl + `/admin/user-profile/getAll`;
 
+    // Set search parameter
     if (this.selectedRole !== 'all') {
-      this.params.search = this.selectedRole;
-    } else if (this.selectedRole === 'all') {
-      this.params = {
-        pagination: this.pagination.getPaginationRequest(),
-      };
+      params.search = this.selectedRole;
+    } else {
+      delete params.search;
     }
 
-    this.http.get<any>(apiUrl, { params }).subscribe((response) => {
+    // Get pagination parameters from the pagination object
+    const paginationParams = this.pagination.getPaginationRequest();
+
+    // Merge pagination parameters with other params if any
+    const queryParams = { ...params, ...paginationParams };
+
+    this.http.get<any>(apiUrl, { params: queryParams }).subscribe((response) => {
       this.allProfiles = response.data.content;
       this.pagination = new Pagination(response.data);
     });
@@ -91,13 +92,14 @@ export class AllProfilesComponent implements OnInit {
   fetchAdvisorProfiles(): void {
     const baseUrl = endPoints.baseURL;
     const apiUrl = baseUrl + `/advisor/profiles`;
-    const params = new HttpParams()
-      .set('search', '')
-      .set('number', '0')
-      .set('size', '20')
-      .set('sort', 'id,DESC');
-    this.http.get<any>(apiUrl, { params }).subscribe((response) => {
+    // Get pagination parameters from the pagination object
+    const paginationParams = this.pagination.getPaginationRequest();
+
+    // Merge pagination parameters with other params if any
+    const queryParams = { ...paginationParams };
+    this.http.get<any>(apiUrl, { params: queryParams }).subscribe((response) => {
       this.advisorProfiles = response.data.content;
+      this.pagination = new Pagination(response.data);
     });
   }
 
@@ -108,10 +110,13 @@ export class AllProfilesComponent implements OnInit {
     this.router.navigate(['/admin/profile-details', userId]);
   }
 
-  onPageChange(page: number) {
-    console.log('latest from all' + ' ' + page);
-    this.pagination.page = page;
-    this.filterProfiles(this.pagination);
+  onPageChange(pagination: Pagination, isAdvisors: boolean) {
+    this.pagination.page  = pagination.page;
+    this.pagination.size  = pagination.size;
+    if(isAdvisors)
+      this.fetchAdvisorProfiles();
+    else
+      this.filterProfiles(this.params);
   }
 
   openProfileModal(profileId: string): void {

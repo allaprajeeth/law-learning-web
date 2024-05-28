@@ -1,53 +1,61 @@
-
 <div class="heading">
-  <h1>All Profiles</h1>
+	<h1>All Profiles</h1>
 </div>
 
 <div class="main-container">
-  <div class="sidenav">
-    <app-dashboard-sidenav (roleSelected)="onRoleSelected($event)"></app-dashboard-sidenav>
-  </div>
+	<div class="sidenav">
+		<app-dashboard-sidenav (roleSelected)="onRoleSelected($event)"></app-dashboard-sidenav>
+	</div>
 
-  <table class="profile-table" *ngIf="selectedRole !== 'ADVISORS'">
-  <tbody>
-    <tr class="profile-item">
-      <th></th>
-      <th class="align">Username</th>
-      <th style="font-size: large;">Profile</th>
-      <th style="font-size: large;">Status</th>
-      <!-- class="align" -->
-    </tr>
-    <tr *ngFor="let profile of allProfiles" class="profile-item" (click)="openProfileModal(profile.id)" >
-      <td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
-      <td>
-        <h3>{{ profile.name }}</h3>
-      </td>
-      <td>{{ profile.role }}</td>
-      <td [ngStyle]="getStatusStyles(profile.status)">{{ profile.status }}</td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table class="profile-table" *ngIf="selectedRole === 'ADVISORS'">
-  <tbody>
-    <tr class="profile-item">
-      <th></th>
-      <th class="align">Username</th>
-      <th style="font-size: large;">Profile</th>
-      <th style="font-size: large;">Edit Profile</th>
-      <!-- class="align" -->
-    </tr>
-    <tr *ngFor="let profile of advisorProfiles" class="profile-item" (click)="navigateToAdvisorProfiles(profile.id)">
-      <td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
-      <td>
-        <h3>{{ profile.name }}</h3>
-      </td>
-      <td>{{ profile.jobTitle}}</td>
-      <td ><button mat-raised-button color="primary"> Edit Profile</button></td>
-    </tr>
-  </tbody>
-</table>
-
+	<table class="profile-table" *ngIf="selectedRole !== 'ADVISORS'">
+		<tbody>
+			<tr class="profile-item">
+				<th></th>
+				<th class="align">Username</th>
+				<th>Profile</th>
+				<th>Status</th>
+				<!-- class="align" -->
+			</tr>
+			<tr *ngFor="let profile of allProfiles" class="profile-item" (click)="openProfileModal(profile.id)">
+				<td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
+				<td>
+					<h3>{{ profile.name }}</h3>
+				</td>
+				<td>{{ profile.role }}</td>
+				<td [ngStyle]="getStatusStyles(profile.status)">{{ profile.status }}</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" style="padding:0;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
+					(pageChange)="onPageChange($event, false)"></app-shared-pagination></td>
+			</tr>
+		</tfoot>
+	</table>
+	<table class="profile-table" *ngIf="selectedRole === 'ADVISORS'">
+		<tbody>
+			<tr class="profile-item">
+				<th></th>
+				<th class="align">Username</th>
+				<th style="font-size: large;">Profile</th>
+				<th style="font-size: large;">Edit Profile</th>
+				<!-- class="align" -->
+			</tr>
+			<tr *ngFor="let profile of advisorProfiles" class="profile-item"
+				(click)="navigateToAdvisorProfiles(profile.id)">
+				<td class="profile-placeholder">{{ getInitials(profile.name) }}</td>
+				<td>
+					<h3>{{ profile.name }}</h3>
+				</td>
+				<td>{{ profile.jobTitle}}</td>
+				<td><button mat-raised-button color="primary"> Edit Profile</button></td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4" style="padding:0;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
+					(pageChange)="onPageChange($event, true)"></app-shared-pagination></td>
+			</tr>
+		</tfoot>
+	</table>
 </div>
-<app-shared-pagination [currentPage]="pagination.page" [totalPages]="pagination.totalPages" (pageChange)="onPageChange($event)"></app-shared-pagination>

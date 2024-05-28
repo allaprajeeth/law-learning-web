@@ -29,7 +29,7 @@
       <button *ngIf="!isOtpVisible" (click)="sendOtps()" [disabled]="!isInputFilled" class="sendOtp"> Send OTPs</button>
 
       <div *ngIf="isOtpVisible">
-        <p>Note: OTPs are valid for only 2 minutes. Remaining time: <span class="timer-text">{{ formattedTimer }}</span></p>
+        <p>Note: OTPs are valid for only 10 minutes. Remaining time: <span class="timer-text">{{ formattedTimer }}</span></p>
         <label for="email_otp">Email OTP:</label>
         <input type="text" id="email_otp"  formControlName="email_otp" required  [attr.autocomplete]="'off'"  (input)="onEmailOtpInput($event)"
         />
@@ -51,7 +51,7 @@
         <div *ngIf="!isOtpVisibles" class="timer-text">
           <p>Your OTPs have expired. Please request new OTPs.</p>
         </div>
-        <button *ngIf="!isOtpVisibles" class="login-button"  (click)="reloadPage()">Back to Login</button>
+        <button *ngIf="!isOtpVisibles" class="login-button"  (click)="sendOtps()">Resend OTP</button>
       </div>
 
       <button *ngIf="isLoginVisible" 

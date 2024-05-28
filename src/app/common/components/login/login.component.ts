@@ -1,30 +1,30 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup,  Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TermsandconComponent } from '../../termsandcon/termsandcon.component';
 import { interval, takeWhile } from 'rxjs';
- 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-openModal() {
-  this.dialog.open(TermsandconComponent, {
-    width: '700px',
-    height: '600px',
-  });
-}
+  openModal() {
+    this.dialog.open(TermsandconComponent, {
+      width: '700px',
+      height: '600px',
+    });
+  }
   loginForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private loginService:LoginService,
+    private loginService: LoginService,
     public dialog: MatDialog,
- 
+
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -33,12 +33,10 @@ openModal() {
       email_otp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       phone_otp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     });
-    this.startOtpTimer();
-
   }
   // loginForm: FormGroup;
   isOtpVisibles = true;
-  otpValidDuration = 130; 
+  otpValidDuration = 60;
   timer: any;
   timerSubscription: any;
   isSendOtpsClicked: boolean = true;
@@ -60,8 +58,8 @@ openModal() {
       this.timer--;
       if (this.timer <= 0) {
         this.isOtpVisibles = false;
-        this. isLoginVisible= false;
-        
+        this.isLoginVisible = false;
+
         this.timerSubscription.unsubscribe();
       }
     });
@@ -69,7 +67,7 @@ openModal() {
 
   reloadPage(): void {
     // this.router.navigateByUrl('/login', { skipLocationChange: true }).then(() => {
-      window.location.reload();
+    window.location.reload();
     // });
   }
   get formattedTimer(): string {
@@ -85,6 +83,7 @@ openModal() {
   sendOtps() {
     this.sendOtpClick();
     this.isInputFilled = false;
+    this.isOtpVisibles=true;
   }
   get email() {
     return this.loginForm.get('email');
@@ -98,7 +97,7 @@ openModal() {
   get phoneOtp() {
     return this.loginForm.get('phone_otp');
   }
- 
+
   sendOtpClick() {
     // this.showOtpFields()
     const email = this.email?.value;
@@ -108,16 +107,16 @@ openModal() {
       email: email,
       phone: phone,
     };
-   
+
     this.loginService.sendOtpClick(loginRequestFormData).subscribe(
-      ()=>{
+      (response) => {
         this.showOtpFields()
-        
+        this.startOtpTimer();
         this.loginForm.controls['phone'].disable();
         this.loginForm.controls['email'].disable();
       }
     )
-   
+
   }
   showOtpFields(): void {
     this.isOtpVisible = true;
@@ -126,24 +125,24 @@ openModal() {
     this.isSendOtpsClicked = !this.isSendOtpsClicked;
   }
   login() {
-   this.loginClick()
-   //this.loginValidation();
-   
+    this.loginClick()
+    //this.loginValidation();
+
   }
-   loginClick() {
+  loginClick() {
     const phoneOtp = this.phoneOtp?.value;
     const emailOtp = this.emailOtp?.value;
- 
-     const loginVerifyFormData={
-         phone_otp:phoneOtp,
-         email_otp:emailOtp,
-         validation_key :this.loginService.validationKey$.value,
-     }
-     this.loginService.loginClick(loginVerifyFormData).subscribe(
-      ()=>{}
-     )
+
+    const loginVerifyFormData = {
+      phone_otp: phoneOtp,
+      email_otp: emailOtp,
+      validation_key: this.loginService.validationKey$.value,
+    }
+    this.loginService.loginClick(loginVerifyFormData).subscribe(
+      () => { }
+    )
   }
- 
+
   onEmailOtpInput(event: any) {
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');
@@ -160,18 +159,17 @@ openModal() {
       .get('phone_otp')!
       .setValue(truncatedValue, { emitEvent: false });
   }
-  onPhoneNumberInput(event:any){
+  onPhoneNumberInput(event: any) {
     const input = event.target.value;
     const digitsOnly = input.replace(/\D/g, '');
     const truncatedValue = digitsOnly.slice(0, 10);
     this.loginForm
-    .get('phone')!
-    .setValue(truncatedValue, { emitEvent: false });
+      .get('phone')!
+      .setValue(truncatedValue, { emitEvent: false });
   }
   handlePhoneInput(event: any) {
     this.onPhoneNumberInput(event);
     this.checkInput();
   }
- 
+
 }
- 
