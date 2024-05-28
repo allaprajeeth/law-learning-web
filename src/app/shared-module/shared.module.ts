@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { SharedoverviewComponent } from './components/sharedoverview/sharedoverview.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -32,6 +33,11 @@ import { SharedarticleHistoryComponent } from './components/sharedarticle-histor
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 import { SharedPaginationComponent } from './components/shared-pagination/shared-pagination.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { SharedvideoplayerComponent } from './components/sharedvideoplayer/sharedvideoplayer.component';
+import { SharedcourseInfoComponent } from './components/sharedcourse-info/sharedcourse-info.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -45,16 +51,20 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     FileUploadComponent,
     ConfirmationAlertComponent,
     SidenavComponent,
-    SharedNotificationComponent,
-    LogoutPopupComponent,
-    PublishArticlesComponent,
-    FileUploadComponent,
-    ConfirmationAlertComponent,
-    SharedcourseHistoryComponent,
-    SharedarticleHistoryComponent,
-    UploadedarticlesstatusComponent,
-    SharedPaginationComponent,
-  ],
+
+
+     LogoutPopupComponent,
+     PublishArticlesComponent,
+     FileUploadComponent,
+     ConfirmationAlertComponent,
+     SharedcourseHistoryComponent,
+     SharedarticleHistoryComponent,
+     UploadedarticlesstatusComponent,
+     SharedPaginationComponent,
+     SharedvideoplayerComponent,
+     SharedcourseInfoComponent,
+    ],
+
 
 
 
@@ -69,14 +79,18 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatExpansionModule,
     MatIconModule,
     MatCardModule,
+    MatTabsModule,
     FormsModule,
     CarouselModule,
     MatSidenavModule,
     MatSlideToggleModule,
     MatToolbarModule,
+    MatExpansionModule,
+    MatChipsModule,
     ReactiveFormsModule,
     PdfViewerModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     RouterModule,
     MatPaginatorModule
   ],
@@ -85,6 +99,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatChipsModule,
     FooterComponent,
     PublishingcornerComponent,
     PublishArticlesComponent,
@@ -100,6 +117,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     SharedarticleHistoryComponent,
     UploadedarticlesstatusComponent,
     SharedPaginationComponent,
+    SharedvideoplayerComponent,
+    SharedcourseInfoComponent
 
   ]
 

@@ -1,18 +1,14 @@
 <div class="heading" *ngIf="course">
-  <h1>{{course.title }}</h1>
+  <h1>{{course.title}}</h1>
   <p class="first-paragraph">{{ course.description }}</p>
-  <p>Instructor : {{ course?.createdBy?.name }}</p>
-  <p>Course Type : {{course.type}}</p>
-  <p>Skill Level :{{course.difficultyLevel}}</p>
-  <!-- <p>Course Duration : {{ course.courseDuration }}</p> -->
-  <!-- <p class="icon">
-    <span class="material-icons updated"> report_gmailerrorred </span>Last
-    updated: {{ course.updatedDate }}
-  </p> -->
+  <p>Instructor: {{ course?.createdBy?.name }}</p>
+  <p>Course Type: {{course.type}}</p>
+  <p>Skill Level: {{course.difficultyLevel}}</p>
   <p class="icon">
     <span class="material-icons language"> language </span>English
   </p>
 </div>
+
 <div class="courseFeatures">
   <h2>This course includes:</h2>
   <div class="grid-container">
@@ -20,72 +16,59 @@
       <span><mat-icon>videocam</mat-icon> hours on-demand video</span>
     </div>
     <div class="grid-item">
-      <span><mat-icon>download</mat-icon> Downloadable Resource's</span>
+      <span><mat-icon>download</mat-icon> Downloadable Resources</span>
     </div>
     <div class="grid-item">
       <span><span class="material-icons">emoji_events</span>Certificate of Completion</span>
     </div>
   </div>
-
-  <mat-card class="side-bar">
-    <div class="container">
-      <mat-card-title class="title">
-        <div class="title-text">Course Content</div>
-      </mat-card-title>
-    </div>
-    <div class="sectionsInfo" *ngIf="course">
-      {{ course.sections?.length }} Sections &nbsp;• {{ numberOfSubsections}} lectures &nbsp;• Total Length
-    </div>
-    <mat-divider></mat-divider>
-    <mat-accordion class="sidebar-content" *ngIf="course">
-      <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <div class="panelTitle">Section{{i+1}} : {{ section.title }}</div>
-            <div class="section-info">{{ section.subSections?.length}} lectures &nbsp;&nbsp; min
-            </div>
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <div style="border: 1px solid rgb(237 228 228); padding: 10px; margin-bottom: 15px;">
-          <h3 class="sectionDesc">{{ section.description }}</h3>
-          <!-- <p>{{ section.description}}</p> -->
-        </div>
-        <div class="video-group">
-          <ng-container *ngFor="let subSection of section.subSections; let j = index">
-            <mat-expansion-panel *ngIf="!isSubmitted(subSection)">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  <div class="titlehead">
-
-                    <div>Sub Section{{j+1}} : {{ subSection.title }} </div>
-                    <!-- <div class="videos-title">{{ subSection?.title }}</div>
-                    <div style="color: rgb(122, 119, 119)" class="subsection-duration">
-                      {{  subSection.duration}}min
-                    </div> -->
-                  </div>
-                </mat-panel-title>
-              </mat-expansion-panel-header>
-              <div class="video-item">
-                <!-- <p *ngIf="subSection" class="sectionInfo">{{ subSection.description }}</p> -->
-              </div>
-              <mat-divider></mat-divider>
-            </mat-expansion-panel>
-          </ng-container>
-        </div>
-      </mat-expansion-panel>
-    </mat-accordion>
-
-  </mat-card>
-  <!-- Your existing template content here -->
-<div class="comment-box">
-  <textarea placeholder="Add your comment here..." [(ngModel)]="rejectComment"></textarea>
 </div>
 
-<div class="approve-reject-buttons">
+<mat-card class="side-bar">
+  <div class="container">
+    <mat-card-title class="title">
+      <div class="title-text">Course Content</div>
+    </mat-card-title>
+  </div>
+  <div class="sectionsInfo" *ngIf="course">
+    {{ course.sections?.length }} Sections &nbsp;• {{ numberOfSubsections }} lectures &nbsp;• Total Length
+  </div>
+  <mat-divider></mat-divider>
+  <mat-accordion class="sidebar-content" *ngIf="course">
+    <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <div class="panelTitle">Section {{ i + 1 }}: {{ section.title }}</div>
+          <div class="section-info">{{ section.subSections?.length }} lectures &nbsp;&nbsp; min</div>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <div style="border: 1px solid rgb(237, 228, 228); padding: 10px; margin-bottom: 15px;">
+        <h3 class="sectionDesc">{{ section.description }}</h3>
+      </div>
+      <div class="video-group">
+        <ng-container *ngFor="let subSection of section.subSections; let j = index">
+          <mat-expansion-panel *ngIf="!isSubmitted(subSection)">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <div class="titlehead">
+                  <div>Sub Section {{ j + 1 }}: {{ subSection.title }}</div>
+                </div>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="video-item"></div>
+            <mat-divider></mat-divider>
+          </mat-expansion-panel>
+        </ng-container>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card>
+
+<div *ngIf="formApproval() && !isInstructorModule" class="comment-box">
+  <textarea placeholder="Add your comment here..." [(ngModel)]="rejectComment"></textarea>
+</div>
+<div *ngIf="formApproval() && !isInstructorModule" class="approve-reject-buttons">
   <button class="approve-button" (click)="approve()">Approve</button>
   <button class="reject-button" (click)="reject()">Reject</button>
 </div>
-
-
-  </div>

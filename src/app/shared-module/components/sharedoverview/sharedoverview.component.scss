@@ -417,3 +417,15 @@
   .reject-button:hover {
     background-color: darken(#ca2c24, 10%); /* Darken green color on hover */
   }
+  .mat-snack-bar-container {
+    background-color: #323232; /* Background color */
+    color: #fff; /* Text color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .mat-simple-snackbar-action {
+    color: #ff4081; /* Action button color */
+  }
+  

@@ -82,7 +82,7 @@ export class HomepageComponent implements OnInit{
   navigateToCourseInfo(courseId: number): void {
     this.courseService.getCourseById(courseId).subscribe(
       (course) => {
-        this.router.navigate(['/reviewer/courseinfo', courseId], {
+        this.router.navigate(['/reviewer/courseInfo', courseId], {
           state: { course: course }
         });
       },

@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from 'src/app/common/components/header/header.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
-import { ReviewervideoComponent } from './components/reviewervideo/reviewervideo.component';
 import { NotificationComponent } from './components/notification/notification.component';
 import { CourseInfoComponent } from './components/course-info/course-info.component';
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
@@ -22,6 +21,7 @@ import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/li
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 import { ArticleDetailsComponent } from 'src/app/common/components/article-details/article-details.component';
+import { VideoplayerComponent } from './components/videoplayer/videoplayer.component';
 
 const routes: Routes = [
   {
@@ -38,8 +38,8 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
-    path:"reviewervideo",
-    component: ReviewervideoComponent
+    path:"videoplayer",
+    component: VideoplayerComponent
   },
   {
     path:"notification",
@@ -50,7 +50,7 @@ const routes: Routes = [
     component: ArticleComponent
   },
   {
-    path:"courseInfo",
+    path:"courseInfo/:id",
     component:CourseInfoComponent
   },
   {
