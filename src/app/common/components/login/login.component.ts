@@ -36,7 +36,7 @@ export class LoginComponent {
   }
   // loginForm: FormGroup;
   isOtpVisibles = true;
-  otpValidDuration = 60;
+  otpValidDuration = 600;
   timer: any;
   timerSubscription: any;
   isSendOtpsClicked: boolean = true;
