@@ -135,6 +135,8 @@ button:hover {
   background-color: rgba(117, 116, 116, 0.7); 
   opacity: 0; 
   transition: opacity 0.3s; 
+  justify-content: center;
+  align-items: center;    
 }
 
 .imagesContainer:hover .overlay {
@@ -143,6 +145,11 @@ button:hover {
   width: 250px;
   height: 200px;
   cursor: pointer;
+}
+
+.fa-play-circle.play-icon {
+  font-size: 5rem; 
+  color: white;
 }
 
 .imagesContainer img {
