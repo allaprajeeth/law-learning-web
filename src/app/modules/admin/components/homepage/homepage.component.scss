@@ -497,8 +497,21 @@ p{
   text-align: center;
   margin-bottom: 10px;
   margin-top: 20px;
+} 
+  .publish-button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
+.publish-button:hover {
+    background-color: #45a049;
+}
+  
 
   
   

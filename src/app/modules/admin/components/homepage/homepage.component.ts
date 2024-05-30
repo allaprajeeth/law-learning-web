@@ -13,6 +13,7 @@ interface ApiResponse {
   };
   status: number;
 }
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -22,6 +23,7 @@ export class HomepageComponent implements OnInit {
   approvedArticles: Article[] = [];
   allArticles:  Article[] = [];
   courses!: Course[];
+  coursesToPublish: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL; 
   selectedCategory: string | undefined;
   constructor(
@@ -36,6 +38,7 @@ export class HomepageComponent implements OnInit {
     this.getApprovedArticles();
     this.loadCourses();
     this.selectedCategory = this.profile.getCategory();
+    this.loadCoursesToPublish();
   }
   
 
@@ -86,6 +89,25 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/admin/detail-articles', articleId]);
   }
   /* -----  course review process  ---- */
+
+  loadCoursesToPublish(): void {
+    this.courseService.getCoursesToPublish().subscribe(
+      (response: ApiResponse) => {
+        if (response && response.data && response.data.content) {
+          this.coursesToPublish = response.data.content.map(course => ({
+            ...course,
+          })) as Course[];
+          console.log('Courses to Publish:', this.coursesToPublish); 
+        } else {
+          console.error('Invalid response format:', response);
+        }
+      },
+      (error) => {
+        console.error('Error fetching courses to publish:', error);
+      }
+    );
+  }
+
   loadCourses(): void {
     const number = 0; 
     const size = 20; 
@@ -107,6 +129,22 @@ export class HomepageComponent implements OnInit {
         }
       );
   } 
+
+
+
+  navigateToCourseInf(courseId: number): void {
+    this.courseService.getCourseById(courseId).subscribe(
+      (course) => {
+        this.router.navigate(['/admin/courseinfo', courseId], {
+          state: { course: course }
+        });
+      },
+      (error) => {
+        console.error('Error fetching course details:', error);
+      }
+    );
+  }
+
   
   navigateToCourseInfo(courseId: number): void {
     this.courseService.getCourseById(courseId).subscribe(
@@ -120,6 +158,9 @@ export class HomepageComponent implements OnInit {
       }
     );
   }
+
+
+
 
   onImageError(event: any) {
     event.target.src = 'assets/law.png';
