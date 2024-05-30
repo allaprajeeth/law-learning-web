@@ -32,11 +32,15 @@ import { SharedcourseHistoryComponent } from './components/sharedcourse-history/
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 import { SharedPaginationComponent } from './components/shared-pagination/shared-pagination.component';
+
 import { MatPaginatorModule } from '@angular/material/paginator';
+
 import { SharedvideoplayerComponent } from './components/sharedvideoplayer/sharedvideoplayer.component';
 import { SharedcourseInfoComponent } from './components/sharedcourse-info/sharedcourse-info.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+
+
 
 
 @NgModule({

@@ -264,6 +264,8 @@ export class SharedvideoplayerComponent {
     this.courseService.sendReview(String(courseId), body).subscribe(
       response => {
         console.log('Video commented:', response);
+        subSection.reviewStatus = status; 
+        subSection.showCommentBox = false;
         this.showRejectPopup('Course Video commented successfully.');
       },
       error => {
@@ -274,8 +276,7 @@ export class SharedvideoplayerComponent {
   
 
   showSuccessPopup(message: string) {
-    this.snackBar.open(message, 'Close', {
-      duration: 3000, 
+    this.snackBar.open(message, 'Close', { 
       verticalPosition: 'top',
       panelClass: ['success-snackbar'] 
     });
@@ -283,7 +284,6 @@ export class SharedvideoplayerComponent {
   
   showRejectPopup(message: string) {
     this.snackBar.open(message, 'Close', {
-      duration: 3000, 
       verticalPosition: 'top',
       panelClass: ['reject-snackbar'] 
     });

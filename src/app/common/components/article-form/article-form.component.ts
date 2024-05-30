@@ -23,6 +23,11 @@ export class ArticleFormComponent {
   formData: FormData;
   userDetails: any; 
   isClicked = false;
+  fileError: string | null = null;
+  uploadForm: FormGroup;
+  // articleForm: FormGroup;
+  // isClicked = false;
+  showTooltip = false;
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
@@ -36,7 +41,15 @@ export class ArticleFormComponent {
       description: ['', Validators.required],
       file: [null, Validators.required]
     });
+    // this.articleForm = this.fb.group({
+    //   // Define your form controls here
+    //   title: ['', Validators.required],
+    //   content: ['', Validators.required]
+    // });
     this.formData = new FormData();
+    this.uploadForm = this.fb.group({
+      file: ['']
+    });
   }
   ngOnInit() {
     this.getUserArticles();
@@ -56,6 +69,16 @@ export class ArticleFormComponent {
         this.formData.append('file', file);
       }
     }
+    const file = event.target.files[0];
+    if (file && !file.name.match(/\.(doc|docx)$/)) {
+      this.fileError = 'Invalid file type. Only .doc and .docx files are allowed.';
+      this.uploadForm.controls['file'].reset();
+      event.target.value = '';  // Reset the file input
+    } else {
+      this.fileError = null;
+      this.uploadForm.controls['file'].setValue(file);
+    }
+  
   }
   getUserArticles() {
     const idParam = this.route.snapshot.paramMap.get('id');

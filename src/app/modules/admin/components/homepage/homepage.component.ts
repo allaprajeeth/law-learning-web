@@ -7,6 +7,8 @@ import { Course } from 'src/app/common/models/course.model';
 import { MatDialog } from '@angular/material/dialog';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { Pagination } from 'src/app/common/models/pagination.model';
+import { ProfileService } from '../profile.service';
+
 interface ApiResponse {
   data: {
     content: Course[];
@@ -14,6 +16,7 @@ interface ApiResponse {
   };
   status: number;
 }
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -23,21 +26,25 @@ export class HomepageComponent implements OnInit {
   approvedArticles: Article[] = [];
   allArticles:  Article[] = [];
   courses!: Course[];
+  coursesToPublish: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL; 
   pagination1: Pagination = new Pagination();
   pagination2: Pagination = new Pagination();
+  selectedCategory: string | undefined;
 
   constructor(
     private adminService: AdminService,
     private router: Router,
     private courseService: CourseService,
     private dialog: MatDialog,
-    
+    private profile:ProfileService
   ) {}
 
   ngOnInit(): void {
     this.getApprovedArticles();
     this.loadCourses();
+    this.selectedCategory = this.profile.getCategory();
+    this.loadCoursesToPublish();
   }
   
 
@@ -55,6 +62,8 @@ export class HomepageComponent implements OnInit {
     );
   }
   filterByCategory(category: string) {
+    this.profile.setCategory(category);
+    this.selectedCategory = category;
     if (category === 'contentManager') {
       
       this.approvedArticles = this.allArticles.filter(article => {
@@ -88,6 +97,25 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/admin/detail-articles', articleId]);
   }
   /* -----  course review process  ---- */
+
+  loadCoursesToPublish(): void {
+    this.courseService.getCoursesToPublish().subscribe(
+      (response: ApiResponse) => {
+        if (response && response.data && response.data.content) {
+          this.coursesToPublish = response.data.content.map(course => ({
+            ...course,
+          })) as Course[];
+          console.log('Courses to Publish:', this.coursesToPublish); 
+        } else {
+          console.error('Invalid response format:', response);
+        }
+      },
+      (error) => {
+        console.error('Error fetching courses to publish:', error);
+      }
+    );
+  }
+
   loadCourses(): void {
     this.courseService.getReviewCourses(this.pagination1)
       .subscribe(
@@ -107,6 +135,22 @@ export class HomepageComponent implements OnInit {
         }
       );
   } 
+
+
+
+  navigateToCourseInf(courseId: number): void {
+    this.courseService.getCourseById(courseId).subscribe(
+      (course) => {
+        this.router.navigate(['/admin/courseinfo', courseId], {
+          state: { course: course }
+        });
+      },
+      (error) => {
+        console.error('Error fetching course details:', error);
+      }
+    );
+  }
+
   
   navigateToCourseInfo(courseId: number): void {
     this.courseService.getCourseById(courseId).subscribe(
@@ -120,6 +164,9 @@ export class HomepageComponent implements OnInit {
       }
     );
   }
+
+
+
 
   onImageError(event: any) {
     event.target.src = 'assets/law.png';
