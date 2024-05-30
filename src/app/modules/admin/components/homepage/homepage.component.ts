@@ -12,10 +12,11 @@ import { ProfileService } from '../profile.service';
 interface ApiResponse {
   data: {
     content: Course[];
-    totalElements:number
+    totalElements?: number;
   };
   status: number;
 }
+
 
 @Component({
   selector: 'app-homepage',
@@ -105,7 +106,7 @@ export class HomepageComponent implements OnInit {
           this.coursesToPublish = response.data.content.map(course => ({
             ...course,
           })) as Course[];
-          console.log('Courses to Publish:', this.coursesToPublish); 
+          console.log('Courses to Publish:', this.coursesToPublish);
         } else {
           console.error('Invalid response format:', response);
         }
@@ -121,7 +122,7 @@ export class HomepageComponent implements OnInit {
       .subscribe(
         (response: ApiResponse) => {
           if (response && response.data && response.data.content) {
-            this.pagination1.totalElements=response.data.totalElements
+            this.pagination1.totalElements=response.data.totalElements ?? 0;
             this.courses = response.data.content.map(course => ({
               ...course,
             })) as Course[];
