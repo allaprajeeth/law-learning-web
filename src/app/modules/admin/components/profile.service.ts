@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
   private userName: string = '';
+  private selectedCategory: string = 'all';
 
   setUserName(name: string): void {
     this.userName = name;
@@ -13,6 +14,13 @@ export class ProfileService {
 
   getUserName(): string {
     return this.userName;
+  }
+  setCategory(category: string): void {
+    this.selectedCategory = category;
+  }
+
+  getCategory(): string {
+    return this.selectedCategory;
   }
   constructor() { }
 }

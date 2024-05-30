@@ -6,6 +6,7 @@ import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
 import { MatDialog } from '@angular/material/dialog';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { ProfileService } from '../profile.service';
 interface ApiResponse {
   data: {
     content: Course[];
@@ -22,18 +23,19 @@ export class HomepageComponent implements OnInit {
   allArticles:  Article[] = [];
   courses!: Course[];
   s3BaseURL: string = endPoints.s3BaseURL; 
-
+  selectedCategory: string | undefined;
   constructor(
     private adminService: AdminService,
     private router: Router,
     private courseService: CourseService,
     private dialog: MatDialog,
-    
+    private profile:ProfileService
   ) {}
 
   ngOnInit(): void {
     this.getApprovedArticles();
     this.loadCourses();
+    this.selectedCategory = this.profile.getCategory();
   }
   
 
@@ -49,6 +51,8 @@ export class HomepageComponent implements OnInit {
     );
   }
   filterByCategory(category: string) {
+    this.profile.setCategory(category);
+    this.selectedCategory = category;
     if (category === 'contentManager') {
       
       this.approvedArticles = this.allArticles.filter(article => {
