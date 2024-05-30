@@ -20,6 +20,7 @@ export class HomepageComponent implements OnInit {
   cartItems: cartcourseModel[] = [];
   myCourses: Course[] = [];
   pagination: Pagination = new Pagination();
+  
 
   constructor(
     private coursesService: CoursesService,
@@ -100,6 +101,7 @@ export class HomepageComponent implements OnInit {
       this.myCourses = response.data.content;
     });
   }
+  
   onPageChange(pagination: Pagination) {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;

@@ -4,5 +4,6 @@ export interface cartcourseModel {
 "price": string,
 "courseId":number,
 "createdDate": string
+"thumbnail":string
 
 }

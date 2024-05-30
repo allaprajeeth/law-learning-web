@@ -1,8 +1,8 @@
 <div class="notification-container">
   <span class="heading">Notifications</span>
 <div class="notification-list">
-  <ng-container *ngFor="let notification of notifications; let i = index">
-    <div class="notification-item">
+  <ng-container *ngFor="let notification of notifications; let i = index" >
+    <div class="notification-item" [ngClass]="{'read-notification': notification.read, 'unread-notification': !notification.read}">
       <div class="circle">
         <!-- {{ notification.icon }} -->
       </div>

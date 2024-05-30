@@ -45,7 +45,7 @@
           <h5>{{course.title}}</h5>
           <p>{{ course.createdBy.name }}</p>
         </div>
-        <div class="ratingscontainer1">
+        <!-- <div class="ratingscontainer1">
           <div class="ratingConatiner2">
             <span class="star">&#9733;</span>
             <span class="star">&#9733;</span>
@@ -68,7 +68,7 @@
           <div class="ratingConatiner2">
             <span>Subscribers Ratings</span>
           </div>
-        </div>
+        </div> -->
         <div class="subscribers" style="font-weight: 410;">
           <span>Number of Subscribers: {{ course.viewCount + '+' }}</span>
           <h5 class="price">
@@ -79,7 +79,7 @@
           </h5>
           <button *ngIf="!isCourseInCart(course.id)" mat-raised-button color="primary"
             (click)="addToCart(course.id)">Add to Cart</button>
-          <button *ngIf="isCourseInCart(course.id)" mat-raised-button color="warn" routerLink="/cart">Go to
+          <button *ngIf="isCourseInCart(course.id)" mat-raised-button color="warn" routerLink="/cart">GoTo
             Cart</button>
         </div>
       </div>

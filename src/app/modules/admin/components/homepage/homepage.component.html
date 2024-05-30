@@ -4,7 +4,6 @@
   </div>
   <div *ngIf="courses && courses.length">
     <div class="courses">
-
       <ul>
         <li *ngFor="let course of courses">
           <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
@@ -25,6 +24,9 @@
           <!-- <p>Institution: {{ course.institution?.name }}</p> -->
         </li>
       </ul>
+    </div>
+    <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+      (pageChange)="onPageChange1($event)"></app-shared-pagination>
     </div>
   </div>
   <div *ngIf="!courses || courses.length === 0">
@@ -69,6 +71,9 @@
       </div>
     </div>
   </div>
+</div>
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination2.totalElements"
+  (pageChange)="onPageChange2($event)"></app-shared-pagination>
 </div>
 </div>
 
