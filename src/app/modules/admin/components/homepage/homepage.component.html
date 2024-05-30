@@ -22,6 +22,9 @@
         </li>
       </ul>
     </div>
+    <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+      (pageChange)="onPageChange1($event)"></app-shared-pagination>
+    </div>
   </div>
   <div *ngIf="!courses || courses.length === 0">
     <p>No courses available.</p>
@@ -92,6 +95,11 @@
     </div>
   </div>
 </div>
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination2.totalElements"
+  (pageChange)="onPageChange2($event)"></app-shared-pagination>
+</div>
+</div>
+
 
 
 <br />

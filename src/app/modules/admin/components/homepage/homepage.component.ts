@@ -1,15 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
-import { ArticleApiResponse, Article } from '../admin.model';
+import {  Article } from '../admin.model';
 import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
 import { MatDialog } from '@angular/material/dialog';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { Pagination } from 'src/app/common/models/pagination.model';
 import { ProfileService } from '../profile.service';
+
 interface ApiResponse {
   data: {
     content: Course[];
+    totalElements:number
   };
   status: number;
 }
@@ -25,7 +28,10 @@ export class HomepageComponent implements OnInit {
   courses!: Course[];
   coursesToPublish: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL; 
+  pagination1: Pagination = new Pagination();
+  pagination2: Pagination = new Pagination();
   selectedCategory: string | undefined;
+
   constructor(
     private adminService: AdminService,
     private router: Router,
@@ -43,10 +49,12 @@ export class HomepageComponent implements OnInit {
   
 
   getApprovedArticles(): void {
-    this.adminService.getApprovedArticles().subscribe(
+    this.adminService.getApprovedArticles(this.pagination2).subscribe(
       (response) => {
         this.approvedArticles = response.data.content || [];
         this.allArticles = response.data.content || [];
+        this.pagination2.totalElements=response.data.totalElements
+        
       },
       (error) => {
         console.error('Error fetching approved articles:', error);
@@ -109,13 +117,11 @@ export class HomepageComponent implements OnInit {
   }
 
   loadCourses(): void {
-    const number = 0; 
-    const size = 20; 
-  
-    this.courseService.getReviewCourses(number, size)
+    this.courseService.getReviewCourses(this.pagination1)
       .subscribe(
         (response: ApiResponse) => {
           if (response && response.data && response.data.content) {
+            this.pagination1.totalElements=response.data.totalElements
             this.courses = response.data.content.map(course => ({
               ...course,
             })) as Course[];
@@ -164,6 +170,16 @@ export class HomepageComponent implements OnInit {
 
   onImageError(event: any) {
     event.target.src = 'assets/law.png';
+  }
+  onPageChange1(pagination: Pagination) {
+    this.pagination1.page = pagination.page;
+    this.pagination1.size = pagination.size;
+    this.loadCourses()
+  }
+  onPageChange2(pagination: Pagination) {
+    this.pagination2.page = pagination.page;
+    this.pagination2.size = pagination.size;
+    this.getApprovedArticles()
   }
 }
 

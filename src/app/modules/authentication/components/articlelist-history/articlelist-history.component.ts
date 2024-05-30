@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../article.service';
 import { Article } from '../../../../common/models/article.model';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 @Component({
   selector: 'app-articlelist-history',
@@ -10,6 +11,7 @@ import { Article } from '../../../../common/models/article.model';
 export class ArticlelistHistoryComponent implements OnInit {
   publishedArticles: Article[] = [];
   articles: Article[] = []; 
+  pagination = new Pagination ()
 
   constructor(private articleService: ArticleService) { }
 
@@ -17,7 +19,7 @@ export class ArticlelistHistoryComponent implements OnInit {
     this.loadArticles();
   }
   loadArticles() {
-    this.articleService.getArticles().subscribe(
+    this.articleService.getArticles(this.pagination).subscribe(
       (response: any) => {
         console.log('Response:', response);
         // Assign the array of articles directly to publishedArticles

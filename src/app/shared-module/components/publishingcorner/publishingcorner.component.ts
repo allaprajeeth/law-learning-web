@@ -48,11 +48,11 @@ export class PublishingcornerComponent implements OnInit {
     this.isAdmin = userDetails?.role === 'ADMIN';
   }
   loadPublishArticles(): void {
-    this.fetcharticleService.loadPublishArticles(this.searchTerm ,this.pagination.page ,this.pagination.size).subscribe(
+    this.fetcharticleService.loadPublishArticles(this.searchTerm ,this.pagination).subscribe(
       (response: any) => {
         this.articles = response.data.content || [];
         this.filteredArticles = [...this.articles];
-        this.pagination = response.data ;
+        this.pagination.totalElements = response.data.totalElements ;
         // this.totalElements=response.data.totalElements
         
       },

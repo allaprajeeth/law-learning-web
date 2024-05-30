@@ -10,6 +10,7 @@ import { AuthTokenService } from './auth-token/auth-token.service';
 import { UserRole } from '../enums/role.enums';
 import { ReviewStatus } from '../enums/status.enums';
 import { SubSection } from '../models/sub-sections.model';
+import { Pagination } from '../models/pagination.model';
 
 
 interface ApiResponse {
@@ -38,8 +39,8 @@ export class CourseService {
     return this.httpClient.patch<T>(url, data, { headers });
   }
 
-  getCourses(): Observable<Course[]> {
-    const url = `${endPoints.baseURL}/secure/courses`;
+  getCourses(pagination:Pagination): Observable<Course[]> {
+    const url = `${endPoints.baseURL}/secure/courses?page=${pagination.page}&size=${pagination.size}`;
     return this.httpClient.get<Course[]>(url);
   }
 
@@ -82,8 +83,8 @@ export class CourseService {
     return false;
   }
 
-  getReviewCourses(number: number, size: number): Observable<any> {
-    const url = `${endPoints.baseURL}/secure/courses/review?number=${number}&size=${size}&sort=createdDate,DESC`;
+  getReviewCourses(pagination :Pagination): Observable<any> {
+    const url = `${endPoints.baseURL}/secure/courses/review?number?page=${pagination.page}&size=${pagination.size}&sort=createdDate,DESC`;
     return this.httpClient.get(url);
   }
 

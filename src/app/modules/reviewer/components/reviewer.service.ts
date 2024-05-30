@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Article, ArticleApiResponse } from './reviewer.model';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +14,9 @@ export class ReviewerService {
 
   constructor(private http: HttpClient) {}
 
-  getApprovedArticles(): Observable<ArticleApiResponse> {
-    return this.http.get<ArticleApiResponse>(`${endPoints.baseURL}/secure/articles/review`).pipe(
-      catchError((error) => {
-        console.error('Error fetching approved articles:', error);
-        return throwError(error);
-      })
-    );
+  getApprovedArticles(pagination:Pagination): Observable<ArticleApiResponse> {
+    const url = `${endPoints.baseURL}/secure/articles/review?page=${pagination.page}&size=${pagination.size}`;
+      return this.http.get<ArticleApiResponse>(url);
   }
   
   getArticleDetails(articleId: number): Observable<Article> {
