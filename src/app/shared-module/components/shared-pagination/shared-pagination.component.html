@@ -1,4 +1,4 @@
-<mat-paginator #paginator [length]="totalRecordsCount" 
+<mat-paginator #paginator *ngIf="totalRecordsCount > pagination.size" [length]="totalRecordsCount" 
     (page)="handlePageEvent($event)" [pageSizeOptions]="pageSizeOptions" aria-label="Select page" 
     showFirstLastButtons>
 </mat-paginator>
