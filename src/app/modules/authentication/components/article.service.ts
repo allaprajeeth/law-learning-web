@@ -6,6 +6,7 @@ import { Article } from '../../../common/models/article.model';
 import { map } from 'rxjs/operators';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 
 @Injectable({
@@ -18,7 +19,7 @@ export class ArticleService {
   setItem: any;
   private approvalResponse: any;
   officeViewerSrc: SafeResourceUrl | string | undefined;
-  
+  pagination = new Pagination()
 
   constructor(private http: HttpClient,
     private sanitizer: DomSanitizer
@@ -26,13 +27,9 @@ export class ArticleService {
    
   }
 
-  getArticles(): Observable<Article[]> {
-    return this.http.get<any>(this.apiUrl).pipe(
-      map(response => response.data.content),
-      tap((articles) => {
-        this.articles = articles;
-        console.log('Articles from server:', articles);
-      }),
+  getArticles(pagination: Pagination): Observable<any> {
+    const url = `${this.apiUrl}?page=${pagination.page}&size=${pagination.size}`;
+    return this.http.get<any>(url).pipe(
       catchError((error) => {
         console.error('Error fetching articles:', error);
         return throwError(error);

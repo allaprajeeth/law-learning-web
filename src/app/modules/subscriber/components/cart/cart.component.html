@@ -1,15 +1,17 @@
 <div class="cartContainer">
     <div *ngIf="!isAdded">
-    <h1>Shopping Cart</h1>
-    <h5>{{ cartItems.length }} Courses in Cart</h5>
-    <div *ngIf="cartItems.length === 0" class="emptyCartText">
-        <h2>No Items in the cart</h2>
+        <h1>Shopping Cart</h1>
+        <h5>{{ cartItems.length }} Courses in Cart</h5>
+        <div *ngIf="cartItems.length === 0" class="emptyCartText">
+            <h2>No Items in the cart</h2>
+        </div>
     </div>
-</div>
     <div class="course" *ngIf="cartItems.length && !isAdded">
         <div class="courseContainer">
             <div class="courseItems" *ngFor="let item of cartItems">
                 <div class="horizontalLine">
+                    <img [src]="item.thumbnail ? s3BaseURL + item.thumbnail : 'assets/law.png'" width="200" height="150"
+                        class="img" alt="Course Image">
                     <input type="checkbox" [value]="item.courseId" (change)="onCheckboxChange($event)" />
                     <div class="courseDetails">
                         <div class="courseHeading">
@@ -42,6 +44,7 @@
                     <div class="price"> ₹{{ item.price }}</div>
                 </div>
             </div>
+            
         </div>
         <div class="totalPriceContainer" *ngIf="cartItems.length > 0">
             <div class="total">
@@ -49,7 +52,7 @@
             </div>
         </div>
     </div>
-    <div  class="popup-message" *ngIf="isAdded">
+    <div class="popup-message" *ngIf="isAdded">
         {{selectedItems.length}} Courses added sucessfully to My-Courses.You can check that section in My-homepage
     </div>
 </div>

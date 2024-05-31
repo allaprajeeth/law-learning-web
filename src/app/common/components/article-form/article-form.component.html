@@ -11,11 +11,24 @@
       <textarea id="description" formControlName="description"  [value]="matchedArticle?.description"></textarea>
 
       <label for="file">Choose Word Document File (.docx, .doc):</label>
-      <input type="file" id="file" formControlName="file" [value]="matchedArticle?.file" (change)="onFileUpload($event)">
+      <input type="file" id="file" formControlName="file"  accept=".doc,.docx" [value]="matchedArticle?.file" (change)="onFileUpload($event)">
+      <div *ngIf="fileError" class="error-message">{{ fileError }}</div>
       <br /><br />
       <div class="button-container">
-        <button type="submit" [ngClass]="{'disabled-button': articleForm.invalid, 'enabled-button': !articleForm.invalid}" [disabled]="articleForm.invalid || isClicked">Submit</button>
+        <!-- <button type="submit" [ngClass]="{'disabled-button': articleForm.invalid, 'enabled-button': !articleForm.invalid}" [disabled]="articleForm.invalid || isClicked">Submit</button> -->
+        <button
+        type="submit"
+        [ngClass]="{'disabled-button': articleForm.invalid, 'enabled-button': !articleForm.invalid}"
+        [disabled]="articleForm.invalid || isClicked"
+        (mouseenter)="showTooltip = articleForm.invalid"
+        (mouseleave)="showTooltip = false">
+        Submit
+      </button>
+      <div *ngIf="showTooltip" class="tooltip">Please fill all the details before submitting the form</div>
+      
+      
       </div>
+      
     </form>   
   </div>
   <ng-template #messageSection>

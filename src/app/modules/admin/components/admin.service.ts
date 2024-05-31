@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { ArticleApiResponse, Article } from './admin.model';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
+import { Pagination } from 'src/app/common/models/pagination.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,9 +19,11 @@ export class AdminService {
   constructor(private http: HttpClient,
     private domSanitizer: DomSanitizer) {}
 
-  getApprovedArticles(): Observable<ArticleApiResponse> {
-    return this.http.get<ArticleApiResponse>(`${endPoints.baseURL}/secure/articles/review`);
-  }
+    getApprovedArticles(pagination: Pagination): Observable<ArticleApiResponse> {
+      const url = `${endPoints.baseURL}/secure/articles/review?page=${pagination.page}&size=${pagination.size}`;
+      return this.http.get<ArticleApiResponse>(url);
+    }
+    
 
   getArticleDetails(articleId: number): Observable<Article> {
     const articleDetailsUrl = `${endPoints.baseURL}/articles/${articleId}`;

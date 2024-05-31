@@ -7,6 +7,7 @@ import { Article, ArticleApiResponse } from './fetcharticle.model';
 import { LoggingService } from 'src/app/common/services/logging/logging.service';
 import { ApiService } from 'src/app/common/services/api/api.service';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { Pagination } from 'src/app/common/models/pagination.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -41,8 +42,8 @@ export class FetcharticlesService {
 
 
 
-  loadPublishArticles(search: string = '', number: number, size: number , sort: string = 'title,DESC'): Observable<any> {
-    let url = endPoints.baseURL + `/articles?search=${search}&number=${number}&size=${size}&sort=${sort}`;
+  loadPublishArticles(search: string = '',pagination:Pagination ,sort: string = 'title,DESC'): Observable<any> {
+    let url = endPoints.baseURL + `/articles?search=${search}&page=${pagination.page}&size=${pagination.size}&sort=${sort}`;
     return this.apiService.get(url).pipe(
       tap((response: any) => {
         if (!!response) {

@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+
 @use 'helpers' as *;
 @use 'base' as *;
 
@@ -9,34 +9,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 a {
   cursor: pointer;
 }
-/* Default styles */
+
 .imagesContainer {
   position: relative;
   width: 100%;
-  overflow: hidden; /* Ensure that any overflow is hidden */
+  overflow: hidden; 
 }
 
 .imagesContainer img {
-  width: 100%; /* Set the width of the image to 100% of the container */
-  height: 100%; /* Set the height of the image to 100% of the container */
-  object-fit: cover; /* Maintain aspect ratio and cover the entire container */
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
 }
 
-/* Adjust height for smaller screens */
 @media screen and (max-width: 768px) {
   .imagesContainer {
     height: 25%;
   }
 }
 
-/* Adjust height for medium screens */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .imagesContainer {
     height: 40%;
   }
 }
 
-/* Adjust height for larger screens */
 @media screen and (min-width: 1025px) {
   .imagesContainer {
     height: 50%;
