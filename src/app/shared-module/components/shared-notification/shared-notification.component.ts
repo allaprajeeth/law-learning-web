@@ -22,7 +22,7 @@ export class SharedNotificationComponent implements OnInit {
     private authService: AuthTokenService,) {
     const userDetails = this.authService.getUserDetails();
     this.role = userDetails?.role
-    this.pagination = new Pagination();
+    
   }
 
   ngOnInit() {
@@ -48,15 +48,11 @@ export class SharedNotificationComponent implements OnInit {
 
   fetchNotifications(): void {
     const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl + `/profile/notifications`;
-    // Get pagination parameters from the pagination object
-    const paginationParams = this.pagination.getPaginationRequest();
-
-    // Merge pagination parameters with other params if any
-    const queryParams = { ...paginationParams };
-    this.http.get<any>(apiUrl, { params: queryParams }).subscribe(response => {
+    const apiUrl = baseUrl + `/profile/notifications?page=${this.pagination.page}&size=${this.pagination.size}` ;
+   
+    this.http.get<any>(apiUrl).subscribe(response => {
       const notifications: Notifications[] = response.data.content;
-      this.pagination = new Pagination(response.data);
+      this.pagination.totalElements=response.data.totalElements
       this.notifications = notifications;
     });
   }
@@ -124,6 +120,7 @@ export class SharedNotificationComponent implements OnInit {
     this.pagination.page  = pagination.page;
     this.pagination.size  = pagination.size;
     this.fetchNotifications()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
 }

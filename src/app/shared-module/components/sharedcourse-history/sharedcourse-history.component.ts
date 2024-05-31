@@ -48,6 +48,7 @@ export class SharedcourseHistoryComponent implements OnInit {
     this.pagination.page  = pagination.page;
     this.pagination.size  = pagination.size;
     this.loadReviewCourses()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     
   }
 }

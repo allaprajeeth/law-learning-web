@@ -39,6 +39,7 @@ export class LibraryHistoryComponent {
     this.pagination.page  = pagination.page;
     this.pagination.size  = pagination.size;
     this.getLibraries()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   
  

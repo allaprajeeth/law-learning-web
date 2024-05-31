@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from '../article.service';
@@ -66,6 +66,9 @@ export class HomepageComponent implements OnInit {
   randomMyCourseValues: number[] = [];
   randomRejectedValues: number[] = [];
   myCourseSubscribers: string[] = [];
+  @ViewChild('articlesSection') articlesSection!: ElementRef;
+
+  
   constructor(
     private route: ActivatedRoute,
     private articleService: ArticleService,
@@ -158,10 +161,18 @@ export class HomepageComponent implements OnInit {
     this.pagination1.page = pagination.page;
     this.pagination1.size = pagination.size;
     this.loadCourses();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   onPageChange2(pagination: Pagination) {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
     this.loadArticles();
+    this.scrollToArticlesSection()
+
+  }
+  private scrollToArticlesSection() {
+    if (this.articlesSection) {
+      this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

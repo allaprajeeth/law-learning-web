@@ -46,6 +46,7 @@ export class HomepageComponent implements OnInit {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;
     this.getCourses()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
 

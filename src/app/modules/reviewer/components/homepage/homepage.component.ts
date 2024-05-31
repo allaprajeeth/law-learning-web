@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReviewerService } from '../reviewer.service';
 import { Article } from '../reviewer.model';
@@ -29,6 +29,7 @@ export class HomepageComponent implements OnInit{
   s3BaseURL: string = endPoints.s3BaseURL; 
   pagination1: Pagination = new Pagination();
   pagination2: Pagination = new Pagination();
+  @ViewChild('articlesSection') articlesSection!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -104,11 +105,20 @@ export class HomepageComponent implements OnInit{
     this.pagination1.page = pagination.page;
     this.pagination1.size = pagination.size;
     this.loadCourses()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   onPageChange2(pagination: Pagination) {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
    this.getApprovedArticles()
+   this.scrollToArticlesSection()
   }
+  
+private scrollToArticlesSection() {
+    if (this.articlesSection) {
+      this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+  
 }
 

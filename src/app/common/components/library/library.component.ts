@@ -97,6 +97,7 @@ export class LibraryComponent {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;
     this.libraryService.loadLibraries(this.pagination.getPaginationRequest());
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   getLibraries() {

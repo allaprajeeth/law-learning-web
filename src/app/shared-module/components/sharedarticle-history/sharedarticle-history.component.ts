@@ -112,5 +112,6 @@ export class SharedarticleHistoryComponent implements OnInit {
     this.pagination.page  = pagination.page;
     this.pagination.size  = pagination.size;
     this.getUserArticles()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

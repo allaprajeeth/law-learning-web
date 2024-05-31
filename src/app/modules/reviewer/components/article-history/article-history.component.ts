@@ -11,22 +11,29 @@ import { Pagination } from 'src/app/common/models/pagination.model';
 
 export class ArticleHistoryComponent implements OnInit{
   approvedArticles: Article[] = [];
-  pagination1: Pagination = new Pagination();
-  pagination2: Pagination = new Pagination();
+  pagination: Pagination = new Pagination();
+
   constructor(private reviewerService: ReviewerService) { }
 
   ngOnInit(): void {
     this.getApprovedArticles();
   }
   getApprovedArticles(): void {
-    this.reviewerService.getApprovedArticles(this.pagination2).subscribe(
+    this.reviewerService.getApprovedArticles(this.pagination).subscribe(
       (response) => {
         this.approvedArticles = response.data.content || [];
+        this.pagination.totalElements=response.data.totalElements
       },
       (error) => {
         console.error('Error fetching approved articles:', error);
       }
     );
+  }
+  onPageChange(pagination: Pagination) {
+    this.pagination.page = pagination.page;
+    this.pagination.size = pagination.size;
+    this.getApprovedArticles()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   getStatusStyles(status: string): any {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import {  Article } from '../admin.model';
@@ -32,6 +32,7 @@ export class HomepageComponent implements OnInit {
   pagination1: Pagination = new Pagination();
   pagination2: Pagination = new Pagination();
   selectedCategory: string | undefined;
+  @ViewChild('articlesSection') articlesSection!: ElementRef;
 
   constructor(
     private adminService: AdminService,
@@ -137,8 +138,6 @@ export class HomepageComponent implements OnInit {
       );
   } 
 
-
-
   navigateToCourseInf(courseId: number): void {
     this.courseService.getCourseById(courseId).subscribe(
       (course) => {
@@ -152,7 +151,6 @@ export class HomepageComponent implements OnInit {
     );
   }
 
-  
   navigateToCourseInfo(courseId: number): void {
     this.courseService.getCourseById(courseId).subscribe(
       (course) => {
@@ -166,9 +164,6 @@ export class HomepageComponent implements OnInit {
     );
   }
 
-
-
-
   onImageError(event: any) {
     event.target.src = 'assets/law.png';
   }
@@ -176,12 +171,21 @@ export class HomepageComponent implements OnInit {
     this.pagination1.page = pagination.page;
     this.pagination1.size = pagination.size;
     this.loadCourses()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
   onPageChange2(pagination: Pagination) {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
     this.getApprovedArticles()
+    this.scrollToArticlesSection()
+   
   }
+  private scrollToArticlesSection() {
+    if (this.articlesSection) {
+      this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
 }
 
 
