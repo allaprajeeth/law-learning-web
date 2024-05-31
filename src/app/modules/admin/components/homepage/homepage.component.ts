@@ -32,6 +32,7 @@ export class HomepageComponent implements OnInit {
   pagination1: Pagination = new Pagination();
   pagination2: Pagination = new Pagination();
   selectedCategory: string | undefined;
+  @ViewChild('articlesSection') articlesSection!: ElementRef;
 
   constructor(
     private adminService: AdminService,
@@ -188,14 +189,14 @@ export class HomepageComponent implements OnInit {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
     this.getApprovedArticles()
-    // this.scrollToArticlesSection()
+    this.scrollToArticlesSection()
    
   }
-  // private scrollToArticlesSection() {
-  //   if (this.articlesSection) {
-  //     this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  //   }
-  // }
+  private scrollToArticlesSection() {
+    if (this.articlesSection) {
+      this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 
 }
 
