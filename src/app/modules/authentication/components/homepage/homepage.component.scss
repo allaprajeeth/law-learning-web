@@ -16,7 +16,7 @@ html {
   transition: box-shadow 0.3s ease;
   display: flex;
   flex-wrap: wrap;
-  // justify-content: center;
+  justify-content: center;
   background-color: #FFFFFF;
   .no-results-message {
     padding: 50px;
@@ -154,13 +154,13 @@ html {
   &:hover .overlay {
     display: flex; 
     opacity: 1; 
-    width: 300px;
+    width: 228px;
     height: 200px;
     cursor: pointer;
   }
 
   img {
-    width: 300px;
+    width: 228px;
     height: 200px;
     object-fit: cover;
   }
@@ -249,7 +249,7 @@ p{
 
 .main-container-admin{
  
-  // margin: 10px 90px 0px 90px;
+  margin: 10px 90px 0px 90px;
  .heading{
   margin: auto 0;
  }

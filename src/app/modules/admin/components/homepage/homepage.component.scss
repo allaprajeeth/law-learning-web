@@ -13,6 +13,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   background-color: #FFFFFF;
+  justify-content:center;
 }
 
 .no-results-message {
@@ -123,6 +124,7 @@ button:hover {
   padding: 9px 25px;
   border-radius: 5px;
   z-index: 1;
+
 }
 
 .imagesContainer .overlay {
@@ -142,7 +144,7 @@ button:hover {
 .imagesContainer:hover .overlay {
   display: flex; 
   opacity: 1; 
-  width: 250px;
+  width: 230px;
   height: 200px;
   cursor: pointer;
 }
@@ -153,7 +155,7 @@ button:hover {
 }
 
 .imagesContainer img {
-  width: 250px;
+  width: 230px;
   height: 200px;
   object-fit: cover;
 }
@@ -239,6 +241,7 @@ mat-icon {
 .main-container-admin {
   .heading {
     margin: auto 0;
+    margin-left: 140px;
   }
 
   .filter-section {
