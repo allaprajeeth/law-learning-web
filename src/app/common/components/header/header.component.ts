@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpResponse } from '../../models/response.model';
 import { endPoints } from '../../constants/endpoints';
 import { CourseSearch } from '../../models/course-search.model';
+import { Pagination } from '../../models/pagination.model';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,8 @@ export class HeaderComponent implements OnInit {
   selectedCategory: string = '';
   selectedCourseType: string = '';
   title = 'my-first-app';
+  pagination1: Pagination = new Pagination();
+  pagination2: Pagination = new Pagination();
 
   constructor(private router: Router, private coursesService: CoursesService) {}
 
@@ -33,6 +36,7 @@ export class HeaderComponent implements OnInit {
         for (var i in response.records) {
           this.freeCourses.push(response.records[i]);
         }
+        this.pagination1 = response.pagination;
       });
   }
 
@@ -44,6 +48,7 @@ export class HeaderComponent implements OnInit {
         for (var i in response.records) {
           this.paidCourses.push(response.records[i]);
         }
+        this.pagination2 = response.pagination;
       });
   }
 
@@ -60,5 +65,15 @@ export class HeaderComponent implements OnInit {
 
   onImageError(event: any) {
     event.target.src = 'assets/law.png';
+  }
+
+  onPageChange1(pagination: Pagination) {
+    this.pagination1.page = pagination.page;
+    this.pagination1.size = pagination.size;
+  }
+
+  onPageChange2(pagination: Pagination) {
+    this.pagination2.page = pagination.page;
+    this.pagination2.size = pagination.size;
   }
 }

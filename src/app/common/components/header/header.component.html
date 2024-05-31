@@ -73,6 +73,10 @@
         </span>
       </h5>
     </div>
+    
+  </div>
+  <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+    (pageChange)="onPageChange1($event)"></app-shared-pagination>
   </div>
 <!-- </div> -->
 <br>
@@ -173,8 +177,12 @@
         </span>
       </h5>
     </div>
+    
   </div>
 </div>
+</div>
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination2.totalElements"
+  (pageChange)="onPageChange2($event)"></app-shared-pagination>
 </div>
 <br>
 <br>
