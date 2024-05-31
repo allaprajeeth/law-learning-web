@@ -1,0 +1,27 @@
+.success-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .success-container h1 {
+    color: green;
+  }
+  
+  .success-container p {
+    font-size: 18px;
+  }
+  
+  .success-container button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .success-container button:hover {
+    background-color: #45a049;
+  }
+  

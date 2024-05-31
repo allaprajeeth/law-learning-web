@@ -163,7 +163,16 @@ export class HomepageComponent implements OnInit {
     );
   }
 
-
+  publishCourse(courseId: number): void {
+    this.courseService.publishCourse(courseId).subscribe(
+      () => {
+        this.router.navigate(['/admin/course-success']); 
+      },
+      (error) => {
+        console.error('Error publishing course:', error);
+      }
+    );
+  }
 
 
   onImageError(event: any) {
@@ -179,14 +188,14 @@ export class HomepageComponent implements OnInit {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
     this.getApprovedArticles()
-    this.scrollToArticlesSection()
+    // this.scrollToArticlesSection()
    
   }
-  private scrollToArticlesSection() {
-    if (this.articlesSection) {
-      this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  }
+  // private scrollToArticlesSection() {
+  //   if (this.articlesSection) {
+  //     this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  //   }
+  // }
 
 }
 

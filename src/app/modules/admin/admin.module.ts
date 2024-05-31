@@ -58,8 +58,7 @@ import { PublishSuccessComponent } from './components/publish-success/publish-su
     LibraryHistoryComponent,
     AdvisorProfilesFormComponent,
     EditAdvisorProfileComponent,
-    PublishSuccessComponent, 
-
+    PublishSuccessComponent,
   ],
   
   imports: [

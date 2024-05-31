@@ -20,6 +20,7 @@ import { InstructorinfoComponent } from '../instructor/components/instructorinfo
 import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
+import { PublishSuccessComponent } from '../admin/components/publish-success/publish-success.component';
 
 const routes: Routes = [
   {
@@ -32,8 +33,8 @@ const routes: Routes = [
     component: HomepageComponent
   },
   {
-    path:'homepage',
-    component: HomepageComponent
+    path:'publish-course',
+    component: PublishSuccessComponent
   },
   {
     path:'courseinfo/:id',
