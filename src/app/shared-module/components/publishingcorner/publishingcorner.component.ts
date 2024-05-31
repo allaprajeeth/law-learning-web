@@ -145,6 +145,7 @@ export class PublishingcornerComponent implements OnInit {
     this.pagination.page  = pagination.page;
     this.pagination.size  = pagination.size;
     this.loadPublishArticles()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     
   }
 }

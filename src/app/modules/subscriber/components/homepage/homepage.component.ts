@@ -1,5 +1,5 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { cartcourseModel } from 'src/app/common/models/cart.model';
 import { CourseSearch } from 'src/app/common/models/course-search.model';
@@ -20,6 +20,8 @@ export class HomepageComponent implements OnInit {
   cartItems: cartcourseModel[] = [];
   myCourses: Course[] = [];
   pagination: Pagination = new Pagination();
+  @ViewChild('availableCoursesSection') availableCoursesSection!: ElementRef;
+
   
 
   constructor(
@@ -105,5 +107,12 @@ export class HomepageComponent implements OnInit {
   onPageChange(pagination: Pagination) {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;
+    this.scrollToArticlesSection()
+
+  }
+  private scrollToArticlesSection() {
+    if (this.availableCoursesSection) {
+      this.availableCoursesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

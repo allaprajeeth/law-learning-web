@@ -113,10 +113,16 @@ export class AllProfilesComponent implements OnInit {
   onPageChange(pagination: Pagination, isAdvisors: boolean) {
     this.pagination.page  = pagination.page;
     this.pagination.size  = pagination.size;
-    if(isAdvisors)
+   
+    if(isAdvisors){
       this.fetchAdvisorProfiles();
-    else
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    else{
       this.filterProfiles(this.params);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+      
   }
 
   openProfileModal(profileId: string): void {

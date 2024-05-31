@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Course } from '../../models/course.model';
 import { CoursesService } from '../../services/courses/courses.service';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ import { Pagination } from '../../models/pagination.model';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('paidCoursesSection') paidCourseSection!: ElementRef;
   paidCourses: any[] = [];
   freeCourses: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL;
@@ -37,6 +38,7 @@ export class HeaderComponent implements OnInit {
           this.freeCourses.push(response.records[i]);
         }
         this.pagination1 = response.pagination;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
   }
 
@@ -70,10 +72,17 @@ export class HeaderComponent implements OnInit {
   onPageChange1(pagination: Pagination) {
     this.pagination1.page = pagination.page;
     this.pagination1.size = pagination.size;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   onPageChange2(pagination: Pagination) {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
+    this.scrollToArticlesSection()
+  }
+  private scrollToArticlesSection() {
+    if (this.paidCourseSection) {
+      this.paidCourseSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
 }

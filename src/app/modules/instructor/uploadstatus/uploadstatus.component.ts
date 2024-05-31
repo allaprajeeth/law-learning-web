@@ -50,5 +50,12 @@ export class UploadstatusComponent {
         return {};
     }
   }
+
+  onPageChange(pagination: Pagination) {
+    this.pagination.page = pagination.page;
+    this.pagination.size = pagination.size;
+    this.getCourses() 
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
   
 }

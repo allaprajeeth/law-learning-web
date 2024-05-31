@@ -126,7 +126,7 @@
   </mat-menu>
 </div>
 
-<div class="image-grid">
+<div class="image-grid" #paidCoursesSection>
   <div *ngFor="let course of paidCourses; let j = index" class="image-item">
     <div class="imagesContainer">
       <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" alt="Random Image" (error)="onImageError($event)">

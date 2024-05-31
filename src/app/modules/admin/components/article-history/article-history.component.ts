@@ -38,5 +38,6 @@ export class ArticleHistoryComponent implements OnInit {
     this.pagination.page  = pagination.page;
     this.pagination.size  = pagination.size;
     this.getApprovedArticles()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }
