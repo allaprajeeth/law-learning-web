@@ -35,6 +35,8 @@ import { LibraryHistoryComponent } from './components/library-history/library-hi
 import { AdvisorProfilesFormComponent } from './components/advisor-profiles-form/advisor-profiles-form.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/edit-advisor-profile.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { PublishSuccessComponent } from './components/publish-success/publish-success.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/e
     LibraryFormComponent,
     LibraryHistoryComponent,
     AdvisorProfilesFormComponent,
-    EditAdvisorProfileComponent, 
+    EditAdvisorProfileComponent,
+    PublishSuccessComponent, 
 
   ],
   
@@ -76,7 +79,9 @@ import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/e
     MatTabsModule,
     MatSidenavModule,
     MatListModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    
   ],
   providers: [
     {

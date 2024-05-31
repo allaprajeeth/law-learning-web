@@ -32,7 +32,6 @@ export class HomepageComponent implements OnInit {
   pagination1: Pagination = new Pagination();
   pagination2: Pagination = new Pagination();
   selectedCategory: string | undefined;
-  @ViewChild('articlesSection') articlesSection!: ElementRef;
 
   constructor(
     private adminService: AdminService,
@@ -163,6 +162,9 @@ export class HomepageComponent implements OnInit {
       }
     );
   }
+
+
+
 
   onImageError(event: any) {
     event.target.src = 'assets/law.png';

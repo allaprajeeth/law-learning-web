@@ -118,5 +118,10 @@ export class CourseService {
     const url = `${endPoints.baseURL}/secure/admin/courses//publish/${courseId}`;
     return this.httpClient.get<Course>(url);
   }
+
+  publishCourse(courseId: number): Observable<any> {
+    const url = `${endPoints.baseURL}/secure/admin/courses/publish/${courseId}`;
+    return this.httpClient.post(url, {});
+  }
   
 }

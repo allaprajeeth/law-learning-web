@@ -91,9 +91,11 @@
           </div>
           <h2>{{ course.title }}</h2>
           <p>{{ course.difficultyLevel }} / {{ course.type }}</p>
-          <button class="publish-button">Publish</button>
+          <button class="publish-button" (click)="publishCourse(course.id)">Publish</button>
         </li>
       </ul>
     </div>
   </div>
+  <br/>
+  <br/>
 </div>

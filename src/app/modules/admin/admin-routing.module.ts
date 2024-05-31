@@ -28,6 +28,8 @@ import { EditAdvisorProfileComponent } from './components/edit-advisor-profile/e
 import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/library-by-id.component';
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
+import { PublishSuccessComponent } from './components/publish-success/publish-success.component';
+
 const routes: Routes = [
   {
     path:"",
@@ -37,6 +39,10 @@ const routes: Routes = [
   {
     path:"homepage",
     component: HomepageComponent
+  },
+  {
+    path:"publish-success",
+    component: PublishSuccessComponent
   },
   {
     path: 'courseinfo/:id',
