@@ -14,9 +14,9 @@ export class CartComponent implements OnInit {
   totalActualPrice: number = 0;
   cartItems: cartcourseModel[] = [];
   selectedItems: number[] = [];
-  isAdded :boolean =false
+  isAdded: boolean = false;
   s3BaseURL: string = endPoints.s3BaseURL;
- 
+
   //   {
   //     id: 1,
   //     image: 'path_to_image_1',
@@ -45,15 +45,11 @@ export class CartComponent implements OnInit {
   discountedPrice: number = 0;
   cartIsEmpty: boolean = false;
 
-
   constructor(private cartService: CartService, private http: HttpClient) {}
 
   ngOnInit() {
     this.getItemsToCart();
-
   }
-
-  
 
   roundDiscountPercentage(discount: number): number {
     return Math.round(discount);
@@ -79,7 +75,7 @@ export class CartComponent implements OnInit {
     if (event.target.checked) {
       this.selectedItems.push(courseId);
     } else {
-      this.selectedItems = this.selectedItems.filter(id => id !== courseId);
+      this.selectedItems = this.selectedItems.filter((id) => id !== courseId);
     }
   }
 
@@ -87,7 +83,7 @@ export class CartComponent implements OnInit {
     const url = endPoints.secureBaseURL + '/subscriber/cart/subscribe';
     this.http.post(url, this.selectedItems).subscribe(
       (response) => {
-        this.isAdded =true
+        this.isAdded = true;
         console.log('Items added to My Courses successfully', response);
       },
       (error) => {
@@ -104,7 +100,7 @@ export class CartComponent implements OnInit {
     this.http.request('DELETE', url, { headers, body: requestBody }).subscribe(
       (response) => {
         console.log('Item removed successfully', response);
-        this.cartItems = this.cartItems.filter(item => item.id !== itemId);
+        this.cartItems = this.cartItems.filter((item) => item.id !== itemId);
       },
       (error) => {
         console.error('Error removing item:', error);
@@ -112,4 +108,7 @@ export class CartComponent implements OnInit {
     );
   }
 
+  closeMessage(): void {
+    this.isAdded = false;
+  }
 }

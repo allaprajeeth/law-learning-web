@@ -48,7 +48,7 @@ export class SharedNotificationComponent implements OnInit {
 
   fetchNotifications(): void {
     const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl + `/profile/notifications?page=${this.pagination.page}&size=${this.pagination.size}` ;
+    const apiUrl = baseUrl + `/profile/notifications?page=${this.pagination.page}&size=${this.pagination.size}&sort=createdDate,desc` ;
    
     this.http.get<any>(apiUrl).subscribe(response => {
       const notifications: Notifications[] = response.data.content;

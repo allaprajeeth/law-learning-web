@@ -1,7 +1,7 @@
 .container {
   margin: 0 auto;
   max-width: 80vw;
-  
+
 }
 
 .heading {
@@ -40,22 +40,23 @@
       }
     }
   }
+
   .course-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
     cursor: pointer;
-    
+
   }
-  
+
   .course-item {
-    flex: 1 1 calc(25% - 20px); 
-    max-width: calc(25% - 20px); 
+    flex: 1 1 calc(25% - 20px);
+    max-width: calc(25% - 20px);
 
     .imagesContainer {
       position: relative;
     }
-    
+
     .overlay {
       position: absolute;
       top: 50%;
@@ -63,13 +64,14 @@
       transform: translate(-50%, -50%);
       text-align: center;
     }
-    
+
     .play-icon {
-      font-size: 4em; 
-      color: white; 
+      font-size: 4em;
+      color: white;
     }
-   .mycourses{
-    background-color: #007bff;
+
+    .mycourses {
+      background-color: #007bff;
       color: #fff;
       border: none;
       padding: 10px 20px;
@@ -80,19 +82,21 @@
       &:hover {
         background-color: #0056b3;
       }
-   }
-   h4 {
-    font-size: 16px;
-    font-weight: bold;
-    color: #7803d8;
-    text-transform: capitalize; 
-  } 
-  p {
-    font-size: 12px;
-    color: #666;
+    }
+
+    h4 {
+      font-size: 16px;
+      font-weight: bold;
+      color: #7803d8;
+      text-transform: capitalize;
+    }
+
+    p {
+      font-size: 12px;
+      color: #666;
+    }
   }
-  }
-  
+
 }
 
 /* Add these styles to your component's SCSS file */
@@ -166,19 +170,7 @@
       display: flex;
     }
 
-    .imagesContainer {
-      position: relative;
 
-      .duration {
-        position: absolute;
-        bottom: 5px;
-        right: 5px;
-        background: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        padding: 3px 6px;
-        border-radius: 5px;
-      }
-    }
 
     .overlay {
       display: none;
@@ -209,9 +201,9 @@
       font-weight: bold;
     }
 
-   
 
-    
+
+
 
     .play-icon {
       color: white;
@@ -352,5 +344,19 @@
   @media screen and (max-width: 480px) {
     margin-top: 20px;
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.imagesContainer {
+  position: relative;
+
+  .duration {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 3px 6px;
+    border-radius: 5px;
   }
 }

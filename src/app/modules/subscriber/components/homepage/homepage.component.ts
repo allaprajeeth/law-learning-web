@@ -7,6 +7,7 @@ import { Course } from 'src/app/common/models/course.model';
 import { Pagination } from 'src/app/common/models/pagination.model';
 import { HttpResponse } from 'src/app/common/models/response.model';
 import { CoursesService } from 'src/app/common/services/courses/courses.service';
+import { NotificationService } from 'src/app/common/services/notification/notification.service';
 
 @Component({
   selector: 'app-homepage',
@@ -26,7 +27,8 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private coursesService: CoursesService,
-    private http: HttpClient
+    private http: HttpClient ,
+    private notificationService: NotificationService,
   ) {
     this.pagination = new Pagination();
   }
@@ -62,6 +64,8 @@ export class HomepageComponent implements OnInit {
     this.http.post(url, [courseId]).subscribe(
       () => {
         console.log('Cart added successfully');
+        this.notificationService.notify(`Added course to cart successfully`); 
+      
       },
       (error) => {
         console.error('Error adding cart:', error);

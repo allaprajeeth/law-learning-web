@@ -44,7 +44,6 @@ import { UnderreviewarticleComponent } from './components/underreviewarticle/und
 import { CommentedarticleComponent } from './components/commentedarticle/commentedarticle.component';
 
 
-
 @NgModule({
   declarations: [
     CartComponent,
@@ -67,10 +66,8 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     StatusarticlepageComponent,
     UnderreviewarticleComponent,
     CommentedarticleComponent,
-
-
-  
    
+
   ],
   
   imports: [
@@ -98,6 +95,7 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     MatDividerModule,
     MatExpansionModule,
     MatTabsModule,
+
   ],
 
 
