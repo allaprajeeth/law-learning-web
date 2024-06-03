@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Course } from 'src/app/common/models/course.model';
 import { PdfService } from 'src/app/sharedService.service';
 
 @Component({
@@ -7,8 +8,6 @@ import { PdfService } from 'src/app/sharedService.service';
   styleUrls: ['./course-info.component.scss']
 })
 export class CourseInfoComponent {
-  isTestAvailable: boolean;
-  constructor(private testService: PdfService) {
-    this.isTestAvailable = this.testService.getIsTestAvailable();
-  }
+  
+  course: Course | null = null;
 }

@@ -1,11 +1,13 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { cartcourseModel } from 'src/app/common/models/cart.model';
 import { CourseSearch } from 'src/app/common/models/course-search.model';
 import { Course } from 'src/app/common/models/course.model';
 import { Pagination } from 'src/app/common/models/pagination.model';
 import { HttpResponse } from 'src/app/common/models/response.model';
+import { CourseService } from 'src/app/common/services/course.service';
 import { CoursesService } from 'src/app/common/services/courses/courses.service';
 import { NotificationService } from 'src/app/common/services/notification/notification.service';
 
@@ -27,8 +29,14 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     private coursesService: CoursesService,
+
     private http: HttpClient ,
     private notificationService: NotificationService,
+
+    // private http: HttpClient,
+    private courseService: CourseService,
+    private router: Router
+
   ) {
     this.pagination = new Pagination();
   }
@@ -118,5 +126,22 @@ export class HomepageComponent implements OnInit {
     if (this.availableCoursesSection) {
       this.availableCoursesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+  // navigateToCourseInfo(courseId: number): void {
+  //   this.courseService.getCourseById(courseId).subscribe(
+  //     (course) => {
+  //       this.router.navigate(['/subscriber/courseinfo', courseId], {
+  //         state: { course: course },
+  //       });
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching course details:', error);
+  //     }
+  //   );
+  // }
+
+  showCourseContent(id: number) {
+    this.router.navigate(['/freecourse'], { queryParams: { _id: id } });
   }
 }

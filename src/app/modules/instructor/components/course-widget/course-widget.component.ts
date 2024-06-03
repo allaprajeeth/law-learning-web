@@ -41,6 +41,8 @@ export class CourseWidgetComponent {
   course: Course = new Course();
   institutions: any[] = [];
 
+  
+
   // Resource upload
   currentFile?: File;
   progress: number = 0;

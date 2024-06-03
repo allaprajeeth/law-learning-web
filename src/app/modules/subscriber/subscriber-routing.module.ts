@@ -28,6 +28,7 @@ import { DeleteAccountComponent } from 'src/app/common/components/delete-account
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 import { UploadedarticlesstatusComponent } from 'src/app/shared-module/components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 
+
 const routes: Routes = [
   {
     path: '',
@@ -100,7 +101,7 @@ const routes: Routes = [
     component: SuccessmesgComponent,
   },
   {
-    path: 'courseinfo',
+    path: 'courseInfo/:id',
     component: CourseInfoComponent,
   },
   {

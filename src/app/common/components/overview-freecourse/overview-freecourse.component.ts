@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from '../../models/course.model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-overview-freecourse',
@@ -10,13 +11,29 @@ import { Course } from '../../models/course.model';
 export class OverviewFreecourseComponent implements OnChanges {
   @Input() course!: Course;
 
+  instructor: any;
+  instructorDetailsFetched: boolean = false;
+
   ngOnChanges(changes: SimpleChanges) {
-    for (let property in changes) {
-      if (property === 'course') {
-        this.course = changes[property].currentValue
-      } 
+    if (changes['course'] && changes['course'].currentValue) {
+      this.course = changes['course'].currentValue;
+      this.fetchInstructorDetails(this.course.createdBy.id);
+    }
   }
+
+  fetchInstructorDetails(instructorId: number) {
+    const url = `http://192.168.1.42:8080/api/v1/instructor/${instructorId}`;
+    this.http.get(url).subscribe(
+      (data) => {
+        this.instructor = data;
+        this.instructorDetailsFetched = true;
+      },
+      (error) => {
+        console.error('Error fetching instructor details', error);
+      }
+    );
   }
+
 
   subscriberRatings = 4.5;
   reviewerRatings = 4;
@@ -51,12 +68,14 @@ export class OverviewFreecourseComponent implements OnChanges {
 
   showRatingOfCourse: boolean = false;
   showFreeCourse = true;
-  constructor(private route: ActivatedRoute) {
+
+   constructor(private http: HttpClient, private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
       this.showRatingOfCourse = params['showRatingOfCourse'] === 'true';
       this.showFreeCourse = false;
     });
   }
+
   videoGroups: any[] = new Array(15).fill(null).map((_, i) => ({
     panelTitle: `Section ${i + 1}`,
     videos: [
@@ -89,17 +108,20 @@ export class OverviewFreecourseComponent implements OnChanges {
   toggleSectionInfo(i: number, j: number) {
     this.sectionInfo[i][j] = !this.sectionInfo[i][j];
   }
-  instructor: {
-    name: string;
-    title: string;
-    rating: number;
-    bio: string;
-  } = {
-      name: 'John Doe',
-      title: 'Web Development Instructor',
-      rating: 4.5,
-      bio: 'John Doe is a web development instructor with over 10 years of experience. He has a passion for teaching and helping others learn new skills. John is also a certified web developer and has a strong understanding of HTML, CSS, and JavaScript.'
-    };
+
+  
+
+  // instructor: {
+  //   name: string;
+  //   title: string;
+  //   rating: number;
+  //   bio: string;
+  // } = {
+  //     name: 'John Doe',
+  //     title: 'Web Development Instructor',
+  //     rating: 4.5,
+  //     bio: 'John Doe is a web development instructor with over 10 years of experience. He has a passion for teaching and helping others learn new skills. John is also a certified web developer and has a strong understanding of HTML, CSS, and JavaScript.'
+  //   };
 
 
   showPopup: boolean = false;
@@ -112,6 +134,7 @@ export class OverviewFreecourseComponent implements OnChanges {
   isMore: boolean = false; // Set this to true to show the popup initially
   userReview: string = '';
   isratingEditable: boolean = true;
+  
   leaveRatingOpen() {
     this.showRating = true;
   }

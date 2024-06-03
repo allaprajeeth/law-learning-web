@@ -152,7 +152,7 @@ export class HomepageComponent implements OnInit {
   truncateTitle(title: string, limit: number): string {
     const words = title.split(' ');
     if (words.length > limit) {
-      return words.slice(0, limit).join(' ') + '...'; // Add '...' after the truncated words
+      return words.slice(0, limit).join(' ') + '...'; 
     } else {
       return title;
     }

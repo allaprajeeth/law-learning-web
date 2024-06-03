@@ -167,7 +167,7 @@ export class HomepageComponent implements OnInit {
   publishCourse(courseId: number): void {
     this.courseService.publishCourse(courseId).subscribe(
       () => {
-        this.router.navigate(['/admin/course-success']); 
+        this.router.navigate(['/admin/publish-success']); 
       },
       (error) => {
         console.error('Error publishing course:', error);
