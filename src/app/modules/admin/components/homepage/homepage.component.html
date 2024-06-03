@@ -14,9 +14,8 @@
                   <i class="fa fa-play-circle play-icon"></i>
                 </a>
               </div>
-            <div class="duration">{{ course.duration }}</div>
-            
-            <span class="duration">{{ course.duration }}</span>
+           
+            <span class="duration">{{ course.duration | duration: 's':'hhmmss' }}</span>
           </div>
           <h2>{{ course.title }}</h2>
           <p>{{ course.difficultyLevel }} / {{ course.type }}</p>

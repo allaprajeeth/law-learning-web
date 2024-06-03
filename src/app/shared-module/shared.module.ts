@@ -32,16 +32,12 @@ import { SharedcourseHistoryComponent } from './components/sharedcourse-history/
 import { SharedarticleHistoryComponent } from './components/sharedarticle-history/sharedarticle-history.component';
 import { UploadedarticlesstatusComponent } from './components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 import { SharedPaginationComponent } from './components/shared-pagination/shared-pagination.component';
-
 import { MatPaginatorModule } from '@angular/material/paginator';
-
 import { SharedvideoplayerComponent } from './components/sharedvideoplayer/sharedvideoplayer.component';
 import { SharedcourseInfoComponent } from './components/sharedcourse-info/sharedcourse-info.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
-
+import { DurationPipe } from './pipes/duration.pipe';
 
 @NgModule({
   declarations: [
@@ -55,23 +51,18 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     FileUploadComponent,
     ConfirmationAlertComponent,
     SidenavComponent,
-
-
-     LogoutPopupComponent,
-     PublishArticlesComponent,
-     FileUploadComponent,
-     ConfirmationAlertComponent,
-     SharedcourseHistoryComponent,
-     SharedarticleHistoryComponent,
-     UploadedarticlesstatusComponent,
-     SharedPaginationComponent,
-     SharedvideoplayerComponent,
-     SharedcourseInfoComponent,
-    ],
-
-
-
-
+    LogoutPopupComponent,
+    PublishArticlesComponent,
+    FileUploadComponent,
+    ConfirmationAlertComponent,
+    SharedcourseHistoryComponent,
+    SharedarticleHistoryComponent,
+    UploadedarticlesstatusComponent,
+    SharedPaginationComponent,
+    SharedvideoplayerComponent,
+    SharedcourseInfoComponent,
+    DurationPipe,
+  ],
 
   imports: [
     CommonModule,
@@ -96,7 +87,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatProgressSpinnerModule,
     MatSnackBarModule,
     RouterModule,
-    MatPaginatorModule
+    MatPaginatorModule,
   ],
   exports: [
     CommonModule,
@@ -122,9 +113,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     UploadedarticlesstatusComponent,
     SharedPaginationComponent,
     SharedvideoplayerComponent,
-    SharedcourseInfoComponent
-
-  ]
-
+    SharedcourseInfoComponent,
+    DurationPipe
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

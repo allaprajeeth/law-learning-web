@@ -55,7 +55,7 @@ import { CartEffects } from './modules/subscriber/components/course-card/state/c
 import { EmailVerificationComponent } from './common/components/email-verification/email-verification.component';
 import { PhoneVerificationComponent } from './common/components/phone-verification/phone-verification.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { DurationPipe } from './common/pipes/duration.pipe';
+// import { DurationPipe } from './common/pipes/duration.pipe';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { ErrorHandlerService } from './common/services/error-handler/error-handler.service';
 import { ArticleFormComponent } from './common/components/article-form/article-form.component';
@@ -95,7 +95,7 @@ import { DeleteAccountDialogComponent } from './common/components/login/delete-a
     PostdetailComponent,
     EmailVerificationComponent,
     PhoneVerificationComponent,
-    DurationPipe,
+    // DurationPipe,
     ArticleFormComponent,
     ProfileComponent,
     AccountsecurityComponent,
@@ -150,7 +150,8 @@ import { DeleteAccountDialogComponent } from './common/components/login/delete-a
       CartEffects]
       ),],
       exports: [
-     RevertDeleteComponent
+     RevertDeleteComponent ,
+   
       ],
   
   providers: [PopupService,

@@ -3,16 +3,21 @@
         <h1>Shopping Cart</h1>
         <h5>{{ cartItems.length }} Courses in Cart</h5>
         <div *ngIf="cartItems.length === 0" class="emptyCartText">
-            <h2>No Items in the cart</h2>
+            <h2>There is nothing in your cart .Let's add some course's.</h2>
         </div>
     </div>
     <div class="course" *ngIf="cartItems.length && !isAdded">
         <div class="courseContainer">
             <div class="courseItems" *ngFor="let item of cartItems">
                 <div class="horizontalLine">
-                    <img [src]="item.thumbnail ? s3BaseURL + item.thumbnail : 'assets/law.png'" width="200" height="150"
-                        class="img" alt="Course Image">
-                    <input type="checkbox" [value]="item.courseId" (change)="onCheckboxChange($event)" />
+                    <input type="checkbox" [value]="item.courseId" (change)="onCheckboxChange($event)"
+                        style="margin-right:20px ;" />
+                    <div class="imageContainer">
+                        <img [src]="item.thumbnail ? s3BaseURL + item.thumbnail : 'assets/law.png'" width="250"
+                            height="180" alt="Random Image">
+                        <span class="duration">{{ item.duration | duration: 's':'hhmmss' }}</span>
+                    </div>
+
                     <div class="courseDetails">
                         <div class="courseHeading">
                             <h4>{{ item.title }}</h4>
@@ -44,7 +49,7 @@
                     <div class="price"> ₹{{ item.price }}</div>
                 </div>
             </div>
-            
+
         </div>
         <div class="totalPriceContainer" *ngIf="cartItems.length > 0">
             <div class="total">
@@ -52,7 +57,9 @@
             </div>
         </div>
     </div>
-    <div class="popup-message" *ngIf="isAdded">
-        {{selectedItems.length}} Courses added sucessfully to My-Courses.You can check that section in My-homepage
-    </div>
+
+</div>
+<div class="popup-message" *ngIf="isAdded">
+    <button class="close-icon" (click)="closeMessage()">×</button>
+    <h3>{{selectedItems.length}} Courses added sucessfully to My-Courses.You can check that section in My-homepage</h3>
 </div>

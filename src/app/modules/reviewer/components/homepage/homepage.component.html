@@ -9,13 +9,13 @@
         <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
           <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" width="300" height="200"
             alt="Random Image" (error)="onImageError($event)">
-            <div class="duration">{{course.duration}}</div>
+            
           <div class="overlay">
             <a>
               <i class="fa fa-play-circle play-icon"></i>
             </a>
           </div>
-          <span class="duration">{{course.duration}}</span>
+          <span class="duration">{{course.duration | duration: 's':'hhmmss'}}</span>
         </div>
         <h2>{{ course.title }}</h2>
         <p>{{ course.difficultyLevel}} / {{ course.type }}</p>

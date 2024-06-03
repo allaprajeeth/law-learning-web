@@ -13,6 +13,7 @@
           <div class="overlay">
             <i class="fa fa-play-circle play-icon"></i>
           </div>
+          <span class="duration">{{course.duration | duration: 's':'hhmmss'}}</span>
         </div>
         <h3><b>{{ course.title | slice:0:50 }}{{ course.title.length > 50 ? '...' : '' }}</b></h3>
         <p> {{ course.createdBy.name }}</p>

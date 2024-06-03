@@ -12,10 +12,8 @@ import { UserDetailsService } from '../../services/user-details/user-details.ser
   styleUrls: ['./accountsecurity.component.scss']
 })
 export class AccountsecurityComponent {
-
   userEmail: string | null = null;
   userPhone: string | null = null;
-
   accountForm!: FormGroup;
   isCurrentEmailEditable = false;
   isCurrentPhoneEditable = false;
