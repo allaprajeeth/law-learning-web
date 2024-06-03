@@ -31,8 +31,12 @@ export class HeaderComponent implements OnInit {
   }
 
   private initializeFreeCoursesHeadings(search: CourseSearch): void {
-    this.coursesService
-      .get(search, endPoints.search_courses)
+    // Get pagination parameters from the pagination object
+    const paginationParams = this.pagination1.getPaginationRequest();
+
+    // Merge pagination parameters with other params if any
+    const queryParams = { ...search, ...paginationParams };
+    this.coursesService.get(queryParams, endPoints.search_courses)
       .subscribe((response: HttpResponse<Course>) => {
         for (var i in response.records) {
           this.freeCourses.push(response.records[i]);
@@ -43,8 +47,12 @@ export class HeaderComponent implements OnInit {
   }
 
   private initializePaidCoursesHeadings(search: CourseSearch, reload: boolean): void {
-    this.coursesService
-      .get(search, endPoints.search_courses)
+    // Get pagination parameters from the pagination object
+    const paginationParams = this.pagination2.getPaginationRequest();
+
+    // Merge pagination parameters with other params if any
+    const queryParams = { ...search, ...paginationParams };
+    this.coursesService.get(queryParams, endPoints.search_courses)
       .subscribe((response: HttpResponse<Course>) => {
         if (reload) this.paidCourses = [];
         for (var i in response.records) {

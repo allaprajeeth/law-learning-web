@@ -56,8 +56,13 @@ export class HomepageComponent implements OnInit {
   // code with api's integration
 
   private initializeCourses(search: CourseSearch): void {
+    // Get pagination parameters from the pagination object
+    const paginationParams = this.pagination.getPaginationRequest();
+
+    // Merge pagination parameters with other params if any
+    const queryParams = { ...search, ...paginationParams };
     this.coursesService
-      .get(search, endPoints.search_courses)
+      .get(queryParams, endPoints.search_courses)
       .subscribe((response: HttpResponse<Course>) => {
         for (var i in response.records) {
           this.avialableCourses.push(response.records[i]);
