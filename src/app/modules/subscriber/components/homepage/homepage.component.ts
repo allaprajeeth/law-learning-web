@@ -130,18 +130,21 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  // navigateToCourseInfo(courseId: number): void {
-  //   this.courseService.getCourseById(courseId).subscribe(
-  //     (course) => {
-  //       this.router.navigate(['/subscriber/courseinfo', courseId], {
-  //         state: { course: course },
-  //       });
-  //     },
-  //     (error) => {
-  //       console.error('Error fetching course details:', error);
-  //     }
-  //   );
-  // }
+
+  navigateToSubscriberCourse(courseId: number): void {
+    this.courseService. getSubscriberCourseId(courseId).subscribe({
+      next: (course) => {
+        this.router.navigate(['/subscriber/courseinfo', courseId], {
+          state: { course: course }
+        });
+      },
+      error: (error) => {
+        console.error('Error fetching course details:', error);
+      }
+    });
+  }
+
+  
 
   showCourseContent(id: number) {
     this.router.navigate(['/freecourse'], { queryParams: { _id: id } });

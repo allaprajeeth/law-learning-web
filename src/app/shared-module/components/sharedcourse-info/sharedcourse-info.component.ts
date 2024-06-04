@@ -13,6 +13,7 @@ export class SharedcourseInfoComponent {
   course: Course | null = null;
   isLoading: boolean = true;
   errorMessage: string | null = null;
+  courseId :number=0
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -20,10 +21,41 @@ export class SharedcourseInfoComponent {
   ) { }
 
   ngOnInit(): void {
-    // Get course ID from route parameters
-    const courseId = this.route.snapshot.params['id'];
+   
+  this.courseId = this.route.snapshot.params['id'];
+  const urlParts = this.router.url.split('/');
+    if (urlParts.length >= 3) {
+      const role = urlParts[1]; // Extract the role from the URL
+      this.courseId = parseInt(urlParts[3]); // Extract the courseId
+      // Based on the role, call the appropriate function
+      switch (role) {
+        case 'subscriber':
+          this.navigateToSubscriberCourse(this.courseId);
+          break;
+      
+        default:
+          this.navigate();
+          break;
+      }
+    }
     
-    this.courseService.getCourseById(courseId).subscribe(
+  
+  }
+  navigateToSubscriberCourse(courseId: number): void {
+    this.courseService. getSubscriberCourseId(courseId).subscribe({
+      next: (course) => {
+        this.router.navigate(['/subscriber/courseinfo', courseId], {
+          state: { course: course }
+        });
+      },
+      error: (error) => {
+        console.error('Error fetching course details:', error);
+      }
+    });
+  }
+
+  navigate(){
+    this.courseService.getCourseById(this.courseId).subscribe(
       (response) => {
         console.log('Course Response:', response);
         if (response && response.data) {

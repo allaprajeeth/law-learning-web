@@ -97,7 +97,10 @@ export class CourseService {
     return this.httpClient.get<Course>(url);
   }
 
-
+  getSubscriberCourseId(courseId: number): Observable<Course> {
+    const url = `${endPoints.baseURL}/secure/subscriber/course/${courseId}`;
+    return this.httpClient.get<Course>(url);
+  }
 
   sendReview(courseId: string, videoInfo: any): Observable<any> {
     const url = `${endPoints.baseURL}/secure/courses/review/${courseId}`;

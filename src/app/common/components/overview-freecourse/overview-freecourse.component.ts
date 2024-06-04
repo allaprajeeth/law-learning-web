@@ -21,18 +21,45 @@ export class OverviewFreecourseComponent implements OnChanges {
     }
   }
 
+  // fetchInstructorDetails(instructorId: number) {
+  //   const url = `http://192.168.1.42:8080/api/v1/instructor/${instructorId}`;
+  //   this.http.get(url).subscribe(
+  //     (data) => {
+  //       this.instructor = data;
+  //       this.instructorDetailsFetched = true;
+  //     },
+  //     (error) => {
+  //       console.error('Error fetching instructor details', error);
+  //     }
+  //   );
+  // }
+
+
   fetchInstructorDetails(instructorId: number) {
     const url = `http://192.168.1.42:8080/api/v1/instructor/${instructorId}`;
-    this.http.get(url).subscribe(
-      (data) => {
-        this.instructor = data;
-        this.instructorDetailsFetched = true;
+    this.http.get<any>(url).subscribe(
+      (response) => {
+        // Assuming response is the structure you've provided
+        if (response.status === 200 && response.data) {
+          this.instructor = {
+            name: response.data.name,
+            designation: response.data.jobTitle,
+            about:response.data.about,
+            courses: response.data.course_count,
+            subscribers: response.data.subscriber_count,
+            rating: response.data.rating,
+            reviewsBySubscribers: response.data.reviews_count 
+            
+          };
+          this.instructorDetailsFetched = true;
+        }
       },
       (error) => {
         console.error('Error fetching instructor details', error);
       }
     );
   }
+
 
 
   subscriberRatings = 4.5;

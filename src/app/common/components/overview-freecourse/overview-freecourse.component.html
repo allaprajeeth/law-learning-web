@@ -110,7 +110,8 @@
   <div class="container2" *ngIf="instructorDetailsFetched">
     <h2 class="heading1">Instructor</h2>
     <h2 class="author" routerLink="/instructor/instructorinfo">{{ instructor?.name }}</h2>
-    <p class="text">{{ instructor?.designation }}</p>
+    <!-- <p class="text">{{ instructor?.about }}</p> -->
+    <!-- <p class="text">{{ instructor?.designation }}</p> -->
     <div class="iconsContainer">
       <img class="avatar"
         src="https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"
@@ -126,13 +127,15 @@
         </div>
         <div class="icon">
           <mat-icon>people</mat-icon>
-          <p>{{ instructor?.students }} Subscribers</p>
+          <p>{{ instructor?. subscribers }} Subscribers</p>
         </div>
         <div class="icon">
           <mat-icon>play_circle_outline</mat-icon>
           <p>{{ instructor?.courses }} Courses</p>
         </div>
       </div><br>
+
+      <p>{{ instructor?.about }}</p>
       <!-- <p class="instructorDescription">{{ instructor?.description }}</p> -->
     </div>
   </div>

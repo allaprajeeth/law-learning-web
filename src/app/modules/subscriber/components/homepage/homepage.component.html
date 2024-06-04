@@ -6,7 +6,7 @@
     <h1>My Courses</h1>
   </div>
   <div class="image-grid">
-    <div *ngFor="let course of myCourses;let i = index" class="image-item" routerLink="/subscriber/courseinfo">
+    <div *ngFor="let course of myCourses;let i = index" class="image-item" (click)="navigateToSubscriberCourse(course.id)">
       <div class="imagesContainer">
         <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : 'assets/law.png'" width="300" height="200"
           class="img" alt="Course Image">
@@ -31,17 +31,6 @@
   <ng-container>
     <div class="image-grid">
       <div *ngFor="let course of avialableCourses" class="image-item">
-
-        <!-- <div class="imagesContainer"> -->
-          <!-- <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : 'assets/law.png'" width="300" height="200"
-          alt="Random Image" (error)="onImageError($event)"> -->
-          <!-- <div class="overlay"> -->
-          <!-- <a routerLink="/subscriber/overview" [queryParams]="{ showDiv: 'true' }"> -->
-            <!-- <i class="fa fa-play-circle play-icon"></i> -->
-          <!-- </a> -->
-
-          <!-- <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)"> -->
-
           <div class="imagesContainer">
             <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : 'assets/law.png'" width="300" height="200"
               alt="Random Image" (error)="onImageError($event)">
@@ -49,8 +38,6 @@
               <a (click)="showCourseContent(course.id)">
                 <i class="fa fa-play-circle play-icon"></i>
               </a>
-
-
             </div>
             <span class="duration">{{ course.duration | duration: 's':'hhmmss' }}</span>
           </div>

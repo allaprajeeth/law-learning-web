@@ -101,7 +101,7 @@ const routes: Routes = [
     component: SuccessmesgComponent,
   },
   {
-    path: 'courseInfo/:id',
+    path: 'courseinfo/:id',
     component: CourseInfoComponent,
   },
   {
