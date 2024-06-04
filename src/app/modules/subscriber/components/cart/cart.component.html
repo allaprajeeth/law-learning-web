@@ -11,7 +11,7 @@
             <div class="courseItems" *ngFor="let item of cartItems">
                 <div class="horizontalLine">
                     <input type="checkbox" [value]="item.courseId" (change)="onCheckboxChange($event)"
-                        style="margin-right:20px ;" />
+                        style="margin-right:20px ;width:20px" />
                     <div class="imageContainer">
                         <img [src]="item.thumbnail ? s3BaseURL + item.thumbnail : 'assets/law.png'" width="250"
                             height="180" alt="Random Image">
@@ -21,7 +21,8 @@
                     <div class="courseDetails">
                         <div class="courseHeading">
                             <h4>{{ item.title }}</h4>
-                            <div class="ratingConatiner">
+                            <p>{{item.createdDate |date}}</p>
+                            <!-- <div class="ratingConatiner">
                                 <p>4.4
                                     <span class="star">&#9733;</span>
                                     <span class="star">&#9733;</span>
@@ -40,13 +41,13 @@
                                     <i style="font-size: 15px" class="fa star">&#xf123;</i>
                                     (Reviewer ratings)
                                 </p>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="removeButtonContainer">
                             <button class="removeButton" (click)=" removeFromCart(item.courseId)">Remove</button>
                         </div>
                     </div>
-                    <div class="price"> ₹{{ item.price }}</div>
+                    <div class="price"> <del>₹{{ item.price }}</del>Free</div>
                 </div>
             </div>
 

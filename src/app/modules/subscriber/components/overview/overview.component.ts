@@ -28,5 +28,8 @@ export class OverviewComponent {
  
   ) {}
 
-
+ ngOnInit(): void {
+  console.log("jncknasc",this.course)
+  
+ }
 }

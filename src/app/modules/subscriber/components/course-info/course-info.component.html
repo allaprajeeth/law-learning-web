@@ -7,12 +7,13 @@
             <mat-tab label="Overview">
                 <div class="tabs">
                    <!-- <app-overview [course]="course"></app-overview> -->
-                    <app-overview></app-overview>
+                   <app-overview *ngIf="course" [course]="course">
+                </app-overview>
 
                 </div>
             </mat-tab>
             <mat-tab label="Watch Content">
-              <app-videoplayer-subscriber [course]="courseInformation"></app-videoplayer-subscriber>
+              <app-videoplayer-subscriber [course]="course"></app-videoplayer-subscriber>
 
             </mat-tab>
         </mat-tab-group>

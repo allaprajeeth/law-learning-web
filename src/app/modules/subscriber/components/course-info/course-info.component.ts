@@ -12,9 +12,14 @@ import { PdfService } from 'src/app/sharedService.service';
 })
 export class CourseInfoComponent {
   
-  course: Course | null = null;
-  @Input() courseData: Course | undefined; 
-  courseInformation: Course | undefined;
+
+ 
+  
+  
+
+
+  course: Course | undefined ;
+  
 
   constructor(
     private route: ActivatedRoute,
@@ -23,21 +28,19 @@ export class CourseInfoComponent {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(paramMap => {
-      const courseId = paramMap.get('id');
-      // Fetch course data from API
-      this.http.get<Course>(`${endPoints.baseURL}/secure/subscriber/course/${courseId}`).subscribe(
-        (data) => {
-          // Assign retrieved course data to courseData property
-          this.courseData = data;
-        },
-        (error) => {
-          console.error('Error fetching course data:', error);
-        }
-      );
-    });
-  }
+  this.route.paramMap.subscribe(paramMap => {
+    const params = paramMap.get('id');
+    this.course = history.state.course.data;
+    console.log("subscriber", params, this.course);
+  });
 }
+
+  
+  
+}
+
+
+
 
 
 

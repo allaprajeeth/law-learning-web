@@ -42,9 +42,9 @@ export class SharedcourseInfoComponent {
   
   }
   navigateToSubscriberCourse(courseId: number): void {
-    this.courseService. getSubscriberCourseId(courseId).subscribe({
+    this.courseService.getSubscriberCourseId(courseId).subscribe({
       next: (course) => {
-        this.router.navigate(['/subscriber/courseinfo', courseId], {
+        this.router.navigate(['/subscriber/courseinfo', courseId,course], {
           state: { course: course }
         });
       },
