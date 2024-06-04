@@ -20,10 +20,9 @@ export class ArticleHistoryComponent implements OnInit {
   }
 
   getApprovedArticles(): void {
-    const apiUrl =`${endPoints.baseURL}/secure/articles/review`;
-    const paginationParams = this.pagination.getPaginationRequest();
-    const queryParams = { ...paginationParams };
-    this.http.get<any>(apiUrl, { params: queryParams }).subscribe(response => {
+    const apiUrl =`${endPoints.baseURL}/secure/articles/review?page=0&size=10&sort=createdDate,DESC`;
+    
+    this.http.get<any>(apiUrl).subscribe(response => {
       const approvedArticles:Article[] = response.data.content;
       this.pagination = new Pagination(response.data);
       this.approvedArticles =approvedArticles;

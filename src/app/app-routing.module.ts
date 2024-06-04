@@ -110,7 +110,7 @@ const routes: Routes = [
     component:VideoplayerComponent
   },
   {
-    path: 'courseInfo',
+    path: 'courseinfo',
     component:CourseInfoComponent
   },
   {

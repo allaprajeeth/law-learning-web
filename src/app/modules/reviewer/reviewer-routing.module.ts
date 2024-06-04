@@ -50,7 +50,7 @@ const routes: Routes = [
     component: ArticleComponent
   },
   {
-    path:"courseInfo/:id",
+    path:"courseinfo/:id",
     component:CourseInfoComponent
   },
   {

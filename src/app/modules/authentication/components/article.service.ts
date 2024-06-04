@@ -28,7 +28,7 @@ export class ArticleService {
   }
 
   getArticles(pagination: Pagination): Observable<any> {
-    const url = `${this.apiUrl}?page=${pagination.page}&size=${pagination.size}`;
+    const url = `${this.apiUrl}?page=${pagination.page}&size=${pagination.size}&sort=createdDate,DESC`;
     return this.http.get<any>(url).pipe(
       catchError((error) => {
         console.error('Error fetching articles:', error);

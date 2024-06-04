@@ -15,13 +15,13 @@ export class ArticleHistoryComponent implements OnInit{
 
   constructor(private reviewerService: ReviewerService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.getApprovedArticles();
   }
-  getApprovedArticles(): void {
+  getApprovedArticles() {
     this.reviewerService.getApprovedArticles(this.pagination).subscribe(
       (response) => {
-        this.approvedArticles = response.data.content || [];
+        this.approvedArticles = response.data.content ;
         this.pagination.totalElements=response.data.totalElements
       },
       (error) => {

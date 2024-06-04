@@ -4,7 +4,7 @@ export class Pagination implements IPagination {
   last!: boolean;
   totalElements!: number;
   first!: boolean;
-  size: number = 10;
+  size: number = 9;
   page: number = 0;
   empty!: boolean;
 

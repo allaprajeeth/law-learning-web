@@ -29,10 +29,9 @@ export class SharedarticleHistoryComponent implements OnInit {
   }
 
   getUserArticles() {
-    const paginationParams = this.pagination.getPaginationRequest();
-    const queryParams = { ...paginationParams };
-    const apiUrl=endPoints.secureBaseURL + "/articles"
-    this.http.get<any>(apiUrl, { params: queryParams }).subscribe(response => {
+  
+    const apiUrl=endPoints.secureBaseURL + `/articles?page=${this.pagination.page}&size=${this.pagination.size}&sort=createdDate,desc`
+    this.http.get<any>(apiUrl).subscribe(response => {
       const userArticles: Article[] = response.data.content;
       this.pagination = new Pagination(response.data);
       this.userArticles= userArticles;

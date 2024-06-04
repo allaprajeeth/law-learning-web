@@ -19,7 +19,6 @@ export class SharedcourseHistoryComponent implements OnInit {
 
   loadReviewCourses(): void {
  
-
     this.courseService.getReviewCourses(this.pagination).subscribe(
       (response: any) => {
         this.courses = response.data.content;

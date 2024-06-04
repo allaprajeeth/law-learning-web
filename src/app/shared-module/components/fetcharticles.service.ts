@@ -42,7 +42,7 @@ export class FetcharticlesService {
 
 
 
-  loadPublishArticles(search: string = '',pagination:Pagination ,sort: string = 'title,DESC'): Observable<any> {
+  loadPublishArticles(search: string = '',pagination:Pagination ,sort:string='createdDate,desc'): Observable<any> {
     let url = endPoints.baseURL + `/articles?search=${search}&page=${pagination.page}&size=${pagination.size}&sort=${sort}`;
     return this.apiService.get(url).pipe(
       tap((response: any) => {

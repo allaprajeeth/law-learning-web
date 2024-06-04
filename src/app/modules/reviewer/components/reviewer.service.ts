@@ -15,7 +15,7 @@ export class ReviewerService {
   constructor(private http: HttpClient) {}
 
   getApprovedArticles(pagination:Pagination): Observable<ArticleApiResponse> {
-    const url = `${endPoints.baseURL}/secure/articles/review?page=${pagination.page}&size=${pagination.size}`;
+    const url = `${endPoints.baseURL}/secure/articles/review?page=${pagination.page}&size=${pagination.size}&sort=createdDate,DESC`;
       return this.http.get<ArticleApiResponse>(url);
   }
   

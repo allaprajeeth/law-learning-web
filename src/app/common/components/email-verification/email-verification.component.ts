@@ -155,6 +155,8 @@ export class EmailVerificationComponent {
      }
      this.forgotEmailService.verifyotpEmail(FormData).subscribe(
       ()=>{
+        localStorage.removeItem('userDetails');
+        localStorage.removeItem('jwtToken');
         this.router.navigate(['/login']);
       }
      )

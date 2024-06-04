@@ -47,7 +47,7 @@ export class AllProfilesComponent implements OnInit {
 
   filterProfiles(params: any): void {
     const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl + `/admin/user-profile/getAll`;
+    const apiUrl = baseUrl + `/admin/user-profile/getAll?&sort=createdDate,DESC`;
 
     // Set search parameter
     if (this.selectedRole !== 'all') {
@@ -91,13 +91,8 @@ export class AllProfilesComponent implements OnInit {
 
   fetchAdvisorProfiles(): void {
     const baseUrl = endPoints.baseURL;
-    const apiUrl = baseUrl + `/advisor/profiles`;
-    // Get pagination parameters from the pagination object
-    const paginationParams = this.pagination.getPaginationRequest();
-
-    // Merge pagination parameters with other params if any
-    const queryParams = { ...paginationParams };
-    this.http.get<any>(apiUrl, { params: queryParams }).subscribe((response) => {
+    const apiUrl = baseUrl + `/advisor/profiles?page=0&size=10&sort=createdDate,DESC`;
+    this.http.get<any>(apiUrl).subscribe((response) => {
       this.advisorProfiles = response.data.content;
       this.pagination = new Pagination(response.data);
     });

@@ -25,8 +25,6 @@ export class HomepageComponent implements OnInit {
   pagination: Pagination = new Pagination();
   @ViewChild('availableCoursesSection') availableCoursesSection!: ElementRef;
 
-  
-
   constructor(
     private coursesService: CoursesService,
 
