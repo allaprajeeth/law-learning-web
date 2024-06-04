@@ -52,10 +52,8 @@
 
 
             </div>
-            <span class="duration">{{ course.duration }}</span>
+            <span class="duration">{{ course.duration | duration: 's':'hhmmss' }}</span>
           </div>
-          <span class="duration">{{ course.duration | duration: 's':'hhmmss' }}</span>
-        <!-- </div> -->
         <div class="headingsContainer">
           <h5>{{course.title}}</h5>
           <p>{{ course.createdBy.name }}</p>
