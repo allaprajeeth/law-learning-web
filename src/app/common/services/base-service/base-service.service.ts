@@ -18,7 +18,7 @@ export abstract class BaseService<T> {
     this.options = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
   }
 
-  public get(params: any, _url: string): Observable<HttpResponse<T>> {
+  public get( _url: string ,params?: any): Observable<HttpResponse<T>> {
     return this.httpClient
       .get<HttpResponse<T>>(`${this.apiUrl}` + _url, { params: params })
       .pipe(map((result) => {

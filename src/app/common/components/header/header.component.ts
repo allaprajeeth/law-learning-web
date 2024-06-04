@@ -31,12 +31,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private initializeFreeCoursesHeadings(search: CourseSearch): void {
-    // Get pagination parameters from the pagination object
-    const paginationParams = this.pagination1.getPaginationRequest();
-
-    // Merge pagination parameters with other params if any
-    const queryParams = { ...search, ...paginationParams };
-    this.coursesService.get(queryParams, endPoints.search_courses)
+    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}`
+    const queryParams = { ...search};
+    this.coursesService.get(url,queryParams,)
       .subscribe((response: HttpResponse<Course>) => {
         for (var i in response.records) {
           this.freeCourses.push(response.records[i]);
@@ -47,12 +44,9 @@ export class HeaderComponent implements OnInit {
   }
 
   private initializePaidCoursesHeadings(search: CourseSearch, reload: boolean): void {
-    // Get pagination parameters from the pagination object
-    const paginationParams = this.pagination2.getPaginationRequest();
-
-    // Merge pagination parameters with other params if any
-    const queryParams = { ...search, ...paginationParams };
-    this.coursesService.get(queryParams, endPoints.search_courses)
+    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}`
+    const queryParams = { ...search};
+    this.coursesService.get(url ,queryParams )
       .subscribe((response: HttpResponse<Course>) => {
         if (reload) this.paidCourses = [];
         for (var i in response.records) {
@@ -81,12 +75,15 @@ export class HeaderComponent implements OnInit {
     this.pagination1.page = pagination.page;
     this.pagination1.size = pagination.size;
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.initializeFreeCoursesHeadings({ isPublic: true });
   }
 
   onPageChange2(pagination: Pagination) {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
+    this.initializePaidCoursesHeadings({ isPublic: false }, true);
     this.scrollToArticlesSection()
+    
   }
   private scrollToArticlesSection() {
     if (this.paidCourseSection) {

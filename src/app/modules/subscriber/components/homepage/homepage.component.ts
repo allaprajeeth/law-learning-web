@@ -46,23 +46,21 @@ export class HomepageComponent implements OnInit {
   } = { left: '0', right: 'unset', top: '0', display: 'none' };
 
   ngOnInit(): void {
-    this.initializeCourses({ isPublic: true });
+    this.initializeCourses();
     this.availableItemsInCart();
     this.getMyCourses();
   }
 
   // code with api's integration
 
-  private initializeCourses(search: CourseSearch): void {
-    // Get pagination parameters from the pagination object
-    const paginationParams = this.pagination.getPaginationRequest();
-
-    // Merge pagination parameters with other params if any
-    const queryParams = { ...search, ...paginationParams };
+  private initializeCourses(): void {
+    const url=`${endPoints.search_courses}?page=${this.pagination.page}&size=${this.pagination.size}`
     this.coursesService
-      .get(queryParams, endPoints.search_courses)
+      .get(url)
       .subscribe((response: HttpResponse<Course>) => {
+        this.avialableCourses=[]
         for (var i in response.records) {
+          
           this.avialableCourses.push(response.records[i]);
         }
         this.pagination = response.pagination;
@@ -123,6 +121,7 @@ export class HomepageComponent implements OnInit {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;
     this.scrollToArticlesSection()
+    this.initializeCourses()
 
   }
   private scrollToArticlesSection() {
