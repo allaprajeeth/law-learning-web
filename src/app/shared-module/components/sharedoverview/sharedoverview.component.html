@@ -8,7 +8,7 @@
     <span class="material-icons language"> language </span>English
   </p>
 </div>
-
+ 
 <div class="courseFeatures">
   <h2>This course includes:</h2>
   <div class="grid-container">
@@ -23,7 +23,7 @@
     </div>
   </div>
 </div>
-
+ 
 <mat-card class="side-bar">
   <div class="container">
     <mat-card-title class="title">
@@ -42,7 +42,7 @@
           <div class="section-info">{{ section.subSections?.length }} lectures &nbsp;&nbsp; min</div>
         </mat-panel-title>
       </mat-expansion-panel-header>
-
+ 
       <div style="border: 1px solid rgb(237, 228, 228); padding: 10px; margin-bottom: 15px;">
         <h3 class="sectionDesc">{{ section.description }}</h3>
       </div>
@@ -64,7 +64,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 </mat-card>
-
+ 
 <div *ngIf="formApproval() && !isInstructorModule" class="comment-box">
   <textarea placeholder="Add your comment here..." [(ngModel)]="rejectComment"></textarea>
 </div>
@@ -72,3 +72,18 @@
   <button class="approve-button" (click)="approve()">Approve</button>
   <button class="reject-button" (click)="reject()">Reject</button>
 </div>
+ 
+
+<!-- <div *ngIf="showOverviewApprovalSection()" class="approve-reject-buttons">
+  <button mat-button color="primary" (click)="approveOverview('CONTENT_MANAGER_ACCEPTED')">
+    Approve
+  </button>
+  <button mat-button color="warn" (click)="toggleCommentBox()">
+    Reject
+  </button>
+</div>
+<div *ngIf="showCommentBox" class="comment-box">
+  <textarea matInput placeholder="Enter your comment..." [(ngModel)]="rejectComment"></textarea>
+  <button mat-button color="primary" (click)="rejectOverview('CONTENT_MANAGER_REJECTED', rejectComment)">Send</button>
+</div>
+ -->
