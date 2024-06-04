@@ -34,9 +34,8 @@ export class PhoneVerificationComponent {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private userDetailsService: UserDetailsService,
-    private forgotPhoneService:ForgotPhoneService,
-    private router: Router,
-   
+    private forgotPhoneService: ForgotPhoneService,
+    private router: Router
   ) {
     this.initializeForm();
     this.getUserInfo();
@@ -48,7 +47,9 @@ export class PhoneVerificationComponent {
     });
     this.updatePhoneForm = this.fb.group({
       phone: ['', [Validators.required, Validators.pattern('[0-9]{10}')]],
-      confirmPhone: ['', [Validators.required, Validators.pattern('[0-9]{10}')],
+      confirmPhone: [
+        '',
+        [Validators.required, Validators.pattern('[0-9]{10}')],
       ],
     });
   }
@@ -81,11 +82,8 @@ export class PhoneVerificationComponent {
     });
   }
   getUserInfo() {
- 
     const userEmail = this.userDetailsService.email;
-    this.accountForm.controls['currentEmail'].setValue(userEmail); 
-
-    
+    this.accountForm.controls['currentEmail'].setValue(userEmail);
   }
   verifyAndUpdate() {
     const phoneotp = this.phoneOtp?.value;
@@ -99,12 +97,11 @@ export class PhoneVerificationComponent {
       validation_key: this.forgotPhoneService.validationKey$.value,
     };
     this.forgotPhoneService.verifyotpPhone(FormData).subscribe(() => {
+      localStorage.removeItem('userDetails');
+      localStorage.removeItem('jwtToken');
       this.router.navigate(['/login']);
     });
-    // this.snackBar.open('Phone Number updated successfully!', 'Close', {
-    //   duration: 3000,
-    //   verticalPosition: 'top' as MatSnackBarVerticalPosition,
-    // });
+
     this.dialogRef.close();
   }
 
@@ -149,7 +146,7 @@ export class PhoneVerificationComponent {
         confirmPhoneControl.setErrors(null);
       }
     }
-  }   
+  }
   get confirmPhone() {
     return this.updatePhoneForm.get('confirmPhone');
   }

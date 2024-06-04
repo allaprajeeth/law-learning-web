@@ -21,7 +21,7 @@ export class SharedPaginationComponent {
   @Input()
   totalRecordsCount!: number;
 
-  pageSizeOptions: Array<number> = [10, 20, 50];
+  pageSizeOptions: Array<number> = [9, 18, 45];
 
   pagination: Pagination;
 

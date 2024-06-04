@@ -24,11 +24,10 @@ export class LibraryHistoryComponent {
   }
  
   getLibraries() {
-    const paginationParams = this.pagination.getPaginationRequest();
-    const queryParams = { ...paginationParams };
-    const apiUrl = endPoints.baseURL + '/libraries';
+    
+    const apiUrl = endPoints.baseURL + `/libraries?page=${this.pagination.page}&size=${this.pagination.size}&sort=createdDate,desc`;
     this.http
-      .get<any>(apiUrl, { params: queryParams })
+      .get<any>(apiUrl, )
       .subscribe((response) => {
         const libraries:  Library[] = response.data.content;
         this.pagination = new Pagination(response.data);

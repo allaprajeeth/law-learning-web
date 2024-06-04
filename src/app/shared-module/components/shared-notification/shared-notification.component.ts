@@ -60,27 +60,31 @@ export class SharedNotificationComponent implements OnInit {
   navigateToRoute(notification: Notifications, routePrefix: string): void {
     let route: string;
     switch (this.role) {
-      case 'SUBSCRIBER':
-        route = `/subscriber/${routePrefix}/${notification.sourceId}`;
-        break;
-      case 'INSTRUCTOR':
-        route = `/instructor/${routePrefix}/${notification.sourceId}`;
-        break;
-      case 'ADMIN':
-        route = `/admin/${routePrefix}/${notification.sourceId}`;
-        break;
-      case 'REVIEWER':
-        route = `/reviewer/${routePrefix}/${notification.sourceId}`;
-        break;
-      case 'CONTENTMANAGER':
-        route = `/authentication/${routePrefix}/${notification.sourceId}`;
-        break;
-      default:
-        route = `/${routePrefix}/${notification.sourceType.toLowerCase()}/${notification.sourceId}`;
+        case 'SUBSCRIBER':
+            route = `/subscriber/${routePrefix}/${notification.sourceId}`;
+            break;
+        case 'INSTRUCTOR':
+            if (notification.sourceType === 'COURSE') {
+                route = `/instructor/courses/${notification.sourceId}`;
+            } else {
+                route = `/instructor/${routePrefix}/${notification.sourceId}`;
+            }
+            break;
+        case 'ADMIN':
+            route = `/admin/${routePrefix}/${notification.sourceId}`;
+            break;
+        case 'REVIEWER':
+            route = `/reviewer/${routePrefix}/${notification.sourceId}`;
+            break;
+        case 'CONTENTMANAGER':
+            route = `/authentication/${routePrefix}/${notification.sourceId}`;
+            break;
+        default:
+            route = `/${routePrefix}/${notification.sourceType.toLowerCase()}/${notification.sourceId}`;
     }
 
     this.router.navigateByUrl(route);
-  }
+}
 
   openNotification(notification: Notifications): void {
     this.setreadnotification(notification.id)
@@ -91,8 +95,7 @@ export class SharedNotificationComponent implements OnInit {
         this.navigateToRoute(notification, 'publish-articles');
         break;
       case 'COURSE':
-        //change routing here after completion of publish courses
-        this.navigateToRoute(notification, 'publish-courses');
+        this.navigateToRoute(notification, 'courseinfo');
         break;
       case 'LIBRARY':
         this.navigateToRoute(notification, 'libraries');
