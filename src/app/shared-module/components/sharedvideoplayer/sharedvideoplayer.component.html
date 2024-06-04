@@ -85,9 +85,9 @@
   <div #videocontainer class="video-container video-container-sidebar">
     <video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
     </video>
-    <div *ngIf="!isVideoAvailable()" class="no-video-message">
+    <!-- <div *ngIf="!isVideoAvailable()" class="no-video-message">
       Video file is not uploaded.
-    </div>
+    </div> -->
    
 
     <div [style.display]="!sidebarVisible ? 'block' : 'none'">

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { endPoints } from 'src/app/common/constants/endpoints';
 import { Course } from 'src/app/common/models/course.model';
 import { PdfService } from 'src/app/sharedService.service';
 
@@ -12,7 +13,9 @@ import { PdfService } from 'src/app/sharedService.service';
 export class CourseInfoComponent {
   
   course: Course | null = null;
-  
+  @Input() courseData: Course | undefined; 
+  courseInformation: Course | undefined;
+
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient , 
@@ -21,11 +24,20 @@ export class CourseInfoComponent {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(paramMap => {
-      const params = paramMap.get('id');
-     console.log("subscriber",params )
-    }
-  )
-}}
+      const courseId = paramMap.get('id');
+      // Fetch course data from API
+      this.http.get<Course>(`${endPoints.baseURL}/secure/subscriber/course/${courseId}`).subscribe(
+        (data) => {
+          // Assign retrieved course data to courseData property
+          this.courseData = data;
+        },
+        (error) => {
+          console.error('Error fetching course data:', error);
+        }
+      );
+    });
+  }
+}
 
 
 
