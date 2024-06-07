@@ -27,6 +27,7 @@ import { FileSaverModule } from 'ngx-filesaver';
 import { CmPostdetailsComponent } from './components/cm-postdetails/cm-postdetails.component';
 import { CourseHistoryComponent } from './components/course-history/course-history.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { NotificationComponent } from './components/notification/notification.co
     MatDividerModule,
     MatExpansionModule,
     MatTabsModule,
+    MatSnackBarModule
   ],
 })
 export class AuthenticationModule {}

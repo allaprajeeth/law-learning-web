@@ -41,7 +41,7 @@
                   <div class="videos-title-and-status">
                     <div class="videos-title" (click)="playVideo(i, j)">
                       <mat-icon class="custom-icon mat-icon-small">videocam</mat-icon>{{ subSection ?.title }}
-                  <p  [style.color]="getReviewStatusColor(subSection?.reviewStatus)">{{subSection ?.reviewStatus }}</p>
+                  <!-- <p  [style.color]="getReviewStatusColor(subSection?.reviewStatus)">{{subSection ?.reviewStatus }}</p> -->
 
                   <ng-container *ngIf="subSection.file && subSection.file.contentType === 'application/pdf'">
                     <p class="filename">
@@ -52,10 +52,10 @@
                     </p>
                   </ng-container>
                     </div>
-                    <div class="status" *ngIf="subSection.reviewStatus !== 'SUBMITTED'">
+                    <!-- <div class="status" *ngIf="subSection.reviewStatus !== 'SUBMITTED'">
                       <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'" class="approved">Approved</span>
                       <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED'" class="rejected">Rejected</span>
-                    </div>
+                    </div> -->
                   </div>
                   <div class="time-duration" style="color: rgb(122, 119, 119)">
                     {{ subSection ?.duration }} min

@@ -140,25 +140,25 @@ export class VideoplayerSubscriberComponent {
   }
  
 
-  getReviewStatusColor(status?: string): string {
-    if (!status) {
-      return 'blue'; 
-    }
-    switch (status) {
-      case 'SUBMITTED':
-        return 'grey';
-      case 'CONTENT_MANAGER_ACCEPTED':
-      case 'ADMIN_ACCEPTED':
-      case 'REVIEWER_ACCEPTED':
-        return 'green';
-      case 'CONTENT_MANAGER_REJECTED':
-      case 'ADMIN_REJECTED':
-      case 'REVIEWER_REJECTED':
-        return 'red';
-      default:
-        return 'blue';
-    }
-  }
+  // getReviewStatusColor(status?: string): string {
+  //   if (!status) {
+  //     return 'blue'; 
+  //   }
+  //   switch (status) {
+  //     case 'SUBMITTED':
+  //       return 'grey';
+  //     case 'CONTENT_MANAGER_ACCEPTED':
+  //     case 'ADMIN_ACCEPTED':
+  //     case 'REVIEWER_ACCEPTED':
+  //       return 'green';
+  //     case 'CONTENT_MANAGER_REJECTED':
+  //     case 'ADMIN_REJECTED':
+  //     case 'REVIEWER_REJECTED':
+  //       return 'red';
+  //     default:
+  //       return 'blue';
+  //   }
+  // }
 
 
   playVideo(sectionIndex: number, subSectionIndex: number) {
@@ -222,74 +222,74 @@ export class VideoplayerSubscriberComponent {
     this.expansionPanels.toArray()[sectionIndex].open();
   }
 
-  showSubsciptionApprovalSection(subSection: SubSection): boolean {
-    return this.courseService.showSubsciptionApprovalSection(subSection);
-  }
+  // showSubsciptionApprovalSection(subSection: SubSection): boolean {
+  //   return this.courseService.showSubsciptionApprovalSection(subSection);
+  // }
 
-  approveVideo(section: Section, subSection: SubSection, status: string) {
-    const courseId = this.course?.id;
+  // approveVideo(section: Section, subSection: SubSection, status: string) {
+  //   const courseId = this.course?.id;
   
-    const body = {
-      sectionId: section.id,
-      subSectionId: subSection.id,
-      status: status,
-      summary: ''
-    };
+  //   const body = {
+  //     sectionId: section.id,
+  //     subSectionId: subSection.id,
+  //     status: status,
+  //     summary: ''
+  //   };
     
-    this.courseService.sendReview(String(courseId), body).subscribe(
-      response => {
-        console.log('Video approved:', response);
-        this.showSuccessPopup('Course Video approved successfully.');
-      },
-      error => {
-        console.error('Error approving video:', error);
-      }
-    );
-    subSection.reviewStatus = status;
-    console.log('status',status )
-  }
+  //   this.courseService.sendReview(String(courseId), body).subscribe(
+  //     response => {
+  //       console.log('Video approved:', response);
+  //       this.showSuccessPopup('Course Video approved successfully.');
+  //     },
+  //     error => {
+  //       console.error('Error approving video:', error);
+  //     }
+  //   );
+  //   subSection.reviewStatus = status;
+  //   console.log('status',status )
+  // }
   
   
-  toggleCommentBox(subSection: any) {
-    subSection.showCommentBox = !subSection.showCommentBox;
-    subSection.comment = ''; 
-  }
+  // toggleCommentBox(subSection: any) {
+  //   subSection.showCommentBox = !subSection.showCommentBox;
+  //   subSection.comment = ''; 
+  // }
 
-  rejectVideo(section: Section, subSection: SubSection, status: string, rejectionComment: string | undefined) {
-    const courseId = this.course?.id;
+  // rejectVideo(section: Section, subSection: SubSection, status: string, rejectionComment: string | undefined) {
+  //   const courseId = this.course?.id;
   
-    const body = {
-      sectionId: section.id,
-      subSectionId: subSection.id,
-      status: status,
-      summary: rejectionComment 
-    };
+  //   const body = {
+  //     sectionId: section.id,
+  //     subSectionId: subSection.id,
+  //     status: status,
+  //     summary: rejectionComment 
+  //   };
   
-    this.courseService.sendReview(String(courseId), body).subscribe(
-      response => {
-        console.log('Video commented:', response);
-        subSection.reviewStatus = status; 
-        subSection.showCommentBox = false;
-        this.showRejectPopup('Course Video commented successfully.');
-      },
-      error => {
-        console.error('Error rejecting video:', error);
-      }
-    );
-  }
+  //   this.courseService.sendReview(String(courseId), body).subscribe(
+  //     response => {
+  //       console.log('Video commented:', response);
+  //       subSection.reviewStatus = status; 
+  //       subSection.showCommentBox = false;
+  //       this.showRejectPopup('Course Video commented successfully.');
+  //     },
+  //     error => {
+  //       console.error('Error rejecting video:', error);
+  //     }
+  //   );
+  // }
   
 
-  showSuccessPopup(message: string) {
-    this.snackBar.open(message, 'Close', { 
-      verticalPosition: 'top',
-      panelClass: ['success-snackbar'] 
-    });
-  }
+  // showSuccessPopup(message: string) {
+  //   this.snackBar.open(message, 'Close', { 
+  //     verticalPosition: 'top',
+  //     panelClass: ['success-snackbar'] 
+  //   });
+  // }
   
-  showRejectPopup(message: string) {
-    this.snackBar.open(message, 'Close', {
-      verticalPosition: 'top',
-      panelClass: ['reject-snackbar'] 
-    });
-  }
+  // showRejectPopup(message: string) {
+  //   this.snackBar.open(message, 'Close', {
+  //     verticalPosition: 'top',
+  //     panelClass: ['reject-snackbar'] 
+  //   });
+  // }
 }

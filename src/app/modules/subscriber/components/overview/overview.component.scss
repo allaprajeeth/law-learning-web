@@ -373,20 +373,20 @@
  
 
   .comment-box {
-    margin-bottom: 20px; /* Adjust spacing as needed */
+    margin-bottom: 20px; 
   }
   
   textarea {
     width: 100%;
-    height: 100px; /* Adjust height as needed */
+    height: 100px; 
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    resize: vertical; /* Allow vertical resizing */
+    resize: vertical; 
   }
 
   .approve-reject-buttons {
-    margin-top: 20px; /* Adjust spacing as needed */
+    margin-top: 20px; 
     display: flex;
     justify-content: center;
   }
@@ -402,31 +402,30 @@
   }
   
   .approve-button {
-    background-color: #4caf50; /* Green color */
-    color: white;
+    background-color: #4caf50; 
   }
   
   .reject-button {
-    background-color: #f44336; /* Red color */
+    background-color: #f44336; 
     color: white;
   }
   
   .approve-button:hover {
-    background-color: darken(#4caf50, 10%); /* Darken green color on hover */
+    background-color: darken(#4caf50, 10%); 
   }
   .reject-button:hover {
-    background-color: darken(#ca2c24, 10%); /* Darken green color on hover */
+    background-color: darken(#ca2c24, 10%); 
   }
   .mat-snack-bar-container {
-    background-color: #323232; /* Background color */
-    color: #fff; /* Text color */
+    background-color: #323232; 
+    color: #fff; 
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
   
   .mat-simple-snackbar-action {
-    color: #ff4081; /* Action button color */
+    color: #ff4081; 
   }
   .side-bar{
     width: 80%;

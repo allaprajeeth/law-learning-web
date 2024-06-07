@@ -37,10 +37,6 @@
                             <input type="radio" id="expert" name="difficultyLevel" value="Expert"
                                 formControlName="difficultyLevel">
                             <label for="expert" class="skill">Expert</label>
-
-                            <input type="radio" id="all" name="difficultyLevel" value="All"
-                                formControlName="difficultyLevel">
-                            <label for="all" class="skill">All</label>
                         </div>
                     </div>
 
@@ -57,13 +53,13 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label for="price">Course Price:</label>
                         <div class="input-with-symbol">
                             <span class="currency-symbol">&#x20B9;</span>
                             <input type="number" name="price" formControlName="price">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group">
                         <label>Language:</label>
@@ -251,9 +247,15 @@
                 <mat-step customId="quiz">
                     <ng-template matStepLabel>Quiz </ng-template>
                     <app-quiztest *ngIf="showQuiz" [courseId] ="courseId"></app-quiztest>
+                    <div class="button-container">
+              <button mat-button type="button" (click)="onPrevious(stepper)" class="enabled-button">
+                <mat-icon class="black-icon">keyboard_arrow_left</mat-icon>Previous</button>
+              <button mat-button type="button" (click)="onNext(stepper)" class="enabled-button">
+                Next<mat-icon class="black-icon">keyboard_arrow_right</mat-icon></button>
+                    </div>
+
                 </mat-step>
                 <mat-step customId="overview">
-
                     <ng-template matStepLabel>Course Preview</ng-template>
                     <div>
                         <div class="course-info-container">
@@ -280,7 +282,28 @@
                         </div>
                     </div>
                     
-                </mat-step>  
+                </mat-step>
+                
+                <mat-step customId="coursePrice">
+                    <ng-template matStepLabel>Submit the course</ng-template>
+                    <div class="form-group">
+                      <label for="price">Enter Course Price:</label>
+                      <div class="input-with-symbol">
+                        <span class="currency-symbol">&#x20B9;</span>
+                        <input type="number" id="price" name="price" formControlName="price">
+                      </div>
+                    </div>
+                    <div class="button-container">
+                      <button type="button" (click)="onPrevious(stepper)" class="enabled-button">
+                        <mat-icon class="black-icon">keyboard_arrow_left</mat-icon>Previous
+                      </button>
+                      <button type="button" [ngClass]="{'disabled-button': courseForm.invalid, 'enabled-button': !courseForm.invalid}" [disabled]="courseForm.invalid" (click)="onSubmit()">
+
+                        Submit
+                      </button>
+                    </div>
+                  </mat-step>
+
             </form>
         </mat-stepper>
     </div>

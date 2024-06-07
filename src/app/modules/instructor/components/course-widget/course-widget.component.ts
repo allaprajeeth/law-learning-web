@@ -85,7 +85,7 @@ export class CourseWidgetComponent {
       }),
       difficultyLevel: ['', Validators.required],
       type: ['', Validators.required],
-      price: [null],
+      // price: [null],
       language: ['English', Validators.required],
       courseFile: [null],
       submitted: [false],

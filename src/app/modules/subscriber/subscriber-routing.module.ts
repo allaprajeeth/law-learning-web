@@ -27,6 +27,7 @@ import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/li
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 import { UploadedarticlesstatusComponent } from 'src/app/shared-module/components/uploadedarticlesstatus/uploadedarticlesstatus.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 
 const routes: Routes = [
@@ -147,7 +148,12 @@ const routes: Routes = [
   {
     path:'libraries/:id',
     component:LibraryByIdComponent
+  },
+  {
+    path:'checkout',
+    component:CheckoutComponent
   }
+
 ];
 
 @NgModule({
