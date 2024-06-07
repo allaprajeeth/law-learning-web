@@ -5,7 +5,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { PdfService } from 'src/app/sharedService.service';
 import { environment } from 'src/environments/environment';
-
 @Component({
   selector: 'app-delete-account',
   templateUrl: './delete-account.component.html',
@@ -33,7 +32,6 @@ export class DeleteAccountComponent {
 
   closeAccountInit() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-
     const requestBody = {
       type: 'SEND_OTP'
     };
@@ -54,7 +52,6 @@ export class DeleteAccountComponent {
 
   closeAccount() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-  
     const requestBody = {
       type: 'VERIFY_OTP',
       validation_key: this.validationKey,

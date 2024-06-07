@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
 
 @Component({
     selector: 'app-checkout',
@@ -23,16 +22,16 @@ export class CheckoutComponent implements OnInit {
     totalActualPrice: number = 0;
     discountedPrice: number = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.cartService.totalActualPrice$.subscribe((price) => {
-      this.totalActualPrice = price;
-    });
+    // this.cartService.totalActualPrice$.subscribe((price) => {
+    //   this.totalActualPrice = price;
+    // });
 
-    this.cartService.discountedPrice$.subscribe((price) => {
-      this.discountedPrice = price;
-    });
+    // this.cartService.discountedPrice$.subscribe((price) => {
+    //   this.discountedPrice = price;
+    // });
   }
 
   roundDiscountPercentage(discount: number): number {

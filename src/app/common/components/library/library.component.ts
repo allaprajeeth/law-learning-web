@@ -36,10 +36,7 @@ export class LibraryComponent {
   }
 
   ngOnInit(): void {
-    // this.libraryService.loadLibraries(this.pagination.getPaginationRequest());
-    // this.libraries = this.libraryService.libraries;
-    // this.pagination = this.libraryService.pagination;
-    this.getLibraries()
+    this.getLibraries();
   }
 
   openFile(library: any): void {
@@ -96,19 +93,18 @@ export class LibraryComponent {
   onPageChange(pagination: Pagination) {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;
-    this.libraryService.loadLibraries(this.pagination.getPaginationRequest());
+    this.getLibraries();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   getLibraries() {
-
-    const apiUrl =endPoints.baseURL + `/libraries?page=${this.pagination.page}&size=${this.pagination.size}&sort=createdDate,desc`
-    this.http
-      .get<any>(apiUrl)
-      .subscribe((response) => {
-        const libraries:  Library[] = response.data.content;
-        this.pagination = new Pagination(response.data);
-        this.libraries = libraries;
-      });
+    const apiUrl =
+      endPoints.baseURL +
+      `/libraries?page=${this.pagination.page}&size=${this.pagination.size}&sort=createdDate,desc`;
+    this.http.get<any>(apiUrl).subscribe((response) => {
+      const libraries: Library[] = response.data.content;
+      this.pagination = new Pagination(response.data);
+      this.libraries = libraries;
+    });
   }
 }

@@ -21,7 +21,6 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { EditEmailComponent } from './components/edit-email/edit-email.component';
 import { MyDirectiveDirective } from './components/my-directive.directive';
 import { NotificationComponent } from './components/notification/notification.component';
-import { CourseCardComponent } from './components/course-card/course-card.component';
 import { CoursesPageComponent } from 'src/app/common/components/courses-page/courses-page.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CarouselModule } from 'primeng/carousel';
@@ -52,7 +51,6 @@ import { CommentedarticleComponent } from './components/commentedarticle/comment
     EditEmailComponent,
     MyDirectiveDirective,
     NotificationComponent,
-    CourseCardComponent,
     CoursesPageComponent,
     CheckoutComponent,
     SubmitmesgComponent,

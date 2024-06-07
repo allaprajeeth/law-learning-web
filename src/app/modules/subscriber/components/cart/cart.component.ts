@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../cart.service';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { cartcourseModel } from 'src/app/common/models/cart.model';
@@ -16,36 +15,10 @@ export class CartComponent implements OnInit {
   selectedItems: number[] = [];
   isAdded: boolean = false;
   s3BaseURL: string = endPoints.s3BaseURL;
-
-  //   {
-  //     id: 1,
-  //     image: 'path_to_image_1',
-  //     heading: 'Course Title 1',
-  //     duration: '5',
-  //     coursesText: 'Some course text 1',
-  //     price: 1000 // Replace with actual price
-  //   },
-  //   {
-  //     id: 2,
-  //     image: 'path_to_image_2',
-  //     heading: 'Course Title 2',
-  //     duration: '7',
-  //     coursesText: 'Some course text 2',
-  //     price: 1200 // Replace with actual price
-  //   },
-  //   {
-  //     id: 3,
-  //     image: 'path_to_image_3',
-  //     heading: 'Course Title 3',
-  //     duration: '6',
-  //     coursesText: 'Some course text 3',
-  //     price: 1500 // Replace with actual price
-  //   }
-  // ];
   discountedPrice: number = 0;
   cartIsEmpty: boolean = false;
 
-  constructor(private cartService: CartService, private http: HttpClient) {}
+  constructor( private http: HttpClient) {}
 
   ngOnInit() {
     this.getItemsToCart();
