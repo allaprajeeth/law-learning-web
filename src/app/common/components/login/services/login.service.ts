@@ -16,8 +16,6 @@ import { MatDialog } from '@angular/material/dialog';
 export class LoginService {
   validationKey$: BehaviorSubject<string> = new BehaviorSubject('');
   loggedInUserEmail$: BehaviorSubject<string> = new BehaviorSubject('');
-
-
   constructor(
     private apiService: ApiService,
     public authTokenService: AuthTokenService,
@@ -25,10 +23,7 @@ export class LoginService {
     private notificationService: NotificationService,
     private router: Router,
     private dialog: MatDialog
-    
   ) {}
-
- 
 
   getAuthTokenService(): AuthTokenService {
     return this.authTokenService;
@@ -52,7 +47,6 @@ export class LoginService {
           else{
             this.notificationService.notify(errorResponse?.error?.error.message);
           }
-          
         }
         return EMPTY;
       })
@@ -80,7 +74,7 @@ export class LoginService {
             // if (userDetailsObjects.status === "ARCHIVED") {
             //   this.dialog.open(DeleteAccountDialogComponent);
             // }
-          // }
+            // }
             if (userDetailsObjects.status === 'ACTIVE') {
               this.notificationService.notify(`Login Successful`);
               // If status is active, navigate based on user role
@@ -123,5 +117,4 @@ export class LoginService {
       })
     );
   }
-  
 }

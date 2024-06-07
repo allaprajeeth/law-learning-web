@@ -28,13 +28,12 @@ export class HomepageComponent implements OnInit {
   constructor(
     private coursesService: CoursesService,
 
-    private http: HttpClient ,
+    private http: HttpClient,
     private notificationService: NotificationService,
 
     // private http: HttpClient,
     private courseService: CourseService,
     private router: Router
-
   ) {
     this.pagination = new Pagination();
   }
@@ -54,17 +53,14 @@ export class HomepageComponent implements OnInit {
   // code with api's integration
 
   private initializeCourses(): void {
-    const url=`${endPoints.search_courses}?page=${this.pagination.page}&size=${this.pagination.size}`
-    this.coursesService
-      .get(url)
-      .subscribe((response: HttpResponse<Course>) => {
-        this.avialableCourses=[]
-        for (var i in response.records) {
-          
-          this.avialableCourses.push(response.records[i]);
-        }
-        this.pagination = response.pagination;
-      });
+    const url = `${endPoints.search_courses}?page=${this.pagination.page}&size=${this.pagination.size}&sort=createdDate,desc`;
+    this.coursesService.get(url).subscribe((response: HttpResponse<Course>) => {
+      this.avialableCourses = [];
+      for (var i in response.records) {
+        this.avialableCourses.push(response.records[i]);
+      }
+      this.pagination = response.pagination;
+    });
   }
 
   addToCart(courseId: number): void {
@@ -73,8 +69,7 @@ export class HomepageComponent implements OnInit {
     this.http.post(url, [courseId]).subscribe(
       () => {
         console.log('Cart added successfully');
-        this.notificationService.notify(`Added course to cart successfully`); 
-      
+        this.notificationService.notify(`Added course to cart successfully`);
       },
       (error) => {
         console.error('Error adding cart:', error);
@@ -105,46 +100,45 @@ export class HomepageComponent implements OnInit {
   }
 
   getMyCourses(): void {
-    const url = endPoints.secureBaseURL + '/courses/subscribed';
+    const url = endPoints.secureBaseURL + `/courses/subscribed`;
     const params = new HttpParams()
       .set('search', '')
       .set('number', '0')
       .set('size', '20')
-      .set('sort', 'id,DESC');
+      .set('sort', 'createdDate,desc');
 
     this.http.get<any>(url, { params }).subscribe((response) => {
       this.myCourses = response.data.content;
     });
   }
-  
+
   onPageChange(pagination: Pagination) {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;
-    this.scrollToArticlesSection()
-    this.initializeCourses()
-
+    this.scrollToArticlesSection();
+    this.initializeCourses();
   }
   private scrollToArticlesSection() {
     if (this.availableCoursesSection) {
-      this.availableCoursesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.availableCoursesSection.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
   }
 
-
   navigateToSubscriberCourse(courseId: number): void {
-    this.courseService. getSubscriberCourseId(courseId).subscribe({
+    this.courseService.getSubscriberCourseId(courseId).subscribe({
       next: (course) => {
         this.router.navigate(['/subscriber/courseinfo', courseId], {
-          state: { course: course }
+          state: { course: course },
         });
       },
       error: (error) => {
         console.error('Error fetching course details:', error);
-      }
+      },
     });
   }
-
-  
 
   showCourseContent(id: number) {
     this.router.navigate(['/freecourse'], { queryParams: { _id: id } });

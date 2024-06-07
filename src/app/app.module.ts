@@ -7,22 +7,22 @@ import { HeaderComponent } from './common/components/header/header.component';
 import { SharedModule } from './shared-module/shared.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { HttpInterceptorService } from './common/services/http-interceptor/http-interceptor.service';
-import {MatIconModule} from '@angular/material/icon';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatSelectModule} from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { FirstnavComponent } from './common/components/firstnav/firstnav.component';
 import { RegisterComponent } from './common/components/register/register.component';
 import { HomepageComponent } from './common/components/homepage/homepage.component';
-import { FormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ArticleComponent } from './common/components/article/article.component';
 import { SubscriberRoutingModule } from './modules/subscriber/subscriber-routing.module';
@@ -30,9 +30,9 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { PopupService } from 'src/popup.service';
 import { VideoplayerComponent } from './common/components/videoplayer/videoplayer.component';
 import { OverviewComponent } from './common/components/overview/overview.component';
-import {MatCardModule} from '@angular/material/card';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { LoginComponent } from './common/components/login/login.component';
 import { CourseInfoComponent } from './common/components/course-info/course-info.component';
@@ -45,17 +45,12 @@ import { ContactusComponent } from './common/components/contactus/contactus.comp
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ForgotPhonenoComponent } from './common/components/forgot-phoneno/forgot-phoneno.component';
 import { ForgotEmailComponent } from './common/components/forgot-email/forgot-email.component';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { LogoutService } from './common/services/logout.service';
-import { cartReducer } from './modules/subscriber/components/course-card/state/cart.reducer';
 import { PostdetailComponent } from './common/components/postdetail/postdetail.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { CartEffects } from './modules/subscriber/components/course-card/state/cart.effects';
 import { EmailVerificationComponent } from './common/components/email-verification/email-verification.component';
 import { PhoneVerificationComponent } from './common/components/phone-verification/phone-verification.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-// import { DurationPipe } from './common/pipes/duration.pipe';
 import { AdvisorDetailsComponent } from './common/components/advisor-details/advisor-details.component';
 import { ErrorHandlerService } from './common/services/error-handler/error-handler.service';
 import { ArticleFormComponent } from './common/components/article-form/article-form.component';
@@ -72,6 +67,8 @@ import { RevertDeleteComponent } from './common/components/revert-delete/revert-
 import { DeleteAccountComponent } from './common/components/delete-account/delete-account.component';
 import { ArticleDetailsComponent } from './common/components/article-details/article-details.component';
 import { DeleteAccountDialogComponent } from './common/components/login/delete-account-dialog/delete-account-dialog.component';
+import { LoadingInterceptor } from './common/services/loading.interceptor';
+import { LoadingComponent } from './common/components/loading/loading.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -95,7 +92,6 @@ import { DeleteAccountDialogComponent } from './common/components/login/delete-a
     PostdetailComponent,
     EmailVerificationComponent,
     PhoneVerificationComponent,
-    // DurationPipe,
     ArticleFormComponent,
     ProfileComponent,
     AccountsecurityComponent,
@@ -109,6 +105,7 @@ import { DeleteAccountDialogComponent } from './common/components/login/delete-a
     DeleteAccountComponent,
     ArticleDetailsComponent,
     DeleteAccountDialogComponent,
+    LoadingComponent,
   ],
   imports: [
     CarouselModule,
@@ -142,32 +139,24 @@ import { DeleteAccountDialogComponent } from './common/components/login/delete-a
     MatProgressSpinnerModule,
     FileUploadModule,
     PdfViewerModule,
-    StoreModule.forRoot({ 
-      cart: cartReducer, 
-    }),
-    EffectsModule.forRoot(
-      [
-      CartEffects]
-      ),],
-      exports: [
-     RevertDeleteComponent ,
-   
-      ],
-  
-  providers: [PopupService,
-   LogoutService,
+    MatProgressSpinnerModule
+  ],
+  exports: [RevertDeleteComponent],
+
+  providers: [
+    PopupService,
+    LogoutService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpInterceptorService,
       multi: true,
-      
     },
     {
       provide: ErrorHandler,
-      useClass: ErrorHandlerService
+      useClass: ErrorHandlerService,
     },
-    
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

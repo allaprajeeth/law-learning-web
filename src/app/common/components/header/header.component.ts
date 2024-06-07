@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private initializeFreeCoursesHeadings(search: CourseSearch): void {
-    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}`
+    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}&sort=createdDate,desc`
     const queryParams = { ...search};
     this.coursesService.get(url,queryParams,)
       .subscribe((response: HttpResponse<Course>) => {
@@ -44,7 +44,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private initializePaidCoursesHeadings(search: CourseSearch, reload: boolean): void {
-    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}`
+    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}&sort=createdDate,desc`
     const queryParams = { ...search};
     this.coursesService.get(url ,queryParams )
       .subscribe((response: HttpResponse<Course>) => {

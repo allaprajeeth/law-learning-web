@@ -1,5 +1,5 @@
-<div>
-  <h1>{{ selectedLibraryTitle ? selectedLibraryTitle : 'Documents' }}</h1>
+<div *ngIf= "libraries.length > 0">
+  <h1>Documents</h1>
 </div>
 <table *ngIf="!pdfSrc">
   <tr *ngFor="let library of libraries; let i = index">

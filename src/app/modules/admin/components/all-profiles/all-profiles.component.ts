@@ -20,13 +20,14 @@ export class AllProfilesComponent implements OnInit {
   advisorProfiles: AdvisorProfile[] = [];
   allProfiles: any[] = [];
   pagination: Pagination = new Pagination();
+  pagination1 :Pagination = new Pagination();
   params: any = {};
   constructor(
     private http: HttpClient,
     private router: Router,
     public dialog: MatDialog
   ) {
-    this.pagination = new Pagination();
+   
   }
 
   ngOnInit(): void {
@@ -91,12 +92,20 @@ export class AllProfilesComponent implements OnInit {
 
   fetchAdvisorProfiles(): void {
     const baseUrl = endPoints.baseURL;
-    const apiUrl = baseUrl + `/advisor/profiles?page=0&size=10&sort=createdDate,DESC`;
+    const apiUrl = baseUrl + `/advisor/profiles?page=${this.pagination1.page}&size=${this.pagination1.size}&sort=createdDate,DESC`;
     this.http.get<any>(apiUrl).subscribe((response) => {
       this.advisorProfiles = response.data.content;
-      this.pagination = new Pagination(response.data);
+      this.pagination1.totalElements = response.data.totalElements
     });
   }
+  onPageChange1(pagination: Pagination) {
+    this.pagination.page = pagination.page;
+    this.pagination.size = pagination.size;
+    this.fetchAdvisorProfiles()
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+
 
   navigateToAdvisorProfiles(advisorId: any): void {
     this.router.navigate(['/admin/editadvisor', advisorId]);
