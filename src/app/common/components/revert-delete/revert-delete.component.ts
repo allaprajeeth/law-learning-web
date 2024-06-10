@@ -116,7 +116,6 @@ export class RevertDeleteComponent implements OnInit, OnDestroy {
   
   restoreAccount() {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
-
     const requestBody = {
       type: 'VERIFY_OTP',
       validation_key: this.validationKey,
@@ -127,6 +126,13 @@ export class RevertDeleteComponent implements OnInit, OnDestroy {
     this.http.post<any>(`${environment.endpoints.secureBaseURL}/profile/restore`, requestBody, { headers }).subscribe(
       (response) => {
         console.log('OTP verification successful:', response);
+        const userDetailsString = localStorage.getItem('userDetails');
+        if (userDetailsString) {
+            const userDetails = JSON.parse(userDetailsString);
+            userDetails.status = "ACTIVE";
+            localStorage.setItem('userDetails', JSON.stringify(userDetails));
+        
+        }
         // Show success message in a popup
         this.snackBar.open('Your account has been restored successfully', 'Close', {
           duration: 5000, 

@@ -65,11 +65,15 @@ export class DeleteAccountComponent {
         setTimeout(() => {
           this.http.get(`${environment.endpoints.secureBaseURL}/profile`).subscribe(
             (response: any) => {
-              console.log('User details:', response);
-              this.userDetails = response;
-              console.log('Details of user:', this.userDetails);
-              console.log('User status:', this.userDetails.data.status);
               
+              this.userDetails = response;
+              const userDetailsString = localStorage.getItem('userDetails');
+              if (userDetailsString) {
+                  const userDetails = JSON.parse(userDetailsString);
+                  userDetails.status = "INACTIVE";
+                  localStorage.setItem('userDetails', JSON.stringify(userDetails));
+              
+              }
               let revertDeleteRoute: string;
   
               switch (this.userDetails.data.role) {

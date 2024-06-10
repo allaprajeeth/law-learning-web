@@ -70,6 +70,7 @@ import { ArticleDetailsComponent } from './common/components/article-details/art
 import { DeleteAccountDialogComponent } from './common/components/login/delete-account-dialog/delete-account-dialog.component';
 import { LoadingInterceptor } from './common/services/loading.interceptor';
 import { LoadingComponent } from './common/components/loading/loading.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -140,7 +141,7 @@ import { LoadingComponent } from './common/components/loading/loading.component'
     MatProgressSpinnerModule,
     FileUploadModule,
     PdfViewerModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   exports: [RevertDeleteComponent],
 

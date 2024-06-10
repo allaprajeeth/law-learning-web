@@ -32,30 +32,35 @@ import { InstructorinfoComponent } from './modules/instructor/components/instruc
 import { SharedarticleHistoryComponent } from './shared-module/components/sharedarticle-history/sharedarticle-history.component';
 import { LibraryByIdComponent } from './common/components/library-by-id/library-by-id.component';
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
+import { inactiveStatusGuard } from './common/guards/inactive-status-guard/inactive-status.guard';
 
 
 const routes: Routes = [
   {
     path: 'admin',
     canActivateChild: [roleGuard],
+    canActivate: [inactiveStatusGuard],
     data: { roles: ['ADMIN'] },
     loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule)
   },
   {
     path: 'instructor',
     canActivateChild: [roleGuard],
+    canActivate: [inactiveStatusGuard],
     data: { roles: ['INSTRUCTOR'] },
     loadChildren: () => import('./modules/instructor/instructor.module').then(m => m.InstructorModule)
   },
   {
     path: 'subscriber',
     canActivateChild: [roleGuard],
+    canActivate: [inactiveStatusGuard],
     data: { roles: ['SUBSCRIBER'] },
     loadChildren: () => import('./modules/subscriber/subscriber.module').then(m => m.SubscriberModule)
   },
   {
     path: 'reviewer',
     canActivateChild: [roleGuard],
+    canActivate: [inactiveStatusGuard],
     data: { roles: ['REVIEWER'] },
     loadChildren: () => import('./modules/reviewer/reviewer.module').then(m => m.ReviewerModule)
   },
@@ -159,9 +164,9 @@ const routes: Routes = [
     component:LibraryByIdComponent
   },
   {
-
-    path:'revert-delete',
-    component:RevertDeleteComponent
+    path: 'revert-delete',
+    component: RevertDeleteComponent,
+  
   },
   {
     path:'forgotEmail',
