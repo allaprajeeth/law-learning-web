@@ -166,7 +166,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div *ngIf="currentFile" class="video-details">
+                                            <div *ngIf="getCurrentFile(course.sections[i].subSections[j].id)" class="video-details">
                                                 <div class="details-row" style="display: flex; width: 100%;">
                                                     <p class="detail-heading file-name" style="flex: 25%;">File Name:</p>
                                                     <p class="detail-heading file-name" style="flex: 25%;">File Type:</p>
@@ -174,13 +174,13 @@
                                                     <p class="detail-heading file-name" style="flex: 25%;">Actions</p>
                                                 </div>
                                                 <div class="details-row details-values" style="display: flex; width: 100%;">
-                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentFile.name }}</p>
-                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentFile.type }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ getCurrentFile(course.sections[i].subSections[j].id).name }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ getCurrentFile(course.sections[i].subSections[j].id).type }}</p>
                                                     <p class="detail-value file-name" style="flex: 25%; " *ngIf="progress === 100">Uploaded</p>
-                                                    <mat-progress-bar mode="determinate" value="{{progress}}" *ngIf="currentFile && progress !== 100" style="flex: 25%;" class="detail-value file-desc"></mat-progress-bar>
+                                                    <mat-progress-bar mode="determinate" value="{{progress}}" *ngIf="getCurrentFile(course.sections[i].subSections[j].id) && progress !== 100" style="flex: 25%;" class="detail-value file-desc"></mat-progress-bar>
                                                     <div class="detail-value file-name" style="flex: 25%; ">
-                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn" *ngIf="currentFile && progress !== 100"><mat-icon>upload_circle</mat-icon></button>
-                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn" *ngIf="getCurrentFile(course.sections[i].subSections[j].id).name && progress !== 100"><mat-icon>upload_circle</mat-icon></button>
+                                                        <button mat-icon-button (click)="removeResource(sectionForm.get('id')?.value, subSectionForm.get('id')?.value, 0)" color="warn"><mat-icon>delete_circle</mat-icon></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,13 +201,13 @@
                                                     class="small-button enabled-button">
                                                     <mat-icon class="black-icon">add</mat-icon>Document
                                                     <input #fileDocument type="file"
-                                                        (change)="onFileChanged('document', $event)"
+                                                        (change)="onFileChanged(course.sections[i].subSections[j].id, 'document', $event)"
                                                         style="display:none;" />
                                                 </button>
                                                 <button (click)="fileVideo.click()" class="small-button enabled-button">
                                                     <mat-icon class="black-icon">add</mat-icon>Video
                                                     <input #fileVideo type="file"
-                                                        (change)="onFileChanged('video', $event)"
+                                                        (change)="onFileChanged(course.sections[i].subSections[j].id, 'video', $event)"
                                                         style="display:none;" />
                                                 </button>
                                             </mat-action-row>

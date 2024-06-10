@@ -44,7 +44,7 @@ export class CourseWidgetComponent {
   
 
   // Resource upload
-  currentFile?: File;
+  currentFiles: any[] = [];
   progress: number = 0;
 
   showQuiz: boolean = false;
@@ -392,9 +392,14 @@ export class CourseWidgetComponent {
     if (key === 'sub_section') this.subSectionStep = index;
   }
 
-  onFileChanged(resourceType: string, event: any) {
+  onFileChanged(subSectionIndex: number, resourceType: string, event: any) {
     const file = event.target.files;
-    if (file && file.length > 0) this.currentFile = file[0];
+    if (file && file.length > 0) this.currentFiles[subSectionIndex] = file[0];
+  }
+
+  // Function to get currentFile for a specific subsection
+  getCurrentFile(subSectionIndex: number) {
+    return this.currentFiles[subSectionIndex];
   }
 
   attachResource(
@@ -402,16 +407,17 @@ export class CourseWidgetComponent {
     sectionId: number,
     subSectionId: number
   ) {
-    if (this.currentFile) {
+    if (this.getCurrentFile(subSectionId)) {
+      let file = this.getCurrentFile(subSectionId);
       const data = {
         resourceType: resourceType,
-        name: this.currentFile.name,
+        name: file.name,
         courseId: this.courseId,
         sectionId: sectionId,
         subSectionId: subSectionId,
       };
       this.fileUploadService
-        .upload('/courses/upload', this.currentFile, data)
+        .upload('/courses/upload', file, data)
         .subscribe({
           next: (response: any) => {
             if (response.type === HttpEventType.UploadProgress) {
@@ -431,6 +437,11 @@ export class CourseWidgetComponent {
   }
 
   removeResource(sectionId: number, subSectionId: number, fileId: number) {
+    console.log(this.currentFiles)
+    if(fileId === 0) {
+      delete this.currentFiles[subSectionId];
+      return;
+    }
     let fileUploadBean = {
       id: fileId,
       courseId: this.course.id,
