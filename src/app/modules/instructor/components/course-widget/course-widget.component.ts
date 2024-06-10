@@ -40,11 +40,14 @@ export class CourseWidgetComponent {
   processing: boolean = false;
   course: Course = new Course();
   institutions: any[] = [];
+  currentDocument: any; 
+documentProgress: number | undefined; 
+
 
   
 
   // Resource upload
-  currentFiles: any[] = [];
+  currentFile?: File;
   progress: number = 0;
 
   showQuiz: boolean = false;
@@ -392,32 +395,40 @@ export class CourseWidgetComponent {
     if (key === 'sub_section') this.subSectionStep = index;
   }
 
-  onFileChanged(subSectionIndex: number, resourceType: string, event: any) {
+  onFileChanged(resourceType: string, event: any, subSection: SubSection) {
     const file = event.target.files;
-    if (file && file.length > 0) this.currentFiles[subSectionIndex] = file[0];
+    if (file && file.length > 0 && subSection) { // Add null check for subSection
+      this.currentFile = file[0];
+      if (resourceType === 'video') {
+        // Check if this.currentFile is defined before accessing its properties
+        if (this.currentFile) {
+          subSection.videoFile = this.currentFile.name;
+        }
+      } else if (resourceType === 'document') {
+        // Check if this.currentFile is defined before accessing its properties
+        if (this.currentFile) {
+          subSection.documentFile = this.currentFile.name;
+        }
+      }
+    }
   }
-
-  // Function to get currentFile for a specific subsection
-  getCurrentFile(subSectionIndex: number) {
-    return this.currentFiles[subSectionIndex];
-  }
+  
 
   attachResource(
     resourceType: string,
     sectionId: number,
     subSectionId: number
   ) {
-    if (this.getCurrentFile(subSectionId)) {
-      let file = this.getCurrentFile(subSectionId);
+    if (this.currentFile) {
       const data = {
         resourceType: resourceType,
-        name: file.name,
+        name: this.currentFile.name,
         courseId: this.courseId,
         sectionId: sectionId,
         subSectionId: subSectionId,
       };
       this.fileUploadService
-        .upload('/courses/upload', file, data)
+        .upload('/courses/upload', this.currentFile, data)
         .subscribe({
           next: (response: any) => {
             if (response.type === HttpEventType.UploadProgress) {
@@ -437,11 +448,6 @@ export class CourseWidgetComponent {
   }
 
   removeResource(sectionId: number, subSectionId: number, fileId: number) {
-    console.log(this.currentFiles)
-    if(fileId === 0) {
-      delete this.currentFiles[subSectionId];
-      return;
-    }
     let fileUploadBean = {
       id: fileId,
       courseId: this.course.id,
@@ -464,9 +470,20 @@ export class CourseWidgetComponent {
     //TODO - Edit resorce.
   }
 
-  showFileUpload(subSection: SubSection) {
-    return subSection && subSection.id && !subSection.file;
+  // showFileUpload(subSection: SubSection) {
+  //   return subSection && subSection.id && !subSection.file;
+  // }
+
+  showVideoUpload(subSection: SubSection): boolean {
+    return !!subSection && !!subSection.id && !subSection.videoFile; 
   }
+  
+  
+  showDocumentUpload(subSection: SubSection): boolean {
+  return !!subSection && !!subSection.id; 
+}
+
+  
 
   isFileExists(subSection: SubSection) {
     return subSection && subSection.id && subSection.file;

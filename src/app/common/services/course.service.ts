@@ -84,7 +84,7 @@ export class CourseService {
   }
 
   getReviewCourses(pagination :Pagination): Observable<any> {
-    const url = `${endPoints.baseURL}/secure/courses/review?number?page=${pagination.page}&size=${pagination.size}&sort=createdDate,DESC`;
+    const url = `${endPoints.baseURL}/secure/courses/review?number?page=${pagination.page}&size=20&sort=createdDate,DESC`;
     return this.httpClient.get(url);
   }
 

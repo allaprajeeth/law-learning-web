@@ -75,8 +75,8 @@ export class SidenavComponent {
       { name: 'Account Security', route: '/instructor/acSecurity' },
       { name: 'My Publishings', route: '/instructor/articlehistory' },
       { name: 'Courses Status', route: '/instructor/uploadstatus' },
-      { name: 'Contact Us', route: '/instructor/termsandconditions' },
-      { name: 'Terms & Conditions', route: '/instructor/contactus' },
+      { name: 'Contact Us', route: '/instructor/contactus' },
+      { name: 'Terms & Conditions', route: '/instructor/termsandconditions' },
     ],
     REVIEWER: [
       { name: 'Profile', route: '/reviewer/profile' },

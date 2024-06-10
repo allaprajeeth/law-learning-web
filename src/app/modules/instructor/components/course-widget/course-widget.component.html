@@ -160,13 +160,11 @@
                                                         <button mat-icon-button
                                                         (click)="removeResource(course.sections[i].id, course.sections[i].subSections[j].id, course.sections[i].subSections[j].file.id)"
                                                         color="warn"><mat-icon>delete_circle</mat-icon></button>
-                                                        <button mat-icon-button
-                                                        (click)="editResource(course.sections[i].id, course.sections[i].subSections[j].id, course.sections[i].subSections[j].file.id)"
-                                                        color="primary"><mat-icon>edit_circle</mat-icon></button>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div *ngIf="getCurrentFile(course.sections[i].subSections[j].id)" class="video-details">
+                                            <div *ngIf="currentFile" class="video-details">
                                                 <div class="details-row" style="display: flex; width: 100%;">
                                                     <p class="detail-heading file-name" style="flex: 25%;">File Name:</p>
                                                     <p class="detail-heading file-name" style="flex: 25%;">File Type:</p>
@@ -174,43 +172,60 @@
                                                     <p class="detail-heading file-name" style="flex: 25%;">Actions</p>
                                                 </div>
                                                 <div class="details-row details-values" style="display: flex; width: 100%;">
-                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ getCurrentFile(course.sections[i].subSections[j].id).name }}</p>
-                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ getCurrentFile(course.sections[i].subSections[j].id).type }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentFile.name }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentFile.type }}</p>
                                                     <p class="detail-value file-name" style="flex: 25%; " *ngIf="progress === 100">Uploaded</p>
-                                                    <mat-progress-bar mode="determinate" value="{{progress}}" *ngIf="getCurrentFile(course.sections[i].subSections[j].id) && progress !== 100" style="flex: 25%;" class="detail-value file-desc"></mat-progress-bar>
+                                                    <mat-progress-bar mode="determinate" value="{{progress}}" *ngIf="currentFile && progress !== 100" style="flex: 25%;" class="detail-value file-desc"></mat-progress-bar>
                                                     <div class="detail-value file-name" style="flex: 25%; ">
-                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn" *ngIf="getCurrentFile(course.sections[i].subSections[j].id).name && progress !== 100"><mat-icon>upload_circle</mat-icon></button>
-                                                        <button mat-icon-button (click)="removeResource(sectionForm.get('id')?.value, subSectionForm.get('id')?.value, 0)" color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn" *ngIf="currentFile && progress !== 100"><mat-icon>upload_circle</mat-icon></button>
+                                                        <button mat-icon-button (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn"><mat-icon>delete_circle</mat-icon></button>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="row" *ngIf="course.sections[i].subSections[j].file">
-                                                <div class="col-8">
-                                                    <label class="btn btn-default p-0">
-                                                        <span>{{course.sections[i].subSections[j].file.fileName}}</span>
-                                                      </label>
+
+                                            <div *ngIf="currentDocument" class="document-details">
+                                                <div class="details-row" style="display: flex; width: 100%;">
+                                                    <p class="detail-heading file-name" style="flex: 25%;">File Name:</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">File Type:</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">Status</p>
+                                                    <p class="detail-heading file-name" style="flex: 25%;">Actions</p>
                                                 </div>
-                                                <div class="col-4">
-                                                    <button class="small-button enabled-button" [disabled]="!currentFile" (click)="attachResource('Video', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)">
-                                                        Upload
-                                                    </button>
+                                                <div class="details-row details-values" style="display: flex; width: 100%;">
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentDocument.name }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; ">{{ currentDocument.type }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%; " *ngIf="documentProgress === 100">Uploaded</p>
+                                                    <mat-progress-bar mode="determinate" value="{{documentProgress}}" *ngIf="currentDocument && documentProgress !== 100" style="flex: 25%;" class="detail-value file-desc"></mat-progress-bar>
+                                                    <div class="detail-value file-name" style="flex: 25%; ">
+                                                        <button mat-icon-button (click)="attachResource('Document', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn" *ngIf="currentDocument && documentProgress !== 100"><mat-icon>upload_circle</mat-icon></button>
+                                                        <button mat-icon-button (click)="attachResource('Document', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn"><mat-icon>delete_circle</mat-icon></button>
+                                                    </div>
                                                 </div>
-                                            </div> -->
-                                            <mat-action-row align="end" *ngIf="showFileUpload(course.sections[i].subSections[j])" class="button-container">
-                                                <button (click)="fileDocument.click()"
-                                                    class="small-button enabled-button">
-                                                    <mat-icon class="black-icon">add</mat-icon>Document
-                                                    <input #fileDocument type="file"
-                                                        (change)="onFileChanged(course.sections[i].subSections[j].id, 'document', $event)"
-                                                        style="display:none;" />
-                                                </button>
+                                            </div>
+                                            
+                                            <mat-action-row align="end" *ngIf="showVideoUpload(course.sections[i].subSections[j])" class="button-container">
                                                 <button (click)="fileVideo.click()" class="small-button enabled-button">
-                                                    <mat-icon class="black-icon">add</mat-icon>Video
-                                                    <input #fileVideo type="file"
-                                                        (change)="onFileChanged(course.sections[i].subSections[j].id, 'video', $event)"
-                                                        style="display:none;" />
+                                                  <mat-icon class="black-icon">add</mat-icon>Video
+                                                  <input #fileVideo type="file" (change)="onFileChanged('video', $event, course.sections[i].subSections[j])" style="display:none;" />
                                                 </button>
-                                            </mat-action-row>
+                                              </mat-action-row>
+                                              
+                                              <mat-action-row align="end" *ngIf="showDocumentUpload(course.sections[i].subSections[j])" class="button-container">
+                                                <button (click)="fileDocument.click()" class="small-button enabled-button">
+                                                  <mat-icon class="black-icon">add</mat-icon>Document
+                                                  <input #fileDocument type="file" (change)="onFileChanged('document', $event, course.sections[i].subSections[j])" style="display:none;" />
+                                                </button>
+                                                <!-- <div *ngIf="course.sections[i].subSections[j].documentFile">
+                                                  <p class="detail-value file-name">{{ course.sections[i].subSections[j].documentFile }}</p>
+                                                  <p class="detail-value file-type">Type: {{ getFileType(course.sections[i].subSections[j].documentFile) }}</p>
+                                                  <p class="detail-value file-status" *ngIf="documentProgress === 100">Uploaded</p>
+                                                  <mat-progress-bar mode="determinate" [value]="documentProgress" *ngIf="documentProgress !== 100"></mat-progress-bar>
+                                                  <button mat-icon-button (click)="attachResource('Document', sectionForm.get('id')?.value, subSectionForm.get('id')?.value)" color="warn" *ngIf="documentProgress !== 100">
+                                                    <mat-icon>upload_circle</mat-icon>
+                                                  </button>
+                                                </div> -->
+                                              </mat-action-row>
+                                              
+                                              
                                         </mat-expansion-panel>
                                     </div>
                                 </div>

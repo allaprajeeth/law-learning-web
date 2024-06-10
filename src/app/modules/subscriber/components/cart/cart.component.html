@@ -55,9 +55,12 @@
         <div class="totalPriceContainer" *ngIf="cartItems.length > 0">
             <div class="total">
                 <button class="btn" (click)="addToMyCourses()">Add to My Courses</button>
+                <!-- <button class="btn" [routerLink]="['/subscriber/checkout']">Checkout</button> -->
             </div>
-        </div>
-    </div>
+        </div>  
+
+    </div> 
+   
 
 </div>
 <div class="popup-message" *ngIf="isAdded">
