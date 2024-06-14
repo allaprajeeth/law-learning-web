@@ -82,10 +82,10 @@ documentProgress: number | undefined;
       id: [''],
       title: ['', Validators.required],
       description: ['', Validators.required],
-      institution: this._formBuilder.group({
-        id: ['', Validators.required],
-        name: [''],
-      }),
+      // institution: this._formBuilder.group({
+      //   id: ['', Validators.required],
+      //   name: [''],
+      // }),
       difficultyLevel: ['', Validators.required],
       type: ['', Validators.required],
       // price: [null],

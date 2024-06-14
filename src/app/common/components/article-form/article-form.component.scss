@@ -95,14 +95,8 @@ h2 {
   .tooltip {
     color: red;
     font-weight: bold;
-    position: absolute;
-    top: 80%;  /* Adjust as needed */
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
     padding: 5px;
-    border: 1px solid red;
-    border-radius: 3px;
+    text-align: center;
     margin-top: 5px;
   }
   
