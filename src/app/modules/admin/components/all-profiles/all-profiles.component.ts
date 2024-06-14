@@ -2,13 +2,26 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { endPoints } from 'src/app/common/constants/endpoints';
-import { AdvisorProfile } from 'src/app/common/models/instructor.model';
+import {
+  AdvisorProfile,
+  UserProfile,
+} from 'src/app/common/models/instructor.model';
 import { Pagination } from 'src/app/common/models/pagination.model';
+import { ConfirmationAlertComponent } from 'src/app/shared-module/components/confirmation-alert/confirmation-alert.component';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+// interface UserProfile {
+//   id: string;
+//   name: string;
+//   role: string;
+//   status: string;
+//   isActive: boolean;
+// }
 @Component({
   selector: 'app-all-profiles',
   templateUrl: './all-profiles.component.html',
@@ -20,15 +33,17 @@ export class AllProfilesComponent implements OnInit {
   advisorProfiles: AdvisorProfile[] = [];
   allProfiles: any[] = [];
   pagination: Pagination = new Pagination();
-  pagination1 :Pagination = new Pagination();
+  pagination1: Pagination = new Pagination();
   params: any = {};
+  userProfile: UserProfile[] = [];
+  overallProfiles: UserProfile[] = [];
+
   constructor(
     private http: HttpClient,
     private router: Router,
-    public dialog: MatDialog
-  ) {
-   
-  }
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.selectedRole = 'all';
@@ -48,7 +63,8 @@ export class AllProfilesComponent implements OnInit {
 
   filterProfiles(params: any): void {
     const baseUrl = endPoints.secureBaseURL;
-    const apiUrl = baseUrl + `/admin/user-profile/getAll?&sort=createdDate,DESC`;
+    const apiUrl =
+      baseUrl + `/admin/user-profile/getAll?&sort=createdDate,DESC`;
 
     // Set search parameter
     if (this.selectedRole !== 'all') {
@@ -63,10 +79,12 @@ export class AllProfilesComponent implements OnInit {
     // Merge pagination parameters with other params if any
     const queryParams = { ...params, ...paginationParams };
 
-    this.http.get<any>(apiUrl, { params: queryParams }).subscribe((response) => {
-      this.allProfiles = response.data.content;
-      this.pagination = new Pagination(response.data);
-    });
+    this.http
+      .get<any>(apiUrl, { params: queryParams })
+      .subscribe((response) => {
+        this.allProfiles = response.data.content;
+        this.pagination = new Pagination(response.data);
+      });
   }
 
   getInitials(username: string): string {
@@ -90,22 +108,67 @@ export class AllProfilesComponent implements OnInit {
     }
   }
 
+  onToggleUserActivation(profileId: string, event: Event) {
+    event.stopPropagation();
+    const user = this.getUserById(profileId);
+    console.log(profileId);
+
+    const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
+      width: '350px',
+      data: {
+        message: `Do you want to ${
+          user.isActive ? 'inactivate' : 'activate'
+        } the user?`,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(async (result) => {
+      if (result) {
+        const baseUrl = endPoints.secureBaseURL;
+        const apiUrl =
+          baseUrl + `/admin/user-profile/${profileId}?status=${user.status}`;
+        const action = user.isActive ? 'deactivate' : 'activate';
+
+        this.http.put(apiUrl, { action }).subscribe(
+          () => {
+            user.isActive = !user.isActive; // Toggle activation status
+            const message = user.isActive
+              ? 'User activated successfully'
+              : 'User inactivated successfully';
+            this.snackBar.open(message, 'Close', { verticalPosition: 'top' });
+          },
+
+          // this.libraries = this.libraries.filter(
+          //   (library) => library.id !== libraryId
+          // );
+
+          (error) => {
+            console.error('Error inactivating the user', error);
+          }
+        );
+      }
+    });
+  }
+  getUserById(profileId: string): UserProfile {
+    return this.allProfiles.find((profile) => profile.id === profileId);
+  }
+
   fetchAdvisorProfiles(): void {
     const baseUrl = endPoints.baseURL;
-    const apiUrl = baseUrl + `/advisor/profiles?page=${this.pagination1.page}&size=${this.pagination1.size}&sort=createdDate,DESC`;
+    const apiUrl =
+      baseUrl +
+      `/advisor/profiles?page=${this.pagination1.page}&size=${this.pagination1.size}&sort=createdDate,DESC`;
     this.http.get<any>(apiUrl).subscribe((response) => {
       this.advisorProfiles = response.data.content;
-      this.pagination1.totalElements = response.data.totalElements
+      this.pagination1.totalElements = response.data.totalElements;
     });
   }
   onPageChange1(pagination: Pagination) {
     this.pagination.page = pagination.page;
     this.pagination.size = pagination.size;
-    this.fetchAdvisorProfiles()
+    this.fetchAdvisorProfiles();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-
 
   navigateToAdvisorProfiles(advisorId: any): void {
     this.router.navigate(['/admin/editadvisor', advisorId]);
@@ -115,18 +178,16 @@ export class AllProfilesComponent implements OnInit {
   }
 
   onPageChange(pagination: Pagination, isAdvisors: boolean) {
-    this.pagination.page  = pagination.page;
-    this.pagination.size  = pagination.size;
-   
-    if(isAdvisors){
+    this.pagination.page = pagination.page;
+    this.pagination.size = pagination.size;
+
+    if (isAdvisors) {
       this.fetchAdvisorProfiles();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    else{
+    } else {
       this.filterProfiles(this.params);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-      
   }
 
   openProfileModal(profileId: string): void {

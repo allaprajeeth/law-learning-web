@@ -64,13 +64,16 @@
   justify-content: center;
   align-items: center;
 }
+.profilePagination {
+  width: 100%;
+}
 
 td h3 {
   margin-left: -60px;
   margin-bottom: 5px;
 }
-.align{
-  transform: translate(-60px,0px);
+.align {
+  transform: translate(-60px, 0px);
 }
 .profile-container {
   max-width: 600px;
@@ -107,7 +110,7 @@ td h3 {
     button {
       margin-left: 10px;
       padding: 8px 12px;
-      background-color: #4CAF50;
+      background-color: #4caf50;
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -119,9 +122,9 @@ td h3 {
       background-color: #45a049;
     }
 
-      .icon {
-          margin-right: 5px;
-      }
+    .icon {
+      margin-right: 5px;
+    }
   }
 
   .goBack-button {
@@ -131,10 +134,10 @@ td h3 {
     cursor: pointer;
     border-radius: 5px;
     align-self: center;
-    // margin-left: 580px; 
+    // margin-left: 580px;
     background-color: #3498db;
     color: #fff;
-    // margin-right: auto; 
+    // margin-right: auto;
   }
 }
 
