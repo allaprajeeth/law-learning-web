@@ -18,7 +18,6 @@ export class AdminDashboardComponent implements OnInit {
   loginForm!: FormGroup;
   showMessageStatus: boolean = false;
   showcredentialStatus: boolean = true;
-
   username: string = '';
   email: string = '';
   phoneNumber: string = '';
@@ -50,6 +49,8 @@ export class AdminDashboardComponent implements OnInit {
   initializeForm() {
     this.loginForm = this.formBuilder.group({
       name: ['', Validators.required],
+      salutation :['',Validators.required],
+      gender :['',Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       role: ['INSTRUCTOR', Validators.required],

@@ -17,8 +17,11 @@ export class SharedoverviewComponent {
   courseId: number | undefined;
   numberOfSubsections = 0;
   rejectComment: string = '';
+  resubmitComment : string = '';
   isRejectCommentValid: boolean = false;
+  isResubmitCommentValid: boolean = false;
   isInstructorModule: boolean = false;
+  role:string =''
 
   constructor(
     private courseService: CourseService,
@@ -47,8 +50,8 @@ export class SharedoverviewComponent {
   }
 
   formApproval(): boolean {
-    const role = this.authService.getUserRole();
-    let roleEnum: UserRole = UserRole[role as keyof typeof UserRole];
+    this.role = this.authService.getUserRole();
+    let roleEnum: UserRole = UserRole[this.role as keyof typeof UserRole];
     let statusEnum: ReviewStatus = ReviewStatus[this.course.reviewStatus as keyof typeof ReviewStatus];
 
     if (roleEnum === UserRole.CONTENTMANAGER) {
@@ -68,6 +71,10 @@ export class SharedoverviewComponent {
   checkRejectComment(): void {
     this.isRejectCommentValid = this.rejectComment.trim().length > 0;
   }
+  checkResubmitComment(): void {
+    this.isResubmitCommentValid = this.resubmitComment.trim().length > 0;
+  }
+
 
   approve() {
     const reviewData = { status: 'APPROVED' };
@@ -117,4 +124,43 @@ export class SharedoverviewComponent {
       }
     );
   }
+  resubmit(){
+    if (!this.resubmitComment.trim()) {
+      alert('Please add a comment before resubmitting.');
+      
+      return;
+    }
+    
+      const reviewData = { 
+        status: 'RESUBMIT',
+        comment: this.resubmitComment
+
+       };
+      const courseId = this.course?.id.toString();
+  
+      this.courseService.sendReview(courseId, reviewData).subscribe(
+        response => {
+          console.log('Course Resubmitted', response);
+          if (this.role === 'ADMIN') {
+          this.snackBar.open(  'You have requested for re-submission of the Course, a notification containing the related details will be sent to the Author.', 'Close', {
+            verticalPosition: 'top'
+          });
+        }
+        else{
+          this.snackBar.open(  'You have requested for re-submission of the Course, a notification containing the related details will be sent to the Admin.', 'Close', {
+            verticalPosition: 'top'
+          });
+        }
+        
+        },
+        error => {
+          console.error('Error Resubmitting course', error);
+          this.snackBar.open('Error Resubmitting course', 'Close', {
+            verticalPosition: 'top'
+          });
+        }
+      );
+    }
+    
+  
 }

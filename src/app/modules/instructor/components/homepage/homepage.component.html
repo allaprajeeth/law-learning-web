@@ -1,5 +1,25 @@
-
 <div class="container">
+  <nav class="nav-container">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <button mat-button color="primary">Courses for Submission</button>
+      </li>
+      <li class="nav-item">
+        <button mat-button color="primary">Courses Under Review</button>
+      </li>
+      <li class="nav-item">
+        <button mat-button color="primary">Courses for Re-Submission</button>
+      </li>
+      <li class="nav-item">
+        <button mat-button color="primary">Published Courses</button>
+      </li>
+      <li class="nav-item">
+        <button mat-button color="primary">Commented Courses</button>
+      </li>
+    </ul>
+  </nav>
+  
+  
   <div class="heading">
     <div class="heading2">
       <h1>Courses for Submission</h1>
@@ -9,7 +29,8 @@
     <div class="course-grid">
       <div *ngFor="let course of courses" class="course-item">
         <div class="imagesContainer">
-          <img [src]="course.thumbnail ? s3BaseURl + course.thumbnail : course.thumbnail" alt="Random Image" (error)="onImageError($event)">
+          <img [src]="course.thumbnail ? s3BaseURl + course.thumbnail : course.thumbnail" alt="Random Image"
+            (error)="onImageError($event)">
           <div class="overlay">
             <i class="fa fa-play-circle play-icon"></i>
           </div>
@@ -17,16 +38,16 @@
         </div>
         <h3><b>{{ course.title | slice:0:50 }}{{ course.title.length > 50 ? '...' : '' }}</b></h3>
         <div class="reviewstatus">
-        <p> {{ course.createdBy.name }}</p>
-        <p [ngClass]="{
+          <p> {{ course.createdBy.name }}</p>
+          <p [ngClass]="{
           'under-review': course.reviewStatus === 'SUBMITTED',
           'accepted': ['CONTENT_MANAGER_ACCEPTED', 'ADMIN_ACCEPTED', 'REVIEWER_ACCEPTED'].includes(course.reviewStatus),
           'rejected': ['CONTENT_MANAGER_REJECTED' ,'ADMIN_REJECTED', 'REVIEWER_REJECTED'].includes(course.reviewStatus)
         }">
-        {{ course.reviewStatus === 'SUBMITTED' ? 'Under review' : course.reviewStatus }}</p>
-      </div>
-        <h4>{{ course.type | titlecase }}  |  {{ course.difficultyLevel | titlecase }}</h4>
-        
+            {{ course.reviewStatus === 'SUBMITTED' ? 'Under review' : course.reviewStatus }}</p>
+        </div>
+        <h4>{{ course.type | titlecase }} | {{ course.difficultyLevel | titlecase }}</h4>
+
         <div>
           <!-- Pass course ID to onEditCourse method -->
           <button (click)="onEditCourse(course.id)" class="mycourses">Edit Course</button>
@@ -35,9 +56,5 @@
     </div>
   </div>
   <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
-    (pageChange)="onPageChange($event)"></app-shared-pagination>
+      (pageChange)="onPageChange($event)"></app-shared-pagination>
   </div>
-</div>
-
-<br/>
-<br/>

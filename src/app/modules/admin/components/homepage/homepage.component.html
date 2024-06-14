@@ -1,100 +1,132 @@
-<div class="container">
-  <div class="heading">
-    <h1>Courses to Review</h1>
-  </div>
-  <div *ngIf="courses && courses.length">
-    <div class="courses">
-      <ul>
-        <li *ngFor="let course of courses">
-          <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
-            <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" width="300" height="200"
-              alt="Random Image" (error)="onImageError($event)">
-              <div class="overlay">
-                <a>
-                  <i class="fa fa-play-circle play-icon"></i>
-                </a>
-              </div>
-           
-            <span class="duration">{{ course.duration | duration: 's':'hhmmss' }}</span>
-          </div>
-          <h2>{{ course.title }}</h2>
-          <p>{{ course.difficultyLevel }} / {{ course.type }}</p>
-        </li>
-      </ul>
-    </div>
-    <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
-      (pageChange)="onPageChange1($event)"></app-shared-pagination>
-    </div>
-  </div>
-  <div *ngIf="!courses || courses.length === 0">
-    <p>No courses available.</p>
-  </div>
-</div>
+<nav class="nav-container">
+  <ul class="nav-list">
+    <li class="nav-item" [ngClass]="{'active': isHomeRouteActive}">
+      <button mat-raised-button color="primary" (click)="showAdminHome()">Admin Home</button>
+    </li>
+    <li class="nav-item" [ngClass]="{'active': isContentManagerRouteActive}">
+      <button mat-raised-button color="primary" (click)="showContentManagerHome()">Content Manager Home</button>
+    </li>
+    <li class="nav-item" [ngClass]="{'active': isReviewerRouteActive}">
+      <button mat-raised-button color="primary" (click)="showReviewerHome()">Reviewer Home</button>
+    </li>
+  </ul>
+</nav>
 
-<div class="main-container-admin" #articlesSection>
-  <div class="filter-section">
+<!-- Admin Home Page -->
+<div *ngIf="isHomeRouteActive">
+  <div class="container">
     <div class="heading">
-      <h1>Articles To Review</h1>
+      <h1>Courses to Review</h1>
     </div>
-    <div class="flex-container">
-      <div class="my-flex" style="width: 250px;">
-        <mat-form-field appearance="outline" style="width: 100%;">
-          <mat-label>Filter by Category</mat-label>
-          <mat-select style="width: 100%" appearance="outline" [(value)]="selectedCategory" (selectionChange)="filterByCategory($event.value)">
-            <mat-option value="all">All</mat-option>
-            <mat-option value="contentManager">Content Manager</mat-option>
-            <mat-option value="reviewer">Reviewer</mat-option>
-          </mat-select>
-        </mat-form-field>
+    <div *ngIf="courses && courses.length">
+      <div class="courses">
+        <ul>
+          <li *ngFor="let course of courses">
+            <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
+              <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" width="300" height="200"
+                alt="Random Image" (error)="onImageError($event)">
+                <div class="overlay">
+                  <a>
+                    <i class="fa fa-play-circle play-icon"></i>
+                  </a>
+                </div>
+             
+              <span class="duration">{{ course.duration | duration: 's':'hhmmss' }}</span>
+            </div>
+            <h2>{{ course.title }}</h2>
+            <p>{{ course.difficultyLevel }} / {{ course.type }}</p>
+          </li>
+        </ul>
+      </div>
+      <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+        (pageChange)="onPageChange1($event)"></app-shared-pagination>
       </div>
     </div>
+    <div *ngIf="!courses || courses.length === 0">
+      <p>No courses available.</p>
+    </div>
   </div>
-  <div class="post-box">
-    <div class="blog-box" *ngFor="let article of approvedArticles">
-      <div>
-        <div class="article-item" (click)="navigateToArticleDetail(article.id)">
-          <div>
-            <h2 class="article-name">{{ (article.title.length > 50 ? article.title.slice(0, 50) + '...' : article.title) }}</h2>
-            <p class="description">Description: {{ article.description }}</p>
-            <p>Submitted Date: {{ article.files[0].createdDate | date: 'mediumDate' }}</p>
-            <p class="author-name">Author: {{ article.createdBy.name }}</p>
+  
+  <div class="main-container-admin" #articlesSection>
+    <div class="filter-section">
+      <div class="heading">
+        <h1>Articles To Review</h1>
+      </div>
+      <div class="flex-container">
+        <div class="my-flex" style="width: 250px;">
+          <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Filter by Category</mat-label>
+            <mat-select style="width: 100%" appearance="outline" [(value)]="selectedCategory" (selectionChange)="filterByCategory($event.value)">
+              <mat-option value="all">All</mat-option>
+              <mat-option value="contentManager">Content Manager</mat-option>
+              <mat-option value="reviewer">Reviewer</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="post-box">
+      <div class="blog-box" *ngFor="let article of approvedArticles">
+        <div>
+          <div class="article-item" (click)="navigateToArticleDetail(article.id)">
+            <div>
+              <h2 class="article-name">{{ (article.title.length > 50 ? article.title.slice(0, 50) + '...' : article.title) }}</h2>
+              <p class="description">Description: {{ article.description }}</p>
+              <p>Submitted Date: {{ article.files[0].createdDate | date: 'mediumDate' }}</p>
+              <p class="author-name">Author: {{ article.createdBy.name }}</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination2.totalElements"
-  (pageChange)="onPageChange2($event)"></app-shared-pagination>
-</div>
-
-
-
-<div class="container">
-  <div class="heading">
-    <h1>Courses to Publish</h1>
+  <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination2.totalElements"
+    (pageChange)="onPageChange2($event)"></app-shared-pagination>
   </div>
-  <div *ngIf="coursesToPublish && coursesToPublish.length > 0">
-    <div class="courses">
-      <ul>
-        <li *ngFor="let course of coursesToPublish">
-          <div class="imagesContainer" (click)="navigateToCourseInf(course.id)">
-            <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
-            <div class="duration">{{ course.duration }}</div>
-            <div class="overlay">
-              <a>
-                <i class="fa fa-play-circle play-icon"></i>
-              </a>
-            </div>
-            <span class="duration">{{ course.duration }}</span>
-          </div>
-          <h2>{{ course.title }}</h2>
-          <p>{{ course.difficultyLevel }} / {{ course.type }}</p>
-          <button class="publish-button" (click)="publishCourse(course.id)">Publish</button>
-        </li>
-      </ul>
+  
+  <div class="container">
+    <div class="heading">
+      <h1>Courses to Publish</h1>
     </div>
+    <div *ngIf="coursesToPublish && coursesToPublish.length > 0">
+      <div class="courses">
+        <ul>
+          <li *ngFor="let course of coursesToPublish">
+            <div class="imagesContainer" (click)="navigateToCourseInf(course.id)">
+              <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" width="300" height="200" alt="Random Image" (error)="onImageError($event)">
+              <div class="duration">{{ course.duration }}</div>
+              <div class="overlay">
+                <a>
+                  <i class="fa fa-play-circle play-icon"></i>
+                </a>
+              </div>
+              <span class="duration">{{ course.duration }}</span>
+            </div>
+            <h2>{{ course.title }}</h2>
+            <p>{{ course.difficultyLevel }} / {{ course.type }}</p>
+            <button class="publish-button" (click)="publishCourse(course.id)">Publish</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br/>
+    <br/>
   </div>
-  <br/>
-  <br/>
+  </div>
+
+
+<!-- Content Manager Home -->
+<div *ngIf="isContentManagerRouteActive">
+  <div class="container">
+    <h1>Content Manager Home</h1>
+   
+  </div>
+</div>
+
+<!-- Reviewer Home -->
+<div *ngIf="isReviewerRouteActive">
+  <div class="container">
+    <h1>Reviewer Home</h1>
+    
+  </div>
 </div>

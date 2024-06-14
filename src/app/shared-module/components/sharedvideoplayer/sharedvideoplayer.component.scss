@@ -14,9 +14,10 @@
   background: #3a3a39;
   height: 505px;
 }
+
 .playing-video-title {
- background-color: #a5cbcb;
-  width:100%
+  background-color: #a5cbcb;
+  width: 100%
 }
 
 .side-bar {
@@ -29,6 +30,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .close-button {
   cursor: pointer;
   margin-right: 15px;
@@ -36,13 +38,16 @@
   color: #000000;
   font-size: 25px;
 }
+
 .mat-expansion-panel {
   padding: 8px;
   background-color: #f7f9fa;
 }
+
 .checkbox-input {
   margin-right: 25px;
 }
+
 .title-text {
   font-size: 16px;
   font-weight: 550;
@@ -54,17 +59,20 @@
   // font-size: 16px;
   cursor: pointer;
 }
-.arrow-icon{
-    margin-top: -9px;
+
+.arrow-icon {
+  margin-top: -9px;
 }
 
-.documentspdf{
+.documentspdf {
   display: flex;
 }
-.doc{
+
+.doc {
   padding: 5px;
   //font-size: 16px;
 }
+
 .next-video-container {
   align-items: center;
   justify-content: center;
@@ -82,21 +90,26 @@
   margin-left: 25%;
   margin-top: 5px;
 }
+
 .staricon {
   font-size: 30px;
   width: 30px;
   height: 30px;
 }
+
 .active {
   color: yellow;
 }
+
 .mat-expansion-panel-header {
   background-color: #f7f9fa;
 }
+
 .video-panel-button {
   border: none;
   display: block;
 }
+
 .video-item {
   display: flex;
   justify-content: space-between;
@@ -115,13 +128,15 @@
 // }
 
 .videos-title {
-  margin-right: 40px; 
+  margin-right: 40px;
 }
 
 .custom-icon {
-  margin-right: 10px; /* Adjust the space between the icon and the title */
+  margin-right: 10px;
+  /* Adjust the space between the icon and the title */
   vertical-align: middle;
 }
+
 // .filename {
 //   display: flex;
 //   align-items: center;
@@ -135,6 +150,7 @@
   margin-left: 40px;
   margin-top: 20px;
 }
+
 .approved {
   color: green;
 }
@@ -146,6 +162,7 @@
 .resource_icon {
   font-size: 16px;
 }
+
 .open-sidebar {
   position: absolute;
   left: 0;
@@ -156,19 +173,22 @@
   color: white;
   top: 30px;
 }
+
 .video-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  margin-left:-80px;
+  margin-left: -80px;
   width: 74vw;
   height: 100%;
-  background-color: rgb(12, 12, 12); 
-  z-index: 1; 
+  background-color: rgb(12, 12, 12);
+  z-index: 1;
 }
+
 .video-info-container {
   font-family: Arial, sans-serif;
 }
+
 .video-container {
   width: 65vw;
   background: #3a3a39;
@@ -177,32 +197,38 @@
   margin-left: 90px;
   margin-right: 60px;
 }
+
 .next-button {
   position: absolute;
   top: 50%;
   left: 50%;
-  color:rgb(176, 174, 174);
- font-size: 20px;
+  color: rgb(176, 174, 174);
+  font-size: 20px;
   transform: translate(-50%, -50%);
-  z-index: 27; 
+  z-index: 27;
 }
+
 .large-icon {
-  font-size: 70px; 
-  width:70px;
-  height:70px;
+  font-size: 70px;
+  width: 70px;
+  height: 70px;
 }
+
 .resources {
   margin-left: 40px;
 }
+
 .resources a {
   color: black;
   padding: 4px;
   text-decoration: none;
 }
+
 video {
   width: 100%;
   aspect-ratio: 16/9;
 }
+
 .custom-icon {
   font-size: 16px;
 }
@@ -230,29 +256,36 @@ video::-webkit-media-controls-enclosure {
   color: white;
   font-size: 40px;
 }
+
 .video-panel-button {
   margin-bottom: 16px;
 }
+
 .play-icon {
   font-size: 100px;
   height: 100px;
   width: 100px;
 }
-.custom-icon1{
+
+.custom-icon1 {
   margin-top: 10px;
 }
-.progress-info{
+
+.progress-info {
   display: flex;
   justify-content: space-evenly;
-  margin:2% 0%;
+  margin: 2% 0%;
 }
+
 ::ng-deep .mat-expansion-panel-body {
   padding: 0px;
 }
+
 .approve-reject-buttons {
   display: flex;
-  justify-content: space-between;
+  gap: 10px;
   margin-top: 10px;
+  margin-left: -15px;
 }
 
 button {
@@ -288,6 +321,7 @@ button[color="warn"] {
 button[color="warn"]:hover {
   background-color: #c82333;
 }
+
 .comment-box {
   margin-top: 10px;
 }
@@ -305,22 +339,24 @@ textarea {
 button[color="primary"] {
   margin-left: 10px;
 }
+
 .pdf-link {
-  text-decoration: none; 
-  color: black; 
+  text-decoration: none;
+  color: black;
 }
 
 .subsection-space {
-  margin-bottom: 20px; 
-  margin-top:10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
+
 .no-video-message {
-  color: white; 
-  font-size: 24px; 
-  text-align: center; 
-  position: absolute; 
-  top: 50%; 
-  left: 50%; 
-  transform: translate(-50%, -50%); 
-  z-index: 999; 
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
 }

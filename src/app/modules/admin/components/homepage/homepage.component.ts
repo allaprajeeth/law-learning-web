@@ -33,6 +33,11 @@ export class HomepageComponent implements OnInit {
   pagination2: Pagination = new Pagination();
   selectedCategory: string | undefined;
   @ViewChild('articlesSection') articlesSection!: ElementRef;
+  isHomeRouteActive: boolean = true;
+  isContentManagerRouteActive: boolean = false;
+  isReviewerRouteActive: boolean = false;
+
+  
 
   constructor(
     private adminService: AdminService,
@@ -196,6 +201,25 @@ export class HomepageComponent implements OnInit {
     if (this.articlesSection) {
       this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  }
+
+
+  showAdminHome() {
+    this.isHomeRouteActive = true;
+    this.isContentManagerRouteActive = false;
+    this.isReviewerRouteActive = false;
+  }
+
+  showContentManagerHome() {
+    this.isHomeRouteActive = false;
+    this.isContentManagerRouteActive = true;
+    this.isReviewerRouteActive = false;
+  }
+
+  showReviewerHome() {
+    this.isHomeRouteActive = false;
+    this.isContentManagerRouteActive = false;
+    this.isReviewerRouteActive = true;
   }
 
 }

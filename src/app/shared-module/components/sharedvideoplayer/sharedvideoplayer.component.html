@@ -41,20 +41,27 @@
                   <div class="videos-title-and-status">
                     <div class="videos-title" (click)="playVideo(i, j)">
                       <mat-icon class="custom-icon mat-icon-small">videocam</mat-icon>{{ subSection ?.title }}
-                  <p  [style.color]="getReviewStatusColor(subSection?.reviewStatus)">{{subSection ?.reviewStatus }}</p>
+                      <p [style.color]="getReviewStatusColor(subSection?.reviewStatus)">{{subSection ?.reviewStatus }}
+                      </p>
 
-                  <ng-container *ngIf="subSection.file && subSection.file.contentType === 'application/pdf'">
-                    <p class="filename">
-                      <span class="pdf-icon material-icons" style="color: red; vertical-align: middle;">picture_as_pdf</span>
-                      <a [href]="getDownloadUrl(subSection.file.url)" download="{{ subSection.file.fileName }}" class="pdf-link">
-                        {{ subSection.file.fileName }}
-                      </a>
-                    </p>
-                  </ng-container>
+                      <ng-container *ngIf="subSection.file && subSection.file.contentType === 'application/pdf'">
+                        <p class="filename">
+                          <span class="pdf-icon material-icons"
+                            style="color: red; vertical-align: middle;">picture_as_pdf</span>
+                          <a [href]="getDownloadUrl(subSection.file.url)" download="{{ subSection.file.fileName }}"
+                            class="pdf-link">
+                            {{ subSection.file.fileName }}
+                          </a>
+                        </p>
+                      </ng-container>
                     </div>
                     <div class="status" *ngIf="subSection.reviewStatus !== 'SUBMITTED'">
-                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'" class="approved">Approved</span>
-                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED'" class="rejected">Rejected</span>
+                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'"
+                        class="approved">Approved</span>
+                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED'"
+                        class="rejected">Rejected</span>
+
+
                     </div>
                   </div>
                   <div class="time-duration" style="color: rgb(122, 119, 119)">
@@ -69,30 +76,37 @@
                 <button mat-button color="warn" (click)="toggleCommentBox(subSection)">
                   Reject
                 </button>
+                <button *ngIf="role !=='CONTENTMANAGER'" mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)" >Resubmit</button>
               </div>
 
               <div *ngIf="subSection.showCommentBox" class="comment-box">
-                <textarea matInput placeholder="Enter your comment..." [(ngModel)]="subSection.rejectionComment"></textarea>
-                <button mat-button color="primary" (click)="rejectVideo(section, subSection, 'REJECTED', subSection.rejectionComment)">Send</button>
+                <textarea matInput placeholder="Enter your comment..."
+                  [(ngModel)]="subSection.rejectionComment"></textarea>
+                <button mat-button color="primary"
+                  (click)="rejectVideo(section, subSection, 'REJECTED', subSection.rejectionComment)">Send</button>
               </div>
-
+              <div *ngIf="subSection.showResumbitCommentBox" class="comment-box">
+                <textarea matInput placeholder="Enter your comment..."
+                  [(ngModel)]="subSection.reSubmissionComment"></textarea>
+                <button mat-button color="primary"
+                  (click)="ResubmitVideo(section, subSection, 'REJECTED', subSection.reSubmissionComment)">Send</button>
+              </div>
             </ng-container>
           </div>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-card>
 
-  <div #videocontainer class="video-container video-container-sidebar">
-    <video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
-    </video>
-    <!-- <div *ngIf="!isVideoAvailable()" class="no-video-message">
+    <div #videocontainer class="video-container video-container-sidebar">
+      <video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
+      </video>
+      <!-- <div *ngIf="!isVideoAvailable()" class="no-video-message">
       Video file is not uploaded.
     </div> -->
-   
 
-    <div [style.display]="!sidebarVisible ? 'block' : 'none'">
-      <button class="open-sidebar" (click)="openSidebar()" *ngIf="isVideoAvailable()">CourseContent</button>
+
+      <div [style.display]="!sidebarVisible ? 'block' : 'none'">
+        <button class="open-sidebar" (click)="openSidebar()" *ngIf="isVideoAvailable()">CourseContent</button>
+      </div>
+
     </div>
-    
-  </div>
-  
