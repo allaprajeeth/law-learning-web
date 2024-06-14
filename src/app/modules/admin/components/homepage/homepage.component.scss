@@ -13,7 +13,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   background-color: #FFFFFF;
-  justify-content:center;
+  justify-content: center;
 }
 
 .no-results-message {
@@ -117,7 +117,7 @@ button:hover {
 
 .imagesContainer {
   position: relative;
-  
+
   .duration {
     position: absolute;
     bottom: 5px;
@@ -136,23 +136,23 @@ button:hover {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(117, 116, 116, 0.7); 
-  opacity: 0; 
-  transition: opacity 0.3s; 
+  background-color: rgba(117, 116, 116, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s;
   justify-content: center;
-  align-items: center;    
+  align-items: center;
 }
 
 .imagesContainer:hover .overlay {
-  display: flex; 
-  opacity: 1; 
+  display: flex;
+  opacity: 1;
   width: 230px;
   height: 200px;
   cursor: pointer;
 }
 
 .fa-play-circle.play-icon {
-  font-size: 5rem; 
+  font-size: 5rem;
   color: white;
 }
 
@@ -162,7 +162,8 @@ button:hover {
   object-fit: cover;
 }
 
-h3, p {
+h3,
+p {
   margin-top: 5px;
 }
 
@@ -210,7 +211,7 @@ p {
   cursor: pointer;
   background-color: #f4eded;
   border-radius: 10%;
-  transition: transform 0.3s, box-shadow 0.3s; 
+  transition: transform 0.3s, box-shadow 0.3s;
   padding: 20px;
 }
 
@@ -250,7 +251,7 @@ mat-icon {
     display: flex;
     justify-content: space-between;
     margin-right: 80px;
-    
+
   }
 
   .flex-container {
@@ -278,4 +279,29 @@ mat-icon {
 
 .publish-button:hover {
   background-color: #45a049;
+}
+
+.nav-container {
+  padding: 10px 0;
+  margin: 20px 0px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  margin: 0 10px;
+}
+
+.nav-item.active button.mat-button {
+  background-color: blue;
+  color: #fff;
+  font-weight: bold;
 }

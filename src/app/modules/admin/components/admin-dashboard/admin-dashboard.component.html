@@ -1,9 +1,8 @@
-
 <div class="heading">
   <h1>Admin-Dashboard</h1>
 </div>
 
-<div  *ngIf="showcredentialStatus" class="main-container">
+<div *ngIf="showcredentialStatus" class="main-container">
   <div class="sidenav">
     <app-dashboard-sidenav></app-dashboard-sidenav>
   </div>
@@ -13,66 +12,99 @@
       <h2>Create login credentials for Reviewer, Content Manager, Instructor, and other Admins.</h2>
       <form [formGroup]="loginForm" (ngSubmit)="submit()">
         <div class="left-right">
-        <div class="left">
-        <div class="input-group">
-        <div><label for="username" style="color: red;">*</label>User Name</div>  
-          <input type="text" id="username" formControlName="name" required />
-        </div>
+          <div class="left">
+            <div class="input-group">
+              <div>
+                <label for="salutation" style="color: red;">*</label>Salutation
+              </div>
+              <select id="salutation" formControlName="salutation" required>
+                <option value="MR">Mr.</option>
+                <option value="MS">Ms.</option>
+                <option value="MRS">Mrs.</option>
+                <option value="MISS">Miss</option>
+                <option value="DR">Dr.</option>
+                <option value="PROF">Prof.</option>
+              </select>
+            </div>
 
-        <div class="input-group">
-          <div> <label for="email" style="color: red;">*</label>Email</div>
-          <input type="email" id="email" formControlName="email" required />
-        </div>
+            <div class="input-group">
+              <div>
+                <label for="username" style="color: red;">*</label>User Name
+              </div>
+              <input type="text" id="username" formControlName="name" required />
+            </div>
+            <div class="input-group">
+              <div>
+                <label for="gender" style="color: red;">*</label>Gender
+              </div>
+              <select id="gender" formControlName="gender" required>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+              </select>
+            </div>
 
-        <div class="input-group">
-          <div><label for="phoneNumber" style="color: red;">*</label>Phone Number</div>
-          <input type="tel" id="phoneNumber" formControlName="phone" required />
-        </div>
-        <div class="input-group">
-          <label for="role">Role</label>
-          <select id="role" formControlName="role" required>
-            <option value="INSTRUCTOR">Instructor</option>
-            <option value="CONTENTMANAGER">Content Manager</option>
-            <option value="REVIEWER">Reviewer</option>
-            <option value="ADMIN">Admin</option>
-            <option value="SUBSCRIBER">Subscriber</option>
-          </select>
-        </div>
-      </div>
-      <div class="right">
-        <div class="input-group">
-          <div><label for="status" style="color: red;">*</label>Job Tite</div>
-          <input type="text" id="status" formControlName="jobTitle" required />
-        </div>
+            <div class="input-group">
+              <div>
+                <label for="email" style="color: red;">*</label>Email
+              </div>
+              <input type="email" id="email" formControlName="email" required />
+            </div>
 
-        <div class="input-group">
-          <div><label for="status" style="color: red;">*</label>Status</div>
-          <input type="text" id="status" formControlName="status" required />
+            <div class="input-group">
+              <div>
+                <label for="phoneNumber" style="color: red;">*</label>Phone Number
+              </div>
+              <input type="tel" id="phoneNumber" formControlName="phone" required />
+            </div>
+
+
+
+
+          </div>
+          <div class="right">
+            <div class="input-group">
+              <label for="role">Role</label>
+              <select id="role" formControlName="role" required>
+                <option value="INSTRUCTOR">Instructor</option>
+                <option value="CONTENTMANAGER">Content Manager</option>
+                <option value="REVIEWER">Reviewer</option>
+                <option value="ADMIN">Admin</option>
+                <option value="SUBSCRIBER">Subscriber</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <div>
+                <label for="jobTitle" style="color: red;">*</label>Job Title
+              </div>
+              <input type="text" id="jobTitle" formControlName="jobTitle" required />
+            </div>
+
+            <div class="input-group">
+              <div>
+                <label for="status" style="color: red;">*</label>Status
+              </div>
+              <input type="text" id="status" formControlName="status" required />
+            </div>
+
+            <div class="input-group">
+              <div>
+                <label for="about" style="color: red;">*</label>About
+              </div>
+              <input type="text" id="about" formControlName="about" required />
+            </div>
+          </div>
         </div>
-       
-        
-        <div class="input-group">
-          <div><label for="about" style="color: red;">*</label>About</div>
-          <input type="text" id="status" formControlName="about" required />
-        </div>
-      </div>
-    </div>
-        <button [disabled]="!loginForm.valid" type="submit" (click)="submit">Submit</button>
+        <button [disabled]="!loginForm.valid" type="submit">Submit</button>
       </form>
       <p class="btn-text">Please fill valid details in all the fields to enable the Submit button.</p>
     </div>
   </div>
 </div>
 
-
-
-<div  *ngIf="showMessageStatus" class="message-status">
+<div *ngIf="showMessageStatus" class="message-status">
   <div class="submission-status">
     <span class="close-icon" (click)="closePage()">&#10006;</span>
     <h3>User Created Successfully!</h3>
     <button class="close-button" (click)="closePage()">Close</button>
   </div>
 </div>
-
-
-

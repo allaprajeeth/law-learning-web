@@ -6,6 +6,8 @@ import { HttpResponse } from '../../models/response.model';
 import { endPoints } from '../../constants/endpoints';
 import { CourseSearch } from '../../models/course-search.model';
 import { Pagination } from '../../models/pagination.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -14,54 +16,72 @@ import { Pagination } from '../../models/pagination.model';
 })
 export class HeaderComponent implements OnInit {
   @ViewChild('paidCoursesSection') paidCourseSection!: ElementRef;
-  paidCourses: any[] = [];
-  freeCourses: Course[] = [];
+  instituteCourses: { [key: string]: Course[] } = {};
+  curatedCourses: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL;
   selectedCategory: string = '';
   selectedCourseType: string = '';
   title = 'my-first-app';
   pagination1: Pagination = new Pagination();
   pagination2: Pagination = new Pagination();
+  institutes: any[] = []; 
 
-  constructor(private router: Router, private coursesService: CoursesService) {}
+  constructor(
+    private router: Router,
+    private coursesService: CoursesService,
+    private http: HttpClient
+  ) {}
 
   ngOnInit(): void {
-    this.initializeFreeCoursesHeadings({ isPublic: true });
-    this.initializePaidCoursesHeadings({ isPublic: false }, true);
+    this.initializecuratedCourses({ isPublic: true });
+
+    this.getAllInstitutes().subscribe(
+      (response) => {
+        console.log('Institutes data:', response); // Log the data structure
+        if (response && Array.isArray(response.data)) {
+          this.institutes = response.data;
+          this.institutes.forEach((institute: any) => {
+            this.initializePaidCoursesHeadings(institute.name);
+          });
+        } else {
+          console.error('Unexpected data format for institutes', response);
+        }
+      },
+      (error) => {
+        console.error('Error fetching institutes', error);
+      }
+    );
   }
 
-  private initializeFreeCoursesHeadings(search: CourseSearch): void {
-    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}&sort=createdDate,desc`
-    const queryParams = { ...search};
-    this.coursesService.get(url,queryParams,)
+  getAllInstitutes(): Observable<any> {
+    const url = `${endPoints.secureBaseURL}${endPoints.course}/institutions`;
+    return this.http.get<any>(url);
+  }
+
+  private initializecuratedCourses(search: CourseSearch): void {
+    const url = `${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}&sort=createdDate,desc`;
+    const queryParams = { ...search };
+    this.coursesService
+      .get(url, queryParams)
       .subscribe((response: HttpResponse<Course>) => {
         for (var i in response.records) {
-          this.freeCourses.push(response.records[i]);
+          this.curatedCourses.push(response.records[i]);
         }
         this.pagination1 = response.pagination;
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
   }
 
-  private initializePaidCoursesHeadings(search: CourseSearch, reload: boolean): void {
-    const url=`${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}&sort=createdDate,desc`
-    const queryParams = { ...search};
-    this.coursesService.get(url ,queryParams )
-      .subscribe((response: HttpResponse<Course>) => {
-        if (reload) this.paidCourses = [];
-        for (var i in response.records) {
-          this.paidCourses.push(response.records[i]);
-        }
-        this.pagination2 = response.pagination;
-      });
+  private initializePaidCoursesHeadings(instituteName: string): void {
+    const url = `${endPoints.search_courses}?page=${this.pagination2.page}&size=${this.pagination2.size}&sort=createdDate,desc&institute=${instituteName}`;
+  
+    this.coursesService.get(url).subscribe((response: HttpResponse<Course>) => {
+      this.instituteCourses[instituteName] = response.records;
+      this.pagination2 = response.pagination;
+    });
   }
 
-  updateSelectedCourseType(level: string, courseType: string): void {
-    this.initializePaidCoursesHeadings(
-      { type: courseType, level: level },
-      true
-    );
-  }
+ 
 
   showCourseContent(id: number) {
     this.router.navigate(['/freecourse'], { queryParams: { _id: id } });
@@ -75,19 +95,21 @@ export class HeaderComponent implements OnInit {
     this.pagination1.page = pagination.page;
     this.pagination1.size = pagination.size;
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    this.initializeFreeCoursesHeadings({ isPublic: true });
+    this.initializecuratedCourses({ isPublic: true });
   }
 
   onPageChange2(pagination: Pagination) {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
-    this.initializePaidCoursesHeadings({ isPublic: false }, true);
-    this.scrollToArticlesSection()
-    
+    // this.initializePaidCoursesHeadings({ isPublic: false }, true);
+    this.scrollToArticlesSection();
   }
   private scrollToArticlesSection() {
     if (this.paidCourseSection) {
-      this.paidCourseSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      this.paidCourseSection.nativeElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
     }
   }
 }

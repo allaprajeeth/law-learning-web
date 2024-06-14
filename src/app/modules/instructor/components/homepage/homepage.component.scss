@@ -83,22 +83,25 @@
         background-color: #0056b3;
       }
     }
+
     .reviewstatus {
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+
     .under-review {
       color: blue;
     }
+
     .accepted {
       color: green;
     }
-    
+
     .rejected {
       color: red;
     }
-    
+
     h4 {
       font-size: 16px;
       font-weight: bold;
@@ -267,8 +270,8 @@
 
 
     span {
-      font-size: 12px; 
-      text-align: center; 
+      font-size: 12px;
+      text-align: center;
     }
   }
 
@@ -376,3 +379,24 @@
   }
 }
 
+
+.nav-container {
+  margin: 40px 0px;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+}
+
+.nav-item {
+  margin: 0;
+}
+
+.nav-item button {
+  width: 100%;
+  text-align: left;
+}

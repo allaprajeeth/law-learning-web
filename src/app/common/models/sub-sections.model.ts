@@ -16,6 +16,8 @@ export class SubSection extends BaseModel<SubSection> {
   public reviewStatus!: string;
   showCommentBox?: boolean;
   rejectionComment?: string;
+  showResumbitCommentBox?: boolean;
+  reSubmissionComment?: string;
   constructor(model?: SubSection) {
     super(model);
   }

@@ -49,4 +49,20 @@ export class HomepageComponent implements OnInit {
     this.getCourses();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  getReSubmissionCourses() {
+    return this.courses.filter(course => ['ADMIN_RESUBMIT'].includes(course.reviewStatus));
+  }
+
+  getUnderReviewCourses() {
+    return this.courses.filter(course => course.reviewStatus === 'SUBMITTED');
+  }
+
+  getAcceptedCourses() {
+    return this.courses.filter(course => [ 'ADMIN_ACCEPTED', ].includes(course.reviewStatus));
+  }
+
+  getCommentedCourses() {
+    return this.courses.filter(course => ['ADMIN__REJECTED'].includes(course.reviewStatus));
+  }
 }

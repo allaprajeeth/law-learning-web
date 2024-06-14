@@ -39,6 +39,7 @@ export class SharedvideoplayerComponent {
   currentPlayingVideoIndex: number = -1;
   documents: boolean = false;
   noVideoMessage: string = '';
+  role:string =''
  
  
   showDocs() {
@@ -92,7 +93,7 @@ export class SharedvideoplayerComponent {
   ngOnInit() {
     this.initializePlayer();
     this.setupPlayerEventListeners();
-   
+    this.role = this.authService.getUserRole();
   }
   private setupPlayerEventListeners() {
     if (this.player) {
@@ -250,6 +251,10 @@ export class SharedvideoplayerComponent {
     subSection.showCommentBox = !subSection.showCommentBox;
     subSection.comment = ''; 
   }
+  toggleResubmitCommentBox(subSection: any) {
+    subSection.showResumbitCommentBox = !subSection.showResumbitCommentBox;
+    subSection.comment = ''; 
+  }
 
   rejectVideo(section: Section, subSection: SubSection, status: string, rejectionComment: string | undefined) {
     const courseId = this.course?.id;
@@ -287,5 +292,39 @@ export class SharedvideoplayerComponent {
       verticalPosition: 'top',
       panelClass: ['reject-snackbar'] 
     });
+  }
+
+  ResubmitVideo(section: Section, subSection: SubSection, status: string, reSubmissionComment: string | undefined) {
+    const courseId = this.course?.id;
+  
+    const body = {
+      sectionId: section.id,
+      subSectionId: subSection.id,
+      status: status,
+      summary: reSubmissionComment 
+    };
+    
+    this.courseService.sendReview(String(courseId), body).subscribe(
+      response => {
+        subSection.reviewStatus = status; 
+        subSection.showResumbitCommentBox = false;
+        if (this.role === 'ADMIN') {
+          this.snackBar.open(  'You have requested for re-submission of the Course, a notification containing the related details will be sent to the Author.', 'Close', {
+            verticalPosition: 'top'
+          });
+        }
+        else{
+          this.snackBar.open(  'You have requested for re-submission of the Course, a notification containing the related details will be sent to the Admin.', 'Close', {
+            verticalPosition: 'top'
+          });
+        }
+        
+      },
+      error => {
+        console.error('Error approving video:', error);
+      }
+    );
+    subSection.reviewStatus = status;
+    console.log('status',status )
   }
 }
