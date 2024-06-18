@@ -1,16 +1,22 @@
+
 <nav class="nav-container">
   <ul class="nav-list">
     <li class="nav-item" [ngClass]="{'active': isHomeRouteActive}">
-      <button mat-raised-button color="primary" (click)="showAdminHome()">Admin Home</button>
+      <button  (click)="showAdminHome()">Admin Home-page</button>
     </li>
     <li class="nav-item" [ngClass]="{'active': isContentManagerRouteActive}">
-      <button mat-raised-button color="primary" (click)="showContentManagerHome()">Content Manager Home</button>
+      <button  (click)="showContentManagerHome()">Content Manager Home-page</button>
     </li>
     <li class="nav-item" [ngClass]="{'active': isReviewerRouteActive}">
-      <button mat-raised-button color="primary" (click)="showReviewerHome()">Reviewer Home</button>
+      <button  (click)="showReviewerHome()">Reviewer Home-page</button>
     </li>
   </ul>
 </nav>
+
+
+
+
+
 
 <!-- Admin Home Page -->
 <div *ngIf="isHomeRouteActive">
@@ -115,18 +121,73 @@
   </div>
 
 
-<!-- Content Manager Home -->
+<!--Content-manager homepage-->
+
 <div *ngIf="isContentManagerRouteActive">
   <div class="container">
-    <h1>Content Manager Home</h1>
-   
-  </div>
+    <div class="heading">
+      <h1>Courses to Review</h1>
+    </div>
+    <!-- <div *ngIf="courses && courses.length"> -->
+      <div class="courses">
+  <ul>
+    <li *ngFor="let course of courses">
+      <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
+        <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" width="300" height="200"
+        alt="Random Image" (error)="onImageError($event)">
+        <div class="overlay">
+          <a>
+            <i class="fa fa-play-circle play-icon"></i>
+          </a>
+        </div>
+      <h2>  {{ course.title }}</h2>
+      <p>{{ course.difficultyLevel }} / {{ course.type }}</p>
+      </div>
+    </li>
+  </ul>
 </div>
-
-<!-- Reviewer Home -->
-<div *ngIf="isReviewerRouteActive">
-  <div class="container">
-    <h1>Reviewer Home</h1>
-    
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+  (pageChange)="onPageChange1($event)"></app-shared-pagination>
+</div>
+    </div>
+    <div *ngIf="!courses || courses.length === 0">
+      <p>No courses available.</p>
+    </div>
   </div>
+
+
+<!-- Reviewer Home-page -->
+<div *ngIf="isReviewerRouteActive">
+
+    <h1>Reviewer Home</h1>
+    <div class="container">
+      <div class="heading">
+        <h1>Courses to Review</h1>
+      </div>
+      <!-- <div *ngIf="courses && courses.length"> -->
+        <div class="courses">
+    <ul>
+      <li *ngFor="let course of courses">
+        <div class="imagesContainer" (click)="navigateToCourseInfo(course.id)">
+          <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" width="300" height="200"
+          alt="Random Image" (error)="onImageError($event)">
+          <div class="overlay">
+            <a>
+              <i class="fa fa-play-circle play-icon"></i>
+            </a>
+          </div>
+        <h2>  {{ course.title }}</h2>
+        <p>{{ course.difficultyLevel }} / {{ course.type }}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+    (pageChange)="onPageChange1($event)"></app-shared-pagination>
+  </div>
+      </div>
+      <div *ngIf="!courses || courses.length === 0">
+        <p>No courses available.</p>
+      </div>
+ 
 </div>

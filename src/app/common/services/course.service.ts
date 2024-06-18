@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Course } from '../models/course.model';
@@ -125,6 +125,28 @@ export class CourseService {
   publishCourse(courseId: number): Observable<any> {
     const url = `${endPoints.baseURL}/secure/admin/courses/publish/${courseId}`;
     return this.httpClient.post(url, {});
+  }
+
+  getCmReviewCourses(pagination: Pagination): Observable<ApiResponse> {
+    const url = `${endPoints.baseURL}/secure/courses/review`;
+    const params = new HttpParams()
+      .set('number', pagination.page.toString())
+      .set('size', pagination.size.toString())
+      .set('sort', 'createdDate,DESC')
+      .set('filters', 'filterKey:reviewStatus,operation:equal,value:SUBMITTED');
+
+    return this.httpClient.get<ApiResponse>(url, { params });
+  }
+
+  getRevReviewCourses(pagination: Pagination): Observable<ApiResponse> {
+    const url = `${endPoints.baseURL}/secure/courses/review`;
+    const params = new HttpParams()
+      .set('number', pagination.page.toString())
+      .set('size', pagination.size.toString())
+      .set('sort', 'createdDate,DESC')
+      .set('filters', 'filterKey:reviewStatus,operation:equal,value:CONTENT_MANAGER_ACCEPTED');
+
+    return this.httpClient.get<ApiResponse>(url, { params });
   }
   
 }

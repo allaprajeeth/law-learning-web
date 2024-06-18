@@ -210,19 +210,52 @@ export class HomepageComponent implements OnInit {
     this.isReviewerRouteActive = false;
   }
 
-  showContentManagerHome() {
-    this.isHomeRouteActive = false;
-    this.isContentManagerRouteActive = true;
-    this.isReviewerRouteActive = false;
-  }
+  // showContentManagerHome() {
+  //   this.isHomeRouteActive = false;
+  //   this.isContentManagerRouteActive = true;
+  //   this.isReviewerRouteActive = false;
+  // }
 
   showReviewerHome() {
+    this.courseService.getRevReviewCourses(this.pagination1).subscribe(
+      (response: ApiResponse) => {
+        if (response && response.data && response.data.content) {
+          this.courses = response.data.content;
+          console.log('Reviewer Courses:', this.courses);
+        } else {
+          console.error('Invalid response format:', response);
+        }
+      },
+      (error) => {
+        console.error('Error fetching Reviewer courses:', error);
+      }
+    ); 
     this.isHomeRouteActive = false;
     this.isContentManagerRouteActive = false;
     this.isReviewerRouteActive = true;
   }
 
+  showContentManagerHome(): void {
+    this.courseService.getCmReviewCourses(this.pagination1).subscribe(
+      (response: ApiResponse) => {
+        if (response && response.data && response.data.content) {
+          this.courses = response.data.content;
+          console.log('Content Manager Courses:', this.courses);
+        } else {
+          console.error('Invalid response format:', response);
+        }
+      },
+      (error) => {
+        console.error('Error fetching content manager courses:', error);
+      }
+    );
+    this.isContentManagerRouteActive = true;
+    this.isHomeRouteActive = false;
+    this.isReviewerRouteActive = false;
+  }
 }
+
+
 
 
 
