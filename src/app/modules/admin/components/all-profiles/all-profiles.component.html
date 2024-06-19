@@ -16,7 +16,7 @@
         <th class="align">Username</th>
         <th>Profile</th>
         <th>Status</th>
-        <th>Inactivate the user</th>
+        <th>Change the status of the user</th>
         <!-- class="align" -->
       </tr>
       <tr
@@ -35,13 +35,20 @@
         <td [ngStyle]="getStatusStyles(profile.status)">
           {{ profile.status }}
         </td>
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="onToggleUserActivation(profile.id, $event)"
-        >
-          {{ profile.isActive ? "Activate" : "Inactivate" }} the user
-        </button>
+        <td>
+          <button
+            mat-raised-button
+            color="primary"
+            [color]="profile.status !== 'ACTIVE' ? 'primary' : 'warn'"
+            (click)="onToggleUserActivation(profile.id, profile.status, $event)"
+          >
+            {{
+              profile.status === "ACTIVE"
+                ? "Inactivate the user"
+                : "Activate the user"
+            }}
+          </button>
+        </td>
       </tr>
     </tbody>
     <tfoot>
