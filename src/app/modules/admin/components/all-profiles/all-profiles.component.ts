@@ -101,6 +101,8 @@ export class AllProfilesComponent implements OnInit {
         return { color: 'blue' };
       case 'blocked':
         return { color: 'red' };
+      case 'archived':
+        return { color: 'red' };
       case 'active':
         return { color: 'green' };
       default:
@@ -108,49 +110,72 @@ export class AllProfilesComponent implements OnInit {
     }
   }
 
-  onToggleUserActivation(profileId: string, event: Event) {
+  onToggleUserActivation(
+    profileId: number,
+    status: string,
+    event: Event
+  ): void {
     event.stopPropagation();
-    const user = this.getUserById(profileId);
-    console.log(profileId);
+    console.log(status);
+
+    const newStatus = status === 'ACTIVE' ? 'ARCHIVED' : 'ACTIVE';
+    const confirmationMessage =
+      status === 'ACTIVE'
+        ? 'Do you want to inactivate the user?'
+        : 'Do you want to activate the user?';
 
     const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
       width: '350px',
       data: {
-        message: `Do you want to ${
-          user.isActive ? 'inactivate' : 'activate'
-        } the user?`,
+        message: confirmationMessage,
       },
     });
 
-    dialogRef.afterClosed().subscribe(async (result) => {
+    dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        const baseUrl = endPoints.secureBaseURL;
-        const apiUrl =
-          baseUrl + `/admin/user-profile/${profileId}?status=${user.status}`;
-        const action = user.isActive ? 'deactivate' : 'activate';
+        try {
+          const baseUrl = endPoints.secureBaseURL;
+          const apiUrl =
+            baseUrl + `/admin/user-profile/${profileId}?status=${newStatus}`;
 
-        this.http.put(apiUrl, { action }).subscribe(
-          () => {
-            user.isActive = !user.isActive; // Toggle activation status
-            const message = user.isActive
-              ? 'User activated successfully'
-              : 'User inactivated successfully';
-            this.snackBar.open(message, 'Close', { verticalPosition: 'top' });
-          },
-
-          // this.libraries = this.libraries.filter(
-          //   (library) => library.id !== libraryId
-          // );
-
-          (error) => {
-            console.error('Error inactivating the user', error);
-          }
-        );
+          this.http.delete(apiUrl).subscribe(
+            () => {
+              status = newStatus;
+              this.allProfiles = this.allProfiles.map((profile) => {
+                if (profile.id === profileId) {
+                  return {
+                    ...profile,
+                    status: newStatus,
+                  };
+                } else {
+                  return profile;
+                }
+              });
+              const message =
+                newStatus === 'ACTIVE'
+                  ? 'User activated successfully'
+                  : 'User inactivated successfully';
+              this.snackBar.open(message, 'Close', { duration: 5000 });
+            },
+            (error) => {
+              console.error('Error toggling user activation:', error);
+              this.snackBar.open(
+                'Failed to update user status. Please try again.',
+                'Close',
+                { duration: 5000 }
+              );
+            }
+          );
+        } catch (error) {
+          console.error('Error toggling user activation:', error);
+          this.snackBar.open(
+            'Failed to update user status. Please try again.',
+            'Close',
+            { duration: 5000 }
+          );
+        }
       }
     });
-  }
-  getUserById(profileId: string): UserProfile {
-    return this.allProfiles.find((profile) => profile.id === profileId);
   }
 
   fetchAdvisorProfiles(): void {
