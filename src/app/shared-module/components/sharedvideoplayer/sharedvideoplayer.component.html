@@ -1,4 +1,5 @@
 <div class="progress-info">
+  {{role}}
   <div style="color:blue;font-size: 24px;"> Course Progress </div>
   <br>
   <div class="total-progress">
@@ -70,14 +71,39 @@
                 </div>
               </div>
               <div *ngIf="showSubsciptionApprovalSection(subSection)" class="approve-reject-buttons">
-                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'APPROVED')">
+                <!-- For Content Manager -->
+                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'APPROVED')" *ngIf="role === 'CONTENTMANAGER' && subSection.reviewStatus === 'SUBMITTED'">
                   Approve
                 </button>
-                <button mat-button color="warn" (click)="toggleCommentBox(subSection)">
+                <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'CONTENTMANAGER' && subSection.reviewStatus === 'SUBMITTED'">
                   Reject
                 </button>
-                <button *ngIf="role !=='CONTENTMANAGER'" mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)" >Resubmit</button>
+              
+                <!-- For Reviewer -->
+                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'ADMIN_ACCEPTED')" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'ADMIN_ACCEPTED')">
+                  Approve
+                </button>
+                <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'ADMIN_ACCEPTED')">
+                  Reject
+                </button>
+                <button mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'ADMIN_ACCEPTED')">
+                  Resubmit
+                </button>
+              
+                <!-- For Admin -->
+                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'REVIEWER_ACCEPTED')" *ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
+                  Approve
+                </button>
+                <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
+                  Reject
+                </button>
+                <button mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)" *ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
+                  Resubmit
+                </button>
+                
               </div>
+              
+              
 
               <div *ngIf="subSection.showCommentBox" class="comment-box">
                 <textarea matInput placeholder="Enter your comment..."

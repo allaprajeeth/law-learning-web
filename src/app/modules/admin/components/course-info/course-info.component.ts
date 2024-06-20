@@ -8,6 +8,17 @@ import { Course } from 'src/app/common/models/course.model';
   styleUrls: ['./course-info.component.scss']
 })
 export class CourseInfoComponent {
-  course: Course | null = null;
+  course: any;
+  role: string | undefined;
+
+  constructor(private router: Router, private route: ActivatedRoute) {
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras?.state) {
+      this.course = navigation.extras.state['course'];
+      this.role = navigation.extras.state['role'];
+      
+    }
+  }
+
   
 }

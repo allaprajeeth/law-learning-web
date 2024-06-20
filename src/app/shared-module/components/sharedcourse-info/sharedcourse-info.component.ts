@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/common/models/course.model';
 import { CourseService } from 'src/app/common/services/course.service';
@@ -10,18 +10,19 @@ import { CourseService } from 'src/app/common/services/course.service';
 })
 export class SharedcourseInfoComponent {
 
-  course: Course | null = null;
+  // course: Course | null = null;
   isLoading: boolean = true;
   errorMessage: string | null = null;
   courseId :number=0
-
+  @Input() role: string | undefined;
+  @Input() course:  Course | null = null;
   constructor(private route: ActivatedRoute,
     private router: Router,
     private courseService: CourseService
   ) { }
 
   ngOnInit(): void {
-   
+   console.log(this.role + "role in shared ")
   this.courseId = this.route.snapshot.params['id'];
   const urlParts = this.router.url.split('/');
     if (urlParts.length >= 3) {
