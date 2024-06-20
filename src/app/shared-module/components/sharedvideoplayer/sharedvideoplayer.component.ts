@@ -22,6 +22,7 @@ import { endPoints } from 'src/app/common/constants/endpoints';
 })
 export class SharedvideoplayerComponent {
   @Input() course: Course | undefined | null;
+  // @Input() role: string = '';
   // @Input() course: Course = new Course();
   isTestAvailable: boolean;
   nextVideoInfo: { sectionIndex: number; subSectionIndex: number } | undefined;
@@ -39,7 +40,7 @@ export class SharedvideoplayerComponent {
   currentPlayingVideoIndex: number = -1;
   documents: boolean = false;
   noVideoMessage: string = '';
-  role:string =''
+   @Input() role: string | undefined;
  
  
   showDocs() {
@@ -57,6 +58,7 @@ export class SharedvideoplayerComponent {
     private snackBar: MatSnackBar
   ) {
     this.testService.setIsTestAvailable(true);
+   
     this.isTestAvailable = this.testService.isTestAvailable;
     this.route.url.subscribe((segments) => {
       this.isFreeCourseRoute = segments.some(
@@ -93,7 +95,8 @@ export class SharedvideoplayerComponent {
   ngOnInit() {
     this.initializePlayer();
     this.setupPlayerEventListeners();
-    this.role = this.authService.getUserRole();
+   console.log( this.role +"gvtrgtrg")
+    // this.role = this.authService.getUserRole();
   }
   private setupPlayerEventListeners() {
     if (this.player) {

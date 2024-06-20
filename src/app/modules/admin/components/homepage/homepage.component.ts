@@ -36,8 +36,7 @@ export class HomepageComponent implements OnInit {
   isHomeRouteActive: boolean = true;
   isContentManagerRouteActive: boolean = false;
   isReviewerRouteActive: boolean = false;
-
-  
+  role="ADMIN"
 
   constructor(
     private adminService: AdminService,
@@ -160,7 +159,7 @@ export class HomepageComponent implements OnInit {
     this.courseService.getCourseById(courseId).subscribe(
       (course) => {
         this.router.navigate(['/admin/courseinfo', courseId], {
-          state: { course: course }
+          state: { course: course, role: this.role }
         });
       },
       (error) => {
@@ -168,6 +167,7 @@ export class HomepageComponent implements OnInit {
       }
     );
   }
+  
 
   publishCourse(courseId: number): void {
     this.courseService.publishCourse(courseId).subscribe(
@@ -205,6 +205,7 @@ export class HomepageComponent implements OnInit {
 
 
   showAdminHome() {
+    this.role="ADMIN"
     this.isHomeRouteActive = true;
     this.isContentManagerRouteActive = false;
     this.isReviewerRouteActive = false;
@@ -217,6 +218,10 @@ export class HomepageComponent implements OnInit {
   // }
 
   showReviewerHome() {
+    this.role = 'REVIEWER';
+    
+    
+   
     this.courseService.getRevReviewCourses(this.pagination1).subscribe(
       (response: ApiResponse) => {
         if (response && response.data && response.data.content) {
@@ -236,6 +241,7 @@ export class HomepageComponent implements OnInit {
   }
 
   showContentManagerHome(): void {
+    this.role = 'CONTENTMANAGER';
     this.courseService.getCmReviewCourses(this.pagination1).subscribe(
       (response: ApiResponse) => {
         if (response && response.data && response.data.content) {

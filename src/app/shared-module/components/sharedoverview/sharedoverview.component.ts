@@ -13,8 +13,8 @@ import { CourseService } from 'src/app/common/services/course.service';
   styleUrls: ['./sharedoverview.component.scss'],
 })
 export class SharedoverviewComponent {
-  @Input() course: Course = new Course();
-  courseId: number | undefined;
+  @Input() course: Course | null | undefined
+  // courseId: number | undefined;
   numberOfSubsections = 0;
   rejectComment: string = '';
   resubmitComment : string = '';
@@ -52,7 +52,7 @@ export class SharedoverviewComponent {
   formApproval(): boolean {
     this.role = this.authService.getUserRole();
     let roleEnum: UserRole = UserRole[this.role as keyof typeof UserRole];
-    let statusEnum: ReviewStatus = ReviewStatus[this.course.reviewStatus as keyof typeof ReviewStatus];
+    let statusEnum: ReviewStatus = ReviewStatus[this.course?.reviewStatus as keyof typeof ReviewStatus];
 
     if (roleEnum === UserRole.CONTENTMANAGER) {
       return statusEnum === ReviewStatus.SUBMITTED;
@@ -77,6 +77,7 @@ export class SharedoverviewComponent {
 
 
   approve() {
+    if(this.course){
     const reviewData = { status: 'APPROVED' };
     const courseId = this.course?.id.toString();
 
@@ -95,6 +96,7 @@ export class SharedoverviewComponent {
       }
     );
   }
+}
 
   reject() {
     if (!this.rejectComment.trim()) {
@@ -107,7 +109,8 @@ export class SharedoverviewComponent {
       status: 'REJECTED',
       comment: this.rejectComment
     };
-    const courseId = this.course.id.toString();
+    if(this.course){
+      const courseId = this.course?.id?.toString();
 
     this.courseService.sendReview(courseId, reviewData).subscribe(
       response => {
@@ -124,6 +127,7 @@ export class SharedoverviewComponent {
       }
     );
   }
+}
   resubmit(){
     if (!this.resubmitComment.trim()) {
       alert('Please add a comment before resubmitting.');
@@ -136,6 +140,7 @@ export class SharedoverviewComponent {
         comment: this.resubmitComment
 
        };
+       if(this.course){
       const courseId = this.course?.id.toString();
   
       this.courseService.sendReview(courseId, reviewData).subscribe(
@@ -161,6 +166,6 @@ export class SharedoverviewComponent {
         }
       );
     }
-    
+  }
   
 }
