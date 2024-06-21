@@ -15,27 +15,42 @@
         <th></th>
         <th class="align">Username</th>
         <th>Profile</th>
-        <th>Status</th>
         <th>Change the status of the user</th>
+        <!-- <th>Change the status of the user</th> -->
         <!-- class="align" -->
       </tr>
       <tr
         *ngFor="let profile of allProfiles"
         class="profile-item"
         id="uniqueProfileId"
-        (click)="openProfileModal(profile.id)"
       >
-        <td class="profile-placeholder">
+        <td class="profile-placeholder" (click)="openProfileModal(profile.id)">
           {{ getInitials(profile.name) }}
         </td>
-        <td>
+        <td (click)="openProfileModal(profile.id)">
           <h3>{{ profile.name }}</h3>
         </td>
-        <td>{{ profile.role }}</td>
-        <td [ngStyle]="getStatusStyles(profile.status)">
-          {{ profile.status }}
-        </td>
+        <td (click)="openProfileModal(profile.id)">{{ profile.role }}</td>
         <td>
+          <span [ngStyle]="getStatusStyles(profile.status)">{{
+            profile.status
+          }}</span>
+
+          <mat-slide-toggle
+            [checked]="profile.status === 'ACTIVE'"
+            [ngStyle]="getStatusStyles(profile.status)"
+            (change)="onToggleUserActivation(profile.id, $event)"
+          >
+            <span>
+              {{
+                profile.status === "ACTIVE"
+                  ? "Inactivate the user"
+                  : "Activate the user"
+              }}</span
+            >
+          </mat-slide-toggle>
+        </td>
+        <!-- <td>
           <button
             mat-raised-button
             color="primary"
@@ -48,7 +63,7 @@
                 : "Activate the user"
             }}
           </button>
-        </td>
+        </td> -->
       </tr>
     </tbody>
     <tfoot>

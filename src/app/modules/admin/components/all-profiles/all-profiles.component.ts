@@ -14,6 +14,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 // interface UserProfile {
 //   id: string;
@@ -35,7 +36,7 @@ export class AllProfilesComponent implements OnInit {
   pagination: Pagination = new Pagination();
   pagination1: Pagination = new Pagination();
   params: any = {};
-  userProfile: UserProfile[] = [];
+  // userProfile: UserProfile[] = [];
   overallProfiles: UserProfile[] = [];
 
   constructor(
@@ -84,6 +85,7 @@ export class AllProfilesComponent implements OnInit {
       .subscribe((response) => {
         this.allProfiles = response.data.content;
         this.pagination = new Pagination(response.data);
+        console.log(response.data.content);
       });
   }
 
@@ -110,19 +112,13 @@ export class AllProfilesComponent implements OnInit {
     }
   }
 
-  onToggleUserActivation(
-    profileId: number,
-    status: string,
-    event: Event
-  ): void {
-    event.stopPropagation();
-    console.log(status);
+  onToggleUserActivation(profileId: number, event: MatSlideToggleChange) {
+    const newStatus = event.checked ? 'ACTIVE' : 'ARCHIVED';
+    const originalCheckedState = !event.checked; // Store the original checked state
 
-    const newStatus = status === 'ACTIVE' ? 'ARCHIVED' : 'ACTIVE';
-    const confirmationMessage =
-      status === 'ACTIVE'
-        ? 'Do you want to inactivate the user?'
-        : 'Do you want to activate the user?';
+    const confirmationMessage = event.checked
+      ? 'Do you want to activate the user?'
+      : 'Do you want to inactivate the user?';
 
     const dialogRef = this.dialog.open(ConfirmationAlertComponent, {
       width: '350px',
@@ -135,12 +131,11 @@ export class AllProfilesComponent implements OnInit {
       if (result) {
         try {
           const baseUrl = endPoints.secureBaseURL;
-          const apiUrl =
-            baseUrl + `/admin/user-profile/${profileId}?status=${newStatus}`;
+          const apiUrl = `${baseUrl}/admin/user-profile/${profileId}?status=${newStatus}`;
 
           this.http.delete(apiUrl).subscribe(
             () => {
-              status = newStatus;
+              // Update local profile status on success
               this.allProfiles = this.allProfiles.map((profile) => {
                 if (profile.id === profileId) {
                   return {
@@ -151,6 +146,8 @@ export class AllProfilesComponent implements OnInit {
                   return profile;
                 }
               });
+
+              // Show success message
               const message =
                 newStatus === 'ACTIVE'
                   ? 'User activated successfully'
@@ -164,6 +161,9 @@ export class AllProfilesComponent implements OnInit {
                 'Close',
                 { duration: 5000 }
               );
+
+              // Revert toggle state on error
+              event.source.checked = originalCheckedState; // Toggle back to original state
             }
           );
         } catch (error) {
@@ -173,7 +173,13 @@ export class AllProfilesComponent implements OnInit {
             'Close',
             { duration: 5000 }
           );
+
+          // Revert toggle state on error
+          event.source.checked = originalCheckedState; // Toggle back to original state
         }
+      } else {
+        // Revert toggle state if confirmation dialog is cancelled
+        event.source.checked = originalCheckedState; // Toggle back to original state
       }
     });
   }
@@ -219,6 +225,8 @@ export class AllProfilesComponent implements OnInit {
     const profile = this.allProfiles.find(
       (profile) => profile.id === profileId
     );
+    console.log(this.allProfiles);
+
     const modalContent = `
       <div class="modal-content">
        
@@ -226,7 +234,7 @@ export class AllProfilesComponent implements OnInit {
   <h2>User Profile</h2>
   <div class="profile-section">
     <label>Name:</label>
-    <span>${profile.name}</span>
+    <span>${profile.salutation}${profile.name}</span>
   </div>
   <div class="profile-section">
     <label>Phone:</label>
