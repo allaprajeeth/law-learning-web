@@ -1,5 +1,3 @@
-// admin-dashboard.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -7,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { endPoints } from 'src/app/common/constants/endpoints';
+import { NotificationService } from 'src/app/common/services/notification/notification.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -28,7 +27,9 @@ export class AdminDashboardComponent implements OnInit {
     private domSanitizer: DomSanitizer, 
     private formBuilder: FormBuilder,
      private location: Location,
-     private http: HttpClient) {
+     private http: HttpClient,
+     private notificationService: NotificationService
+    ) {
     // Register Material Icons
     this.matIconRegistry.addSvgIcon(
       'dashboard',
@@ -63,19 +64,25 @@ export class AdminDashboardComponent implements OnInit {
 
   submit() {
     const baseUrl = endPoints.secureBaseURL;
-        const apiUrl = baseUrl + `/admin/user-profile`;
+    const apiUrl = baseUrl + `/admin/user-profile`;
     if (this.loginForm.valid) {
       const formData = this.loginForm.value;
       this.http.post<any>(apiUrl, formData).subscribe(response => {
         this.showMessageStatus = true;
         this.showcredentialStatus = false;
-    console.log('Form values:', this.loginForm.value);
-        console.log('Form submitted successfully!', response);
+       
       }, error => {
-        console.error('Error submitting form:', error);
+        if (error.error.error.type === 'DUPLICATE_RECORD') {
+          this.loginForm.reset()
+          this.notificationService.notify('User EmailId or Mobile number already exists.')
+          console.log('User EmailId or Mobile number already exists.Please Use other credentials');
+        } else {
+          console.error('Error submitting form:', error);
+        }
       });
     }
   }
+  
   
   ngOnInit() {
     this.initializeForm();

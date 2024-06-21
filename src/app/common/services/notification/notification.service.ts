@@ -37,7 +37,7 @@ export class NotificationService {
 			  console.error('Error fetching unread message count:', error);
 			  return of(0);
 			}),
-			// Ensure TypeScript correctly infers the type of the emitted value
+			// Ensure TypeScript correctly infers the type of the emitted valuen
 			map(count => typeof count === 'number' ? count : 0) // Convert unknown to number
 		  ).subscribe(count => {
 			this.unreadMessageCountSubject.next(count);
