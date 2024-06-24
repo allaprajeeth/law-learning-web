@@ -114,7 +114,7 @@ export class AllProfilesComponent implements OnInit {
 
   onToggleUserActivation(profileId: number, event: MatSlideToggleChange) {
     const newStatus = event.checked ? 'ACTIVE' : 'ARCHIVED';
-    const originalCheckedState = !event.checked; // Store the original checked state
+    const originalCheckedState = !event.checked;
 
     const confirmationMessage = event.checked
       ? 'Do you want to activate the user?'
@@ -135,7 +135,6 @@ export class AllProfilesComponent implements OnInit {
 
           this.http.delete(apiUrl).subscribe(
             () => {
-              // Update local profile status on success
               this.allProfiles = this.allProfiles.map((profile) => {
                 if (profile.id === profileId) {
                   return {
@@ -147,7 +146,6 @@ export class AllProfilesComponent implements OnInit {
                 }
               });
 
-              // Show success message
               const message =
                 newStatus === 'ACTIVE'
                   ? 'User activated successfully'
@@ -162,8 +160,7 @@ export class AllProfilesComponent implements OnInit {
                 { duration: 5000 }
               );
 
-              // Revert toggle state on error
-              event.source.checked = originalCheckedState; // Toggle back to original state
+              event.source.checked = originalCheckedState;
             }
           );
         } catch (error) {
@@ -174,12 +171,10 @@ export class AllProfilesComponent implements OnInit {
             { duration: 5000 }
           );
 
-          // Revert toggle state on error
-          event.source.checked = originalCheckedState; // Toggle back to original state
+          event.source.checked = originalCheckedState;
         }
       } else {
-        // Revert toggle state if confirmation dialog is cancelled
-        event.source.checked = originalCheckedState; // Toggle back to original state
+        event.source.checked = originalCheckedState;
       }
     });
   }
@@ -234,7 +229,7 @@ export class AllProfilesComponent implements OnInit {
   <h2>User Profile</h2>
   <div class="profile-section">
     <label>Name:</label>
-    <span>${profile.salutation}${profile.name}</span>
+    <span>${profile.name}</span>
   </div>
   <div class="profile-section">
     <label>Phone:</label>
