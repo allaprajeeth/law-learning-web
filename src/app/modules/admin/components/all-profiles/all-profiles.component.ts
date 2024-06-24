@@ -29,7 +29,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
   styleUrls: ['./all-profiles.component.scss'],
 })
 export class AllProfilesComponent implements OnInit {
-  selectedRole: string = 'all';
+  selectedRole: string = 'All Profiles';
   advisorId: number | undefined;
   advisorProfiles: AdvisorProfile[] = [];
   allProfiles: any[] = [];
