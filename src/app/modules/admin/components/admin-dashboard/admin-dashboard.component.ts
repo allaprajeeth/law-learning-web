@@ -61,9 +61,10 @@ export class AdminDashboardComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       role: ['INSTRUCTOR', Validators.required],
-      jobTitle: ['', Validators.required],
-      status: ['', Validators.required],
-      about: ['', Validators.required],
+      instituteName: ['Name of the institute'],
+      jobTitle:['', Validators.required],
+      status:['', Validators.required],
+      about:['', Validators.required],
     });
   }
 
