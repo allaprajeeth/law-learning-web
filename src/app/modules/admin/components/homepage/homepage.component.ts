@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from '../admin.service';
-import {  Article } from '../admin.model';
+import { Article } from '../admin.model';
 import { CourseService } from 'src/app/common/services/course.service';
 import { Course } from 'src/app/common/models/course.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -17,7 +17,6 @@ interface ApiResponse {
   status: number;
 }
 
-
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -25,25 +24,27 @@ interface ApiResponse {
 })
 export class HomepageComponent implements OnInit {
   approvedArticles: Article[] = [];
-  allArticles:  Article[] = [];
+  allArticles: Article[] = [];
   courses!: Course[];
   coursesToPublish: Course[] = [];
-  s3BaseURL: string = endPoints.s3BaseURL; 
+  s3BaseURL: string = endPoints.s3BaseURL;
   pagination1: Pagination = new Pagination();
   pagination2: Pagination = new Pagination();
   selectedCategory: string | undefined;
+
   @ViewChild('articlesSection') articlesSection!: ElementRef;
+
   isHomeRouteActive: boolean = true;
   isContentManagerRouteActive: boolean = false;
   isReviewerRouteActive: boolean = false;
-  role="ADMIN"
+  role = "ADMIN";
 
   constructor(
     private adminService: AdminService,
     private router: Router,
     private courseService: CourseService,
     private dialog: MatDialog,
-    private profile:ProfileService
+    private profile: ProfileService
   ) {}
 
   ngOnInit(): void {
@@ -52,65 +53,52 @@ export class HomepageComponent implements OnInit {
     this.selectedCategory = this.profile.getCategory();
     this.loadCoursesToPublish();
   }
-  
 
   getApprovedArticles(): void {
     this.adminService.getApprovedArticles(this.pagination2).subscribe(
       (response) => {
         this.approvedArticles = response.data.content || [];
         this.allArticles = response.data.content || [];
-        this.pagination2.totalElements=response.data.totalElements
-        
+        this.pagination2.totalElements = response.data.totalElements;
       },
       (error) => {
         console.error('Error fetching approved articles:', error);
       }
     );
   }
-  filterByCategory(category: string) {
+
+  filterByCategory(category: string): void {
     this.profile.setCategory(category);
     this.selectedCategory = category;
+
     if (category === 'contentManager') {
-      
-      this.approvedArticles = this.allArticles.filter(article => {
-        return (
-          article.reviewStatus == 'CONTENT_MANAGER_REJECTED' ||
-          article.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'
-        );
-      });
-      console.log("articles from content manager",this.approvedArticles.length)
-  
-    }
-    else if(category ==="reviewer") {
-      console.log(category)
-      this.approvedArticles = this.approvedArticles;
-      this.approvedArticles = this.allArticles.filter(article => {
-        return (
-          article.reviewStatus == 'REVIEWER_REJECTED' ||
-          article.reviewStatus === 'REVIEWER_ACCEPTED'
-        );
-      });
-      console.log("articles from reviewer ",this.approvedArticles.length)
-    }
-    else {
-      console.log(category)
+      this.approvedArticles = this.allArticles.filter(article => (
+        article.reviewStatus === 'CONTENT_MANAGER_REJECTED' ||
+        article.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'
+      ));
+      console.log("Articles from Content Manager:", this.approvedArticles.length);
+    } else if (category === "reviewer") {
+      this.approvedArticles = this.allArticles.filter(article => (
+        article.reviewStatus === 'REVIEWER_REJECTED' ||
+        article.reviewStatus === 'REVIEWER_ACCEPTED'
+      ));
+      console.log("Articles from Reviewer:", this.approvedArticles.length);
+    } else {
       this.approvedArticles = this.allArticles;
     }
-  }  
+  }
+
   navigateToArticleDetail(articleId: number): void {
     const selectedArticle = this.approvedArticles.find(article => article.id === articleId);
     console.log('Selected Article Details:', selectedArticle);
     this.router.navigate(['/admin/detail-articles', articleId]);
   }
-  /* -----  course review process  ---- */
 
   loadCoursesToPublish(): void {
     this.courseService.getCoursesToPublish().subscribe(
       (response: ApiResponse) => {
         if (response && response.data && response.data.content) {
-          this.coursesToPublish = response.data.content.map(course => ({
-            ...course,
-          })) as Course[];
+          this.coursesToPublish = response.data.content;
           console.log('Courses to Publish:', this.coursesToPublish);
         } else {
           console.error('Invalid response format:', response);
@@ -123,24 +111,21 @@ export class HomepageComponent implements OnInit {
   }
 
   loadCourses(): void {
-    this.courseService.getReviewCourses(this.pagination1)
-      .subscribe(
-        (response: ApiResponse) => {
-          if (response && response.data && response.data.content) {
-            this.pagination1.totalElements=response.data.totalElements ?? 0;
-            this.courses = response.data.content.map(course => ({
-              ...course,
-            })) as Course[];
-            console.log('Courses:', this.courses); 
-          } else {
-            console.error('Invalid response format:', response);
-          }
-        },
-        (error) => {
-          console.error('Error fetching courses:', error);
+    this.courseService.getReviewCourses(this.pagination1).subscribe(
+      (response: ApiResponse) => {
+        if (response && response.data && response.data.content) {
+          this.pagination1.totalElements = response.data.totalElements ?? 0;
+          this.courses = response.data.content;
+          console.log('Courses:', this.courses);
+        } else {
+          console.error('Invalid response format:', response);
         }
-      );
-  } 
+      },
+      (error) => {
+        console.error('Error fetching courses:', error);
+      }
+    );
+  }
 
   navigateToCourseInf(courseId: number): void {
     this.courseService.getCourseById(courseId).subscribe(
@@ -167,12 +152,11 @@ export class HomepageComponent implements OnInit {
       }
     );
   }
-  
 
   publishCourse(courseId: number): void {
     this.courseService.publishCourse(courseId).subscribe(
       () => {
-        this.router.navigate(['/admin/publish-success']); 
+        this.router.navigate(['/admin/publish-success']);
       },
       (error) => {
         console.error('Error publishing course:', error);
@@ -180,64 +164,36 @@ export class HomepageComponent implements OnInit {
     );
   }
 
-
-  onImageError(event: any) {
+  onImageError(event: any): void {
     event.target.src = 'assets/law.png';
   }
-  onPageChange1(pagination: Pagination) {
+
+  onPageChange1(pagination: Pagination): void {
     this.pagination1.page = pagination.page;
     this.pagination1.size = pagination.size;
-    this.loadCourses()
+    this.loadCourses();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  onPageChange2(pagination: Pagination) {
+
+  onPageChange2(pagination: Pagination): void {
     this.pagination2.page = pagination.page;
     this.pagination2.size = pagination.size;
-    this.getApprovedArticles()
-    this.scrollToArticlesSection()
-   
+    this.getApprovedArticles();
+    this.scrollToArticlesSection();
   }
-  private scrollToArticlesSection() {
+
+  private scrollToArticlesSection(): void {
     if (this.articlesSection) {
       this.articlesSection.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
 
-
-  showAdminHome() {
-    this.role="ADMIN"
+  showAdminHome(): void {
+    this.role = "ADMIN";
     this.isHomeRouteActive = true;
     this.isContentManagerRouteActive = false;
     this.isReviewerRouteActive = false;
-  }
-
-  // showContentManagerHome() {
-  //   this.isHomeRouteActive = false;
-  //   this.isContentManagerRouteActive = true;
-  //   this.isReviewerRouteActive = false;
-  // }
-
-  showReviewerHome() {
-    this.role = 'REVIEWER';
-    
-    
-   
-    this.courseService.getRevReviewCourses(this.pagination1).subscribe(
-      (response: ApiResponse) => {
-        if (response && response.data && response.data.content) {
-          this.courses = response.data.content;
-          console.log('Reviewer Courses:', this.courses);
-        } else {
-          console.error('Invalid response format:', response);
-        }
-      },
-      (error) => {
-        console.error('Error fetching Reviewer courses:', error);
-      }
-    ); 
-    this.isHomeRouteActive = false;
-    this.isContentManagerRouteActive = false;
-    this.isReviewerRouteActive = true;
+    this.loadCourses(); // Add this line to reload courses for the admin
   }
 
   showContentManagerHome(): void {
@@ -255,33 +211,28 @@ export class HomepageComponent implements OnInit {
         console.error('Error fetching content manager courses:', error);
       }
     );
-    this.isContentManagerRouteActive = true;
     this.isHomeRouteActive = false;
+    this.isContentManagerRouteActive = true;
     this.isReviewerRouteActive = false;
   }
+
+  showReviewerHome(): void {
+    this.role = 'REVIEWER';
+    this.courseService.getRevReviewCourses(this.pagination1).subscribe(
+      (response: ApiResponse) => {
+        if (response && response.data && response.data.content) {
+          this.courses = response.data.content;
+          console.log('Reviewer Courses:', this.courses);
+        } else {
+          console.error('Invalid response format:', response);
+        }
+      },
+      (error) => {
+        console.error('Error fetching Reviewer courses:', error);
+      }
+    );
+    this.isHomeRouteActive = false;
+    this.isContentManagerRouteActive = false;
+    this.isReviewerRouteActive = true;
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { endPoints } from 'src/app/common/constants/endpoints';
 import { NotificationService } from 'src/app/common/services/notification/notification.service';
-
+import { CoursesService } from 'src/app/common/services/courses/courses.service';
 @Component({
   selector: 'app-admin-dashboard',
   templateUrl: './admin-dashboard.component.html',
@@ -21,6 +21,7 @@ export class AdminDashboardComponent implements OnInit {
   phoneNumber: string = '';
   selectedRole: string = 'instructor';
   menuItems: RouteInfo[];
+  institutions: any[] = [];
 
   constructor(
     private matIconRegistry: MatIconRegistry,
@@ -28,7 +29,8 @@ export class AdminDashboardComponent implements OnInit {
     private formBuilder: FormBuilder,
     private location: Location,
     private http: HttpClient,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private coursesService: CoursesService
   ) {
     // Register Material Icons
     this.matIconRegistry.addSvgIcon(
@@ -61,18 +63,40 @@ export class AdminDashboardComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       role: ['INSTRUCTOR', Validators.required],
-      instituteName: ['Name of the institute'],
-      jobTitle:['', Validators.required],
-      status:['', Validators.required],
+      // instituteName: [''],
+      instituteId: [''],
+      // jobTitle:['', Validators.required],
+      // status:['', Validators.required],
       about:['', Validators.required],
     });
+  }
+
+  fetchInstitutions() {
+    this.coursesService.getInstitutions().subscribe(
+      (response: any) => {
+        if (Array.isArray(response.data)) {
+          this.institutions = response.data;
+          console.log('Institute data:', this.institutions);
+        } else {
+          console.error('Expected an array, but got:', response);
+          this.institutions = [];
+        }
+      },
+      (error) => {
+        console.error('Error fetching institutions:', error);
+      }
+    );
   }
 
   submit() {
     const baseUrl = endPoints.secureBaseURL;
     const apiUrl = baseUrl + `/admin/user-profile`;
     if (this.loginForm.valid) {
-      const formData = this.loginForm.value;
+      // Set instituteId in formData
+      const formData = {
+        ...this.loginForm.value,
+        instituteId: this.loginForm.value.instituteId 
+      };
       this.http.post<any>(apiUrl, formData).subscribe(
         (response) => {
           this.showMessageStatus = true;
@@ -95,9 +119,11 @@ export class AdminDashboardComponent implements OnInit {
       console.log(formData);
     }
   }
+  
 
   ngOnInit() {
     this.initializeForm();
+    this.fetchInstitutions();
   }
 
   get formControls() {

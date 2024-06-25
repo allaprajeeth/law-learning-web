@@ -95,8 +95,7 @@ export class SharedvideoplayerComponent {
   ngOnInit() {
     this.initializePlayer();
     this.setupPlayerEventListeners();
-   console.log( this.role +"gvtrgtrg")
-    // this.role = this.authService.getUserRole();
+    this.role = this.authService.getUserRole();
   }
   private setupPlayerEventListeners() {
     if (this.player) {

@@ -79,7 +79,7 @@ documentProgress: number | undefined;
 
   initCourseForm() {
     this.courseForm = this._formBuilder.group({
-      id: [''],
+      id: [null],
       title: ['', Validators.required],
       description: ['', Validators.required],
       // institution: this._formBuilder.group({
@@ -87,7 +87,7 @@ documentProgress: number | undefined;
       //   name: [''],
       // }),
       difficultyLevel: ['', Validators.required],
-      type: ['', Validators.required],
+      type: [null],
       // price: [null],
       language: ['English', Validators.required],
       courseFile: [null],

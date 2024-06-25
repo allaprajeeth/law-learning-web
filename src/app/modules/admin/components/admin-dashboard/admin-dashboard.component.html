@@ -78,35 +78,17 @@
                 <option value="SUBSCRIBER">Subscriber</option>
               </select>
             </div>
-            <div class="input-group">
-              <label for="instituteName">Name of the institute</label>
-              <select id="instituteName" formControlName="instituteName">
-                <option value="NUNC Systems">NUNC Systems</option>
-                <option value="ABC Company">ABC Company</option>
-                <option value="Testing Institute">Testing Institute</option>
-              </select>
-            </div>
-            <div class="input-group">
-              <div>
-                <label for="jobTitle" style="color: red">*</label>Job Title
-              </div>
-              <input
-                type="text"
-                id="jobTitle"
-                formControlName="jobTitle"
-                required
-              />
-            </div>
+           
 
             <div class="input-group">
-              <div><label for="status" style="color: red">*</label>Status</div>
-              <input
-                type="text"
-                id="status"
-                formControlName="status"
-                required
-              />
+              <label for="instituteName">Name of the institute</label>
+              <select id="instituteName" formControlName="instituteName" [(ngModel)]="loginForm.value.instituteId">
+                <option *ngFor="let institution of institutions" [value]="institution.id">{{ institution.name }}</option>
+              </select>
             </div>
+            
+
+           
 
             <div class="input-group">
               <div><label for="about" style="color: red">*</label>About</div>

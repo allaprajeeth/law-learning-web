@@ -12,17 +12,11 @@
     </li>
   </ul>
 </nav>
-
-
-
-
-
-
 <!-- Admin Home Page -->
 <div *ngIf="isHomeRouteActive">
   <div class="container">
     <div class="heading">
-      <h1>Courses to Review</h1>
+      <h1>Courses to Review for Admin</h1>
     </div>
     <div *ngIf="courses && courses.length">
       <div class="courses">
@@ -126,7 +120,7 @@
 <div *ngIf="isContentManagerRouteActive">
   <div class="container">
     <div class="heading">
-      <h1>Courses to Review</h1>
+      <h1>Courses to Review Content-Manager </h1>
     </div>
     <!-- <div *ngIf="courses && courses.length"> -->
       <div class="courses">
@@ -159,10 +153,10 @@
 <!-- Reviewer Home-page -->
 <div *ngIf="isReviewerRouteActive">
 
-    <h1>Reviewer Home</h1>
+    <!-- <h1>Reviewer Home</h1> -->
     <div class="container">
       <div class="heading">
-        <h1>Courses to Review</h1>
+        <h1>Courses to Review for Reviewer</h1>
       </div>
       <!-- <div *ngIf="courses && courses.length"> -->
         <div class="courses">
@@ -189,5 +183,4 @@
       <div *ngIf="!courses || courses.length === 0">
         <p>No courses available.</p>
       </div>
- 
 </div>
