@@ -66,18 +66,40 @@
 </mat-card>
 
 
-<div *ngIf="formApproval() && !isInstructorModule" class="comment-box">
+<div *ngIf="showCommentBox" class="comment-box">
   <textarea placeholder="Add your comment here..." [(ngModel)]="rejectComment"
     (ngModelChange)="checkRejectComment()"></textarea>
 </div>z
-<div *ngIf="formApproval() && !isInstructorModule" class="comment-box">
+<div *ngIf="showResumbitCommentBox" class="comment-box">
   <textarea placeholder="Add your comment here..." [(ngModel)]="resubmitComment"
     (ngModelChange)="checkResubmitComment()"></textarea>
 </div>
 
-<div *ngIf="formApproval() && !isInstructorModule" class="approve-reject-buttons">
-  <button class="approve-button" mat-raised-button color="primary" (click)="approve()">Approve</button>
-  <button class="reject-button" (click)="reject()" mat-raised-button color="warn"
-    [disabled]="!isRejectCommentValid">Reject</button>
-  <button *ngIf="role !=='CONTENTMANAGER'" class="resubmit-button" (click)="resubmit()" mat-raised-button color="accent">Re-Submit</button>
+<div *ngIf=" !isInstructorModule" class="approve-reject-buttons">
+
+ <!-- For Content Manager -->
+ <button class="approve-button" mat-raised-button color="primary" (click)="approve()" *ngIf="role === 'CONTENTMANAGER' && reviewStatus === 'SUBMITTED'">Approve</button>
+ <button class="reject-button" (click)="toggleCommentBox()" mat-raised-button color="warn" *ngIf="role === 'CONTENTMANAGER' && reviewStatus === 'SUBMITTED'"  >Reject</button>
+ 
+<!-- For Reviewer -->
+<button mat-button color="primary" (click)="approve()" *ngIf="role === 'REVIEWER' && reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || reviewStatus === 'ADMIN_ACCEPTED'">
+  Approve
+</button>
+  <button mat-button color="warn" (click)="toggleCommentBox()" *ngIf="role === 'REVIEWER' && reviewStatus === 'CONTENT_MANAGER_ACCEPTED'"> 
+  Reject
+</button>
+<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox()" *ngIf="role === 'REVIEWER' && reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || reviewStatus === 'ADMIN_ACCEPTED'">
+  Resubmit
+</button>
+
+<!-- For Admin -->
+<button mat-button color="primary" (click)="approve()" *ngIf="role === 'ADMIN' && reviewStatus === 'REVIEWER_ACCEPTED' || reviewStatus === 'CONTENT_MANAGER_REJECTED' || reviewStatus === 'REVIEWER_RESUBMIT'">
+  Approve
+</button>
+<button mat-button color="warn" (click)="toggleCommentBox()" *ngIf="role === 'ADMIN' && reviewStatus === 'REVIEWER_ACCEPTED' || reviewStatus === 'CONTENT_MANAGER_REJECTED' || reviewStatus === 'REVIEWER_RESUBMIT'">
+  Reject
+</button>
+<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox()" *ngIf="role === 'ADMIN' && reviewStatus === 'REVIEWER_ACCEPTED' || reviewStatus === 'CONTENT_MANAGER_REJECTED' || reviewStatus === 'REVIEWER_RESUBMIT'">
+  Resubmit
+</button>
 </div>
