@@ -21,8 +21,10 @@ export class SharedoverviewComponent {
   isRejectCommentValid: boolean = false;
   isResubmitCommentValid: boolean = false;
   isInstructorModule: boolean = false;
-  role:string =''
-
+  @Input() role: string | undefined;
+  showCommentBox: boolean = false;
+  showResumbitCommentBox: boolean = false;
+  reviewStatus:string| undefined
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,
@@ -37,6 +39,7 @@ export class SharedoverviewComponent {
         return acc + (section.subSections ? section.subSections.length : 0);
       }, 0);
     }
+    this.reviewStatus=this.course?.reviewStatus
   }
 
   private checkRoute(): void {
@@ -70,9 +73,11 @@ export class SharedoverviewComponent {
 
   checkRejectComment(): void {
     this.isRejectCommentValid = this.rejectComment.trim().length > 0;
+    this.reject()
   }
   checkResubmitComment(): void {
     this.isResubmitCommentValid = this.resubmitComment.trim().length > 0;
+    this.resubmit()
   }
 
 
@@ -168,4 +173,13 @@ export class SharedoverviewComponent {
     }
   }
   
+
+  toggleCommentBox() {
+    this.showCommentBox = !this.showCommentBox;
+   
+  }
+  toggleResubmitCommentBox() {
+   this.showResumbitCommentBox = !this.showResumbitCommentBox;
+   
+  }
 }
