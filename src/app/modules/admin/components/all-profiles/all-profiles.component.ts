@@ -247,6 +247,11 @@ export class AllProfilesComponent implements OnInit {
   </div>
 
   <div class="profile-section">
+    <label>Name of the institute:</label>
+    <span>${profile.instituteName}</span>
+  </div>
+
+  <div class="profile-section">
     <label>Status</label>
     <span>${profile.status}</span>
   </div>

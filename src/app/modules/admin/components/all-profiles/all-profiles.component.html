@@ -1,5 +1,5 @@
 <div class="heading">
-  <h1>{{selectedRole}}</h1>
+  <h1>{{ selectedRole }}</h1>
 </div>
 
 <div class="main-container">
@@ -16,8 +16,6 @@
         <th class="align">Username</th>
         <th>Profile</th>
         <th>Change the status of the user</th>
-        <!-- <th>Change the status of the user</th> -->
-        <!-- class="align" -->
       </tr>
       <tr
         *ngFor="let profile of allProfiles"
@@ -50,20 +48,6 @@
             >
           </mat-slide-toggle>
         </td>
-        <!-- <td>
-          <button
-            mat-raised-button
-            color="primary"
-            [color]="profile.status !== 'ACTIVE' ? 'primary' : 'warn'"
-            (click)="onToggleUserActivation(profile.id, profile.status, $event)"
-          >
-            {{
-              profile.status === "ACTIVE"
-                ? "Inactivate the user"
-                : "Activate the user"
-            }}
-          </button>
-        </td> -->
       </tr>
     </tbody>
     <tfoot>
@@ -100,8 +84,4 @@
       </tr>
     </tbody>
   </table>
-  <!-- <app-shared-pagination
-    [totalRecordsCount]="pagination1.totalElements"
-    (pageChange)="onPageChange1($event)"
-  ></app-shared-pagination> -->
 </div>

@@ -7,8 +7,8 @@ import { CourseInfoComponent } from './components/course-info/course-info.compon
 import { UploadStatusComponent } from './components/upload-status/upload-status.component';
 import { ArticleHistoryComponent } from './components/article-history/article-history.component';
 import { ReviewerPostdetailsComponent } from './components/reviewer-postdetails/reviewer-postdetails.component';
-import {ArticleComponent} from './../../common/components/article/article.component'
-import {AboutusComponent} from './../../common/components/aboutus/aboutus.component'
+import { ArticleComponent } from './../../common/components/article/article.component';
+import { AboutusComponent } from './../../common/components/aboutus/aboutus.component';
 import { ProfileComponent } from 'src/app/common/components/profile/profile.component';
 import { AccountsecurityComponent } from 'src/app/common/components/accountsecurity/accountsecurity.component';
 import { SidenavContactusComponent } from 'src/app/common/components/sidenav-contactus/sidenav-contactus.component';
@@ -22,103 +22,107 @@ import { DeleteAccountComponent } from 'src/app/common/components/delete-account
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 import { ArticleDetailsComponent } from 'src/app/common/components/article-details/article-details.component';
 import { VideoplayerComponent } from './components/videoplayer/videoplayer.component';
+import { SharedFirstHomepageComponent } from 'src/app/shared-module/components/shared-first-homepage/shared-first-homepage.component';
 
 const routes: Routes = [
   {
-    path:"",
+    path: '',
     redirectTo: 'homepage',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path:"login",
-    component: HeaderComponent
+    path: 'login',
+    component: HeaderComponent,
   },
   {
-    path:"homepage",
-    component: HomepageComponent
+    path: 'homepage',
+    component: HomepageComponent,
   },
   {
-    path:"videoplayer",
-    component: VideoplayerComponent
+    path: 'videoplayer',
+    component: VideoplayerComponent,
   },
   {
-    path:"notification",
-    component: NotificationComponent
+    path: 'allcourses',
+    component: SharedFirstHomepageComponent,
   },
   {
-    path:"article",
-    component: ArticleComponent
+    path: 'notification',
+    component: NotificationComponent,
   },
   {
-    path:"courseinfo/:id",
-    component:CourseInfoComponent
+    path: 'article',
+    component: ArticleComponent,
+  },
+  {
+    path: 'courseinfo/:id',
+    component: CourseInfoComponent,
   },
   {
     path: 'publish-articles/:id',
     component: ReviewerPostdetailsComponent,
   },
   {
-    path:'aboutus',
-    component:AboutusComponent
+    path: 'aboutus',
+    component: AboutusComponent,
   },
   {
-    path:'termsandconditions',
-    component:SidenavtermsconditionsComponent
+    path: 'termsandconditions',
+    component: SidenavtermsconditionsComponent,
   },
   {
-    path:'library',
-    component:LibraryComponent
+    path: 'library',
+    component: LibraryComponent,
   },
   {
-    path:"profile",
-    component: ProfileComponent
+    path: 'profile',
+    component: ProfileComponent,
   },
   {
-    path:'acSecurity',
-    component:AccountsecurityComponent
+    path: 'acSecurity',
+    component: AccountsecurityComponent,
   },
 
   {
-    path:"contactus",
-    component: SidenavContactusComponent
+    path: 'contactus',
+    component: SidenavContactusComponent,
   },
   {
-    path:'delete-account',
-    component: DeleteAccountComponent
+    path: 'delete-account',
+    component: DeleteAccountComponent,
   },
   {
     path: 'courses-history',
     component: CoursesHistoryComponent,
   },
-  { 
-    path: 'detail-articles/:id', 
-    component: ArticleDetailsComponent
+  {
+    path: 'detail-articles/:id',
+    component: ArticleDetailsComponent,
   },
   {
-    path:"articleHistory",
-    component: ArticleHistoryComponent
+    path: 'articleHistory',
+    component: ArticleHistoryComponent,
   },
   {
-    path:'advisorInfo/:id',
-    component:AdvisorDetailsComponent
-  },
-  {
-      path: 'instructorinfo/:id',
-      component: InstructorinfoComponent,
-  },
-  {
-    path:'libraries/:id',
-    component:LibraryByIdComponent
+    path: 'advisorInfo/:id',
+    component: AdvisorDetailsComponent,
   },
   {
     path: 'instructorinfo/:id',
     component: InstructorinfoComponent,
   },
-
+  {
+    path: 'libraries/:id',
+    component: LibraryByIdComponent,
+  },
+  {
+    path: 'instructorinfo/:id',
+    component: InstructorinfoComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ReviewerRoutingModule { }
+export class ReviewerRoutingModule {}

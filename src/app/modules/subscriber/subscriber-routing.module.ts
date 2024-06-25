@@ -28,7 +28,7 @@ import { DeleteAccountComponent } from 'src/app/common/components/delete-account
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 import { UploadedarticlesstatusComponent } from 'src/app/shared-module/components/uploadedarticlesstatus/uploadedarticlesstatus.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-
+import { SharedFirstHomepageComponent } from 'src/app/shared-module/components/shared-first-homepage/shared-first-homepage.component';
 
 const routes: Routes = [
   {
@@ -58,16 +58,17 @@ const routes: Routes = [
   },
   {
     path: 'contactus',
-    component:SidenavContactusComponent
+    component: SidenavContactusComponent,
   },
   {
     path: 'delete-account',
-      component: DeleteAccountComponent,
+    component: DeleteAccountComponent,
   },
   {
     path: 'cart',
     component: CartComponent,
   },
+
   {
     path: 'notification',
     component: NotificationComponent,
@@ -76,7 +77,7 @@ const routes: Routes = [
     path: 'articleform',
     component: ArticleFormComponent,
   },
-  
+
   {
     path: 'articleform/:id',
     component: ArticleFormComponent,
@@ -127,33 +128,32 @@ const routes: Routes = [
   },
   {
     path: 'revert-delete',
-    component:RevertDeleteComponent,
+    component: RevertDeleteComponent,
   },
   {
     path: 'publish-articles/:id',
     component: SubscriberpostdetailsComponent,
   },
   {
-    path:'advisorInfo/:id',
-    component:AdvisorDetailsComponent
+    path: 'advisorInfo/:id',
+    component: AdvisorDetailsComponent,
   },
-    {
-      path: 'instructorinfo/:id',
-      component: InstructorinfoComponent,
-    },
-{
+  {
+    path: 'instructorinfo/:id',
+    component: InstructorinfoComponent,
+  },
+  {
     path: 'uploadedarticle/:id',
     component: UploadedarticlesstatusComponent,
   },
   {
-    path:'libraries/:id',
-    component:LibraryByIdComponent
+    path: 'libraries/:id',
+    component: LibraryByIdComponent,
   },
   {
-    path:'checkout',
-    component:CheckoutComponent
-  }
-
+    path: 'checkout',
+    component: CheckoutComponent,
+  },
 ];
 
 @NgModule({

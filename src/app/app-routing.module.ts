@@ -33,6 +33,7 @@ import { SharedarticleHistoryComponent } from './shared-module/components/shared
 import { LibraryByIdComponent } from './common/components/library-by-id/library-by-id.component';
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
 import { inactiveStatusGuard } from './common/guards/inactive-status-guard/inactive-status.guard';
+import { SharedFirstHomepageComponent } from './shared-module/components/shared-first-homepage/shared-first-homepage.component';
 
 
 const routes: Routes = [
@@ -137,6 +138,10 @@ const routes: Routes = [
   { 
     path: 'cart', 
     component: CartComponent 
+  },
+  {
+    path: 'allcourses',
+    component: SharedFirstHomepageComponent
   },
   { 
     path: 'checkout',

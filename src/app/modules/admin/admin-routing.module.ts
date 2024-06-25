@@ -29,6 +29,7 @@ import { LibraryByIdComponent } from 'src/app/common/components/library-by-id/li
 import { DeleteAccountComponent } from 'src/app/common/components/delete-account/delete-account.component';
 import { RevertDeleteComponent } from 'src/app/common/components/revert-delete/revert-delete.component';
 import { PublishSuccessComponent } from './components/publish-success/publish-success.component';
+import { SharedFirstHomepageComponent } from 'src/app/shared-module/components/shared-first-homepage/shared-first-homepage.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,10 @@ const routes: Routes = [
   {
     path:'aboutus',
     component:AboutusComponent
+  },
+  {
+    path: 'allcourses',
+    component: SharedFirstHomepageComponent
   },
   {
     path:'notification',

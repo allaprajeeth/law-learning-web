@@ -38,6 +38,7 @@ import { SharedcourseInfoComponent } from './components/sharedcourse-info/shared
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DurationPipe } from './pipes/duration.pipe';
+import { SharedFirstHomepageComponent } from './components/shared-first-homepage/shared-first-homepage.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { DurationPipe } from './pipes/duration.pipe';
     SharedvideoplayerComponent,
     SharedcourseInfoComponent,
     DurationPipe,
+    SharedFirstHomepageComponent,
   ],
 
   imports: [
@@ -114,7 +116,7 @@ import { DurationPipe } from './pipes/duration.pipe';
     SharedPaginationComponent,
     SharedvideoplayerComponent,
     SharedcourseInfoComponent,
-    DurationPipe
+    DurationPipe,
   ],
 })
 export class SharedModule {}
