@@ -1,12 +1,12 @@
 export enum ReviewStatus {
-    SUBMITTED,
-    CONTENT_MANAGER_ACCEPTED,
-    CONTENT_MANAGER_REJECTED,
-    CM_ADMIN_ACCEPTED,
-    REVIEWER_ACCEPTED,
-    REVIEWER_REJECTED,
-    REVIEWER_RESUBMIT,
-    ADMIN_ACCEPTED,
-    ADMIN_RESUBMIT,
-    ADMIN_REJECTED
+    SUBMITTED = 'Submitted',
+    CONTENT_MANAGER_ACCEPTED = 'Content Manager Accepted',
+    CONTENT_MANAGER_REJECTED = 'Content Manager Rejected',
+    CM_ADMIN_ACCEPTED = 'CM Admin Accepted',
+    REVIEWER_ACCEPTED = 'Reviewer Accepted',
+    REVIEWER_REJECTED = 'Reviewer Rejected',
+    REVIEWER_RESUBMIT = 'Reviewer Resubmit',
+    ADMIN_ACCEPTED = 'Admin Accepted',
+    ADMIN_RESUBMIT = 'Admin Resubmit',
+    ADMIN_REJECTED = 'Admin Rejected'
 }

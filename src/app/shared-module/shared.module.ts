@@ -39,6 +39,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DurationPipe } from './pipes/duration.pipe';
 import { SharedFirstHomepageComponent } from './components/shared-first-homepage/shared-first-homepage.component';
+import { EnumValuePipe } from './pipes/enum-value.pipe';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SharedFirstHomepageComponent } from './components/shared-first-homepage
     SharedcourseInfoComponent,
     DurationPipe,
     SharedFirstHomepageComponent,
+    EnumValuePipe,
   ],
 
   imports: [
@@ -117,6 +119,7 @@ import { SharedFirstHomepageComponent } from './components/shared-first-homepage
     SharedvideoplayerComponent,
     SharedcourseInfoComponent,
     DurationPipe,
+    EnumValuePipe,
   ],
 })
 export class SharedModule {}

@@ -1,105 +1,125 @@
 <div class="heading" *ngIf="course">
-  <h1>{{course.title}}</h1>
-  <p class="first-paragraph">{{ course.description }}</p>
-  <p>Instructor: {{ course?.createdBy?.name }}</p>
-  <p>Course Type: {{course.type}}</p>
-  <p>Skill Level: {{course.difficultyLevel}}</p>
-  <p class="icon">
-    <span class="material-icons language"> language </span>English
-  </p>
+	<h1>{{course.title}}</h1>
+	<p class="first-paragraph">{{ course.description }}</p>
+	<p>Instructor: {{ course?.createdBy?.name }}</p>
+	<p>Course Type: {{course.type}}</p>
+	<p>Skill Level: {{course.difficultyLevel}}</p>
+	<p class="icon">
+		<span class="material-icons language"> language </span>English
+	</p>
 </div>
 
 <div class="courseFeatures">
-  <h2>This course includes:</h2>
-  <div class="grid-container">
-    <div class="grid-item">
-      <span><mat-icon>videocam</mat-icon> hours on-demand video</span>
-    </div>
-    <div class="grid-item">
-      <span><mat-icon>download</mat-icon> Downloadable Resources</span>
-    </div>
-    <div class="grid-item">
-      <span><span class="material-icons">emoji_events</span>Certificate of Completion</span>
-    </div>
-  </div>
+	<h2>This course includes:</h2>
+	<div class="grid-container">
+		<div class="grid-item">
+			<span><mat-icon>videocam</mat-icon> hours on-demand video</span>
+		</div>
+		<div class="grid-item">
+			<span><mat-icon>download</mat-icon> Downloadable Resources</span>
+		</div>
+		<div class="grid-item">
+			<span><span class="material-icons">emoji_events</span>Certificate of Completion</span>
+		</div>
+	</div>
 </div>
 
 <mat-card class="side-bar">
-  <div class="container">
-    <mat-card-title class="title">
-      <div class="title-text">Course Content</div>
-    </mat-card-title>
-  </div>
-  <div class="sectionsInfo" *ngIf="course">
-    {{ course.sections?.length }} Sections &nbsp;• {{ numberOfSubsections }} lectures &nbsp;• Total Length
-  </div>
-  <mat-divider></mat-divider>
-  <mat-accordion class="sidebar-content" *ngIf="course">
-    <mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <div class="panelTitle">Section {{ i + 1 }}: {{ section.title }}</div>
-          <div class="section-info">{{ section.subSections?.length }} lectures &nbsp;&nbsp; min</div>
-        </mat-panel-title>
-      </mat-expansion-panel-header>
+	<div class="container">
+		<mat-card-title class="title">
+			<div class="title-text">Course Content</div>
+		</mat-card-title>
+	</div>
+	<div class="sectionsInfo" *ngIf="course">
+		{{ course.sections?.length }} Sections &nbsp;• {{ numberOfSubsections }} lectures &nbsp;• Total Length
+	</div>
+	<mat-divider></mat-divider>
+	<mat-accordion class="sidebar-content" *ngIf="course">
+		<mat-expansion-panel *ngFor="let section of course.sections; let i = index" #myExpansionPanel>
+			<mat-expansion-panel-header>
+				<mat-panel-title>
+					<div class="panelTitle">Section {{ i + 1 }}: {{ section.title }}</div>
+					<div class="section-info">{{ section.subSections?.length }} lectures &nbsp;&nbsp; min</div>
+				</mat-panel-title>
+			</mat-expansion-panel-header>
 
-      <div style="border: 1px solid rgb(237, 228, 228); padding: 10px; margin-bottom: 15px;">
-        <h3 class="sectionDesc">{{ section.description }}</h3>
-      </div>
-      <div class="video-group">
-        <ng-container *ngFor="let subSection of section.subSections; let j = index">
-          <mat-expansion-panel *ngIf="!isSubmitted(subSection)">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <div class="titlehead">
-                  <div>Sub Section {{ j + 1 }}: {{ subSection.title }}</div>
-                </div>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="video-item"></div>
-            <mat-divider></mat-divider>
-          </mat-expansion-panel>
-        </ng-container>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+			<div style="border: 1px solid rgb(237, 228, 228); padding: 10px; margin-bottom: 15px;">
+				<h3 class="sectionDesc">{{ section.description }}</h3>
+			</div>
+			<div class="video-group">
+				<ng-container *ngFor="let subSection of section.subSections; let j = index">
+					<mat-expansion-panel *ngIf="!isSubmitted(subSection)">
+						<mat-expansion-panel-header>
+							<mat-panel-title>
+								<div class="titlehead">
+									<div>Sub Section {{ j + 1 }}: {{ subSection.title }}</div>
+								</div>
+							</mat-panel-title>
+						</mat-expansion-panel-header>
+						<div class="video-item"></div>
+						<mat-divider></mat-divider>
+					</mat-expansion-panel>
+				</ng-container>
+			</div>
+		</mat-expansion-panel>
+	</mat-accordion>
 </mat-card>
 
 
 <div *ngIf="showCommentBox" class="comment-box">
-  <textarea placeholder="Add your comment here..." [(ngModel)]="rejectComment"
-    (ngModelChange)="checkRejectComment()"></textarea>
+	<textarea placeholder="Add your comment here..." [(ngModel)]="rejectComment"
+		(ngModelChange)="checkRejectComment()"></textarea>
 </div>z
 <div *ngIf="showResumbitCommentBox" class="comment-box">
-  <textarea placeholder="Add your comment here..." [(ngModel)]="resubmitComment"
-    (ngModelChange)="checkResubmitComment()"></textarea>
+	<textarea placeholder="Add your comment here..." [(ngModel)]="resubmitComment"
+		(ngModelChange)="checkResubmitComment()"></textarea>
 </div>
+<div *ngIf=" !isInstructorModule && showSubsciptionApprovalSection(course.reviewStatus) && !showApprovalSectionForAdmin(course.reviewStatus)"
+	class="approve-reject-buttons">
+	<!-- For Content Manager -->
+	<button class="approve-button" mat-raised-button color="primary" (click)="approve()"
+		*ngIf="role === 'CONTENTMANAGER' && course?.reviewStatus === 'SUBMITTED'">Approve</button>
+	<button class="reject-button" (click)="toggleCommentBox()" mat-raised-button color="warn"
+		*ngIf="role === 'CONTENTMANAGER' && course?.reviewStatus === 'SUBMITTED'">Reject</button>
 
-<div *ngIf=" !isInstructorModule" class="approve-reject-buttons">
+	<!-- For Reviewer -->
+	<button mat-button color="primary" (click)="approve()"
+		*ngIf="role === 'REVIEWER' && course?.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || course?.reviewStatus === 'CM_ADMIN_ACCEPTED'">
+		Approve
+	</button>
+	<button mat-button color="warn" (click)="toggleCommentBox()"
+		*ngIf="role === 'REVIEWER' && course?.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'">
+		Reject
+	</button>
+	<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox()"
+		*ngIf="role === 'REVIEWER' && course?.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || course?.reviewStatus === 'CM_ADMIN_ACCEPTED'">
+		Resubmit
+	</button>
 
- <!-- For Content Manager -->
- <button class="approve-button" mat-raised-button color="primary" (click)="approve()" *ngIf="role === 'CONTENTMANAGER' && reviewStatus === 'SUBMITTED'">Approve</button>
- <button class="reject-button" (click)="toggleCommentBox()" mat-raised-button color="warn" *ngIf="role === 'CONTENTMANAGER' && reviewStatus === 'SUBMITTED'"  >Reject</button>
- 
-<!-- For Reviewer -->
-<button mat-button color="primary" (click)="approve()" *ngIf="role === 'REVIEWER' && reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || reviewStatus === 'ADMIN_ACCEPTED'">
-  Approve
-</button>
-  <button mat-button color="warn" (click)="toggleCommentBox()" *ngIf="role === 'REVIEWER' && reviewStatus === 'CONTENT_MANAGER_ACCEPTED'"> 
-  Reject
-</button>
-<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox()" *ngIf="role === 'REVIEWER' && reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || reviewStatus === 'ADMIN_ACCEPTED'">
-  Resubmit
-</button>
-
-<!-- For Admin -->
-<button mat-button color="primary" (click)="approve()" *ngIf="role === 'ADMIN' && reviewStatus === 'REVIEWER_ACCEPTED' || reviewStatus === 'CONTENT_MANAGER_REJECTED' || reviewStatus === 'REVIEWER_RESUBMIT'">
-  Approve
-</button>
-<button mat-button color="warn" (click)="toggleCommentBox()" *ngIf="role === 'ADMIN' && reviewStatus === 'REVIEWER_ACCEPTED' || reviewStatus === 'CONTENT_MANAGER_REJECTED' || reviewStatus === 'REVIEWER_RESUBMIT'">
-  Reject
-</button>
-<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox()" *ngIf="role === 'ADMIN' && reviewStatus === 'REVIEWER_ACCEPTED' || reviewStatus === 'CONTENT_MANAGER_REJECTED' || reviewStatus === 'REVIEWER_RESUBMIT'">
-  Resubmit
-</button>
+	<!-- For Admin -->
+	<button mat-button color="primary" (click)="approve()"
+		*ngIf="role === 'ADMIN' && course?.reviewStatus === 'REVIEWER_ACCEPTED' || course?.reviewStatus === 'CONTENT_MANAGER_REJECTED' || course?.reviewStatus === 'REVIEWER_RESUBMIT'">
+		Approve
+	</button>
+	<button mat-button color="warn" (click)="toggleCommentBox()"
+		*ngIf="role === 'ADMIN' && course?.reviewStatus === 'REVIEWER_ACCEPTED' || course?.reviewStatus === 'CONTENT_MANAGER_REJECTED' || course?.reviewStatus === 'REVIEWER_RESUBMIT'">
+		Reject
+	</button>
+	<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox()"
+		*ngIf="role === 'ADMIN' && course?.reviewStatus === 'REVIEWER_ACCEPTED' || course?.reviewStatus === 'CONTENT_MANAGER_REJECTED' || course?.reviewStatus === 'REVIEWER_RESUBMIT'">
+		Resubmit
+	</button>
+</div>
+<div *ngIf="!isInstructorModule && !showSubsciptionApprovalSection(course.reviewStatus) && showApprovalSectionForAdmin(course.reviewStatus)"
+	class="approve-reject-buttons">
+	<!-- For Admin -->
+	<button mat-button color="primary" (click)="approve()" *ngIf="role === 'ADMIN'">
+		Approve
+	</button>
+	<button mat-button color="warn" (click)="toggleCommentBox()" *ngIf="role === 'ADMIN'">
+		Reject
+	</button>
+	<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox()" *ngIf="role === 'ADMIN'">
+		Resubmit
+	</button>
 </div>

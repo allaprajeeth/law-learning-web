@@ -40,8 +40,9 @@ export class SharedvideoplayerComponent {
   currentPlayingVideoIndex: number = -1;
   documents: boolean = false;
   noVideoMessage: string = '';
-   @Input() role: string | undefined;
- 
+  @Input() proxy_role: string | undefined;
+  role: string | undefined;
+  reviewStatusEnum = ReviewStatus;
  
   showDocs() {
     this.documents = !this.documents;
@@ -95,7 +96,7 @@ export class SharedvideoplayerComponent {
   ngOnInit() {
     this.initializePlayer();
     this.setupPlayerEventListeners();
-    // this.role = this.authService.getUserRole();
+    this.role = this.authService.getUserRole();
   }
   private setupPlayerEventListeners() {
     if (this.player) {
@@ -222,7 +223,11 @@ export class SharedvideoplayerComponent {
   }
 
   showSubsciptionApprovalSection(subSection: SubSection): boolean {
-    return this.courseService.showSubsciptionApprovalSection(subSection);
+    return this.courseService.showSubsciptionApprovalSection(subSection.reviewStatus);
+  }
+
+  showApprovalSectionForAdmin(subSection: SubSection): boolean {
+    return this.courseService.showApprovalSectionForAdmin(subSection.reviewStatus, this.proxy_role);
   }
 
   approveVideo(section: Section, subSection: SubSection, status: string) {

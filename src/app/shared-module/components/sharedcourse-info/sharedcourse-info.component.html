@@ -4,11 +4,11 @@
         <mat-tab-group>
             <mat-tab label="Overview">
                 <div class="tabs">
-                   <app-sharedoverview [course] = "course" *ngIf="course" [role]="role"></app-sharedoverview>
+                   <app-sharedoverview [course] = "course" *ngIf="course" [proxy_role]="role"></app-sharedoverview>
                 </div>
             </mat-tab>
             <mat-tab label="Watch Content">
-                <app-sharedvideoplayer *ngIf="course" [course]="course" [role]="role"></app-sharedvideoplayer>
+                <app-sharedvideoplayer *ngIf="course" [course]="course" [proxy_role]="role"></app-sharedvideoplayer>
             </mat-tab>
         </mat-tab-group>
     </div>

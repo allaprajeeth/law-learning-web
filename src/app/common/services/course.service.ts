@@ -64,10 +64,29 @@ export class CourseService {
 
   /*------------ course review process ---------------- */
 
-  showSubsciptionApprovalSection(subSection: SubSection): boolean {
+  showSubsciptionApprovalSection(reviewStatus: string): boolean {
     const role = this.authService.getUserRole();
     let roleEnum: UserRole = UserRole[role as keyof typeof UserRole];
-    let statusEnum: ReviewStatus = ReviewStatus[subSection.reviewStatus as keyof typeof ReviewStatus];
+    let statusEnum: ReviewStatus = ReviewStatus[reviewStatus as keyof typeof ReviewStatus];
+    
+    if (roleEnum === UserRole.CONTENTMANAGER) {
+      return statusEnum === ReviewStatus.SUBMITTED;
+    } else if (roleEnum === UserRole.ADMIN) {
+      return statusEnum === ReviewStatus.CONTENT_MANAGER_REJECTED
+            || statusEnum === ReviewStatus.REVIEWER_ACCEPTED
+            || statusEnum === ReviewStatus.REVIEWER_REJECTED
+            || statusEnum === ReviewStatus.REVIEWER_RESUBMIT;
+    } else if (roleEnum === UserRole.REVIEWER) {
+      return statusEnum === ReviewStatus.CONTENT_MANAGER_ACCEPTED 
+             || statusEnum === ReviewStatus.CM_ADMIN_ACCEPTED;
+    }
+    return false;
+  }
+
+  showApprovalSectionForAdmin(reviewStatus: string, proxy_role: any): boolean {
+    const role = proxy_role;
+    let roleEnum: UserRole = UserRole[role as keyof typeof UserRole];
+    let statusEnum: ReviewStatus = ReviewStatus[reviewStatus as keyof typeof ReviewStatus];
     
     if (roleEnum === UserRole.CONTENTMANAGER) {
       return statusEnum === ReviewStatus.SUBMITTED;

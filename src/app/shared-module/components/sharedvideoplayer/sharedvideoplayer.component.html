@@ -1,141 +1,163 @@
 <div class="progress-info">
-  {{role}}
-  <div style="color:blue;font-size: 24px;"> Course Progress </div>
-  <br>
-  <div class="total-progress">
-    Total Progress:{{courseProgress}}%
-  </div>
-  <div class="completed-videos">
-    Numbers of Videos Completed
-  </div>
-  <div>Total Watched Time: </div>
+	{{role}}
+	<div style="color:blue;font-size: 24px;"> Course Progress </div>
+	<br>
+	<div class="total-progress">
+		Total Progress:{{courseProgress}}%
+	</div>
+	<div class="completed-videos">
+		Numbers of Videos Completed
+	</div>
+	<div>Total Watched Time: </div>
 </div>
 <ng-container>
-  <div id="showVideo" class="video-info-total">
-    <!-- side bar video expansion panel  -->
-    <mat-card class="side-bar" [style.display]="sidebarVisible ? 'block' : 'none'">
-      <div class="container">
-        <mat-card-title class="title">
-          <div class="title-text" style="margin-left: 20px">Course Content</div>
-          <div class="close-button" (click)="toggleSidebar()">
-            <mat-icon>close</mat-icon>
-          </div>
-        </mat-card-title>
-      </div>
-      <mat-divider></mat-divider>
-      <mat-accordion class="sidebar-content">
-        <mat-expansion-panel *ngFor="let section of course?.sections; let i = index" #myExpansionPanel
-          [attr.id]="'expansion-panel-' + i">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <div>
-                <div class="title-text">{{ section.title }}</div>
-                <!-- <div class="section-info">{{ subsection.title }}</div> -->
-              </div>
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <div class="video-group">
-            <ng-container *ngFor="let subSection of section.subSections; let j = index">
+	<div id="showVideo" class="video-info-total">
+		<!-- side bar video expansion panel  -->
+		<mat-card class="side-bar" [style.display]="sidebarVisible ? 'block' : 'none'">
+			<div class="container">
+				<mat-card-title class="title">
+					<div class="title-text" style="margin-left: 20px">Course Content</div>
+					<div class="close-button" (click)="toggleSidebar()">
+						<mat-icon>close</mat-icon>
+					</div>
+				</mat-card-title>
+			</div>
+			<mat-divider></mat-divider>
+			<mat-accordion class="sidebar-content">
+				<mat-expansion-panel *ngFor="let section of course?.sections; let i = index" #myExpansionPanel
+					[attr.id]="'expansion-panel-' + i">
+					<mat-expansion-panel-header>
+						<mat-panel-title>
+							<div>
+								<div class="title-text">{{ section.title }}</div>
+								<!-- <div class="section-info">{{ subsection.title }}</div> -->
+							</div>
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+					<div class="video-group">
+						<ng-container *ngFor="let subSection of section.subSections; let j = index">
 
-              <div class="video-item subsection-space" [class.playing-video-title]="isVideoPlaying(i, j)">
-                <div class="video-info">
-                  <div class="videos-title-and-status">
-                    <div class="videos-title" (click)="playVideo(i, j)">
-                      <mat-icon class="custom-icon mat-icon-small">videocam</mat-icon>{{ subSection ?.title }}
-                      <p [style.color]="getReviewStatusColor(subSection?.reviewStatus)">{{subSection ?.reviewStatus }}
-                      </p>
+							<div class="video-item subsection-space" [class.playing-video-title]="isVideoPlaying(i, j)">
+								<div class="video-info">
+									<div class="videos-title-and-status">
+										<div class="videos-title" (click)="playVideo(i, j)">
+											<mat-icon class="custom-icon mat-icon-small">videocam</mat-icon>{{
+											subSection ?.title }}
+											<p [style.color]="getReviewStatusColor(subSection?.reviewStatus)">
+												{{subSection ?.reviewStatus | enumValue:reviewStatusEnum}}
+											</p>
 
-                      <ng-container *ngIf="subSection.file && subSection.file.contentType === 'application/pdf'">
-                        <p class="filename">
-                          <span class="pdf-icon material-icons"
-                            style="color: red; vertical-align: middle;">picture_as_pdf</span>
-                          <a [href]="getDownloadUrl(subSection.file.url)" download="{{ subSection.file.fileName }}"
-                            class="pdf-link">
-                            {{ subSection.file.fileName }}
-                          </a>
-                        </p>
-                      </ng-container>
-                    </div>
-                    <div class="status" *ngIf="subSection.reviewStatus !== 'SUBMITTED'">
-                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED'"
-                        class="approved">Approved</span>
-                      <span *ngIf="subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED'"
-                        class="rejected">Rejected</span>
+											<ng-container
+												*ngIf="subSection.file && subSection.file.contentType === 'application/pdf'">
+												<p class="filename">
+													<span class="pdf-icon material-icons"
+														style="color: red; vertical-align: middle;">picture_as_pdf</span>
+													<a [href]="getDownloadUrl(subSection.file.url)"
+														download="{{ subSection.file.fileName }}" class="pdf-link">
+														{{ subSection.file.fileName }}
+													</a>
+												</p>
+											</ng-container>
+										</div>
+									</div>
+									<div class="time-duration" style="color: rgb(122, 119, 119)">
+										{{ subSection ?.duration }} min
+									</div>
+								</div>
+							</div>
+							<div *ngIf="showSubsciptionApprovalSection(subSection) && !showApprovalSectionForAdmin(subSection)"
+								class="approve-reject-buttons">
+								<!-- For Content Manager -->
+								<button mat-button color="primary"
+									(click)="approveVideo(section, subSection, 'APPROVED')"
+									*ngIf="role === 'CONTENTMANAGER' && subSection.reviewStatus === 'SUBMITTED'">
+									Approve
+								</button>
+								<button mat-button color="warn" (click)="toggleCommentBox(subSection)"
+									*ngIf="role === 'CONTENTMANAGER' && subSection.reviewStatus === 'SUBMITTED'">
+									Reject
+								</button>
+
+								<!-- For Reviewer -->
+								<button mat-button color="primary"
+									(click)="approveVideo(section, subSection, 'ADMIN_ACCEPTED')"
+									*ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'CM_ADMIN_ACCEPTED')">
+									Approve
+								</button>
+								<!-- <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'ADMIN_ACCEPTED')"> -->
+								<button mat-button color="warn" (click)="toggleCommentBox(subSection)"
+									*ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED')">
+									Reject
+								</button>
+								<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)"
+									*ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'CM_ADMIN_ACCEPTED')">
+									Resubmit
+								</button>
+
+								<!-- For Admin -->
+								<button mat-button color="primary"
+									(click)="approveVideo(section, subSection, 'APPROVED')"
+									*ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
+									Approve
+								</button>
+								<button mat-button color="warn" (click)="toggleCommentBox(subSection)"
+									*ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
+									Reject
+								</button>
+								<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)"
+									*ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
+									Resubmit
+								</button>
+
+							</div>
+							<div *ngIf="!showSubsciptionApprovalSection(subSection) && showApprovalSectionForAdmin(subSection)"
+								class="approve-reject-buttons">
+								<!-- For Admin -->
+								<button mat-button color="primary"
+									(click)="approveVideo(section, subSection, 'APPROVED')"
+									*ngIf="role === 'ADMIN'">
+									Approve
+								</button>
+								<button mat-button color="warn" (click)="toggleCommentBox(subSection)"
+									*ngIf="role === 'ADMIN'">
+									Reject
+								</button>
+								<button mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)"
+									*ngIf="role === 'ADMIN'">
+									Resubmit
+								</button>
+							</div>
+
+							<div *ngIf="subSection.showCommentBox" class="comment-box">
+								<textarea matInput placeholder="Enter your comment..."
+									[(ngModel)]="subSection.rejectionComment"></textarea>
+								<button mat-button color="primary"
+									(click)="rejectVideo(section, subSection, 'REJECTED', subSection.rejectionComment)">Send</button>
+							</div>
 
 
-                    </div>
-                  </div>
-                  <div class="time-duration" style="color: rgb(122, 119, 119)">
-                    {{ subSection ?.duration }} min
-                  </div>
-                </div>
-              </div>
-              <div *ngIf="showSubsciptionApprovalSection(subSection)" class="approve-reject-buttons">
-                <!-- For Content Manager -->
-                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'APPROVED')" *ngIf="role === 'CONTENTMANAGER' && subSection.reviewStatus === 'SUBMITTED'">
-                  Approve
-                </button>
-                <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'CONTENTMANAGER' && subSection.reviewStatus === 'SUBMITTED'">
-                  Reject
-                </button>
-              
-                <!-- For Reviewer -->
-                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'ADMIN_ACCEPTED')" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'ADMIN_ACCEPTED')">
-                  Approve
-                </button>
-                <!-- <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'ADMIN_ACCEPTED')"> -->
-                  <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED')"> 
-                  Reject
-                </button>
-                <button mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)" *ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'ADMIN_ACCEPTED')">
-                  Resubmit
-                </button>
-              
-                <!-- For Admin -->
-                <button mat-button color="primary" (click)="approveVideo(section, subSection, 'APPROVED')" *ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
-                  Approve
-                </button>
-                <button mat-button color="warn" (click)="toggleCommentBox(subSection)" *ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
-                  Reject
-                </button>
-                <button mat-raised-button color="accent" (click)="toggleResubmitCommentBox(subSection)" *ngIf="role === 'ADMIN' && (subSection.reviewStatus === 'REVIEWER_ACCEPTED' || subSection.reviewStatus === 'CONTENT_MANAGER_REJECTED' || subSection.reviewStatus === 'REVIEWER_RESUBMIT')">
-                  Resubmit
-                </button>
-                
-              </div>
-              
-              
+							<div *ngIf="subSection.showResumbitCommentBox" class="comment-box">
+								<textarea matInput placeholder="Enter your comment..."
+									[(ngModel)]="subSection.reSubmissionComment"></textarea>
+								<button mat-button color="primary"
+									(click)="ResubmitVideo(section, subSection, 'RESUBMIT', subSection.reSubmissionComment)">Send</button>
+							</div>
+						</ng-container>
+					</div>
+				</mat-expansion-panel>
+			</mat-accordion>
+		</mat-card>
 
-              <div *ngIf="subSection.showCommentBox" class="comment-box">
-                <textarea matInput placeholder="Enter your comment..."
-                  [(ngModel)]="subSection.rejectionComment"></textarea>
-                <button mat-button color="primary"
-                  (click)="rejectVideo(section, subSection, 'REJECTED', subSection.rejectionComment)">Send</button>
-              </div>
-
-
-              <div *ngIf="subSection.showResumbitCommentBox" class="comment-box">
-                <textarea matInput placeholder="Enter your comment..."
-                  [(ngModel)]="subSection.reSubmissionComment"></textarea>
-                <button mat-button color="primary"
-                  (click)="ResubmitVideo(section, subSection, 'RESUBMIT', subSection.reSubmissionComment)">Send</button>
-              </div>
-            </ng-container>
-          </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </mat-card>
-
-    <div #videocontainer class="video-container video-container-sidebar">
-      <video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
-      </video>
-      <!-- <div *ngIf="!isVideoAvailable()" class="no-video-message">
+		<div #videocontainer class="video-container video-container-sidebar">
+			<video playsinline controls id="player" type="video/mp4" [autoplay]="autoplayVideo">
+			</video>
+			<!-- <div *ngIf="!isVideoAvailable()" class="no-video-message">
       Video file is not uploaded.
     </div> -->
 
 
-      <div [style.display]="!sidebarVisible ? 'block' : 'none'">
-        <button class="open-sidebar" (click)="openSidebar()" *ngIf="isVideoAvailable()">CourseContent</button>
-      </div>
+			<div [style.display]="!sidebarVisible ? 'block' : 'none'">
+				<button class="open-sidebar" (click)="openSidebar()" *ngIf="isVideoAvailable()">CourseContent</button>
+			</div>
 
-    </div>
+		</div>

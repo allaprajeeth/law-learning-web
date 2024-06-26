@@ -13,7 +13,7 @@ import { CourseService } from 'src/app/common/services/course.service';
   styleUrls: ['./sharedoverview.component.scss'],
 })
 export class SharedoverviewComponent {
-  @Input() course: Course | null | undefined
+  @Input() course: Course = new Course;
   // courseId: number | undefined;
   numberOfSubsections = 0;
   rejectComment: string = '';
@@ -21,10 +21,10 @@ export class SharedoverviewComponent {
   isRejectCommentValid: boolean = false;
   isResubmitCommentValid: boolean = false;
   isInstructorModule: boolean = false;
-  @Input() role: string | undefined;
+  @Input() proxy_role: string | undefined;
   showCommentBox: boolean = false;
   showResumbitCommentBox: boolean = false;
-  reviewStatus:string| undefined
+  role: string | undefined;
   constructor(
     private courseService: CourseService,
     private route: ActivatedRoute,
@@ -39,7 +39,7 @@ export class SharedoverviewComponent {
         return acc + (section.subSections ? section.subSections.length : 0);
       }, 0);
     }
-    this.reviewStatus=this.course?.reviewStatus
+    this.role = this.authService.getUserRole();
   }
 
   private checkRoute(): void {
@@ -50,6 +50,14 @@ export class SharedoverviewComponent {
 
   isSubmitted(subsection: any): boolean {
     return subsection.reviewStatus === 'SUBMITTED';
+  }
+
+  showSubsciptionApprovalSection(reviewStatus: string): boolean {
+    return this.courseService.showSubsciptionApprovalSection(reviewStatus);
+  }
+
+  showApprovalSectionForAdmin(reviewStatus: string): boolean {
+    return this.courseService.showApprovalSectionForAdmin(reviewStatus, this.proxy_role);
   }
 
   formApproval(): boolean {
