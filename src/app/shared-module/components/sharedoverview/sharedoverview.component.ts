@@ -53,7 +53,7 @@ export class SharedoverviewComponent {
   }
 
   showSubsciptionApprovalSection(reviewStatus: string): boolean {
-    return this.courseService.showSubsciptionApprovalSection(reviewStatus);
+    return this.courseService.showSubsciptionApprovalSection(reviewStatus, this.proxy_role);
   }
 
   showApprovalSectionForAdmin(reviewStatus: string): boolean {

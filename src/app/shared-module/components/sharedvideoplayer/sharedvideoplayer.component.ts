@@ -223,7 +223,7 @@ export class SharedvideoplayerComponent {
   }
 
   showSubsciptionApprovalSection(subSection: SubSection): boolean {
-    return this.courseService.showSubsciptionApprovalSection(subSection.reviewStatus);
+    return this.courseService.showSubsciptionApprovalSection(subSection.reviewStatus, this.proxy_role);
   }
 
   showApprovalSectionForAdmin(subSection: SubSection): boolean {

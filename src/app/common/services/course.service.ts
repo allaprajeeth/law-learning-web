@@ -64,7 +64,8 @@ export class CourseService {
 
   /*------------ course review process ---------------- */
 
-  showSubsciptionApprovalSection(reviewStatus: string): boolean {
+  showSubsciptionApprovalSection(reviewStatus: string, proxy_role: any): boolean {
+    if(proxy_role) return false;
     const role = this.authService.getUserRole();
     let roleEnum: UserRole = UserRole[role as keyof typeof UserRole];
     let statusEnum: ReviewStatus = ReviewStatus[reviewStatus as keyof typeof ReviewStatus];
