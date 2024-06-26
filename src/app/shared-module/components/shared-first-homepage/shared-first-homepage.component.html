@@ -1,74 +1,119 @@
 <div>
-    <div class="heading">
-      <h1>Curated courses</h1>
+  <div class="heading">
+    <h1>Curated Topics</h1>
+  </div>
+</div>
+<div class="image-grid">
+  <div *ngFor="let course of curatedCourses; let j = index" class="image-item">
+    <div class="imagesContainer">
+      <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" alt="Random Image"
+        (error)="onImageError($event)">
+      <div class="overlay">
+        <a (click)="showCourseContent(course.id)">
+          <i class="fa fa-play-circle play-icon"></i>
+        </a>
+      </div>
+      <span class="duration">{{course.duration | duration: 's':'hhmmss'}}</span>
     </div>
-  </div>
-  <div class="image-grid">
-    <div *ngFor="let course of curatedCourses; let j = index" class="image-item">
-      <div class="imagesContainer">
-        <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" alt="Random Image"
-          (error)="onImageError($event)">
-        <div class="overlay">
-          <a (click)="showCourseContent(course.id)">
-            <i class="fa fa-play-circle play-icon"></i>
-          </a>
-        </div>
-        <span class="duration">{{course.duration | duration: 's':'hhmmss'}}</span>
-      </div>
-      <div class="headingsContainer">
-        <h5>{{ course.title }}</h5>
-        <p>{{ course.createdBy.name }}</p>
-        <h4>{{ course.difficultyLevel}} | {{course.type }}</h4>
+    <div class="headingsContainer">
+      <h5>{{ course.title }}</h5>
+      <p>{{ course.createdBy.name }}</p>
+      <h4>{{ course.difficultyLevel}} | {{course.type }}</h4>
 
-        <!-- <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9733;</span>
-            <span class="star">&#9734;</span>
-          </div>
+      <!-- <div class="ratingscontainer1">
+        <div class="ratingConatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
         </div>
-        <div class="ratingscontainer1">
-          <div class="ratingConatiner2">
-            <span>Reviewer Ratings</span>
-          </div>
-          <div class="ratingConatiner2">
-            <span>Subscribers Ratings</span>
-          </div>
-        </div> -->
-        <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
-          <span>Number of Subscribers:{{ course.viewCount}}</span>
-          <!-- <p style="color: #d80303; font-weight: bolder;"> This Course Expires on: {{ randomFutureDates[i] | date: 'dd MMM
-          yyyy' }}</p> -->
+        <div class="ratingConatiner2">
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9733;</span>
+          <span class="star">&#9734;</span>
         </div>
       </div>
-      <div class="subscribers" style="font-weight: 410;">
-        <span>Number of Views:{{ course.viewCount }}</span>
+      <div class="ratingscontainer1">
+        <div class="ratingConatiner2">
+          <span>Reviewer Ratings</span>
+        </div>
+        <div class="ratingConatiner2">
+          <span>Subscribers Ratings</span>
+        </div>
+      </div> -->
+      <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
+        <span>Number of Subscribers:{{ course.viewCount}}</span>
+        <!-- <p style="color: #d80303; font-weight: bolder;"> This Course Expires on: {{ randomFutureDates[i] | date: 'dd MMM
+        yyyy' }}</p> -->
       </div>
-      <h5 class="price">
-        <span *ngIf="course.price >= 0">
-          <!-- <del>₹{{ course.price }}</del> -->
-          <span style="color: green; margin-left: 5px;" class="free">Free</span>
-        </span>
-      </h5>
     </div>
+    <div class="subscribers" style="font-weight: 410;">
+      <span>Number of Views:{{ course.viewCount }}</span>
+    </div>
+    <h5 class="price">
+      <span *ngIf="course.price >= 0">
+        <!-- <del>₹{{ course.price }}</del> -->
+        <span style="color: green; margin-left: 5px;" class="free">Free</span>
+      </span>
+    </h5>
+  </div>
 
+</div>
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+    (pageChange)="onPageChange1($event)"></app-shared-pagination>
+</div>
+
+<br>
+<br>
+<br>
+
+
+<div>
+  <div class="heading">
+    <h1>Executive Courses</h1>
   </div>
-  <div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
-      (pageChange)="onPageChange1($event)"></app-shared-pagination>
+</div>
+<div class="image-grid">
+  <div *ngFor="let course of curatedCourses; let j = index" class="image-item">
+    <div class="imagesContainer">
+      <img [src]="course.thumbnail ? s3BaseURL+course.thumbnail : course.thumbnail" alt="Random Image"
+        (error)="onImageError($event)">
+      <div class="overlay">
+        <a (click)="showCourseContent(course.id)">
+          <i class="fa fa-play-circle play-icon"></i>
+        </a>
+      </div>
+      <span class="duration">{{course.duration | duration: 's':'hhmmss'}}</span>
+    </div>
+    <div class="headingsContainer">
+      <h5>{{ course.title }}</h5>
+      <p>{{ course.createdBy.name }}</p>
+      <h4>{{ course.difficultyLevel}} | {{course.type }}</h4>
+      <div class="subscribers" style="font-weight: 410; margin-bottom: 5px;">
+        <span>Number of Subscribers:{{ course.viewCount}}</span>
+      </div>
+    </div>
+    <div class="subscribers" style="font-weight: 410;">
+      <span>Number of Views:{{ course.viewCount }}</span>
+    </div>
+    <h5 class="price">
+      <span *ngIf="course.price >= 0">
+        <!-- <del>₹{{ course.price }}</del> -->
+        <span style="color: green; margin-left: 5px;" class="free">Free</span>
+      </span>
+    </h5>
   </div>
-  <!-- </div> -->
-  <br>
-  <br>
-  <br>
+
+</div>
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination1.totalElements"
+    (pageChange)="onPageChange1($event)"></app-shared-pagination>
+</div>
+<br>
+<br>
+<br>
 
  
   <!-- Loop over instituteCourses array -->
