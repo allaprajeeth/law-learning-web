@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild('paidCoursesSection') paidCourseSection!: ElementRef;
   instituteCourses: { [key: string]: Course[] } = {};
   curatedCourses: Course[] = [];
+   executiveCourses: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL;
   selectedCategory: string = '';
   selectedCourseType: string = '';

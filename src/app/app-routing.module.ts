@@ -35,7 +35,6 @@ import { RevertDeleteComponent } from './common/components/revert-delete/revert-
 import { inactiveStatusGuard } from './common/guards/inactive-status-guard/inactive-status.guard';
 import { SharedFirstHomepageComponent } from './shared-module/components/shared-first-homepage/shared-first-homepage.component';
 
-
 const routes: Routes = [
   {
     path: 'admin',

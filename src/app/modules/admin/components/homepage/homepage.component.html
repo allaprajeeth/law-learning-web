@@ -1,17 +1,22 @@
-
 <nav class="nav-container">
   <ul class="nav-list">
     <li class="nav-item" [ngClass]="{'active': isHomeRouteActive}">
-      <button  (click)="showAdminHome()">Admin Home-page</button>
+      <button mat-button color="primary" (click)="showAdminHome()">Admin Home-page</button>
+      <div class="underline" *ngIf="isHomeRouteActive"></div>
     </li>
     <li class="nav-item" [ngClass]="{'active': isContentManagerRouteActive}">
-      <button  (click)="showContentManagerHome()">Content Manager Home-page</button>
+      <button mat-button color="warn" (click)="showContentManagerHome()">Content Manager Home-page</button>
+      <div class="underline" *ngIf="isContentManagerRouteActive"></div>
     </li>
     <li class="nav-item" [ngClass]="{'active': isReviewerRouteActive}">
-      <button  (click)="showReviewerHome()">Reviewer Home-page</button>
+      <button mat-button color="warn" (click)="showReviewerHome()">Reviewer Home-page</button>
+      <div class="underline" *ngIf="isReviewerRouteActive"></div>
     </li>
   </ul>
 </nav>
+
+
+
 <!-- Admin Home Page -->
 <div *ngIf="isHomeRouteActive">
   <div class="container">
