@@ -1,4 +1,6 @@
 
+
+
 <div class="container">
   <div class="welcomeContainer">
     <div class="app-description">
@@ -171,6 +173,7 @@
   <br />
   <br />
 
+
   <!-- Loop over instituteCourses array -->
   <div *ngFor="let institute of institutes">
     <div class="organization-header">
@@ -183,13 +186,9 @@
         class="image-item"
       >
         <div class="imagesContainer">
-          <img
-            [src]="
-              course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail
-            "
-            alt="Random Image"
-            (error)="onImageError($event)"
-          />
+
+          <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" alt="Random Image"
+            (error)="onImageError($event)">
           <div class="overlay">
             <a
               routerLink="/overviewAvailable"
@@ -243,11 +242,12 @@
         </div>
       </div>
     </div>
-    <div style="text-align: right">
-      <app-shared-pagination
-        [totalRecordsCount]="pagination2.totalElements"
-        (pageChange)="onPageChange2($event)"
-      ></app-shared-pagination>
+
+
+    <div style="text-align: right;">
+      <app-shared-pagination [totalRecordsCount]="pagination2.totalElements"
+        (pageChange)="onPageChange2($event)"></app-shared-pagination>
+
     </div>
     <br /><br /><br />
   </div>
@@ -256,3 +256,4 @@
   <br />
   <br />
 </div>
+
