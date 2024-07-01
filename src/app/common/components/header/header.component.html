@@ -1,7 +1,251 @@
-<div class="design">
-  <a routerLink="/design-page">Go to Design Page</a>
+<div class="course-section">
+<div class="courses-name">
+  <h1>Curated Courses</h1>
+</div>
+<div class="controls">
+<div class="records-per-page">
+  <span>Records per page:</span>
+  <select [(ngModel)]="recordsPerPage" (change)="onRecordsPerPageChange($event)">
+    <option *ngFor="let option of recordsPerPageOptions" [value]="option">{{ option }}</option>
+  </select>
 </div>
 
+<div class="records-per-page">
+  <span>Got to:</span>
+  <select >
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
+</div>
+
+<div class="grid-container">
+<div class="rect-container">
+  <mat-card class="main-rectangle">
+    <h1>Property law</h1>
+    <div class="subtract-Container">
+      <div class="card">
+        <div class="subtract">   
+          <div class="rect-image">
+            <img
+              src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+              alt="Image Description">
+             
+          </div>
+          <br/>
+          <div class="course-details">
+            <h3 class="name-title">Pushpa</h3>
+            <p class="course-type">Beginner|Detailed Course</p>
+            <p class="course-date">Published Date:30 june, 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+
+<div class="rect-container">
+  <mat-card class="main-rectangle">
+    <h1>Property law</h1>
+    <div class="subtract-Container">
+      <div class="card">
+        <div class="subtract">   
+          <div class="rect-image">
+            <img
+              src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+              alt="Image Description">
+             
+          </div>
+          <br/>
+          <div class="course-details">
+            <h3 class="name-title">Pushpa</h3>
+            <p class="course-type">Beginner|Detailed Course</p>
+            <p class="course-date">Published Date:30 june, 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+
+<div class="rect-container">
+  <mat-card class="main-rectangle">
+    <h1>Property law</h1>
+    <div class="subtract-Container">
+      <div class="card">
+        <div class="subtract">   
+          <div class="rect-image">
+            <img
+              src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+              alt="Image Description">
+             
+          </div>
+          <br/>
+          <div class="course-details">
+            <h3 class="name-title">Pushpa</h3>
+            <p class="course-type">Beginner|Detailed Course</p>
+            <p class="course-date">Published Date:30 june, 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+
+<div class="rect-container">
+  <mat-card class="main-rectangle">
+    <h1>Property law</h1>
+    <div class="subtract-Container">
+      <div class="card">
+        <div class="subtract">   
+          <div class="rect-image">
+            <img
+              src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+              alt="Image Description">
+             
+          </div>
+          <br/>
+          <div class="course-details">
+            <h3 class="name-title">Pushpa</h3>
+            <p class="course-type">Beginner|Detailed Course</p>
+            <p class="course-date">Published Date:30 june, 2024</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+</div>
+
+
+<div class="grid-container">
+  <div class="rect-container">
+    <mat-card class="main-rectangle">
+      <h1>Property law</h1>
+      <div class="subtract-Container">
+        <div class="card">
+          <div class="subtract">   
+            <div class="rect-image">
+              <img
+                src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+                alt="Image Description">
+               
+            </div>
+            <br/>
+            <div class="course-details">
+              <h3 class="name-title">Pushpa</h3>
+              <p class="course-type">Beginner|Detailed Course</p>
+              <p class="course-date">Published Date:30 june, 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  
+  
+  <div class="rect-container">
+    <mat-card class="main-rectangle">
+      <h1>Property law</h1>
+      <div class="subtract-Container">
+        <div class="card">
+          <div class="subtract">   
+            <div class="rect-image">
+              <img
+                src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+                alt="Image Description">
+               
+            </div>
+            <br/>
+            <div class="course-details">
+              <h3 class="name-title">Pushpa</h3>
+              <p class="course-type">Beginner|Detailed Course</p>
+              <p class="course-date">Published Date:30 june, 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  
+  
+  <div class="rect-container">
+    <mat-card class="main-rectangle">
+      <h1>Property law</h1>
+      <div class="subtract-Container">
+        <div class="card">
+          <div class="subtract">   
+            <div class="rect-image">
+              <img
+                src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+                alt="Image Description">
+               
+            </div>
+            <br/>
+            <div class="course-details">
+              <h3 class="name-title">Pushpa</h3>
+              <p class="course-type">Beginner|Detailed Course</p>
+              <p class="course-date">Published Date:30 june, 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  
+  
+  <div class="rect-container">
+    <mat-card class="main-rectangle">
+      <h1>Property law</h1>
+      <div class="subtract-Container">
+        <div class="card">
+          <div class="subtract">   
+            <div class="rect-image">
+              <img
+                src="https://www.sharda.ac.in/blog/attachments/blog_images/4-Main-Types-of-Law-Which-One-Is-the-Best-For-You-1170x614-min.jpg"
+                alt="Image Description">
+               
+            </div>
+            <br/>
+            <div class="course-details">
+              <h3 class="name-title">Pushpa</h3>
+              <p class="course-type">Beginner|Detailed Course</p>
+              <p class="course-date">Published Date:30 june, 2024</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  </div>
+
+</div>
+
+
+
+
+<!-- 
+
+
+<div class="rect-container">
+  <mat-card class="main-rectangle">
+   
+  </mat-card>
+</div> 
+
+<div class="subtract-Container">
+  <div class="card">
+    <div class="subtract"></div>
+    <div class="content"></div>
+  </div>
+
+</div> -->
 
 
 <div class="container">
@@ -134,17 +378,18 @@
   <br>
   <br>
   <br>
- 
+
   <!-- Loop over instituteCourses array -->
   <div *ngFor="let institute of institutes">
     <div class="organization-header">
       <h2>Courses by {{ institute.name }}</h2>
     </div>
-  
+
     <div class="image-grid" #paidCoursesSection>
       <div *ngFor="let course of instituteCourses[institute.name]; let j = index" class="image-item">
         <div class="imagesContainer">
-          <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" alt="Random Image" (error)="onImageError($event)">
+          <img [src]="course.thumbnail ? s3BaseURL + course.thumbnail : course.thumbnail" alt="Random Image"
+            (error)="onImageError($event)">
           <div class="overlay">
             <a routerLink="/overviewAvailable" [queryParams]="{ showRatingOfCourse: 'true' }">
               <i class="fa fa-play-circle play-icon"></i>
@@ -192,11 +437,12 @@
       </div>
     </div>
     <div style="text-align: right;">
-      <app-shared-pagination [totalRecordsCount]="pagination2.totalElements" (pageChange)="onPageChange2($event)"></app-shared-pagination>
+      <app-shared-pagination [totalRecordsCount]="pagination2.totalElements"
+        (pageChange)="onPageChange2($event)"></app-shared-pagination>
     </div>
     <br><br><br>
   </div>
-  
-<br>
-<br>
-<br>
+
+  <br>
+  <br>
+  <br>
