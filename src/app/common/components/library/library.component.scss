@@ -1,79 +1,113 @@
+.library {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  background-color: #d8e5f4e5;
+  height: 100%; /* Ensure full height */
+  text-align: center;
+}
+.page {
+  display: block;
+  height: 47px;
+  width: 100%;
+  background-color: #012641;
+  color: white;
+
+}
+
+.heading {
+  margin-top: 20px;
+  color: #012641;
+}
+
+.table-container {
+
+  height: 81vh;
+  width: 1000px;
+  border: 0px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 25px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+table {
+  border-collapse: collapse; 
+}
+
+td,
+th {
+  padding-top: 26px;
+  padding-left: 250px;
+  text-align: left;
+}
+
+.title:hover {
+  color: #2a9af3;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.deleteFile {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  color: #333;
+  cursor: pointer;
+}
+.deleteFile:hover{
+  background-color: #012641;
+  color: #2a9af3;
+}
+
+.mat-icon {
+  color: rgb(117, 115, 115);
+  cursor: pointer;
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+
+.pdf-viewer {
+  width: 100%;
+  max-width: 800px; /* Adjust max-width as per your design */
+  height: 800px; /* Fixed height for the viewer */
+  margin: 20px auto; /* Center the viewer horizontally */
+}
+
+.remaining-pdf-button,
+.download-pdf-button {
+  position: absolute;
+  top: 10px;
+  background-color: white;
+  color: #2a9af3;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.download-pdf-button {
+  right: 10px;
+}
+
 .pdftable {
-    overflow-y: hidden;
-  }
-  
-  h1 {
-    text-align: center;
-    margin: 10px;
-    margin-top: 30px;
-    font-size: 25px;
-    margin-bottom: 25px;
-    font-weight: 500;
-  }
-  
-  table{
-    width: 884px;
-    margin:0 auto;
-  }
-  
-  td {
-    padding: 5px;
-    vertical-align: middle;
-    border: none;
-    border-bottom: 1px solid rgb(222, 207, 207);
-   
-    cursor: pointer;
-  
-    &:hover {
-      color: rgb(0, 81, 139);
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-  
-  td:first-child {
-    color: rgb(207, 86, 86);
-  }
-  
-  td a mat-icon {
-    color: rgb(117, 115, 115);
-  }
-  
-  mat-icon[aria-hidden="true"] {
-    cursor: pointer;
+  overflow-y: hidden; /* Hide vertical overflow */
+}
+
+/* Media query for responsive design */
+@media (max-width: 600px) {
+  .library {
     padding: 10px;
-    font-size: 30px;
-    margin-bottom: 14px;
   }
-  pdf-viewer {
-   height: 800px;
-   width:800px;
-   margin:0 auto;
-  //  position: relative;
-  //  left:390px;
-  //  top:-30px;
-   padding-right: 20px;
-    
+
+  .table-container {
+    max-width: 100%;
+    margin-top: 10px;
   }
-  .remaining-pdf-button{
-    position: relative;
-    color:#2A9AF3!important;
-    background-color:white !important;
-    left: 80px;
-    top:-40px;
-    border-radius: 20px;
-  }
-  .pdf {
-    position: relative;  
-  }
-  
-  .download-pdf-button { 
-    color:#2A9AF3!important;
-    background-color:white !important;
-    position: absolute;
-    top: -40px;
-    right: 80px; 
-    // height: 50px;
-    border-radius: 20px; 
-  }
-  
+}
