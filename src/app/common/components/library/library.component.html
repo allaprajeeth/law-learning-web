@@ -1,40 +1,21 @@
-<div class="library">
-  <div><h1 class="heading">Documents</h1></div>
-  <div *ngIf="libraries.length > 0">
-    <div class="table-container">
-      <table *ngIf="!pdfSrc">
-        <tr
-          *ngFor="let library of libraries; let i = index"
-          class="library-list"
-        >
-          <td
-            target="blank"
-            [title]="library.url"
-            (click)="openFile(library)"
-            class="title"
-          >
-            {{ library.title | uppercase }}
-          </td>
-          <td>
-            <button
-              mat-stroked-button
-              class="deleteFile"
-              *ngIf="isAdmin"
-              (click)="DeleteFile(library.id)"
-            >
-              Delete File
-            </button>
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div style="text-align: right">
-      <app-shared-pagination class="page"
-        [totalRecordsCount]="pagination.totalElements"
-        (pageChange)="onPageChange($event)"
-      ></app-shared-pagination>
-    </div>
-  </div>
+<div *ngIf= "libraries.length > 0">
+  <h1>Documents</h1>
+</div>
+<table *ngIf="!pdfSrc">
+  <tr *ngFor="let library of libraries; let i = index">
 
-  <div *ngIf="libraries.length === 0">No libraries found.</div>
+    <td><mat-icon>picture_as_pdf</mat-icon></td>
+    <td target="blank" [title]="library.url">{{ library.title | uppercase }}</td>
+    <td>
+      <button mat-stroked-button color="primary" (click)="openFile(library)">Open File
+      </button>
+    </td>
+    <td>
+      <button mat-stroked-button color="primary" *ngIf="isAdmin" (click)="DeleteFile(library.id)">Delete File
+      </button>
+    </td>
+  </tr>
+</table>
+<div style="text-align: right;"><app-shared-pagination [totalRecordsCount]="pagination.totalElements"
+    (pageChange)="onPageChange($event)"></app-shared-pagination>
 </div>
