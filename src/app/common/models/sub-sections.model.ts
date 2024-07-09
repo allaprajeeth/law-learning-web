@@ -9,6 +9,7 @@ export class SubSection extends BaseModel<SubSection> {
   public updatedDate!: string;
   public createdDate!: string;
   
+  public files!: FileInfo[];
   public file!: FileInfo;
   videoFile?: string; 
   documentFile?: string;

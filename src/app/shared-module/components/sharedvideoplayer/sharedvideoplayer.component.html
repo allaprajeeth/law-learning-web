@@ -39,26 +39,25 @@
 
 							<div class="video-item subsection-space" [class.playing-video-title]="isVideoPlaying(i, j)">
 								<div class="video-info">
-									<div class="videos-title-and-status">
-										<div class="videos-title" (click)="playVideo(i, j)">
-											<mat-icon class="custom-icon mat-icon-small">videocam</mat-icon>{{
-											subSection ?.title }}
-											<p [style.color]="getReviewStatusColor(subSection?.reviewStatus)">
-												{{subSection ?.reviewStatus | enumValue:reviewStatusEnum}}
-											</p>
-
-											<ng-container
-												*ngIf="subSection.file && subSection.file.contentType === 'application/pdf'">
+									<div class="">
+										<p [style.color]="getReviewStatusColor(subSection?.reviewStatus)">
+											{{subSection ?.reviewStatus | enumValue:reviewStatusEnum}}
+										</p>
+										<ng-container *ngFor="let file of subSection.files">
+											<div class="videos-title" (click)="playVideo(i, j)" *ngIf="file && file.resourceType === 'Video'">
+												<mat-icon class="custom-icon mat-icon-small">videocam</mat-icon>{{file.fileName}}
+											</div>
+											<ng-container *ngIf="file && file.contentType === 'application/pdf'">
 												<p class="filename">
 													<span class="pdf-icon material-icons"
 														style="color: red; vertical-align: middle;">picture_as_pdf</span>
-													<a [href]="getDownloadUrl(subSection.file.url)"
-														download="{{ subSection.file.fileName }}" class="pdf-link">
-														{{ subSection.file.fileName }}
+													<a [href]="getDownloadUrl(file.url)"
+														download="{{ file.fileName }}" class="pdf-link">
+														{{ file.fileName }}
 													</a>
 												</p>
 											</ng-container>
-										</div>
+										</ng-container>
 									</div>
 									<div class="time-duration" style="color: rgb(122, 119, 119)">
 										{{ subSection ?.duration }} min

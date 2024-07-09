@@ -486,7 +486,7 @@ documentProgress: number | undefined;
   
 
   isFileExists(subSection: SubSection) {
-    return subSection && subSection.id && subSection.file;
+    return subSection.files && subSection.files.length > 0;
   }
 
   onSubmit() {

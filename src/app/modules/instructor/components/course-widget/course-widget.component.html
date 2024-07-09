@@ -140,7 +140,7 @@
                                                 <textarea id="description" name="description"
                                                     formControlName="description" rows="4" required></textarea>
                                                 <br />
-                                                <small *ngIf="!course.sections[i].subSections[j] || !course.sections[i].subSections[j].file"><b>Note: </b>Save the section/sub section, If you want upload a resource file/video for this sub section.</small> 
+                                                <small *ngIf="!course.sections[i].subSections[j] || !course.sections[i].subSections[j].files"><b>Note: </b>Save the section/sub section, If you want upload a resource file/video for this sub section.</small> 
                                             </div>
                                         
                                             <!-- TODO -->
@@ -151,15 +151,14 @@
                                                     <p class="detail-heading file-name" style="flex: 25%;">Status</p>
                                                     <p class="detail-heading file-name" style="flex: 25%;">Actions</p>
                                                 </div>
-                                                <div class="details-row details-values"  style="display: flex; width: 100%;">
-                                                    <p class="detail-value file-name" style="flex: 25%;">{{ course.sections[i].subSections[j].file.fileName }}</p>
-                                                    <p class="detail-value file-name" style="flex: 25%;">{{ course.sections[i].subSections[j].file.contentType }}</p>
+                                                <div *ngFor="let file of course.sections[i].subSections[j].files" class="details-row details-values"  style="display: flex; width: 100%;">
+                                                    <p class="detail-value file-name" style="flex: 25%;">{{ file.fileName }}</p>
+                                                    <p class="detail-value file-name" style="flex: 25%;">{{ file.contentType }}</p>
                                                     <p class="detail-value file-name" style="flex: 25%;">Uploaded</p>
                                                     <div class="detail-value file-name" style="flex: 25%; ">
                                                         <button mat-icon-button
-                                                        (click)="removeResource(course.sections[i].id, course.sections[i].subSections[j].id, course.sections[i].subSections[j].file.id)"
+                                                        (click)="removeResource(course.sections[i].id, course.sections[i].subSections[j].id, file.id)"
                                                         color="warn"><mat-icon>delete_circle</mat-icon></button>
-                                                       
                                                     </div>
                                                 </div>
                                             </div>
