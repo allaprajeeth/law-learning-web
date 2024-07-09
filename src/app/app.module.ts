@@ -62,6 +62,7 @@ import { SidenavtermsconditionsComponent } from './common/components/sidenavterm
 import { LibraryComponent } from './common/components/library/library.component';
 import { MatListModule } from '@angular/material/list';
 
+
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { LibraryByIdComponent } from './common/components/library-by-id/library-by-id.component';
 import { RevertDeleteComponent } from './common/components/revert-delete/revert-delete.component';
@@ -70,6 +71,7 @@ import { ArticleDetailsComponent } from './common/components/article-details/art
 import { DeleteAccountDialogComponent } from './common/components/login/delete-account-dialog/delete-account-dialog.component';
 import { LoadingInterceptor } from './common/services/loading.interceptor';
 import { LoadingComponent } from './common/components/loading/loading.component';
+
 
 @NgModule({
   declarations: [
@@ -108,6 +110,8 @@ import { LoadingComponent } from './common/components/loading/loading.component'
     ArticleDetailsComponent,
     DeleteAccountDialogComponent,
     LoadingComponent,
+  
+    // DesignPageComponent,
   ],
   imports: [
     CarouselModule,

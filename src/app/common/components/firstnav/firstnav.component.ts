@@ -107,15 +107,16 @@ export class FirstnavComponent {
       { name: 'Cart', route: '/subscriber/cart' },
     ],
     ADMIN: [
-      { name: 'Admin-homepage', route: '/admin/homepage' },
+      { name: 'Homepage', route: '/admin/allcourses' },
       { name: 'Library', route: '/admin/library' },
       { name: 'Publishing Corner', route: '/admin/article' },
       { name: 'About Us', route: '/admin/aboutus' },
       { name: 'Notifications', route: '/admin/notification' },
-      { name: 'All courses', route: '/admin/allcourses' },
+      // { name: 'All courses', route: '/admin/allcourses' },
       { name: 'Dashboard', route: '/admin/dashboard' },
     ],
     CONTENTMANAGER: [
+      { name: 'Homepage', route: '/authentication/allcourses' },
       {
         name: 'Content-manager-homepage',
         route: '/authentication/homepage',
@@ -124,7 +125,7 @@ export class FirstnavComponent {
       // { name: 'Library', route: '/authentication/library' },
       // { name: 'Publishing Corner', route: '/authentication/article' },
       // { name: 'About Us', route: '/authentication/aboutus' },
-      { name: 'All courses', route: '/authentication/allcourses' },
+      
       { name: 'Notifications', route: '/authentication/notification' },
     ],
     INSTRUCTOR: [

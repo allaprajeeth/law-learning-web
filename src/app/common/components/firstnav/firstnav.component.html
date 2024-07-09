@@ -3,54 +3,55 @@
     <div class="navbar-container">
       <a routerLink="/" class="logo" [class.adjusted-margin]="roleNavigationMap[userRole || ''] && roleNavigationMap[userRole || ''][0].adjustLogoMargin">5th Estate ADR</a>
 
-
-      <div>
+      <div class="nav-middle">
         <ul class="nav-icons">
           <ng-container *ngFor="let navItem of roleNavigationMap[userRole || '']">
             <li>
-              <a [routerLink]="[navItem.route]" routerLinkActive="active" class="mycourses">
+              <a [routerLink]="[navItem.route]" routerLinkActive="active" class="mycourses" mat-button>
                 {{ navItem.name }}
                 <span *ngIf="navItem.route.includes('notification') && unreadNotificationCount >= 0" class="custom_badge">{{ unreadNotificationCount }}</span>
               </a>
             </li>
           </ng-container>
-          <li class="user-dropdown" *ngIf="userRole">
-            <div class="user-circle" [ngClass]="{'margin-left-for-cm': userRole === 'CONTENTMANAGER' || userRole === 'REVIEWER'}" (click)="onUserCircleClick($event)">
-              <span class="user-circle-text">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</span>
-            </div>
-            
-            <ul class="user-menu">
-              <li class="profile-item">
-                <span>
-                  <div class="user-circle">
-                    <a routerLink="" class="user-circle-text" style="color: white">{{ name ?
-                      name.charAt(0).toUpperCase() : 'N' }}</a>
-                  </div>
-                </span>
-                <p>{{ email }}</p>
-              </li>
-              <li class="username-item">
-                <span>{{ name }}</span>
-                <span>{{ phone }}</span>
-              </li>
-              <hr>
-
-              <ng-container *ngFor="let menuItem of userMenuMap[userRole || '']">
-                <li>
-                  <a [routerLink]="[menuItem.route]" routerLinkActive="active" class="navbarContent">
-                    {{menuItem.name }}
-                  </a>
-                </li>
-              </ng-container>
-              <li class="navbarContent"><a (click)="onLogoutClick()">Logout</a></li>
-
-            </ul>
-          </li>
         </ul>
       </div>
+
+      <ul class="nav-icons user-section" *ngIf="userRole">
+        <li class="user-dropdown">
+          <div class="user-circle" [ngClass]="{'margin-left-for-cm': userRole === 'CONTENTMANAGER' || userRole === 'REVIEWER'}" (click)="onUserCircleClick($event)">
+            <span class="user-circle-text">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</span>
+          </div>
+
+          <ul class="user-menu">
+            <li class="profile-item">
+              <span>
+                <div class="user-circle">
+                  <a routerLink="" class="user-circle-text" style="color: white">{{ name ? name.charAt(0).toUpperCase() : 'N' }}</a>
+                </div>
+              </span>
+              <p>{{ email }}</p>
+            </li>
+            <li class="username-item">
+              <span>{{ name }}</span>
+              <span>{{ phone }}</span>
+            </li>
+            <hr>
+
+            <ng-container *ngFor="let menuItem of userMenuMap[userRole || '']">
+              <li>
+                <a [routerLink]="[menuItem.route]" routerLinkActive="active" class="navbarContent" mat-button>
+                  {{ menuItem.name }}
+                </a>
+              </li>
+            </ng-container>
+            <li class="navbarContent"><a (click)="onLogoutClick()" mat-button>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+
       <div class="login-buttons" *ngIf="!userRole">
-        <button class="login-button" routerLink="/login">Login</button>
-        <button class="login-button" (click)=openModal()>Register</button>
+        <button class="login-button" routerLink="/login" mat-button>Login</button>
+        <button class="signup-button" (click)="openModal()" mat-button>Register</button>
       </div>
     </div>
     <app-logout-popup *ngIf="showLogoutPopup" (closePopup)="onClosePopup()" (logout)="onLogout()" class="pop">
@@ -62,5 +63,3 @@
     You’ve successfully logged out of 5th Estate ADR. Come back soon!
   </div>
 </div>
-
-<!-- <app-profile [displayName]="name"></app-profile> -->

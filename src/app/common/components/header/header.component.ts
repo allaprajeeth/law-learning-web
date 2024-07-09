@@ -15,9 +15,45 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+
+  recordsPerPage = 8;
+  recordsPerPageOptions = [8, 16, 24, 32, 40];
+  cards = [
+    // Add your card data here (total 8 card objects for demonstration)
+    { /* card data */ },
+    { /* card data */ },
+    { /* card data */ },
+    { /* card data */ },
+    { /* card data */ },
+    { /* card data */ },
+    { /* card data */ },
+    { /* card data */ }
+  ];
+
+  onRecordsPerPageChange(event: any) {
+    this.recordsPerPage = event.value;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   @ViewChild('paidCoursesSection') paidCourseSection!: ElementRef;
   instituteCourses: { [key: string]: Course[] } = {};
   curatedCourses: Course[] = [];
+   executiveCourses: Course[] = [];
   s3BaseURL: string = endPoints.s3BaseURL;
   selectedCategory: string = '';
   selectedCourseType: string = '';

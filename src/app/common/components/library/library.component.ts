@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from 'src/app/confirmation-dialog/confirmation-dialog.component';
 import { endPoints } from '../../constants/endpoints';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-library',
   templateUrl: './library.component.html',
@@ -89,14 +90,6 @@ export class LibraryComponent {
       }
     });
   }
-
-  onPageChange(pagination: Pagination) {
-    this.pagination.page = pagination.page;
-    this.pagination.size = pagination.size;
-    this.getLibraries();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
   getLibraries() {
     const apiUrl =
       endPoints.baseURL +
@@ -106,5 +99,11 @@ export class LibraryComponent {
       this.pagination = new Pagination(response.data);
       this.libraries = libraries;
     });
+  }
+  onPageChange(pagination: Pagination) {
+    this.pagination.page = pagination.page;
+    this.pagination.size = pagination.size;
+    this.getLibraries();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

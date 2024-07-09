@@ -79,7 +79,7 @@
 
 								<!-- For Reviewer -->
 								<button mat-button color="primary"
-									(click)="approveVideo(section, subSection, 'ADMIN_ACCEPTED')"
+									(click)="approveVideo(section, subSection, 'APPROVED')"
 									*ngIf="role === 'REVIEWER' && (subSection.reviewStatus === 'CONTENT_MANAGER_ACCEPTED' || subSection.reviewStatus === 'CM_ADMIN_ACCEPTED')">
 									Approve
 								</button>
